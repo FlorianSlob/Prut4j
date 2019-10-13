@@ -7,6 +7,8 @@ package nl.florianslob.model.checking.sandbox.fosterchandy;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
 
@@ -15,20 +17,14 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  * @author FlorianSlob
  */
 public class OutPort implements IOutPort {
-    private static int currentDepth = 0;
-
-    private int _maxDepth;
 
     public OutPort(){
-        
     }
-    public OutPort(int maxDepth) {
-        this._maxDepth = maxDepth; 
-    }
+    
     private IChannel channel;
 
     @Override
-    public void Send(Object o) throws Exception {
+    public void Send(Object o) throws MaxDepthReachedException, ProtocolViolationException {
 
         while (channel == null) {
             try {
@@ -44,7 +40,7 @@ public class OutPort implements IOutPort {
             // set in the queue as soon as the channel is open.
             channel.setMessageQueueObject(o);
         } else {
-            throw new Exception("Violated the protocol");
+            throw new ProtocolViolationException("Violated the protocol");
         }
     }
 

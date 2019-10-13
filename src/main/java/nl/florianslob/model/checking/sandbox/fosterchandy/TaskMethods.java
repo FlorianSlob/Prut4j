@@ -1,5 +1,7 @@
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IInPort;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
 
@@ -8,7 +10,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  * @author FlorianSlob
  */
 public class TaskMethods {
-        public static void taskA(IInPort inPort, IOutPort outPort) throws Exception {
+        public static void taskA(IInPort inPort, IOutPort outPort) throws MaxDepthReachedException, ProtocolViolationException {
 
         while (true) {
             System.out.println("sandbox.App.taskA() before receive.");
@@ -22,7 +24,7 @@ public class TaskMethods {
 
     }
 
-    public static void taskB(IInPort inPort, IOutPort outPort) throws Exception {
+    public static void taskB(IInPort inPort, IOutPort outPort) throws MaxDepthReachedException, ProtocolViolationException {
         System.out.println("sandbox.App.taskB() before initial send.");
         outPort.Send("This is sparta!");
         System.out.println("sandbox.App.taskB() after initial send");

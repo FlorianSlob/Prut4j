@@ -5,6 +5,8 @@
  */
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
 
 /**
@@ -22,11 +24,10 @@ public class SimpleDirectChannel implements IChannel {
     public SimpleDirectChannel() {
 
     }
-    
-      public SimpleDirectChannel(int maxDepth) {
-          _maxDepth = maxDepth;
-    }
 
+    public SimpleDirectChannel(int maxDepth) {
+        _maxDepth = maxDepth;
+    }
 
     @Override
     public Boolean isEnabled() {
@@ -45,15 +46,15 @@ public class SimpleDirectChannel implements IChannel {
     }
 
     @Override
-    public void checkMaxDepth() throws Exception{
-        if(_maxDepth == -1){
+    public void checkMaxDepth() throws MaxDepthReachedException {
+        if (_maxDepth == -1) {
             return;
         }
-        
-        if(_maxDepth > currentDepth){
+
+        if (_maxDepth > currentDepth) {
             return;
         }
-        
-        throw new Exception("Max depth!");//TODO Custom Exception
+
+        throw new MaxDepthReachedException("Max depth reached!");//TODO Custom Exception
     }
 }

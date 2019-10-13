@@ -6,6 +6,8 @@
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IConnector;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IInPort;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
@@ -20,7 +22,7 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
 
     @Override
     public void runActivity() {
-        
+
         // Define used ports
         IOutPort outPortB = new OutPort();
         IInPort inPortA = new InPort();
@@ -39,8 +41,11 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
             public void run() {
                 try {
                     TaskMethods.taskA(inPortA, outPortA);
-                } catch (Exception ex) {
-                    System.out.println("!!! Exception ex = " + ex.getMessage());
+                } catch (ProtocolViolationException ex) {
+                    System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
+                    return;
+                } catch (MaxDepthReachedException ex) {
+                    System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
                     return;
                 }
             }
@@ -51,11 +56,14 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
             public void run() {
                 try {
                     TaskMethods.taskB(inPortB, outPortB);
-                } catch (Exception ex) {
-                    System.out.println("!!! Exception ex = " + ex.getMessage());
+                } catch (ProtocolViolationException ex) {
+                    System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
+                    return;
+                } catch (MaxDepthReachedException ex) {
+                    System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
                     return;
                 }
             }
         }.start();
-    }    
+    }
 }
