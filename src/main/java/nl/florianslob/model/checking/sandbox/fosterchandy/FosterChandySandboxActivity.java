@@ -1,5 +1,7 @@
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
 import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
@@ -39,6 +41,8 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
                     System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
                 } catch (MaxDepthReachedException ex) {
                     System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(FosterChandySandboxActivity.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }.start();
@@ -52,6 +56,8 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
                     System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
                 } catch (MaxDepthReachedException ex) {
                     System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(FosterChandySandboxActivity.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }.start();
