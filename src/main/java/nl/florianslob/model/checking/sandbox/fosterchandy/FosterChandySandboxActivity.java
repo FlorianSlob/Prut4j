@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
@@ -18,7 +13,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  */
 public class FosterChandySandboxActivity implements ISandboxingActivity {
 
-    private int _maxDepth = 10; // -1 means no max
+    private final int _maxDepth = 10; // -1 means no max
 
     @Override
     public void runActivity() {
@@ -30,7 +25,6 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
         IOutPort outPortA = new OutPort();
         IInPort inPortB = new InPort();
 
-        int maxDepth = 30;
         // Define connector and connect
         IConnector connector = new Connector(_maxDepth);
         connector.Connect(inPortA, outPortB, inPortB, outPortA);
@@ -43,10 +37,8 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
                     TaskMethods.taskA(inPortA, outPortA);
                 } catch (ProtocolViolationException ex) {
                     System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
-                    return;
                 } catch (MaxDepthReachedException ex) {
                     System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
-                    return;
                 }
             }
         }.start();
@@ -58,10 +50,8 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
                     TaskMethods.taskB(inPortB, outPortB);
                 } catch (ProtocolViolationException ex) {
                     System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
-                    return;
                 } catch (MaxDepthReachedException ex) {
                     System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
-                    return;
                 }
             }
         }.start();
