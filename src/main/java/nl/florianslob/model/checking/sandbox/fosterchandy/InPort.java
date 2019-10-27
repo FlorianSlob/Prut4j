@@ -14,13 +14,14 @@ public class InPort implements IInPort {
     private IChannel channel;
 
     @Override
-    @SuppressWarnings("SleepWhileInLoop") // TODO Solve differently.
-    public Object Receive() throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+    public Object Receive() throws MaxDepthReachedException, ProtocolViolationException {
         while (channel == null || channel.getMessageQueueObject() == null) {
             try {
                 channel.checkMaxDepth();
                 Thread.sleep(1000);
-            } catch (InterruptedException | MaxDepthReachedException | ProtocolViolationException e) {
+            } catch (InterruptedException e) {
+                Logger.getLogger(InPort.class.getName()).log(Level.SEVERE, null, e);
+            }catch (MaxDepthReachedException | ProtocolViolationException e) {
                 Logger.getLogger(InPort.class.getName()).log(Level.SEVERE, null, e);
                 throw e;
             }

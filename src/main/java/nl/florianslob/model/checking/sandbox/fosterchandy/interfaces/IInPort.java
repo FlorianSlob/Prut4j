@@ -7,5 +7,5 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolVio
  * IInPort
  */
 public interface IInPort extends IPort {
-    public Object Receive() throws InterruptedException, MaxDepthReachedException, ProtocolViolationException;
+    public Object Receive() throws MaxDepthReachedException, ProtocolViolationException;
 }

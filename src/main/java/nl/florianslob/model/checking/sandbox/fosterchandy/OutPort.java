@@ -24,14 +24,13 @@ public class OutPort implements IOutPort {
     private IChannel channel;
 
     @Override
-    public void Send(Object o) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+    public void Send(Object o) throws MaxDepthReachedException, ProtocolViolationException {
 
         while (channel == null) {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(InPort.class.getName()).log(Level.SEVERE, null, ex);
-                throw ex;
             }
         }
         

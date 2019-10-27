@@ -8,5 +8,5 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolVio
  */
 public interface IOutPort extends IPort {
 
-    public void Send(Object o) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException;
+    public void Send(Object o) throws MaxDepthReachedException, ProtocolViolationException;
 }
