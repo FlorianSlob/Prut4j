@@ -8,6 +8,7 @@ package nl.florianslob.model.checking.sandbox.onthefly.datastructure;
 public enum TemporalOperator {
     U,
     V,
-    X,// Don't use in first implementation
-    Negation // Do we need this?
+    And,
+    Or,
+    X// Don't use in first implementation
 }

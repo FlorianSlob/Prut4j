@@ -5,7 +5,7 @@ import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.onthefly.datastructure.GraphNode;
 import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalOperator;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalProperty;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalFormulla;
 
 /**
  *
@@ -21,15 +21,19 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
         // TODO Is this for cycle detection?
         Set<GraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalProperty property = new TemporalProperty("RootProperty");
-        property.leftProperty = new TemporalProperty("LeftProperty", "True");
+        TemporalFormulla property = new TemporalFormulla("RootProperty");
+        property.leftOperantFormulla = new TemporalFormulla("LeftProperty", "True");
         property.operator = TemporalOperator.U;
-        property.rightProperty = new TemporalProperty("RightProperty", "SomeProperty");
+        property.rightOperantFormulla = new TemporalFormulla("RightProperty", "SomeProperty");
         
-        GraphNode rootNode = new GraphNode("RootNode", property);
-        
-        rootNode.expand(graphNodeSet); // This is where the magic happens
-        
+        GraphNode rootNode = new GraphNode("RootNode", property, true);
+        try{
+            rootNode.expand(graphNodeSet); // This is where the magic happens
+        }catch(Exception e){
+            // Print but do not throw.
+            System.out.println("Max depth reached, test succeeded. Exception message: " + e.getMessage());
+        }
+        // Print the whole tree (exception or not, for debuggin purposes).
         rootNode.printTreeDepthFirst(); // This is where the magic is printed
         
         System.out.println("Done OnTheFlyLtl Sandbox activity.");

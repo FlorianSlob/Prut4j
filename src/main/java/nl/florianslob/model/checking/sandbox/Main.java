@@ -2,7 +2,6 @@ package nl.florianslob.model.checking.sandbox;
 
 import nl.florianslob.model.checking.sandbox.fosterchandy.FosterChandySandboxActivity;
 import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
@@ -26,7 +25,7 @@ public class Main {
             case OnTheFlyLtl: 
                 return new OnTheFlyLtlSandboxActivity();
             default:
-                throw new NotImplementedException();
+                throw new UnsupportedOperationException();
         }
     }
 }
