@@ -14,28 +14,36 @@ import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalForm
 public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
 
     @Override
-    public void runActivity() {
+    public void runActivity() throws Exception {
         System.out.println("Starting OnTheFlyLtl Sandbox activity.");
-        
+
         // We start with an empty set, that will contain all nodes
         // TODO Is this for cycle detection?
         Set<GraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
         TemporalFormulla property = new TemporalFormulla("RootProperty");
-        property.leftOperantFormulla = new TemporalFormulla("LeftProperty", "True");
+        property.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
         property.operator = TemporalOperator.U;
-        property.rightOperantFormulla = new TemporalFormulla("RightProperty", "SomeProperty");
+        property.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+
+        GraphNode initialNode = new GraphNode("InitialNode");
+        initialNode.isInitialState = true;
         
-        GraphNode rootNode = new GraphNode("RootNode", property, true);
-        try{
+        GraphNode rootNode = new GraphNode("RootNode", property);
+        rootNode.fatherNode = initialNode;
+                
+        try {
             rootNode.expand(graphNodeSet); // This is where the magic happens
-        }catch(Exception e){
+        } catch (Exception e) {
             // Print but do not throw.
-            System.out.println("Max depth reached, test succeeded. Exception message: " + e.getMessage());
+            System.out.println("Exception message: " + e.getMessage());
+            throw e;
         }
-        // Print the whole tree (exception or not, for debuggin purposes).
-        rootNode.printTreeDepthFirst(); // This is where the magic is printed
         
+        // Print the whole tree (exception or not, for debuggin purposes).
+        initialNode.printTreeDepthFirst();
+
+
         System.out.println("Done OnTheFlyLtl Sandbox activity.");
-    }    
+    }
 }

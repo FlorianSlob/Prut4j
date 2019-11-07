@@ -10,4 +10,8 @@ public class TemporalProperty {
     public TemporalProperty(String content) {
         this.content = content;
     }
+    
+    public void Print(){
+        System.out.println("Property: "+content);
+    }
 }

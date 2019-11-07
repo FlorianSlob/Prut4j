@@ -8,13 +8,10 @@ import java.util.stream.Stream;
 
 /**
  *
- * @author FlorianSlob 
- * TODO:
- * Break logic into separate methods.
- * Java Reference types???
- * Check assignments of lists with existing lists, copy function?
- * Add Next operator 'X'
- * 
+ * @author FlorianSlob TODO: Break logic into separate methods. Java Reference
+ * types??? Check assignments of lists with existing lists, copy function? Add
+ * Next operator 'X'
+ *
  */
 public class GraphNode {
 
@@ -23,11 +20,11 @@ public class GraphNode {
     public Set<GraphNode> childNodes = new HashSet<>();
 
     public String name;
-    public Set<GraphNode> incomingEdges;
+    public Set<GraphNode> incomingEdges = new HashSet();
     public Set<TemporalFormulla> newTemporalFormullas = new HashSet();
     public Set<TemporalFormulla> oldTemporalFormullas = new HashSet();
     public Set<TemporalFormulla> nextTemporalFormullas = new HashSet();
-    private Boolean isInitialState = false;
+    public Boolean isInitialState = false;
     private static int currentNodeId = 0;
 
     public GraphNode(String name, TemporalFormulla property, Boolean isInitialState) {
@@ -48,6 +45,23 @@ public class GraphNode {
     public void printTreeDepthFirst() {
         System.out.println(MessageFormat.format("Printing from {0}", name));
         System.out.println(MessageFormat.format("Initial? {0}", isInitialState));
+        if (fatherNode != null) {
+            System.out.println("Name of father node: " + fatherNode.name);
+        }
+
+        if (incomingEdges.size() > 0) {
+            incomingEdges.forEach(edge -> {
+                System.out.println("Name of incomming edge: " + edge.name);
+            });
+        }
+        
+        
+        System.out.println("Number of incomming newTemporalFormullas: " + newTemporalFormullas.size());
+        newTemporalFormullas.forEach(formulla -> formulla.printRecursive());
+        System.out.println("Number of incomming oldTemporalFormullas: " + oldTemporalFormullas.size());
+        oldTemporalFormullas.forEach(formulla -> formulla.printRecursive());
+        System.out.println("Number of incomming nextTemporalFormullas: " + nextTemporalFormullas.size());
+        nextTemporalFormullas.forEach(formulla -> formulla.printRecursive());
 
         childNodes.forEach((childNode) -> childNode.printTreeDepthFirst());
     }
@@ -76,6 +90,9 @@ public class GraphNode {
                 newNode.incomingEdges.add(this);
                 newNode.newTemporalFormullas.addAll(this.nextTemporalFormullas);
 
+                // Yes??
+                this.fatherNode.childNodes.add(this);
+
                 graphNodeSet.add(this);
 
                 newNode.expand(graphNodeSet);
@@ -94,7 +111,6 @@ public class GraphNode {
                     System.out.println("Contradicting leaf found, ignoring.");
                 } else {
                     this.oldTemporalFormullas.add(temporalFormulla);
-
                     // TODO Call expand recursively?? See row 19??
                     // YES!YES
                     this.expand(graphNodeSet);
@@ -109,27 +125,26 @@ public class GraphNode {
                 //22 New ⇐ New(Node) ∪ ( { New1( η ) }\ Old(Node)),
                 //23 Old ⇐ Old(Node) ∪{η} , Next=Next(Node) ∪{ Next1( η)}] ;
                 GraphNode newNode1 = new GraphNode("Node" + getNextNodeId());
-                newNode1.fatherNode = this;
+                newNode1.fatherNode = this.fatherNode;
                 newNode1.incomingEdges = this.incomingEdges;
-                
+
                 newNode1.newTemporalFormullas = new HashSet(this.newTemporalFormullas);
                 newNode1.newTemporalFormullas.addAll(this.getNew1(temporalFormulla));
-                
+
                 newNode1.oldTemporalFormullas = new HashSet(this.oldTemporalFormullas);
                 newNode1.oldTemporalFormullas.add(temporalFormulla);
-                
+
                 newNode1.nextTemporalFormullas = new HashSet(this.nextTemporalFormullas);
                 newNode1.nextTemporalFormullas.addAll(this.getNext1(temporalFormulla));
-
 
                 //24 Node2:= [ Name ⇐ new name(), Father ⇐ Name(Node), Incoming ⇐ Incoming(Node),
                 //25 New ⇐ New(Node) ∪({ New2( η)}\ Old(Node)),
                 //26 Old ⇐ Old(Node) ∪{η} , Next ⇐ Next(Node) ] ;
                 //27 return(expand(Node2, expand(Node1, Nodes Set)));
                 GraphNode newNode2 = new GraphNode("Node" + getNextNodeId());
-                newNode2.fatherNode = this;
+                newNode2.fatherNode = this.fatherNode;
                 newNode2.incomingEdges = this.incomingEdges;
-                
+
                 newNode2.newTemporalFormullas = new HashSet(this.newTemporalFormullas);
                 newNode2.newTemporalFormullas.addAll(this.getNew2(temporalFormulla));
 
@@ -137,7 +152,7 @@ public class GraphNode {
                 newNode2.oldTemporalFormullas.add(temporalFormulla);
 
                 newNode2.nextTemporalFormullas = new HashSet(this.nextTemporalFormullas);
-                
+
                 newNode1.expand(graphNodeSet);
                 newNode2.expand(graphNodeSet);
 
@@ -178,11 +193,7 @@ public class GraphNode {
                 && graphNode.nextTemporalFormullas.equals(this.nextTemporalFormullas)
                 ); // TODO Implement equals for sets of temporal properties. Separate method?
 
-        if (nodes.count() > 1) {
-            throw new Exception("There are more than one nodes with the same new and next temporal properties.");
-        } else {
-            return nodes.findFirst();
-        }
+        return nodes.findFirst();
     }
 
     private static int getNextNodeId() {
@@ -193,36 +204,40 @@ public class GraphNode {
     private Set<TemporalFormulla> getNew1(TemporalFormulla inputFormulla) {
         HashSet<TemporalFormulla> returnValue = new HashSet();
         TemporalFormulla returnFormulla;
-        
-        if(inputFormulla.operator == TemporalOperator.U || inputFormulla.operator == TemporalOperator.Or)
+
+        if (inputFormulla.operator == TemporalOperator.U || inputFormulla.operator == TemporalOperator.Or) {
             returnFormulla = inputFormulla.leftOperantFormulla;
-        else
+        } else {
             returnFormulla = inputFormulla.rightOperantFormulla;
-        
-        if(!this.oldTemporalFormullas.contains(returnFormulla))
+        }
+
+        if (!this.oldTemporalFormullas.contains(returnFormulla)) {
             returnValue.add(returnFormulla);
-        
+        }
+
         return returnValue;
     }
-    
+
     private Set<TemporalFormulla> getNew2(TemporalFormulla inputFormulla) {
         HashSet<TemporalFormulla> returnValue = new HashSet();
-        
+
         returnValue.add(inputFormulla.rightOperantFormulla);
 
-        if(inputFormulla.operator == TemporalOperator.V)
+        if (inputFormulla.operator == TemporalOperator.V) {
             returnValue.add(inputFormulla.leftOperantFormulla);
-                
+        }
+
         return returnValue;
     }
 
     private Set<TemporalFormulla> getNext1(TemporalFormulla inputFormulla) {
 
         HashSet<TemporalFormulla> returnValue = new HashSet();
-        
-        if(!(inputFormulla.operator == TemporalOperator.Or))
+
+        if (!(inputFormulla.operator == TemporalOperator.Or)) {
             returnValue.add(inputFormulla);
-        
+        }
+
         return returnValue;
     }
 }

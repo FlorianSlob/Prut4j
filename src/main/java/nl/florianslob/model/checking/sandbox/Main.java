@@ -9,7 +9,7 @@ import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         System.out.println("Starting foster chandy model");
 
         SandboxingActivityType activityType = SandboxingActivityType.OnTheFlyLtl;
