@@ -1,5 +1,7 @@
 package nl.florianslob.model.checking.sandbox.onthefly.datastructure;
 
+import nl.florianslob.model.checking.sandbox.LoggingHelper;
+
 /**
  *
  * @author FlorianSlob
@@ -12,6 +14,6 @@ public class TemporalProperty {
     }
     
     public void Print(){
-        System.out.println("Property: "+content);
+        LoggingHelper.logInfo(" "+ content);
     }
 }

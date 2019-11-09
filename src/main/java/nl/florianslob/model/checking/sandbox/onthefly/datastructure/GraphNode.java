@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
+import nl.florianslob.model.checking.sandbox.LoggingHelper;
 
 /**
  *
@@ -16,26 +17,25 @@ import java.util.stream.Stream;
 public class GraphNode {
 
     public GraphNode fatherNode; // We only need this for proof of correctness.
-
     public Set<GraphNode> childNodes = new HashSet<>();
 
     public String name;
     public Set<GraphNode> incomingEdges = new HashSet();
-    public Set<TemporalFormulla> newTemporalFormullas = new HashSet();
-    public Set<TemporalFormulla> oldTemporalFormullas = new HashSet();
-    public Set<TemporalFormulla> nextTemporalFormullas = new HashSet();
+    public Set<TemporalFormulla> newFormullas = new HashSet();
+    public Set<TemporalFormulla> oldFormullas = new HashSet();
+    public Set<TemporalFormulla> nextFormullas = new HashSet();
     public Boolean isInitialState = false;
     private static int currentNodeId = 0;
 
     public GraphNode(String name, TemporalFormulla property, Boolean isInitialState) {
         this.name = name;
         this.isInitialState = isInitialState;
-        newTemporalFormullas.add(property);
+        newFormullas.add(property);
     }
 
     public GraphNode(String name, TemporalFormulla property) {
         this.name = name;
-        newTemporalFormullas.add(property);
+        newFormullas.add(property);
     }
 
     public GraphNode(String name) {
@@ -43,34 +43,44 @@ public class GraphNode {
     }
 
     public void printTreeDepthFirst() {
-        System.out.println(MessageFormat.format("Printing from {0}", name));
-        System.out.println(MessageFormat.format("Initial? {0}", isInitialState));
-        if (fatherNode != null) {
-            System.out.println("Name of father node: " + fatherNode.name);
-        }
+        if (!isInitialState) {
+            LoggingHelper.logInfoLine(MessageFormat.format("Printing {0}", name));
+            if (fatherNode != null) {
+                LoggingHelper.logInfoLine("Father node: " + fatherNode.name);
+            }
 
-        if (incomingEdges.size() > 0) {
-            incomingEdges.forEach(edge -> {
-                System.out.println("Name of incomming edge: " + edge.name);
-            });
-        }
-        
-        
-        System.out.println("Number of incomming newTemporalFormullas: " + newTemporalFormullas.size());
-        newTemporalFormullas.forEach(formulla -> formulla.printRecursive());
-        System.out.println("Number of incomming oldTemporalFormullas: " + oldTemporalFormullas.size());
-        oldTemporalFormullas.forEach(formulla -> formulla.printRecursive());
-        System.out.println("Number of incomming nextTemporalFormullas: " + nextTemporalFormullas.size());
-        nextTemporalFormullas.forEach(formulla -> formulla.printRecursive());
+            if (incomingEdges.size() > 0) {
+                LoggingHelper.logInfoLine("Incomming edges:");
+                incomingEdges.forEach(edge -> {
+                    LoggingHelper.logInfoLine(edge.name);
+                });
+            }
 
+            LoggingHelper.logInfoLine("Size new: " + newFormullas.size());
+            newFormullas.forEach(formulla -> printFormulla(formulla));
+            LoggingHelper.logInfoLine("Size old: " + oldFormullas.size());
+            oldFormullas.forEach(formulla -> printFormulla(formulla));
+            LoggingHelper.logInfoLine("Size of next: " + nextFormullas.size());
+            nextFormullas.forEach(formulla -> printFormulla(formulla));
+
+            LoggingHelper.logInfoLine("Children of : " + name);
+        }
         childNodes.forEach((childNode) -> childNode.printTreeDepthFirst());
+        if (!isInitialState) {
+            LoggingHelper.logInfoLine("End of : " + name);
+        }
+    }
+
+    private void printFormulla(TemporalFormulla formulla) {
+        formulla.printRecursive();
+        LoggingHelper.logInfoLine(",");
     }
 
     public void expand(Set<GraphNode> graphNodeSet) throws Exception {
-        System.out.println("Expanding graphNode " + this.name);
+        LoggingHelper.logDebug("Expanding graphNode " + this.name);
         // REF=figure1:line4 = if New(Node)= ∅ then
-        if (this.newTemporalFormullas.isEmpty()) {
-            System.out.println("New temporal properties is empty.");
+        if (this.newFormullas.isEmpty()) {
+            LoggingHelper.logDebug("New temporal properties is empty.");
 
             // REF=figure1:line5 = if ∃ ND ∈ Nodes Set with Old(ND)=Old(Node) and Next(ND)=Next(Node)
             Optional<GraphNode> sameStateNode = getSameStateNode(graphNodeSet);
@@ -79,7 +89,8 @@ public class GraphNode {
                 GraphNode node = sameStateNode.get();
                 node.incomingEdges.addAll(this.incomingEdges);
                 // REF=figure1:line7 = return(Nodes Set);
-                return; // TODO Does this work? Ref type etc...???
+                // !!! THIS IS WHERE THE CONSTRUCTION OF THE TREE ENDS!!!!
+                // ALL Other Paths are infinite
             } else {
                 // REF=figure1:line8,9,10 = 
                 // else return(expand( [ Name ⇐ Father ⇐ new name(),
@@ -88,9 +99,9 @@ public class GraphNode {
                 GraphNode newNode = new GraphNode("Node" + getNextNodeId());
                 newNode.fatherNode = this;
                 newNode.incomingEdges.add(this);
-                newNode.newTemporalFormullas.addAll(this.nextTemporalFormullas);
+                newNode.newFormullas.addAll(this.nextFormullas);
 
-                // Yes??
+                // Yes?? --> Yes!
                 this.fatherNode.childNodes.add(this);
 
                 graphNodeSet.add(this);
@@ -100,17 +111,18 @@ public class GraphNode {
             // Do C1
         } else {
             // C2
-            TemporalFormulla temporalFormulla = this.newTemporalFormullas.iterator().next();
-            this.newTemporalFormullas.remove(temporalFormulla);
+            TemporalFormulla temporalFormulla = this.newFormullas.iterator().next();
+            this.newFormullas.remove(temporalFormulla);
+            // We take a transaction (or more) when we take a formulla from the new list
 
             if (temporalFormulla.isLeafFormulla()) {
-                System.out.println("Executing split option Leaf.");
+                LoggingHelper.logDebug("Executing split option Leaf.");
                 if ((temporalFormulla.truthValue != null && temporalFormulla.truthValue) // Is false truthValue
-                        || this.oldTemporalFormullas.contains(temporalFormulla.getNegation())) // Negation is in old nodes
+                        || this.oldFormullas.contains(temporalFormulla.getNegation())) // Negation is in old nodes
                 {
-                    System.out.println("Contradicting leaf found, ignoring.");
+                    LoggingHelper.logDebug("Contradicting leaf found, ignoring.");
                 } else {
-                    this.oldTemporalFormullas.add(temporalFormulla);
+                    this.oldFormullas.add(temporalFormulla);
                     // TODO Call expand recursively?? See row 19??
                     // YES!YES
                     this.expand(graphNodeSet);
@@ -119,7 +131,7 @@ public class GraphNode {
             } else if (temporalFormulla.operator == TemporalOperator.U
                     || temporalFormulla.operator == TemporalOperator.V
                     || temporalFormulla.operator == TemporalOperator.Or) {
-                System.out.println("Action for U V Or(v) operators. Splitting nodes!");
+                LoggingHelper.logDebug("Action for U V Or(v) operators. Splitting nodes!");
 
                 //21 Node1:= [ Name ⇐ new name(), Father ⇐ Name(Node), Incoming ⇐ Incoming(Node),
                 //22 New ⇐ New(Node) ∪ ( { New1( η ) }\ Old(Node)),
@@ -128,14 +140,14 @@ public class GraphNode {
                 newNode1.fatherNode = this.fatherNode;
                 newNode1.incomingEdges = this.incomingEdges;
 
-                newNode1.newTemporalFormullas = new HashSet(this.newTemporalFormullas);
-                newNode1.newTemporalFormullas.addAll(this.getNew1(temporalFormulla));
+                newNode1.newFormullas = new HashSet(this.newFormullas);
+                newNode1.newFormullas.addAll(this.getNew1(temporalFormulla));
 
-                newNode1.oldTemporalFormullas = new HashSet(this.oldTemporalFormullas);
-                newNode1.oldTemporalFormullas.add(temporalFormulla);
+                newNode1.oldFormullas = new HashSet(this.oldFormullas);
+                newNode1.oldFormullas.add(temporalFormulla);
 
-                newNode1.nextTemporalFormullas = new HashSet(this.nextTemporalFormullas);
-                newNode1.nextTemporalFormullas.addAll(this.getNext1(temporalFormulla));
+                newNode1.nextFormullas = new HashSet(this.nextFormullas);
+                newNode1.nextFormullas.addAll(this.getNext1(temporalFormulla));
 
                 //24 Node2:= [ Name ⇐ new name(), Father ⇐ Name(Node), Incoming ⇐ Incoming(Node),
                 //25 New ⇐ New(Node) ∪({ New2( η)}\ Old(Node)),
@@ -145,40 +157,51 @@ public class GraphNode {
                 newNode2.fatherNode = this.fatherNode;
                 newNode2.incomingEdges = this.incomingEdges;
 
-                newNode2.newTemporalFormullas = new HashSet(this.newTemporalFormullas);
-                newNode2.newTemporalFormullas.addAll(this.getNew2(temporalFormulla));
+                newNode2.newFormullas = new HashSet(this.newFormullas);
+                newNode2.newFormullas.addAll(this.getNew2(temporalFormulla));
 
-                newNode2.oldTemporalFormullas = new HashSet(this.oldTemporalFormullas);
-                newNode2.oldTemporalFormullas.add(temporalFormulla);
+                newNode2.oldFormullas = new HashSet(this.oldFormullas);
+                newNode2.oldFormullas.add(temporalFormulla);
 
-                newNode2.nextTemporalFormullas = new HashSet(this.nextTemporalFormullas);
+                newNode2.nextFormullas = new HashSet(this.nextFormullas);
 
                 newNode1.expand(graphNodeSet);
                 newNode2.expand(graphNodeSet);
 
-            } else {
+            }else if (temporalFormulla.operator == TemporalOperator.X) 
+            {
+//                η = Xµ =>
+//return(expand([Name⇐Name(Node), Father⇐Father(Node),
+//Incoming⇐Incoming(Node), New⇐New(Node), Old⇐Old(Node)∪{η},
+//Next⇐Next(Node)∪{µ}], Nodes Set))
+                oldFormullas.add(temporalFormulla);
+                nextFormullas.add(temporalFormulla.rightOperantFormulla);
+                
+                expand(graphNodeSet);
+            }
+            else {
 
                 //return(expand( [ Name ⇐ Name(Node), Father ⇐ Father(Node), Incoming ⇐ Incoming(Node),
                 //30 New ⇐ New(Node) ∪({µ, ψ }\ Old(Node)),
                 //31 Old ⇐ Old(Node) ∪{η} , Next=Next(Node) ] , Nodes Set))
-                System.out.println("Action for And(^) operator.");
+                LoggingHelper.logDebug("Action for And(^) operator.");
 
                 GraphNode newNode = new GraphNode(this.name);
                 newNode.fatherNode = this.fatherNode;
                 newNode.incomingEdges.addAll(this.incomingEdges);
-                newNode.newTemporalFormullas = new HashSet(this.newTemporalFormullas);
+                newNode.newFormullas = new HashSet(this.newFormullas);
 
-                if (!this.oldTemporalFormullas.contains(temporalFormulla.leftOperantFormulla)) {
-                    newNode.newTemporalFormullas.add(temporalFormulla.leftOperantFormulla);
+                if (!this.oldFormullas.contains(temporalFormulla.leftOperantFormulla)) {
+                    newNode.newFormullas.add(temporalFormulla.leftOperantFormulla);
                 }
-                if (!this.oldTemporalFormullas.contains(temporalFormulla.rightOperantFormulla)) {
-                    newNode.newTemporalFormullas.add(temporalFormulla.rightOperantFormulla);
+                if (!this.oldFormullas.contains(temporalFormulla.rightOperantFormulla)) {
+                    newNode.newFormullas.add(temporalFormulla.rightOperantFormulla);
                 }
 
-                newNode.oldTemporalFormullas = new HashSet(this.oldTemporalFormullas);
-                newNode.oldTemporalFormullas.add(temporalFormulla);
+                newNode.oldFormullas = new HashSet(this.oldFormullas);
+                newNode.oldFormullas.add(temporalFormulla);
 
-                newNode.nextTemporalFormullas = new HashSet(this.nextTemporalFormullas);
+                newNode.nextFormullas = new HashSet(this.nextFormullas);
 
                 newNode.expand(graphNodeSet);
             }
@@ -189,8 +212,8 @@ public class GraphNode {
         Stream<GraphNode> nodes = graphNodeSet
                 .stream()
                 .filter(graphNode
-                        -> graphNode.oldTemporalFormullas.equals(this.oldTemporalFormullas)
-                && graphNode.nextTemporalFormullas.equals(this.nextTemporalFormullas)
+                        -> graphNode.oldFormullas.equals(this.oldFormullas)
+                && graphNode.nextFormullas.equals(this.nextFormullas)
                 ); // TODO Implement equals for sets of temporal properties. Separate method?
 
         return nodes.findFirst();
@@ -211,7 +234,7 @@ public class GraphNode {
             returnFormulla = inputFormulla.rightOperantFormulla;
         }
 
-        if (!this.oldTemporalFormullas.contains(returnFormulla)) {
+        if (!this.oldFormullas.contains(returnFormulla)) {
             returnValue.add(returnFormulla);
         }
 

@@ -1,5 +1,7 @@
 package nl.florianslob.model.checking.sandbox.onthefly.datastructure;
 
+import nl.florianslob.model.checking.sandbox.LoggingHelper;
+
 /**
  *
  * @author FlorianSlob TODO Add getters and setters with validation rules!
@@ -49,26 +51,20 @@ public class TemporalFormulla {
     }
 
     public void printRecursive() {
-        System.out.println("Printing TemporalFormulla.");
 
-        System.out.println("Name: " + name);
-        
         if (expression != null){
-            System.out.println("Printing Expression");
             expression.Print();
         }
 
         if (leftOperantFormulla != null) {
-            System.out.println("Printing Left part.");
             leftOperantFormulla.printRecursive();
         }
         
         if (operator != null){
-            System.out.println("Operator: " + operator);
+            LoggingHelper.logInfo(" " + operator);
         }
         
         if (rightOperantFormulla != null) {
-            System.out.println("Printing Right part.");
             rightOperantFormulla.printRecursive();
         }
 

@@ -21,15 +21,12 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
         // TODO Is this for cycle detection?
         Set<GraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla property = new TemporalFormulla("RootProperty");
-        property.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
-        property.operator = TemporalOperator.U;
-        property.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        TemporalFormulla formulla = getTestFormulla_Complex();
 
         GraphNode initialNode = new GraphNode("InitialNode");
         initialNode.isInitialState = true;
         
-        GraphNode rootNode = new GraphNode("RootNode", property);
+        GraphNode rootNode = new GraphNode("RootNode", formulla);
         rootNode.fatherNode = initialNode;
                 
         try {
@@ -46,4 +43,57 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
 
         System.out.println("Done OnTheFlyLtl Sandbox activity.");
     }
+    
+    public TemporalFormulla getTestFormulla_aUb(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+        formulla.operator = TemporalOperator.U;
+        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        return formulla;
+    }
+    
+    public TemporalFormulla getTestFormulla_aVb(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+        formulla.operator = TemporalOperator.V;
+        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        return formulla;
+    }
+    
+    public TemporalFormulla getTestFormulla_aOrb(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+        formulla.operator = TemporalOperator.Or;
+        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        return formulla;
+    }
+    
+    public TemporalFormulla getTestFormulla_aAndb(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+        formulla.operator = TemporalOperator.And;
+        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        return formulla;
+    }
+    
+    public TemporalFormulla getTestFormulla_Xa(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+        formulla.operator = TemporalOperator.X;
+        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "a");
+        return formulla;
+    }
+    
+    public TemporalFormulla getTestFormulla_a(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla", "a");
+        return formulla;
+    }
+    
+    public TemporalFormulla getTestFormulla_Complex(){
+        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+        formulla.leftOperantFormulla = getTestFormulla_aUb();
+        formulla.operator = TemporalOperator.V;
+        formulla.rightOperantFormulla = getTestFormulla_Xa();
+        return formulla;
+    }
+    
 }
