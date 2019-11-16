@@ -3,24 +3,24 @@ package nl.florianslob.model.checking.sandbox.onthefly.tests;
 import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlTestMethods;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.GraphNode;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalFormulla;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlGraphNode;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlFormulla;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * Unit test for simple App.
+ * Unit test for the LTL expansion algorithm.
  */
 public class OnTheFlyLtlTest {
     
-    public GraphNode getRootNode(TemporalFormulla formullaUnderTest){
+    public LtlGraphNode getRootNode(LtlFormulla formullaUnderTest){
 
 
-        GraphNode initialNode = new GraphNode("InitialNode");
+        LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
         initialNode.isInitialState = true;
         
-        GraphNode rootNode = new GraphNode("RootNode", formullaUnderTest);
+        LtlGraphNode rootNode = new LtlGraphNode("RootNode", formullaUnderTest);
         rootNode.fatherNode = initialNode;
         return rootNode;
     }
@@ -31,10 +31,10 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aUb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<GraphNode> graphNodeSet = new HashSet<>();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aUb();
-        GraphNode rootNode = getRootNode(formullaUnderTest);
+        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aUb();
+        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
         
         // We must have found three nodes
@@ -75,10 +75,10 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aVb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<GraphNode> graphNodeSet = new HashSet<>();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aVb();
-        GraphNode rootNode = getRootNode(formullaUnderTest);
+        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aVb();
+        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
         
         // We must have found three nodes
@@ -119,10 +119,10 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aOrb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<GraphNode> graphNodeSet = new HashSet<>();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
-        GraphNode rootNode = getRootNode(formullaUnderTest);
+        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
+        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
         
         // We must have found three nodes
@@ -161,10 +161,10 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aAndb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<GraphNode> graphNodeSet = new HashSet<>();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aAndb();
-        GraphNode rootNode = getRootNode(formullaUnderTest);
+        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aAndb();
+        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
         
         // We must have found three nodes
@@ -195,10 +195,10 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_Xa() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<GraphNode> graphNodeSet = new HashSet<>();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_Xa();
-        GraphNode rootNode = getRootNode(formullaUnderTest);
+        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_Xa();
+        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
         
         // We must have found three nodes
@@ -237,10 +237,10 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_a() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<GraphNode> graphNodeSet = new HashSet<>();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         // TODO Extract this with parser!
-        TemporalFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_a();
-        GraphNode rootNode = getRootNode(formullaUnderTest);
+        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_a();
+        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
         
         // We must have found three nodes

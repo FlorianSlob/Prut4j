@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.GraphNode;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalFormulla;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlGraphNode;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlFormulla;
 
 /**
  *
@@ -18,19 +18,20 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
         LoggingHelper.logDebug("Starting OnTheFlyLtl Sandbox activity.");
 
         // We start with an empty set, that will contain all nodes
-        // TODO Is this for cycle detection?
-        Set<GraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        TemporalFormulla formulla = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
+        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
 
-        GraphNode initialNode = new GraphNode("InitialNode");
+        // In a real world situation the formulla is parsed from some kind of user friendly notation
+        // We use a strongly typed representation for now. 
+        LtlFormulla formulla = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
+
+        LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
         initialNode.isInitialState = true;
         
-        GraphNode rootNode = new GraphNode("RootNode", formulla);
+        LtlGraphNode rootNode = new LtlGraphNode("RootNode", formulla);
         rootNode.fatherNode = initialNode;
                 
         try {
-            rootNode.expand(graphNodeSet); // This is where the magic happens
+            rootNode.expand(graphNodeSet);
         } catch (Exception e) {
             LoggingHelper.logInfo("Exception message: " + e.getMessage());
             throw e;

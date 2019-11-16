@@ -1,6 +1,6 @@
 package nl.florianslob.model.checking.sandbox.onthefly;
 
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalFormulla;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlFormulla;
 import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalOperator;
 
 /**
@@ -9,47 +9,47 @@ import nl.florianslob.model.checking.sandbox.onthefly.datastructure.TemporalOper
  */
 public class OnTheFlyLtlTestMethods {
 
-    public static TemporalFormulla getTestFormulla_aUb() {
-        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
-        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+    public static LtlFormulla getTestFormulla_aUb() {
+        LtlFormulla formulla = new LtlFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new LtlFormulla("LeftProperty", "a");
         formulla.operator = TemporalOperator.U;
-        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        formulla.rightOperantFormulla = new LtlFormulla("RightProperty", "b");
         return formulla;
     }
 
-    public static TemporalFormulla getTestFormulla_aVb() {
-        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
-        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+    public static LtlFormulla getTestFormulla_aVb() {
+        LtlFormulla formulla = new LtlFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new LtlFormulla("LeftProperty", "a");
         formulla.operator = TemporalOperator.V;
-        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        formulla.rightOperantFormulla = new LtlFormulla("RightProperty", "b");
         return formulla;
     }
 
-    public static TemporalFormulla getTestFormulla_aOrb() {
-        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
-        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+    public static LtlFormulla getTestFormulla_aOrb() {
+        LtlFormulla formulla = new LtlFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new LtlFormulla("LeftProperty", "a");
         formulla.operator = TemporalOperator.Or;
-        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        formulla.rightOperantFormulla = new LtlFormulla("RightProperty", "b");
         return formulla;
     }
 
-    public static TemporalFormulla getTestFormulla_aAndb() {
-        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
-        formulla.leftOperantFormulla = new TemporalFormulla("LeftProperty", "a");
+    public static LtlFormulla getTestFormulla_aAndb() {
+        LtlFormulla formulla = new LtlFormulla("RootFormulla");
+        formulla.leftOperantFormulla = new LtlFormulla("LeftProperty", "a");
         formulla.operator = TemporalOperator.And;
-        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "b");
+        formulla.rightOperantFormulla = new LtlFormulla("RightProperty", "b");
         return formulla;
     }
 
-    public static TemporalFormulla getTestFormulla_Xa() {
-        TemporalFormulla formulla = new TemporalFormulla("RootFormulla");
+    public static LtlFormulla getTestFormulla_Xa() {
+        LtlFormulla formulla = new LtlFormulla("RootFormulla");
         formulla.operator = TemporalOperator.X;
-        formulla.rightOperantFormulla = new TemporalFormulla("RightProperty", "a");
+        formulla.rightOperantFormulla = new LtlFormulla("RightProperty", "a");
         return formulla;
     }
 
-    public static TemporalFormulla getTestFormulla_a() {
-        TemporalFormulla formulla = new TemporalFormulla("RootFormulla", "a");
+    public static LtlFormulla getTestFormulla_a() {
+        LtlFormulla formulla = new LtlFormulla("RootFormulla", "a");
         return formulla;
     }
 }

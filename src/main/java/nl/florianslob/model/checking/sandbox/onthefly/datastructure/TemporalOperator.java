@@ -10,5 +10,5 @@ public enum TemporalOperator {
     V,
     And,
     Or,
-    X// Don't use in first implementation
+    X
 }
