@@ -6,5 +6,6 @@ package nl.florianslob.model.checking.sandbox;
  */
 public enum SandboxingActivityType {
     FosterChandy,
-    OnTheFlyLtl    
+    OnTheFlyLtl,
+    LtlVerification
 }

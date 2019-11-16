@@ -1,6 +1,7 @@
 package nl.florianslob.model.checking.sandbox;
 
 import nl.florianslob.model.checking.sandbox.fosterchandy.FosterChandySandboxActivity;
+import nl.florianslob.model.checking.sandbox.ltlverification.LtlVerificationActivity;
 import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity;
 
 /**
@@ -10,11 +11,7 @@ import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity
 public class Main {
 
     public static void main(String[] args) throws Exception{
-        System.out.println("Starting foster chandy model");
-
-        SandboxingActivityType activityType = SandboxingActivityType.OnTheFlyLtl;
-        ISandboxingActivity activity = getActivity(activityType);
-        
+        ISandboxingActivity activity = getActivity(SandboxingActivityType.LtlVerification);
         activity.runActivity();
     }
     
@@ -24,6 +21,8 @@ public class Main {
                 return new FosterChandySandboxActivity();
             case OnTheFlyLtl: 
                 return new OnTheFlyLtlSandboxActivity();
+            case LtlVerification: 
+                return new LtlVerificationActivity();
             default:
                 throw new UnsupportedOperationException();
         }
