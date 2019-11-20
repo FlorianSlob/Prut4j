@@ -10,7 +10,7 @@ public class LtlFormulla {
 
     public String name;
     public AtomicProposition atomicProposition;
-    public LtlFormulla leftOperantFormulla; // A parsed version would be nice!
+    public LtlFormulla leftOperantFormulla;
     public TemporalOperator operator;
     public LtlFormulla rightOperantFormulla;
     public boolean isNegation;

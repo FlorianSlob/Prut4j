@@ -17,8 +17,6 @@ public class ModelcheckingActivity implements ISandboxingActivity{
 
     // Some constants to easily switch between models and ltl formullas during development.
     public static final int SIMPLE_MODEL = 0; 
-    
-    
     public static final int SIMPLE_LTL_FORMULLA = 0; 
 
     @Override
@@ -39,6 +37,10 @@ public class ModelcheckingActivity implements ISandboxingActivity{
         LoggingHelper.logInfo("Lets check some models 8-).");
         
         // start in S0
+        boolean doesFormullaHold = ModelS0.checkDepthFirst(LtlS0Set);
+        
+        LoggingHelper.logInfo("Does the formulla hold for the model: "+doesFormullaHold);
+
         // get all succesors
         // check per successor depth firts if there is a corresponding successor in the ltl tree. 
         //  return true if the mem-efficient algorithm finds a cycle that remains true. 
