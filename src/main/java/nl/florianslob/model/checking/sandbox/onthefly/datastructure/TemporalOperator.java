@@ -1,4 +1,3 @@
-
 package nl.florianslob.model.checking.sandbox.onthefly.datastructure;
 
 /**

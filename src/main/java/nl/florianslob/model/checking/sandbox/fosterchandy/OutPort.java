@@ -18,9 +18,9 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  */
 public class OutPort implements IOutPort {
 
-    public OutPort(){
+    public OutPort() {
     }
-    
+
     private IChannel channel;
 
     @Override
@@ -33,9 +33,9 @@ public class OutPort implements IOutPort {
                 Logger.getLogger(InPort.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         channel.checkMaxDepth();
-        
+
         if (channel.isEnabled()) {
             // set in the queue as soon as the channel is open.
             channel.setMessageQueueObject(o);

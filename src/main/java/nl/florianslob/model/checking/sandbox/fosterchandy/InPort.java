@@ -21,7 +21,7 @@ public class InPort implements IInPort {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 Logger.getLogger(InPort.class.getName()).log(Level.SEVERE, null, e);
-            }catch (MaxDepthReachedException | ProtocolViolationException e) {
+            } catch (MaxDepthReachedException | ProtocolViolationException e) {
                 Logger.getLogger(InPort.class.getName()).log(Level.SEVERE, null, e);
                 throw e;
             }

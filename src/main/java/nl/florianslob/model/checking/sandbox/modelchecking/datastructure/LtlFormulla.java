@@ -52,18 +52,18 @@ public class LtlFormulla {
 
     public void printRecursive() {
 
-        if (atomicProposition != null){
+        if (atomicProposition != null) {
             atomicProposition.Print();
         }
 
         if (leftOperantFormulla != null) {
             leftOperantFormulla.printRecursive();
         }
-        
-        if (operator != null){
+
+        if (operator != null) {
             LoggingHelper.logInfo(" " + operator);
         }
-        
+
         if (rightOperantFormulla != null) {
             rightOperantFormulla.printRecursive();
         }

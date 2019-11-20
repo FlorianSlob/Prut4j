@@ -10,7 +10,8 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  * @author FlorianSlob
  */
 public class TaskMethods {
-        public static void taskA(IInPort inPort, IOutPort outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+
+    public static void taskA(IInPort inPort, IOutPort outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
         System.out.println("sandbox.App.taskA() before initial send.");
         outPort.Send("This is sparta!");
         System.out.println("sandbox.App.taskA() after initial send");

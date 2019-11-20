@@ -15,14 +15,13 @@ public abstract class AbstractChannel implements IChannel {
     protected static int currentDepth = 0;
     private LinkedList<IChannel> _channelsToEnableAfterTransaction;
     private LinkedList<IChannel> _channelsToDisableAfterTransaction;
-    
+
     @Override
     public final Object getMessageQueueObject() {
         enableAndDisableChannelsAfterTransaction();
         return getMessageQueueObjectImplementation();
     }
 
-    
     public AbstractChannel() {
     }
 
@@ -34,8 +33,8 @@ public abstract class AbstractChannel implements IChannel {
     public Boolean isEnabled() {
         return enabled;
     }
-    
-        @Override
+
+    @Override
     public void setEnabled(Boolean isEnabled) {
         this.enabled = isEnabled;
     }

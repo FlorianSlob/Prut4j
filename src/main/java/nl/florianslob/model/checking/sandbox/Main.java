@@ -11,20 +11,20 @@ import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity
  */
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         ISandboxingActivity activity = getActivity(SandboxingActivityType.ModelChecker);
         activity.runActivity();
     }
-    
-    private static ISandboxingActivity getActivity(SandboxingActivityType chosenOption){
-          switch(chosenOption){
+
+    private static ISandboxingActivity getActivity(SandboxingActivityType chosenOption) {
+        switch (chosenOption) {
             case FosterChandy:
                 return new FosterChandySandboxActivity();
-            case OnTheFlyLtl: 
+            case OnTheFlyLtl:
                 return new OnTheFlyLtlSandboxActivity();
-            case LtlVerification: 
+            case LtlVerification:
                 return new LtlVerificationActivity();
-            case ModelChecker: 
+            case ModelChecker:
                 return new ModelcheckingActivity();
             default:
                 throw new UnsupportedOperationException();

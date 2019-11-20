@@ -15,7 +15,7 @@ public class LtlVerificationActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
         LoggingHelper.isDebuggingEnabled = true;
-        
+
         // Normally these states will be generated!
         StateNode state0 = new StateNode(0);
         StateNode state1 = new StateNode(1);
@@ -27,13 +27,13 @@ public class LtlVerificationActivity implements ISandboxingActivity {
         StateNode state7 = new StateNode(7);
         StateNode state8 = new StateNode(8);
         StateNode state9 = new StateNode(9);
-        StateNode state10 = new StateNode(10);      
-        
-        StateNode state11 = new StateNode(11);      
-        StateNode state12 = new StateNode(12);      
-        StateNode state13 = new StateNode(13);      
-        StateNode state14 = new StateNode(14);      
-        
+        StateNode state10 = new StateNode(10);
+
+        StateNode state11 = new StateNode(11);
+        StateNode state12 = new StateNode(12);
+        StateNode state13 = new StateNode(13);
+        StateNode state14 = new StateNode(14);
+
         state0.Successors.add(state1);
         state1.Successors.add(state2);
         state2.Successors.add(state3);
@@ -41,7 +41,7 @@ public class LtlVerificationActivity implements ISandboxingActivity {
         state4.Successors.add(state5);
         state5.Successors.add(state6);
         state6.Successors.add(state2);
-        
+
         state4.Successors.add(state7);
         state7.Successors.add(state8);
         state8.Successors.add(state9);
@@ -53,9 +53,8 @@ public class LtlVerificationActivity implements ISandboxingActivity {
         state12.Successors.add(state13);
         state13.Successors.add(state14);
         state14.Successors.add(state14);
-        
-        
-        if(LoggingHelper.isDebuggingEnabled){
+
+        if (LoggingHelper.isDebuggingEnabled) {
             state0.printRecursively();
         }
 
@@ -64,11 +63,9 @@ public class LtlVerificationActivity implements ISandboxingActivity {
 //        F.add(state5);
 //        F.add(state10);
 
-        
-        Set<StateNode> Q = FindDesignatedStatesHelper.DfsPass1(state0,F);
-        System.out.println("Is non empty for F? : "+FindDesignatedStatesHelper.DfsPass2(Q));
-        
-        
+        Set<StateNode> Q = FindDesignatedStatesHelper.DfsPass1(state0, F);
+        System.out.println("Is non empty for F? : " + FindDesignatedStatesHelper.DfsPass2(Q));
+
     }
-    
+
 }

@@ -20,8 +20,8 @@ public class Connector implements IConnector {
             IInPort inPortB,
             IOutPort outPortA
     ) {
-        SimpleDirectChannel channel1 = new SimpleDirectChannel("Channel 1",_maxDepth);
-        SimpleDirectChannel channel2 = new SimpleDirectChannel("Channel 2",_maxDepth);
+        SimpleDirectChannel channel1 = new SimpleDirectChannel("Channel 1", _maxDepth);
+        SimpleDirectChannel channel2 = new SimpleDirectChannel("Channel 2", _maxDepth);
 
         outPortA.SetChannel(channel1);
         inPortB.SetChannel(channel1);

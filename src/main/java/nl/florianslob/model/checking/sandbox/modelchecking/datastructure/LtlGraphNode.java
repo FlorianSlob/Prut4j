@@ -50,30 +50,28 @@ public class LtlGraphNode {
     }
 
     /**
-     * Expands the nodes according to the formulas 
-     * in the formula sets as described in figure 1 of the article.
-     * We use #Ref=line{line number of code in figure 1} to refer to the 
-     * code in the article. 
-     * 
-     * One slight difference is the handling of the graphNodeSet. 
-     * In the article it is always returned from the expand method. 
-     * Since the set is a reference type, we add nodes to the set as we go and 
-     * do not need to return the set. 
-     * The return type of the method is therefore 'void'.
+     * Expands the nodes according to the formulas in the formula sets as
+     * described in figure 1 of the article. We use #Ref=line{line number of
+     * code in figure 1} to refer to the code in the article.
+     *
+     * One slight difference is the handling of the graphNodeSet. In the article
+     * it is always returned from the expand method. Since the set is a
+     * reference type, we add nodes to the set as we go and do not need to
+     * return the set. The return type of the method is therefore 'void'.
+     *
      * @param graphNodeSet
      * @throws Exception
      */
     public void expand(Set<LtlGraphNode> graphNodeSet) throws Exception {
-        
+
         LoggingHelper.logDebug("Expanding graphNode " + this.name);
-        
+
         if (this.newFormullas.isEmpty()) { // #REF=line4
             LoggingHelper.logDebug("New temporal properties is empty.");
 
-            
             Optional<LtlGraphNode> sameStateNode = getSameStateNode(graphNodeSet); // #REF=line5
             if (sameStateNode.isPresent()) { // #REF=line5
-                
+
                 LtlGraphNode node = sameStateNode.get();// #REF=line5
                 node.incomingEdges.addAll(this.incomingEdges);// #REF=line6
                 // #REF=line7 - Don't need to return the node set in Java.
@@ -96,7 +94,7 @@ public class LtlGraphNode {
 
             if (temporalFormulla.isLeafFormulla()) { // #REF=Line14,15
                 LoggingHelper.logDebug("Executing split option Leaf.");
-                
+
                 if ((temporalFormulla.truthValue != null && temporalFormulla.truthValue) // #REF=Line16 Is false truthValue
                         || this.oldFormullas.contains(temporalFormulla.getNegation())) // #REF=Line16 Negation is in old nodes
                 {
@@ -107,11 +105,11 @@ public class LtlGraphNode {
                     this.expand(graphNodeSet); // #REF=Line19
 
                 }
-            } else if (temporalFormulla.operator == TemporalOperator.U 
+            } else if (temporalFormulla.operator == TemporalOperator.U
                     || temporalFormulla.operator == TemporalOperator.V
                     || temporalFormulla.operator == TemporalOperator.Or) { // #REF=Line20
                 LoggingHelper.logDebug("Action for U V Or(v) operators. Splitting nodes!");
-                
+
                 // Splitting in to two new nodes
                 // Node1 ---------------------------
                 LtlGraphNode newNode1 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line21
@@ -127,7 +125,7 @@ public class LtlGraphNode {
 
                 newNode1.nextFormullas = new HashSet(this.nextFormullas); // #REF=Line23
                 newNode1.nextFormullas.addAll(this.getNext1(temporalFormulla)); // #REF=Line23
-                
+
                 // Node2 ----------------------------
                 LtlGraphNode newNode2 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line24
                 newNode2.fatherNode = this.fatherNode; // #REF=Line24
@@ -190,7 +188,7 @@ public class LtlGraphNode {
                 .stream()
                 .filter(graphNode
                         -> graphNode.oldFormullas.equals(this.oldFormullas)
-                                && graphNode.nextFormullas.equals(this.nextFormullas)
+                && graphNode.nextFormullas.equals(this.nextFormullas)
                 );
 
         return nodes.findFirst();

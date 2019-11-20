@@ -10,24 +10,24 @@ import java.util.Set;
 public class StateNode {
 
     private boolean isAlreadyPrinted = false;
-    public boolean MarkedAsVisitedPass1 = false;    
+    public boolean MarkedAsVisitedPass1 = false;
     public boolean MarkedAsVisitedPass2 = false;
 
     public StateNode(int HashingNumber) {
-         this.HashingNumber = HashingNumber;
+        this.HashingNumber = HashingNumber;
     }
-    
+
     public int HashingNumber;
     public Set<StateNode> Successors = new HashSet<>();
-    
-    public void printRecursively(){
-        if(!isAlreadyPrinted){
+
+    public void printRecursively() {
+        if (!isAlreadyPrinted) {
             isAlreadyPrinted = true;
-            Successors.forEach((node)-> {
-                System.out.println("Node:"+this.HashingNumber+ " --> ChildNode:"+node.HashingNumber);
+            Successors.forEach((node) -> {
+                System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber);
             });
 
-            Successors.forEach((node)-> {
+            Successors.forEach((node) -> {
                 node.printRecursively(); // TODO Add depth!
             });
         }

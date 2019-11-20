@@ -10,6 +10,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolVio
 public interface IChannel {
 
     Boolean isEnabled();
+
     void setEnabled(Boolean isEnabled);
 
     void checkMaxDepth() throws MaxDepthReachedException, ProtocolViolationException;

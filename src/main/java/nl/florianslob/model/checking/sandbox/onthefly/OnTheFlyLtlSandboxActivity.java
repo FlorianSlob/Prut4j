@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlGraphNode;
 import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlFormulla;
+import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlGraphNode;
 
 /**
  *
@@ -26,17 +26,17 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
 
         LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
         initialNode.isInitialState = true;
-        
+
         LtlGraphNode rootNode = new LtlGraphNode("RootNode", formulla);
         rootNode.fatherNode = initialNode;
-                
+
         try {
             rootNode.expand(graphNodeSet);
         } catch (Exception e) {
             LoggingHelper.logInfo("Exception message: " + e.getMessage());
             throw e;
         }
-        
+
         // Print the whole tree (exception or not, for debuggin purposes).
         initialNode.printTreeDepthFirst();
 
