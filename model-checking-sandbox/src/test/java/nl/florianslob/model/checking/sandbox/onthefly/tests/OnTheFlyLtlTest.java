@@ -13,12 +13,12 @@ import org.junit.Test;
  */
 public class OnTheFlyLtlTest {
 
-    public LtlGraphNode getRootNode(LtlFormulla formullaUnderTest) {
+    public LtlGraphNode getRootNode(final LtlFormulla formullaUnderTest) {
 
-        LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
+        final LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
         initialNode.isInitialState = true;
 
-        LtlGraphNode rootNode = new LtlGraphNode("RootNode", formullaUnderTest);
+        final LtlGraphNode rootNode = new LtlGraphNode("RootNode", formullaUnderTest);
         rootNode.fatherNode = initialNode;
         return rootNode;
     }
@@ -29,10 +29,9 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aUb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aUb();
-        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
+        final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
+        final LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aUb();
+        final LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 
         // We must have found three nodes
@@ -53,10 +52,10 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aUb
                 n.oldFormullas.contains(formullaUnderTest.leftOperantFormulla)
-                && // old contains a 
+                && // old contains a
                 n.nextFormullas.size() == 1
                 && //next has the size of 1
-                n.nextFormullas.contains(formullaUnderTest) // contains the formulla under test (aUb). 
+                n.nextFormullas.contains(formullaUnderTest) // contains the formulla under test (aUb).
         ).count() == 1 // compare to 1
         );
         // There is only one node where :
@@ -67,7 +66,7 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aUb
                 n.oldFormullas.contains(formullaUnderTest.rightOperantFormulla)
-                &&// old contains b 
+                &&// old contains b
                 n.nextFormullas.isEmpty() //next is empty
         ).count() == 1 // compare to 1
         );
@@ -79,10 +78,9 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aVb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aVb();
-        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
+        final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
+        final LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aVb();
+        final LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 
         // We must have found three nodes
@@ -103,10 +101,10 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aVb
                 n.oldFormullas.contains(formullaUnderTest.rightOperantFormulla)
-                && // old contains a 
+                && // old contains a
                 n.nextFormullas.size() == 1
                 && //next has the size of 1
-                n.nextFormullas.contains(formullaUnderTest) // contains the formulla under test (aVb). 
+                n.nextFormullas.contains(formullaUnderTest) // contains the formulla under test (aVb).
         ).count() == 1 // compare to 1
         );
         // There is only one node where :
@@ -117,9 +115,9 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aVb
                 n.oldFormullas.contains(formullaUnderTest.leftOperantFormulla)
-                &&// old contains a 
+                &&// old contains a
                 n.oldFormullas.contains(formullaUnderTest.rightOperantFormulla)
-                &&// old contains b 
+                &&// old contains b
                 n.nextFormullas.isEmpty() //next is empty
         ).count() == 1 // compare to 1
         );
@@ -131,10 +129,9 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aOrb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
-        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
+        final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
+        final LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
+        final LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 
         // We must have found three nodes
@@ -155,7 +152,7 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aOrb
                 n.oldFormullas.contains(formullaUnderTest.rightOperantFormulla)
-                && // old contains a 
+                && // old contains a
                 n.nextFormullas.isEmpty() // next is empty
         ).count() == 1 // compare to 1
         );
@@ -167,7 +164,7 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aOrb
                 n.oldFormullas.contains(formullaUnderTest.rightOperantFormulla)
-                &&// old contains b 
+                &&// old contains b
                 n.nextFormullas.isEmpty() //next is empty
         ).count() == 1 // compare to 1
         );
@@ -179,10 +176,9 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_aAndb() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aAndb();
-        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
+        final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
+        final LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_aAndb();
+        final LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 
         // We must have found three nodes
@@ -203,7 +199,7 @@ public class OnTheFlyLtlTest {
                 n.oldFormullas.contains(formullaUnderTest)
                 && // old contains aAndb
                 n.oldFormullas.contains(formullaUnderTest.rightOperantFormulla)
-                && // old contains a 
+                && // old contains a
                 n.oldFormullas.contains(formullaUnderTest.leftOperantFormulla)
                 && // old contains b
                 n.nextFormullas.isEmpty() // next is empty
@@ -217,10 +213,9 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_Xa() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_Xa();
-        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
+        final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
+        final LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_Xa();
+        final LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 
         // We must have found three nodes
@@ -264,10 +259,9 @@ public class OnTheFlyLtlTest {
     @Test
     public void TestExpandFormulla_a() throws Exception {
         // We start with an empty set, that will contain all nodes
-        Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        // TODO Extract this with parser!
-        LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_a();
-        LtlGraphNode rootNode = getRootNode(formullaUnderTest);
+        final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
+        final LtlFormulla formullaUnderTest = OnTheFlyLtlTestMethods.getTestFormulla_a();
+        final LtlGraphNode rootNode = getRootNode(formullaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 
         // We must have found three nodes
