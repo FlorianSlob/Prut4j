@@ -7,14 +7,14 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolVio
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IInPort;
 
-public class InPort implements IInPort {
+public class InPort<T> implements IInPort<T> {
 
     public InPort() {
     }
-    private IChannel channel;
+    private IChannel<T> channel;
 
     @Override
-    public Object Receive() throws MaxDepthReachedException, ProtocolViolationException {
+    public T Receive() throws MaxDepthReachedException, ProtocolViolationException {
         while (channel == null || channel.getMessageQueueObject() == null) {
             try {
                 channel.checkMaxDepth();
@@ -26,14 +26,14 @@ public class InPort implements IInPort {
                 throw e;
             }
         }
-        Object returnObject = channel.getMessageQueueObject();
+        T returnObject = channel.getMessageQueueObject();
 
         // return object if channel is open and object is not null
         return returnObject;
     }
 
     @Override
-    public void SetChannel(IChannel channel) {
+    public void SetChannel(IChannel<T> channel) {
         this.channel = channel;
     }
 }

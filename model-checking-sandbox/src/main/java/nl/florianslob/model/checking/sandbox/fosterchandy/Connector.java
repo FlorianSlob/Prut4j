@@ -3,7 +3,7 @@ package nl.florianslob.model.checking.sandbox.fosterchandy;
 import java.util.LinkedList;
 import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.*;
 
-public class Connector implements IConnector {
+public class Connector<T> implements IConnector<T> {
 
     private int _maxDepth = -1;
 
@@ -15,20 +15,20 @@ public class Connector implements IConnector {
     }
 
     @Override
-    public void Connect(IInPort inPortA,
-            IOutPort outPortB,
-            IInPort inPortB,
-            IOutPort outPortA
+    public void Connect(IInPort<T> inPortA,
+            IOutPort<T> outPortB,
+            IInPort<T> inPortB,
+            IOutPort<T> outPortA
     ) {
-        SimpleDirectChannel channel1 = new SimpleDirectChannel("Channel 1", _maxDepth);
-        SimpleDirectChannel channel2 = new SimpleDirectChannel("Channel 2", _maxDepth);
+        SimpleDirectChannel<T> channel1 = new SimpleDirectChannel<>("Channel 1", _maxDepth);
+        SimpleDirectChannel<T> channel2 = new SimpleDirectChannel<>("Channel 2", _maxDepth);
 
         outPortA.SetChannel(channel1);
         inPortB.SetChannel(channel1);
         outPortB.SetChannel(channel2);
         inPortA.SetChannel(channel2);
 
-        LinkedList<IChannel> channel1Disable, channel1Enable, channel2Disable, channel2Enable;
+        LinkedList<IChannel<T>> channel1Disable, channel1Enable, channel2Disable, channel2Enable;
 
         channel1Disable = new LinkedList<>();
         channel1Disable.add(channel1);

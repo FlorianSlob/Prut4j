@@ -3,11 +3,11 @@ package nl.florianslob.model.checking.sandbox.fosterchandy.interfaces;
 /**
  * IConnector
  */
-public interface IConnector {
+public interface IConnector<T> {
 
     public void Connect(
-            IInPort inPortA,
-            IOutPort outPortB,
-            IInPort inPortB,
-            IOutPort outPortA);
+            IInPort<T> inPortA,
+            IOutPort<T> outPortB,
+            IInPort<T> inPortB,
+            IOutPort<T> outPortA);
 }

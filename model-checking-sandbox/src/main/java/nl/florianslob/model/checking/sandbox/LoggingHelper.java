@@ -6,19 +6,17 @@ package nl.florianslob.model.checking.sandbox;
  */
 public class LoggingHelper {
 
-    public static boolean isDebuggingEnabled = false;
+    public static int loggingLevel = LoggingLevel.DEBUG;
 
     public static void logDebug(String log) {
-        if (isDebuggingEnabled) {
+        if (loggingLevel <= LoggingLevel.DEBUG) {
             System.out.println(log);
         }
     }
 
-    public static void logInfoLine(String log) {
-        System.out.println(log);
-    }
-
     public static void logInfo(String log) {
-        System.out.print(log);
+        if (loggingLevel <= LoggingLevel.DEBUG) {
+            System.out.println(log);
+        }
     }
 }

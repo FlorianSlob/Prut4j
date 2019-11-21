@@ -11,7 +11,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  */
 public class TaskMethods {
 
-    public static void taskA(IInPort inPort, IOutPort outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+    public static void taskA(IInPort<String> inPort, IOutPort<String> outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
         System.out.println("sandbox.App.taskA() before initial send.");
         outPort.Send("This is sparta!");
         System.out.println("sandbox.App.taskA() after initial send");
@@ -19,7 +19,7 @@ public class TaskMethods {
         while (true) {
             System.out.println("sandbox.App.taskA() before receive.");
             Object test = inPort.Receive();
-            System.out.println("sandbox.App.taskA() after receive.");
+            System.out.println("sandbox.App.taskA() after receive. Received: "+test);
 
             System.out.println("sandbox.App.taskA() before send.");
             outPort.Send("This is sparta!");
@@ -27,12 +27,12 @@ public class TaskMethods {
         }
     }
 
-    public static void taskB(IInPort inPort, IOutPort outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+    public static void taskB(IInPort<String> inPort, IOutPort<String> outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
 
         while (true) {
             System.out.println("sandbox.App.taskB() before receive.");
             Object test = inPort.Receive();
-            System.out.println("sandbox.App.taskB() after receive.");
+            System.out.println("sandbox.App.taskB() after receive. Received: "+test);
 
             System.out.println("sandbox.App.taskB() before send.");
             outPort.Send("This is sparta!");

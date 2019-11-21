@@ -6,7 +6,12 @@ package nl.florianslob.model.checking.sandbox.fosterchandy.exceptions;
  */
 public class MaxDepthReachedException extends Exception {
 
-    public MaxDepthReachedException(String message) {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    public MaxDepthReachedException(final String message) {
         super(message);
     }
 }

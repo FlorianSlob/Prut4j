@@ -7,7 +7,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolVio
  *
  * @author FlorianSlob
  */
-public interface IChannel {
+public interface IChannel<T> {
 
     Boolean isEnabled();
 
@@ -15,7 +15,7 @@ public interface IChannel {
 
     void checkMaxDepth() throws MaxDepthReachedException, ProtocolViolationException;
 
-    public void setMessageQueueObject(Object o);
+    public void setMessageQueueObject(T o);
 
-    public Object getMessageQueueObject();
+    public T getMessageQueueObject();
 }

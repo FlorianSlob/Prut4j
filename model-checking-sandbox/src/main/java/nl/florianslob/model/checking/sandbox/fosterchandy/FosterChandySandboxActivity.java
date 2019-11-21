@@ -21,14 +21,14 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
     public void runActivity() {
 
         // Define used ports
-        IOutPort outPortB = new OutPort();
-        IInPort inPortA = new InPort();
+        IOutPort<String> outPortB = new OutPort<>();
+        IInPort<String> inPortA = new InPort<>();
 
-        IOutPort outPortA = new OutPort();
-        IInPort inPortB = new InPort();
+        IOutPort<String> outPortA = new OutPort<>();
+        IInPort<String> inPortB = new InPort<>();
 
         // Define connector and connect
-        IConnector connector = new Connector(_maxDepth);
+        IConnector<String> connector = new Connector<>(_maxDepth);
         connector.Connect(inPortA, outPortB, inPortB, outPortA);
 
         // Start all tasks as threads

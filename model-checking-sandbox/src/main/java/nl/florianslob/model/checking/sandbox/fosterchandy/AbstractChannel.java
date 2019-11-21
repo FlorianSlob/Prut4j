@@ -8,16 +8,16 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
  *
  * @author FlorianSlob
  */
-public abstract class AbstractChannel implements IChannel {
+public abstract class AbstractChannel<T> implements IChannel<T> {
 
     private Boolean enabled = false;
     private int _maxDepth = -1;
     protected static int currentDepth = 0;
-    private LinkedList<IChannel> _channelsToEnableAfterTransaction;
-    private LinkedList<IChannel> _channelsToDisableAfterTransaction;
+    private LinkedList<IChannel<T>> _channelsToEnableAfterTransaction;
+    private LinkedList<IChannel<T>> _channelsToDisableAfterTransaction;
 
     @Override
-    public final Object getMessageQueueObject() {
+    public final T getMessageQueueObject() {
         enableAndDisableChannelsAfterTransaction();
         return getMessageQueueObjectImplementation();
     }
@@ -40,9 +40,9 @@ public abstract class AbstractChannel implements IChannel {
     }
 
     @Override
-    public abstract void setMessageQueueObject(Object o);
+    public abstract void setMessageQueueObject(T o);
 
-    public abstract Object getMessageQueueObjectImplementation();
+    public abstract T getMessageQueueObjectImplementation();
 
     @Override
     public void checkMaxDepth() throws MaxDepthReachedException {
@@ -57,11 +57,11 @@ public abstract class AbstractChannel implements IChannel {
         throw new MaxDepthReachedException("Max depth reached!");
     }
 
-    public void setChannelsToEnableAfterTransaciton(LinkedList<IChannel> channelsToEnableAfterTransaction) {
+    public void setChannelsToEnableAfterTransaciton(LinkedList<IChannel<T>> channelsToEnableAfterTransaction) {
         _channelsToEnableAfterTransaction = channelsToEnableAfterTransaction;
     }
 
-    public void setChannelsToDisableAfterTransaciton(LinkedList<IChannel> channelsToDisableAfterTransaction) {
+    public void setChannelsToDisableAfterTransaciton(LinkedList<IChannel<T>> channelsToDisableAfterTransaction) {
         _channelsToDisableAfterTransaction = channelsToDisableAfterTransaction;
     }
 

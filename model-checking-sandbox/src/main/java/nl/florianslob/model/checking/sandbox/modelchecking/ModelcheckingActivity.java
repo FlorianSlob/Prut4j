@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
+import nl.florianslob.model.checking.sandbox.LoggingLevel;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormulla;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.ModelcheckingAlphabet;
@@ -21,8 +22,8 @@ public class ModelcheckingActivity implements ISandboxingActivity {
 
     @Override
     public void runActivity() throws Exception {
-        // Set logging level here. TODO Add logging levels instead of the use of this boolean field
-        LoggingHelper.isDebuggingEnabled = false;
+        // Set logging level here.
+        LoggingHelper.loggingLevel = LoggingLevel.INFO;
 
         LoggingHelper.logInfo("Starting model checking Sandbox activity.");
 
@@ -42,10 +43,10 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         LoggingHelper.logInfo("Does the formulla hold for the model: " + doesFormullaHold);
 
         // get all succesors
-        // check per successor depth firts if there is a corresponding successor in the ltl tree. 
-        //  return true if the mem-efficient algorithm finds a cycle that remains true. 
-        // What to do with ending traces?? We cannot easily ignore parts of the state that are not referenced in the formulla... question for meeting? 
-        // check whether transactions 
+        // check per successor depth firts if there is a corresponding successor in the ltl tree.
+        //  return true if the mem-efficient algorithm finds a cycle that remains true.
+        // What to do with ending traces?? We cannot easily ignore parts of the state that are not referenced in the formulla... question for meeting?
+        // check whether transactions
     }
 
     /**
@@ -63,7 +64,7 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         Set<LtlGraphNode> graphNodeSet = new HashSet<>();
 
         // In a real world situation the formulla is parsed from some kind of user friendly notation
-        // We use a strongly typed representation for now. 
+        // We use a strongly typed representation for now.
         LtlFormulla formulla = null;
 
         switch (modelNumber) {
@@ -81,9 +82,7 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         LtlGraphNode rootNode = new LtlGraphNode("RootNode", formulla);
         rootNode.fatherNode = initialNode;
 
-        // execute the expanding algorithm 
-        // TODO Why can this trow errors?? 
-        // TODO do we not have to catch some of these errors?
+        // execute the expanding algorithm
         try {
             rootNode.expand(graphNodeSet);
         } catch (Exception e) {

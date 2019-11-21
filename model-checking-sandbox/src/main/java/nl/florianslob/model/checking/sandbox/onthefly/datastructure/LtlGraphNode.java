@@ -27,10 +27,10 @@ public class LtlGraphNode {
     public Set<LtlGraphNode> childNodes = new HashSet<>();
 
     public String name;
-    public Set<LtlGraphNode> incomingEdges = new HashSet();
-    public Set<LtlFormulla> newFormullas = new HashSet();
-    public Set<LtlFormulla> oldFormullas = new HashSet();
-    public Set<LtlFormulla> nextFormullas = new HashSet();
+    public Set<LtlGraphNode> incomingEdges = new HashSet<>();
+    public Set<LtlFormulla> newFormullas = new HashSet<>();
+    public Set<LtlFormulla> oldFormullas = new HashSet<>();
+    public Set<LtlFormulla> nextFormullas = new HashSet<>();
     public boolean isInitialState = false;
     private static int currentNodeId = 0;
 
@@ -75,7 +75,7 @@ public class LtlGraphNode {
                 LtlGraphNode node = sameStateNode.get();// #REF=line5
                 node.incomingEdges.addAll(this.incomingEdges);// #REF=line6
                 // #REF=line7 - Don't need to return the node set in Java.
-            } else { // #REF=figure1:line8,9,10                 
+            } else { // #REF=figure1:line8,9,10
                 LtlGraphNode newNode = new LtlGraphNode("Node" + getNextNodeId());
                 newNode.fatherNode = this;
                 newNode.incomingEdges.add(this);
@@ -116,13 +116,13 @@ public class LtlGraphNode {
                 newNode1.fatherNode = this.fatherNode; // #REF=Line21
                 newNode1.incomingEdges = this.incomingEdges; // #REF=Line21
 
-                newNode1.newFormullas = new HashSet(this.newFormullas); // #REF=Line22
+                newNode1.newFormullas = new HashSet<>(this.newFormullas); // #REF=Line22
                 newNode1.newFormullas.addAll(this.getNew1(temporalFormulla)); // #REF=Line22
 
-                newNode1.oldFormullas = new HashSet(this.oldFormullas); // #REF=Line23
+                newNode1.oldFormullas = new HashSet<>(this.oldFormullas); // #REF=Line23
                 newNode1.oldFormullas.add(temporalFormulla); // #REF=Line23
 
-                newNode1.nextFormullas = new HashSet(this.nextFormullas); // #REF=Line23
+                newNode1.nextFormullas = new HashSet<>(this.nextFormullas); // #REF=Line23
                 newNode1.nextFormullas.addAll(this.getNext1(temporalFormulla)); // #REF=Line23
 
                 // Node2 ----------------------------
@@ -130,13 +130,13 @@ public class LtlGraphNode {
                 newNode2.fatherNode = this.fatherNode; // #REF=Line24
                 newNode2.incomingEdges = this.incomingEdges; // #REF=Line24
 
-                newNode2.newFormullas = new HashSet(this.newFormullas); // #REF=Line25
+                newNode2.newFormullas = new HashSet<>(this.newFormullas); // #REF=Line25
                 newNode2.newFormullas.addAll(this.getNew2(temporalFormulla)); // #REF=Line25
 
-                newNode2.oldFormullas = new HashSet(this.oldFormullas); // #REF=Line26
+                newNode2.oldFormullas = new HashSet<>(this.oldFormullas); // #REF=Line26
                 newNode2.oldFormullas.add(temporalFormulla); // #REF=Line26
 
-                newNode2.nextFormullas = new HashSet(this.nextFormullas); // #REF=Line26
+                newNode2.nextFormullas = new HashSet<>(this.nextFormullas); // #REF=Line26
 
                 newNode1.expand(graphNodeSet); // #REF=Line27
                 newNode2.expand(graphNodeSet); // #REF=Line27
@@ -154,7 +154,7 @@ public class LtlGraphNode {
                 LtlGraphNode newNode = new LtlGraphNode(this.name); // #REF=Line29
                 newNode.fatherNode = this.fatherNode;// #REF=Line29
                 newNode.incomingEdges.addAll(this.incomingEdges);// #REF=Line29
-                newNode.newFormullas = new HashSet(this.newFormullas); // #REF=Line30
+                newNode.newFormullas = new HashSet<>(this.newFormullas); // #REF=Line30
 
                 if (!this.oldFormullas.contains(temporalFormulla.leftOperantFormulla)) {// #REF=Line30
                     newNode.newFormullas.add(temporalFormulla.leftOperantFormulla);
@@ -163,10 +163,10 @@ public class LtlGraphNode {
                     newNode.newFormullas.add(temporalFormulla.rightOperantFormulla);
                 }
 
-                newNode.oldFormullas = new HashSet(this.oldFormullas);// #REF=Line31
+                newNode.oldFormullas = new HashSet<>(this.oldFormullas);// #REF=Line31
                 newNode.oldFormullas.add(temporalFormulla);// #REF=Line31
 
-                newNode.nextFormullas = new HashSet(this.nextFormullas);// #REF=Line31
+                newNode.nextFormullas = new HashSet<>(this.nextFormullas);// #REF=Line31
 
                 newNode.expand(graphNodeSet); // #REF=Line29 - 31
             }
@@ -207,7 +207,7 @@ public class LtlGraphNode {
      * @return the value for New1 in the algorithm
      */
     private Set<LtlFormulla> getNew1(LtlFormulla inputFormulla) {
-        HashSet<LtlFormulla> returnValue = new HashSet();
+        HashSet<LtlFormulla> returnValue = new HashSet<>();
         LtlFormulla returnFormulla;
 
         if (inputFormulla.operator == TemporalOperator.U || inputFormulla.operator == TemporalOperator.Or) {
@@ -230,7 +230,7 @@ public class LtlGraphNode {
      * @return the value for Next1 in the algorithm
      */
     private Set<LtlFormulla> getNext1(LtlFormulla inputFormulla) {
-        HashSet<LtlFormulla> returnValue = new HashSet();
+        HashSet<LtlFormulla> returnValue = new HashSet<>();
 
         if (!(inputFormulla.operator == TemporalOperator.Or)) {
             returnValue.add(inputFormulla);
@@ -246,7 +246,7 @@ public class LtlGraphNode {
      * @return the value for New2 in the algorithm
      */
     private Set<LtlFormulla> getNew2(LtlFormulla inputFormulla) {
-        HashSet<LtlFormulla> returnValue = new HashSet();
+        HashSet<LtlFormulla> returnValue = new HashSet<>();
 
         returnValue.add(inputFormulla.rightOperantFormulla);
 
@@ -262,35 +262,35 @@ public class LtlGraphNode {
      */
     public void printTreeDepthFirst() {
         if (!isInitialState) {
-            LoggingHelper.logInfoLine(MessageFormat.format("Printing {0}", name));
+            LoggingHelper.logInfo(MessageFormat.format("Printing {0}", name));
             if (fatherNode != null) {
-                LoggingHelper.logInfoLine("Father node: " + fatherNode.name);
+                LoggingHelper.logInfo("Father node: " + fatherNode.name);
             }
 
             if (incomingEdges.size() > 0) {
-                LoggingHelper.logInfoLine("Incomming edges:");
+                LoggingHelper.logInfo("Incomming edges:");
                 incomingEdges.forEach(edge -> {
-                    LoggingHelper.logInfoLine(edge.name);
+                    LoggingHelper.logInfo(edge.name);
                 });
             }
 
-            LoggingHelper.logInfoLine("Size new: " + newFormullas.size());
+            LoggingHelper.logInfo("Size new: " + newFormullas.size());
             newFormullas.forEach(formulla -> printFormulla(formulla));
-            LoggingHelper.logInfoLine("Size old: " + oldFormullas.size());
+            LoggingHelper.logInfo("Size old: " + oldFormullas.size());
             oldFormullas.forEach(formulla -> printFormulla(formulla));
-            LoggingHelper.logInfoLine("Size of next: " + nextFormullas.size());
+            LoggingHelper.logInfo("Size of next: " + nextFormullas.size());
             nextFormullas.forEach(formulla -> printFormulla(formulla));
 
-            LoggingHelper.logInfoLine("Children of : " + name);
+            LoggingHelper.logInfo("Children of : " + name);
         }
         childNodes.forEach((childNode) -> childNode.printTreeDepthFirst());
         if (!isInitialState) {
-            LoggingHelper.logInfoLine("End of : " + name);
+            LoggingHelper.logInfo("End of : " + name);
         }
     }
 
     private void printFormulla(LtlFormulla formulla) {
         formulla.printRecursive();
-        LoggingHelper.logInfoLine(",");
+        LoggingHelper.logInfo(",");
     }
 }

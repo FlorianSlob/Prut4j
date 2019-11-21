@@ -32,9 +32,9 @@ public class StateNode {
                 this.MarkedAsVisitedPass1 = true;
 
                 if (ltlNode.nextFormullas.isEmpty()) {
-                    // No cycle detected, 
-                    // but the formullas hold in this state 
-                    // and there are no formullas that have to hold in next states. 
+                    // No cycle detected,
+                    // but the formullas hold in this state
+                    // and there are no formullas that have to hold in next states.
                     return true;
                 }
 
@@ -57,7 +57,7 @@ public class StateNode {
     public boolean doesLtlNodeHoldInThisState(LtlGraphNode ltlNode) {
 
         for (LtlFormulla formulla : ltlNode.oldFormullas) {
-            // only check on the atomic proposition level. 
+            // only check on the atomic proposition level.
             // Other formullas are present for the LTL expansion algorithm, but can be ignored?
             // TODO Check this in the paper.
 
@@ -86,7 +86,7 @@ public class StateNode {
             });
 
             Successors.forEach((node) -> {
-                node.printRecursively(); // TODO Add depth!
+                node.printRecursively();
             });
         }
     }

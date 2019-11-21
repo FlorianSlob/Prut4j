@@ -4,7 +4,7 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
 
 /**
  *
- * @author FlorianSlob TODO Add getters and setters with validation rules!
+ * @author FlorianSlob
  */
 public class LtlFormulla {
 

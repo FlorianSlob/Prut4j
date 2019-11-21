@@ -1,16 +1,12 @@
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
-import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
-import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
-import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
-
 /**
  *
  * @author FlorianSlob
  */
-public class SimpleDirectChannel extends AbstractChannel {
+public class SimpleDirectChannel<T> extends AbstractChannel<T> {
 
-    public Object messageQueueObject; // TODO Make generic!
+    public T messageQueueObject;
 
     public String name;
 
@@ -25,14 +21,14 @@ public class SimpleDirectChannel extends AbstractChannel {
     }
 
     @Override
-    public void setMessageQueueObject(Object o) {
+    public void setMessageQueueObject(T o) {
         this.messageQueueObject = o;
         currentDepth++;
     }
 
     @Override
-    public Object getMessageQueueObjectImplementation() {
-        Object returnObject = this.messageQueueObject;
+    public T getMessageQueueObjectImplementation() {
+        T returnObject = this.messageQueueObject;
         this.messageQueueObject = null;
         return returnObject;
     }
