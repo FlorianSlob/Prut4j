@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
+import nl.florianslob.model.checking.sandbox.LoggingLevel;
 import nl.florianslob.model.checking.sandbox.ltlverification.datastructure.StateNode;
 
 /**
@@ -14,7 +15,7 @@ public class LtlVerificationActivity implements ISandboxingActivity {
 
     @Override
     public void runActivity() throws Exception {
-        LoggingHelper.isDebuggingEnabled = true;
+        LoggingHelper.loggingLevel = LoggingLevel.DEBUG;
 
         // Normally these states will be generated!
         StateNode state0 = new StateNode(0);
@@ -54,14 +55,16 @@ public class LtlVerificationActivity implements ISandboxingActivity {
         state13.Successors.add(state14);
         state14.Successors.add(state14);
 
-        if (LoggingHelper.isDebuggingEnabled) {
+        if (LoggingHelper.loggingLevel <= LoggingLevel.DEBUG) {
             state0.printRecursively();
         }
 
-        Set<StateNode> F = new HashSet<>(); // TODO what is F?
+        //  'distinguished set of accepting nodes F'
+        //  'The set F is specified by a membership routine.'
+        Set<StateNode> F = new HashSet<>();
         F.add(state2);
-//        F.add(state5);
-//        F.add(state10);
+        F.add(state5);
+        F.add(state10);
 
         Set<StateNode> Q = FindDesignatedStatesHelper.DfsPass1(state0, F);
         System.out.println("Is non empty for F? : " + FindDesignatedStatesHelper.DfsPass2(Q));

@@ -6,7 +6,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolVio
 /**
  * IOutPort
  */
-public interface IOutPort extends IPort {
+public interface IOutPort<T> extends IPort<T> {
 
-    public void Send(Object o) throws MaxDepthReachedException, ProtocolViolationException;
+    public void Send(T o) throws MaxDepthReachedException, ProtocolViolationException;
 }

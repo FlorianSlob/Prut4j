@@ -4,7 +4,7 @@ package nl.florianslob.model.checking.sandbox.fosterchandy.interfaces;
  *
  * @author FlorianSlob
  */
-public interface IPort {
+public interface IPort<T> {
 
-    public void SetChannel(IChannel channel);
+    public void SetChannel(IChannel<T> channel);
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nl.florianslob.model.checking.sandbox.fosterchandy;
 
 import java.util.logging.Level;
@@ -16,15 +11,15 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  *
  * @author FlorianSlob
  */
-public class OutPort implements IOutPort {
+public class OutPort<T> implements IOutPort<T> {
 
     public OutPort() {
     }
 
-    private IChannel channel;
+    private IChannel<T> channel;
 
     @Override
-    public void Send(Object o) throws MaxDepthReachedException, ProtocolViolationException {
+    public void Send(T o) throws MaxDepthReachedException, ProtocolViolationException {
 
         while (channel == null) {
             try {
@@ -45,7 +40,7 @@ public class OutPort implements IOutPort {
     }
 
     @Override
-    public void SetChannel(IChannel channel) {
+    public void SetChannel(IChannel<T> channel) {
         this.channel = channel;
     }
 }

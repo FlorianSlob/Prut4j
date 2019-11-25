@@ -28,7 +28,7 @@ public class StateNode {
             });
 
             Successors.forEach((node) -> {
-                node.printRecursively(); // TODO Add depth!
+                node.printRecursively();
             });
         }
     }

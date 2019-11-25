@@ -4,38 +4,38 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
 
 /**
  *
- * @author FlorianSlob TODO Add getters and setters with validation rules!
+ * @author FlorianSlob
  */
-public class LtlFormulla {
+public class LtlFormula {
 
     public String name;
     public AtomicProposition atomicProposition;
-    public LtlFormulla leftOperantFormulla;
+    public LtlFormula leftOperantFormulla;
     public TemporalOperator operator;
-    public LtlFormulla rightOperantFormulla;
+    public LtlFormula rightOperantFormulla;
     public boolean isNegation;
     public Boolean truthValue = null;
 
-    public LtlFormulla(LtlFormulla original) {
+    public LtlFormula(LtlFormula original) {
         // copy the object
         this.name = original.name;
         this.atomicProposition = original.atomicProposition;
         this.isNegation = original.isNegation;
         if (original.leftOperantFormulla != null) {
-            this.leftOperantFormulla = new LtlFormulla(original.leftOperantFormulla);
+            this.leftOperantFormulla = new LtlFormula(original.leftOperantFormulla);
         }
         this.operator = original.operator;
         if (original.rightOperantFormulla != null) {
-            this.rightOperantFormulla = new LtlFormulla(original.rightOperantFormulla);
+            this.rightOperantFormulla = new LtlFormula(original.rightOperantFormulla);
         }
         this.truthValue = original.truthValue;
     }
 
-    public LtlFormulla(String name) {
+    public LtlFormula(String name) {
         this.name = name;
     }
 
-    public LtlFormulla(String name, AtomicProposition atomicProposition) {
+    public LtlFormula(String name, AtomicProposition atomicProposition) {
         this.name = name;
         this.atomicProposition = atomicProposition;
     }
@@ -44,8 +44,8 @@ public class LtlFormulla {
         return atomicProposition != null || truthValue != null;
     }
 
-    LtlFormulla getNegation() {
-        LtlFormulla negation = new LtlFormulla(this);
+    LtlFormula getNegation() {
+        LtlFormula negation = new LtlFormula(this);
         negation.isNegation = !negation.isNegation;
         return negation;
     }

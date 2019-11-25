@@ -2,6 +2,7 @@ package nl.florianslob.model.checking.sandbox.modelchecking.datastructure;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  *
@@ -13,35 +14,44 @@ public class StateNode {
     private boolean IsAlreadyPrinted;
     public boolean MarkedAsVisitedPass1 = false;
     public boolean MarkedAsVisitedPass2 = false;
+    public int HashingNumber;
+    public Set<StateNode> Successors = new HashSet<>();
 
-    public StateNode(int HashingNumber) {
+    public static Stack<StateNode> StateTrace = new Stack<>();
+
+    public StateNode(final int HashingNumber) {
         this.IsAlreadyPrinted = false;
         this.HashingNumber = HashingNumber;
     }
 
-    public int HashingNumber;
-    public Set<StateNode> Successors = new HashSet<>();
+    public void reportThisNodeAsReturningTrue() {
+        StateTrace.add(this);
+    }
 
-    public boolean checkDepthFirst(Set<LtlGraphNode> ltlGraphNodes) {
+    public boolean checkDepthFirst(final Set<LtlGraphNode> ltlGraphNodes) {
 
-        for (LtlGraphNode ltlNode : ltlGraphNodes) {
+        for (final LtlGraphNode ltlNode : ltlGraphNodes) {
             if (doesLtlNodeHoldInThisState(ltlNode)) {
                 if (this.MarkedAsVisitedPass1) {
+                    reportThisNodeAsReturningTrue();
                     return true; // Cycle detected! Formulla does hold!
                 }
                 this.MarkedAsVisitedPass1 = true;
 
                 if (ltlNode.nextFormullas.isEmpty()) {
-                    // No cycle detected, 
-                    // but the formullas hold in this state 
-                    // and there are no formullas that have to hold in next states. 
+                    // No cycle detected,
+                    // but the formullas hold in this state
+                    // and there are no formullas that have to hold in next states.
+                    reportThisNodeAsReturningTrue();
                     return true;
                 }
 
-                Set<LtlGraphNode> ltlChildNodes = ltlNode.childNodes;
+                final Set<LtlGraphNode> ltlChildNodes = ltlNode.childNodes;
 
-                for (StateNode childNode : this.Successors) {
+                // TODO Do we need this? For debugging only?
+                for (final StateNode childNode : this.Successors) {
                     if (childNode.checkDepthFirst(ltlChildNodes)) {
+                        reportThisNodeAsReturningTrue();
                         return true;
                     }
                 }
@@ -54,10 +64,10 @@ public class StateNode {
         return false;
     }
 
-    public boolean doesLtlNodeHoldInThisState(LtlGraphNode ltlNode) {
+    public boolean doesLtlNodeHoldInThisState(final LtlGraphNode ltlNode) {
 
-        for (LtlFormulla formulla : ltlNode.oldFormullas) {
-            // only check on the atomic proposition level. 
+        for (final LtlFormula formulla : ltlNode.oldFormullas) {
+            // only check on the atomic proposition level.
             // Other formullas are present for the LTL expansion algorithm, but can be ignored?
             // TODO Check this in the paper.
 
@@ -86,7 +96,7 @@ public class StateNode {
             });
 
             Successors.forEach((node) -> {
-                node.printRecursively(); // TODO Add depth!
+                node.printRecursively();
             });
         }
     }

@@ -4,7 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormulla;
+import nl.florianslob.model.checking.sandbox.LoggingLevel;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.ModelcheckingAlphabet;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNode;
@@ -15,14 +16,14 @@ import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNo
  */
 public class ModelcheckingActivity implements ISandboxingActivity {
 
-    // Some constants to easily switch between models and ltl formullas during development.
+    // Some constants to easily switch between models and ltl formullas during
+    // development.
     public static final int SIMPLE_MODEL = 0;
-    public static final int SIMPLE_LTL_FORMULLA = 0;
 
     @Override
     public void runActivity() throws Exception {
-        // Set logging level here. TODO Add logging levels instead of the use of this boolean field
-        LoggingHelper.isDebuggingEnabled = false;
+        // Set logging level here.
+        LoggingHelper.loggingLevel = LoggingLevel.INFO;
 
         LoggingHelper.logInfo("Starting model checking Sandbox activity.");
 
@@ -30,8 +31,25 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         StateNode ModelS0 = getStartingNode(SIMPLE_MODEL);
 
         // get ltl tree (this is supposed to be the negation of given property)
-        // The initial node only exists to simulate the first incomming edges to the initial states of the ltl tree
-        Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(SIMPLE_LTL_FORMULLA).childNodes;
+        // The initial node only exists to simulate the first incomming edges to the
+        // initial states of the ltl tree
+        // aOrB // Should return path 0
+        // Xb // Should return path 0 --> 15
+        // Xa // Should return path 0 --> 1
+        // aUb // Should return true with path: (!if taking random paths!)
+        // 0 -> 15 (if you remove 0 -> 1 path)
+        // or 0 -> 1 -> 2 -> 3 -> 4 -> 7 -> 8 (if you remove 0 -> 15 path)
+        // or 0 -> 1 -> 11 -> 12 -> 13  (if you remove 0 -> 15 and 4 -> 7 path)
+        // or 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 (if you remove 0 -> 15 and 4 -> 7 and 1 -> 11 path)
+        // aAndB // Should return false
+        // bVa // Should return true
+        // 0 -> 1 -> 11 -> 12 -> 13
+        // 0 -> 1 -> 11 -> 12 -> 13 -> 14
+        // or 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6
+        // a // Should return true with path 0
+        // b // Should return false
+
+        Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB).childNodes;
 
         LoggingHelper.logInfo("We now have our model and LTL formulla as automata.");
         LoggingHelper.logInfo("Lets check some models 8-).");
@@ -41,35 +59,41 @@ public class ModelcheckingActivity implements ISandboxingActivity {
 
         LoggingHelper.logInfo("Does the formulla hold for the model: " + doesFormullaHold);
 
+        if (doesFormullaHold) {
+            LoggingHelper.logInfo("Printing the trace in the program: ");
+
+            while (!StateNode.StateTrace.isEmpty()) {
+                StateNode topOfStackStateNode = StateNode.StateTrace.pop();
+                LoggingHelper.logInfo("State hash number:  " + topOfStackStateNode.HashingNumber);
+            }
+        }
+
         // get all succesors
-        // check per successor depth firts if there is a corresponding successor in the ltl tree. 
-        //  return true if the mem-efficient algorithm finds a cycle that remains true. 
-        // What to do with ending traces?? We cannot easily ignore parts of the state that are not referenced in the formulla... question for meeting? 
-        // check whether transactions 
+        // check per successor depth firts if there is a corresponding successor in the
+        // ltl tree.
+        // return true if the mem-efficient algorithm finds a cycle that remains true.
+        // What to do with ending traces?? We cannot easily ignore parts of the state
+        // that are not referenced in the formulla... question for meeting?
+        // check whether transactions
     }
 
     /**
-     * *
-     * Example: For the formula aOrb it will return a node that has two child
+     * * Example: For the formula aOrb it will return a node that has two child
      * nodes.Those are the initial states for a and for b.
      *
-     * @param modelNumber
+     * @param formulaName
      * @return a surrogate node to simulate the initial edges into the starting
-     * states.
+     *         states.
      * @throws Exception
      */
-    public LtlGraphNode generateLtlAutomatonAndReturnInitialState(int modelNumber) throws Exception {
+    public LtlGraphNode generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName formulaName) throws Exception {
         // We start with an empty set, that will contain all nodes
         Set<LtlGraphNode> graphNodeSet = new HashSet<>();
 
-        // In a real world situation the formulla is parsed from some kind of user friendly notation
-        // We use a strongly typed representation for now. 
-        LtlFormulla formulla = null;
-
-        switch (modelNumber) {
-            case SIMPLE_LTL_FORMULLA:
-                formulla = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
-        }
+        // In a real world situation the formulla is parsed from some kind of user
+        // friendly notation
+        // We use a strongly typed representation for now.
+        LtlFormula formulla = OnTheFlyLtlTestFormulas.getTestFormula(formulaName);
 
         if (formulla == null) {
             throw new Exception("No formulla found for given id.");
@@ -81,9 +105,7 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         LtlGraphNode rootNode = new LtlGraphNode("RootNode", formulla);
         rootNode.fatherNode = initialNode;
 
-        // execute the expanding algorithm 
-        // TODO Why can this trow errors?? 
-        // TODO do we not have to catch some of these errors?
+        // execute the expanding algorithm
         try {
             rootNode.expand(graphNodeSet);
         } catch (Exception e) {
@@ -96,10 +118,10 @@ public class ModelcheckingActivity implements ISandboxingActivity {
 
     public StateNode getStartingNode(int modelNumber) {
         switch (modelNumber) {
-            case SIMPLE_MODEL:
-                return generateSimpleModelAndReturnInitialState();
-            default:
-                return null;
+        case SIMPLE_MODEL:
+            return generateSimpleModelAndReturnInitialState();
+        default:
+            return null;
         }
     }
 
@@ -121,7 +143,7 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         StateNode state7 = new StateNode(7);
         state7.AtomicPropositions.add(ModelcheckingAlphabet.A);
         StateNode state8 = new StateNode(8);
-        state8.AtomicPropositions.add(ModelcheckingAlphabet.A);
+        state8.AtomicPropositions.add(ModelcheckingAlphabet.B);
         StateNode state9 = new StateNode(9);
         state9.AtomicPropositions.add(ModelcheckingAlphabet.A);
         StateNode state10 = new StateNode(10);
@@ -133,11 +155,17 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         state12.AtomicPropositions.add(ModelcheckingAlphabet.A);
         StateNode state13 = new StateNode(13);
         state13.AtomicPropositions.add(ModelcheckingAlphabet.A);
+        state13.AtomicPropositions.add(ModelcheckingAlphabet.B);
         StateNode state14 = new StateNode(14);
         state14.AtomicPropositions.add(ModelcheckingAlphabet.A);
 
+        StateNode state15 = new StateNode(15);
+        state15.AtomicPropositions.add(ModelcheckingAlphabet.A);
+
         state0.Successors.add(state1);
-        state1.Successors.add(state2);
+        state0.Successors.add(state15);
+
+        // state1.Successors.add(state2);
         state2.Successors.add(state3);
         state3.Successors.add(state4);
         state4.Successors.add(state5);
@@ -155,6 +183,7 @@ public class ModelcheckingActivity implements ISandboxingActivity {
         state12.Successors.add(state13);
         state13.Successors.add(state14);
         state14.Successors.add(state14);
+        state15.Successors.add(state15);
 
         return state0;
     }
