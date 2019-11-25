@@ -9,13 +9,13 @@ public class LoggingHelper {
     public static int loggingLevel = LoggingLevel.DEBUG;
 
     public static void logDebug(String log) {
-        if (loggingLevel <= LoggingLevel.DEBUG) {
+        if (loggingLevel >= LoggingLevel.DEBUG) {
             System.out.println(log);
         }
     }
 
     public static void logInfo(String log) {
-        if (loggingLevel <= LoggingLevel.DEBUG) {
+        if (loggingLevel >= LoggingLevel.INFO) {
             System.out.println(log);
         }
     }

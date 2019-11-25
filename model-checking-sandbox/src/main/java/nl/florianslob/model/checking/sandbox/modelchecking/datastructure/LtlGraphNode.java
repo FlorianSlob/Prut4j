@@ -28,9 +28,9 @@ public class LtlGraphNode {
 
     public String name;
     public Set<LtlGraphNode> incomingEdges = new HashSet<>();
-    public Set<LtlFormulla> newFormullas = new HashSet<>();
-    public Set<LtlFormulla> oldFormullas = new HashSet<>();
-    public Set<LtlFormulla> nextFormullas = new HashSet<>();
+    public Set<LtlFormula> newFormullas = new HashSet<>();
+    public Set<LtlFormula> oldFormullas = new HashSet<>();
+    public Set<LtlFormula> nextFormullas = new HashSet<>();
     public boolean isInitialState = false;
     private static int currentNodeId = 0;
 
@@ -38,12 +38,12 @@ public class LtlGraphNode {
         this.name = name;
     }
 
-    public LtlGraphNode(final String name, final LtlFormulla property) {
+    public LtlGraphNode(final String name, final LtlFormula property) {
         this.name = name;
         newFormullas.add(property);
     }
 
-    public LtlGraphNode(final String name, final LtlFormulla property, final Boolean isInitialState) {
+    public LtlGraphNode(final String name, final LtlFormula property, final Boolean isInitialState) {
         this.name = name;
         this.isInitialState = isInitialState;
         newFormullas.add(property);
@@ -74,6 +74,8 @@ public class LtlGraphNode {
 
                 final LtlGraphNode node = sameStateNode.get();// #REF=line5
                 node.incomingEdges.addAll(this.incomingEdges);// #REF=line6
+                // TODO Validate this fix!
+                this.fatherNode.childNodes.add(node);
                 // #REF=line7 - Don't need to return the node set in Java.
             } else { // #REF=figure1:line8,9,10
                 final LtlGraphNode newNode = new LtlGraphNode("Node" + getNextNodeId());
@@ -88,7 +90,7 @@ public class LtlGraphNode {
             }
         } else // #REF=Line11
         {
-            final LtlFormulla temporalFormulla = this.newFormullas.iterator().next(); // #REF=Line12
+            final LtlFormula temporalFormulla = this.newFormullas.iterator().next(); // #REF=Line12
             this.newFormullas.remove(temporalFormulla); // #REF=Line13
             // We take a transaction (or more) when we take a formulla from the new list
 
@@ -122,6 +124,7 @@ public class LtlGraphNode {
                 newNode1.newFormullas.addAll(this.getNew1(temporalFormulla)); // #REF=Line22
 
                 newNode1.oldFormullas = new HashSet<>(this.oldFormullas); // #REF=Line23
+
                 // TODO Do we need this for model checking? I don't think so.
                 newNode1.oldFormullas.add(temporalFormulla); // #REF=Line23
 
@@ -205,9 +208,9 @@ public class LtlGraphNode {
      * @param inputFormulla
      * @return the value for New1 in the algorithm
      */
-    private Set<LtlFormulla> getNew1(final LtlFormulla inputFormulla) {
-        final HashSet<LtlFormulla> returnValue = new HashSet<>();
-        LtlFormulla returnFormulla;
+    private Set<LtlFormula> getNew1(final LtlFormula inputFormulla) {
+        final HashSet<LtlFormula> returnValue = new HashSet<>();
+        LtlFormula returnFormulla;
 
         if (inputFormulla.operator == TemporalOperator.U || inputFormulla.operator == TemporalOperator.Or) {
             returnFormulla = inputFormulla.leftOperantFormulla;
@@ -228,8 +231,8 @@ public class LtlGraphNode {
      * @param inputFormulla
      * @return the value for Next1 in the algorithm
      */
-    private Set<LtlFormulla> getNext1(final LtlFormulla inputFormulla) {
-        final HashSet<LtlFormulla> returnValue = new HashSet<>();
+    private Set<LtlFormula> getNext1(final LtlFormula inputFormulla) {
+        final HashSet<LtlFormula> returnValue = new HashSet<>();
 
         if (!(inputFormulla.operator == TemporalOperator.Or)) {
             returnValue.add(inputFormulla);
@@ -244,8 +247,8 @@ public class LtlGraphNode {
      * @param inputFormulla
      * @return the value for New2 in the algorithm
      */
-    private Set<LtlFormulla> getNew2(final LtlFormulla inputFormulla) {
-        final HashSet<LtlFormulla> returnValue = new HashSet<>();
+    private Set<LtlFormula> getNew2(final LtlFormula inputFormulla) {
+        final HashSet<LtlFormula> returnValue = new HashSet<>();
 
         returnValue.add(inputFormulla.rightOperantFormulla);
 
@@ -288,7 +291,7 @@ public class LtlGraphNode {
         }
     }
 
-    private void printFormulla(final LtlFormulla formulla) {
+    private void printFormulla(final LtlFormula formulla) {
         formulla.printRecursive();
         LoggingHelper.logInfo(",");
     }

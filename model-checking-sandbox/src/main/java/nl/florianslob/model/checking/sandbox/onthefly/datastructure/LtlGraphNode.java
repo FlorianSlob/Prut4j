@@ -74,6 +74,8 @@ public class LtlGraphNode {
 
                 LtlGraphNode node = sameStateNode.get();// #REF=line5
                 node.incomingEdges.addAll(this.incomingEdges);// #REF=line6
+                // Fix?
+                this.fatherNode.childNodes.add(node);
                 // #REF=line7 - Don't need to return the node set in Java.
             } else { // #REF=figure1:line8,9,10
                 LtlGraphNode newNode = new LtlGraphNode("Node" + getNextNodeId());
