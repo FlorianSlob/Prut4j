@@ -4,18 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlFormulla;
-import nl.florianslob.model.checking.sandbox.onthefly.datastructure.LtlGraphNode;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
+import nl.florianslob.model.checking.sandbox.modelchecking.OnTheFlyLtlTestFormulas;
 
 /**
  *
  * @author FlorianSlob
  */
 public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
-
-    public void TestMethodWithCapitalLetter(){
-        System.out.println("Printing styuff here");
-    }
 
     @Override
     public void runActivity() throws Exception {
@@ -24,15 +21,15 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
 
-        // In a real world situation the formulla is parsed from some kind of user
+        // In a real world situation the formula is parsed from some kind of user
         // friendly notation
         // We use a strongly typed representation for now.
-        final LtlFormulla formulla = OnTheFlyLtlTestMethods.getTestFormulla_aOrb();
+        final LtlFormula formula = OnTheFlyLtlTestFormulas.getTestFormula_aOrb();
 
         final LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
         initialNode.isInitialState = true;
 
-        final LtlGraphNode rootNode = new LtlGraphNode("RootNode", formulla);
+        final LtlGraphNode rootNode = new LtlGraphNode("RootNode", formula);
         rootNode.fatherNode = initialNode;
 
         try {
@@ -42,7 +39,7 @@ public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
             throw e;
         }
 
-        // Print the whole tree (exception or not, for debuggin purposes).
+        // Print the whole tree (exception or not, for debugging purposes).
         initialNode.printTreeDepthFirst();
 
         LoggingHelper.logDebug("Done OnTheFlyLtl Sandbox activity.");

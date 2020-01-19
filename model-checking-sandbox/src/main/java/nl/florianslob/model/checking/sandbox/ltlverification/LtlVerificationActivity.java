@@ -14,7 +14,7 @@ import nl.florianslob.model.checking.sandbox.ltlverification.datastructure.State
 public class LtlVerificationActivity implements ISandboxingActivity {
 
     @Override
-    public void runActivity() throws Exception {
+    public void runActivity() {
         LoggingHelper.loggingLevel = LoggingLevel.DEBUG;
 
         // Normally these states will be generated!

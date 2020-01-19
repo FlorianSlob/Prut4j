@@ -17,7 +17,7 @@ public class FindDesignatedStatesHelper {
         final Set<StateNode> S = new HashSet<>();
         S.add(initialState);
 
-        // 'istinguished set of accepting nodes F'
+        // 'distinguished set of accepting nodes F'
         // Q is: ', a (FIFO) queue Q to hold the reachable members of F'
         // Not FIFO but a set, we do not want duplicates.
         // Might be better to change to Stack for performance purposes later.

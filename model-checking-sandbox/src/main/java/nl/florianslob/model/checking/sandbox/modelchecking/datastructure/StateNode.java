@@ -13,7 +13,7 @@ public class StateNode {
     public Set<AtomicProposition> AtomicPropositions = new HashSet<>();
     private boolean IsAlreadyPrinted;
     public boolean MarkedAsVisitedPass1 = false;
-    public boolean MarkedAsVisitedPass2 = false;
+//    public boolean MarkedAsVisitedPass2 = false; // TODO Use in
     public int HashingNumber;
     public Set<StateNode> Successors = new HashSet<>();
 
@@ -34,14 +34,14 @@ public class StateNode {
             if (doesLtlNodeHoldInThisState(ltlNode)) {
                 if (this.MarkedAsVisitedPass1) {
                     reportThisNodeAsReturningTrue();
-                    return true; // Cycle detected! Formulla does hold!
+                    return true; // Cycle detected! Formula does hold!
                 }
                 this.MarkedAsVisitedPass1 = true;
 
-                if (ltlNode.nextFormullas.isEmpty()) {
+                if (ltlNode.nextFormulas.isEmpty()) {
                     // No cycle detected,
-                    // but the formullas hold in this state
-                    // and there are no formullas that have to hold in next states.
+                    // but the formulas hold in this state
+                    // and there are no formulas that have to hold in next states.
                     reportThisNodeAsReturningTrue();
                     return true;
                 }
@@ -66,38 +66,34 @@ public class StateNode {
 
     public boolean doesLtlNodeHoldInThisState(final LtlGraphNode ltlNode) {
 
-        for (final LtlFormula formulla : ltlNode.oldFormullas) {
+        for (final LtlFormula formula : ltlNode.oldFormulas) {
             // only check on the atomic proposition level.
-            // Other formullas are present for the LTL expansion algorithm, but can be ignored?
+            // Other formulas are present for the LTL expansion algorithm, but can be ignored?
             // TODO Check this in the paper.
 
-            if (formulla.atomicProposition != null) {
-                // This formulla must hold for this state
+            if (formula.atomicProposition != null) {
+                // This formula must hold for this state
                 // This could be a negation!
-                if (formulla.isNegation) {
-                    if (this.AtomicPropositions.contains(formulla.atomicProposition)) {
+                if (formula.isNegation) {
+                    if (this.AtomicPropositions.contains(formula.atomicProposition)) {
                         return false;
                     }
-                } else if (!this.AtomicPropositions.contains(formulla.atomicProposition)) {
+                } else if (!this.AtomicPropositions.contains(formula.atomicProposition)) {
                     return false;
                 }
             }
         }
 
-        // return true if all formullas hold in this state.
+        // return true if all formulas hold in this state.
         return true;
     }
 
     public void printRecursively() {
         if (!IsAlreadyPrinted) {
             IsAlreadyPrinted = true;
-            Successors.forEach((node) -> {
-                System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber);
-            });
 
-            Successors.forEach((node) -> {
-                node.printRecursively();
-            });
+            Successors.forEach((node) -> System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber));
+            Successors.forEach(StateNode::printRecursively);
         }
     }
 }

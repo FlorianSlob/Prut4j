@@ -10,11 +10,6 @@ public class SimpleDirectChannel<T> extends AbstractChannel<T> {
 
     public String name;
 
-    public SimpleDirectChannel(String name) {
-        super();
-        this.name = name;
-    }
-
     public SimpleDirectChannel(String name, int maxDepth) {
         super(maxDepth);
         this.name = name;

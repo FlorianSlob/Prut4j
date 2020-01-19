@@ -11,7 +11,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
 public abstract class AbstractChannel<T> implements IChannel<T> {
 
     private Boolean enabled = false;
-    private int _maxDepth = -1;
+    private int _maxDepth;
     protected static int currentDepth = 0;
     private LinkedList<IChannel<T>> _channelsToEnableAfterTransaction;
     private LinkedList<IChannel<T>> _channelsToDisableAfterTransaction;
@@ -20,9 +20,6 @@ public abstract class AbstractChannel<T> implements IChannel<T> {
     public final T getMessageQueueObject() {
         enableAndDisableChannelsAfterTransaction();
         return getMessageQueueObjectImplementation();
-    }
-
-    public AbstractChannel() {
     }
 
     public AbstractChannel(int maxDepth) {
@@ -57,11 +54,11 @@ public abstract class AbstractChannel<T> implements IChannel<T> {
         throw new MaxDepthReachedException("Max depth reached!");
     }
 
-    public void setChannelsToEnableAfterTransaciton(LinkedList<IChannel<T>> channelsToEnableAfterTransaction) {
+    public void setChannelsToEnableAfterTransaction(LinkedList<IChannel<T>> channelsToEnableAfterTransaction) {
         _channelsToEnableAfterTransaction = channelsToEnableAfterTransaction;
     }
 
-    public void setChannelsToDisableAfterTransaciton(LinkedList<IChannel<T>> channelsToDisableAfterTransaction) {
+    public void setChannelsToDisableAfterTransaction(LinkedList<IChannel<T>> channelsToDisableAfterTransaction) {
         _channelsToDisableAfterTransaction = channelsToDisableAfterTransaction;
     }
 
@@ -71,14 +68,10 @@ public abstract class AbstractChannel<T> implements IChannel<T> {
     }
 
     private void enableChannelsAfterTransaction() {
-        _channelsToEnableAfterTransaction.forEach((channel) -> {
-            channel.setEnabled(true);
-        });
+        _channelsToEnableAfterTransaction.forEach((channel) -> channel.setEnabled(true));
     }
 
     private void disableChannelsAfterTransaction() {
-        _channelsToDisableAfterTransaction.forEach((channel) -> {
-            channel.setEnabled(false);
-        });
+        _channelsToDisableAfterTransaction.forEach((channel) -> channel.setEnabled(false));
     }
 }

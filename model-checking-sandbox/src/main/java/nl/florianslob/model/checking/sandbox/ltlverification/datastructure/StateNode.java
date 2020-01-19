@@ -23,13 +23,9 @@ public class StateNode {
     public void printRecursively() {
         if (!isAlreadyPrinted) {
             isAlreadyPrinted = true;
-            Successors.forEach((node) -> {
-                System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber);
-            });
 
-            Successors.forEach((node) -> {
-                node.printRecursively();
-            });
+            Successors.forEach((node) -> System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber));
+            Successors.forEach(StateNode::printRecursively);
         }
     }
 }
