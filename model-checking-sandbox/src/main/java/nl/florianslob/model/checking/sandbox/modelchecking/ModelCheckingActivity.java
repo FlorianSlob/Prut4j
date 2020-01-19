@@ -87,7 +87,7 @@ public class ModelCheckingActivity implements ISandboxingActivity {
      *         states.
      * @throws Exception Propagate all exceptions to calling method.
      */
-    public LtlGraphNode generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName formulaName) throws Exception {
+    public static LtlGraphNode generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName formulaName) throws Exception {
         // We start with an empty set, that will contain all nodes
         Set<LtlGraphNode> graphNodeSet = new HashSet<>();
 

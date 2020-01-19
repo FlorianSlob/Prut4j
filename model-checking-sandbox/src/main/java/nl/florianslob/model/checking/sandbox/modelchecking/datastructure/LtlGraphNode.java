@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
+import nl.florianslob.model.checking.sandbox.graphvisualization.GraphDrawer;
+import nl.florianslob.model.checking.sandbox.graphvisualization.datastructure.Node;
 
 /**
  *
@@ -33,6 +35,7 @@ public class LtlGraphNode {
     public Set<LtlFormula> nextFormulas = new HashSet<>();
     public boolean isInitialState = false;
     private static int currentNodeId = 0;
+
 
     public LtlGraphNode(final String name) {
         this.name = name;
@@ -285,5 +288,34 @@ public class LtlGraphNode {
     private void printFormula(final LtlFormula formula) {
         formula.printRecursive();
         LoggingHelper.logInfo(",");
+    }
+
+    private boolean isDrawn = false;
+    private Node visualizationNode = null;
+    private static int spaceBetweenNodes = 70;
+
+    public Node drawRecursively(GraphDrawer frame, int currentX, int currentY) {
+        if(visualizationNode == null) {
+            currentY += spaceBetweenNodes;
+            String nodeName = " old: "+getDisplayValues(oldFormulas)+" next: "+getDisplayValues(nextFormulas);
+            visualizationNode = new Node(nodeName, currentX, currentY);
+            frame.addNode(visualizationNode);
+
+            for (LtlGraphNode childNode : this.childNodes){
+                Node childNodeVisualization = childNode.drawRecursively(frame, currentX, currentY);
+                currentX += spaceBetweenNodes*2;
+                frame.addEdge(visualizationNode, childNodeVisualization);
+            }
+
+        }
+        return visualizationNode;
+    }
+
+    private String getDisplayValues(Set<LtlFormula> formulas) {
+        String values = "";
+        for(LtlFormula formula : formulas){
+            values += formula.getDisplayValueRecursive() + ", ";
+        }
+        return values;
     }
 }

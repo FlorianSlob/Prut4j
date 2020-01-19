@@ -17,4 +17,8 @@ public class AtomicProposition {
     public void Print() {
         LoggingHelper.logInfo(" " + content);
     }
+
+    public String getDisplayValue() {
+        return content;
+    }
 }

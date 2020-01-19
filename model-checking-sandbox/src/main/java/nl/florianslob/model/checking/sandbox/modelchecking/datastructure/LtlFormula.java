@@ -69,4 +69,25 @@ public class LtlFormula {
         }
 
     }
+
+    public String getDisplayValueRecursive() {
+        String value = "";
+        if (atomicProposition != null) {
+            return atomicProposition.getDisplayValue();
+        }
+
+        if (leftOperandFormula != null) {
+            value += leftOperandFormula.getDisplayValueRecursive();
+        }
+
+        if (operator != null) {
+            value += operator;
+        }
+
+        if (rightOperandFormula != null) {
+            value += rightOperandFormula.getDisplayValueRecursive();
+        }
+
+        return value;
+    }
 }
