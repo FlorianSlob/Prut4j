@@ -15,7 +15,7 @@ public interface IChannel<T> {
 
     void checkMaxDepth() throws MaxDepthReachedException, ProtocolViolationException;
 
-    public void setMessageQueueObject(T o);
+    void setMessageQueueObject(T o);
 
-    public T getMessageQueueObject();
+    T getMessageQueueObject();
 }

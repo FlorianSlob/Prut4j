@@ -10,9 +10,9 @@ public class LtlFormula {
 
     public String name;
     public AtomicProposition atomicProposition;
-    public LtlFormula leftOperantFormulla;
+    public LtlFormula leftOperandFormula;
     public TemporalOperator operator;
-    public LtlFormula rightOperantFormulla;
+    public LtlFormula rightOperandFormula;
     public boolean isNegation;
     public Boolean truthValue = null;
 
@@ -21,12 +21,12 @@ public class LtlFormula {
         this.name = original.name;
         this.atomicProposition = original.atomicProposition;
         this.isNegation = original.isNegation;
-        if (original.leftOperantFormulla != null) {
-            this.leftOperantFormulla = new LtlFormula(original.leftOperantFormulla);
+        if (original.leftOperandFormula != null) {
+            this.leftOperandFormula = new LtlFormula(original.leftOperandFormula);
         }
         this.operator = original.operator;
-        if (original.rightOperantFormulla != null) {
-            this.rightOperantFormulla = new LtlFormula(original.rightOperantFormulla);
+        if (original.rightOperandFormula != null) {
+            this.rightOperandFormula = new LtlFormula(original.rightOperandFormula);
         }
         this.truthValue = original.truthValue;
     }
@@ -40,7 +40,7 @@ public class LtlFormula {
         this.atomicProposition = atomicProposition;
     }
 
-    boolean isLeafFormulla() {
+    boolean isLeafFormula() {
         return atomicProposition != null || truthValue != null;
     }
 
@@ -56,16 +56,16 @@ public class LtlFormula {
             atomicProposition.Print();
         }
 
-        if (leftOperantFormulla != null) {
-            leftOperantFormulla.printRecursive();
+        if (leftOperandFormula != null) {
+            leftOperandFormula.printRecursive();
         }
 
         if (operator != null) {
             LoggingHelper.logInfo(" " + operator);
         }
 
-        if (rightOperantFormulla != null) {
-            rightOperantFormulla.printRecursive();
+        if (rightOperandFormula != null) {
+            rightOperandFormula.printRecursive();
         }
 
     }

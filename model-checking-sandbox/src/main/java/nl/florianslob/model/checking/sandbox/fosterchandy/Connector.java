@@ -5,10 +5,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.*;
 
 public class Connector<T> implements IConnector<T> {
 
-    private int _maxDepth = -1;
-
-    public Connector() {
-    }
+    private int _maxDepth;
 
     public Connector(int maxDepth) {
         _maxDepth = maxDepth;
@@ -43,10 +40,10 @@ public class Connector<T> implements IConnector<T> {
         channel1.setEnabled(true);
         channel2.setEnabled(false);
 
-        channel1.setChannelsToDisableAfterTransaciton(channel1Disable);
-        channel1.setChannelsToEnableAfterTransaciton(channel1Enable);
-        channel2.setChannelsToDisableAfterTransaciton(channel2Disable);
-        channel2.setChannelsToEnableAfterTransaciton(channel2Enable);
+        channel1.setChannelsToDisableAfterTransaction(channel1Disable);
+        channel1.setChannelsToEnableAfterTransaction(channel1Enable);
+        channel2.setChannelsToDisableAfterTransaction(channel2Disable);
+        channel2.setChannelsToEnableAfterTransaction(channel2Enable);
 
         System.out.println("Connected!");
     }

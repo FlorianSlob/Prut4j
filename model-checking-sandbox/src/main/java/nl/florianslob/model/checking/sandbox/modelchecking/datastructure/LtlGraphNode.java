@@ -28,9 +28,9 @@ public class LtlGraphNode {
 
     public String name;
     public Set<LtlGraphNode> incomingEdges = new HashSet<>();
-    public Set<LtlFormula> newFormullas = new HashSet<>();
-    public Set<LtlFormula> oldFormullas = new HashSet<>();
-    public Set<LtlFormula> nextFormullas = new HashSet<>();
+    public Set<LtlFormula> newFormulas = new HashSet<>();
+    public Set<LtlFormula> oldFormulas = new HashSet<>();
+    public Set<LtlFormula> nextFormulas = new HashSet<>();
     public boolean isInitialState = false;
     private static int currentNodeId = 0;
 
@@ -40,13 +40,7 @@ public class LtlGraphNode {
 
     public LtlGraphNode(final String name, final LtlFormula property) {
         this.name = name;
-        newFormullas.add(property);
-    }
-
-    public LtlGraphNode(final String name, final LtlFormula property, final Boolean isInitialState) {
-        this.name = name;
-        this.isInitialState = isInitialState;
-        newFormullas.add(property);
+        newFormulas.add(property);
     }
 
     /**
@@ -59,14 +53,13 @@ public class LtlGraphNode {
      * we add nodes to the set as we go and do not need to return the set. The
      * return type of the method is therefore 'void'.
      *
-     * @param graphNodeSet
-     * @throws Exception
+     * @param graphNodeSet the set with nodes that are already processed.
      */
-    public void expand(final Set<LtlGraphNode> graphNodeSet) throws Exception {
+    public void expand(final Set<LtlGraphNode> graphNodeSet){
 
         LoggingHelper.logDebug("Expanding graphNode " + this.name);
 
-        if (this.newFormullas.isEmpty()) { // #REF=line4
+        if (this.newFormulas.isEmpty()) { // #REF=line4
             LoggingHelper.logDebug("New temporal properties is empty.");
 
             final Optional<LtlGraphNode> sameStateNode = getSameStateNode(graphNodeSet); // #REF=line5
@@ -81,7 +74,7 @@ public class LtlGraphNode {
                 final LtlGraphNode newNode = new LtlGraphNode("Node" + getNextNodeId());
                 newNode.fatherNode = this;
                 newNode.incomingEdges.add(this);
-                newNode.newFormullas.addAll(this.nextFormullas);
+                newNode.newFormulas.addAll(this.nextFormulas);
                 this.fatherNode.childNodes.add(this);
 
                 graphNodeSet.add(this);
@@ -90,28 +83,28 @@ public class LtlGraphNode {
             }
         } else // #REF=Line11
         {
-            final LtlFormula temporalFormulla = this.newFormullas.iterator().next(); // #REF=Line12
-            this.newFormullas.remove(temporalFormulla); // #REF=Line13
-            // We take a transaction (or more) when we take a formulla from the new list
+            final LtlFormula temporalFormula = this.newFormulas.iterator().next(); // #REF=Line12
+            this.newFormulas.remove(temporalFormula); // #REF=Line13
+            // We take a transaction (or more) when we take a formula from the new list
 
-            if (temporalFormulla.isLeafFormulla()) { // #REF=Line14,15
+            if (temporalFormula.isLeafFormula()) { // #REF=Line14,15
                 LoggingHelper.logDebug("Executing split option Leaf.");
 
-                if ((temporalFormulla.truthValue != null && temporalFormulla.truthValue) // #REF=Line16 Is false
+                if ((temporalFormula.truthValue != null && temporalFormula.truthValue) // #REF=Line16 Is false
                                                                                          // truthValue
-                        || this.oldFormullas.contains(temporalFormulla.getNegation())) // #REF=Line16 Negation is in old
+                        || this.oldFormulas.contains(temporalFormula.getNegation())) // #REF=Line16 Negation is in old
                                                                                        // nodes
                 {
                     // #REF=Line17 Discard current node
                     LoggingHelper.logDebug("Contradicting leaf found, ignoring.");
                 } else { // #REF=Line18
-                    this.oldFormullas.add(temporalFormulla); // #REF=Line18
+                    this.oldFormulas.add(temporalFormula); // #REF=Line18
                     this.expand(graphNodeSet); // #REF=Line19
 
                 }
-            } else if (temporalFormulla.operator == TemporalOperator.U
-                    || temporalFormulla.operator == TemporalOperator.V
-                    || temporalFormulla.operator == TemporalOperator.Or) { // #REF=Line20
+            } else if (temporalFormula.operator == TemporalOperator.U
+                    || temporalFormula.operator == TemporalOperator.V
+                    || temporalFormula.operator == TemporalOperator.Or) { // #REF=Line20
                 LoggingHelper.logDebug("Action for U V Or(v) operators. Splitting nodes!");
 
                 // Splitting in to two new nodes
@@ -120,38 +113,38 @@ public class LtlGraphNode {
                 newNode1.fatherNode = this.fatherNode; // #REF=Line21
                 newNode1.incomingEdges = this.incomingEdges; // #REF=Line21
 
-                newNode1.newFormullas = new HashSet<>(this.newFormullas); // #REF=Line22
-                newNode1.newFormullas.addAll(this.getNew1(temporalFormulla)); // #REF=Line22
+                newNode1.newFormulas = new HashSet<>(this.newFormulas); // #REF=Line22
+                newNode1.newFormulas.addAll(this.getNew1(temporalFormula)); // #REF=Line22
 
-                newNode1.oldFormullas = new HashSet<>(this.oldFormullas); // #REF=Line23
+                newNode1.oldFormulas = new HashSet<>(this.oldFormulas); // #REF=Line23
 
                 // TODO Do we need this for model checking? I don't think so.
-                newNode1.oldFormullas.add(temporalFormulla); // #REF=Line23
+                newNode1.oldFormulas.add(temporalFormula); // #REF=Line23
 
-                newNode1.nextFormullas = new HashSet<>(this.nextFormullas); // #REF=Line23
-                newNode1.nextFormullas.addAll(this.getNext1(temporalFormulla)); // #REF=Line23
+                newNode1.nextFormulas = new HashSet<>(this.nextFormulas); // #REF=Line23
+                newNode1.nextFormulas.addAll(this.getNext1(temporalFormula)); // #REF=Line23
 
                 // Node2 ----------------------------
                 final LtlGraphNode newNode2 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line24
                 newNode2.fatherNode = this.fatherNode; // #REF=Line24
                 newNode2.incomingEdges = this.incomingEdges; // #REF=Line24
 
-                newNode2.newFormullas = new HashSet<>(this.newFormullas); // #REF=Line25
-                newNode2.newFormullas.addAll(this.getNew2(temporalFormulla)); // #REF=Line25
+                newNode2.newFormulas = new HashSet<>(this.newFormulas); // #REF=Line25
+                newNode2.newFormulas.addAll(this.getNew2(temporalFormula)); // #REF=Line25
 
-                newNode2.oldFormullas = new HashSet<>(this.oldFormullas); // #REF=Line26
+                newNode2.oldFormulas = new HashSet<>(this.oldFormulas); // #REF=Line26
                 // TODO Do we need this for model checking? I don't think so.
-                newNode2.oldFormullas.add(temporalFormulla); // #REF=Line26
+                newNode2.oldFormulas.add(temporalFormula); // #REF=Line26
 
-                newNode2.nextFormullas = new HashSet<>(this.nextFormullas); // #REF=Line26
+                newNode2.nextFormulas = new HashSet<>(this.nextFormulas); // #REF=Line26
 
                 newNode1.expand(graphNodeSet); // #REF=Line27
                 newNode2.expand(graphNodeSet); // #REF=Line27
 
-            } else if (temporalFormulla.operator == TemporalOperator.X) { // #REF=First paragraph of 3.4 (next operator)
+            } else if (temporalFormula.operator == TemporalOperator.X) { // #REF=First paragraph of 3.4 (next operator)
                 // #REF=First paragraph of 3.4 (next operator)
-                oldFormullas.add(temporalFormulla);
-                nextFormullas.add(temporalFormulla.rightOperantFormulla);
+                oldFormulas.add(temporalFormula);
+                nextFormulas.add(temporalFormula.rightOperandFormula);
 
                 expand(graphNodeSet);
             } else { // #REF=Line28
@@ -161,19 +154,19 @@ public class LtlGraphNode {
                 final LtlGraphNode newNode = new LtlGraphNode(this.name); // #REF=Line29
                 newNode.fatherNode = this.fatherNode;// #REF=Line29
                 newNode.incomingEdges.addAll(this.incomingEdges);// #REF=Line29
-                newNode.newFormullas = new HashSet<>(this.newFormullas); // #REF=Line30
+                newNode.newFormulas = new HashSet<>(this.newFormulas); // #REF=Line30
 
-                if (!this.oldFormullas.contains(temporalFormulla.leftOperantFormulla)) {// #REF=Line30
-                    newNode.newFormullas.add(temporalFormulla.leftOperantFormulla);
+                if (!this.oldFormulas.contains(temporalFormula.leftOperandFormula)) {// #REF=Line30
+                    newNode.newFormulas.add(temporalFormula.leftOperandFormula);
                 }
-                if (!this.oldFormullas.contains(temporalFormulla.rightOperantFormulla)) {// #REF=Line30
-                    newNode.newFormullas.add(temporalFormulla.rightOperantFormulla);
+                if (!this.oldFormulas.contains(temporalFormula.rightOperandFormula)) {// #REF=Line30
+                    newNode.newFormulas.add(temporalFormula.rightOperandFormula);
                 }
 
-                newNode.oldFormullas = new HashSet<>(this.oldFormullas);// #REF=Line31
-                newNode.oldFormullas.add(temporalFormulla);// #REF=Line31
+                newNode.oldFormulas = new HashSet<>(this.oldFormulas);// #REF=Line31
+                newNode.oldFormulas.add(temporalFormula);// #REF=Line31
 
-                newNode.nextFormullas = new HashSet<>(this.nextFormullas);// #REF=Line31
+                newNode.nextFormulas = new HashSet<>(this.nextFormulas);// #REF=Line31
 
                 newNode.expand(graphNodeSet); // #REF=Line29 - 31
             }
@@ -182,14 +175,13 @@ public class LtlGraphNode {
 
     /**
      *
-     * @param graphNodeSet
-     * @return a node from the graphNodeSet if it is the same as the current node
-     * @throws Exception
+     * @param graphNodeSet the set with all nodes to be checked for equality.
+     * @return a node from the graphNodeSet if it is the same as the current node.
      */
-    private Optional<LtlGraphNode> getSameStateNode(final Set<LtlGraphNode> graphNodeSet) throws Exception {
+    private Optional<LtlGraphNode> getSameStateNode(final Set<LtlGraphNode> graphNodeSet) {
         Stream<LtlGraphNode> nodes;
-        nodes = graphNodeSet.stream().filter(graphNode -> graphNode.oldFormullas.equals(this.oldFormullas)
-                && graphNode.nextFormullas.equals(this.nextFormullas));
+        nodes = graphNodeSet.stream().filter(graphNode -> graphNode.oldFormulas.equals(this.oldFormulas)
+                && graphNode.nextFormulas.equals(this.nextFormulas));
 
         return nodes.findFirst();
     }
@@ -205,21 +197,21 @@ public class LtlGraphNode {
     /**
      * Get New1 formula as described in paragraph 3.2
      *
-     * @param inputFormulla
+     * @param inputFormula the input formula
      * @return the value for New1 in the algorithm
      */
-    private Set<LtlFormula> getNew1(final LtlFormula inputFormulla) {
+    private Set<LtlFormula> getNew1(final LtlFormula inputFormula) {
         final HashSet<LtlFormula> returnValue = new HashSet<>();
-        LtlFormula returnFormulla;
+        LtlFormula returnFormula;
 
-        if (inputFormulla.operator == TemporalOperator.U || inputFormulla.operator == TemporalOperator.Or) {
-            returnFormulla = inputFormulla.leftOperantFormulla;
+        if (inputFormula.operator == TemporalOperator.U || inputFormula.operator == TemporalOperator.Or) {
+            returnFormula = inputFormula.leftOperandFormula;
         } else {
-            returnFormulla = inputFormulla.rightOperantFormulla;
+            returnFormula = inputFormula.rightOperandFormula;
         }
 
-        if (!this.oldFormullas.contains(returnFormulla)) {
-            returnValue.add(returnFormulla);
+        if (!this.oldFormulas.contains(returnFormula)) {
+            returnValue.add(returnFormula);
         }
 
         return returnValue;
@@ -228,14 +220,14 @@ public class LtlGraphNode {
     /**
      * Get Next1 formula as described in paragraph 3.2
      *
-     * @param inputFormulla
+     * @param inputFormula the input formula
      * @return the value for Next1 in the algorithm
      */
-    private Set<LtlFormula> getNext1(final LtlFormula inputFormulla) {
+    private Set<LtlFormula> getNext1(final LtlFormula inputFormula) {
         final HashSet<LtlFormula> returnValue = new HashSet<>();
 
-        if (!(inputFormulla.operator == TemporalOperator.Or)) {
-            returnValue.add(inputFormulla);
+        if (!(inputFormula.operator == TemporalOperator.Or)) {
+            returnValue.add(inputFormula);
         }
 
         return returnValue;
@@ -244,16 +236,16 @@ public class LtlGraphNode {
     /**
      * Get New2 formula as described in paragraph 3.2
      *
-     * @param inputFormulla
+     * @param inputFormula the input formula
      * @return the value for New2 in the algorithm
      */
-    private Set<LtlFormula> getNew2(final LtlFormula inputFormulla) {
+    private Set<LtlFormula> getNew2(final LtlFormula inputFormula) {
         final HashSet<LtlFormula> returnValue = new HashSet<>();
 
-        returnValue.add(inputFormulla.rightOperantFormulla);
+        returnValue.add(inputFormula.rightOperandFormula);
 
-        if (inputFormulla.operator == TemporalOperator.V) {
-            returnValue.add(inputFormulla.leftOperantFormulla);
+        if (inputFormula.operator == TemporalOperator.V) {
+            returnValue.add(inputFormula.leftOperandFormula);
         }
 
         return returnValue;
@@ -270,29 +262,28 @@ public class LtlGraphNode {
             }
 
             if (incomingEdges.size() > 0) {
-                LoggingHelper.logInfo("Incomming edges:");
-                incomingEdges.forEach(edge -> {
-                    LoggingHelper.logInfo(edge.name);
-                });
+                LoggingHelper.logInfo("Incoming edges:");
+                incomingEdges.forEach(edge -> LoggingHelper.logInfo(edge.name));
             }
 
-            LoggingHelper.logInfo("Size new: " + newFormullas.size());
-            newFormullas.forEach(formulla -> printFormulla(formulla));
-            LoggingHelper.logInfo("Size old: " + oldFormullas.size());
-            oldFormullas.forEach(formulla -> printFormulla(formulla));
-            LoggingHelper.logInfo("Size of next: " + nextFormullas.size());
-            nextFormullas.forEach(formulla -> printFormulla(formulla));
+            LoggingHelper.logInfo("Size new: " + newFormulas.size());
+            newFormulas.forEach(this::printFormula);
+            LoggingHelper.logInfo("Size old: " + oldFormulas.size());
+            oldFormulas.forEach(this::printFormula);
+            LoggingHelper.logInfo("Size of next: " + nextFormulas.size());
+            nextFormulas.forEach(this::printFormula);
 
             LoggingHelper.logInfo("Children of : " + name);
         }
-        childNodes.forEach((childNode) -> childNode.printTreeDepthFirst());
+        childNodes.forEach(LtlGraphNode::printTreeDepthFirst);
+
         if (!isInitialState) {
             LoggingHelper.logInfo("End of : " + name);
         }
     }
 
-    private void printFormulla(final LtlFormula formulla) {
-        formulla.printRecursive();
+    private void printFormula(final LtlFormula formula) {
+        formula.printRecursive();
         LoggingHelper.logInfo(",");
     }
 }

@@ -28,7 +28,6 @@ public class TaskMethods {
     }
 
     public static void taskB(IInPort<String> inPort, IOutPort<String> outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
-
         while (true) {
             System.out.println("sandbox.App.taskB() before receive.");
             Object test = inPort.Receive();

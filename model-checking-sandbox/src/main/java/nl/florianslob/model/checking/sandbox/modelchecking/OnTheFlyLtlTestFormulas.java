@@ -1,7 +1,7 @@
 package nl.florianslob.model.checking.sandbox.modelchecking;
 
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.ModelcheckingAlphabet;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.ModelCheckingAlphabet;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.TemporalOperator;
 
 /**
@@ -48,40 +48,40 @@ public class OnTheFlyLtlTestFormulas {
 
     public static LtlFormula getTestFormula_aUb() {
         LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperantFormulla = new LtlFormula("LeftProperty", ModelcheckingAlphabet.A);
+        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
         formulla.operator = TemporalOperator.U;
-        formulla.rightOperantFormulla = new LtlFormula("RightProperty", ModelcheckingAlphabet.B);
+        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
         return formulla;
     }
 
     public static LtlFormula getTestFormula_bVa() {
         LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperantFormulla = new LtlFormula("LeftProperty", ModelcheckingAlphabet.B);
+        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.B);
         formulla.operator = TemporalOperator.V;
-        formulla.rightOperantFormulla = new LtlFormula("RightProperty", ModelcheckingAlphabet.A);
+        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.A);
         return formulla;
     }
 
     public static LtlFormula getTestFormula_aOrb() {
         LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperantFormulla = new LtlFormula("LeftProperty", ModelcheckingAlphabet.A);
+        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
         formulla.operator = TemporalOperator.Or;
-        formulla.rightOperantFormulla = new LtlFormula("RightProperty", ModelcheckingAlphabet.B);
+        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
         return formulla;
     }
 
     public static LtlFormula getTestFormula_aAndb() {
         LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperantFormulla = new LtlFormula("LeftProperty", ModelcheckingAlphabet.A);
+        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
         formulla.operator = TemporalOperator.And;
-        formulla.rightOperantFormulla = new LtlFormula("RightProperty", ModelcheckingAlphabet.B);
+        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
         return formulla;
     }
 
     public static LtlFormula getTestFormula_Xa() {
         LtlFormula formulla = new LtlFormula("RootFormulla");
         formulla.operator = TemporalOperator.X;
-        formulla.rightOperantFormulla = new LtlFormula("RightProperty", ModelcheckingAlphabet.A);
+        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.A);
         return formulla;
     }
 
@@ -90,19 +90,19 @@ public class OnTheFlyLtlTestFormulas {
 
         LtlFormula next3 = new LtlFormula("next3");
         next3.operator = TemporalOperator.X;
-        next3.rightOperantFormulla = aAndb;
+        next3.rightOperandFormula = aAndb;
 
         LtlFormula next2 = new LtlFormula("next2");
         next2.operator = TemporalOperator.X;
-        next2.rightOperantFormulla = next3;
+        next2.rightOperandFormula = next3;
 
         LtlFormula next1 = new LtlFormula("next1");
         next1.operator = TemporalOperator.X;
-        next1.rightOperantFormulla = next2;
+        next1.rightOperandFormula = next2;
 
         LtlFormula root = new LtlFormula("RootFormulla");
         root.operator = TemporalOperator.X;
-        root.rightOperantFormulla = next1;
+        root.rightOperandFormula = next1;
 
         return root;
     }
@@ -110,17 +110,17 @@ public class OnTheFlyLtlTestFormulas {
     public static LtlFormula getTestFormula_Xb() {
         LtlFormula formulla = new LtlFormula("RootFormulla");
         formulla.operator = TemporalOperator.X;
-        formulla.rightOperantFormulla = new LtlFormula("RightProperty", ModelcheckingAlphabet.B);
+        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
         return formulla;
     }
 
     public static LtlFormula getTestFormulla_a() {
-        LtlFormula formulla = new LtlFormula("RootFormulla", ModelcheckingAlphabet.A);
+        LtlFormula formulla = new LtlFormula("RootFormulla", ModelCheckingAlphabet.A);
         return formulla;
     }
 
     public static LtlFormula getTestFormula_b() {
-        LtlFormula formulla = new LtlFormula("RootFormulla", ModelcheckingAlphabet.B);
+        LtlFormula formulla = new LtlFormula("RootFormulla", ModelCheckingAlphabet.B);
         return formulla;
     }
 }
