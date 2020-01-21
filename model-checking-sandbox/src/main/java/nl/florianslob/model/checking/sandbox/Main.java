@@ -13,6 +13,7 @@ import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        System.out.println("Hellow!!!");
         SandboxingActivityType sandboxingActivityType = SandboxingActivityType.GraphVisualization;
 
         if(args != null && args.length > 0){
