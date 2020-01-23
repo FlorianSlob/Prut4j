@@ -6,8 +6,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
-import nl.florianslob.model.checking.sandbox.graphvisualization.GraphDrawer;
-import nl.florianslob.model.checking.sandbox.graphvisualization.datastructure.Node;
 
 /**
  *
@@ -290,32 +288,34 @@ public class LtlGraphNode {
         LoggingHelper.logInfo(",");
     }
 
-    private boolean isDrawn = false;
-    private Node visualizationNode = null;
-    private static int spaceBetweenNodes = 70;
-
-    public Node drawRecursively(GraphDrawer frame, int currentX, int currentY) {
-        if(visualizationNode == null) {
-            currentY += spaceBetweenNodes;
-            String nodeName = " old: "+getDisplayValues(oldFormulas)+" next: "+getDisplayValues(nextFormulas);
-            visualizationNode = new Node(nodeName, currentX, currentY);
-            frame.addNode(visualizationNode);
-
-            for (LtlGraphNode childNode : this.childNodes){
-                Node childNodeVisualization = childNode.drawRecursively(frame, currentX, currentY);
-                currentX += spaceBetweenNodes*2;
-                frame.addEdge(visualizationNode, childNodeVisualization);
-            }
-
-        }
-        return visualizationNode;
-    }
-
     private String getDisplayValues(Set<LtlFormula> formulas) {
         String values = "";
         for(LtlFormula formula : formulas){
             values += formula.getDisplayValueRecursive() + ", ";
         }
         return values;
+    }
+
+    private boolean nodeVisitedBefore = false;
+
+    // TODO Make abstract class to represent all forms of nodes in plantUml
+    public String getPlantUmlNodesRecursively() {
+
+        // Add data fields
+        String returnString = this.name + "\n"; // finish current row.
+
+        if (!nodeVisitedBefore) {
+            returnString += this.name + " : Old "+this.getDisplayValues(this.oldFormulas)+" \n";
+            returnString += this.name + " : Next "+this.getDisplayValues(this.nextFormulas)+" \n";
+            nodeVisitedBefore = true;
+
+            if (this.childNodes != null && !this.childNodes.isEmpty()) {
+                for (LtlGraphNode childNode : this.childNodes) {
+                    returnString += this.name +" --> "+ childNode.getPlantUmlNodesRecursively();
+                }
+            }
+
+        }
+        return returnString;
     }
 }
