@@ -66,6 +66,9 @@ public class InputDialogView {
                     statusLabel.setText(data);
                     mainFrame.setVisible(false);
 
+
+                    String ltlFormulaText = "!XXXXa&(bUa)";
+
                     LtlGraphNode rootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB);
 
                     String plantUmlRepresentation = "@startuml\n";
