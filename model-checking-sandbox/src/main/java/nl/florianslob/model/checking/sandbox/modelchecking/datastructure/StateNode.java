@@ -1,5 +1,7 @@
 package nl.florianslob.model.checking.sandbox.modelchecking.datastructure;
 
+import nl.florianslob.model.checking.sandbox.base.GraphNode;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -8,7 +10,32 @@ import java.util.Stack;
  *
  * @author FlorianSlob
  */
-public class StateNode {
+public class StateNode extends GraphNode {
+
+
+    private boolean nodeVisitedBefore = false;
+
+    private String getName(){
+        return ""+this.HashingNumber;
+    }
+
+    @Override
+    public String getPlantUmlNodesRecursively() {
+        // Add data fields
+        String returnString = this.getName() + "\n"; // finish current row.
+
+        if (!nodeVisitedBefore) {
+            nodeVisitedBefore = true;
+
+            if (this.Successors != null && !this.Successors.isEmpty()) {
+                for (StateNode childNode : this.Successors) {
+                    returnString += this.getName() +" --> "+ childNode.getPlantUmlNodesRecursively();
+                }
+            }
+
+        }
+        return returnString;
+    }
 
     public Set<AtomicProposition> AtomicPropositions = new HashSet<>();
     private boolean IsAlreadyPrinted;

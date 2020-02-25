@@ -6,9 +6,12 @@ import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.SourceStringReader;
 import net.sourceforge.plantuml.core.DiagramDescription;
+import nl.florianslob.model.checking.sandbox.base.GraphNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingActivity;
+import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingDemoData;
 import nl.florianslob.model.checking.sandbox.modelchecking.OnTheFlyLtlTestFormulaName;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNode;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -22,6 +25,9 @@ public class InputDialogView {
     private Label headerLabel;
     private Label statusLabel;
     private Panel controlPanel;
+
+    private static final String formulaSvgFileName = "formula.svg";
+    private static final String programSvgFileName = "program.svg";
 
     public InputDialogView() {
         prepareGUI();
@@ -51,6 +57,35 @@ public class InputDialogView {
         mainFrame.setVisible(true);
     }
 
+    public String getPlantUmlRepresentation(GraphNode rootNode){
+
+        String plantUmlRepresentation = "@startuml\n";
+        plantUmlRepresentation += " header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
+
+        plantUmlRepresentation += "[*] -> "+rootNode.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
+        plantUmlRepresentation  +=  "@enduml\n";
+
+        System.out.println("Plant uml syntax");
+        System.out.print(plantUmlRepresentation);
+
+        return plantUmlRepresentation;
+    }
+
+    public void saveToSvgFile(GraphNode rootNode, String fileName) throws Exception{
+        SourceStringReader reader = new SourceStringReader(getPlantUmlRepresentation(rootNode));
+        final OutputStream svgFileOutputStream = new FileOutputStream(fileName);
+        DiagramDescription desc = reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));
+        svgFileOutputStream.close();
+    }
+
+    public void showInFrame(String filename) throws Exception{
+        SVGUniverse universe = new SVGUniverse();
+        String executionPath = System.getProperty("user.dir");
+        SVGDiagram d = universe.getDiagram(new URL("file:///" + executionPath + "/" +filename).toURI(), true);
+        d.setIgnoringClipHeuristic(true);
+        GraphDrawer frame = new GraphDrawer("Graph visualisation", d);
+        frame.setVisible(true);
+    }
     public void showInputDialog() {
         headerLabel.setText("Control in action: TextField");
 
@@ -61,7 +96,7 @@ public class InputDialogView {
 
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                try {
+                try{
                     String data = "LtlFormula: " + userText.getText();
                     statusLabel.setText(data);
                     mainFrame.setVisible(false);
@@ -71,30 +106,16 @@ public class InputDialogView {
 
                     LtlGraphNode rootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB);
 
-                    String plantUmlRepresentation = "@startuml\n";
-                    plantUmlRepresentation += " header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
+                    saveToSvgFile(rootNode, formulaSvgFileName);
+                    //showInFrame(formulaSvgFileName); // TODO Constants
 
-                    plantUmlRepresentation += "[*] -> "+rootNode.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
-                    plantUmlRepresentation  +=  "@enduml\n";
+                    // TODO Wait for next?
 
-                    System.out.println("Plant uml syntax");
-                    System.out.print(plantUmlRepresentation);
+                    StateNode programRootNode =  ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.SIMPLE_MODEL);
+                    saveToSvgFile(programRootNode, programSvgFileName);
+                    showInFrame(programSvgFileName); // TODO Constants
 
-                    SourceStringReader reader = new SourceStringReader(plantUmlRepresentation);
-                    final OutputStream svgFileOutputStream = new FileOutputStream("test.svg");
 
-                    DiagramDescription desc = reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));
-                    // TODO check result in desc
-                    svgFileOutputStream.close();
-
-                    SVGUniverse universe = new SVGUniverse();
-
-                    String executionPath = System.getProperty("user.dir");
-
-                    SVGDiagram d = universe.getDiagram(new URL("file:///" + executionPath + "/test.svg").toURI(), true);
-                    d.setIgnoringClipHeuristic(true);
-                    GraphDrawer frame = new GraphDrawer("Graph visualisation", d);
-                    frame.setVisible(true);
 
                 } catch (Exception e) {
                     e.printStackTrace();

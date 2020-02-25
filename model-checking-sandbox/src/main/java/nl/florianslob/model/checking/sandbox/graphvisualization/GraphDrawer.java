@@ -33,7 +33,6 @@ public class GraphDrawer extends JFrame {
 
     public void paint(Graphics g) { // draw the nodes and edges
         try {
-
             diagram.render((Graphics2D) g);
         } catch (SVGException e) {
             e.printStackTrace();

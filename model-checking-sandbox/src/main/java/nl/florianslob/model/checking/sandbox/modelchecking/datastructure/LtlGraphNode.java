@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
+import nl.florianslob.model.checking.sandbox.base.GraphNode;
 
 /**
  *
@@ -21,10 +22,10 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
  * --------------------------------------------------------------------
  *
  */
-public class LtlGraphNode {
+public class LtlGraphNode extends GraphNode {
 
     public LtlGraphNode fatherNode; // We only need this for proof of correctness.
-    public Set<LtlGraphNode> childNodes = new HashSet<>();
+    public Set<LtlGraphNode> childNodes = new HashSet<>(); // TODO Make abstract?!
 
     public String name;
     public Set<LtlGraphNode> incomingEdges = new HashSet<>();
@@ -298,7 +299,7 @@ public class LtlGraphNode {
 
     private boolean nodeVisitedBefore = false;
 
-    // TODO Make abstract class to represent all forms of nodes in plantUml
+    @Override
     public String getPlantUmlNodesRecursively() {
 
         // Add data fields
