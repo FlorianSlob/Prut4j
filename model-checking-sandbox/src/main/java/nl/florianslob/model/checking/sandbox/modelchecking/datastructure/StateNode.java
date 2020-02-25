@@ -2,9 +2,7 @@ package nl.florianslob.model.checking.sandbox.modelchecking.datastructure;
 
 import nl.florianslob.model.checking.sandbox.base.GraphNode;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  *
@@ -15,7 +13,7 @@ public class StateNode extends GraphNode {
 
     private boolean nodeVisitedBefore = false;
 
-    private String getName(){
+    public String getName(){
         return ""+this.HashingNumber;
     }
 
@@ -25,6 +23,7 @@ public class StateNode extends GraphNode {
         String returnString = this.getName() + "\n"; // finish current row.
 
         if (!nodeVisitedBefore) {
+            returnString += this.getName() + " : "+this.getDisplayValuesForAtomicPropositions()+" \n";
             nodeVisitedBefore = true;
 
             if (this.Successors != null && !this.Successors.isEmpty()) {
@@ -37,6 +36,17 @@ public class StateNode extends GraphNode {
         return returnString;
     }
 
+    // TODO use concat string function!
+    public String getDisplayValuesForAtomicPropositions(){
+        String returnString = "";
+
+        for(AtomicProposition proposition : AtomicPropositions){
+            returnString += proposition.getDisplayValue();
+        }
+        return returnString;
+    }
+
+
     public Set<AtomicProposition> AtomicPropositions = new HashSet<>();
     private boolean IsAlreadyPrinted;
     public boolean MarkedAsVisitedPass1 = false;
@@ -44,32 +54,31 @@ public class StateNode extends GraphNode {
     public int HashingNumber;
     public Set<StateNode> Successors = new HashSet<>();
 
-    public static Stack<StateNode> StateTrace = new Stack<>();
 
     public StateNode(final int HashingNumber) {
         this.IsAlreadyPrinted = false;
         this.HashingNumber = HashingNumber;
     }
 
-    public void reportThisNodeAsReturningTrue() {
-        StateTrace.add(this);
-    }
+    public Set<LtlGraphNode> VisitedByLtlNodes = new HashSet<>();
 
-    public boolean checkDepthFirst(final Set<LtlGraphNode> ltlGraphNodes) {
+    public boolean checkDepthFirst(final Set<LtlGraphNode> ltlGraphNodes, TraceInformation traceInformation) {
 
         for (final LtlGraphNode ltlNode : ltlGraphNodes) {
             if (doesLtlNodeHoldInThisState(ltlNode)) {
-                if (this.MarkedAsVisitedPass1) {
-                    reportThisNodeAsReturningTrue();
-                    return true; // Cycle detected! Formula does hold!
+                if (this.MarkedAsVisitedPass1 && this.VisitedByLtlNodes.contains(ltlNode)) {
+                    traceInformation.reportNodeAsReturningTrue(this, ltlNode);
+                    return true; // Cycle detected! Formula does hold! !!
+                    // Not a real cycle!!! It's a product, LTL nodes can
                 }
                 this.MarkedAsVisitedPass1 = true;
+                this.VisitedByLtlNodes.add(ltlNode); // Detect repetitions
 
                 if (ltlNode.nextFormulas.isEmpty()) {
                     // No cycle detected,
                     // but the formulas hold in this state
                     // and there are no formulas that have to hold in next states.
-                    reportThisNodeAsReturningTrue();
+                    traceInformation.reportNodeAsReturningTrue(this, ltlNode);
                     return true;
                 }
 
@@ -77,8 +86,8 @@ public class StateNode extends GraphNode {
 
                 // TODO Do we need this? For debugging only?
                 for (final StateNode childNode : this.Successors) {
-                    if (childNode.checkDepthFirst(ltlChildNodes)) {
-                        reportThisNodeAsReturningTrue();
+                    if (childNode.checkDepthFirst(ltlChildNodes,traceInformation)) {
+                        traceInformation.reportNodeAsReturningTrue(this, ltlNode);
                         return true;
                     }
                 }

@@ -5,10 +5,7 @@ import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
 import nl.florianslob.model.checking.sandbox.LoggingLevel;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.ModelCheckingAlphabet;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNode;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.*;
 
 /**
  *
@@ -52,17 +49,17 @@ public class ModelCheckingActivity implements ISandboxingActivity {
         LoggingHelper.logInfo("We now have our model and LTL formula as automata.");
         LoggingHelper.logInfo("Lets check some models 8-).");
 
+        TraceInformation traceInformation = new TraceInformation();
         // start in S0
-        boolean doesFormulaHold = ModelS0.checkDepthFirst(LtlS0Set);
+        boolean doesFormulaHold = ModelS0.checkDepthFirst(LtlS0Set, traceInformation);
 
         LoggingHelper.logInfo("Does the formula hold for the model: " + doesFormulaHold);
 
         if (doesFormulaHold) {
             LoggingHelper.logInfo("Printing the trace in the program: ");
 
-            while (!StateNode.StateTrace.isEmpty()) {
-                StateNode topOfStackStateNode = StateNode.StateTrace.pop();
-                LoggingHelper.logInfo("State hash number:  " + topOfStackStateNode.HashingNumber);
+            while (traceInformation.currentTraceNode != null) {
+                traceInformation.currentTraceNode.VisitAndLogRecursively();
             }
         }
 
@@ -97,10 +94,10 @@ public class ModelCheckingActivity implements ISandboxingActivity {
             throw new Exception("No formula found for given id.");
         }
 
-        LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
+        LtlGraphNode initialNode = new LtlGraphNode("InitialLtlNode");
         initialNode.isInitialState = true;
 
-        LtlGraphNode rootNode = new LtlGraphNode("RootNode", formula);
+        LtlGraphNode rootNode = new LtlGraphNode("RootLtlNode", formula);
         rootNode.fatherNode = initialNode;
 
         // execute the expanding algorithm

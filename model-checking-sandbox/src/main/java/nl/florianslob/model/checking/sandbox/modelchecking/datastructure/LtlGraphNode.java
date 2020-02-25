@@ -73,7 +73,7 @@ public class LtlGraphNode extends GraphNode {
                 this.fatherNode.childNodes.add(node);
                 // #REF=line7 - Don't need to return the node set in Java.
             } else { // #REF=figure1:line8,9,10
-                final LtlGraphNode newNode = new LtlGraphNode("Node" + getNextNodeId());
+                final LtlGraphNode newNode = new LtlGraphNode("LtlNode" + getNextNodeId());
                 newNode.fatherNode = this;
                 newNode.incomingEdges.add(this);
                 newNode.newFormulas.addAll(this.nextFormulas);
@@ -111,7 +111,7 @@ public class LtlGraphNode extends GraphNode {
 
                 // Splitting in to two new nodes
                 // Node1 ---------------------------
-                final LtlGraphNode newNode1 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line21
+                final LtlGraphNode newNode1 = new LtlGraphNode("LtlNode" + getNextNodeId()); // #REF=Line21
                 newNode1.fatherNode = this.fatherNode; // #REF=Line21
                 newNode1.incomingEdges = this.incomingEdges; // #REF=Line21
 
@@ -127,7 +127,7 @@ public class LtlGraphNode extends GraphNode {
                 newNode1.nextFormulas.addAll(this.getNext1(temporalFormula)); // #REF=Line23
 
                 // Node2 ----------------------------
-                final LtlGraphNode newNode2 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line24
+                final LtlGraphNode newNode2 = new LtlGraphNode("LtlNode" + getNextNodeId()); // #REF=Line24
                 newNode2.fatherNode = this.fatherNode; // #REF=Line24
                 newNode2.incomingEdges = this.incomingEdges; // #REF=Line24
 
@@ -306,8 +306,7 @@ public class LtlGraphNode extends GraphNode {
         String returnString = this.name + "\n"; // finish current row.
 
         if (!nodeVisitedBefore) {
-            returnString += this.name + " : Old "+this.getDisplayValues(this.oldFormulas)+" \n";
-            returnString += this.name + " : Next "+this.getDisplayValues(this.nextFormulas)+" \n";
+            returnString += writeFormulas(this.name);
             nodeVisitedBefore = true;
 
             if (this.childNodes != null && !this.childNodes.isEmpty()) {
@@ -319,4 +318,12 @@ public class LtlGraphNode extends GraphNode {
         }
         return returnString;
     }
+
+
+    public String writeFormulas(String name){
+        return name + " : Old "+this.getDisplayValues(this.oldFormulas)+" \n" +
+                name + " : Next "+this.getDisplayValues(this.nextFormulas)+" \n";
+    }
+
+
 }
