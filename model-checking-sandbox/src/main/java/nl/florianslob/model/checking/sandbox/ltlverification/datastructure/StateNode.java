@@ -28,4 +28,5 @@ public class StateNode {
             Successors.forEach(StateNode::printRecursively);
         }
     }
+
 }

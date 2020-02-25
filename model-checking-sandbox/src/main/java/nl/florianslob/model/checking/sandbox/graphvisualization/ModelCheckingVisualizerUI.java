@@ -11,12 +11,16 @@ import nl.florianslob.model.checking.sandbox.base.GraphNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingActivity;
 import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingDemoData;
 import nl.florianslob.model.checking.sandbox.modelchecking.OnTheFlyLtlTestFormulaName;
+import nl.florianslob.model.checking.sandbox.modelchecking.ProgramParser;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.TraceInformation;
 
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -31,7 +35,6 @@ public class ModelCheckingVisualizerUI {
     private static final String formulaSvgFileName = "formula.svg";
     private static final String programSvgFileName = "program.svg";
     private static final String productSvgFileName = "product.svg";
-    private static final String traceSvgFileName = "trace.svg";
     private GraphDrawer graphFrame;
 
     private KeyListener listener = new KeyListener() {
@@ -85,7 +88,7 @@ public class ModelCheckingVisualizerUI {
 
                 // Create graphs
                 LtlGraphNode rootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB);
-                StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.SIMPLE_MODEL);
+                StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.MODEL_FROM_DEFINITION2);
                 GraphNode productGraphRootNode = null; // TODO This is where the magic happens!
 
                 TraceInformation traceInformation = new TraceInformation();
@@ -105,7 +108,7 @@ public class ModelCheckingVisualizerUI {
                 saveToSvgFile(programRootNode, programSvgFileName);
                 saveToSvgFile(productGraphRootNode, productSvgFileName);
 
-                if(doesFormulaHold){
+                if (doesFormulaHold) {
                     showInFrame(productSvgFileName);
                 }
 
@@ -145,11 +148,11 @@ public class ModelCheckingVisualizerUI {
         String plantUmlRepresentation = "@startuml\n";
         plantUmlRepresentation += " header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
 
-        if(rootNode == null){
+        if (rootNode == null) {
             // create a graph with a note for empty graphs
             plantUmlRepresentation += "Note:This graph does not contain any nodes. \n";
 
-        }else{
+        } else {
             plantUmlRepresentation += "[*] -> " + rootNode.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
         }
 
@@ -163,7 +166,7 @@ public class ModelCheckingVisualizerUI {
 
     public void saveToSvgFile(GraphNode rootNode, String fileName) throws Exception {
         SourceStringReader reader = new SourceStringReader(getPlantUmlRepresentation(rootNode));
-        final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles +"/"+ fileName);
+        final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles + "/" + fileName);
         DiagramDescription desc = reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));
         svgFileOutputStream.close();
     }
@@ -174,7 +177,7 @@ public class ModelCheckingVisualizerUI {
             mainFrame.setVisible(false);
             SVGUniverse universe = new SVGUniverse();
             String executionPath = System.getProperty("user.dir");
-            SVGDiagram d = universe.getDiagram(new URL("file:///" + executionPath + "/" + rootFolderForSvgFiles + "/" +  filename).toURI(), true);
+            SVGDiagram d = universe.getDiagram(new URL("file:///" + executionPath + "/" + rootFolderForSvgFiles + "/" + filename).toURI(), true);
             d.setIgnoringClipHeuristic(true);
             graphFrame = new GraphDrawer("Graph visualisation", d);
             graphFrame.setVisible(true);

@@ -110,11 +110,13 @@ public class StateNode extends GraphNode {
             if (formula.atomicProposition != null) {
                 // This formula must hold for this state
                 // This could be a negation!
+                Boolean hasSameAtomicProposition = hasSameAtomicProposition(formula.atomicProposition);
+
                 if (formula.isNegation) {
-                    if (this.AtomicPropositions.contains(formula.atomicProposition)) {
+                    if (hasSameAtomicProposition) {
                         return false;
                     }
-                } else if (!this.AtomicPropositions.contains(formula.atomicProposition)) {
+                } else if (!hasSameAtomicProposition) {
                     return false;
                 }
             }
@@ -124,6 +126,15 @@ public class StateNode extends GraphNode {
         return true;
     }
 
+    private Boolean hasSameAtomicProposition(AtomicProposition atomicProposition) {
+        for(AtomicProposition at : this.AtomicPropositions){
+            if(at.content.equals(atomicProposition.content)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void printRecursively() {
         if (!IsAlreadyPrinted) {
             IsAlreadyPrinted = true;
@@ -131,5 +142,9 @@ public class StateNode extends GraphNode {
             Successors.forEach((node) -> System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber));
             Successors.forEach(StateNode::printRecursively);
         }
+    }
+
+    public String GetHashingNumberKey() {
+        return ""+HashingNumber;
     }
 }
