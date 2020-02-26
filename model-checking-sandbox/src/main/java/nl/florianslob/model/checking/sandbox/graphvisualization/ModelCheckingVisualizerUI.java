@@ -8,10 +8,8 @@ import net.sourceforge.plantuml.SourceStringReader;
 import net.sourceforge.plantuml.core.DiagramDescription;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
 import nl.florianslob.model.checking.sandbox.base.GraphNode;
-import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingActivity;
-import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingDemoData;
-import nl.florianslob.model.checking.sandbox.modelchecking.OnTheFlyLtlTestFormulaName;
-import nl.florianslob.model.checking.sandbox.modelchecking.ProgramParser;
+import nl.florianslob.model.checking.sandbox.modelchecking.*;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNode;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.TraceInformation;
@@ -86,8 +84,19 @@ public class ModelCheckingVisualizerUI {
                 // Add buttons to screen to enable fast debugging.
                 String ltlFormulaText = userText.getText();
 
+                String testLtlFormula = "XXX(a^b)";
+//    !XXX((a^!b)Ub) -- Test for big model
+//    XXXX(a^b) -- Test for working counter example
+
+                if(!ltlFormulaText.isEmpty()){
+                    testLtlFormula = ltlFormulaText;
+                }
+
+                LtlFormula ltlFormula = LtlFormulaParser.Parse(testLtlFormula);
+
                 // Create graphs
-                LtlGraphNode rootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB);
+                LtlGraphNode rootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(ltlFormula);
+
                 StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.MODEL_FROM_DEFINITION2);
                 GraphNode productGraphRootNode = null; // TODO This is where the magic happens!
 

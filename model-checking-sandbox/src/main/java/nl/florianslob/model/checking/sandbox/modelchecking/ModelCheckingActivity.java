@@ -44,7 +44,7 @@ public class ModelCheckingActivity implements ISandboxingActivity {
         // a // Should return true with path 0
         // b // Should return false
 
-        Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB).childNodes;
+        Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulas.getTestFormula(OnTheFlyLtlTestFormulaName.XXXXaAndB)).childNodes;
 
         LoggingHelper.logInfo("We now have our model and LTL formula as automata.");
         LoggingHelper.logInfo("Lets check some models 8-).");
@@ -81,14 +81,9 @@ public class ModelCheckingActivity implements ISandboxingActivity {
      *         states.
      * @throws Exception Propagate all exceptions to calling method.
      */
-    public static LtlGraphNode generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName formulaName) throws Exception {
+    public static LtlGraphNode generateLtlAutomatonAndReturnInitialState(LtlFormula formula) throws Exception {
         // We start with an empty set, that will contain all nodes
         Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-
-        // In a real world situation the formula is parsed from some kind of user
-        // friendly notation
-        // We use a strongly typed representation for now.
-        LtlFormula formula = OnTheFlyLtlTestFormulas.getTestFormula(formulaName);
 
         if (formula == null) {
             throw new Exception("No formula found for given id.");

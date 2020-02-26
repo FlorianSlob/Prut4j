@@ -15,6 +15,8 @@ public class LtlFormula {
     public LtlFormula rightOperandFormula;
     public boolean isNegation;
     public Boolean truthValue = null;
+    // needed for parsing.
+    public LtlFormula parent;
 
     public LtlFormula(LtlFormula original) {
         // copy the object
