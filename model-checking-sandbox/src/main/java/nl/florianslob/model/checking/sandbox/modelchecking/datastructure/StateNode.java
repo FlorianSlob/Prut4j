@@ -71,6 +71,7 @@ public class StateNode extends GraphNode {
                     return true; // Cycle detected! Formula does hold! !!
                     // Not a real cycle!!! It's a product, LTL nodes can
                 }
+
                 this.MarkedAsVisitedPass1 = true;
                 this.VisitedByLtlNodes.add(ltlNode); // Detect repetitions
 

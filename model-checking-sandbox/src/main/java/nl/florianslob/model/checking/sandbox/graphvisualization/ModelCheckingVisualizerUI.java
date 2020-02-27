@@ -95,14 +95,14 @@ public class ModelCheckingVisualizerUI {
                 LtlFormula ltlFormula = LtlFormulaParser.Parse(testLtlFormula);
 
                 // Create graphs
-                LtlGraphNode rootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(ltlFormula);
+                LtlGraphNode ltlRootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(ltlFormula);
 
                 StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.MODEL_FROM_DEFINITION2);
                 GraphNode productGraphRootNode = null; // TODO This is where the magic happens!
 
                 TraceInformation traceInformation = new TraceInformation();
                 // start in S0
-                boolean doesFormulaHold = programRootNode.checkDepthFirst(rootNode.childNodes, traceInformation);
+                boolean doesFormulaHold = programRootNode.checkDepthFirst(ltlRootNode.childNodes, traceInformation);
 
                 LoggingHelper.logInfo("Does the formula hold for the model: " + doesFormulaHold);
 
@@ -113,7 +113,7 @@ public class ModelCheckingVisualizerUI {
                 }
 
                 // Save graphs to svg file for later analysis
-                saveToSvgFile(rootNode, formulaSvgFileName);
+                saveToSvgFile(ltlRootNode, formulaSvgFileName);
                 saveToSvgFile(programRootNode, programSvgFileName);
                 saveToSvgFile(productGraphRootNode, productSvgFileName);
 
