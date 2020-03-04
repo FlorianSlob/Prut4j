@@ -13,6 +13,8 @@ buildNumber.properties
 generated_graph_svg_files/formula.svg
 generated_graph_svg_files/product.svg
 generated_graph_svg_files/program.svg
+generated_graph_svg_files/trace.svg
+
 #
 # IntelliJ
 #
@@ -20,10 +22,5 @@ generated_graph_svg_files/program.svg
 .idea/*
 !.idea/runConfigurations/
 
-#
-# Visual Studio Code
-#
 .settings/
 .classpath
-.project
-.vscode/
