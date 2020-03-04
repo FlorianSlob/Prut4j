@@ -22,6 +22,7 @@ import java.awt.event.WindowEvent;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.Set;
 
 public class ModelCheckingVisualizerUI {
 
@@ -113,9 +114,9 @@ public class ModelCheckingVisualizerUI {
                 }
 
                 // Save graphs to svg file for later analysis
-                saveToSvgFile(ltlRootNode, formulaSvgFileName);
-                saveToSvgFile(programRootNode, programSvgFileName);
-                saveToSvgFile(productGraphRootNode, productSvgFileName);
+                saveToSvgFile(null, (Set<? extends GraphNode>)ltlRootNode.childNodes, formulaSvgFileName);
+                saveToSvgFile(programRootNode, null, programSvgFileName);
+                saveToSvgFile(productGraphRootNode, null, productSvgFileName);
 
                 if (doesFormulaHold) {
                     showInFrame(productSvgFileName);
@@ -152,20 +153,33 @@ public class ModelCheckingVisualizerUI {
         mainFrame.setVisible(true);
     }
 
-    public String getPlantUmlRepresentation(GraphNode rootNode) {
+    private String getPlantUmlFileHeader(){
+        return "@startuml\n header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
 
-        String plantUmlRepresentation = "@startuml\n";
-        plantUmlRepresentation += " header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
+    }
 
-        if (rootNode == null) {
+    private String getPlantUmlFileFooter(){
+        return "@enduml\n";
+    }
+
+    public String getPlantUmlRepresentation(GraphNode rootNode, Set<? extends GraphNode> rootNodes) {
+
+        String plantUmlRepresentation = getPlantUmlFileHeader();
+
+        if ((rootNodes == null || rootNodes.isEmpty()) && rootNode == null) {
             // create a graph with a note for empty graphs
             plantUmlRepresentation += "Note:This graph does not contain any nodes. \n";
 
-        } else {
+        } else if(rootNodes != null && !rootNodes.isEmpty()) {
+
+            for(GraphNode node :rootNodes){
+                plantUmlRepresentation += "[*] -> " + node.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
+            }
+        } else if(rootNode != null){
             plantUmlRepresentation += "[*] -> " + rootNode.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
         }
 
-        plantUmlRepresentation += "@enduml\n";
+        plantUmlRepresentation += getPlantUmlFileFooter();
 
         System.out.println("Plant uml syntax");
         System.out.print(plantUmlRepresentation);
@@ -173,8 +187,13 @@ public class ModelCheckingVisualizerUI {
         return plantUmlRepresentation;
     }
 
-    public void saveToSvgFile(GraphNode rootNode, String fileName) throws Exception {
-        SourceStringReader reader = new SourceStringReader(getPlantUmlRepresentation(rootNode));
+    public void saveToSvgFile(GraphNode rootNode,Set<? extends GraphNode> rootNodes, String fileName) throws Exception {
+
+        saveSvgStringToFile(getPlantUmlRepresentation(rootNode, rootNodes), fileName);
+    }
+
+    public void saveSvgStringToFile(String fileContent, String fileName) throws Exception{
+        SourceStringReader reader = new SourceStringReader(fileContent);
         final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles + "/" + fileName);
         DiagramDescription desc = reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));
         svgFileOutputStream.close();
