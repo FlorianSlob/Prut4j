@@ -8,11 +8,8 @@ public class SimpleDirectChannel<T> extends AbstractChannel<T> {
 
     public T messageQueueObject;
 
-    public String name;
-
-    public SimpleDirectChannel(String name, int maxDepth) {
+    public SimpleDirectChannel(int maxDepth) {
         super(maxDepth);
-        this.name = name;
     }
 
     @Override

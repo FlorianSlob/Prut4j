@@ -33,7 +33,7 @@ public class LtlFormulaParser {
                 currentFormula = currentFormula.parent;
 
                 // Check right first, it could be a next operator.
-                if(currentFormula.leftOperandFormula == null && (currentFormula.operator == null || currentFormula.operator != TemporalOperator.X)){
+                if(currentFormula.leftOperandFormula == null && (currentFormula.operator != TemporalOperator.X)){
                     currentFormula.leftOperandFormula = handledFormula;
                 }else if(currentFormula.rightOperandFormula == null){
                     currentFormula.rightOperandFormula = handledFormula;
@@ -65,7 +65,7 @@ public class LtlFormulaParser {
                 formulaWithAtomicProposition.isNegation = isNegation;
 
                 // Check right first, it could be a next operator.
-                if(currentFormula.leftOperandFormula == null && ( currentFormula.operator == null || currentFormula.operator != TemporalOperator.X)){
+                if(currentFormula.leftOperandFormula == null && (currentFormula.operator != TemporalOperator.X)){
                     currentFormula.leftOperandFormula = formulaWithAtomicProposition;
                 }else if(currentFormula.rightOperandFormula == null){
                     currentFormula.rightOperandFormula = formulaWithAtomicProposition;

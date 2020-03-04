@@ -25,10 +25,9 @@ public class OnTheFlyLtlTest {
     }
 
     /**
-     * @throws java.lang.Exception Can throw exception, test then fails
      */
     @Test
-    public void TestExpandFormula_aUb() throws Exception {
+    public void TestExpandFormula_aUb() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_aUb();
@@ -72,10 +71,9 @@ public class OnTheFlyLtlTest {
     }
 
     /**
-     * @throws java.lang.Exception Can throw exception, test then fails
      */
     @Test
-    public void TestExpandFormula_bVa() throws Exception {
+    public void TestExpandFormula_bVa() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_bVa();
@@ -121,10 +119,9 @@ public class OnTheFlyLtlTest {
     }
 
     /**
-     * @throws java.lang.Exception Can throw exception, test then fails
      */
     @Test
-    public void TestExpandFormula_aOrb() throws Exception {
+    public void TestExpandFormula_aOrb() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_aOrb();
@@ -166,11 +163,10 @@ public class OnTheFlyLtlTest {
     }
 
     /**
-     * @throws java.lang.Exception Can throw exception, test then fails
      */
     @SuppressWarnings("SpellCheckingInspection") // 'Andb' is in our syntax correct
     @Test
-    public void TestExpandFormula_aAndb() throws Exception {
+    public void TestExpandFormula_aAndb() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_aAndb();
@@ -203,10 +199,9 @@ public class OnTheFlyLtlTest {
     }
 
     /**
-     * @throws java.lang.Exception Can throw exception, test then fails
      */
     @Test
-    public void TestExpandFormula_Xa() throws Exception {
+    public void TestExpandFormula_Xa() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
         final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_Xa();
@@ -247,13 +242,12 @@ public class OnTheFlyLtlTest {
     }
 
     /**
-     * @throws java.lang.Exception Can throw exception, test then fails
      */
     @Test
-    public void TestExpandFormula_a() throws Exception {
+    public void TestExpandFormula_a() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormulla_a();
+        final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_a();
         final LtlGraphNode rootNode = getRootNode(formulaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 

@@ -8,9 +8,9 @@ import java.util.HashMap;
 
 public class ProgramParser {
 
-    public static String END_OF_FILE = "THE_END";
-    public static String NODE_DEF = "NODE";
-    public static String REL_DEF = "REL";
+    public static final String END_OF_FILE = "THE_END";
+    public static final String NODE_DEF = "NODE";
+    public static final String REL_DEF = "REL";
 
     public static StateNode Parse(String programDefinition) throws Exception {
         String[] programDefinitionLines = programDefinition.split("\n");
@@ -18,7 +18,8 @@ public class ProgramParser {
         StateNode initialNode = null;
         HashMap<String, StateNode> nodesByName = new HashMap<>();
 
-        Integer counter = 0;
+        int counter = 0;
+
         for (String programLine : programDefinitionLines) {
             counter++;
             try {

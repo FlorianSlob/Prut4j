@@ -7,8 +7,8 @@ public class TraceNode extends GraphNode {
 
     private static int counterHelper = 0;
     private final int counter;
-    public StateNode originalNode;
-    public LtlGraphNode ltlGraphNode;
+    public final StateNode originalNode;
+    public final LtlGraphNode ltlGraphNode;
     public TraceNode nextNode;
 
     public TraceNode(StateNode originalNode, LtlGraphNode ltlGraphNode){
@@ -16,7 +16,7 @@ public class TraceNode extends GraphNode {
         this.originalNode = originalNode;
         this.ltlGraphNode = ltlGraphNode;
         this.counter = counterHelper;
-        this.counterHelper++;
+        counterHelper++;
     }
 
     private boolean nodeVisitedBefore = false;

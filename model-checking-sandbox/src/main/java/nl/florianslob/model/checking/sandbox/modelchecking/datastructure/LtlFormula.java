@@ -8,7 +8,7 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
  */
 public class LtlFormula {
 
-    public String name;
+    public final String name;
     public AtomicProposition atomicProposition;
     public LtlFormula leftOperandFormula;
     public TemporalOperator operator;

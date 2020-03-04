@@ -1,6 +1,5 @@
 package nl.florianslob.model.checking.sandbox.modelchecking.datastructure;
 
-import net.sourceforge.plantuml.creole.Atom;
 import nl.florianslob.model.checking.sandbox.base.GraphNode;
 
 import java.util.*;
@@ -22,40 +21,38 @@ public class StateNode extends GraphNode {
     @Override
     public String getPlantUmlNodesRecursively() {
         // Add data fields
-        String returnString = this.getName() + "\n"; // finish current row.
+        StringBuilder returnString = new StringBuilder(this.getName() + "\n"); // finish current row.
 
         if (!nodeVisitedBefore) {
-            returnString += this.getName() + " : "+this.getDisplayValuesForAtomicPropositions()+" \n";
+            returnString.append(this.getName()).append(" : ").append(this.getDisplayValuesForAtomicPropositions()).append(" \n");
             nodeVisitedBefore = true;
 
-            if (this.Successors != null && !this.Successors.isEmpty()) {
+            if (!this.Successors.isEmpty()) {
                 for (StateNode childNode : this.Successors) {
-                    returnString += this.getName() +" --> "+ childNode.getPlantUmlNodesRecursively();
+                    returnString.append(this.getName()).append(" --> ").append(childNode.getPlantUmlNodesRecursively());
                 }
             }
 
         }
-        return returnString;
+        return returnString.toString();
     }
 
     public String getDisplayValuesForAtomicPropositions(){
-        return String.join(", ", AtomicPropositions.stream().map(ap -> ap.content).collect(Collectors.toList()));
+        return AtomicPropositions.stream().map(ap -> ap.content).collect(Collectors.joining(", "));
     }
 
-    public Set<AtomicProposition> AtomicPropositions = new HashSet<>();
-    private boolean IsAlreadyPrinted;
+    public final Set<AtomicProposition> AtomicPropositions = new HashSet<>();
     public boolean MarkedAsVisitedPass1 = false;
 //    public boolean MarkedAsVisitedPass2 = false; // TODO Implement second pass.
-    public int HashingNumber;
-    public Set<StateNode> Successors = new HashSet<>();
+    public final int HashingNumber;
+    public final Set<StateNode> Successors = new HashSet<>();
 
 
     public StateNode(final int HashingNumber) {
-        this.IsAlreadyPrinted = false;
         this.HashingNumber = HashingNumber;
     }
 
-    public Set<LtlGraphNode> VisitedByLtlNodes = new HashSet<>();
+    public final Set<LtlGraphNode> VisitedByLtlNodes = new HashSet<>();
 
     public boolean checkDepthFirst(final Set<LtlGraphNode> ltlGraphNodes, TraceInformation traceInformation) {
 
@@ -129,15 +126,6 @@ public class StateNode extends GraphNode {
             }
         }
         return false;
-    }
-
-    public void printRecursively() {
-        if (!IsAlreadyPrinted) {
-            IsAlreadyPrinted = true;
-
-            Successors.forEach((node) -> System.out.println("Node:" + this.HashingNumber + " --> ChildNode:" + node.HashingNumber));
-            Successors.forEach(StateNode::printRecursively);
-        }
     }
 
     public String GetHashingNumberKey() {

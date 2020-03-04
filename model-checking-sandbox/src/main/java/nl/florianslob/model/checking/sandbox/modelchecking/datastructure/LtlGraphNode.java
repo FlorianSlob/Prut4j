@@ -25,9 +25,9 @@ import nl.florianslob.model.checking.sandbox.base.GraphNode;
 public class LtlGraphNode extends GraphNode {
 
     public LtlGraphNode fatherNode; // We only need this for proof of correctness.
-    public Set<LtlGraphNode> childNodes = new HashSet<>(); // TODO Make abstract?!
+    public final Set<LtlGraphNode> childNodes = new HashSet<>(); // TODO Make abstract?!
 
-    public String name;
+    public final String name;
     public Set<LtlGraphNode> incomingEdges = new HashSet<>();
     public Set<LtlFormula> newFormulas = new HashSet<>();
     public Set<LtlFormula> oldFormulas = new HashSet<>();
@@ -290,11 +290,13 @@ public class LtlGraphNode extends GraphNode {
     }
 
     private String getDisplayValues(Set<LtlFormula> formulas) {
-        String values = "";
+        StringBuilder values = new StringBuilder();
+
         for(LtlFormula formula : formulas){
-            values += formula.getDisplayValueRecursive() + ", ";
+            values.append(formula.getDisplayValueRecursive()).append(", ");
         }
-        return values;
+
+        return values.toString();
     }
 
     private boolean nodeVisitedBefore = false;
@@ -303,20 +305,20 @@ public class LtlGraphNode extends GraphNode {
     public String getPlantUmlNodesRecursively() {
 
         // Add data fields
-        String returnString = this.name + "\n"; // finish current row.
+        StringBuilder returnStringBuilder = new StringBuilder(this.name + "\n"); // finish current row.
 
         if (!nodeVisitedBefore) {
-            returnString += writeFormulas(this.name);
+            returnStringBuilder.append(writeFormulas(this.name));
             nodeVisitedBefore = true;
 
-            if (this.childNodes != null && !this.childNodes.isEmpty()) {
+            if (!this.childNodes.isEmpty()) {
                 for (LtlGraphNode childNode : this.childNodes) {
-                    returnString += this.name +" --> "+ childNode.getPlantUmlNodesRecursively();
+                    returnStringBuilder.append(this.name).append(" --> ").append(childNode.getPlantUmlNodesRecursively());
                 }
             }
-
         }
-        return returnString;
+
+        return returnStringBuilder.toString();
     }
 
 

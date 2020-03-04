@@ -1,6 +1,7 @@
 package nl.florianslob.model.checking.sandbox.modelchecking;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
@@ -51,7 +52,7 @@ public class ModelCheckingActivity implements ISandboxingActivity {
 
         TraceInformation traceInformation = new TraceInformation();
         // start in S0
-        boolean doesFormulaHold = ModelS0.checkDepthFirst(LtlS0Set, traceInformation);
+        boolean doesFormulaHold = Objects.requireNonNull(ModelS0).checkDepthFirst(LtlS0Set, traceInformation);
 
         LoggingHelper.logInfo("Does the formula hold for the model: " + doesFormulaHold);
 

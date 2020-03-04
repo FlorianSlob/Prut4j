@@ -11,7 +11,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IChannel;
 public abstract class AbstractChannel<T> implements IChannel<T> {
 
     private Boolean enabled = false;
-    private int _maxDepth;
+    private final int _maxDepth;
     protected static int currentDepth = 0;
     private LinkedList<IChannel<T>> _channelsToEnableAfterTransaction;
     private LinkedList<IChannel<T>> _channelsToDisableAfterTransaction;
