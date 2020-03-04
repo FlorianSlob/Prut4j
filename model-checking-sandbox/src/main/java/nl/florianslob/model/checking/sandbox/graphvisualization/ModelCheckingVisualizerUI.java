@@ -27,13 +27,12 @@ import java.util.Set;
 public class ModelCheckingVisualizerUI {
 
     private Frame mainFrame;
-    private Label headerLabel;
     private Panel controlPanel;
 
     private static final String rootFolderForSvgFiles = "generated_graph_svg_files";
     private static final String formulaSvgFileName = "formula.svg";
     private static final String programSvgFileName = "program.svg";
-    private static final String productSvgFileName = "product.svg";
+    private static final String traceSvgFileName = "trace.svg";
     private GraphDrawer graphFrame;
 
     private KeyListener listener = new KeyListener() {
@@ -41,7 +40,7 @@ public class ModelCheckingVisualizerUI {
 
         @Override
         public void keyTyped(KeyEvent keyEvent) {
-// ignore
+            // ignore
         }
 
         @Override
@@ -89,7 +88,7 @@ public class ModelCheckingVisualizerUI {
 //    !XXX((a^!b)Ub) -- Test for big model
 //    XXXX(a^b) -- Test for working counter example
 
-                if(!ltlFormulaText.isEmpty()){
+                if (!ltlFormulaText.isEmpty()) {
                     testLtlFormula = ltlFormulaText;
                 }
 
@@ -99,7 +98,7 @@ public class ModelCheckingVisualizerUI {
                 LtlGraphNode ltlRootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(ltlFormula);
 
                 StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.MODEL_FROM_DEFINITION2);
-                GraphNode productGraphRootNode = null; // TODO This is where the magic happens!
+                GraphNode traceGraphRootNode = null; // This is where the magic happens!
 
                 TraceInformation traceInformation = new TraceInformation();
                 // start in S0
@@ -110,16 +109,16 @@ public class ModelCheckingVisualizerUI {
                 if (doesFormulaHold) {
                     LoggingHelper.logInfo("Printing the trace in the program: ");
 
-                    productGraphRootNode = traceInformation.currentTraceNode;
+                    traceGraphRootNode = traceInformation.currentTraceNode;
                 }
 
                 // Save graphs to svg file for later analysis
-                saveToSvgFile(null, (Set<? extends GraphNode>)ltlRootNode.childNodes, formulaSvgFileName);
+                saveToSvgFile(null, (Set<? extends GraphNode>) ltlRootNode.childNodes, formulaSvgFileName);
                 saveToSvgFile(programRootNode, null, programSvgFileName);
-                saveToSvgFile(productGraphRootNode, null, productSvgFileName);
+                saveToSvgFile(traceGraphRootNode, null, traceSvgFileName);
 
                 if (doesFormulaHold) {
-                    showInFrame(productSvgFileName);
+                    showInFrame(traceSvgFileName);
                 }
 
             } catch (Exception e) {
@@ -147,18 +146,18 @@ public class ModelCheckingVisualizerUI {
             showInFrame(programSvgFileName);
         });
         showProductGraph.addActionListener(showProductGraphEvent -> {
-            showInFrame(productSvgFileName);
+            showInFrame(traceSvgFileName);
         });
 
         mainFrame.setVisible(true);
     }
 
-    private String getPlantUmlFileHeader(){
+    private String getPlantUmlFileHeader() {
         return "@startuml\n header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
 
     }
 
-    private String getPlantUmlFileFooter(){
+    private String getPlantUmlFileFooter() {
         return "@enduml\n";
     }
 
@@ -170,12 +169,12 @@ public class ModelCheckingVisualizerUI {
             // create a graph with a note for empty graphs
             plantUmlRepresentation += "Note:This graph does not contain any nodes. \n";
 
-        } else if(rootNodes != null && !rootNodes.isEmpty()) {
+        } else if (rootNodes != null && !rootNodes.isEmpty()) {
 
-            for(GraphNode node :rootNodes){
+            for (GraphNode node : rootNodes) {
                 plantUmlRepresentation += "[*] -> " + node.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
             }
-        } else if(rootNode != null){
+        } else if (rootNode != null) {
             plantUmlRepresentation += "[*] -> " + rootNode.getPlantUmlNodesRecursively(); // Move to creating plant uml diagram
         }
 
@@ -187,12 +186,12 @@ public class ModelCheckingVisualizerUI {
         return plantUmlRepresentation;
     }
 
-    public void saveToSvgFile(GraphNode rootNode,Set<? extends GraphNode> rootNodes, String fileName) throws Exception {
+    public void saveToSvgFile(GraphNode rootNode, Set<? extends GraphNode> rootNodes, String fileName) throws Exception {
 
         saveSvgStringToFile(getPlantUmlRepresentation(rootNode, rootNodes), fileName);
     }
 
-    public void saveSvgStringToFile(String fileContent, String fileName) throws Exception{
+    public void saveSvgStringToFile(String fileContent, String fileName) throws Exception {
         SourceStringReader reader = new SourceStringReader(fileContent);
         final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles + "/" + fileName);
         DiagramDescription desc = reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));

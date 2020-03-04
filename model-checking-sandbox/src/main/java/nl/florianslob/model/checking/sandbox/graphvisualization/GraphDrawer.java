@@ -1,7 +1,5 @@
 package nl.florianslob.model.checking.sandbox.graphvisualization;
 
-
-import java.awt.geom.AffineTransform;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;

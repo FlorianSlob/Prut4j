@@ -1,8 +1,10 @@
 package nl.florianslob.model.checking.sandbox.modelchecking.datastructure;
 
+import net.sourceforge.plantuml.creole.Atom;
 import nl.florianslob.model.checking.sandbox.base.GraphNode;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -36,21 +38,14 @@ public class StateNode extends GraphNode {
         return returnString;
     }
 
-    // TODO use concat string function!
     public String getDisplayValuesForAtomicPropositions(){
-        String returnString = "";
-
-        for(AtomicProposition proposition : AtomicPropositions){
-            returnString += proposition.getDisplayValue();
-        }
-        return returnString;
+        return String.join(", ", AtomicPropositions.stream().map(ap -> ap.content).collect(Collectors.toList()));
     }
-
 
     public Set<AtomicProposition> AtomicPropositions = new HashSet<>();
     private boolean IsAlreadyPrinted;
     public boolean MarkedAsVisitedPass1 = false;
-//    public boolean MarkedAsVisitedPass2 = false; // TODO Use in
+//    public boolean MarkedAsVisitedPass2 = false; // TODO Implement second pass.
     public int HashingNumber;
     public Set<StateNode> Successors = new HashSet<>();
 

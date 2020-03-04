@@ -2,13 +2,10 @@ package nl.florianslob.model.checking.sandbox.modelchecking;
 
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.*;
 
-import java.util.HashMap;
-
 public class LtlFormulaParser {
 
-
-    public static LtlFormula Parse(String ltlFormulaDefinition) throws Exception{
-        char[] ltlFormulaDefinitionChars = ltlFormulaDefinition.trim().toCharArray();
+    public static LtlFormula Parse(String ltlFormulaDefinitionInput) throws Exception{
+        String ltlFormulaDefinition = ltlFormulaDefinitionInput.trim();
 
         LtlFormula currentFormula = new LtlFormula("ParsedFormula");
         LtlFormula rootFormula = currentFormula;
@@ -19,7 +16,6 @@ public class LtlFormulaParser {
             boolean isNegation = false;
 
             if(currentChar == '!' ){
-                // TODO!
                 isNegation = true;
                 i++;
                 currentChar = ltlFormulaDefinition.charAt(i);

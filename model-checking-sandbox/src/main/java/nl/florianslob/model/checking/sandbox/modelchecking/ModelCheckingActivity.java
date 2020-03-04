@@ -76,7 +76,7 @@ public class ModelCheckingActivity implements ISandboxingActivity {
      * * Example: For the formula aOrb it will return a node that has two child
      * nodes.Those are the initial states for a and for b.
      *
-     * @param formulaName The name of the formula under test in enum
+     * @param formula The abstract syntax tree of the formula
      * @return a surrogate node to simulate the initial edges into the starting
      *         states.
      * @throws Exception Propagate all exceptions to calling method.
