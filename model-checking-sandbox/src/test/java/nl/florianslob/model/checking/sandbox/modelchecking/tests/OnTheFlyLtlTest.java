@@ -55,7 +55,7 @@ public class OnTheFlyLtlTest {
             && // old contains a
             n.nextFormulas.size() == 1
             && //next has the size of 1
-            n.nextFormulas.contains(formulaUnderTest) // contains the formulla under test (aUb).
+            n.nextFormulas.contains(formulaUnderTest) // contains the formula under test (aUb).
         ).count());
         // There is only one node where :
         assertEquals(1, graphNodeSet.stream().filter(n
@@ -101,7 +101,7 @@ public class OnTheFlyLtlTest {
             && // old contains a
             n.nextFormulas.size() == 1
             && //next has the size of 1
-            n.nextFormulas.contains(formulaUnderTest) // contains the formulla under test (aVb).
+            n.nextFormulas.contains(formulaUnderTest) // contains the formula under test (aVb).
         ).count());
         // There is only one node where :
         assertEquals(1, graphNodeSet.stream().filter(n
@@ -169,7 +169,7 @@ public class OnTheFlyLtlTest {
     public void TestExpandFormula_aAndb() {
         // We start with an empty set, that will contain all nodes
         final Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-        final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_aAndb();
+        final LtlFormula formulaUnderTest = OnTheFlyLtlTestFormulas.getTestFormula_a_And_b();
         final LtlGraphNode rootNode = getRootNode(formulaUnderTest);
         rootNode.expand(graphNodeSet); // This is where the magic happens
 

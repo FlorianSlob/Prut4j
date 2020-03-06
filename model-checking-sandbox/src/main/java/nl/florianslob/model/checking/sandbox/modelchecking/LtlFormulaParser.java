@@ -91,7 +91,7 @@ public class LtlFormulaParser {
             return TemporalOperator.X;
         }
         else{
-            throw new Exception("Opeartor not found");
+            throw new Exception("Operator not found");
         }
     }
 }

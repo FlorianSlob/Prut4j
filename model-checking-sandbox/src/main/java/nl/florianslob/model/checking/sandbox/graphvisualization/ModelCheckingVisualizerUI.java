@@ -79,13 +79,14 @@ public class ModelCheckingVisualizerUI {
 
         Button okButton = new Button("Go!");
         okButton.addActionListener(event -> {
+
             try {
                 // Add buttons to screen to enable fast debugging.
                 String ltlFormulaText = userText.getText();
 
                 String testLtlFormula = "XXX(a^b)";
                 //    !XXX((a^!b)Ub) -- Test for big model
-                //    XXXX(a^b) -- Test for working counter example
+                //    X XXX(a^b) -- Test for working counter example
 
                 if (!ltlFormulaText.isEmpty()) {
                     testLtlFormula = ltlFormulaText;
@@ -145,8 +146,10 @@ public class ModelCheckingVisualizerUI {
         mainFrame.setVisible(true);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private static final String PlantUmlFileHeader = "@startuml\n header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
 
+    @SuppressWarnings("SpellCheckingInspection")
     private static final String PlantUmlFileFooter = "@enduml\n";
 
     public String getPlantUmlRepresentation(GraphNode rootNode, Set<? extends GraphNode> rootNodes) {

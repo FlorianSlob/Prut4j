@@ -47,7 +47,7 @@ public class ModelCheckingActivity implements ISandboxingActivity {
 
         Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulas.getTestFormula(OnTheFlyLtlTestFormulaName.XXXXaAndB)).childNodes;
 
-        LoggingHelper.logInfo("We now have our model and LTL formula as automata.");
+        LoggingHelper.logInfo("We now have our model and LTL formula as automatons.");
         LoggingHelper.logInfo("Lets check some models 8-).");
 
         TraceInformation traceInformation = new TraceInformation();
