@@ -66,7 +66,7 @@ public class ModelCheckingDemoData {
                 "THE_END";
 
             String programDefinition3 = "NODE=0|AP=a\n" +
-                "NODE=1|AP=b\n" +
+                "NODE=1|AP=b,a\n" +
                 "NODE=2|AP=a\n" +
                 "NODE=3|AP=a\n" +
                 "NODE=4|AP=a\n" +
@@ -80,7 +80,7 @@ public class ModelCheckingDemoData {
                 "NODE=12|AP=a\n" +
                 "NODE=13|AP=a\n" +
                 "NODE=14|AP=a\n" +
-                "NODE=15|AP=a\n" +
+                "NODE=15|AP=j\n" +
                 "REL=0->1\n" +
                 "REL=1->2\n" +
                 "REL=2->3\n" +

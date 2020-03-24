@@ -52,11 +52,11 @@ public class ModelCheckingActivity implements ISandboxingActivity {
 
         TraceInformation traceInformation = new TraceInformation();
         // start in S0
-        int doesFormulaHold = Objects.requireNonNull(ModelS0).checkDepthFirst(LtlS0Set, traceInformation);
+        boolean doesFormulaHold = Objects.requireNonNull(ModelS0).checkDepthFirst(LtlS0Set, traceInformation);
 
         LoggingHelper.logInfo("Does the formula hold for the model: " + doesFormulaHold);
 
-        if (doesFormulaHold == 1) {
+        if (doesFormulaHold) {
             LoggingHelper.logInfo("Printing the trace in the program: ");
 
             while (traceInformation.currentTraceNode != null) {

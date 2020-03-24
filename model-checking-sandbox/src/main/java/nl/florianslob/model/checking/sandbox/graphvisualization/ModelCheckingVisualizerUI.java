@@ -103,11 +103,11 @@ public class ModelCheckingVisualizerUI {
 
                 TraceInformation traceInformation = new TraceInformation();
                 // start in S0
-                int doesFormulaHold = Objects.requireNonNull(programRootNode).checkDepthFirst(ltlRootNode.childNodes, traceInformation);
+                boolean doesFormulaHold = Objects.requireNonNull(programRootNode).checkDepthFirst(ltlRootNode.childNodes, traceInformation);
 
                 LoggingHelper.logInfo("Does the formula hold for the model: " + doesFormulaHold);
 
-                if (doesFormulaHold == 1) {
+                if (doesFormulaHold) {
                     LoggingHelper.logInfo("Printing the trace in the program: ");
 
                     traceGraphRootNode = traceInformation.currentTraceNode;
@@ -118,7 +118,7 @@ public class ModelCheckingVisualizerUI {
                 saveToSvgFile(programRootNode, null, programSvgFileName);
                 saveToSvgFile(traceGraphRootNode, null, traceSvgFileName);
 
-                if (doesFormulaHold == 1) {
+                if (doesFormulaHold) {
                     showInFrame(traceSvgFileName);
                 }
 
