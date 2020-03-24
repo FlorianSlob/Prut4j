@@ -17,8 +17,8 @@ public class StateNode {
         this.HashingNumber = HashingNumber;
     }
 
-    public int HashingNumber;
-    public Set<StateNode> Successors = new HashSet<>();
+    public final int HashingNumber;
+    public final Set<StateNode> Successors = new HashSet<>();
 
     public void printRecursively() {
         if (!isAlreadyPrinted) {
@@ -28,4 +28,5 @@ public class StateNode {
             Successors.forEach(StateNode::printRecursively);
         }
     }
+
 }

@@ -5,7 +5,7 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.*;
 
 public class Connector<T> implements IConnector<T> {
 
-    private int _maxDepth;
+    private final int _maxDepth;
 
     public Connector(int maxDepth) {
         _maxDepth = maxDepth;
@@ -17,8 +17,8 @@ public class Connector<T> implements IConnector<T> {
             IInPort<T> inPortB,
             IOutPort<T> outPortA
     ) {
-        SimpleDirectChannel<T> channel1 = new SimpleDirectChannel<>("Channel 1", _maxDepth);
-        SimpleDirectChannel<T> channel2 = new SimpleDirectChannel<>("Channel 2", _maxDepth);
+        SimpleDirectChannel<T> channel1 = new SimpleDirectChannel<>(_maxDepth);
+        SimpleDirectChannel<T> channel2 = new SimpleDirectChannel<>(_maxDepth);
 
         outPortA.SetChannel(channel1);
         inPortB.SetChannel(channel1);

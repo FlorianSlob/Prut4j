@@ -1,14 +1,12 @@
 package nl.florianslob.model.checking.sandbox.modelchecking;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
 import nl.florianslob.model.checking.sandbox.LoggingLevel;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.ModelCheckingAlphabet;
-import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNode;
+import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.*;
 
 /**
  *
@@ -16,10 +14,7 @@ import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.StateNo
  */
 public class ModelCheckingActivity implements ISandboxingActivity {
 
-    // Some constants to easily switch between models and ltl formulas during
-    // development.
-    public static final int SIMPLE_MODEL = 0;
-    public static final int EMPTY_MODEL = 1;
+
 
     @Override
     public void runActivity() throws Exception {
@@ -29,7 +24,7 @@ public class ModelCheckingActivity implements ISandboxingActivity {
         LoggingHelper.logInfo("Starting model checking Sandbox activity.");
 
         // get the initial state of a model.
-        StateNode ModelS0 = getStartingNode(SIMPLE_MODEL);
+        StateNode ModelS0 = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.SIMPLE_MODEL);
 
         // get ltl tree (this is supposed to be the negation of given property)
         // The initial node only exists to simulate the first incoming edges to the
@@ -50,22 +45,22 @@ public class ModelCheckingActivity implements ISandboxingActivity {
         // a // Should return true with path 0
         // b // Should return false
 
-        Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName.XXXXaAndB).childNodes;
+        Set<LtlGraphNode> LtlS0Set = generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulas.getTestFormula(OnTheFlyLtlTestFormulaName.XXXXaAndB)).childNodes;
 
-        LoggingHelper.logInfo("We now have our model and LTL formula as automata.");
+        LoggingHelper.logInfo("We now have our model and LTL formula as automatons.");
         LoggingHelper.logInfo("Lets check some models 8-).");
 
+        TraceInformation traceInformation = new TraceInformation();
         // start in S0
-        boolean doesFormulaHold = ModelS0.checkDepthFirst(LtlS0Set);
+        boolean doesFormulaHold = Objects.requireNonNull(ModelS0).checkDepthFirst(LtlS0Set, traceInformation);
 
         LoggingHelper.logInfo("Does the formula hold for the model: " + doesFormulaHold);
 
         if (doesFormulaHold) {
             LoggingHelper.logInfo("Printing the trace in the program: ");
 
-            while (!StateNode.StateTrace.isEmpty()) {
-                StateNode topOfStackStateNode = StateNode.StateTrace.pop();
-                LoggingHelper.logInfo("State hash number:  " + topOfStackStateNode.HashingNumber);
+            while (traceInformation.currentTraceNode != null) {
+                traceInformation.currentTraceNode.VisitAndLogRecursively();
             }
         }
 
@@ -82,28 +77,23 @@ public class ModelCheckingActivity implements ISandboxingActivity {
      * * Example: For the formula aOrb it will return a node that has two child
      * nodes.Those are the initial states for a and for b.
      *
-     * @param formulaName The name of the formula under test in enum
+     * @param formula The abstract syntax tree of the formula
      * @return a surrogate node to simulate the initial edges into the starting
      *         states.
      * @throws Exception Propagate all exceptions to calling method.
      */
-    public LtlGraphNode generateLtlAutomatonAndReturnInitialState(OnTheFlyLtlTestFormulaName formulaName) throws Exception {
+    public static LtlGraphNode generateLtlAutomatonAndReturnInitialState(LtlFormula formula) throws Exception {
         // We start with an empty set, that will contain all nodes
         Set<LtlGraphNode> graphNodeSet = new HashSet<>();
-
-        // In a real world situation the formula is parsed from some kind of user
-        // friendly notation
-        // We use a strongly typed representation for now.
-        LtlFormula formula = OnTheFlyLtlTestFormulas.getTestFormula(formulaName);
 
         if (formula == null) {
             throw new Exception("No formula found for given id.");
         }
 
-        LtlGraphNode initialNode = new LtlGraphNode("InitialNode");
+        LtlGraphNode initialNode = new LtlGraphNode("InitialLtlNode");
         initialNode.isInitialState = true;
 
-        LtlGraphNode rootNode = new LtlGraphNode("RootNode", formula);
+        LtlGraphNode rootNode = new LtlGraphNode("RootLtlNode", formula);
         rootNode.fatherNode = initialNode;
 
         // execute the expanding algorithm
@@ -115,84 +105,6 @@ public class ModelCheckingActivity implements ISandboxingActivity {
         }
 
         return initialNode; // Is this S0 or S-1 (because of structure of algorithm?)
-    }
-
-    public StateNode getStartingNode(int modelNumber) {
-        switch (modelNumber) {
-            case SIMPLE_MODEL:
-                return generateSimpleModelAndReturnInitialState();
-            case EMPTY_MODEL:
-                return generateEmptyModelAndReturnInitialState();
-            default:
-                return null;
-        }
-    }
-
-    public StateNode generateEmptyModelAndReturnInitialState() {
-        return new StateNode(0);
-    }
-
-    public StateNode generateSimpleModelAndReturnInitialState() {
-        StateNode state0 = new StateNode(0);
-        state0.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state1 = new StateNode(1);
-        state1.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state2 = new StateNode(2);
-        state2.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state3 = new StateNode(3);
-        state3.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state4 = new StateNode(4);
-        state4.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state5 = new StateNode(5);
-        state5.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state6 = new StateNode(6);
-        state6.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state7 = new StateNode(7);
-        state7.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state8 = new StateNode(8);
-        state8.AtomicPropositions.add(ModelCheckingAlphabet.B);
-        StateNode state9 = new StateNode(9);
-        state9.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state10 = new StateNode(10);
-        state10.AtomicPropositions.add(ModelCheckingAlphabet.A);
-
-        StateNode state11 = new StateNode(11);
-        state11.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state12 = new StateNode(12);
-        state12.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        StateNode state13 = new StateNode(13);
-        state13.AtomicPropositions.add(ModelCheckingAlphabet.A);
-        state13.AtomicPropositions.add(ModelCheckingAlphabet.B);
-        StateNode state14 = new StateNode(14);
-        state14.AtomicPropositions.add(ModelCheckingAlphabet.A);
-
-        StateNode state15 = new StateNode(15);
-        state15.AtomicPropositions.add(ModelCheckingAlphabet.A);
-
-        state0.Successors.add(state1);
-        state0.Successors.add(state15);
-
-        state1.Successors.add(state2);
-        state2.Successors.add(state3);
-        state3.Successors.add(state4);
-        state4.Successors.add(state5);
-        state5.Successors.add(state6);
-        state6.Successors.add(state2);
-
-        state4.Successors.add(state7);
-        state7.Successors.add(state8);
-        state8.Successors.add(state9);
-        state9.Successors.add(state10);
-        state10.Successors.add(state5);
-
-        state1.Successors.add(state11);
-        state11.Successors.add(state12);
-        state12.Successors.add(state13);
-        state13.Successors.add(state14);
-        state14.Successors.add(state14);
-        state15.Successors.add(state15);
-
-        return state0;
     }
 
 }

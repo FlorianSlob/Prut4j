@@ -40,7 +40,7 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
                 System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
             } catch (MaxDepthReachedException ex) {
                 System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
-            } catch (InterruptedException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(FosterChandySandboxActivity.class.getName()).log(Level.SEVERE, null, ex);
             }
         }).start();
@@ -52,7 +52,7 @@ public class FosterChandySandboxActivity implements ISandboxingActivity {
                 System.out.println("Protocol violated, test failed. Exception message: " + ex.getMessage());
             } catch (MaxDepthReachedException ex) {
                 System.out.println("Max depth reached, test succeeded. Exception message: " + ex.getMessage());
-            } catch (InterruptedException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(FosterChandySandboxActivity.class.getName()).log(Level.SEVERE, null, ex);
             }
         }).start();

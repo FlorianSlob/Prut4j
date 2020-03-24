@@ -8,7 +8,7 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
  */
 public class AtomicProposition {
 
-    public String content;
+    public final String content;
 
     public AtomicProposition(String content) {
         this.content = content;
@@ -16,5 +16,9 @@ public class AtomicProposition {
 
     public void Print() {
         LoggingHelper.logInfo(" " + content);
+    }
+
+    public String getDisplayValue() {
+        return content;
     }
 }

@@ -15,7 +15,7 @@ import nl.florianslob.model.checking.sandbox.modelchecking.OnTheFlyLtlTestFormul
 public class OnTheFlyLtlSandboxActivity implements ISandboxingActivity {
 
     @Override
-    public void runActivity() throws Exception {
+    public void runActivity() {
         LoggingHelper.logDebug("Starting OnTheFlyLtl Sandbox activity.");
 
         // We start with an empty set, that will contain all nodes

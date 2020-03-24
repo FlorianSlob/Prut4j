@@ -1,7 +1,6 @@
 package nl.florianslob.model.checking.sandbox.fosterchandy.interfaces;
 
 import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
-import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.ProtocolViolationException;
 
 /**
  *
@@ -13,7 +12,7 @@ public interface IChannel<T> {
 
     void setEnabled(Boolean isEnabled);
 
-    void checkMaxDepth() throws MaxDepthReachedException, ProtocolViolationException;
+    void checkMaxDepth() throws MaxDepthReachedException;
 
     void setMessageQueueObject(T o);
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
+import nl.florianslob.model.checking.sandbox.base.GraphNode;
 
 /**
  *
@@ -21,18 +22,19 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
  * --------------------------------------------------------------------
  *
  */
-public class LtlGraphNode {
+public class LtlGraphNode extends GraphNode {
 
     public LtlGraphNode fatherNode; // We only need this for proof of correctness.
-    public Set<LtlGraphNode> childNodes = new HashSet<>();
+    public final Set<LtlGraphNode> childNodes = new HashSet<>(); // TODO Make abstract?!
 
-    public String name;
+    public final String name;
     public Set<LtlGraphNode> incomingEdges = new HashSet<>();
     public Set<LtlFormula> newFormulas = new HashSet<>();
     public Set<LtlFormula> oldFormulas = new HashSet<>();
     public Set<LtlFormula> nextFormulas = new HashSet<>();
     public boolean isInitialState = false;
     private static int currentNodeId = 0;
+
 
     public LtlGraphNode(final String name) {
         this.name = name;
@@ -71,7 +73,7 @@ public class LtlGraphNode {
                 this.fatherNode.childNodes.add(node);
                 // #REF=line7 - Don't need to return the node set in Java.
             } else { // #REF=figure1:line8,9,10
-                final LtlGraphNode newNode = new LtlGraphNode("Node" + getNextNodeId());
+                final LtlGraphNode newNode = new LtlGraphNode("LtlNode" + getNextNodeId());
                 newNode.fatherNode = this;
                 newNode.incomingEdges.add(this);
                 newNode.newFormulas.addAll(this.nextFormulas);
@@ -109,7 +111,7 @@ public class LtlGraphNode {
 
                 // Splitting in to two new nodes
                 // Node1 ---------------------------
-                final LtlGraphNode newNode1 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line21
+                final LtlGraphNode newNode1 = new LtlGraphNode("LtlNode" + getNextNodeId()); // #REF=Line21
                 newNode1.fatherNode = this.fatherNode; // #REF=Line21
                 newNode1.incomingEdges = this.incomingEdges; // #REF=Line21
 
@@ -125,7 +127,7 @@ public class LtlGraphNode {
                 newNode1.nextFormulas.addAll(this.getNext1(temporalFormula)); // #REF=Line23
 
                 // Node2 ----------------------------
-                final LtlGraphNode newNode2 = new LtlGraphNode("Node" + getNextNodeId()); // #REF=Line24
+                final LtlGraphNode newNode2 = new LtlGraphNode("LtlNode" + getNextNodeId()); // #REF=Line24
                 newNode2.fatherNode = this.fatherNode; // #REF=Line24
                 newNode2.incomingEdges = this.incomingEdges; // #REF=Line24
 
@@ -286,4 +288,44 @@ public class LtlGraphNode {
         formula.printRecursive();
         LoggingHelper.logInfo(",");
     }
+
+    private String getDisplayValues(Set<LtlFormula> formulas) {
+        StringBuilder values = new StringBuilder();
+
+        for(LtlFormula formula : formulas){
+            values.append(formula.getDisplayValueRecursive()).append(", ");
+        }
+
+        return values.toString();
+    }
+
+    private boolean nodeVisitedBefore = false;
+
+    @Override
+    public String getPlantUmlNodesRecursively() {
+
+        // Add data fields
+        StringBuilder returnStringBuilder = new StringBuilder(this.name + "\n"); // finish current row.
+
+        if (!nodeVisitedBefore) {
+            returnStringBuilder.append(writeFormulas(this.name));
+            nodeVisitedBefore = true;
+
+            if (!this.childNodes.isEmpty()) {
+                for (LtlGraphNode childNode : this.childNodes) {
+                    returnStringBuilder.append(this.name).append(" --> ").append(childNode.getPlantUmlNodesRecursively());
+                }
+            }
+        }
+
+        return returnStringBuilder.toString();
+    }
+
+
+    public String writeFormulas(String name){
+        return name + " : Old "+this.getDisplayValues(this.oldFormulas)+" \n" +
+                name + " : Next "+this.getDisplayValues(this.nextFormulas)+" \n";
+    }
+
+
 }

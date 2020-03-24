@@ -8,5 +8,6 @@ public enum SandboxingActivityType {
     FosterChandy,
     OnTheFlyLtl,
     LtlVerification,
-    ModelChecker
+    ModelChecker,
+    GraphVisualization
 }

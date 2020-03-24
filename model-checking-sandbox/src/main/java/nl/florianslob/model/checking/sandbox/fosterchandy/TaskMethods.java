@@ -11,11 +11,12 @@ import nl.florianslob.model.checking.sandbox.fosterchandy.interfaces.IOutPort;
  */
 public class TaskMethods {
 
-    public static void taskA(IInPort<String> inPort, IOutPort<String> outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+    public static void taskA(IInPort<String> inPort, IOutPort<String> outPort) throws MaxDepthReachedException, ProtocolViolationException {
         System.out.println("sandbox.App.taskA() before initial send.");
         outPort.Send("This is sparta!");
         System.out.println("sandbox.App.taskA() after initial send");
 
+        //noinspection InfiniteLoopStatement We are creating an infinite program.
         while (true) {
             System.out.println("sandbox.App.taskA() before receive.");
             Object test = inPort.Receive();
@@ -27,7 +28,8 @@ public class TaskMethods {
         }
     }
 
-    public static void taskB(IInPort<String> inPort, IOutPort<String> outPort) throws InterruptedException, MaxDepthReachedException, ProtocolViolationException {
+    public static void taskB(IInPort<String> inPort, IOutPort<String> outPort) throws MaxDepthReachedException, ProtocolViolationException {
+        //noinspection InfiniteLoopStatement We are creating an infinite program.
         while (true) {
             System.out.println("sandbox.App.taskB() before receive.");
             Object test = inPort.Receive();

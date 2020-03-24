@@ -12,85 +12,85 @@ public class OnTheFlyLtlTestFormulas {
 
     public static LtlFormula getTestFormula(OnTheFlyLtlTestFormulaName formulaName) {
 
-        LtlFormula formulla = null;
+        LtlFormula formula = null;
 
         switch (formulaName) {
         case aOrB:
-            formulla = getTestFormula_aOrb();
+            formula = getTestFormula_aOrb();
             break;
         case Xb:
-            formulla = getTestFormula_Xb();
+            formula = getTestFormula_Xb();
             break;
         case Xa:
-            formulla = getTestFormula_Xa();
+            formula = getTestFormula_Xa();
             break;
         case aUb:
-            formulla = getTestFormula_aUb();
+            formula = getTestFormula_aUb();
             break;
         case aAndB:
-            formulla = getTestFormula_aAndb();
+            formula = getTestFormula_a_And_b();
             break;
         case bVa:
-            formulla = getTestFormula_bVa();
+            formula = getTestFormula_bVa();
             break;
         case a:
-            formulla = getTestFormulla_a();
+            formula = getTestFormula_a();
             break;
         case b:
-            formulla = getTestFormula_b();
+            formula = getTestFormula_b();
             break;
         case XXXXaAndB:
-            formulla = getTestFormula_XXXXaAndB();
+            formula = getTestFormula_XXXXaAndB();
         }
 
-        return formulla;
+        return formula;
     }
 
     public static LtlFormula getTestFormula_aUb() {
-        LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
-        formulla.operator = TemporalOperator.U;
-        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
-        return formulla;
+        LtlFormula formula = new LtlFormula("RootFormula");
+        formula.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
+        formula.operator = TemporalOperator.U;
+        formula.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
+        return formula;
     }
 
     public static LtlFormula getTestFormula_bVa() {
-        LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.B);
-        formulla.operator = TemporalOperator.V;
-        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.A);
-        return formulla;
+        LtlFormula formula = new LtlFormula("RootFormula");
+        formula.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.B);
+        formula.operator = TemporalOperator.V;
+        formula.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.A);
+        return formula;
     }
 
     public static LtlFormula getTestFormula_aOrb() {
-        LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
-        formulla.operator = TemporalOperator.Or;
-        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
-        return formulla;
+        LtlFormula formula = new LtlFormula("RootFormula");
+        formula.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
+        formula.operator = TemporalOperator.Or;
+        formula.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
+        return formula;
     }
 
-    public static LtlFormula getTestFormula_aAndb() {
-        LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
-        formulla.operator = TemporalOperator.And;
-        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
-        return formulla;
+    public static LtlFormula getTestFormula_a_And_b() {
+        LtlFormula formula = new LtlFormula("RootFormula");
+        formula.leftOperandFormula = new LtlFormula("LeftProperty", ModelCheckingAlphabet.A);
+        formula.operator = TemporalOperator.And;
+        formula.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
+        return formula;
     }
 
     public static LtlFormula getTestFormula_Xa() {
-        LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.operator = TemporalOperator.X;
-        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.A);
-        return formulla;
+        LtlFormula formula = new LtlFormula("RootFormula");
+        formula.operator = TemporalOperator.X;
+        formula.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.A);
+        return formula;
     }
 
     public static LtlFormula getTestFormula_XXXXaAndB() {
-        LtlFormula aAndb = getTestFormula_aAndb();
+        LtlFormula a_and_b = getTestFormula_a_And_b();
 
         LtlFormula next3 = new LtlFormula("next3");
         next3.operator = TemporalOperator.X;
-        next3.rightOperandFormula = aAndb;
+        next3.rightOperandFormula = a_and_b;
 
         LtlFormula next2 = new LtlFormula("next2");
         next2.operator = TemporalOperator.X;
@@ -100,7 +100,7 @@ public class OnTheFlyLtlTestFormulas {
         next1.operator = TemporalOperator.X;
         next1.rightOperandFormula = next2;
 
-        LtlFormula root = new LtlFormula("RootFormulla");
+        LtlFormula root = new LtlFormula("RootFormula");
         root.operator = TemporalOperator.X;
         root.rightOperandFormula = next1;
 
@@ -108,19 +108,17 @@ public class OnTheFlyLtlTestFormulas {
     }
 
     public static LtlFormula getTestFormula_Xb() {
-        LtlFormula formulla = new LtlFormula("RootFormulla");
-        formulla.operator = TemporalOperator.X;
-        formulla.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
-        return formulla;
+        LtlFormula formula = new LtlFormula("RootFormula");
+        formula.operator = TemporalOperator.X;
+        formula.rightOperandFormula = new LtlFormula("RightProperty", ModelCheckingAlphabet.B);
+        return formula;
     }
 
-    public static LtlFormula getTestFormulla_a() {
-        LtlFormula formulla = new LtlFormula("RootFormulla", ModelCheckingAlphabet.A);
-        return formulla;
+    public static LtlFormula getTestFormula_a() {
+        return new LtlFormula("RootFormula", ModelCheckingAlphabet.A);
     }
 
     public static LtlFormula getTestFormula_b() {
-        LtlFormula formulla = new LtlFormula("RootFormulla", ModelCheckingAlphabet.B);
-        return formulla;
+        return new LtlFormula("RootFormula", ModelCheckingAlphabet.B);
     }
 }

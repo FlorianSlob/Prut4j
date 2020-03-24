@@ -8,13 +8,15 @@ import nl.florianslob.model.checking.sandbox.LoggingHelper;
  */
 public class LtlFormula {
 
-    public String name;
+    public final String name;
     public AtomicProposition atomicProposition;
     public LtlFormula leftOperandFormula;
     public TemporalOperator operator;
     public LtlFormula rightOperandFormula;
     public boolean isNegation;
     public Boolean truthValue = null;
+    // needed for parsing.
+    public LtlFormula parent;
 
     public LtlFormula(LtlFormula original) {
         // copy the object
@@ -68,5 +70,26 @@ public class LtlFormula {
             rightOperandFormula.printRecursive();
         }
 
+    }
+
+    public String getDisplayValueRecursive() {
+        String value = "";
+        if (atomicProposition != null) {
+            return atomicProposition.getDisplayValue();
+        }
+
+        if (leftOperandFormula != null) {
+            value += leftOperandFormula.getDisplayValueRecursive();
+        }
+
+        if (operator != null) {
+            value += operator;
+        }
+
+        if (rightOperandFormula != null) {
+            value += rightOperandFormula.getDisplayValueRecursive();
+        }
+
+        return value;
     }
 }
