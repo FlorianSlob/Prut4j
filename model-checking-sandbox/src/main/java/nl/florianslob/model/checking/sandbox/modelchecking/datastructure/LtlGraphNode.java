@@ -34,6 +34,7 @@ public class LtlGraphNode extends GraphNode {
     public Set<LtlFormula> nextFormulas = new HashSet<>();
     public boolean isInitialState = false;
     private static int currentNodeId = 0;
+    public boolean isAcceptingState = false;
 
 
     public LtlGraphNode(final String name) {
@@ -79,6 +80,10 @@ public class LtlGraphNode extends GraphNode {
                 newNode.newFormulas.addAll(this.nextFormulas);
                 this.fatherNode.childNodes.add(this);
 
+                // Expansion of this state is finished.
+                // This is the moment where we determine if the state is accepting.
+                this.setAcceptingStateValue();
+                // Add the state to the final set to detect duplicates.
                 graphNodeSet.add(this);
 
                 newNode.expand(graphNodeSet);
@@ -305,7 +310,7 @@ public class LtlGraphNode extends GraphNode {
     public String getPlantUmlNodesRecursively() {
 
         // Add data fields
-        StringBuilder returnStringBuilder = new StringBuilder(this.name + "\n"); // finish current row.
+        StringBuilder returnStringBuilder = new StringBuilder(this.name + this.getAcceptingPlantUmlPart()+" \n"); // finish current row.
 
         if (!nodeVisitedBefore) {
             returnStringBuilder.append(writeFormulas(this.name));
@@ -324,7 +329,38 @@ public class LtlGraphNode extends GraphNode {
 
     public String writeFormulas(String name){
         return name + " : Old "+this.getDisplayValues(this.oldFormulas)+" \n" +
-                name + " : Next "+this.getDisplayValues(this.nextFormulas)+" \n";
+               name + " : Next "+this.getDisplayValues(this.nextFormulas)+" \n";
+    }
+
+    public void setAcceptingStateValue(){
+        if(this.isAccepting(this.oldFormulas)){
+            this.isAcceptingState = true;
+        }else {
+            this.isAcceptingState = false;
+
+        }
+    }
+
+
+    private boolean isAccepting(Set<LtlFormula> formulas) {
+
+        for(LtlFormula formula : formulas){
+            if(formula.operator == TemporalOperator.U){
+                if(!formulas.contains(formula.rightOperandFormula)){
+                    return false; // This does not need to be true.
+                }
+            }
+        }
+
+        // There are no cases as described by xx.
+        return true;
+    }
+
+    public String getAcceptingPlantUmlPart() {
+        if(this.isAcceptingState){
+            return "<<accepting>>";
+        }
+        return "";
     }
 
 

@@ -39,7 +39,7 @@ public class TraceNode extends GraphNode {
     @Override
     public String getPlantUmlNodesRecursively() {
         // Add data fields
-        String returnString = this.getName() + "\n"; // finish current row.
+        String returnString = this.getName() + this.ltlGraphNode.getAcceptingPlantUmlPart()+"\n"; // finish current row.
 
         if (!nodeVisitedBefore) {
 

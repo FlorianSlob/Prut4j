@@ -13,6 +13,7 @@ public class StateNode extends GraphNode {
 
 
     private boolean nodeVisitedBefore = false;
+    private boolean MarkedAsVisitedPass2 = false;
 
     public String getName(){
         return ""+this.HashingNumber;
@@ -54,34 +55,48 @@ public class StateNode extends GraphNode {
 
     public final Set<LtlGraphNode> VisitedByLtlNodes = new HashSet<>();
 
-    public boolean checkDepthFirst(final Set<LtlGraphNode> ltlGraphNodes, TraceInformation traceInformation) {
+    // 0 = false, 1 = true, 2 = true but not accepting.
+    public int checkDepthFirst(final Set<LtlGraphNode> ltlGraphNodes, TraceInformation traceInformation) {
 
         for (final LtlGraphNode ltlNode : ltlGraphNodes) {
             if (doesLtlNodeHoldInThisState(ltlNode)) {
-                if (this.MarkedAsVisitedPass1 && this.VisitedByLtlNodes.contains(ltlNode)) {
+
+                if(this.MarkedAsVisitedPass2 && this.VisitedByLtlNodes.contains(ltlNode)){
                     traceInformation.reportNodeAsReturningTrue(this, ltlNode);
-                    return true; // Cycle detected! Formula does hold! !!
+                    return 1;
+                }
+
+                if(ltlNode.isAcceptingState){
+                    this.MarkedAsVisitedPass2 = true;
+                }
+
+                if (this.MarkedAsVisitedPass1 && this.VisitedByLtlNodes.contains(ltlNode)) {
+//                    traceInformation.reportNodeAsReturningTrue(this, ltlNode);
+                    return 2; // Cycle detected! Formula does hold! !! --> No only if it was accepting, And it is not.
                     // Not a real cycle!!! It's a product, LTL nodes can
                 }
 
                 this.MarkedAsVisitedPass1 = true;
+
                 this.VisitedByLtlNodes.add(ltlNode); // Detect repetitions
 
-                if (ltlNode.nextFormulas.isEmpty()) {
+                if (ltlNode.nextFormulas.isEmpty()) { // TODO check for child nodes? Let it take the transition to itself?
                     // No cycle detected,
                     // but the formulas hold in this state
                     // and there are no formulas that have to hold in next states.
-                    traceInformation.reportNodeAsReturningTrue(this, ltlNode);
-                    return true;
-                }
-
-                final Set<LtlGraphNode> ltlChildNodes = ltlNode.childNodes;
-
-                // TODO Do we need this? For debugging only?
-                for (final StateNode childNode : this.Successors) {
-                    if (childNode.checkDepthFirst(ltlChildNodes,traceInformation)) {
+                    if(ltlNode.isAcceptingState) {
                         traceInformation.reportNodeAsReturningTrue(this, ltlNode);
-                        return true;
+                        return 1;
+                    }
+                }else {
+                    final Set<LtlGraphNode> ltlChildNodes = ltlNode.childNodes;
+
+                    for (final StateNode childNode : this.Successors) {
+                        int childResult = childNode.checkDepthFirst(ltlChildNodes, traceInformation);
+                        if (childResult > 0) { // TODO remove hard-coded thingy
+                            traceInformation.reportNodeAsReturningTrue(this, ltlNode);
+                            return childResult;
+                        }
                     }
                 }
             }
@@ -90,7 +105,7 @@ public class StateNode extends GraphNode {
         // no ltlStateNode does hold in the current state AND
         // no Cycles are detected in successor states AND
         // no final states have been found.
-        return false;
+        return 0;
     }
 
     public boolean doesLtlNodeHoldInThisState(final LtlGraphNode ltlNode) {
