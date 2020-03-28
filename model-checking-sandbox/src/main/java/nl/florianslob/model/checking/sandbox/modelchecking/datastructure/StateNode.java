@@ -14,6 +14,10 @@ public class StateNode extends GraphNode {
 
     private boolean nodeVisitedBefore = false;
     private boolean MarkedAsVisitedPass2 = false;
+    public final Set<AtomicProposition> AtomicPropositions = new HashSet<>();
+    public boolean MarkedAsVisitedPass1 = false;
+    public final int HashingNumber;
+    public final Set<StateNode> Successors = new HashSet<>();
 
     public String getName(){
         return ""+this.HashingNumber;
@@ -42,13 +46,6 @@ public class StateNode extends GraphNode {
         return AtomicPropositions.stream().map(ap -> ap.content).collect(Collectors.joining(", "));
     }
 
-    public final Set<AtomicProposition> AtomicPropositions = new HashSet<>();
-    public boolean MarkedAsVisitedPass1 = false;
-//    public boolean MarkedAsVisitedPass2 = false; // TODO Implement second pass.
-    public final int HashingNumber;
-    public final Set<StateNode> Successors = new HashSet<>();
-
-
     public StateNode(final int HashingNumber) {
         this.HashingNumber = HashingNumber;
     }
@@ -70,8 +67,7 @@ public class StateNode extends GraphNode {
                 }
 
                 if (this.MarkedAsVisitedPass1 && this.VisitedByLtlNodes.contains(ltlNode)) {
-//                    traceInformation.reportNodeAsReturningTrue(this, ltlNode);
-                    //return false; // Cycle detected! Formula does hold! !! --> No only if it was accepting, And it is not.
+                    //return false; // Cycle detected! Formula does hold! !! --> No! only if it was accepting, And it is not.
                     // Not a real cycle!!! It's a product, LTL nodes can
                     // Do nothing, ignore this.
                 }else {

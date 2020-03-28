@@ -32,9 +32,7 @@ public class TraceNode extends GraphNode {
 
     public String getLtlStateName(){
         return this.ltlGraphNode.name;
-
     }
-
 
     @Override
     public String getPlantUmlNodesRecursively() {
