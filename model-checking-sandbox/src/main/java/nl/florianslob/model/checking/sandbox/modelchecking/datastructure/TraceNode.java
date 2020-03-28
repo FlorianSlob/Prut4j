@@ -32,14 +32,12 @@ public class TraceNode extends GraphNode {
 
     public String getLtlStateName(){
         return this.ltlGraphNode.name;
-
     }
-
 
     @Override
     public String getPlantUmlNodesRecursively() {
         // Add data fields
-        String returnString = this.getName() + "\n"; // finish current row.
+        String returnString = this.getName() + this.ltlGraphNode.getAcceptingPlantUmlPart()+"\n"; // finish current row.
 
         if (!nodeVisitedBefore) {
 

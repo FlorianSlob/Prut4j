@@ -13,6 +13,11 @@ public class StateNode extends GraphNode {
 
 
     private boolean nodeVisitedBefore = false;
+    private boolean MarkedAsVisitedPass2 = false;
+    public final Set<AtomicProposition> AtomicPropositions = new HashSet<>();
+    public boolean MarkedAsVisitedPass1 = false;
+    public final int HashingNumber;
+    public final Set<StateNode> Successors = new HashSet<>();
 
     public String getName(){
         return ""+this.HashingNumber;
@@ -41,13 +46,6 @@ public class StateNode extends GraphNode {
         return AtomicPropositions.stream().map(ap -> ap.content).collect(Collectors.joining(", "));
     }
 
-    public final Set<AtomicProposition> AtomicPropositions = new HashSet<>();
-    public boolean MarkedAsVisitedPass1 = false;
-//    public boolean MarkedAsVisitedPass2 = false; // TODO Implement second pass.
-    public final int HashingNumber;
-    public final Set<StateNode> Successors = new HashSet<>();
-
-
     public StateNode(final int HashingNumber) {
         this.HashingNumber = HashingNumber;
     }
@@ -58,30 +56,43 @@ public class StateNode extends GraphNode {
 
         for (final LtlGraphNode ltlNode : ltlGraphNodes) {
             if (doesLtlNodeHoldInThisState(ltlNode)) {
-                if (this.MarkedAsVisitedPass1 && this.VisitedByLtlNodes.contains(ltlNode)) {
-                    traceInformation.reportNodeAsReturningTrue(this, ltlNode);
-                    return true; // Cycle detected! Formula does hold! !!
-                    // Not a real cycle!!! It's a product, LTL nodes can
-                }
 
-                this.MarkedAsVisitedPass1 = true;
-                this.VisitedByLtlNodes.add(ltlNode); // Detect repetitions
-
-                if (ltlNode.nextFormulas.isEmpty()) {
-                    // No cycle detected,
-                    // but the formulas hold in this state
-                    // and there are no formulas that have to hold in next states.
+                if(this.MarkedAsVisitedPass2 && this.VisitedByLtlNodes.contains(ltlNode)){
                     traceInformation.reportNodeAsReturningTrue(this, ltlNode);
                     return true;
                 }
 
-                final Set<LtlGraphNode> ltlChildNodes = ltlNode.childNodes;
+                if(ltlNode.isAcceptingState){
+                    this.MarkedAsVisitedPass2 = true;
+                }
 
-                // TODO Do we need this? For debugging only?
-                for (final StateNode childNode : this.Successors) {
-                    if (childNode.checkDepthFirst(ltlChildNodes,traceInformation)) {
-                        traceInformation.reportNodeAsReturningTrue(this, ltlNode);
-                        return true;
+                if (this.MarkedAsVisitedPass1 && this.VisitedByLtlNodes.contains(ltlNode)) {
+                    //return false; // Cycle detected! Formula does hold! !! --> No! only if it was accepting, And it is not.
+                    // Not a real cycle!!! It's a product, LTL nodes can
+                    // Do nothing, ignore this.
+                }else {
+
+                    this.MarkedAsVisitedPass1 = true;
+
+                    this.VisitedByLtlNodes.add(ltlNode); // Detect repetitions
+
+                    if (ltlNode.nextFormulas.isEmpty()) { // TODO check for child nodes? Let it take the transition to itself?
+                        // No cycle detected,
+                        // but the formulas hold in this state
+                        // and there are no formulas that have to hold in next states.
+                        if (ltlNode.isAcceptingState) {
+                            traceInformation.reportNodeAsReturningTrue(this, ltlNode);
+                            return true;
+                        }
+                    } else {
+                        final Set<LtlGraphNode> ltlChildNodes = ltlNode.childNodes;
+
+                        for (final StateNode childNode : this.Successors) {
+                            if (childNode.checkDepthFirst(ltlChildNodes, traceInformation)) { // TODO remove hard-coded thingy
+                                traceInformation.reportNodeAsReturningTrue(this, ltlNode);
+                                return true;
+                            }
+                        }
                     }
                 }
             }

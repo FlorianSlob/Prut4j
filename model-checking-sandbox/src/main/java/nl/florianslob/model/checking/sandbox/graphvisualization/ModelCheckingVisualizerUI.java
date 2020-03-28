@@ -87,6 +87,7 @@ public class ModelCheckingVisualizerUI {
                 String testLtlFormula = "XXX(a^b)";
                 //    !XXX((a^!b)Ub) -- Test for big model
                 //    X XXX(a^b) -- Test for working counter example
+                //    aU(bU(cUj))
 
                 if (!ltlFormulaText.isEmpty()) {
                     testLtlFormula = ltlFormulaText;
@@ -97,7 +98,7 @@ public class ModelCheckingVisualizerUI {
                 // Create graphs
                 LtlGraphNode ltlRootNode = ModelCheckingActivity.generateLtlAutomatonAndReturnInitialState(ltlFormula);
 
-                StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.MODEL_FROM_DEFINITION2);
+                StateNode programRootNode = ModelCheckingDemoData.getStartingNode(ModelCheckingDemoData.MODEL_FROM_DEFINITION3);
                 GraphNode traceGraphRootNode = null; // This is where the magic happens!
 
                 TraceInformation traceInformation = new TraceInformation();
@@ -133,21 +134,25 @@ public class ModelCheckingVisualizerUI {
 
         Button showFormulaGraph = new Button("Show formula graph");
         Button showProgramGraph = new Button("Show program graph");
-        Button showProductGraph = new Button("Show product graph");
+        Button showTraceGraph = new Button("Show trace graph");
 
         controlPanel.add(showFormulaGraph);
         controlPanel.add(showProgramGraph);
-        controlPanel.add(showProductGraph);
+        controlPanel.add(showTraceGraph);
 
         showFormulaGraph.addActionListener(showFormulaGraphEvent -> showInFrame(formulaSvgFileName));
         showProgramGraph.addActionListener(showProgramGraphEvent -> showInFrame(programSvgFileName));
-        showProductGraph.addActionListener(showProductGraphEvent -> showInFrame(traceSvgFileName));
+        showTraceGraph.addActionListener(showTraceGraphEvent -> showInFrame(traceSvgFileName));
 
         mainFrame.setVisible(true);
     }
 
     @SuppressWarnings("SpellCheckingInspection")
-    private static final String PlantUmlFileHeader = "@startuml\n header\n\n\n endheader\n"; // Add some new lines to prevent hiding behind window bar.
+    private static final String PlantUmlFileHeader = "@startuml\n header\n\n\n endheader\n \n" +
+        "skinparam state{\n" +
+        "\tbackgroundColor<<accepting>> Lime\n" +
+        "}\n\n"; // Add some new lines to prevent hiding behind window bar and add styling rule for accepting states.
+
 
     @SuppressWarnings("SpellCheckingInspection")
     private static final String PlantUmlFileFooter = "@enduml\n";

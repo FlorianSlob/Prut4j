@@ -12,6 +12,7 @@ public class ModelCheckingDemoData {
     public static final int EMPTY_MODEL = 1;
     public static final int MODEL_FROM_DEFINITION1 = 2;
     public static final int MODEL_FROM_DEFINITION2 = 3;
+    public static final int MODEL_FROM_DEFINITION3 = 4;
 
 
     public static StateNode getStartingNode(int modelNumber) {
@@ -64,6 +65,42 @@ public class ModelCheckingDemoData {
                 "REL=15->15\n" +
                 "THE_END";
 
+            String programDefinition3 = "NODE=0|AP=a\n" +
+                "NODE=1|AP=b,a\n" +
+                "NODE=2|AP=a\n" +
+                "NODE=3|AP=a\n" +
+                "NODE=4|AP=a\n" +
+                "NODE=5|AP=a\n" +
+                "NODE=6|AP=a\n" +
+                "NODE=7|AP=a\n" +
+                "NODE=8|AP=a\n" +
+                "NODE=9|AP=a\n" +
+                "NODE=10|AP=a\n" +
+                "NODE=11|AP=a\n" +
+                "NODE=12|AP=a\n" +
+                "NODE=13|AP=a\n" +
+                "NODE=14|AP=a\n" +
+                "NODE=15|AP=j\n" +
+                "REL=0->1\n" +
+                "REL=1->2\n" +
+                "REL=2->3\n" +
+                "REL=3->4\n" +
+                "REL=4->5\n" +
+                "REL=5->6\n" +
+                "REL=6->2\n" +
+                "REL=4->7\n" +
+                "REL=7->8\n" +
+                "REL=8->9\n" +
+                "REL=9->10\n" +
+                "REL=10->5\n" +
+                "REL=1->11\n" +
+                "REL=11->12\n" +
+                "REL=12->13\n" +
+                "REL=13->14\n" +
+                "REL=14->15\n" +
+                "REL=15->15\n" +
+                "THE_END";
+
             switch (modelNumber) {
                 case SIMPLE_MODEL:
                     return generateSimpleModelAndReturnInitialState();
@@ -73,6 +110,8 @@ public class ModelCheckingDemoData {
                     return ProgramParser.Parse(programDefinition1);
                 case MODEL_FROM_DEFINITION2:
                     return ProgramParser.Parse(programDefinition2);
+                case MODEL_FROM_DEFINITION3:
+                    return ProgramParser.Parse(programDefinition3);
                 default:
                     throw new Exception("Unknown definition");
             }
