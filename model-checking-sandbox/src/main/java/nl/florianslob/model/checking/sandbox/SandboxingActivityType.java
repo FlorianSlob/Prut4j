@@ -9,5 +9,6 @@ public enum SandboxingActivityType {
     OnTheFlyLtl,
     LtlVerification,
     ModelChecker,
-    GraphVisualization
+    GraphVisualization,
+    ChessProtocol
 }
