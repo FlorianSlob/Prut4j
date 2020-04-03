@@ -40,7 +40,6 @@ public class SomeNonDeterministicGame {
                 if (board.isFinal()) break;
             }
 
-
             Move mWhite = new Move();
             board.update(mWhite);
             board.print();

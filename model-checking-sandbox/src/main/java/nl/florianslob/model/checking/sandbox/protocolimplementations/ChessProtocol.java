@@ -61,7 +61,6 @@ public class ChessProtocol implements IProtocol {
                 public Optional exchange(Optional box) throws Exception{
                     synchronized (monitor) {
                         while ( true) {
-                            // TODO Create for black!
                             switch (state) {
                                 case 0: monitor.wait();
                                     break;

@@ -25,13 +25,11 @@ public class Chess {
         Board board = new Board("White");
         while(!board.isFinal()){
             if(!board.isInitial()){
-
                 Move mBlack = (Move) environment.receive();
                 board.update(mBlack);
                 board.print();
                 if (board.isFinal()) break;
             }
-
 
             Move mWhite = new Move();
             board.update(mWhite);

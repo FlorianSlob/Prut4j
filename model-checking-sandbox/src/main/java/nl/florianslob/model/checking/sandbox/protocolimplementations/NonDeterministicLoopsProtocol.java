@@ -1,6 +1,7 @@
 package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -17,8 +18,6 @@ public class NonDeterministicLoopsProtocol implements IProtocol {
     public IEnvironment getEnvironment(String environmentName) throws Exception{
         switch (environmentName) {
             case "Root": return new IEnvironment(){
-
-
                 @Override
                 public String getName() {
                     return environmentName;
@@ -147,13 +146,12 @@ public class NonDeterministicLoopsProtocol implements IProtocol {
     }
 
     private boolean nextRandomBoolean() {
-        return false;
-//        return new Random().nextBoolean();
+        return new Random().nextBoolean();
     }
 
     @Override
     public String[] threadNames() {
-        return new String[] { "W", "B" };
+        return new String[] { "Root", "Left", "Right" };
     }
 
     @Override
