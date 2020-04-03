@@ -7,7 +7,10 @@ public class ProtocolImplementationsSandboxActivity implements ISandboxingActivi
     public void runActivity() throws Exception {
         System.out.println("Starting protocol implementation sandboxing activity");
 
-        Chess.play(true);
-        //SomeNonDeterministicGame.play();
+//        Chess.play(true);
+//        SomeNonDeterministicGame.play(true);
+
+        ChessWithGenericParticipant.play(true);
+
     }
 }

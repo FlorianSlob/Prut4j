@@ -1,14 +1,25 @@
 package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
+import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
+
 public class SomeNonDeterministicGame {
-    public static void play() {
-        IProtocol protocol = new NonDeterministicLoopsProtocol();
+    public static void play(boolean visualizeProtocolGraph) {
+        PlantUmlProtocolWatcher plantUmlProtocolWatcher = new PlantUmlProtocolWatcher();
+        IProtocol protocol;
+        if (visualizeProtocolGraph) {
+            protocol = new NonDeterministicLoopsProtocolWithVisualization(plantUmlProtocolWatcher);
+        } else {
+            protocol = new NonDeterministicLoopsProtocol();
+        }
 
         new Thread(() -> {
             try {
                 runRoot(protocol.getEnvironment("Root"));
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
             }
         }).start();
 
@@ -18,6 +29,9 @@ public class SomeNonDeterministicGame {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
+            }
         }).start();
 
         new Thread(() -> {
@@ -25,6 +39,9 @@ public class SomeNonDeterministicGame {
                 runLeftOrRight(protocol.getEnvironment("Right"));
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
             }
         }).start();
     }

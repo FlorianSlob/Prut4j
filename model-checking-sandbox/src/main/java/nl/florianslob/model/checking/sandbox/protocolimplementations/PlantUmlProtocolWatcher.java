@@ -3,6 +3,8 @@ package nl.florianslob.model.checking.sandbox.protocolimplementations;
 import java.util.HashSet;
 import java.util.Set;
 
+import static nl.florianslob.model.checking.sandbox.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
+
 public class PlantUmlProtocolWatcher implements IProtocolWatcher {
 
     // fields for visualizing the graph
@@ -58,5 +60,17 @@ public class PlantUmlProtocolWatcher implements IProtocolWatcher {
             "[*] -> State0 \n" +
             plantUmlCode.toString() +
             "@enduml \n\n";
+    }
+
+    public void savePlantUmlGraphToSvg() {
+        System.out.println("Are threads done?");
+        String plantUmlGraph = getPlantUmlGraph();
+        System.out.print(plantUmlGraph);
+
+        try {
+            saveSvgStringToFile(plantUmlGraph, "chessProtocol.svg");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

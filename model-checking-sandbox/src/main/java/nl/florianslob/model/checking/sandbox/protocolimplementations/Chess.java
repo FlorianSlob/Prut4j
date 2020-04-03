@@ -1,9 +1,5 @@
 package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
-import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
-
-import static nl.florianslob.model.checking.sandbox.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
-
 public class Chess {
 
     public static void play(boolean visualizeProtocolGraph) {
@@ -18,41 +14,28 @@ public class Chess {
         new Thread(() -> {
             try {
                 runWhite(protocol.getEnvironment("W"));
-            } catch (MaxDepthReachedException e) {
-                if (visualizeProtocolGraph) {
-                    VisualizeProtocolGraph(plantUmlProtocolWatcher);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
             }
         }).start();
 
         new Thread(() -> {
             try {
                 runBlack(protocol.getEnvironment("B"));
-            } catch (MaxDepthReachedException e) {
-                if (visualizeProtocolGraph) {
-                    VisualizeProtocolGraph(plantUmlProtocolWatcher);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
             }
         }).start();
 
     }
 
-    public static void VisualizeProtocolGraph(PlantUmlProtocolWatcher plantUmlProtocolWatcher) {
-        System.out.println("Are threads done?");
-        String plantUmlGraph = plantUmlProtocolWatcher.getPlantUmlGraph();
-        System.out.print(plantUmlGraph);
 
-        try {
-            saveSvgStringToFile(plantUmlGraph, "chessProtocol.svg");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public static void runWhite(IEnvironment environment) throws Exception {
         Board board = new Board("White");
@@ -61,8 +44,7 @@ public class Chess {
                 Move mBlack = (Move) environment.receive();
                 board.update(mBlack);
                 board.print();
-                if (board.isFinal()) throw new MaxDepthReachedException("Max depth reached");
-//                if (board.isFinal()) break;
+                if (board.isFinal()) break;
             }
 
             Move mWhite = new Move();
@@ -78,8 +60,7 @@ public class Chess {
 
             Move mWhite = (Move) environment.receive();
             board.update(mWhite);
-            if (board.isFinal()) throw new MaxDepthReachedException("Max depth reached");
-//            if (board.isFinal()) break;
+            if (board.isFinal()) break;
 
             board.print();
             Move mBlack = new Move();

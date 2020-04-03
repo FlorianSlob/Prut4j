@@ -12,7 +12,7 @@ public class Board {
     private int moves = 0;
 
     public boolean isFinal() {
-        if(moves> 10){
+        if(moves > 10){
             return true;
         }
         return false;
