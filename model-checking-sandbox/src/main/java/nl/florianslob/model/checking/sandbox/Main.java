@@ -1,5 +1,6 @@
 package nl.florianslob.model.checking.sandbox;
 
+import nl.florianslob.model.checking.sandbox.protocolimplementations.ProtocolImplementationsSandboxActivity;
 import nl.florianslob.model.checking.sandbox.fosterchandy.FosterChandySandboxActivity;
 import nl.florianslob.model.checking.sandbox.graphvisualization.GraphVisualizationSandboxingActivity;
 import nl.florianslob.model.checking.sandbox.ltlverification.LtlVerificationActivity;
@@ -13,7 +14,7 @@ import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.GraphVisualization;
+        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ChessProtocol;
 
         if(args != null && args.length > 0){
             try{
@@ -39,6 +40,8 @@ public class Main {
                 return new ModelCheckingActivity();
             case GraphVisualization:
                 return new GraphVisualizationSandboxingActivity();
+            case ChessProtocol:
+                return new ProtocolImplementationsSandboxActivity();
             default:
                 throw new UnsupportedOperationException();
         }
