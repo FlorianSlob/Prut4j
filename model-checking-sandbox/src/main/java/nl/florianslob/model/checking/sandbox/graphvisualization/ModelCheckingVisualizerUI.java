@@ -2,11 +2,9 @@ package nl.florianslob.model.checking.sandbox.graphvisualization;
 
 import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGUniverse;
-import net.sourceforge.plantuml.FileFormat;
-import net.sourceforge.plantuml.FileFormatOption;
-import net.sourceforge.plantuml.SourceStringReader;
 import nl.florianslob.model.checking.sandbox.LoggingHelper;
 import nl.florianslob.model.checking.sandbox.base.GraphNode;
+import nl.florianslob.model.checking.sandbox.helpers.GraphVisualizationHelpers;
 import nl.florianslob.model.checking.sandbox.modelchecking.*;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlFormula;
 import nl.florianslob.model.checking.sandbox.modelchecking.datastructure.LtlGraphNode;
@@ -18,17 +16,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Set;
+
+import static nl.florianslob.model.checking.sandbox.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
 
 public class ModelCheckingVisualizerUI {
 
     private final Frame mainFrame;
 
-    private static final String rootFolderForSvgFiles = "generated_graph_svg_files";
     private static final String formulaSvgFileName = "formula.svg";
     private static final String programSvgFileName = "program.svg";
     private static final String traceSvgFileName = "trace.svg";
@@ -191,20 +188,13 @@ public class ModelCheckingVisualizerUI {
         saveSvgStringToFile(getPlantUmlRepresentation(rootNode, rootNodes), fileName);
     }
 
-    public void saveSvgStringToFile(String fileContent, String fileName) throws Exception {
-        SourceStringReader reader = new SourceStringReader(fileContent);
-        final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles + "/" + fileName);
-        reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));
-        svgFileOutputStream.close();
-    }
-
     public void showInFrame(String filename) {
         try {
 
             mainFrame.setVisible(false);
             SVGUniverse universe = new SVGUniverse();
             String executionPath = System.getProperty("user.dir");
-            SVGDiagram d = universe.getDiagram(new URL("file:///" + executionPath + "/" + rootFolderForSvgFiles + "/" + filename).toURI(), true);
+            SVGDiagram d = universe.getDiagram(new URL("file:///" + executionPath + "/" + GraphVisualizationHelpers.rootFolderForSvgFiles + "/" + filename).toURI(), true);
             d.setIgnoringClipHeuristic(true);
             graphFrame = new GraphDrawer("Graph visualisation", d);
             graphFrame.setVisible(true);
