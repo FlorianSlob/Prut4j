@@ -32,15 +32,12 @@ public class Chess {
                 plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
             }
         }).start();
-
     }
-
-
 
     public static void runWhite(IEnvironment environment) throws Exception {
         Board board = new Board("White");
         while (!board.isFinal()) {
-            if (!board.isInitial()) {
+            if (board.isNotInitial()) {
                 Move mBlack = (Move) environment.receive();
                 board.update(mBlack);
                 board.print();
@@ -68,6 +65,5 @@ public class Chess {
             board.print();
             environment.send(mBlack);
         }
-
     }
 }

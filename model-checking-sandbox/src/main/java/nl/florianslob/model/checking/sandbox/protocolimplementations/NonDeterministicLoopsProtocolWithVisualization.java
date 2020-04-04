@@ -1,7 +1,5 @@
 package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
-import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
-
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
@@ -13,13 +11,13 @@ public class NonDeterministicLoopsProtocolWithVisualization implements IProtocol
     private static final String MOVE_MESSAGE_TYPE = "Move";
 
     private volatile int state = 0;
-    public Object monitor = this; // Why do we need this?
-    private BlockingQueue queueRootToLeft = new LinkedBlockingQueue();
-    private BlockingQueue queueLeftToRoot = new LinkedBlockingQueue();
-    private BlockingQueue queueRootToRight = new LinkedBlockingQueue();
-    private BlockingQueue queueRightToRoot = new LinkedBlockingQueue();
-    private boolean verboseDebug = false;
-    private IProtocolWatcher _protocolWatcher;
+    public final Object monitor = this; // Why do we need this?
+    private final BlockingQueue queueRootToLeft = new LinkedBlockingQueue();
+    private final BlockingQueue queueLeftToRoot = new LinkedBlockingQueue();
+    private final BlockingQueue queueRootToRight = new LinkedBlockingQueue();
+    private final BlockingQueue queueRightToRoot = new LinkedBlockingQueue();
+    private final boolean verboseDebug = false;
+    private final IProtocolWatcher _protocolWatcher;
 
     public NonDeterministicLoopsProtocolWithVisualization(IProtocolWatcher protocolWatcher){
 

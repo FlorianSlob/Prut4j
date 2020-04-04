@@ -8,17 +8,19 @@ import static nl.florianslob.model.checking.sandbox.helpers.GraphVisualizationHe
 public class PlantUmlProtocolWatcher implements IProtocolWatcher {
 
     // fields for visualizing the graph
-    private Set<Integer> alreadyVisualizedStates = new HashSet<>();
-    private Set<Integer> alreadyVisualizedTransaction = new HashSet<>();
+    private final Set<Integer> alreadyVisualizedStates = new HashSet<>();
+    private final Set<Integer> alreadyVisualizedTransaction = new HashSet<>();
 
-    private StringBuilder plantUmlCode = new StringBuilder();
+    private final StringBuilder plantUmlCode = new StringBuilder();
 
     @Override
     public void reportVisitedState(int stateIdentifier) {
         if (!alreadyVisualizedStates.contains(stateIdentifier)) {
             alreadyVisualizedStates.add(stateIdentifier);
 
-            plantUmlCode.append("State" + stateIdentifier + " :  \n");
+            plantUmlCode.append("State");
+            plantUmlCode.append(stateIdentifier);
+            plantUmlCode.append(" :  \n");
         }
     }
 
@@ -44,9 +46,8 @@ public class PlantUmlProtocolWatcher implements IProtocolWatcher {
         }
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public String getPlantUmlGraph() {
-        // This is where the magic should happen.
-
         return "@startuml\n" +
             " header\n" +
             "\n" +

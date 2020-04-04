@@ -333,14 +333,8 @@ public class LtlGraphNode extends GraphNode {
     }
 
     public void setAcceptingStateValue(){
-        if(this.isAccepting(this.oldFormulas)){
-            this.isAcceptingState = true;
-        }else {
-            this.isAcceptingState = false;
-
-        }
+        this.isAcceptingState = this.isAccepting(this.oldFormulas);
     }
-
 
     private boolean isAccepting(Set<LtlFormula> formulas) {
 
@@ -362,6 +356,4 @@ public class LtlGraphNode extends GraphNode {
         }
         return "";
     }
-
-
 }

@@ -6,9 +6,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ChessProtocol implements IProtocol {
     private volatile int state = 0;
-    private Object monitor = this; // Why do we need this?
-    private BlockingQueue queue1 = new LinkedBlockingQueue();
-    private BlockingQueue queue2 = new LinkedBlockingQueue();
+    private final Object monitor = this; // Why do we need this?
+    private final BlockingQueue queue1 = new LinkedBlockingQueue();
+    private final BlockingQueue queue2 = new LinkedBlockingQueue();
 
     @Override
     public IEnvironment getEnvironment(String environmentName) throws Exception{

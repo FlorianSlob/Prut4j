@@ -19,6 +19,6 @@ public class GenericParticipantAction {
         this.message = message;
     }
 
-    public GenericParticipantActionType type;
+    public final GenericParticipantActionType type;
     public ProtocolMessage message;
 }

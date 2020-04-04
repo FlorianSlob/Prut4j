@@ -5,6 +5,6 @@ public class ProtocolMessage<T>  {
         this.receiver = receiver;
         this.message = message;
     }
-    public String receiver;
-    public T message;
+    public final String receiver;
+    public final T message;
 }

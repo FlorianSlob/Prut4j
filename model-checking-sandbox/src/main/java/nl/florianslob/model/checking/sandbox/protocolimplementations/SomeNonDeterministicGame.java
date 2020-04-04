@@ -1,7 +1,5 @@
 package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
-import nl.florianslob.model.checking.sandbox.fosterchandy.exceptions.MaxDepthReachedException;
-
 public class SomeNonDeterministicGame {
     public static void play(boolean visualizeProtocolGraph) {
         PlantUmlProtocolWatcher plantUmlProtocolWatcher = new PlantUmlProtocolWatcher();
@@ -49,7 +47,7 @@ public class SomeNonDeterministicGame {
     public static  void runRoot(IEnvironment environment) throws Exception {
         Board board = new Board(environment.getName());
         while(!board.isFinal()){
-            if(!board.isInitial()){
+            if(board.isNotInitial()){
 
                 Move mBlack = (Move) environment.receive();
                 board.update(mBlack);

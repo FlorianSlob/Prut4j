@@ -9,19 +9,14 @@ public class ChessProtocolWithGraphVisualization implements IProtocol {
     private static final String RECEIVE_PREFIX = "?";
     private static final String MOVE_MESSAGE_TYPE = "Move";
     private volatile int state = 0;
-    private Object monitor = this; // Why do we need this?
-    private BlockingQueue queue1 = new LinkedBlockingQueue();
-    private BlockingQueue queue2 = new LinkedBlockingQueue();
-
-
-
-    private IProtocolWatcher _protocolWatcher;
+    private final Object monitor = this; // Why do we need this?
+    private final BlockingQueue queue1 = new LinkedBlockingQueue();
+    private final BlockingQueue queue2 = new LinkedBlockingQueue();
+    private final IProtocolWatcher _protocolWatcher;
 
     public ChessProtocolWithGraphVisualization(IProtocolWatcher protocolWatcher){
-
         _protocolWatcher = protocolWatcher;
     }
-
 
     @Override
     public IEnvironment getEnvironment(String environmentName) throws Exception {

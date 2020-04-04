@@ -5,22 +5,19 @@ import java.util.*;
 public class GenericParticipant {
 
     private static int depth = 0;
-    private static int maxDepth = 99;
     private GenericParticipantAction currentExecutingAction;
 
     private static boolean maxDepthReached(){
         depth++;
-        if(depth > maxDepth){
-            return true;
-        }
-        return false;
+        int maxDepth = 99;
+        return depth > maxDepth;
     }
 
-    private Set<GenericParticipantAction> StartupActions = new HashSet<>();
-    private Map<Class,Set<GenericParticipantAction>> AfterReceiveActionsPerMessageClass = new HashMap<>();
-    private Map<GenericParticipantAction,Set<GenericParticipantAction>> AfterSendActionsPerSendAction = new HashMap<>();
+    private final Set<GenericParticipantAction> StartupActions = new HashSet<>();
+    private final Map<Class,Set<GenericParticipantAction>> AfterReceiveActionsPerMessageClass = new HashMap<>();
+    private final Map<GenericParticipantAction,Set<GenericParticipantAction>> AfterSendActionsPerSendAction = new HashMap<>();
 
-    private Random random = new Random();
+    private final Random random = new Random();
     public GenericParticipantAction getRandomActionFromSet(Set<GenericParticipantAction> setWithPossibleActions){
         int size = setWithPossibleActions.size();
         int item = random.nextInt(size); // In real life, the Random object should be rather more shared than this
@@ -44,7 +41,7 @@ public class GenericParticipant {
         }
     }
 
-    // chose for a non recursive implementation, otherwise we will encouter stack overflow exceptions.
+    // chose for a non recursive implementation, otherwise we will encounter stack overflow exceptions.
     private void executeAction(IEnvironment environment) throws Exception {
 
         if(this.currentExecutingAction.type == GenericParticipantActionType.SEND){
@@ -66,6 +63,7 @@ public class GenericParticipant {
 
             if(actionSet != null && actionSet.size() > 0){
                 this.currentExecutingAction = getRandomActionFromSet(actionSet);
+                //noinspection UnnecessaryReturnStatement
                 return; // Yes keeping it here, we really don't want further execution.
             }
         }

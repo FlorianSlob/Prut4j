@@ -7,12 +7,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class NonDeterministicLoopsProtocol implements IProtocol {
     private volatile int state = 0;
-    private Object monitor = this; // Why do we need this?
-    private BlockingQueue queueRootToLeft = new LinkedBlockingQueue();
-    private BlockingQueue queueLeftToRoot = new LinkedBlockingQueue();
-    private BlockingQueue queueRootToRight = new LinkedBlockingQueue();
-    private BlockingQueue queueRightToRoot = new LinkedBlockingQueue();
-    private boolean verboseDebug = false;
+    private final Object monitor = this; // Why do we need this?
+    private final BlockingQueue queueRootToLeft = new LinkedBlockingQueue();
+    private final BlockingQueue queueLeftToRoot = new LinkedBlockingQueue();
+    private final BlockingQueue queueRootToRight = new LinkedBlockingQueue();
+    private final BlockingQueue queueRightToRoot = new LinkedBlockingQueue();
+    private final boolean verboseDebug = false;
 
     @Override
     public IEnvironment getEnvironment(String environmentName) throws Exception{
