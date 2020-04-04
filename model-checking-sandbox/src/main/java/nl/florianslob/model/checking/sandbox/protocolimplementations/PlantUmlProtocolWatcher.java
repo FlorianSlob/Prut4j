@@ -52,10 +52,7 @@ public class PlantUmlProtocolWatcher implements IProtocolWatcher {
             "\n" +
             "\n" +
             " endheader\n" +
-            " \n" +
-//            "skinparam state{\n" +
-//            "\t backgroundColor<<accepting>> Lime\n" +
-//            "}\n" +
+            "\n" +
             "\n" +
             "[*] -> State0 \n" +
             plantUmlCode.toString() +
@@ -63,12 +60,12 @@ public class PlantUmlProtocolWatcher implements IProtocolWatcher {
     }
 
     public void savePlantUmlGraphToSvg() {
-        System.out.println("Are threads done?");
+        System.out.println("Writing protocol visualization to file?");
         String plantUmlGraph = getPlantUmlGraph();
         System.out.print(plantUmlGraph);
 
         try {
-            saveSvgStringToFile(plantUmlGraph, "chessProtocol.svg");
+            saveSvgStringToFile(plantUmlGraph, "protocol_visualization.svg");
         } catch (Exception e) {
             e.printStackTrace();
         }

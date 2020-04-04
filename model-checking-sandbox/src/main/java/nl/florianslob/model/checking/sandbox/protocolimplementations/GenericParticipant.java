@@ -5,7 +5,7 @@ import java.util.*;
 public class GenericParticipant {
 
     private static int depth = 0;
-    private static int maxDepth = 999999;
+    private static int maxDepth = 99;
     private GenericParticipantAction currentExecutingAction;
 
     private static boolean maxDepthReached(){
