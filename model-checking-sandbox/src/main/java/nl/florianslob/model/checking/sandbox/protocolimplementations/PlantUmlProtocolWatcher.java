@@ -6,7 +6,6 @@ import java.util.Set;
 import static nl.florianslob.model.checking.sandbox.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
 
 public class PlantUmlProtocolWatcher implements IProtocolWatcher {
-
     // fields for visualizing the graph
     private final Set<Integer> alreadyVisualizedStates = new HashSet<>();
     private final Set<Integer> alreadyVisualizedTransaction = new HashSet<>();

@@ -20,7 +20,6 @@ public class NonDeterministicLoopsProtocolWithVisualization implements IProtocol
     private final IProtocolWatcher _protocolWatcher;
 
     public NonDeterministicLoopsProtocolWithVisualization(IProtocolWatcher protocolWatcher){
-
         _protocolWatcher = protocolWatcher;
     }
 
