@@ -4,10 +4,13 @@ import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 
 public class ProtocolImplementationsSandboxActivity implements ISandboxingActivity {
     @Override
-    public void runActivity() throws Exception {
+    public void runActivity() {
         System.out.println("Starting protocol implementation sandboxing activity");
 
-        //Chess.play();
-        SomeNonDeterministicGame.play();
+//        Chess.play(true);
+//        SomeNonDeterministicGame.play(true);
+
+        ChessWithGenericParticipant.play(true);
+
     }
 }

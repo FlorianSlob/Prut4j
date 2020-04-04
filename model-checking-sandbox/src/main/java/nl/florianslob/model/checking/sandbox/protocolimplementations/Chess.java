@@ -2,14 +2,23 @@ package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
 public class Chess {
 
-    public static void play() {
-        IProtocol protocol = new ChessProtocol();
+    public static void play(boolean visualizeProtocolGraph) {
+        PlantUmlProtocolWatcher plantUmlProtocolWatcher = new PlantUmlProtocolWatcher();
+        IProtocol protocol;
+        if (visualizeProtocolGraph) {
+            protocol = new ChessProtocolWithGraphVisualization(plantUmlProtocolWatcher);
+        } else {
+            protocol = new ChessProtocol();
+        }
 
         new Thread(() -> {
             try {
                 runWhite(protocol.getEnvironment("W"));
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
             }
         }).start();
 
@@ -19,12 +28,16 @@ public class Chess {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            if (visualizeProtocolGraph) {
+                plantUmlProtocolWatcher.savePlantUmlGraphToSvg();
+            }
         }).start();
     }
-    public static  void runWhite(IEnvironment environment) throws Exception {
+
+    public static void runWhite(IEnvironment environment) throws Exception {
         Board board = new Board("White");
-        while(!board.isFinal()){
-            if(!board.isInitial()){
+        while (!board.isFinal()) {
+            if (board.isNotInitial()) {
                 Move mBlack = (Move) environment.receive();
                 board.update(mBlack);
                 board.print();
@@ -38,9 +51,9 @@ public class Chess {
         }
     }
 
-    public static  void runBlack(IEnvironment environment) throws Exception {
+    public static void runBlack(IEnvironment environment) throws Exception {
         Board board = new Board("Black");
-        while(!board.isFinal()){
+        while (!board.isFinal()) {
 
             Move mWhite = (Move) environment.receive();
             board.update(mWhite);
@@ -52,6 +65,5 @@ public class Chess {
             board.print();
             environment.send(mBlack);
         }
-
     }
 }

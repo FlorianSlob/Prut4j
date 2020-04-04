@@ -2,7 +2,7 @@ package nl.florianslob.model.checking.sandbox.protocolimplementations;
 
 public class Board {
 
-    private String _name;
+    private final String _name;
 
     public Board(String name){
 
@@ -12,17 +12,11 @@ public class Board {
     private int moves = 0;
 
     public boolean isFinal() {
-        if(moves> 10){
-            return true;
-        }
-        return false;
+        return moves > 10;
     }
 
-    public boolean isInitial() {
-        if(moves == 0){
-            return true;
-        }
-        return false;
+    public boolean isNotInitial() {
+        return moves != 0;
     }
 
     public void update(Move newMove) {
