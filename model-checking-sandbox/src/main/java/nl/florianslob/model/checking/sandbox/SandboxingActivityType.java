@@ -10,5 +10,6 @@ public enum SandboxingActivityType {
     LtlVerification,
     ModelChecker,
     GraphVisualization,
-    ChessProtocol
+    ChessProtocol,
+    ProtocolCodeGeneration
 }
