@@ -18,7 +18,11 @@ public class ProtocolStateNode {
 
     public void Accept(List<IVisitor<ProtocolStateNode>> visitors){
         // Stop execution if visited before
-        if(visitedBefore) return;
+        if(visitedBefore) {
+            // Resetting to enable multiple passes.
+            visitedBefore = false;
+            return;
+        }
 
         // Prevent second visits
         visitedBefore = true;
@@ -32,5 +36,9 @@ public class ProtocolStateNode {
         for(ProtocolTransaction transaction : outgoingTransactions){
             transaction.targetState.Accept(visitors);
         }
+
+        // Resetting to enable multiple passes.
+        visitedBefore = false;
+
     }
 }

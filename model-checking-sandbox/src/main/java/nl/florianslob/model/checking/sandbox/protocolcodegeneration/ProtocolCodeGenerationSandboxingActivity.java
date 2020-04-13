@@ -2,7 +2,10 @@ package nl.florianslob.model.checking.sandbox.protocolcodegeneration;
 
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.*;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ProtocolSyntaxTreeItem;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,16 +14,42 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     public void runActivity() throws Exception {
         ProtocolStateNode chessProtocolState0 = getInitialStateForChessProtocol();
 
-        List<IVisitor<ProtocolStateNode>> visitors = new LinkedList<>();
+        List<IVisitor<ProtocolStateNode>> visitorsFirstPass = new LinkedList<>();
         PlantUmlVisualizationVisitor plantUmlVisualizationVisitor = new PlantUmlVisualizationVisitor();
-        visitors.add(plantUmlVisualizationVisitor);
-        // TODO add more visitors for code generation
+        UniqueCommunicationChannelFinderVisitor uniqueCommunicationChannelFinderVisitor = new UniqueCommunicationChannelFinderVisitor();
+        UniqueRoleNameFinderVisitor uniqueRolenameFinderVisitor = new UniqueRoleNameFinderVisitor();
 
-        chessProtocolState0.Accept(visitors);
+        visitorsFirstPass.add(plantUmlVisualizationVisitor);
+        visitorsFirstPass.add(uniqueCommunicationChannelFinderVisitor);
+        visitorsFirstPass.add(uniqueRolenameFinderVisitor);
+
+        chessProtocolState0.Accept(visitorsFirstPass);
+
         System.out.println("Printing PlantUml");
         System.out.println(plantUmlVisualizationVisitor.getPlantUmlSyntax());
 
         plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
+
+
+        List<IVisitor<ProtocolStateNode>> visitorsSecondPass = new LinkedList<>();
+
+        for(String roleName : uniqueRolenameFinderVisitor.roleNames){
+            visitorsSecondPass.add(new CreateEnvironmentForRoleVisitor(roleName));
+        }
+        // pass2
+        chessProtocolState0.Accept(visitorsSecondPass);
+
+
+        HashSet<EnvironmentSyntaxTreeItem> environments = new HashSet<>();
+
+        for(IVisitor<ProtocolStateNode> visitor : visitorsSecondPass){
+            environments.add(((CreateEnvironmentForRoleVisitor) visitor).getEnvironmentStateCaseStatements());
+        }
+
+        ProtocolSyntaxTreeItem protocolSyntaxTree = new ProtocolSyntaxTreeItem(uniqueCommunicationChannelFinderVisitor.communicationChannels, environments);
+
+        System.out.println(protocolSyntaxTree.getSyntax(0));
+
     }
 
     private ProtocolStateNode getInitialStateForChessProtocol() {
