@@ -5,6 +5,6 @@ public class EnvironmentActionFromStateDefaultWaitAction extends  EnvironmentAct
 
     @Override
     public String getSyntax(int numberOfPrependingTabs) {
-        return "Syntax for default wait action;";
+        return "Syntax for default wait action;\n";
     }
 }

@@ -4,6 +4,6 @@ public class EnvironmentActionFromStateSend extends EnvironmentActionFromState {
 
     @Override
     public String getSyntax(int numberOfPrependingTabs) {
-        return "Syntax for Send Action;";
+        return "Syntax for Send Action;\n";
     }
 }

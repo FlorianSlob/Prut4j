@@ -19,6 +19,14 @@ public class EnvironmentStateCaseStatement implements ISyntaxTreeItem{
 
     @Override
     public String getSyntax(int numberOfPrependingTabs) {
-        return "Syntax for EnvironmentStateCaseStatement";
+        StringBuilder builder = new StringBuilder();
+
+        for(EnvironmentActionFromState actionFromState: actionsFromState){
+            builder.append(actionFromState.getSyntax(0));
+        }
+
+        return "Start Syntax for EnvironmentStateCaseStatement\n" +
+            builder.toString() +
+            "End Syntax for EnvironmentStateCaseStatement\n";
     }
 }

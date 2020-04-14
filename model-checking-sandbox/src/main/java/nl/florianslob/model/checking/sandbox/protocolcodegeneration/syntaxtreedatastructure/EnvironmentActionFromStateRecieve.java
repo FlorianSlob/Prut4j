@@ -4,6 +4,6 @@ public class EnvironmentActionFromStateRecieve extends EnvironmentActionFromStat
 
     @Override
     public String getSyntax(int numberOfPrependingTabs) {
-        return "Syntax for Receive Action;";
+        return "Syntax for Receive Action;\n";
     }
 }

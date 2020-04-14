@@ -1,8 +1,6 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentActionFromStateDefaultWaitAction;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentStateCaseStatement;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
 
 import java.util.LinkedList;
 
@@ -27,11 +25,15 @@ public class CreateEnvironmentForRoleVisitor implements IVisitor<ProtocolStateNo
         for(ProtocolTransaction transaction : host.outgoingTransactions){
             if(transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageAction.SEND){
                 // add send action
+                caseStatement.addAction(new EnvironmentActionFromStateSend());
+
                 noActionAdded = false;
             }
 
             if(transaction.toRole.equals(roleName) && transaction.action == ProtocolMessageAction.RECEIVE){
                 // add receive action of type
+                caseStatement.addAction(new EnvironmentActionFromStateRecieve());
+
                 noActionAdded = false;
             }
         }
@@ -39,5 +41,7 @@ public class CreateEnvironmentForRoleVisitor implements IVisitor<ProtocolStateNo
         if(noActionAdded){
             caseStatement.addAction(EnvironmentActionFromStateDefaultWaitAction.defaultWaitAction);
         }
+
+        environmentStateCaseStatements.add(caseStatement);
     }
 }
