@@ -1,28 +1,17 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure;
 
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+
 import java.util.LinkedList;
 
-public class EnvironmentSyntaxTreeItem implements ISyntaxTreeItem {
+public class EnvironmentSyntaxTreeItem extends AbstractSyntaxTreeItem {
 
-    private String roleName;
-    private LinkedList<EnvironmentStateCaseStatement> environmentStateCaseStatements;
+    public String roleName;
+    public LinkedList<EnvironmentStateCaseStatementSyntaxTreeItem> environmentStateCaseStatements;
 
-    public EnvironmentSyntaxTreeItem(String roleName, LinkedList<EnvironmentStateCaseStatement> environmentStateCaseStatements){
-
+    public EnvironmentSyntaxTreeItem(String roleName, LinkedList<EnvironmentStateCaseStatementSyntaxTreeItem> environmentStateCaseStatements, ISyntaxBuilderAdapter<EnvironmentSyntaxTreeItem> SyntaxBuilderAdapter){
+        super(SyntaxBuilderAdapter);
         this.roleName = roleName;
         this.environmentStateCaseStatements = environmentStateCaseStatements;
-    }
-
-    @Override
-    public String getSyntax(int numberOfPrependingTabs) {
-
-        StringBuilder builder = new StringBuilder();
-
-        for(EnvironmentStateCaseStatement stateCaseStatement : environmentStateCaseStatements)
-            builder.append(stateCaseStatement.getSyntax(0));
-
-        return "Syntax for environment "+this.roleName+"; \n" +
-            builder.toString() +
-            "End Syntax for environment "+this.roleName+"; \n";
     }
 }

@@ -1,38 +1,19 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure;
 
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+
 import java.util.HashSet;
 
-public class ProtocolSyntaxTreeItem implements ISyntaxTreeItem {
+public class ProtocolSyntaxTreeItem extends AbstractSyntaxTreeItem<ProtocolSyntaxTreeItem> {
 
-    private final HashSet<CommunicationChannel> communicationChannels;
-    private final HashSet<EnvironmentSyntaxTreeItem> environments;
+    public final HashSet<CommunicationChannelSyntaxTreeItem> communicationChannelSyntaxTreeItems;
+    public final HashSet<EnvironmentSyntaxTreeItem> environments;
+    public String protocolName;
 
-    public ProtocolSyntaxTreeItem(HashSet<CommunicationChannel> communicationChannels, HashSet<EnvironmentSyntaxTreeItem> environments){
-        this.communicationChannels = communicationChannels;
+    public ProtocolSyntaxTreeItem(String protocolName, HashSet<CommunicationChannelSyntaxTreeItem> communicationChannelSyntaxTreeItems, HashSet<EnvironmentSyntaxTreeItem> environments, ISyntaxBuilderAdapter<ProtocolSyntaxTreeItem> syntaxTreeItemISyntaxBuilderAdapter){
+        super(syntaxTreeItemISyntaxBuilderAdapter);
+        this.protocolName = protocolName;
+        this.communicationChannelSyntaxTreeItems = communicationChannelSyntaxTreeItems;
         this.environments = environments;
-    }
-
-
-    @Override
-    public String getSyntax(int numberOfPrependingTabs) {
-        StringBuilder syntax = new StringBuilder();
-        syntax.append("public class blabla! \n");
-
-        for(CommunicationChannel communicationChannel: this.communicationChannels){
-            syntax.append(communicationChannel.getSyntax(0));
-        }
-
-        syntax.append("\n");
-        syntax.append("\n");
-        syntax.append("\n");
-
-        for(EnvironmentSyntaxTreeItem environmentSyntaxTreeItem: this.environments){
-            syntax.append(environmentSyntaxTreeItem.getSyntax(0));
-        }
-
-        syntax.append("End class \n");
-
-
-        return syntax.toString();
     }
 }
