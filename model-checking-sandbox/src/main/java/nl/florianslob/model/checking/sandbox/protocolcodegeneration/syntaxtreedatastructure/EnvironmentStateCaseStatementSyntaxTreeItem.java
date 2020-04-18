@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EnvironmentStateCaseStatementSyntaxTreeItem extends AbstractSyntaxTreeItem<EnvironmentStateCaseStatementSyntaxTreeItem>{
-    private int stateIdCondition;
+    public int stateIdCondition;
 
     public List<EnvironmentActionFromState> actionsFromState = new LinkedList<>();
 

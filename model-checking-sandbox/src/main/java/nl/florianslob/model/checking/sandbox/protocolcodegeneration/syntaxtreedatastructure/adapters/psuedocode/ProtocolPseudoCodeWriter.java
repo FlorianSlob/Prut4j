@@ -9,26 +9,47 @@ import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreeda
 public class ProtocolPseudoCodeWriter implements ISyntaxBuilderAdapter<ProtocolSyntaxTreeItem> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ProtocolSyntaxTreeItem SyntaxTreeItem) {
-        StringBuilderSyntaxHelper.addIndentation(builder, 0);
-        builder.append("class ");
-        builder.append(SyntaxTreeItem.protocolName);
-        builder.append(" extends IProtocol\n");
+        // TODO Define packages?
+        // Start with all imports
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs,"import java.util.Optional;");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs,"import java.util.concurrent.BlockingQueue;");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs,"import java.util.concurrent.LinkedBlockingQueue;");
+        StringBuilderSyntaxHelper.addEmptyLine(builder, numberOfPrependingTabs);
 
-        StringBuilderSyntaxHelper.addIndentation(builder, 0);
-        builder.append("{");
-        builder.append("\n");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs,"public class "+SyntaxTreeItem.protocolName+" implements IProtocol {");
 
+        numberOfPrependingTabs++;
+
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs,"private volatile int state = 0;");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "private final Object monitor = this;");
+        StringBuilderSyntaxHelper.addEmptyLine(builder, numberOfPrependingTabs);
         for(CommunicationChannelSyntaxTreeItem communicationChannelSyntaxTreeItem : SyntaxTreeItem.communicationChannelSyntaxTreeItems){
-            communicationChannelSyntaxTreeItem.buildSyntax(builder,1);
+            communicationChannelSyntaxTreeItem.buildSyntax(builder,numberOfPrependingTabs);
         }
+        StringBuilderSyntaxHelper.addEmptyLine(builder, numberOfPrependingTabs);
 
-        builder.append("\n");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "@Override");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "public IEnvironment getEnvironment(String environmentName) throws Exception{");
+
+        numberOfPrependingTabs++;
+
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "switch (environmentName) {");
+
+        numberOfPrependingTabs++;
 
         for(EnvironmentSyntaxTreeItem environmentSyntaxTreeItem: SyntaxTreeItem.environments){
-            environmentSyntaxTreeItem.buildSyntax(builder,1);
+            environmentSyntaxTreeItem.buildSyntax(builder,numberOfPrependingTabs);
         }
 
-        builder.append("}\n");
+        // Add default to switch case statement.
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "default: throw new Exception(\"Unknown environment\");");
 
+        // Add closing tags
+        numberOfPrependingTabs--;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        numberOfPrependingTabs--;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        numberOfPrependingTabs--;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
     }
 }

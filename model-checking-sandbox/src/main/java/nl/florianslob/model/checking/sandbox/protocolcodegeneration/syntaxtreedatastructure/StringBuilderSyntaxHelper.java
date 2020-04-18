@@ -6,4 +6,14 @@ public class StringBuilderSyntaxHelper {
             builder.append("\t");
         }
     }
+
+    public static void addEmptyLine(StringBuilder builder, int numberOfTabs) {
+        addLine(builder,numberOfTabs,"");
+    }
+
+    public static void addLine(StringBuilder builder, int numberOfTabs, String lineOfCode) {
+        addIndentation(builder,numberOfTabs);
+        builder.append(lineOfCode);
+        builder.append("\n");
+    }
 }

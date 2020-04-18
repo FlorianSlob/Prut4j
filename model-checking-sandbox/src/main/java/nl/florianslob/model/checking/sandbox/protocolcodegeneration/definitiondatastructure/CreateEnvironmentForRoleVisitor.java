@@ -3,6 +3,7 @@ package nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiond
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxBuilderAdapterProvider;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class CreateEnvironmentForRoleVisitor implements IVisitor<ProtocolStateNode>{
@@ -10,10 +11,12 @@ public class CreateEnvironmentForRoleVisitor implements IVisitor<ProtocolStateNo
     private LinkedList<EnvironmentStateCaseStatementSyntaxTreeItem> environmentStateCaseStatements = new LinkedList<>();
     public String roleName;
     private SyntaxBuilderAdapterProvider syntaxBuilderAdapterProvider;
+    private HashSet<CommunicationChannelSyntaxTreeItem> communicationChannelSyntaxTreeItems;
 
-    public CreateEnvironmentForRoleVisitor(String roleName, SyntaxBuilderAdapterProvider syntaxBuilderAdapterProvider){
+    public CreateEnvironmentForRoleVisitor(String roleName, SyntaxBuilderAdapterProvider syntaxBuilderAdapterProvider, HashSet<CommunicationChannelSyntaxTreeItem> communicationChannelSyntaxTreeItems){
         this.roleName = roleName;
         this.syntaxBuilderAdapterProvider = syntaxBuilderAdapterProvider;
+        this.communicationChannelSyntaxTreeItems = communicationChannelSyntaxTreeItems;
     }
 
     public EnvironmentSyntaxTreeItem getEnvironmentStateCaseStatements(){

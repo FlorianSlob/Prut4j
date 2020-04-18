@@ -8,12 +8,14 @@ public class CommunicationChannelSyntaxTreeItem extends AbstractSyntaxTreeItem<C
     public final String fromRole;
     public final String toRole;
     public final String messageType;
+    public final String queueName;
 
     public CommunicationChannelSyntaxTreeItem(String fromRole, String toRole, String messageType, ISyntaxBuilderAdapter<CommunicationChannelSyntaxTreeItem> syntaxBuilderAdapter){
         super(syntaxBuilderAdapter);
         this.fromRole = fromRole;
         this.toRole = toRole;
         this.messageType = messageType;
+        this.queueName = "queueFrom"+fromRole+"To"+toRole;
     }
 
     @Override
@@ -31,7 +33,5 @@ public class CommunicationChannelSyntaxTreeItem extends AbstractSyntaxTreeItem<C
         return Objects.hash(fromRole, toRole, messageType);
     }
 
-//    @Override
-//    public String getSyntax(int numberOfPrependingTabs) {
-//    }
+
 }

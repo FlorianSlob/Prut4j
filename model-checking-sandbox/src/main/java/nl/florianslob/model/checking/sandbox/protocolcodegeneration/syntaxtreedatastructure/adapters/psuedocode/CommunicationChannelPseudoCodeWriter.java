@@ -7,13 +7,14 @@ import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreeda
 public class CommunicationChannelPseudoCodeWriter implements ISyntaxBuilderAdapter<CommunicationChannelSyntaxTreeItem> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, CommunicationChannelSyntaxTreeItem SyntaxTreeItem) {
+
         StringBuilderSyntaxHelper.addIndentation(builder, numberOfPrependingTabs);
-        builder.append("BlockingQueue<");
+        builder.append("private final BlockingQueue<");
         builder.append(SyntaxTreeItem.messageType);
         builder.append("> queueFrom");
         builder.append(SyntaxTreeItem.fromRole);
         builder.append("to");
         builder.append(SyntaxTreeItem.toRole);
-        builder.append(" = new BlockingQueue(); \n");
+        builder.append(" = new LinkedBlockingQueue(); \n");
     }
 }

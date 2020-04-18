@@ -2,17 +2,52 @@ package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreed
 
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentStateCaseStatementSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+
 
 public class EnvironmentPseudoCodeWriter implements ISyntaxBuilderAdapter<EnvironmentSyntaxTreeItem> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, EnvironmentSyntaxTreeItem SyntaxTreeItem) {
 
-        builder.append("Syntax for environment "+SyntaxTreeItem.roleName+"; \n");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "case \""+SyntaxTreeItem.roleName+"\": return new IEnvironment(){");
+        numberOfPrependingTabs++;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "@Override");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "public String getName() {");
+        numberOfPrependingTabs++;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "return environmentName;");
+        numberOfPrependingTabs--;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        StringBuilderSyntaxHelper.addEmptyLine(builder, numberOfPrependingTabs);
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "@Override");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "public Optional exchange(Optional box) throws Exception{");
+        numberOfPrependingTabs++;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "synchronized (monitor) {");
+        numberOfPrependingTabs++;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "while (true) {");
+        numberOfPrependingTabs++;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "switch (state) {");
+
+        // TODO Add some default methods;
 
         for(EnvironmentStateCaseStatementSyntaxTreeItem stateCaseStatement : SyntaxTreeItem.environmentStateCaseStatements)
-            stateCaseStatement.buildSyntax(builder,0);
+            stateCaseStatement.buildSyntax(builder,numberOfPrependingTabs);
 
-        builder.append("End Syntax for environment "+SyntaxTreeItem.roleName+"; \n");
+
+        // Add default to switch case statement.
+        numberOfPrependingTabs++;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "default: throw new Exception(\"State number out of bounds\");");
+
+        // add closing tags // TODO Implement Automatic wrapper with lambda function?
+        numberOfPrependingTabs --;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        numberOfPrependingTabs --;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        numberOfPrependingTabs --;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        numberOfPrependingTabs --;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "}");
+        numberOfPrependingTabs --;
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "};");
     }
 }
