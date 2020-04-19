@@ -2,8 +2,9 @@ package nl.florianslob.model.checking.sandbox.protocolcodegeneration;
 
 import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.*;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ProtocolSyntaxTreeItem;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.*;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxWriterProvider;
 
 import java.io.BufferedWriter;
@@ -16,20 +17,22 @@ import java.util.List;
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
-
         // TODO Replace with some form of dependency injection
-        SyntaxWriterProvider adapterProvider = new SyntaxWriterProvider("Java11");
+        SyntaxWriterProvider writerProvider = new SyntaxWriterProvider("Java11");
 
         ProtocolStateNode chessProtocolState0 = getInitialStateForChessProtocol();
 
-        List<IVisitor<ProtocolStateNode>> visitorsFirstPass = new LinkedList<>();
-        PlantUmlVisualizationVisitor plantUmlVisualizationVisitor = new PlantUmlVisualizationVisitor();
-        UniqueCommunicationChannelFinderVisitor uniqueCommunicationChannelFinderVisitor = new UniqueCommunicationChannelFinderVisitor(adapterProvider);
-        UniqueRoleNameFinderVisitor uniqueRolenameFinderVisitor = new UniqueRoleNameFinderVisitor();
+        List<IProtocolDefinitionVisitor> visitorsFirstPass = new LinkedList<>();
+        CreatePlantUmlVisualizationProtocolDefinitionVisitor plantUmlVisualizationVisitor =
+            new CreatePlantUmlVisualizationProtocolDefinitionVisitor();
+        FindUniqueCommunicationChannelsProtocolDefinitionVisitor uniqueCommunicationChannelFinderVisitor =
+            new FindUniqueCommunicationChannelsProtocolDefinitionVisitor(writerProvider.ChannelWriter);
+        FindUniqueRoleNamesProtocolDefinitionVisitor findUniqueRoleNamesProtocolDefinitionVisitor =
+            new FindUniqueRoleNamesProtocolDefinitionVisitor();
 
         visitorsFirstPass.add(plantUmlVisualizationVisitor);
         visitorsFirstPass.add(uniqueCommunicationChannelFinderVisitor);
-        visitorsFirstPass.add(uniqueRolenameFinderVisitor);
+        visitorsFirstPass.add(findUniqueRoleNamesProtocolDefinitionVisitor);
 
         chessProtocolState0.Accept(visitorsFirstPass);
 
@@ -39,27 +42,25 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
 
 
-        List<CreateEnvironmentForRoleVisitor> visitorsSecondPass = new LinkedList<>();
+        List<CreateEnvironmentForRoleProtocolDefinitionVisitor> visitorsSecondPass = new LinkedList<>();
 
-        for(String roleName : uniqueRolenameFinderVisitor.roleNames){
-            visitorsSecondPass.add(new CreateEnvironmentForRoleVisitor(roleName, adapterProvider, uniqueCommunicationChannelFinderVisitor.communicationChannelSyntaxTreeItems));
+        for(String roleName : findUniqueRoleNamesProtocolDefinitionVisitor.roleNames){
+            visitorsSecondPass.add(new CreateEnvironmentForRoleProtocolDefinitionVisitor(roleName, writerProvider, uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels));
         }
         // pass2
         chessProtocolState0.Accept(visitorsSecondPass);
 
-        HashSet<EnvironmentSyntaxTreeItem> environments = new HashSet<>();
+        HashSet<ASTEnvironment> environments = new HashSet<>();
 
-        for(CreateEnvironmentForRoleVisitor visitor : visitorsSecondPass){
-            environments.add(visitor.getEnvironmentStateCaseStatements());
+        for(CreateEnvironmentForRoleProtocolDefinitionVisitor visitor : visitorsSecondPass){
+            environments.add(visitor.getASTStateCaseStatements());
         }
 
-        ProtocolSyntaxTreeItem protocolSyntaxTree = new ProtocolSyntaxTreeItem("GeneratedChessProtocol",
-            uniqueCommunicationChannelFinderVisitor.communicationChannelSyntaxTreeItems, environments, adapterProvider.ProtocolWriter);
+        ASTProtocol protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, "GeneratedChessProtocol",
+            uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels, environments);
 
         StringBuilder builder = new StringBuilder();
         protocolSyntaxTree.buildSyntax(builder,0);
-
-//        System.out.println(builder.toString()); // TODO This should be a write to a file.
 
         //append string buffer/builder to buffered writer
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/nl/florianslob/model/checking/sandbox/protocolcodegeneration/generated/GeneratedChessProtocol.java"))) {
@@ -83,13 +84,13 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         String roleBlackName = "B";
         String messageTypeName = "Move";
 
-        state0.AddOutgoingTransaction(new ProtocolTransaction(state1, ProtocolMessageAction.SEND, roleWhiteName, roleBlackName, messageTypeName));
-        state1.AddOutgoingTransaction(new ProtocolTransaction(state2, ProtocolMessageAction.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
-        state2.AddOutgoingTransaction(new ProtocolTransaction(state3, ProtocolMessageAction.SEND,  roleBlackName, roleWhiteName, messageTypeName));
-        state3.AddOutgoingTransaction(new ProtocolTransaction(state4, ProtocolMessageAction.RECEIVE, roleBlackName, roleWhiteName, messageTypeName));
-        state4.AddOutgoingTransaction(new ProtocolTransaction(state5, ProtocolMessageAction.SEND, roleWhiteName, roleBlackName, messageTypeName));
-        state5.AddOutgoingTransaction(new ProtocolTransaction(state6, ProtocolMessageAction.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
-        state6.AddOutgoingTransaction(new ProtocolTransaction(state3, ProtocolMessageAction.SEND, roleBlackName, roleWhiteName, messageTypeName));
+        state0.AddOutgoingTransaction(new ProtocolTransaction(state1, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
+        state1.AddOutgoingTransaction(new ProtocolTransaction(state2, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
+        state2.AddOutgoingTransaction(new ProtocolTransaction(state3, ProtocolMessageActionType.SEND,  roleBlackName, roleWhiteName, messageTypeName));
+        state3.AddOutgoingTransaction(new ProtocolTransaction(state4, ProtocolMessageActionType.RECEIVE, roleBlackName, roleWhiteName, messageTypeName));
+        state4.AddOutgoingTransaction(new ProtocolTransaction(state5, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
+        state5.AddOutgoingTransaction(new ProtocolTransaction(state6, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
+        state6.AddOutgoingTransaction(new ProtocolTransaction(state3, ProtocolMessageActionType.SEND, roleBlackName, roleWhiteName, messageTypeName));
 
         return state0;
     }

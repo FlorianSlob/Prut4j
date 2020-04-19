@@ -1,14 +1,14 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.CommunicationChannelSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ProtocolSyntaxTreeItem;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
-public class ProtocolJava11Writer implements ISyntaxWriter<ProtocolSyntaxTreeItem> {
+public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
     @Override
-    public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ProtocolSyntaxTreeItem SyntaxTreeItem) {
+    public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTProtocol SyntaxTreeItem) {
         // Write comment at the top of the page.
         // TODO Extend with links to documentation, original protocol automaton, settings used to generate this class.
         // (Maybe plantuml syntax of the protocol?)
@@ -42,8 +42,8 @@ public class ProtocolJava11Writer implements ISyntaxWriter<ProtocolSyntaxTreeIte
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs,"private volatile int state = 0;");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "private final Object monitor = this;");
         StringBuilderSyntaxHelper.addEmptyLine(builder, numberOfPrependingTabs);
-        for(CommunicationChannelSyntaxTreeItem communicationChannelSyntaxTreeItem : SyntaxTreeItem.communicationChannelSyntaxTreeItems){
-            communicationChannelSyntaxTreeItem.buildSyntax(builder,numberOfPrependingTabs);
+        for(ASTCommunicationChannel ASTCommunicationChannel : SyntaxTreeItem.ASTCommunicationChannels){
+            ASTCommunicationChannel.buildSyntax(builder,numberOfPrependingTabs);
         }
         StringBuilderSyntaxHelper.addEmptyLine(builder, numberOfPrependingTabs);
 
@@ -56,8 +56,8 @@ public class ProtocolJava11Writer implements ISyntaxWriter<ProtocolSyntaxTreeIte
 
         numberOfPrependingTabs++;
 
-        for(EnvironmentSyntaxTreeItem environmentSyntaxTreeItem: SyntaxTreeItem.environments){
-            environmentSyntaxTreeItem.buildSyntax(builder,numberOfPrependingTabs);
+        for(ASTEnvironment ASTEnvironment : SyntaxTreeItem.environments){
+            ASTEnvironment.buildSyntax(builder,numberOfPrependingTabs);
         }
 
         // Add default to switch case statement.

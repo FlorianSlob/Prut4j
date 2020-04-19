@@ -1,14 +1,14 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentStateCaseStatementSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTStateCaseStatement;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
 
-public class EnvironmentJava11Writer implements ISyntaxWriter<EnvironmentSyntaxTreeItem> {
+public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment> {
     @Override
-    public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, EnvironmentSyntaxTreeItem SyntaxTreeItem) {
+    public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTEnvironment SyntaxTreeItem) {
 
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "case \""+SyntaxTreeItem.roleName+"\": return new IEnvironment(){");
         numberOfPrependingTabs++;
@@ -31,7 +31,7 @@ public class EnvironmentJava11Writer implements ISyntaxWriter<EnvironmentSyntaxT
         // TODO Add some default methods;
         numberOfPrependingTabs++;
 
-        for(EnvironmentStateCaseStatementSyntaxTreeItem stateCaseStatement : SyntaxTreeItem.environmentStateCaseStatements)
+        for(ASTStateCaseStatement stateCaseStatement : SyntaxTreeItem.ASTStateCaseStatements)
             stateCaseStatement.buildSyntax(builder,numberOfPrependingTabs);
 
 

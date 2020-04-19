@@ -1,5 +1,7 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure;
 
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.IProtocolDefinitionVisitor;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -16,7 +18,10 @@ public class ProtocolStateNode {
         this.outgoingTransactions.add(outgoingTransaction);
     }
 
-    public void Accept(List<? extends IVisitor<ProtocolStateNode>> visitors) throws Exception {
+    /**
+     * Implementation of the Visitor Pattern with a simple cycle detection to prevent infinite execution.
+     */
+    public void Accept(List<? extends IProtocolDefinitionVisitor> visitors) throws Exception {
         // Stop execution if visited before
         if(visitedBefore) {
             // Resetting to enable multiple passes.
@@ -28,7 +33,7 @@ public class ProtocolStateNode {
         visitedBefore = true;
 
         // Do visit action for all visitors
-        for(IVisitor<ProtocolStateNode> visitor : visitors){
+        for(IProtocolDefinitionVisitor visitor : visitors){
             visitor.Visit(this);
         }
 

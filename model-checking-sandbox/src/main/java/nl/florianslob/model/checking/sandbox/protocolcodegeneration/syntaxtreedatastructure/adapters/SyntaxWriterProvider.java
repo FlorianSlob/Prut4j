@@ -3,7 +3,7 @@ package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreed
 import jdk.jshell.spi.ExecutionControl;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java.*;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode.ProtocolSyntaxTreeItemPseudoCodeWriter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode.ProtocolWriterForPseudoCode;
 
 public class SyntaxWriterProvider {
     public SyntaxWriterProvider(String targetLanguage) throws ExecutionControl.NotImplementedException {
@@ -11,34 +11,32 @@ public class SyntaxWriterProvider {
         // Autofac alternative for Java = ???
 
         if(targetLanguage.equals("Java11")){
-            ProtocolWriter = new ProtocolJava11Writer();
-            CommunicationChannelSyntaxTreeItemWriter = new CommunicationChannelJava11Writer();
-            EnvironmentSyntaxTreeItemWriter = new EnvironmentJava11Writer();
-            EnvironmentStateCaseStatementSyntaxTreeItemWriter = new EnvironmentStateCaseStatementJava11Writer();
-            EnvironmentActionFromStateDefaultWaitActionSyntaxTreeItemWriter = new EnvironmentActionFromStateDefaultWaitActionJava11Writer();
-            EnvironmentActionFromStateSendSyntaxTreeItemWriter = new EnvironmentActionFromStateSendJava11Writer();
-            EnvironmentActionFromStateReceiveSyntaxTreeItemWriter = new EnvironmentActionFromStateReceiveJava11Writer();
+            ProtocolWriter = new ProtocolWriterForJava11();
+            ChannelWriter = new ChannelWriterForJava11();
+            EnvironmentWriter = new EnvironmentWriterForJava11();
+            CaseStatementWriter = new CaseStatementWriterForJava11();
+            WaitActionWriter = new WaitActionWriterForJava11();
+            SendActionWriter = new SendActionWriterForJava11();
+            ReceiveActionWriter = new ReceiveActionWriterForJava11();
 
             // init fields
         }
         else if (targetLanguage.equals("PseudoCode")){
-            ProtocolWriter = new ProtocolSyntaxTreeItemPseudoCodeWriter();
+            ProtocolWriter = new ProtocolWriterForPseudoCode();
             // TODO NEEDS IMPLEMENTATION:
-            EnvironmentSyntaxTreeItemWriter = null;
-            EnvironmentStateCaseStatementSyntaxTreeItemWriter = null;
-            EnvironmentActionFromStateDefaultWaitActionSyntaxTreeItemWriter = null;
-            EnvironmentActionFromStateSendSyntaxTreeItemWriter = null;
-            EnvironmentActionFromStateReceiveSyntaxTreeItemWriter = null;
+            EnvironmentWriter = null;
+            CaseStatementWriter = null;
+            WaitActionWriter = null;
+            SendActionWriter = null;
+            ReceiveActionWriter = null;
         }
-
-
     }
 
-    public ISyntaxWriter<ProtocolSyntaxTreeItem> ProtocolWriter = null;
-    public ISyntaxWriter<CommunicationChannelSyntaxTreeItem> CommunicationChannelSyntaxTreeItemWriter = null;
-    public ISyntaxWriter<EnvironmentSyntaxTreeItem> EnvironmentSyntaxTreeItemWriter = null;
-    public ISyntaxWriter<EnvironmentStateCaseStatementSyntaxTreeItem> EnvironmentStateCaseStatementSyntaxTreeItemWriter = null;
-    public ISyntaxWriter<EnvironmentActionFromStateDefaultWaitActionSyntaxTreeItem> EnvironmentActionFromStateDefaultWaitActionSyntaxTreeItemWriter = null;
-    public ISyntaxWriter<EnvironmentActionFromStateSendSyntaxTreeItem> EnvironmentActionFromStateSendSyntaxTreeItemWriter = null;
-    public ISyntaxWriter<EnvironmentActionFromStateReceiveSyntaxTreeItem> EnvironmentActionFromStateReceiveSyntaxTreeItemWriter = null;
+    public ISyntaxWriter<ASTProtocol> ProtocolWriter = null;
+    public ISyntaxWriter<ASTCommunicationChannel> ChannelWriter = null;
+    public ISyntaxWriter<ASTEnvironment> EnvironmentWriter = null;
+    public ISyntaxWriter<ASTStateCaseStatement> CaseStatementWriter = null;
+    public ISyntaxWriter<ASTWaitAction> WaitActionWriter = null;
+    public ISyntaxWriter<ASTSendAction> SendActionWriter = null;
+    public ISyntaxWriter<ASTReceiveAction> ReceiveActionWriter = null;
 }

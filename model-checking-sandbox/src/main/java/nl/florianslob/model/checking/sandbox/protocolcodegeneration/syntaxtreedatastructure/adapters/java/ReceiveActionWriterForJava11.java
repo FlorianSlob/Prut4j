@@ -1,12 +1,12 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentActionFromStateReceiveSyntaxTreeItem;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTReceiveAction;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
-public class EnvironmentActionFromStateReceiveJava11Writer implements ISyntaxWriter<EnvironmentActionFromStateReceiveSyntaxTreeItem> {
+public class ReceiveActionWriterForJava11 implements ISyntaxWriter<ASTReceiveAction> {
     @Override
-    public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, EnvironmentActionFromStateReceiveSyntaxTreeItem SyntaxTreeItem) {
+    public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTReceiveAction SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.notifyAll();");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "state = "+SyntaxTreeItem.nextStateId+";");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, ""+SyntaxTreeItem.communicationChannel.messageType+" m"+SyntaxTreeItem.currentStateId+" = "+SyntaxTreeItem.communicationChannel.queueName+".take();");

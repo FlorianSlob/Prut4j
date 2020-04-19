@@ -4,25 +4,26 @@ import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreeda
 
 import java.util.Objects;
 
-public class CommunicationChannelSyntaxTreeItem extends AbstractSyntaxTreeItem<CommunicationChannelSyntaxTreeItem> {
+public class ASTCommunicationChannel extends SyntaxTreeItemBase<ASTCommunicationChannel> {
     public final String fromRole;
     public final String toRole;
     public final String messageType;
     public final String queueName;
 
-    public CommunicationChannelSyntaxTreeItem(String fromRole, String toRole, String messageType, ISyntaxWriter<CommunicationChannelSyntaxTreeItem> syntaxBuilderAdapter){
-        super(syntaxBuilderAdapter);
+    public ASTCommunicationChannel(ISyntaxWriter<ASTCommunicationChannel> syntaxWriter, String fromRole, String toRole, String messageType){
+        super(syntaxWriter);
         this.fromRole = fromRole;
         this.toRole = toRole;
         this.messageType = messageType;
         this.queueName = "queueFrom"+fromRole+"To"+toRole;
     }
 
+    // Override the equals method to enable comparison based on the fields
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CommunicationChannelSyntaxTreeItem channel = (CommunicationChannelSyntaxTreeItem) o;
+        ASTCommunicationChannel channel = (ASTCommunicationChannel) o;
         return Objects.equals(fromRole, channel.fromRole) &&
             Objects.equals(toRole, channel.toRole) &&
             Objects.equals(messageType, channel.messageType);
@@ -32,6 +33,4 @@ public class CommunicationChannelSyntaxTreeItem extends AbstractSyntaxTreeItem<C
     public int hashCode() {
         return Objects.hash(fromRole, toRole, messageType);
     }
-
-
 }
