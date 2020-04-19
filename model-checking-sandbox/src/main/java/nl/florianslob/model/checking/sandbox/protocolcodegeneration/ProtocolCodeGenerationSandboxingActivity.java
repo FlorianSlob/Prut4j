@@ -5,7 +5,7 @@ import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitionda
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.*;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxWriterProvider;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.SyntaxWriterProvider;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

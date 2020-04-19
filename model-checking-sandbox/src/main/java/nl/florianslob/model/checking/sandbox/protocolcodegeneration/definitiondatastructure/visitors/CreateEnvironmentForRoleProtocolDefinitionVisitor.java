@@ -4,8 +4,8 @@ import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitionda
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransaction;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxWriterProvider;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.SyntaxWriterProvider;
 
 import java.util.HashSet;
 import java.util.LinkedList;

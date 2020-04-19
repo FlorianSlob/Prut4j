@@ -3,7 +3,7 @@ package nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiond
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransaction;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 
 import java.util.HashSet;
 

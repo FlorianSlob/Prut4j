@@ -1,9 +1,9 @@
-package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters;
+package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters;
 
 import jdk.jshell.spi.ExecutionControl;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java.*;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode.ProtocolWriterForPseudoCode;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.*;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.psuedocode.ProtocolWriterForPseudoCode;
 
 public class SyntaxWriterProvider {
     public SyntaxWriterProvider(String targetLanguage) throws ExecutionControl.NotImplementedException {

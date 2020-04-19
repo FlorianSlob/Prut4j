@@ -1,4 +1,4 @@
-package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure;
+package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters;
 
 public class StringBuilderSyntaxHelper {
     public static void addIndentation(StringBuilder builder, int numberOfTabs){

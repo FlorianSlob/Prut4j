@@ -21,18 +21,19 @@ public class GeneratedChessProtocol implements IProtocol {
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
-		switch (environmentName) {
-			case "W": return new IEnvironment(){
+		switch (environmentName){
+			case "W": return new IEnvironment() {
+				
 				@Override
-				public String getName() {
+				public String getName(){
 					return environmentName;
 				}
 				
 				@Override
 				public Optional exchange(Optional box) throws Exception{
-					synchronized (monitor) {
-						while (true) {
-							switch (state) {
+					synchronized (monitor){
+						while (true){
+							switch (state){
 								case 0:
 									monitor.notifyAll();
 									state = 1;
@@ -66,17 +67,18 @@ public class GeneratedChessProtocol implements IProtocol {
 					}
 				}
 			};
-			case "B": return new IEnvironment(){
+			case "B": return new IEnvironment() {
+				
 				@Override
-				public String getName() {
+				public String getName(){
 					return environmentName;
 				}
 				
 				@Override
 				public Optional exchange(Optional box) throws Exception{
-					synchronized (monitor) {
-						while (true) {
-							switch (state) {
+					synchronized (monitor){
+						while (true){
+							switch (state){
 								case 0:
 									monitor.wait();
 									break;
@@ -117,17 +119,17 @@ public class GeneratedChessProtocol implements IProtocol {
 	}
 	
 	@Override
-	public String[] threadNames() {
+	public String[] threadNames(){
 		return new String[] { "W", "B" };
 	}
 	
 	@Override
-	public Object[] dummies() {
+	public Object[] dummies(){
 		return new Object[0];
 	}
 	
 	@Override
-	public IProtocol deepClone() {
+	public IProtocol deepClone(){
 		return null;
 	}
 }
