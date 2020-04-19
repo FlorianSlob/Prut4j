@@ -1,11 +1,12 @@
 package nl.florianslob.model.checking.sandbox;
 
-import nl.florianslob.model.checking.sandbox.protocolimplementations.ProtocolImplementationsSandboxActivity;
 import nl.florianslob.model.checking.sandbox.fosterchandy.FosterChandySandboxActivity;
 import nl.florianslob.model.checking.sandbox.graphvisualization.GraphVisualizationSandboxingActivity;
 import nl.florianslob.model.checking.sandbox.ltlverification.LtlVerificationActivity;
 import nl.florianslob.model.checking.sandbox.modelchecking.ModelCheckingActivity;
 import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.ProtocolCodeGenerationSandboxingActivity;
+import nl.florianslob.model.checking.sandbox.protocolimplementations.ProtocolImplementationsSandboxActivity;
 
 /**
  *
@@ -14,7 +15,7 @@ import nl.florianslob.model.checking.sandbox.onthefly.OnTheFlyLtlSandboxActivity
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ChessProtocol;
+        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ProtocolCodeGeneration;
 
         if(args != null && args.length > 0){
             try{
@@ -42,6 +43,8 @@ public class Main {
                 return new GraphVisualizationSandboxingActivity();
             case ChessProtocol:
                 return new ProtocolImplementationsSandboxActivity();
+            case ProtocolCodeGeneration:
+                return new ProtocolCodeGenerationSandboxingActivity();
             default:
                 throw new UnsupportedOperationException();
         }

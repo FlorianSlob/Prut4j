@@ -24,14 +24,16 @@ public class ChessProtocol implements IProtocol {
                     synchronized (monitor) {
                         while ( true) {
                             switch (state) {
-                                case 0: monitor.notifyAll();
-                                        state = 1;
-                                        queue1.put(box.get());
-                                        return Optional.empty();
+                                case 0:
+                                    monitor.notifyAll();
+                                    state = 1;
+                                    queue1.put(box.get());
+                                    return Optional.empty();
                                 case 1: monitor.wait();
                                         break;
-                                case 2: monitor.wait();
-                                        break;
+                                case 2:
+                                    monitor.wait();
+                                    break;
                                 case 3: monitor.notifyAll();
                                     state = 4;
                                     Object m = queue2.take();
