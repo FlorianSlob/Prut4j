@@ -29,13 +29,14 @@ public class EnvironmentPseudoCodeWriter implements ISyntaxBuilderAdapter<Enviro
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "switch (state) {");
 
         // TODO Add some default methods;
+        numberOfPrependingTabs++;
 
         for(EnvironmentStateCaseStatementSyntaxTreeItem stateCaseStatement : SyntaxTreeItem.environmentStateCaseStatements)
             stateCaseStatement.buildSyntax(builder,numberOfPrependingTabs);
 
 
         // Add default to switch case statement.
-        numberOfPrependingTabs++;
+//        numberOfPrependingTabs++;
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "default: throw new Exception(\"State number out of bounds\");");
 
         // add closing tags // TODO Implement Automatic wrapper with lambda function?

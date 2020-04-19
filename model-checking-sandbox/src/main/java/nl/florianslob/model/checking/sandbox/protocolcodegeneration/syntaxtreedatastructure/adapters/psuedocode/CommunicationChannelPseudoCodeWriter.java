@@ -11,10 +11,8 @@ public class CommunicationChannelPseudoCodeWriter implements ISyntaxBuilderAdapt
         StringBuilderSyntaxHelper.addIndentation(builder, numberOfPrependingTabs);
         builder.append("private final BlockingQueue<");
         builder.append(SyntaxTreeItem.messageType);
-        builder.append("> queueFrom");
-        builder.append(SyntaxTreeItem.fromRole);
-        builder.append("to");
-        builder.append(SyntaxTreeItem.toRole);
+        builder.append("> ");
+        builder.append(SyntaxTreeItem.queueName);
         builder.append(" = new LinkedBlockingQueue(); \n");
     }
 }

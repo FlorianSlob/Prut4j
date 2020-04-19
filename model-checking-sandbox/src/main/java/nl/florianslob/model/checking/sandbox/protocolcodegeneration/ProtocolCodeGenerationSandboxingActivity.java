@@ -6,6 +6,9 @@ import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreeda
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ProtocolSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxBuilderAdapterProvider;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,7 +41,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         List<CreateEnvironmentForRoleVisitor> visitorsSecondPass = new LinkedList<>();
 
         for(String roleName : uniqueRolenameFinderVisitor.roleNames){
-            visitorsSecondPass.add(new CreateEnvironmentForRoleVisitor(roleName, adapterProvider));
+            visitorsSecondPass.add(new CreateEnvironmentForRoleVisitor(roleName, adapterProvider, uniqueCommunicationChannelFinderVisitor.communicationChannelSyntaxTreeItems));
         }
         // pass2
         chessProtocolState0.Accept(visitorsSecondPass);
@@ -49,13 +52,21 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             environments.add(visitor.getEnvironmentStateCaseStatements());
         }
 
-        ProtocolSyntaxTreeItem protocolSyntaxTree = new ProtocolSyntaxTreeItem("ChessProtocol",
+        ProtocolSyntaxTreeItem protocolSyntaxTree = new ProtocolSyntaxTreeItem("GeneratedChessProtocol",
             uniqueCommunicationChannelFinderVisitor.communicationChannelSyntaxTreeItems, environments, adapterProvider.ProtocolWriter);
 
         StringBuilder builder = new StringBuilder();
         protocolSyntaxTree.buildSyntax(builder,0);
 
-        System.out.println(builder.toString()); // TODO This should be a write to a file.
+//        System.out.println(builder.toString()); // TODO This should be a write to a file.
+
+        //append string buffer/builder to buffered writer
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/nl/florianslob/model/checking/sandbox/protocolcodegeneration/generated/GeneratedChessProtocol.java"))) {
+            bw.append(builder);//Internally it does aSB.toString();
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private ProtocolStateNode getInitialStateForChessProtocol() {

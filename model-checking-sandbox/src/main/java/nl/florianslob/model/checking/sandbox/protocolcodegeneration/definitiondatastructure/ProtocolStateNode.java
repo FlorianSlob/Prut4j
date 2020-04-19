@@ -16,7 +16,7 @@ public class ProtocolStateNode {
         this.outgoingTransactions.add(outgoingTransaction);
     }
 
-    public void Accept(List<? extends IVisitor<ProtocolStateNode>> visitors){
+    public void Accept(List<? extends IVisitor<ProtocolStateNode>> visitors) throws Exception {
         // Stop execution if visited before
         if(visitedBefore) {
             // Resetting to enable multiple passes.

@@ -8,8 +8,8 @@ public class EnvironmentActionFromStateReceivePseudoCodeWriter implements ISynta
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, EnvironmentActionFromStateReceiveSyntaxTreeItem SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.notifyAll();");
-        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "state = "+SyntaxTreeItem.targetStateId+";");
-        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "Object<TODOTYPE> m = "+SyntaxTreeItem.queuName+".take();");
-        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "return Optional.of(m);");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "state = "+SyntaxTreeItem.nextStateId+";");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, ""+SyntaxTreeItem.communicationChannel.messageType+" m"+SyntaxTreeItem.currentStateId+" = "+SyntaxTreeItem.communicationChannel.queueName+".take();");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "return Optional.of(m"+SyntaxTreeItem.currentStateId+");");
     }
 }

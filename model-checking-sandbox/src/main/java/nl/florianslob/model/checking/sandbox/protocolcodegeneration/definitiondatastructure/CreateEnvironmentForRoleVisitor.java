@@ -23,22 +23,35 @@ public class CreateEnvironmentForRoleVisitor implements IVisitor<ProtocolStateNo
         return new EnvironmentSyntaxTreeItem(this.roleName, environmentStateCaseStatements, syntaxBuilderAdapterProvider.EnvironmentSyntaxTreeItemWriter);
     }
 
+    public CommunicationChannelSyntaxTreeItem getCommunicationChannelSyntaxTreeItem(String fromRole, String toRole, String messageType) throws Exception {
+        for(CommunicationChannelSyntaxTreeItem item : this.communicationChannelSyntaxTreeItems){
+            if(item.messageType == messageType && item.fromRole == fromRole && item.toRole == toRole){
+                return item;
+            }
+        }
+        throw new Exception("Cannot find queue for this transaction.");
+    }
+
     @Override
-    public void Visit(ProtocolStateNode host) {
+    public void Visit(ProtocolStateNode host) throws Exception {
         EnvironmentStateCaseStatementSyntaxTreeItem caseStatement = new EnvironmentStateCaseStatementSyntaxTreeItem(host.stateId, syntaxBuilderAdapterProvider.EnvironmentStateCaseStatementSyntaxTreeItemWriter);
 
         boolean noActionAdded = true;
         for(ProtocolTransaction transaction : host.outgoingTransactions){
             if(transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageAction.SEND){
+                CommunicationChannelSyntaxTreeItem communicationChannelSyntaxTreeItem = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole, transaction.messageContentType);
                 // add send action
-                caseStatement.addAction(new EnvironmentActionFromStateSendSyntaxTreeItem(syntaxBuilderAdapterProvider.EnvironmentActionFromStateSendSyntaxTreeItemWriter));
+                caseStatement.addAction(new EnvironmentActionFromStateSendSyntaxTreeItem(syntaxBuilderAdapterProvider.EnvironmentActionFromStateSendSyntaxTreeItemWriter, communicationChannelSyntaxTreeItem, transaction.targetState.stateId));
 
                 noActionAdded = false;
             }
 
             if(transaction.toRole.equals(roleName) && transaction.action == ProtocolMessageAction.RECEIVE){
+
+                CommunicationChannelSyntaxTreeItem communicationChannelSyntaxTreeItem = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole, transaction.messageContentType);
+
                 // add receive action of type
-                caseStatement.addAction(new EnvironmentActionFromStateReceiveSyntaxTreeItem(syntaxBuilderAdapterProvider.EnvironmentActionFromStateReceiveSyntaxTreeItemWriter));
+                caseStatement.addAction(new EnvironmentActionFromStateReceiveSyntaxTreeItem(syntaxBuilderAdapterProvider.EnvironmentActionFromStateReceiveSyntaxTreeItemWriter, communicationChannelSyntaxTreeItem, host.stateId, transaction.targetState.stateId));
 
                 noActionAdded = false;
             }
