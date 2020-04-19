@@ -4,7 +4,7 @@ import nl.florianslob.model.checking.sandbox.ISandboxingActivity;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.definitiondatastructure.*;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ProtocolSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxBuilderAdapterProvider;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.SyntaxWriterProvider;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -16,8 +16,9 @@ import java.util.List;
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
+
         // TODO Replace with some form of dependency injection
-        SyntaxBuilderAdapterProvider adapterProvider = new SyntaxBuilderAdapterProvider("PseudoCode");
+        SyntaxWriterProvider adapterProvider = new SyntaxWriterProvider("Java11");
 
         ProtocolStateNode chessProtocolState0 = getInitialStateForChessProtocol();
 

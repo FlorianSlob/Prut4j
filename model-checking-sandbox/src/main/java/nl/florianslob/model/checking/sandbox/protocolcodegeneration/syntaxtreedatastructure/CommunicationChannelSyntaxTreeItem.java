@@ -1,6 +1,6 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ public class CommunicationChannelSyntaxTreeItem extends AbstractSyntaxTreeItem<C
     public final String messageType;
     public final String queueName;
 
-    public CommunicationChannelSyntaxTreeItem(String fromRole, String toRole, String messageType, ISyntaxBuilderAdapter<CommunicationChannelSyntaxTreeItem> syntaxBuilderAdapter){
+    public CommunicationChannelSyntaxTreeItem(String fromRole, String toRole, String messageType, ISyntaxWriter<CommunicationChannelSyntaxTreeItem> syntaxBuilderAdapter){
         super(syntaxBuilderAdapter);
         this.fromRole = fromRole;
         this.toRole = toRole;

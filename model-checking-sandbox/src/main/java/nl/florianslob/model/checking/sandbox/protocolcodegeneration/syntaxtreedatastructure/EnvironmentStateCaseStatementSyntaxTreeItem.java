@@ -1,6 +1,6 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class EnvironmentStateCaseStatementSyntaxTreeItem extends AbstractSyntaxT
 
     public List<EnvironmentActionFromState> actionsFromState = new LinkedList<>();
 
-    public EnvironmentStateCaseStatementSyntaxTreeItem(int stateIdCondition, ISyntaxBuilderAdapter<EnvironmentStateCaseStatementSyntaxTreeItem> syntaxBuilderAdapter){
+    public EnvironmentStateCaseStatementSyntaxTreeItem(int stateIdCondition, ISyntaxWriter<EnvironmentStateCaseStatementSyntaxTreeItem> syntaxBuilderAdapter){
         super(syntaxBuilderAdapter);
         this.stateIdCondition = stateIdCondition;
     }

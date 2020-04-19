@@ -1,14 +1,14 @@
-package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
+package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode;
 
 import jdk.jshell.spi.ExecutionControl;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.CommunicationChannelSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ProtocolSyntaxTreeItem;
 
-public class ProtocolSyntaxTreeItemJava11Writer implements ISyntaxBuilderAdapter<ProtocolSyntaxTreeItem> {
+public class ProtocolSyntaxTreeItemPseudoCodeWriter implements ISyntaxWriter<ProtocolSyntaxTreeItem> {
 
-    public ProtocolSyntaxTreeItemJava11Writer() throws ExecutionControl.NotImplementedException {
+    public ProtocolSyntaxTreeItemPseudoCodeWriter() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Need to add Java 11 support");
     }
 

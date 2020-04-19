@@ -1,12 +1,12 @@
-package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode;
+package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
 
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentStateCaseStatementSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
 
-public class EnvironmentPseudoCodeWriter implements ISyntaxBuilderAdapter<EnvironmentSyntaxTreeItem> {
+public class EnvironmentJava11Writer implements ISyntaxWriter<EnvironmentSyntaxTreeItem> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, EnvironmentSyntaxTreeItem SyntaxTreeItem) {
 

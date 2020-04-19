@@ -1,6 +1,6 @@
 package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure;
 
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
 public class EnvironmentActionFromStateReceiveSyntaxTreeItem extends EnvironmentActionFromState {
 
@@ -9,7 +9,7 @@ public class EnvironmentActionFromStateReceiveSyntaxTreeItem extends Environment
     public final int nextStateId;
     public final int currentStateId;
 
-    public EnvironmentActionFromStateReceiveSyntaxTreeItem(ISyntaxBuilderAdapter<EnvironmentActionFromStateReceiveSyntaxTreeItem> syntaxBuilderAdapter, CommunicationChannelSyntaxTreeItem communicationChannel, int currentStateId, int nextStateId) {
+    public EnvironmentActionFromStateReceiveSyntaxTreeItem(ISyntaxWriter<EnvironmentActionFromStateReceiveSyntaxTreeItem> syntaxBuilderAdapter, CommunicationChannelSyntaxTreeItem communicationChannel, int currentStateId, int nextStateId) {
         super(syntaxBuilderAdapter);
         this.communicationChannel = communicationChannel;
         this.nextStateId = nextStateId;

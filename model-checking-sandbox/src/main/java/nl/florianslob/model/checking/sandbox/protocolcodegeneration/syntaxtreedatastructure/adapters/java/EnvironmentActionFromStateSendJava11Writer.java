@@ -1,10 +1,10 @@
-package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode;
+package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
 
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.EnvironmentActionFromStateSendSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
-public class EnvironmentActionFromStateSendPseudoCodeWriter implements ISyntaxBuilderAdapter<EnvironmentActionFromStateSendSyntaxTreeItem> {
+public class EnvironmentActionFromStateSendJava11Writer implements ISyntaxWriter<EnvironmentActionFromStateSendSyntaxTreeItem> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, EnvironmentActionFromStateSendSyntaxTreeItem SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.notifyAll();");

@@ -1,10 +1,10 @@
-package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.psuedocode;
+package nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.java;
 
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.CommunicationChannelSyntaxTreeItem;
 import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.StringBuilderSyntaxHelper;
-import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxBuilderAdapter;
+import nl.florianslob.model.checking.sandbox.protocolcodegeneration.syntaxtreedatastructure.adapters.ISyntaxWriter;
 
-public class CommunicationChannelPseudoCodeWriter implements ISyntaxBuilderAdapter<CommunicationChannelSyntaxTreeItem> {
+public class CommunicationChannelJava11Writer implements ISyntaxWriter<CommunicationChannelSyntaxTreeItem> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, CommunicationChannelSyntaxTreeItem SyntaxTreeItem) {
 
