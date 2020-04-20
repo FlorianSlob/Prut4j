@@ -2,6 +2,3 @@ rootProject.name = 'model-checking-sandbox'
 
 include ':model-checking-base'
 project(':model-checking-base').projectDir = new File(settingsDir, '../model-checking-base')
-
-include ':model-checking-testproject'
-project(':model-checking-testproject').projectDir = new File(settingsDir, '../model-checking-testproject')

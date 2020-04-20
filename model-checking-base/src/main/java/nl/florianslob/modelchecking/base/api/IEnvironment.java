@@ -5,13 +5,13 @@ import java.util.Optional;
 public interface IEnvironment {
 
     String getName();
-    Optional exchange(Optional box) throws Exception;
+    Optional<ProtocolMessage> exchange(Optional<ProtocolMessage> box) throws Exception;
 
-    default void send(Object m) throws Exception {
+    default void send(ProtocolMessage m) throws Exception {
         exchange(Optional.of(m));
     }
 
-    default Object receive() throws Exception {
+    default ProtocolMessage receive() throws Exception {
         return exchange(Optional.empty()).get();
     }
 }

@@ -2,6 +2,7 @@ package nl.florianslob.modelchecking.sandbox.protocolimplementations;
 
 import nl.florianslob.modelchecking.base.api.IEnvironment;
 import nl.florianslob.modelchecking.base.api.IProtocol;
+import nl.florianslob.modelchecking.base.api.ProtocolMessage;
 
 public class Chess {
 
@@ -41,7 +42,7 @@ public class Chess {
         Board board = new Board("White");
         while (!board.isFinal()) {
             if (board.isNotInitial()) {
-                Move mBlack = (Move) environment.receive();
+                Move mBlack = (Move) environment.receive().message;
                 board.update(mBlack);
                 board.print();
                 if (board.isFinal()) break;
@@ -50,7 +51,7 @@ public class Chess {
             Move mWhite = new Move();
             board.update(mWhite);
             board.print();
-            environment.send(mWhite);
+            environment.send(new ProtocolMessage("B",mWhite));
         }
     }
 
@@ -58,7 +59,7 @@ public class Chess {
         Board board = new Board("Black");
         while (!board.isFinal()) {
 
-            Move mWhite = (Move) environment.receive();
+            Move mWhite = (Move) environment.receive().message;
             board.update(mWhite);
             if (board.isFinal()) break;
 
@@ -66,7 +67,7 @@ public class Chess {
             Move mBlack = new Move();
             board.update(mBlack);
             board.print();
-            environment.send(mBlack);
+            environment.send(new ProtocolMessage("W",mWhite));
         }
     }
 }

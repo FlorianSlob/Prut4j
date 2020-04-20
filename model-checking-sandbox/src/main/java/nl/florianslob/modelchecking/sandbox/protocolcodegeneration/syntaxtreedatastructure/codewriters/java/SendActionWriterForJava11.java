@@ -9,7 +9,7 @@ public class SendActionWriterForJava11 implements ISyntaxWriter<ASTSendAction> {
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTSendAction SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.notifyAll();");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "state = "+SyntaxTreeItem.nextStateId+";");
-        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, ""+SyntaxTreeItem.communicationChannel.queueName+".put(("+SyntaxTreeItem.communicationChannel.messageType+")box.get());");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, ""+SyntaxTreeItem.communicationChannel.queueName+".put(box.get());");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "return Optional.empty();");
     }
 }

@@ -38,6 +38,7 @@ public class GenericParticipant {
         this.currentExecutingAction = getRandomActionFromSet(StartupActions);
         while(true) {
             if(maxDepthReached()){
+                System.out.println("MaxDepthReaches, stopping execution for: "+environment.getName());
                 return;
             }
             executeAction(environment);

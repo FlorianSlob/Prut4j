@@ -1,6 +1,9 @@
 plugins {
     id 'java'
+    id 'application'
 }
+
+mainClassName = 'program.Main'
 
 group 'nl.florianslob.modelchecking.testproject'
 version '1.0-SNAPSHOT'
@@ -15,3 +18,4 @@ dependencies {
     compile project(':model-checking-base')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+

@@ -9,7 +9,7 @@ public class ReceiveActionWriterForJava11 implements ISyntaxWriter<ASTReceiveAct
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTReceiveAction SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.notifyAll();");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "state = "+SyntaxTreeItem.nextStateId+";");
-        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, ""+SyntaxTreeItem.communicationChannel.messageType+" m"+SyntaxTreeItem.currentStateId+" = "+SyntaxTreeItem.communicationChannel.queueName+".take();");
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "ProtocolMessage<"+SyntaxTreeItem.communicationChannel.messageType+"> m"+SyntaxTreeItem.currentStateId+" = "+SyntaxTreeItem.communicationChannel.queueName+".take();");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "return Optional.of(m"+SyntaxTreeItem.currentStateId+");");
     }
 }

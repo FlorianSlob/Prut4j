@@ -6,8 +6,8 @@
 package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
-import dto.Move;
 import nl.florianslob.modelchecking.base.api.*;
+import dto.Move;
 
 import java.util.Optional;
 import java.util.concurrent.BlockingQueue;
@@ -17,8 +17,8 @@ public class GeneratedChessProtocol implements IProtocol {
 	private volatile int state = 0;
 	private final Object monitor = this;
 	
-	private final BlockingQueue<Move> queueFromWToB = new LinkedBlockingQueue();
-	private final BlockingQueue<Move> queueFromBToW = new LinkedBlockingQueue(); 
+	private final BlockingQueue<ProtocolMessage<Move>> queueFromWToB = new LinkedBlockingQueue(); 
+	private final BlockingQueue<ProtocolMessage<Move>> queueFromBToW = new LinkedBlockingQueue(); 
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -31,14 +31,14 @@ public class GeneratedChessProtocol implements IProtocol {
 				}
 				
 				@Override
-				public Optional exchange(Optional box) throws Exception{
+				public Optional exchange(Optional<ProtocolMessage> box) throws Exception{
 					synchronized (monitor){
 						while (true){
 							switch (state){
 								case 0:
 									monitor.notifyAll();
 									state = 1;
-									queueFromWToB.put((Move)box.get());
+									queueFromWToB.put(box.get());
 									return Optional.empty();
 								case 1:
 									monitor.wait();
@@ -49,12 +49,12 @@ public class GeneratedChessProtocol implements IProtocol {
 								case 3:
 									monitor.notifyAll();
 									state = 4;
-									Move m3 = queueFromBToW.take();
+									ProtocolMessage<Move> m3 = queueFromBToW.take();
 									return Optional.of(m3);
 								case 4:
 									monitor.notifyAll();
 									state = 5;
-									queueFromWToB.put((Move)box.get());
+									queueFromWToB.put(box.get());
 									return Optional.empty();
 								case 5:
 									monitor.wait();
@@ -76,7 +76,7 @@ public class GeneratedChessProtocol implements IProtocol {
 				}
 				
 				@Override
-				public Optional exchange(Optional box) throws Exception{
+				public Optional exchange(Optional<ProtocolMessage> box) throws Exception{
 					synchronized (monitor){
 						while (true){
 							switch (state){
@@ -86,12 +86,12 @@ public class GeneratedChessProtocol implements IProtocol {
 								case 1:
 									monitor.notifyAll();
 									state = 2;
-									Move m1 = queueFromWToB.take();
+									ProtocolMessage<Move> m1 = queueFromWToB.take();
 									return Optional.of(m1);
 								case 2:
 									monitor.notifyAll();
 									state = 3;
-									queueFromBToW.put((Move)box.get());
+									queueFromBToW.put(box.get());
 									return Optional.empty();
 								case 3:
 									monitor.wait();
@@ -102,12 +102,12 @@ public class GeneratedChessProtocol implements IProtocol {
 								case 5:
 									monitor.notifyAll();
 									state = 6;
-									Move m5 = queueFromWToB.take();
+									ProtocolMessage<Move> m5 = queueFromWToB.take();
 									return Optional.of(m5);
 								case 6:
 									monitor.notifyAll();
 									state = 3;
-									queueFromBToW.put((Move)box.get());
+									queueFromBToW.put(box.get());
 									return Optional.empty();
 								default: throw new Exception("State number out of bounds");
 							}
