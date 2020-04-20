@@ -18,7 +18,7 @@ steps:
 - task: Gradle@2
   inputs:
     workingDirectory: 'model-checking-testproject'
-    gradleWrapperFile: 'gradlew'
+    gradleWrapperFile: 'model-checking-testproject/gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
