@@ -15,7 +15,7 @@ import nl.florianslob.model.checking.sandbox.protocolimplementations.ProtocolImp
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ProtocolCodeGeneration;
+        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.GraphVisualization;
 
         if(args != null && args.length > 0){
             try{

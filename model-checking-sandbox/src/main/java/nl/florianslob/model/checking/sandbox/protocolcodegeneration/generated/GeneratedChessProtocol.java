@@ -22,51 +22,6 @@ public class GeneratedChessProtocol implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "W": return new IEnvironment() {
-				
-				@Override
-				public String getName(){
-					return environmentName;
-				}
-				
-				@Override
-				public Optional exchange(Optional box) throws Exception{
-					synchronized (monitor){
-						while (true){
-							switch (state){
-								case 0:
-									monitor.notifyAll();
-									state = 1;
-									queueFromWToB.put((Move)box.get());
-									return Optional.empty();
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
-									monitor.wait();
-									break;
-								case 3:
-									monitor.notifyAll();
-									state = 4;
-									Move m3 = queueFromBToW.take();
-									return Optional.of(m3);
-								case 4:
-									monitor.notifyAll();
-									state = 5;
-									queueFromWToB.put((Move)box.get());
-									return Optional.empty();
-								case 5:
-									monitor.wait();
-									break;
-								case 6:
-									monitor.wait();
-									break;
-								default: throw new Exception("State number out of bounds");
-							}
-						}
-					}
-				}
-			};
 			case "B": return new IEnvironment() {
 				
 				@Override
@@ -108,6 +63,51 @@ public class GeneratedChessProtocol implements IProtocol {
 									state = 3;
 									queueFromBToW.put((Move)box.get());
 									return Optional.empty();
+								default: throw new Exception("State number out of bounds");
+							}
+						}
+					}
+				}
+			};
+			case "W": return new IEnvironment() {
+				
+				@Override
+				public String getName(){
+					return environmentName;
+				}
+				
+				@Override
+				public Optional exchange(Optional box) throws Exception{
+					synchronized (monitor){
+						while (true){
+							switch (state){
+								case 0:
+									monitor.notifyAll();
+									state = 1;
+									queueFromWToB.put((Move)box.get());
+									return Optional.empty();
+								case 1:
+									monitor.wait();
+									break;
+								case 2:
+									monitor.wait();
+									break;
+								case 3:
+									monitor.notifyAll();
+									state = 4;
+									Move m3 = queueFromBToW.take();
+									return Optional.of(m3);
+								case 4:
+									monitor.notifyAll();
+									state = 5;
+									queueFromWToB.put((Move)box.get());
+									return Optional.empty();
+								case 5:
+									monitor.wait();
+									break;
+								case 6:
+									monitor.wait();
+									break;
 								default: throw new Exception("State number out of bounds");
 							}
 						}
