@@ -16,7 +16,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 - task: Gradle@2
-   inputs:
+  inputs:
     workingDirectory: 'model-checking-testproject'
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
