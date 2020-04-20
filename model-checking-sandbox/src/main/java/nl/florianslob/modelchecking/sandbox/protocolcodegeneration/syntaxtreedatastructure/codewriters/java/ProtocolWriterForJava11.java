@@ -17,13 +17,13 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         StringBuilderSyntaxHelper.addLine(builder, tabCount," **/");
 
         // TODO How to determine package name?
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"package nl.florianslob.model.checking.sandbox.protocolcodegeneration.generated;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"package nl.florianslob.modelchecking.generated;");
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount);
 
         // Start with all imports
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.runtime.api.*;");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.sandbox.protocolimplementations.Move;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.*;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
 
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount); // White line to distinguish imports from the java SDK with imports from our own API.

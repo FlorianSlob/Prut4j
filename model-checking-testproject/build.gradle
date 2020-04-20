@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'nl.florianslob'
+group 'nl.florianslob.modelchecking.testproject'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -12,5 +12,6 @@ repositories {
 }
 
 dependencies {
+    compile project(':model-checking-base')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

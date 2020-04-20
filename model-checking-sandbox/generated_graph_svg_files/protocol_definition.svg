@@ -6,7 +6,7 @@ link State2 to State3--><path d="M92,371.2442 C92,395.7243 92,433.6722 92,459.87
 link State3 to State4--><path d="M72.8253,515.2103 C66.5665,524.1563 60.1627,534.6863 56,545.1563 C48.5797,563.8203 44.8282,586.1393 42.9325,603.6293 " fill="none" id="State3-&gt;State4" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="42.4017,608.8933,47.2865,600.3411,42.9045,603.9186,39.3271,599.5366,42.4017,608.8933" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="41" x="57" y="559.6514">[B,W]?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="62.5" y="576.0029">Move</text><!--MD5=[196cf0de60bc43d3e8600cccfcd43773]
 link State4 to State5--><path d="M41,659.2443 C41,683.7243 41,721.6723 41,747.8733 " fill="none" id="State4-&gt;State5" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="41,752.9493,45,743.9493,41,747.9493,37,743.9493,41,752.9493" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="37" x="42" y="703.6514">[W,B]!</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="45.5" y="720.0029">Move</text><!--MD5=[e800215b3c28a9235acdb96089e262d2]
 link State5 to State6--><path d="M42.8068,803.2663 C44.703,821.2853 48.5051,846.2993 56,867.1563 C59.1154,875.8257 63.5918,884.7071 68.178,892.6988 " fill="none" id="State5-&gt;State6" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="70.7292,897.04,69.6179,887.254,68.1959,892.7292,62.7207,891.3073,70.7292,897.04" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="41" x="57" y="847.6514">[W,B]?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="62.5" y="864.0029">Move</text><!--MD5=[0bd530cd4218eff5cbb752bac3e11a1f]
-link State6 to State3--><path d="M95.765,897.0271 C98.6821,887.8114 101.5545,877.1232 103,867.1563 C123.541,725.5273 117.355,687.5453 103,545.1563 C102.1735,536.9583 100.658,528.1643 99.0108,520.1033 " fill="none" id="State6-&gt;State3" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="97.9732,515.1903,95.9187,524.8224,99.0061,520.0824,103.7461,523.1698,97.9732,515.1903" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="37" x="117" y="703.6514">[B,W]!</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="120.5" y="720.0029">Move</text><!--MD5=[b7e9e9d73327dca061f73ff2772996f7]
+link State6 to State3--><path d="M95.765,897.0271 C98.6821,887.8114 101.5545,877.1232 103,867.1563 C123.541,725.5273 117.355,687.5453 103,545.1563 C102.1735,536.9583 100.658,528.1643 99.0108,520.1033 " fill="none" id="State6-&gt;State3" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="97.9732,515.1903,95.9187,524.8224,99.0061,520.0824,103.7461,523.1698,97.9732,515.1903" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="37" x="117" y="703.6514">[B,W]!</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="120.5" y="720.0029">Move</text><!--MD5=[ab197b08804e2587ea5cbb61ad5cd52c]
 @startuml
  header
 
@@ -24,13 +24,13 @@ State5- ->State6:[W,B]?\nMove
 State6- ->State3:[B,W]!\nMove
 @enduml 
 
-PlantUML version 1.2020.00(Sat Jan 11 13:30:53 CET 2020)
+PlantUML version 1.2020.07(Sun Apr 19 13:42:40 CEST 2020)
 (GPL source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
-Java Version: 13.0.2+8
+Java Version: 11.0.6+8-b520.43
 Operating System: Windows 10
-Default Encoding: UTF-8
+Default Encoding: windows-1252
 Language: en
 Country: US
 --></g></svg>

@@ -1,8 +1,9 @@
 package nl.florianslob.modelchecking.sandbox.protocolimplementations;
 
-import nl.florianslob.modelchecking.runtime.GenericParticipant;
-import nl.florianslob.modelchecking.runtime.GenericParticipantAction;
-import nl.florianslob.modelchecking.runtime.api.IProtocol;
+import nl.florianslob.modelchecking.base.api.ProtocolMessage;
+import nl.florianslob.modelchecking.base.runtime.GenericParticipant;
+import nl.florianslob.modelchecking.base.runtime.GenericParticipantAction;
+import nl.florianslob.modelchecking.base.api.IProtocol;
 
 public class ChessWithGenericParticipant {
 

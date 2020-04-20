@@ -1,12 +1,12 @@
 package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters;
 
-import jdk.jshell.spi.ExecutionControl;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.psuedocode.ProtocolWriterForPseudoCode;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class SyntaxWriterProvider {
-    public SyntaxWriterProvider(String targetLanguage) throws ExecutionControl.NotImplementedException {
+    public SyntaxWriterProvider(String targetLanguage) throws NotImplementedException {
         // TODO Replace with some for of Dependency Injection
         // Autofac alternative for Java = ???
 

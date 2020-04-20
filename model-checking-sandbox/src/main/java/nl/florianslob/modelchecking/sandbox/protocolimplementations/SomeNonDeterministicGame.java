@@ -1,7 +1,7 @@
 package nl.florianslob.modelchecking.sandbox.protocolimplementations;
 
-import nl.florianslob.modelchecking.runtime.api.IEnvironment;
-import nl.florianslob.modelchecking.runtime.api.IProtocol;
+import nl.florianslob.modelchecking.base.api.IEnvironment;
+import nl.florianslob.modelchecking.base.api.IProtocol;
 
 public class SomeNonDeterministicGame {
     public static void play(boolean visualizeProtocolGraph) {

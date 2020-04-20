@@ -1,13 +1,13 @@
 package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.psuedocode;
 
-import jdk.jshell.spi.ExecutionControl;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class ProtocolWriterForPseudoCode implements ISyntaxWriter<ASTProtocol> {
 
-    public ProtocolWriterForPseudoCode() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Need to add Java 11 support");
+    public ProtocolWriterForPseudoCode() throws NotImplementedException {
+        throw new NotImplementedException();
     }
 
     @Override
