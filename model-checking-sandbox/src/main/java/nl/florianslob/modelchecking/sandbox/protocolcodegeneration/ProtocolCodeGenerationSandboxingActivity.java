@@ -20,16 +20,16 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     @Override
     public void runActivity() throws Exception {
         // TODO Replace with some form of dependency injection
-        SyntaxWriterProvider writerProvider = new SyntaxWriterProvider("Java11");
+        var writerProvider = new SyntaxWriterProvider("Java11");
 
-        ProtocolStateNode chessProtocolState0 = getInitialStateForChessProtocol();
+        var chessProtocolState0 = getInitialStateForChessProtocol();
 
         List<IProtocolDefinitionVisitor> visitorsFirstPass = new LinkedList<>();
-        CreatePlantUmlVisualizationProtocolDefinitionVisitor plantUmlVisualizationVisitor =
+        var plantUmlVisualizationVisitor =
             new CreatePlantUmlVisualizationProtocolDefinitionVisitor();
-        FindUniqueCommunicationChannelsProtocolDefinitionVisitor uniqueCommunicationChannelFinderVisitor =
+        var uniqueCommunicationChannelFinderVisitor =
             new FindUniqueCommunicationChannelsProtocolDefinitionVisitor(writerProvider.ChannelWriter);
-        FindUniqueRoleNamesProtocolDefinitionVisitor findUniqueRoleNamesProtocolDefinitionVisitor =
+        var findUniqueRoleNamesProtocolDefinitionVisitor =
             new FindUniqueRoleNamesProtocolDefinitionVisitor();
 
         visitorsFirstPass.add(plantUmlVisualizationVisitor);
@@ -44,7 +44,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
 
 
-        List<CreateEnvironmentForRoleProtocolDefinitionVisitor> visitorsSecondPass = new LinkedList<>();
+        var visitorsSecondPass = new LinkedList<CreateEnvironmentForRoleProtocolDefinitionVisitor>();
 
         for(String roleName : findUniqueRoleNamesProtocolDefinitionVisitor.roleNames){
             visitorsSecondPass.add(new CreateEnvironmentForRoleProtocolDefinitionVisitor(roleName, writerProvider, uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels));
@@ -52,16 +52,16 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         // pass2
         chessProtocolState0.Accept(visitorsSecondPass);
 
-        HashSet<ASTEnvironment> environments = new HashSet<>();
+        var environments = new HashSet<ASTEnvironment>();
 
         for(CreateEnvironmentForRoleProtocolDefinitionVisitor visitor : visitorsSecondPass){
             environments.add(visitor.getASTStateCaseStatements());
         }
 
-        ASTProtocol protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, "GeneratedChessProtocol",
+        var protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, "GeneratedChessProtocol",
             uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels, environments);
 
-        StringBuilder builder = new StringBuilder();
+        var builder = new StringBuilder();
         protocolSyntaxTree.buildSyntax(builder,0);
 
         //append string buffer/builder to buffered writer
@@ -74,17 +74,17 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     }
 
     private ProtocolStateNode getInitialStateForChessProtocol() {
-        ProtocolStateNode state0 = new ProtocolStateNode(0);
-        ProtocolStateNode state1 = new ProtocolStateNode(1);
-        ProtocolStateNode state2 = new ProtocolStateNode(2);
-        ProtocolStateNode state3 = new ProtocolStateNode(3);
-        ProtocolStateNode state4 = new ProtocolStateNode(4);
-        ProtocolStateNode state5 = new ProtocolStateNode(5);
-        ProtocolStateNode state6 = new ProtocolStateNode(6);
+        var state0 = new ProtocolStateNode(0);
+        var state1 = new ProtocolStateNode(1);
+        var state2 = new ProtocolStateNode(2);
+        var state3 = new ProtocolStateNode(3);
+        var state4 = new ProtocolStateNode(4);
+        var state5 = new ProtocolStateNode(5);
+        var state6 = new ProtocolStateNode(6);
 
-        String roleWhiteName = "W";
-        String roleBlackName = "B";
-        String messageTypeName = "Move";
+        var roleWhiteName = "W";
+        var roleBlackName = "B";
+        var messageTypeName = "Move";
 
         state0.AddOutgoingTransaction(new ProtocolTransaction(state1, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
         state1.AddOutgoingTransaction(new ProtocolTransaction(state2, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));

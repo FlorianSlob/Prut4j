@@ -62,7 +62,7 @@ public class SomeNonDeterministicGame {
             Move move = new Move();
             board.update(move);
             board.print();
-            environment.send(new ProtocolMessage("?",move));
+            environment.send(new ProtocolMessage<>("?",move));
         }
     }
 
@@ -78,7 +78,7 @@ public class SomeNonDeterministicGame {
             Move move = new Move();
             board.update(move);
             board.print();
-            environment.send(new ProtocolMessage("root",move));
+            environment.send(new ProtocolMessage<>("root",move));
         }
 
     }

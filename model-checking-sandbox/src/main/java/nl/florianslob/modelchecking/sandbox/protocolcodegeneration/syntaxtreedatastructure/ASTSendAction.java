@@ -2,7 +2,7 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreeda
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 
-public class ASTSendAction extends ASTEnvironmentActionFromState {
+public class ASTSendAction extends ASTEnvironmentActionFromState<ASTSendAction> {
 
     public final ASTCommunicationChannel communicationChannel;
     public final int nextStateId;

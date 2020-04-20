@@ -4,7 +4,7 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 
 import java.util.LinkedList;
 
-public class ASTEnvironment extends SyntaxTreeItemBase {
+public class ASTEnvironment extends SyntaxTreeItemBase<ASTEnvironment> {
 
     public String roleName;
     public LinkedList<ASTStateCaseStatement> ASTStateCaseStatements;

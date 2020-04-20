@@ -51,7 +51,7 @@ public class Chess {
             Move mWhite = new Move();
             board.update(mWhite);
             board.print();
-            environment.send(new ProtocolMessage("B",mWhite));
+            environment.send(new ProtocolMessage<>("B",mWhite));
         }
     }
 
@@ -67,7 +67,7 @@ public class Chess {
             Move mBlack = new Move();
             board.update(mBlack);
             board.print();
-            environment.send(new ProtocolMessage("W",mWhite));
+            environment.send(new ProtocolMessage<>("W",mWhite));
         }
     }
 }
