@@ -6,5 +6,6 @@ public class ProtocolMessage<T>  {
         this.message = message;
     }
     public final String receiver;
-    public final T message;
+    public final T message; /// TODO To param of exchange !
+
 }

@@ -17,7 +17,6 @@ public class SyntaxWriterProvider {
             WaitActionWriter = new WaitActionWriterForJava11();
             SendActionWriter = new SendActionWriterForJava11();
             ReceiveActionWriter = new ReceiveActionWriterForJava11();
-
             // init fields
         }
         else if (targetLanguage.equals("PseudoCode")){

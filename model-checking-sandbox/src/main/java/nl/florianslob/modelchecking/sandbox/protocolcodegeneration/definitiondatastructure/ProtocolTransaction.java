@@ -10,7 +10,7 @@ public class ProtocolTransaction {
     public ProtocolTransaction(ProtocolStateNode targetState, ProtocolMessageActionType action, String fromRole, String toRole, String messageContentType){
         this.targetState = targetState;
         this.action = action;
-        this.fromRole = fromRole;
+        this.fromRole = fromRole; // TODO Do we really need this?
         this.toRole = toRole;
         this.messageContentType = messageContentType;
     }

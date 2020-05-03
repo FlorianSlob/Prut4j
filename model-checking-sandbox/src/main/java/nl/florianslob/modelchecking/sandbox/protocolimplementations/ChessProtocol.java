@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ChessProtocol implements IProtocol {
     private volatile int state = 0;
-    private final Object monitor = this; // Why do we need this?
+    private final Object monitor = this;
     private final BlockingQueue queue1 = new LinkedBlockingQueue();
     private final BlockingQueue queue2 = new LinkedBlockingQueue();
 
