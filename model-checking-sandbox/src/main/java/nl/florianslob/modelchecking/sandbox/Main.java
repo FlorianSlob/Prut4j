@@ -14,7 +14,18 @@ import nl.florianslob.modelchecking.sandbox.protocolimplementations.ProtocolImpl
  */
 public class Main {
 
+    public static <Any> Any getParam(Object b) {
+        return((Any)b);
+    }
+
     public static void main(String[] args) throws Exception {
+
+        boolean foo = getParam(true);
+        float bar = getParam(1.0f);
+        int[] mumble = getParam(new int[] {1,2,3,4}); //
+
+
+        ///////////////////////////////////////
         SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ProtocolCodeGeneration;
 
         if(args != null && args.length > 0){

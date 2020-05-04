@@ -1,4 +1,4 @@
-package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java;
+package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1;
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
@@ -8,9 +8,7 @@ public class ChannelWriterForJava11 implements ISyntaxWriter<ASTCommunicationCha
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTCommunicationChannel SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addIndentation(builder, numberOfPrependingTabs);
-        builder.append("private final BlockingQueue<ProtocolMessage<");
-        builder.append(SyntaxTreeItem.messageType);
-        builder.append(">> ");
+        builder.append("private final BlockingQueue<ProtocolMessage> ");
         builder.append(SyntaxTreeItem.queueName);
         builder.append(" = new LinkedBlockingQueue(); \n");
     }

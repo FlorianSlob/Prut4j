@@ -42,7 +42,7 @@ public class Chess {
         Board board = new Board("White");
         while (!board.isFinal()) {
             if (board.isNotInitial()) {
-                Move mBlack = (Move) environment.receive().message;
+                Move mBlack = (Move) environment.receive();
                 board.update(mBlack);
                 board.print();
                 if (board.isFinal()) break;
@@ -59,7 +59,7 @@ public class Chess {
         Board board = new Board("Black");
         while (!board.isFinal()) {
 
-            Move mWhite = (Move) environment.receive().message;
+            Move mWhite = (Move) environment.receive();
             board.update(mWhite);
             if (board.isFinal()) break;
 

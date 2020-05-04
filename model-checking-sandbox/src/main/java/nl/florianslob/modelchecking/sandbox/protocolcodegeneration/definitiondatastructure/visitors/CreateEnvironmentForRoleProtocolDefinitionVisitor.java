@@ -18,7 +18,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
     public final ISyntaxWriter<ASTEnvironment> environmentWriter;
     public final ISyntaxWriter<ASTStateCaseStatement> caseStatementWriter;
-    public final ISyntaxWriter<ASTWaitAction> waitActionWriter;
+//    public final ISyntaxWriter<ASTWaitAction> waitActionWriter;
     public final ISyntaxWriter<ASTSendAction> sendActionWriter;
     public final ISyntaxWriter<ASTReceiveAction> receiveActionWriter;
 
@@ -29,7 +29,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         this.ASTCommunicationChannels = ASTCommunicationChannels;
         this.environmentWriter = writerProvider.EnvironmentWriter;
         this.caseStatementWriter = writerProvider.CaseStatementWriter;
-        this.waitActionWriter = writerProvider.WaitActionWriter;
+//        this.waitActionWriter = writerProvider.WaitActionWriter;
         this.sendActionWriter = writerProvider.SendActionWriter;
         this.receiveActionWriter = writerProvider.ReceiveActionWriter;
     }
@@ -81,10 +81,11 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
             }
         }
 
-        if (noActionAdded) {
-            // add the default wait action if this environment does not receive or send data in this state.
-            caseStatement.addAction(new ASTWaitAction(this.waitActionWriter));
-        }
+        //
+//        if (noActionAdded) {
+//            // add the default wait action if this environment does not receive or send data in this state.
+//            caseStatement.addAction(new ASTWaitAction(this.waitActionWriter));
+//        }
 
         ASTStateCaseStatements.add(caseStatement);
     }
