@@ -2,6 +2,7 @@ package nl.florianslob.modelchecking.base.api;
 
 import java.util.Optional;
 
+@Deprecated
 public interface IEnvironment {
 
     String getName();
