@@ -14,10 +14,6 @@ import nl.florianslob.modelchecking.sandbox.protocolimplementations.ProtocolImpl
  */
 public class Main {
 
-    public static <Any> Any getParam(Object b) {
-        return((Any)b);
-    }
-
     public static void main(String[] args) throws Exception {
         SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ProtocolCodeGeneration;
 
