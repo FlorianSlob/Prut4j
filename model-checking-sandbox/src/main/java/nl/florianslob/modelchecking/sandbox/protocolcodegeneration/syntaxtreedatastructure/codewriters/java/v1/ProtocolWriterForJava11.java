@@ -23,7 +23,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
         // Start with all imports
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.*;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.v2.*;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
 
 

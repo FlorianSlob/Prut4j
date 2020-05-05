@@ -12,12 +12,13 @@ public class ReceiveActionWriterForJava11 implements ISyntaxWriter<ASTReceiveAct
 //        "+SyntaxTreeItem.communicationChannel.messageType+">
 
         // TODO Replace Move.class with fully qualified name
-        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if ("+SyntaxTreeItem.communicationChannel.queueName+".peek() != null && "+SyntaxTreeItem.communicationChannel.queueName+".peek().message.getClass() == Move.class) {", "}", tabCount,
+        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if ("+SyntaxTreeItem.communicationChannel.queueName+".peek() != null && "+SyntaxTreeItem.communicationChannel.queueName+".peek().getClass() == "+SyntaxTreeItem.messageContentType+".class) {", "}", tabCount,
                 (tabCountLvl0) -> {
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "state = "+SyntaxTreeItem.nextStateId+";");
-//                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "ProtocolMessage m"+SyntaxTreeItem.currentStateId+" = ;");
-                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "return Optional.of("+SyntaxTreeItem.communicationChannel.queueName+".take());");
+                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "// Disabling unchecked inspection: We did check the class in the if statement above");
+                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "//noinspection unchecked");
+                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "return Optional.of((Any)"+SyntaxTreeItem.communicationChannel.queueName+".take());");
                 }
         );
 

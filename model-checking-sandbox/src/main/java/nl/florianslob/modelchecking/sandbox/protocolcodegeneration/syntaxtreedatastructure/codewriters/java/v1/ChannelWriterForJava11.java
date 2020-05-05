@@ -8,8 +8,8 @@ public class ChannelWriterForJava11 implements ISyntaxWriter<ASTCommunicationCha
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTCommunicationChannel SyntaxTreeItem) {
         StringBuilderSyntaxHelper.addIndentation(builder, numberOfPrependingTabs);
-        builder.append("private final BlockingQueue<ProtocolMessage> ");
+        builder.append("private final BlockingQueue<Object> ");
         builder.append(SyntaxTreeItem.queueName);
-        builder.append(" = new LinkedBlockingQueue(); \n");
+        builder.append(" = new LinkedBlockingQueue<>(); \n");
     }
 }

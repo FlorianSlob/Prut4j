@@ -6,7 +6,7 @@
 package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
-import nl.florianslob.modelchecking.base.api.*;
+import nl.florianslob.modelchecking.base.api.v2.*;
 import dto.Move;
 
 import java.util.Optional;
@@ -17,8 +17,8 @@ public class GeneratedChessProtocol implements IProtocol {
 	private volatile int state = 0;
 	private final Object monitor = this;
 	
-	private final BlockingQueue<ProtocolMessage> queueFromWToB = new LinkedBlockingQueue(); 
-	private final BlockingQueue<ProtocolMessage> queueFromBToW = new LinkedBlockingQueue(); 
+	private final BlockingQueue<Object> queueFromBToW = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromWToB = new LinkedBlockingQueue<>(); 
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -31,7 +31,7 @@ public class GeneratedChessProtocol implements IProtocol {
 				}
 				
 				@Override
-				public Optional exchange(Optional<ProtocolMessage> box) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
 					synchronized (monitor){
 						while (true){
 							switch (state){
@@ -39,15 +39,17 @@ public class GeneratedChessProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 1:
-									if (queueFromWToB.peek() != null && queueFromWToB.peek().message.getClass() == Move.class) {
+									if (queueFromWToB.peek() != null && queueFromWToB.peek().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 2;
-										return Optional.of(queueFromWToB.take());
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromWToB.take());
 									}
 									monitor.wait();
 									break;
 								case 2:
-									if (box.get().message.getClass() == Move.class) {
+									if (box.isPresent() && box.get().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 3;
 										queueFromBToW.put(box.get());
@@ -62,15 +64,17 @@ public class GeneratedChessProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 5:
-									if (queueFromWToB.peek() != null && queueFromWToB.peek().message.getClass() == Move.class) {
+									if (queueFromWToB.peek() != null && queueFromWToB.peek().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 6;
-										return Optional.of(queueFromWToB.take());
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromWToB.take());
 									}
 									monitor.wait();
 									break;
 								case 6:
-									if (box.get().message.getClass() == Move.class) {
+									if (box.isPresent() && box.get().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 3;
 										queueFromBToW.put(box.get());
@@ -92,12 +96,12 @@ public class GeneratedChessProtocol implements IProtocol {
 				}
 				
 				@Override
-				public Optional exchange(Optional<ProtocolMessage> box) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
 					synchronized (monitor){
 						while (true){
 							switch (state){
 								case 0:
-									if (box.get().message.getClass() == Move.class) {
+									if (box.isPresent() && box.get().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 1;
 										queueFromWToB.put(box.get());
@@ -112,15 +116,17 @@ public class GeneratedChessProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 3:
-									if (queueFromBToW.peek() != null && queueFromBToW.peek().message.getClass() == Move.class) {
+									if (queueFromBToW.peek() != null && queueFromBToW.peek().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 4;
-										return Optional.of(queueFromBToW.take());
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromBToW.take());
 									}
 									monitor.wait();
 									break;
 								case 4:
-									if (box.get().message.getClass() == Move.class) {
+									if (box.isPresent() && box.get().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 5;
 										queueFromWToB.put(box.get());

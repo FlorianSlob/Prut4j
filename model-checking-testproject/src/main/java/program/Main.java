@@ -1,10 +1,9 @@
 package program;
 
 import dto.Move;
-import nl.florianslob.modelchecking.base.api.IProtocol;
-import nl.florianslob.modelchecking.base.api.ProtocolMessage;
-import nl.florianslob.modelchecking.base.runtime.GenericParticipant;
-import nl.florianslob.modelchecking.base.runtime.GenericParticipantAction;
+import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipant;
+import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
 
 public class Main {
@@ -32,6 +31,7 @@ public class Main {
             try {
                 playerBlack.run(protocol.getEnvironment("B"));
                 // Danger! But is for debugging purposes! Black thread stops first.
+                //noinspection deprecation
                 threadWhite.stop();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static GenericParticipant getGenericParticipantPlayerBlack() {
-        GenericParticipantAction sendActionBlack = GenericParticipantAction.GetSendAction(new ProtocolMessage<>("W", new Move()));
+        GenericParticipantAction sendActionBlack = GenericParticipantAction.GetSendAction(new Move());
         GenericParticipant playerBlack = new GenericParticipant();
         playerBlack.AddStartupAction(GenericParticipantAction.GetReceiveAction());
         playerBlack.AddAfterSendAction(sendActionBlack, GenericParticipantAction.GetReceiveAction());
@@ -53,7 +53,7 @@ public class Main {
     }
 
     private static GenericParticipant getGenericParticipantPlayerWhite() {
-        GenericParticipantAction sendActionWhite = GenericParticipantAction.GetSendAction(new ProtocolMessage<>("B", new Move()));
+        GenericParticipantAction sendActionWhite = GenericParticipantAction.GetSendAction(new Move());
         GenericParticipant playerWhite = new GenericParticipant();
         playerWhite.AddStartupAction(sendActionWhite);
         playerWhite.AddAfterSendAction(sendActionWhite, GenericParticipantAction.GetReceiveAction());
