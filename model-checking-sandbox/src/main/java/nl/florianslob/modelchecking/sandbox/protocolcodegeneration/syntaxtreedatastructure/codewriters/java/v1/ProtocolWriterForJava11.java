@@ -1,8 +1,9 @@
-package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java;
+package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1;
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
 public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
     @Override
@@ -22,7 +23,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
         // Start with all imports
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.*;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.v2.*;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
 
 

@@ -1,5 +1,6 @@
 package nl.florianslob.modelchecking.base.api;
 
+@Deprecated
 public class ProtocolMessage<T>  {
     public  ProtocolMessage(String receiver, T message){
         this.receiver = receiver;

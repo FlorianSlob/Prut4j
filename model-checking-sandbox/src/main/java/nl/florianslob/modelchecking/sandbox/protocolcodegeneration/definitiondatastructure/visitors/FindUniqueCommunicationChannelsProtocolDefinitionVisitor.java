@@ -21,7 +21,7 @@ public class FindUniqueCommunicationChannelsProtocolDefinitionVisitor implements
     public void Visit(ProtocolStateNode protocolStateNode) {
         for(ProtocolTransaction transaction : protocolStateNode.outgoingTransactions){
             ASTCommunicationChannel channel =
-                new ASTCommunicationChannel(this.syntaxWriter, transaction.fromRole, transaction.toRole, transaction.messageContentType);
+                new ASTCommunicationChannel(this.syntaxWriter, transaction.fromRole, transaction.toRole);
             if(!ASTCommunicationChannels.contains(channel)){
                 ASTCommunicationChannels.add(channel);
             }

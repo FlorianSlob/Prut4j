@@ -1,6 +1,5 @@
-package nl.florianslob.modelchecking.base.api;
+package nl.florianslob.modelchecking.base.api.v2;
 
-@Deprecated
 public interface IProtocol {
     IEnvironment getEnvironment(String threadName) throws Exception;
 

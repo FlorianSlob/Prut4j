@@ -44,6 +44,5 @@ public class ProtocolStateNode {
 
         // Resetting to enable multiple passes.
         visitedBefore = false;
-
     }
 }

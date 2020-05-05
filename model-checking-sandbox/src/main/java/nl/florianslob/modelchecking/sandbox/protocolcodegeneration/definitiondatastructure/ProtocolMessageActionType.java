@@ -2,5 +2,6 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitionda
 
 public enum ProtocolMessageActionType {
     SEND,
-    RECEIVE
+    RECEIVE,
+    SYNC /// Will be send to target & receive from target
 }

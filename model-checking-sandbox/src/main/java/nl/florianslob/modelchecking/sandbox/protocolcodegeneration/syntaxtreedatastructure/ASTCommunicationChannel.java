@@ -7,14 +7,12 @@ import java.util.Objects;
 public class ASTCommunicationChannel extends SyntaxTreeItemBase<ASTCommunicationChannel> {
     public final String fromRole;
     public final String toRole;
-    public final String messageType;
     public final String queueName;
 
-    public ASTCommunicationChannel(ISyntaxWriter<ASTCommunicationChannel> syntaxWriter, String fromRole, String toRole, String messageType){
+    public ASTCommunicationChannel(ISyntaxWriter<ASTCommunicationChannel> syntaxWriter, String fromRole, String toRole){
         super(syntaxWriter);
         this.fromRole = fromRole;
         this.toRole = toRole;
-        this.messageType = messageType;
         this.queueName = "queueFrom"+fromRole+"To"+toRole;
     }
 
@@ -25,12 +23,11 @@ public class ASTCommunicationChannel extends SyntaxTreeItemBase<ASTCommunication
         if (o == null || getClass() != o.getClass()) return false;
         ASTCommunicationChannel channel = (ASTCommunicationChannel) o;
         return Objects.equals(fromRole, channel.fromRole) &&
-            Objects.equals(toRole, channel.toRole) &&
-            Objects.equals(messageType, channel.messageType);
+            Objects.equals(toRole, channel.toRole);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fromRole, toRole, messageType);
+        return Objects.hash(fromRole, toRole);
     }
 }

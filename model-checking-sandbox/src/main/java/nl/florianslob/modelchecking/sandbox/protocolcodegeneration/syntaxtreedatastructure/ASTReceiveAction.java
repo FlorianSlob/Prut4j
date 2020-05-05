@@ -8,11 +8,13 @@ public class ASTReceiveAction extends ASTEnvironmentActionFromState<ASTReceiveAc
 
     public final int nextStateId;
     public final int currentStateId;
+    public final String messageContentType;
 
-    public ASTReceiveAction(ISyntaxWriter<ASTReceiveAction> syntaxWriter, ASTCommunicationChannel communicationChannel, int currentStateId, int nextStateId) {
+    public ASTReceiveAction(ISyntaxWriter<ASTReceiveAction> syntaxWriter, ASTCommunicationChannel communicationChannel, int currentStateId, int nextStateId, String messageContentType) {
         super(syntaxWriter);
         this.communicationChannel = communicationChannel;
         this.nextStateId = nextStateId;
         this.currentStateId = currentStateId;
+        this.messageContentType = messageContentType;
     }
 }

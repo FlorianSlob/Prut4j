@@ -1,9 +1,10 @@
-package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java;
+package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1;
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTStateCaseStatement;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
 
 public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment> {
@@ -17,7 +18,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                     }
                 );
 
-                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public Optional exchange(Optional<ProtocolMessage> box) throws Exception", tabCountLvl0,
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception", tabCountLvl0,
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
                             (tabCountLvl2) -> {

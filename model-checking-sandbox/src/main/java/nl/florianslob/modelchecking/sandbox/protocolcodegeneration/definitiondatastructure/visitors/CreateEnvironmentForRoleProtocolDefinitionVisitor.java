@@ -18,7 +18,6 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
     public final ISyntaxWriter<ASTEnvironment> environmentWriter;
     public final ISyntaxWriter<ASTStateCaseStatement> caseStatementWriter;
-    public final ISyntaxWriter<ASTWaitAction> waitActionWriter;
     public final ISyntaxWriter<ASTSendAction> sendActionWriter;
     public final ISyntaxWriter<ASTReceiveAction> receiveActionWriter;
 
@@ -29,7 +28,6 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         this.ASTCommunicationChannels = ASTCommunicationChannels;
         this.environmentWriter = writerProvider.EnvironmentWriter;
         this.caseStatementWriter = writerProvider.CaseStatementWriter;
-        this.waitActionWriter = writerProvider.WaitActionWriter;
         this.sendActionWriter = writerProvider.SendActionWriter;
         this.receiveActionWriter = writerProvider.ReceiveActionWriter;
     }
@@ -38,9 +36,9 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         return new ASTEnvironment(environmentWriter, this.roleName, ASTStateCaseStatements);
     }
 
-    private ASTCommunicationChannel getCommunicationChannelSyntaxTreeItem(String fromRole, String toRole, String messageType) throws Exception {
+    private ASTCommunicationChannel getCommunicationChannelSyntaxTreeItem(String fromRole, String toRole) throws Exception {
         for (ASTCommunicationChannel item : this.ASTCommunicationChannels) {
-            if (item.messageType == messageType && item.fromRole == fromRole && item.toRole == toRole) {
+            if (item.fromRole == fromRole && item.toRole == toRole) {
                 return item;
             }
         }
@@ -61,10 +59,10 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         for (ProtocolTransaction transaction : protocolStateNode.outgoingTransactions) {
             if (transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageActionType.SEND) {
                 ASTCommunicationChannel ASTCommunicationChannel =
-                    getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole, transaction.messageContentType);
+                    getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
                 // add send action
                 caseStatement.addAction(
-                    new ASTSendAction(this.sendActionWriter, ASTCommunicationChannel, transaction.targetState.stateId)
+                    new ASTSendAction(this.sendActionWriter, ASTCommunicationChannel, transaction.targetState.stateId, transaction.messageContentType)
                 );
 
                 noActionAdded = false;
@@ -72,18 +70,13 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
             if (transaction.toRole.equals(roleName) && transaction.action == ProtocolMessageActionType.RECEIVE) {
 
-                ASTCommunicationChannel ASTCommunicationChannel = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole, transaction.messageContentType);
+                ASTCommunicationChannel ASTCommunicationChannel = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
 
                 // add receive action of type
-                caseStatement.addAction(new ASTReceiveAction(this.receiveActionWriter, ASTCommunicationChannel, protocolStateNode.stateId, transaction.targetState.stateId));
+                caseStatement.addAction(new ASTReceiveAction(this.receiveActionWriter, ASTCommunicationChannel, protocolStateNode.stateId, transaction.targetState.stateId, transaction.messageContentType));
 
                 noActionAdded = false;
             }
-        }
-
-        if (noActionAdded) {
-            // add the default wait action if this environment does not receive or send data in this state.
-            caseStatement.addAction(new ASTWaitAction(this.waitActionWriter));
         }
 
         ASTStateCaseStatements.add(caseStatement);

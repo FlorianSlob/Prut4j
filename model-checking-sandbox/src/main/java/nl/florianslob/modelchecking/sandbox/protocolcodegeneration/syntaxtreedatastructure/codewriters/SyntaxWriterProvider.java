@@ -1,7 +1,7 @@
 package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters;
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.*;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.psuedocode.ProtocolWriterForPseudoCode;
 
 public class SyntaxWriterProvider {
@@ -17,7 +17,6 @@ public class SyntaxWriterProvider {
             WaitActionWriter = new WaitActionWriterForJava11();
             SendActionWriter = new SendActionWriterForJava11();
             ReceiveActionWriter = new ReceiveActionWriterForJava11();
-
             // init fields
         }
         else if (targetLanguage.equals("PseudoCode")){
