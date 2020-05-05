@@ -3,10 +3,7 @@ package nl.florianslob.modelchecking.base.runtime.v2;
 import com.rits.cloning.Cloner;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class StateSpaceExplorer {
     private final IProtocol protocolUnderVerification;
@@ -67,25 +64,40 @@ public class StateSpaceExplorer {
         }
     }
 
+    private final Set<TriedTransactionTuple> allTriedTransactions = new HashSet<>();
+
+    // Simple Cycle detection to travel the whole protocol automaton
+    private boolean detectCycle(int stateId, StateSpaceExploringAction exploringAction, String threadName){
+        var newTriedTransactionTuple = new TriedTransactionTuple(stateId, exploringAction, threadName);
+
+        if(allTriedTransactions.stream().anyMatch(triedTransactionTuple -> triedTransactionTuple.equals(newTriedTransactionTuple))){
+            return true;
+        }
+
+        allTriedTransactions.add(newTriedTransactionTuple);
+
+        return false;
+    }
+
+
     private void travelStateSpace(IProtocol startingProtocolCopy) throws Exception {
 
         for (var threadName : this.protocolUnderVerification.threadNames()) {
             for(var exploringAction: this.exploringActions){
-                System.out.println("Trying transaction from state "+startingProtocolCopy.getState());
-                exploringAction.Print();
+                if(!detectCycle(startingProtocolCopy.getState(), exploringAction, threadName)) {
+                    System.out.println("Trying transaction from state " + startingProtocolCopy.getState());
+                    exploringAction.Print();
 
-                // Find & stop cycle here!
-                var thread = threadPerParticipant.get(threadName);
-                thread.SetProtocolClone(deepClone(startingProtocolCopy));
-                Optional<IProtocol> optionalResultProtocol = thread.ExecuteAction(exploringAction);
+                    var thread = threadPerParticipant.get(threadName);
+                    thread.SetProtocolClone(deepClone(startingProtocolCopy));
+                    Optional<IProtocol> optionalResultProtocol = thread.ExecuteAction(exploringAction);
 
-                if(optionalResultProtocol.isPresent()){
-                    // TODO Report success here!
-                    var protocolStateAfterTransaction = optionalResultProtocol.get();
-                    System.out.println("Took transaction from state "+startingProtocolCopy.getState()+" to "+protocolStateAfterTransaction.getState());
-
-                    // Call recursive to travel the whole protocol
-                    travelStateSpace(protocolStateAfterTransaction);
+                    if (optionalResultProtocol.isPresent()) {
+                        var protocolStateAfterTransaction = optionalResultProtocol.get();
+                        System.out.println("Took transaction from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransaction.getState());
+                        // Call recursive to travel the whole protocol
+                        travelStateSpace(protocolStateAfterTransaction);
+                    }
                 }
             }
         }

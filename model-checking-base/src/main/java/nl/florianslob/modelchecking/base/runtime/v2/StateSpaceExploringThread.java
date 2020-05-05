@@ -23,30 +23,7 @@ public class StateSpaceExploringThread {
     }
 
     // Will return the protocol after a successful action, is empty otherwise.
-    public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) throws Exception {
-
-        return testWithTimeout(actionToBeExecuted);
-
-//
-//        if(actionToBeExecuted.actionType == ParticipantActionType.SEND){
-//            this.environment.send(actionToBeExecuted.dummy);
-//            return Optional.of(this.protocol);
-//        }
-//
-//        if(actionToBeExecuted.actionType == ParticipantActionType.RECEIVE){
-//            var result = this.environment.receive();
-//            if(result.getClass() == actionToBeExecuted.messageClass){
-//                return Optional.of(this.protocol);
-//            }
-//        }
-//
-//        // Pass new action to thread.
-//        // Observe result
-//        // Return IProtocol (Already deep clone here?)
-//        return Optional.empty();
-    }
-
-    public Optional<IProtocol> testWithTimeout(StateSpaceExploringAction actionToBeExecuted) throws InterruptedException, ExecutionException {
+    public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) throws InterruptedException, ExecutionException {
         ExecutorService executor = Executors.newFixedThreadPool(4); // TODO Do we want to set this?
 
         var self = this;
@@ -72,7 +49,7 @@ public class StateSpaceExploringThread {
         executor.shutdown();            //        <-- reject all further submissions
 
         try {
-            future.get(2, TimeUnit.SECONDS);  //     <-- wait 8 seconds to finish
+            future.get(250, TimeUnit.MILLISECONDS);  //     <-- wait 8 seconds to finish
         } catch (InterruptedException e) {    //     <-- possible error cases
             System.out.println("job was interrupted");
         } catch (ExecutionException e) {
@@ -85,16 +62,9 @@ public class StateSpaceExploringThread {
             return Optional.empty();
         }
 
-
-        // did we get here? wow!
-
-        // wait all unfinished tasks for 2 sec
-        if(!executor.awaitTermination(2, TimeUnit.SECONDS)){
-            // force them to quit by interrupting
-            executor.shutdownNow();
-        }
+        // force them to quit by interrupting
+        executor.shutdownNow();
 
         return future.get();
-
     }
 }

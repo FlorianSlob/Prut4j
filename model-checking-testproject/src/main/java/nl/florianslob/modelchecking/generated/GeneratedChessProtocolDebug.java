@@ -10,11 +10,6 @@ package nl.florianslob.modelchecking.generated;
 import dto.Move;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-import nl.florianslob.modelchecking.base.runtime.v2.FastByteArrayOutputStream;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.Optional;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
