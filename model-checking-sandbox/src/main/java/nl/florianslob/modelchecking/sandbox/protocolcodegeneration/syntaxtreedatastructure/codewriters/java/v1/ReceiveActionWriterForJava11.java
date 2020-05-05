@@ -8,10 +8,6 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 public class ReceiveActionWriterForJava11 implements ISyntaxWriter<ASTReceiveAction> {
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTReceiveAction SyntaxTreeItem) {
-
-//        "+SyntaxTreeItem.communicationChannel.messageType+">
-
-        // TODO Replace Move.class with fully qualified name
         StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if ("+SyntaxTreeItem.communicationChannel.queueName+".peek() != null && "+SyntaxTreeItem.communicationChannel.queueName+".peek().getClass() == "+SyntaxTreeItem.messageContentType+".class) {", "}", tabCount,
                 (tabCountLvl0) -> {
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
@@ -21,8 +17,5 @@ public class ReceiveActionWriterForJava11 implements ISyntaxWriter<ASTReceiveAct
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "return Optional.of((Any)"+SyntaxTreeItem.communicationChannel.queueName+".take());");
                 }
         );
-
-
-
     }
 }
