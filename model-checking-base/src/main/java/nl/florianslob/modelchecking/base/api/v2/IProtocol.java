@@ -7,5 +7,6 @@ public interface IProtocol {
 
     Object[] dummies(); // helper method to get a dummy value of each relevant type
 
-    IProtocol deepClone(); // helper method to deep-clone
+//    IProtocol deepClone(); // helper method to deep-clone
+    int getState(); // helper method to deep-clone
 }

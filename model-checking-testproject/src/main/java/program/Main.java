@@ -4,14 +4,24 @@ import dto.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipant;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
+import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExplorer;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
+import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
 
 public class Main {
     public static void main(String[] args){
-        runGeneratedChessProtocol();
+//        runGeneratedChessProtocol();
+        exploreStateSpace();
+    }
+    private static void exploreStateSpace(){
+
+        IProtocol protocol = new GeneratedChessProtocolDebug();
+        StateSpaceExplorer explorer = new StateSpaceExplorer(protocol);
+        explorer.ExploreStateSpace();
     }
 
     private static void runGeneratedChessProtocol() {
+
         IProtocol protocol = new GeneratedChessProtocol();
 
         GenericParticipant playerWhite = getGenericParticipantPlayerWhite();

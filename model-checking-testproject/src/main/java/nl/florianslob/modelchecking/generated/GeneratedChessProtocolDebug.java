@@ -6,19 +6,25 @@
 package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
-import nl.florianslob.modelchecking.base.api.v2.*;
-import dto.Move;
 
+import dto.Move;
+import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
+import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.runtime.v2.FastByteArrayOutputStream;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Optional;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class GeneratedChessProtocol implements IProtocol {
-	private volatile int state = 0;
-	private final Object monitor = this;
+public class GeneratedChessProtocolDebug implements IProtocol {
+	public volatile int state = 0;
+	public final Object monitor = this;
 	
-	private final BlockingQueue<Object> queueFromBToW = new LinkedBlockingQueue<>();
-	private final BlockingQueue<Object> queueFromWToB = new LinkedBlockingQueue<>();
+	public final BlockingQueue<Object> queueFromBToW = new LinkedBlockingQueue<>();
+	public final BlockingQueue<Object> queueFromWToB = new LinkedBlockingQueue<>();
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -160,9 +166,8 @@ public class GeneratedChessProtocol implements IProtocol {
 		// return default object for all types that are used.
 		return new Object[]{ new Move() };
 	}
-
 	@Override
 	public int getState() {
-		return 0;
+		return this.state;
 	}
 }
