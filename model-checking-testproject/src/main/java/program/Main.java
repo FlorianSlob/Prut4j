@@ -20,7 +20,7 @@ public class Main {
     }
 
     private static void testOwl(){
-        var formula = LtlParser.parse("a & X G (a U XXb) | !a & X G (a U XXc)");
+        var formula = LtlParser.parse("\"W send move to B\" & X G (a U XXb) | !a & X G (a U XXc)");
         formula = SimplifierFactory.apply(formula, SimplifierFactory.Mode.NNF);
 
         var function = new LTL2DAFunction(Environment.standard());
