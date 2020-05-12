@@ -25,31 +25,4 @@ public class StateSpaceExploringAction {
     public void Print(){
         System.out.println("Action from "+this.participant+" with type "+this.actionType.toString()+" with dummy: "+this.dummy +" + with class "+this.messageClass);
     }
-
-    // TODO Check necessity
-    @Override
-    public boolean equals(Object obj) {
-        if(obj.getClass() == StateSpaceExploringAction.class) {
-            var castedObj = (StateSpaceExploringAction) obj;
-            if(
-                        castedObj.participant == this.participant
-                                &&
-                        castedObj.actionType == this.actionType
-                                &&
-                        castedObj.messageClass == this.messageClass
-                                &&
-                        (
-                                (castedObj.dummy == null && this.dummy== null)
-                                        ||
-                                castedObj.dummy.equals(this.dummy)
-                        )
-            ){
-                return true;
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-    }
 }

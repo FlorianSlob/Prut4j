@@ -13,7 +13,6 @@ public class StateSpaceExploringThread {
 
     public  StateSpaceExploringThread(String participantName){
         this.threadName = participantName;
-        // Start thread that is waiting for input...
     }
 
     public void SetProtocolClone(IProtocol protocolClone) throws Exception {
@@ -22,9 +21,12 @@ public class StateSpaceExploringThread {
         this.environment = this.protocol.getEnvironment(this.threadName);
     }
 
-    // Will return the protocol after a successful action, is empty otherwise.
+    /**
+     * @param actionToBeExecuted Action to be executed represents a possible transaction on the protocol automaton
+     * @return Will return the protocol after a successful action, is empty otherwise.
+     */
     public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) throws InterruptedException, ExecutionException {
-        ExecutorService executor = Executors.newFixedThreadPool(4); // TODO Do we want to set this?
+        ExecutorService executor = Executors.newFixedThreadPool(1); // TODO Do we want to set this?
 
         var self = this;
         Future<Optional<IProtocol>> future = executor.submit(new Callable<Optional<IProtocol>>() {
@@ -46,18 +48,17 @@ public class StateSpaceExploringThread {
             }
         });
 
-        executor.shutdown();            //        <-- reject all further submissions
+        executor.shutdown();//        <-- reject all further submissions
 
         try {
             future.get(250, TimeUnit.MILLISECONDS);  //     <-- wait 8 seconds to finish
-        } catch (InterruptedException e) {    //     <-- possible error cases
+        } catch (InterruptedException e) {//     <-- possible error cases
             System.out.println("job was interrupted");
         } catch (ExecutionException e) {
             System.out.println("caught exception: " + e.getCause());
         } catch (TimeoutException e) {
-            future.cancel(true);              //     <-- interrupt the job
+            future.cancel(true);//     <-- interrupt the job
             System.out.println("timeout");
-
             // Nothing has happened before timeout, transaction is nog possible
             return Optional.empty();
         }

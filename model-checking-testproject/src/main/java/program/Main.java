@@ -10,11 +10,10 @@ import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
 
 public class Main {
     public static void main(String[] args){
-//        runGeneratedChessProtocol();
+//      runGeneratedChessProtocol();
         exploreStateSpace();
     }
     private static void exploreStateSpace(){
-
         IProtocol protocol = new GeneratedChessProtocolDebug();
         StateSpaceExplorer explorer = new StateSpaceExplorer(protocol);
         explorer.ExploreStateSpace();

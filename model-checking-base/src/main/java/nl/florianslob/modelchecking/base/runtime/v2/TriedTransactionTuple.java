@@ -12,7 +12,6 @@ public class TriedTransactionTuple {
         this.threadName = threadName;
     }
 
-    // TODO Check necessity
     @Override
     public boolean equals(Object obj) {
         if(obj.getClass() == TriedTransactionTuple.class) {
