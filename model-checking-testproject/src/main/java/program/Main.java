@@ -7,25 +7,66 @@ import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExplorer;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
+import owl.automaton.Automaton;
+import owl.automaton.acceptance.*;
 import owl.ltl.parser.LtlParser;
 import owl.ltl.rewriter.SimplifierFactory;
 import owl.run.Environment;
+import owl.run.modules.OutputWriters;
 import owl.translations.LTL2DAFunction;
+import owl.translations.LTL2NAFunction;
+import owl.translations.delag.State;
+import owl.translations.ltl2dpa.LTL2DPAFunction;
+import owl.translations.modules.LTL2DAModule;
+import owl.translations.modules.LTL2DGRAModule;
+import owl.translations.modules.LTL2NAModule;
+import owl.translations.modules.LTL2NGBAModule;
+import owl.translations.rabinizer.RabinizerConfiguration;
+
+import java.io.CharArrayWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
     public static void main(String[] args) {
 //      runGeneratedChessProtocol();
 //      exploreStateSpace();
-        testOwl();
+        try {
+            testOwl();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private static void testOwl(){
-        var formula = LtlParser.parse("\"W send move to B\" & X G (a U XXb) | !a & X G (a U XXc)");
-        formula = SimplifierFactory.apply(formula, SimplifierFactory.Mode.NNF);
+    private static void testOwl() throws IOException {
+//        String formulaString = "G(\"Move to B\" -> X(!\"Move to B\" U \"Move to W\"))  &  G(\"Move to W\" -> X(!\"Move to W\" U \"Move to B\")) & G(!(\"Move to W\" & \"Move to B\"))";
+//        String formulaString  = "G(\"Move to B\" -> X(!\"Move to B\"))";
+        String formulaString = "G(\"Move to B\" -> X(!\"Move to B\" U \"Move to W\"))  &  G(\"Move to W\" -> X(!\"Move to W\" U \"Move to B\")) & G(!(\"Move to W\" & \"Move to B\") & !(!\"Move to W\" & !\"Move to B\"))";
+//        String formulaString = "F G a | G F b";
 
-        var function = new LTL2DAFunction(Environment.standard());
+        System.out.println(formulaString);
+
+        var formula = LtlParser.parse(formulaString);
+//        formula = SimplifierFactory.apply(formula, SimplifierFactory.Mode.SYNTACTIC_FAIRNESS); // <-- Optional??
+
+//        var function = new LTL2DPAFunction(Environment.standard(), LTL2DPAFunction.RECOMMENDED_SYMMETRIC_CONFIG);
+//        var function = new LTL2DGRAModule(AllAcceptance.class, Environment.standard());
+//        var function = new LTL2DAFunction(OmegaAcceptance.class, Environment.annotated());
+//        var function = LTL2DGRAModule.translation(Environment.standard(), true, false, RabinizerConfiguration.of(true, true, true));
+        var function = LTL2NGBAModule.translation(Environment.standard(), false);
         var automaton = function.apply(formula);
-        var test = automaton;
+
+        // TODO Explore the automaton to: 1: create plantuml syntax, 2: to create dto's of the formulla we can use when model checking.
+
+        var visitor = new PlantUmlVisitor<State<?>>();
+
+        automaton.accept((Automaton.Visitor)visitor);
+
+//        var writer = new OutputWriters.ToHoa(false, false);
+//        writer.write(new OutputStreamWriter(System.out), automaton);
     }
 
     private static void exploreStateSpace() {

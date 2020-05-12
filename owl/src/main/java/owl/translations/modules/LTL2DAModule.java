@@ -41,6 +41,15 @@ public final class LTL2DAModule {
 
   private LTL2DAModule() {}
 
+  public static void Call(String... args) throws IOException {
+    PartialConfigurationParser.run(args, PartialModuleConfiguration.of(
+      InputReaders.LTL_INPUT_MODULE,
+      List.of(SimplifierTransformer.MODULE),
+      MODULE,
+      List.of(AcceptanceOptimizations.MODULE),
+      OutputWriters.HOA_OUTPUT_MODULE));
+  }
+
   public static void main(String... args) throws IOException {
     PartialConfigurationParser.run(args, PartialModuleConfiguration.of(
       InputReaders.LTL_INPUT_MODULE,
