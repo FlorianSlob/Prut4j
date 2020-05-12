@@ -11,14 +11,14 @@ public class GenericParticipantAction {
     }
 
     private GenericParticipantAction() {
-        this.type = GenericParticipantActionType.RECEIVE;
+        this.type = ParticipantActionType.RECEIVE;
     }
 
     private GenericParticipantAction(Object message) {
-        this.type = GenericParticipantActionType.SEND;
+        this.type = ParticipantActionType.SEND;
         this.message = message;
     }
 
-    public final GenericParticipantActionType type;
+    public final ParticipantActionType type;
     public Object message;
 }

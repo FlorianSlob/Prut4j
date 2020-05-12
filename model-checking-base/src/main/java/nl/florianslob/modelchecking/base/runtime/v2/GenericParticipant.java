@@ -47,7 +47,7 @@ public class GenericParticipant {
     // chose for a non recursive implementation, otherwise we will encounter stack overflow exceptions.
     private void executeAction(IEnvironment environment) throws Exception {
 
-        if(this.currentExecutingAction.type == GenericParticipantActionType.SEND){
+        if(this.currentExecutingAction.type == ParticipantActionType.SEND){
             System.out.println("Sending message from "+environment.getName());
             environment.send(this.currentExecutingAction.message);
             Set<GenericParticipantAction> actionSet = AfterSendActionsPerSendAction.get(this.currentExecutingAction);
@@ -59,7 +59,7 @@ public class GenericParticipant {
             }
         }
 
-        if(this.currentExecutingAction.type == GenericParticipantActionType.RECEIVE){
+        if(this.currentExecutingAction.type == ParticipantActionType.RECEIVE){
             System.out.println("Receiving message in "+environment.getName());
             Object protocolMessage = environment.receive();
             Set<GenericParticipantAction> actionSet = AfterReceiveActionsPerMessageClass.get(protocolMessage.getClass());
