@@ -16,9 +16,9 @@ public class StateSpaceExplorer {
     }
 
     public void ExploreStateSpace() {
-        
+
         // TODO How do we visualize the results?
-        
+
         System.out.println("Starting to explore state space for protocol. ");
         System.out.println("Logging Participants: ");
 
@@ -34,10 +34,10 @@ public class StateSpaceExplorer {
         fillExploringActions();
         System.out.println("Logging all available state space exploring actions: ");
 
-        for(var exploringAction: this.exploringActions){
+        for (var exploringAction : this.exploringActions) {
             exploringAction.Print();
         }
-        
+
         startExploringThreads();
 
         try {
@@ -52,7 +52,7 @@ public class StateSpaceExplorer {
         for (var threadName : this.protocolUnderVerification.threadNames()) {
             // Add all receive and send actions for every dummy
             for (var dummy : this.protocolUnderVerification.dummies()) {
-                exploringActions.add(StateSpaceExploringAction.CreateReceiveStateSpaceExploringAction(threadName,dummy.getClass()));
+                exploringActions.add(StateSpaceExploringAction.CreateReceiveStateSpaceExploringAction(threadName, dummy.getClass()));
                 exploringActions.add(StateSpaceExploringAction.CreateSendStateSpaceExploringAction(threadName, dummy));
             }
         }
@@ -60,17 +60,17 @@ public class StateSpaceExplorer {
 
     private void startExploringThreads() {
         for (var threadName : this.protocolUnderVerification.threadNames()) {
-            threadPerParticipant.put(threadName,new StateSpaceExploringThread(threadName));
+            threadPerParticipant.put(threadName, new StateSpaceExploringThread(threadName));
         }
     }
 
     private final Set<TriedTransactionTuple> allTriedTransactions = new HashSet<>();
 
     // Simple Cycle detection to travel the whole protocol automaton
-    private boolean detectCycle(int stateId, StateSpaceExploringAction exploringAction, String threadName){
+    private boolean detectCycle(int stateId, StateSpaceExploringAction exploringAction, String threadName) {
         var newTriedTransactionTuple = new TriedTransactionTuple(stateId, exploringAction, threadName);
 
-        if(allTriedTransactions.stream().anyMatch(triedTransactionTuple -> triedTransactionTuple.equals(newTriedTransactionTuple))){
+        if (allTriedTransactions.stream().anyMatch(triedTransactionTuple -> triedTransactionTuple.equals(newTriedTransactionTuple))) {
             return true;
         }
 
@@ -82,20 +82,30 @@ public class StateSpaceExplorer {
 
     private void travelStateSpace(IProtocol startingProtocolCopy) throws Exception {
 
+        // We will try all available actions for every available threadNames (participants)
         for (var threadName : this.protocolUnderVerification.threadNames()) {
-            for(var exploringAction: this.exploringActions){
-                if(!detectCycle(startingProtocolCopy.getState(), exploringAction, threadName)) {
+            for (var exploringAction : this.exploringActions) {
+                // We have selected an action to explore (a possible transaction on the protocol automaton)
+                // If no cycle is detected, we will try this action.
+                // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
+                if (!detectCycle(startingProtocolCopy.getState(), exploringAction, threadName)) {
                     System.out.println("Trying transaction from state " + startingProtocolCopy.getState());
                     exploringAction.Print();
 
-                    var thread = threadPerParticipant.get(threadName);
-                    thread.SetProtocolClone(deepClone(startingProtocolCopy));
-                    Optional<IProtocol> optionalResultProtocol = thread.ExecuteAction(exploringAction);
+                    // get the participating thread
+                    var participatingThread = threadPerParticipant.get(threadName);
 
+                    // set the protocol of the thread to a clone of the protocol
+                    participatingThread.SetProtocolClone(deepClone(startingProtocolCopy));
+
+                    // try to execute the action
+                    Optional<IProtocol> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
+
+                    // if there is a result, we just took a transaction in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
                         var protocolStateAfterTransaction = optionalResultProtocol.get();
                         System.out.println("Took transaction from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransaction.getState());
-                        // Call recursive to travel the whole protocol
+                        // Call recursively to travel the whole protocol
                         travelStateSpace(protocolStateAfterTransaction);
                     }
                 }
@@ -103,9 +113,10 @@ public class StateSpaceExplorer {
         }
     }
 
-    private IProtocol deepClone(IProtocol protocol){
-
-        Cloner cloner=new Cloner();
+    private IProtocol deepClone(IProtocol protocol) {
+        // Clone the IProtocol with the third party library
+        // https://github.com/kostaskougios/cloning
+        Cloner cloner = new Cloner();
         return cloner.deepClone(protocol);
     }
 }
