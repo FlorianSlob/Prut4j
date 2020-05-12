@@ -29,8 +29,6 @@ plugins {
 
 // Languages
 apply plugin: 'antlr'
-apply plugin: 'c'
-apply plugin: 'cpp'
 apply plugin: 'java'
 
 // Static Analysis
@@ -39,13 +37,9 @@ apply plugin: 'checkstyle'
 
 // IDE Support
 apply plugin: 'idea'
-apply plugin: 'application'
-
-project.group = 'de.tum.in'
-project.version = '20.XX-development'
+project.version = '20.XX-copy-for-model-checking-sandbox'
 
 project.archivesBaseName = 'owl'
-project.mainClassName = 'owl.run.DefaultCli'
 
 // GraalVM only supports JDK 11.
 project.sourceCompatibility = JavaVersion.VERSION_11
@@ -62,11 +56,10 @@ tasks.withType(Javadoc) {
     options.encoding = defaultEncoding
 }
 
-//def buildNatives = false //!project.hasProperty("disable-native")
 
 apply from: 'gradle/analysis.gradle'
 apply from: 'gradle/antlr.gradle'
-apply from: 'gradle/natives.gradle'
+//apply from: 'gradle/natives.gradle'
 
 repositories {
     mavenCentral()
@@ -138,72 +131,6 @@ tasks.withType(Test) {
     maxHeapSize = "16G"
 }
 
-// ---------------- Startup Scripts ----------------
-
-// Create startup scripts for each tool
-def scripts = [
-    // LTL -> NBA
-    'ltl2nba'   : 'owl.translations.modules.LTL2NBAModule',
-    'ltl2ngba'  : 'owl.translations.modules.LTL2NGBAModule',
-
-    // LTL -> LDBA
-    'ltl2ldba'  : 'owl.translations.modules.LTL2LDBAModule',
-    'ltl2ldgba' : 'owl.translations.modules.LTL2LDGBAModule',
-
-    // LTL -> DRA
-    'ltl2dra'   : 'owl.translations.modules.LTL2DRAModule',
-    'ltl2dgra'  : 'owl.translations.modules.LTL2DGRAModule',
-
-    // LTL -> DPA
-    'ltl2dpa'   : 'owl.translations.modules.LTL2DPAModule',
-
-    // LTL -> DELA
-    'delag'     : 'owl.translations.delag.DelagBuilder',
-
-    // LTL -> **A
-    // TODO: Deprecate and replace by delag!
-    'ltl2da'    : 'owl.translations.modules.LTL2DAModule',
-    'ltl2na'    : 'owl.translations.modules.LTL2NAModule',
-
-    // Miscellaneous
-    'synth'     : 'owl.translations.Synthesis',
-    'nba2dpa'   : 'owl.translations.nba2dpa.NBA2DPA',
-    'nba2ldba'  : 'owl.translations.nba2ldba.NBA2LDBA',
-    'dra2dpa'   : 'owl.translations.dra2dpa.IARBuilder',
-    'owl-server': 'owl.run.ServerCli'
-]
-
-def rabinizerScripts = [
-    // LTL -> LDBA
-    'ltl2ldba'  : 'owl.translations.ltl2ldba.LTL2LDBAModule',
-    'ltl2ldgba' : 'owl.translations.ltl2ldba.LTL2LDGBAModule',
-
-    // LTL -> DRA
-    'ltl2dra'   : 'owl.translations.rabinizer.RabinizerDegeneralizeMain',
-    'ltl2dgra'  : 'owl.translations.rabinizer.RabinizerMain',
-
-    // LTL -> DPA
-    'ltl2dpa'   : 'owl.translations.LTL2DPA',
-
-    // DRA -> DPA
-    'dra2dpa'   : 'owl.translations.dra2dpa.IARBuilder'
-]
-
-ext.createStartScriptTasks = { name, cp, map ->
-    map.collect { scriptName, className ->
-        tasks.create(name: scriptName + name.capitalize() + 'StartScript', type: CreateStartScripts) {
-            group 'build scripts'
-            mainClassName = className
-            applicationName = scriptName
-            // CreateStartScripts is stupid; it.outputs.files = outputDir, not the created scripts.
-            outputDir = file(project.buildDir.path  + '/scripts/' + scriptName)
-            classpath = cp
-        }
-    }
-}
-
-startScripts.outputDir = file(project.buildDir.path + '/scripts/owl')
-
 // ---------------- Jars ----------------
 
 jar {
@@ -231,23 +158,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 task mavenJars(dependsOn: [jar, sourcesJar, javadocJar])
 
-// ---------------- Script Jobs ----------------
-
-def allStartScripts = createStartScriptTasks("", jar.outputs.files + project.getConfigurations().getByName(JavaPlugin.RUNTIME_CLASSPATH_CONFIGURATION_NAME), scripts)
-allStartScripts.each() {
-    it.dependsOn(jar)
-}
-
-def shadedJarStartScripts = createStartScriptTasks("ShadedJar", shadowJar.outputs.files, scripts + ['owl': mainClassName])
-shadedJarStartScripts.each() {
-    it.dependsOn(shadowJar)
-}
-
-def rabinizerStartScripts = createStartScriptTasks("Rabinizer", shadowJar.outputs.files, rabinizerScripts)
-rabinizerStartScripts.each() {
-    it.dependsOn(shadowJar)
-}
-
 // ---------------- Documentation ----------------
 
 javadoc {
@@ -255,68 +165,4 @@ javadoc {
     options.setEncoding(defaultEncoding)
     options.links('https://docs.oracle.com/en/java/javase/11/docs/api')
     options.addStringOption('Xdoclint:none', '-quiet') // Silence warnings
-}
-
-// TODO Include testing framework scripts in distribution -> split scripts directory in two dirs
-
-// ---------------- Distributions ----------------
-
-// Configure the distribution to include basic documentation.
-// Javadoc is excluded and can be built from source release,
-// that is generated from the release tag.
-
-distributions {
-    main {
-        distributionBaseName = 'owl'
-
-        contents {
-            from "AUTHORS"
-            from "LICENSE"
-
-            into("bin") {
-                from allStartScripts
-                fileMode = 0755
-            }
-
-            into("javadoc") {
-                from javadoc
-            }
-        }
-    }
-
-    minimized {
-        distributionBaseName = 'owl-minimized'
-
-        contents {
-            from "AUTHORS"
-            from "LICENSE"
-
-            into("bin") {
-                from shadedJarStartScripts
-                fileMode = 0755
-            }
-
-            into("lib") {
-                from shadowJar
-            }
-        }
-    }
-
-    rabinizer {
-        baseName = 'rabinizer'
-
-        contents {
-            from "AUTHORS"
-            from "LICENSE"
-
-            into("bin") {
-                from rabinizerStartScripts
-                fileMode = 0755
-            }
-
-            into("lib") {
-                from shadowJar
-            }
-        }
-    }
 }
