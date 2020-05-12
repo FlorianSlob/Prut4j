@@ -7,13 +7,28 @@ import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExplorer;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
+import owl.ltl.parser.LtlParser;
+import owl.ltl.rewriter.SimplifierFactory;
+import owl.run.Environment;
+import owl.translations.LTL2DAFunction;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //      runGeneratedChessProtocol();
-        exploreStateSpace();
+//      exploreStateSpace();
+        testOwl();
     }
-    private static void exploreStateSpace(){
+
+    private static void testOwl(){
+        var formula = LtlParser.parse("a & X G (a U XXb) | !a & X G (a U XXc)");
+        formula = SimplifierFactory.apply(formula, SimplifierFactory.Mode.NNF);
+
+        var function = new LTL2DAFunction(Environment.standard());
+        var automaton = function.apply(formula);
+        var test = automaton;
+    }
+
+    private static void exploreStateSpace() {
         IProtocol protocol = new GeneratedChessProtocolDebug();
         StateSpaceExplorer explorer = new StateSpaceExplorer(protocol);
         explorer.ExploreStateSpace();
