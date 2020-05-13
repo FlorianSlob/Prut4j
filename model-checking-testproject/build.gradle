@@ -17,6 +17,9 @@ repositories {
 }
 
 dependencies {
+    // https://github.com/vigna/fastutil
+    // https://mvnrepository.com/artifact/it.unimi.dsi/fastutil
+    implementation 'it.unimi.dsi:fastutil:8.3.1'
     compile project(':model-checking-base')
     compile project(':owl')
     testCompile group: 'junit', name: 'junit', version: '4.12'

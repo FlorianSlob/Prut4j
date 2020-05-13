@@ -61,12 +61,14 @@ public class Main {
 
         // TODO Explore the automaton to: 1: create plantuml syntax, 2: to create dto's of the formulla we can use when model checking.
 
+        var writer = new OutputWriters.ToHoa(false, false);
+        writer.write(new OutputStreamWriter(System.out), automaton);
+
         var visitor = new PlantUmlVisitor<State<?>>();
 
         automaton.accept((Automaton.Visitor)visitor);
 
-//        var writer = new OutputWriters.ToHoa(false, false);
-//        writer.write(new OutputStreamWriter(System.out), automaton);
+
     }
 
     private static void exploreStateSpace() {
