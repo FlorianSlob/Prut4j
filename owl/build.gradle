@@ -32,7 +32,7 @@ apply plugin: 'antlr'
 apply plugin: 'java'
 
 // Static Analysis
-apply plugin: 'pmd'
+//apply plugin: 'pmd'
 //apply plugin: 'checkstyle'
 
 // IDE Support
