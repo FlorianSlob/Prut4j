@@ -33,7 +33,7 @@ apply plugin: 'java'
 
 // Static Analysis
 apply plugin: 'pmd'
-apply plugin: 'checkstyle'
+//apply plugin: 'checkstyle'
 
 // IDE Support
 apply plugin: 'idea'
