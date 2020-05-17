@@ -57,7 +57,7 @@ tasks.withType(Javadoc) {
 }
 
 
-apply from: 'gradle/analysis.gradle'
+//apply from: 'gradle/analysis.gradle'
 apply from: 'gradle/antlr.gradle'
 //apply from: 'gradle/natives.gradle'
 
