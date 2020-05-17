@@ -18,6 +18,7 @@ import static nl.florianslob.modelchecking.sandbox.helpers.GraphVisualizationHel
 
 public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.EdgeMapVisitor<S> {
     private final Object2IntMap<S> stateNumbers = new Object2IntArrayMap<>();
+    // TODO Use alphabet when printing expression
     private List<String> alphabet;
     private StringBuilder plantUmlStringBuilder;
     private Automaton<?, GeneralizedBuchiAcceptance> automaton;
@@ -27,7 +28,6 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
         this.plantUmlStringBuilder = plantUmlStringBuilder;
         this.automaton = automaton;
     }
-
 
     @SuppressWarnings("SpellCheckingInspection")
     public String getPlantUmlGraph() {
@@ -54,7 +54,6 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
             e.printStackTrace();
         }
     }
-
 
     private int getStateId(S state) {
         return stateNumbers.computeIntIfAbsent(state, k -> stateNumbers.size());
@@ -86,22 +85,21 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
             plantUmlStringBuilder.append("\\n");
             plantUmlStringBuilder.append("[ ");
 
-
             if (valuationSet.isEmpty()) {
                 return;
-            } else{
+            } else {
                 var expression = valuationSet.toExpression();
                 plantUmlStringBuilder.append(expression);
             }
 
             BitSet acceptanceSets = edge.acceptanceSets();
-
-
             var size = acceptanceSets.length();
-            if(size > 0 ) {
+
+            if (size > 0) {
                 plantUmlStringBuilder.append(" AccSet");
 
                 var accSet = new ArrayList<Integer>();
+
                 for (int i = 0; i < size; i++) {
                     var acceptanceBit = acceptanceSets.get(i);
                     if (acceptanceBit) {
@@ -109,9 +107,8 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
                     }
                 }
 
+                // Print acceptance set comma separated
                 plantUmlStringBuilder.append(Stream.of(accSet).map(String::valueOf).collect(Collectors.joining(",")));
-
-
             }
             plantUmlStringBuilder.append("] ");
 
@@ -121,6 +118,6 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
 
     @Override
     public void visit(S state, BitSet valuation, Edge<S> edge) {
-
+        // Do nothing.
     }
 }
