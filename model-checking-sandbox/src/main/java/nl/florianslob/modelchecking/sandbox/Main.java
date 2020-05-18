@@ -2,6 +2,7 @@ package nl.florianslob.modelchecking.sandbox;
 
 import nl.florianslob.modelchecking.sandbox.fosterchandy.FosterChandySandboxActivity;
 import nl.florianslob.modelchecking.sandbox.graphvisualization.GraphVisualizationSandboxingActivity;
+import nl.florianslob.modelchecking.sandbox.ltlautomatonfromowl.LtlAutomatonFromOwlSandboxingActivity;
 import nl.florianslob.modelchecking.sandbox.ltlverification.LtlVerificationActivity;
 import nl.florianslob.modelchecking.sandbox.modelchecking.ModelCheckingActivity;
 import nl.florianslob.modelchecking.sandbox.onthefly.OnTheFlyLtlSandboxActivity;
@@ -15,7 +16,7 @@ import nl.florianslob.modelchecking.sandbox.protocolimplementations.ProtocolImpl
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.ProtocolCodeGeneration;
+        SandboxingActivityType sandboxingActivityType = SandboxingActivityType.LtlAutomatonFromOWl;
 
         if(args != null && args.length > 0){
             try{
@@ -45,6 +46,8 @@ public class Main {
                 return new ProtocolImplementationsSandboxActivity();
             case ProtocolCodeGeneration:
                 return new ProtocolCodeGenerationSandboxingActivity();
+            case LtlAutomatonFromOWl:
+                return new LtlAutomatonFromOwlSandboxingActivity();
             default:
                 throw new UnsupportedOperationException();
         }

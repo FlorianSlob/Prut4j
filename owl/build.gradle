@@ -1,0 +1,168 @@
+/*
+ * Copyright (C) 2016 - 2019  (See AUTHORS)
+ *
+ * This file is part of Owl.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+plugins {
+    // https://github.com/tbroyer/gradle-errorprone-plugin
+    // https://plugins.gradle.org/plugin/net.ltgt.errorprone
+    // id 'net.ltgt.errorprone' version '0.8.1'
+
+    // https://github.com/johnrengelman/shadow
+    // https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+// Languages
+apply plugin: 'antlr'
+apply plugin: 'java'
+
+// Static Analysis
+//apply plugin: 'pmd'
+//apply plugin: 'checkstyle'
+
+// IDE Support
+apply plugin: 'idea'
+project.version = '20.XX-copy-for-model-checking-sandbox'
+
+project.archivesBaseName = 'owl'
+
+// GraalVM only supports JDK 11.
+project.sourceCompatibility = JavaVersion.VERSION_11
+project.targetCompatibility = JavaVersion.VERSION_11
+
+def defaultEncoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = defaultEncoding
+    // options.errorprone.disableWarningsInGeneratedCode = true
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = defaultEncoding
+}
+
+
+//apply from: 'gradle/analysis.gradle'
+apply from: 'gradle/antlr.gradle'
+//apply from: 'gradle/natives.gradle'
+
+repositories {
+    mavenCentral()
+    jcenter() // required for naturals-util / roaring bitmap
+}
+
+dependencies {
+    // https://github.com/google/guava
+    implementation 'com.google.guava:guava:29.0-jre'
+    // https://commons.apache.org/proper/commons-cli/
+    implementation 'commons-cli:commons-cli:1.4'
+    // https://github.com/incaseoftrouble/jbdd
+    implementation 'de.tum.in:jbdd:0.5.2'
+    // https://github.com/incaseoftrouble/naturals-util
+    implementation 'de.tum.in:naturals-util:0.15.0'
+    // https://github.com/vigna/fastutil
+    // https://mvnrepository.com/artifact/it.unimi.dsi/fastutil
+    implementation 'it.unimi.dsi:fastutil:8.3.1'
+    // http://www.antlr.org/
+    // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
+    implementation 'org.antlr:antlr4-runtime:4.8-1'
+    // https://automata.tools/hoa/jhoafparser/
+    implementation files('lib/jhoafparser-1.1.1-patched.jar')
+
+    implementation group: 'com.zaxxer', name: 'SparseBitSet', version: '1.2'
+
+    // https://github.com/google/gson
+    testImplementation 'com.google.code.gson:gson:2.8.5'
+
+    // https://github.com/junit-team/junit5/
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+
+    antlr 'org.antlr:antlr4:4.8-1' // Introduces unused runtime dependencies; fixed in antlr.gradle
+    // https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core
+    // errorprone 'com.google.errorprone:error_prone_core:2.3.3'
+
+    // https://mvnrepository.com/artifact/com.google.auto.value/auto-value
+    implementation      'com.google.auto.value:auto-value-annotations:1.7.1'
+    annotationProcessor 'com.google.auto.value:auto-value:1.7.1'
+}
+
+test {
+    useJUnitPlatform {
+        excludeTags 'size-regression-test', 'size-regression-train', 'size-report'
+    }
+}
+
+task sizeRegressionTest(type: Test) {
+    useJUnitPlatform {
+        includeTags 'size-regression-test'
+    }
+}
+
+task sizeRegressionTrain(type: Test) {
+    useJUnitPlatform {
+        includeTags 'size-regression-train'
+    }
+}
+
+task sizeReport(type: Test) {
+    useJUnitPlatform {
+        includeTags 'size-report'
+    }
+}
+
+tasks.withType(Test) {
+    maxHeapSize = "16G"
+}
+
+// ---------------- Jars ----------------
+
+jar {
+    manifest {
+        attributes(
+            "Implementation-Title": "owl",
+            "Main-Class": project.mainClassName,
+            "Implementation-Version": project.version)
+    }
+}
+
+shadowJar {
+    minimize()
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task mavenJars(dependsOn: [jar, sourcesJar, javadocJar])
+
+// ---------------- Documentation ----------------
+
+javadoc {
+    options.addBooleanOption('html5', true)
+    options.setEncoding(defaultEncoding)
+    options.links('https://docs.oracle.com/en/java/javase/11/docs/api')
+    options.addStringOption('Xdoclint:none', '-quiet') // Silence warnings
+}

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'distribution'
 }
 
 mainClassName = 'program.Main'
@@ -8,7 +9,7 @@ mainClassName = 'program.Main'
 group 'nl.florianslob.modelchecking.testproject'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.11
+sourceCompatibility = 1.12
 
 repositories {
     mavenCentral()

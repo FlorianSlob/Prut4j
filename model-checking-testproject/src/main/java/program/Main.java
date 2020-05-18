@@ -8,12 +8,14 @@ import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExplorer;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
 
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //      runGeneratedChessProtocol();
-        exploreStateSpace();
+      exploreStateSpace();
     }
-    private static void exploreStateSpace(){
+
+    private static void exploreStateSpace() {
         IProtocol protocol = new GeneratedChessProtocolDebug();
         StateSpaceExplorer explorer = new StateSpaceExplorer(protocol);
         explorer.ExploreStateSpace();

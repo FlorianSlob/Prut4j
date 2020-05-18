@@ -1,4 +1,4 @@
 rootProject.name = 'model-checking-testproject'
 
-include   ':model-checking-base'
+include ':model-checking-base'
 project(':model-checking-base').projectDir = new File(settingsDir, '../model-checking-base')
