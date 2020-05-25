@@ -3,7 +3,7 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitionda
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransaction;
-import nl.florianslob.modelchecking.sandbox.helpers.GraphVisualizationHelpers;
+import nl.florianslob.modelchecking.base.helpers.GraphVisualizationHelpers;
 
 public class CreatePlantUmlVisualizationProtocolDefinitionVisitor implements IProtocolDefinitionVisitor {
 

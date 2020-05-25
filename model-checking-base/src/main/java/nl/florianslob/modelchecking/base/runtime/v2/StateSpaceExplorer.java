@@ -7,8 +7,8 @@ import java.util.*;
 
 public class StateSpaceExplorer {
     private final IProtocol protocolUnderVerification;
-    private final List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
-    private final HashMap<String, StateSpaceExploringThread> threadPerParticipant = new HashMap<>();
+    private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
+    private HashMap<String, StateSpaceExploringThread> threadPerParticipant = new HashMap<>();
 
     public StateSpaceExplorer(IProtocol protocolUnderVerification) {
 
@@ -31,14 +31,14 @@ public class StateSpaceExplorer {
             System.out.println(dummy);
         }
 
-        fillExploringActions();
+        this.exploringActions = StateSpaceExplorerHelper.getExploringActions(protocolUnderVerification);
         System.out.println("Logging all available state space exploring actions: ");
 
         for (var exploringAction : this.exploringActions) {
             exploringAction.Print();
         }
 
-        startExploringThreads();
+        this.threadPerParticipant = StateSpaceExplorerHelper.startExploringThreads(this.protocolUnderVerification);
 
         try {
             travelStateSpace(this.protocolUnderVerification);
@@ -46,24 +46,7 @@ public class StateSpaceExplorer {
             e.printStackTrace();
         }
 
-    }
-
-    private void fillExploringActions() {
-        for (var threadName : this.protocolUnderVerification.threadNames()) {
-            // Add all receive and send actions for every dummy
-            for (var dummy : this.protocolUnderVerification.dummies()) {
-                exploringActions.add(StateSpaceExploringAction.CreateReceiveStateSpaceExploringAction(threadName, dummy.getClass()));
-                exploringActions.add(StateSpaceExploringAction.CreateSendStateSpaceExploringAction(threadName, dummy));
-            }
-        }
-    }
-
-    private void startExploringThreads() {
-        for (var threadName : this.protocolUnderVerification.threadNames()) {
-            threadPerParticipant.put(threadName, new StateSpaceExploringThread(threadName));
-        }
-    }
-
+   }
     private final Set<TriedTransactionTuple> allTriedTransactions = new HashSet<>();
 
     // Simple Cycle detection to travel the whole protocol automaton
@@ -78,7 +61,6 @@ public class StateSpaceExplorer {
 
         return false;
     }
-
 
     private void travelStateSpace(IProtocol startingProtocolCopy) throws Exception {
 
@@ -96,7 +78,7 @@ public class StateSpaceExplorer {
                     var participatingThread = threadPerParticipant.get(threadName);
 
                     // set the protocol of the thread to a clone of the protocol
-                    participatingThread.SetProtocolClone(deepClone(startingProtocolCopy));
+                    participatingThread.SetProtocolClone(StateSpaceExplorerHelper.deepClone(startingProtocolCopy));
 
                     // try to execute the action
                     Optional<IProtocol> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
@@ -111,12 +93,5 @@ public class StateSpaceExplorer {
                 }
             }
         }
-    }
-
-    private IProtocol deepClone(IProtocol protocol) {
-        // Clone the IProtocol with the third party library
-        // https://github.com/kostaskougios/cloning
-        Cloner cloner = new Cloner();
-        return cloner.deepClone(protocol);
     }
 }

@@ -1,2 +1,4 @@
 rootProject.name = 'model-checking-base'
 
+include ':owl'
+project(':owl').projectDir = new File( '../owl')
