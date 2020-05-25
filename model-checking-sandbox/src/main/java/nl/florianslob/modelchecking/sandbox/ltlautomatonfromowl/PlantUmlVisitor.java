@@ -89,7 +89,12 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
                 return;
             } else {
                 var expression = valuationSet.toExpression();
-                plantUmlStringBuilder.append(expression);
+                var expressionString = expression.toString();
+                for (int i = 0; i< alphabet.size(); i++) {
+                    expressionString  = expressionString.replace(""+i, "\""+alphabet.get(i)+"\"");
+                }
+
+                plantUmlStringBuilder.append(expressionString);
             }
 
             BitSet acceptanceSets = edge.acceptanceSets();
