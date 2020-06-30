@@ -26,13 +26,10 @@ public class OwlHelper {
     }
 
     public static Automaton<State<?>, GeneralizedBuchiAcceptance> GetAutomatonForFormula(String formulaString, boolean negateFormula){
-
-
         var formula = LtlParser.parse(formulaString);
         // Optionally use formula simplifier:
         //  formula = SimplifierFactory.apply(formula, SimplifierFactory.Mode.SYNTACTIC_FAIRNESS); // <-- Optional??
 
-        // TODO does this work?
         if(negateFormula){
             formula = formula.not();
         }

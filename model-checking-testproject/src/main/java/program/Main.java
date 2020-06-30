@@ -13,7 +13,7 @@ import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
 public class Main {
     public static void main(String[] args) {
 //      runGeneratedChessProtocol();
-//      exploreStateSpace();
+        exploreStateSpace();
         TestModelChecking();
     }
 

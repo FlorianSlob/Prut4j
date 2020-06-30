@@ -3,7 +3,7 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration;
 import nl.florianslob.modelchecking.sandbox.ISandboxingActivity;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransaction;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransition;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
@@ -86,13 +86,13 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         var roleBlackName = "B";
         var messageTypeName = "Move";
 
-        state0.AddOutgoingTransaction(new ProtocolTransaction(state1, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
-        state1.AddOutgoingTransaction(new ProtocolTransaction(state2, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
-        state2.AddOutgoingTransaction(new ProtocolTransaction(state3, ProtocolMessageActionType.SEND,  roleBlackName, roleWhiteName, messageTypeName));
-        state3.AddOutgoingTransaction(new ProtocolTransaction(state4, ProtocolMessageActionType.RECEIVE, roleBlackName, roleWhiteName, messageTypeName));
-        state4.AddOutgoingTransaction(new ProtocolTransaction(state5, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
-        state5.AddOutgoingTransaction(new ProtocolTransaction(state6, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
-        state6.AddOutgoingTransaction(new ProtocolTransaction(state3, ProtocolMessageActionType.SEND, roleBlackName, roleWhiteName, messageTypeName));
+        state0.AddOutgoingTransaction(new ProtocolTransition(state1, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
+        state1.AddOutgoingTransaction(new ProtocolTransition(state2, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
+        state2.AddOutgoingTransaction(new ProtocolTransition(state3, ProtocolMessageActionType.SEND,  roleBlackName, roleWhiteName, messageTypeName));
+        state3.AddOutgoingTransaction(new ProtocolTransition(state4, ProtocolMessageActionType.RECEIVE, roleBlackName, roleWhiteName, messageTypeName));
+        state4.AddOutgoingTransaction(new ProtocolTransition(state5, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
+        state5.AddOutgoingTransaction(new ProtocolTransition(state6, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
+        state6.AddOutgoingTransaction(new ProtocolTransition(state3, ProtocolMessageActionType.SEND, roleBlackName, roleWhiteName, messageTypeName));
 
         return state0;
     }

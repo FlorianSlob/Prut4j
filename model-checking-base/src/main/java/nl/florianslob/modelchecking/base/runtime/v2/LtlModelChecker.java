@@ -22,6 +22,7 @@ public class LtlModelChecker {
     public boolean CheckProtocolForLtlFormula(String ltlFormulaString){
 
         this.initialStatesForNegatedFormula = OwlHelper.GetInitialLtlStatesForFormula(ltlFormulaString, true);
+
         var hasAcceptingCycles = CheckForAcceptingCycles();
 
         return !hasAcceptingCycles;
@@ -56,8 +57,7 @@ public class LtlModelChecker {
     }
 
     private boolean executeModelCheckingAlgorithm() throws Exception {
-        for (var ltlStateNode :
-                this.initialStatesForNegatedFormula) {
+        for (var ltlStateNode :                this.initialStatesForNegatedFormula) {
             var result = executeModelCheckingAlgorithmRecursively(this.protocol, ltlStateNode);
             if(result){
                 return true;
