@@ -3,7 +3,7 @@ package nl.florianslob.modelchecking.sandbox.protocolimplementations;
 import java.util.HashSet;
 import java.util.Set;
 
-import static nl.florianslob.modelchecking.sandbox.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
+import static nl.florianslob.modelchecking.base.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
 
 public class PlantUmlProtocolWatcher implements IProtocolWatcher {
     // fields for visualizing the graph

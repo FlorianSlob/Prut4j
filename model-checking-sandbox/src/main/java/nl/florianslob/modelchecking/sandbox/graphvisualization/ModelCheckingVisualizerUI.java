@@ -4,7 +4,7 @@ import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGUniverse;
 import nl.florianslob.modelchecking.sandbox.LoggingHelper;
 import nl.florianslob.modelchecking.sandbox.base.GraphNode;
-import nl.florianslob.modelchecking.sandbox.helpers.GraphVisualizationHelpers;
+import nl.florianslob.modelchecking.base.helpers.GraphVisualizationHelpers;
 import nl.florianslob.modelchecking.sandbox.modelchecking.LtlFormulaParser;
 import nl.florianslob.modelchecking.sandbox.modelchecking.ModelCheckingActivity;
 import nl.florianslob.modelchecking.sandbox.modelchecking.ModelCheckingDemoData;

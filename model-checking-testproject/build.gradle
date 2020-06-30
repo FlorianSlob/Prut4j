@@ -13,6 +13,7 @@ sourceCompatibility = 1.12
 
 repositories {
     mavenCentral()
+    jcenter() // required for naturals-util / roaring bitmap
 }
 
 dependencies {

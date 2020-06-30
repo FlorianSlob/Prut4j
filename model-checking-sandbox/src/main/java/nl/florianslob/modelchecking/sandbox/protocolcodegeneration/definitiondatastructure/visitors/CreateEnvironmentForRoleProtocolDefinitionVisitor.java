@@ -2,7 +2,7 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitionda
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransaction;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransition;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.SyntaxWriterProvider;
@@ -56,7 +56,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         boolean noActionAdded = true;
 
         // Check for outgoing transactions that concern the role and add an ActionFromState item for every send/receive action.
-        for (ProtocolTransaction transaction : protocolStateNode.outgoingTransactions) {
+        for (ProtocolTransition transaction : protocolStateNode.outgoingTransactions) {
             if (transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageActionType.SEND) {
                 ASTCommunicationChannel ASTCommunicationChannel =
                     getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);

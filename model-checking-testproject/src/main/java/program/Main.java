@@ -4,6 +4,7 @@ import dto.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipant;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
+import nl.florianslob.modelchecking.base.runtime.v2.LtlModelChecker;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExplorer;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
 import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
@@ -12,7 +13,24 @@ import nl.florianslob.modelchecking.generated.GeneratedChessProtocolDebug;
 public class Main {
     public static void main(String[] args) {
 //      runGeneratedChessProtocol();
-      exploreStateSpace();
+        exploreStateSpace();
+        TestModelChecking();
+    }
+
+    private static void TestModelChecking() {
+        IProtocol protocol = new GeneratedChessProtocolDebug();
+
+        // we use a demo formula from the Chess example
+        String formulaString = "G(\"Move to B\" -> X(!\"Move to B\" U \"Move to W\"))  &  G(\"Move to W\" -> X(!\"Move to W\" U \"Move to B\")) & G(!(\"Move to W\" & \"Move to B\") & !(!\"Move to W\" & !\"Move to B\"))";
+        // Other test formulas:
+        // String formulaString = "G(\"Move to B\" -> X(!\"Move to B\" U \"Move to W\"))  &  G(\"Move to W\" -> X(!\"Move to W\" U \"Move to B\")) & G(!(\"Move to W\" & \"Move to B\"))";
+        // String formulaString  = "G(\"Move to B\" -> X(!\"Move to B\"))";
+        // String formulaString = "F G a | G F b";
+        System.out.println("Testing Formula:");
+        System.out.println(formulaString);
+        var result = new LtlModelChecker(protocol).CheckProtocolForLtlFormula(formulaString);
+
+        System.out.println("Does formula hold: "+result);
     }
 
     private static void exploreStateSpace() {

@@ -2,8 +2,8 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitionda
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransaction;
-import nl.florianslob.modelchecking.sandbox.helpers.GraphVisualizationHelpers;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransition;
+import nl.florianslob.modelchecking.base.helpers.GraphVisualizationHelpers;
 
 public class CreatePlantUmlVisualizationProtocolDefinitionVisitor implements IProtocolDefinitionVisitor {
 
@@ -12,7 +12,7 @@ public class CreatePlantUmlVisualizationProtocolDefinitionVisitor implements IPr
     @Override
     public void Visit(ProtocolStateNode protocolStateNode) {
         // Add all transitions to plantUml syntax, with some formatting
-        for(ProtocolTransaction transaction : protocolStateNode.outgoingTransactions){
+        for(ProtocolTransition transaction : protocolStateNode.outgoingTransactions){
             plantUmlSyntax.append("State");
             plantUmlSyntax.append(protocolStateNode.stateId);
             plantUmlSyntax.append("-->State");

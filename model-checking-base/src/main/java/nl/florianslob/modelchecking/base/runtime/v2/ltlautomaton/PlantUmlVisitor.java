@@ -1,7 +1,8 @@
-package nl.florianslob.modelchecking.sandbox.ltlautomatonfromowl;
+package nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton;
 
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import nl.florianslob.modelchecking.base.helpers.GraphVisualizationHelpers;
 import owl.automaton.Automaton;
 import owl.automaton.acceptance.GeneralizedBuchiAcceptance;
 import owl.automaton.edge.Edge;
@@ -14,17 +15,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static nl.florianslob.modelchecking.sandbox.helpers.GraphVisualizationHelpers.saveSvgStringToFile;
 
 public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.EdgeMapVisitor<S> {
     private final Object2IntMap<S> stateNumbers = new Object2IntArrayMap<>();
-    // TODO Use alphabet when printing expression
+
     private List<String> alphabet;
     private StringBuilder plantUmlStringBuilder;
     private Automaton<?, GeneralizedBuchiAcceptance> automaton;
 
-    public PlantUmlVisitor(List<String> alphabet, StringBuilder plantUmlStringBuilder, Automaton<?, GeneralizedBuchiAcceptance> automaton) {
-        this.alphabet = alphabet;
+    public PlantUmlVisitor(StringBuilder plantUmlStringBuilder, Automaton<?, GeneralizedBuchiAcceptance> automaton) {
+        this.alphabet = automaton.factory().alphabet();
         this.plantUmlStringBuilder = plantUmlStringBuilder;
         this.automaton = automaton;
     }
@@ -49,7 +49,7 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
         System.out.print(plantUmlGraph);
 
         try {
-            saveSvgStringToFile(plantUmlGraph, "owl_formula_visualization.svg");
+            GraphVisualizationHelpers.saveSvgStringToFile(plantUmlGraph, "owl_formula_visualization.svg");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,7 +89,12 @@ public class PlantUmlVisitor<S> implements Automaton.EdgeVisitor<S>, Automaton.E
                 return;
             } else {
                 var expression = valuationSet.toExpression();
-                plantUmlStringBuilder.append(expression);
+                var expressionString = expression.toString();
+                for (int i = 0; i< alphabet.size(); i++) {
+                    expressionString  = expressionString.replace(""+i, "\""+alphabet.get(i)+"\"");
+                }
+
+                plantUmlStringBuilder.append(expressionString);
             }
 
             BitSet acceptanceSets = edge.acceptanceSets();

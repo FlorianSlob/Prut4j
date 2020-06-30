@@ -1,4 +1,4 @@
-package nl.florianslob.modelchecking.sandbox.helpers;
+package nl.florianslob.modelchecking.base.helpers;
 
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;

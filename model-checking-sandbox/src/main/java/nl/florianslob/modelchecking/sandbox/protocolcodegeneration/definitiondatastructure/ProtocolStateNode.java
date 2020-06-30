@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ProtocolStateNode {
-    public HashSet<ProtocolTransaction> outgoingTransactions = new HashSet<>();
+    public HashSet<ProtocolTransition> outgoingTransactions = new HashSet<>();
     public int stateId;
     private boolean visitedBefore = false;
 
@@ -14,7 +14,7 @@ public class ProtocolStateNode {
         this.stateId = stateId;
     }
 
-    public void AddOutgoingTransaction(ProtocolTransaction outgoingTransaction){
+    public void AddOutgoingTransaction(ProtocolTransition outgoingTransaction){
         this.outgoingTransactions.add(outgoingTransaction);
     }
 
@@ -38,7 +38,7 @@ public class ProtocolStateNode {
         }
 
         // Recursively visit the whole tree
-        for(ProtocolTransaction transaction : outgoingTransactions){
+        for(ProtocolTransition transaction : outgoingTransactions){
             transaction.targetState.Accept(visitors);
         }
 
