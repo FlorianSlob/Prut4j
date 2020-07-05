@@ -69,7 +69,7 @@ public class LtlModelChecker {
     private boolean travelStateSpaceGuided(IProtocol startingProtocolCopy, LtlState currentLtlState) throws Exception {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
-            for (var exploringAction : getPossibleExploringActions(transition)) {
+            for (var exploringAction : StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions)) {
                 var threadName = exploringAction.participant; // TODO is this correct??
                 // We have selected an action to explore (a possible transition on the protocol automaton)
                 // If no cycle is detected, we will try this action.
@@ -130,7 +130,7 @@ public class LtlModelChecker {
             throws Exception {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
-            for (var exploringAction : getPossibleExploringActions(transition)) {
+            for (var exploringAction :  StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions)) {
                 var threadName = exploringAction.participant; // TODO is this correct??
                 // We have selected an action to explore (a possible transition on the protocol automaton)
                 // If no cycle is detected, we will try this action.
@@ -258,52 +258,6 @@ public class LtlModelChecker {
 
     private StateSpaceExploringThread GetThreadForAction(StateSpaceExploringAction action) {
         return this.threadPerParticipant.get(action.participant);
-    }
-
-    /// Returns all actions that are possible to take a certain transition
-    private List<StateSpaceExploringAction> getPossibleExploringActions(LtlTransition transition) {
-        return this.exploringActions
-                .stream()
-                .filter(e -> isActionPossibleForTransition(e, transition))
-                .collect(Collectors.toList());
-    }
-
-    // MOVE to static helpers!
-    private boolean isActionPossibleForTransition(StateSpaceExploringAction exploringAction, LtlTransition transition) {
-        return evaluateExpressionForExploringAction(exploringAction, transition.Expression);
-    }
-
-    private boolean evaluateExpressionForExploringAction(StateSpaceExploringAction exploringAction, LtlTransitionExpression expression) {
-        if (expression.Operator == LtlTransitionExpressionOperator.TRUE) {
-            return true;
-        } else if (expression.Operator == LtlTransitionExpressionOperator.FALSE) {
-            return false;
-        } else if (expression.Operator == LtlTransitionExpressionOperator.OR) {
-            return evaluateExpressionForExploringAction(exploringAction, expression.Left)
-                    ||
-                    evaluateExpressionForExploringAction(exploringAction, expression.Right);
-        } else if (expression.Operator == LtlTransitionExpressionOperator.AND) {
-            return evaluateExpressionForExploringAction(exploringAction, expression.Left)
-                    &&
-                    evaluateExpressionForExploringAction(exploringAction, expression.Right);
-        } else if (expression.Operator == LtlTransitionExpressionOperator.NOT) {
-            return !evaluateExpressionForExploringAction(exploringAction, expression.Left);
-        } else if (expression.Operator == LtlTransitionExpressionOperator.ATOM) {
-            if (
-                    expression.AtomicProposition.Direction == exploringAction.direction
-                            &&
-                            // TODO Are we sure we want to ignore casing here?
-                            expression.AtomicProposition.MessageType.equalsIgnoreCase(exploringAction.messageClass.getTypeName())
-                            &&
-                            expression.AtomicProposition.Receiver.equalsIgnoreCase(exploringAction.receiver)
-            ) {
-                return true;
-            } else {
-                return false;
-            }
-        } else { // We should never reach this edge case, but just to be sure...
-            return false;
-        }
     }
 
     private final Set<TriedTransitionTuple> allTriedTransitions = new HashSet<>();
