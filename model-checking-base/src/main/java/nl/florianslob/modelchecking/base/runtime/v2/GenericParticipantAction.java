@@ -1,5 +1,7 @@
 package nl.florianslob.modelchecking.base.runtime.v2;
 
+import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionAtomicPropositionDirection;
+
 public class GenericParticipantAction {
 
     public static GenericParticipantAction GetReceiveAction(){
@@ -11,14 +13,14 @@ public class GenericParticipantAction {
     }
 
     private GenericParticipantAction() {
-        this.type = ParticipantActionType.RECEIVE;
+        this.direction = LtlTransitionExpressionAtomicPropositionDirection.RECEIVE;
     }
 
     private GenericParticipantAction(Object message) {
-        this.type = ParticipantActionType.SEND;
+        this.direction = LtlTransitionExpressionAtomicPropositionDirection.SEND;
         this.message = message;
     }
 
-    public final ParticipantActionType type;
+    public final LtlTransitionExpressionAtomicPropositionDirection direction;
     public Object message;
 }

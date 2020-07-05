@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LtlState {
-    public List<LtlTransition> OutgoingTransactions = new ArrayList<>();
+    public List<LtlTransition> OutgoingTransitions = new ArrayList<>();
     public int stateNumber;
 
     public LtlState(int stateNumber) {

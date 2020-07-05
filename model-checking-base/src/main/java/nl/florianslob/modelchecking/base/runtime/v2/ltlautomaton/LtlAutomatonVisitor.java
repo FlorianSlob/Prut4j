@@ -99,7 +99,7 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
                     newTransition.AcceptanceSet1 = true;
                 }
             }
-            ltlState.OutgoingTransactions.add(newTransition);
+            ltlState.OutgoingTransitions.add(newTransition);
         });
     }
 

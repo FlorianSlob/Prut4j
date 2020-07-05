@@ -13,7 +13,11 @@ public class StateSpaceExplorerHelper {
             // Add all receive and send actions for every dummy
             for (var dummy : protocol.dummies()) {
                 exploringActions.add(StateSpaceExploringAction.CreateReceiveStateSpaceExploringAction(threadName, dummy.getClass()));
-                exploringActions.add(StateSpaceExploringAction.CreateSendStateSpaceExploringAction(threadName, dummy));
+                // add a send action for all possible receivers
+                // TODO Exclude the thread itself?
+                for(var possibleReceiverThread : protocol.threadNames()) {
+                    exploringActions.add(StateSpaceExploringAction.CreateSendStateSpaceExploringAction(threadName, dummy, possibleReceiverThread));
+                }
             }
         }
         return exploringActions;

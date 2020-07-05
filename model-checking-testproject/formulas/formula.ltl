@@ -1,0 +1,5 @@
+G("SEND dto.Move TO b" -> X(!"SEND dto.Move TO b" U "SEND dto.Move TO w"))
+&
+G("SEND dto.Move TO w" -> X(!"SEND dto.Move TO w" U "SEND dto.Move TO b"))
+&
+G(!("SEND dto.Move TO w" & "SEND dto.Move TO b") & !(!"SEND dto.Move TO w" & !"SEND dto.Move TO b"))

@@ -2,6 +2,7 @@ package nl.florianslob.modelchecking.base.runtime.v2;
 
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionAtomicPropositionDirection;
 
 import java.util.Optional;
 import java.util.concurrent.*;
@@ -32,12 +33,12 @@ public class StateSpaceExploringThread {
         Future<Optional<IProtocol>> future = executor.submit(new Callable<Optional<IProtocol>>() {
             @Override
             public Optional<IProtocol> call() throws Exception {
-                if(actionToBeExecuted.actionType == ParticipantActionType.SEND){
+                if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
                     self.environment.send(actionToBeExecuted.dummy);
                     return Optional.of(self.protocol);
                 }
 
-                if(actionToBeExecuted.actionType == ParticipantActionType.RECEIVE){
+                if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
                     var result = self.environment.receive();
                     if(result.getClass() == actionToBeExecuted.messageClass){
                         return Optional.of(self.protocol);
