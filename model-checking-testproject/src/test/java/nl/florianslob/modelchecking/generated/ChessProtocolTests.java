@@ -22,6 +22,11 @@ public class ChessProtocolTests {
     }
 
     @Test
+    public void TestSimple2Formula() throws Exception {
+        TestFormulaFromFile("formulas/formulaSimple2.ltl", true);
+    }
+
+    @Test
     public void TestComplexFormula() throws Exception {
         TestFormulaFromFile("formulas/formula.ltl", true);
     }

@@ -152,15 +152,13 @@ public class LtlModelChecker {
 
                     // if there is a result, we just took a transition in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
-
-
                         var protocolStateAfterTransition = optionalResultProtocol.get();
                         System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
 
                         locallyTriedTransitions.add(newTriedTransitionTuple);
 
                         if(transition.AcceptanceSet0 || transition.AcceptanceSet1){
-                            // TODO do we need to check the first transition(bofore starting the recursive behavior)?
+                            // TODO do we need to check the first transition(before starting the recursive behavior)?
                             System.out.println("Transition we took was part of an accepting cycle.");
                             isAcceptingCycle = true; // Mark the cycle we are checking as accepting.
                         }
