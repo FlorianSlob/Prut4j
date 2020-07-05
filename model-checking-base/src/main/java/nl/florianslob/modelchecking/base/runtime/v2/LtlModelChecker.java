@@ -3,12 +3,9 @@ package nl.florianslob.modelchecking.base.runtime.v2;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlState;
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransition;
-import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpression;
-import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionOperator;
 import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.OwlHelper;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class LtlModelChecker {
     private final IProtocol protocolUnderVerification;
@@ -119,8 +116,6 @@ public class LtlModelChecker {
         }
         return false; // Returning false, we took all possible transitions and did not find any accepting cycles.
     }
-
-    //        private final Set<TriedTransitionTuple> allTriedTransitions = new HashSet<>();
 
     private boolean travelStateSpaceGuidedForSecondCycle(IProtocol startingProtocolCopy,
                                                          LtlState currentLtlState,
