@@ -43,7 +43,17 @@ public class StateSpaceExploringActionsHelper {
                             // TODO Are we sure we want to ignore casing here?
                             expression.AtomicProposition.MessageType.equalsIgnoreCase(exploringAction.messageClass.getTypeName())
                             &&
-                            expression.AtomicProposition.Receiver.equalsIgnoreCase(exploringAction.receiver)
+                            (
+                                    expression.AtomicProposition.Participant == null
+                                    ||
+                                    expression.AtomicProposition.Participant.equalsIgnoreCase(exploringAction.participant)
+                            )
+                            &&
+                            (
+                                    expression.AtomicProposition.Receiver == null
+                                    ||
+                                    expression.AtomicProposition.Receiver.equalsIgnoreCase(exploringAction.receiver)
+                            )
             ) {
                 return true;
             } else {

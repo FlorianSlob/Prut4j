@@ -32,7 +32,7 @@ public class StateSpaceExploringAction {
                 LtlTransitionExpressionAtomicPropositionDirection.RECEIVE,
                 null,
                 messageClass,
-                null);
+                participant);
     }
 
     public void Print(){

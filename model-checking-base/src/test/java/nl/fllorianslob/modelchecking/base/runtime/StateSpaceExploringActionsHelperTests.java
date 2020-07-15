@@ -2,10 +2,7 @@ package nl.fllorianslob.modelchecking.base.runtime;
 
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExploringAction;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExploringActionsHelper;
-import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlState;
-import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransition;
-import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpression;
-import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionOperator;
+import nl.florianslob.modelchecking.base.runtime.v2.datastructure.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -21,18 +18,36 @@ public class StateSpaceExploringActionsHelperTests {
             StateSpaceExploringAction.CreateSendStateSpaceExploringAction("w", "test", "b"));
 
     @Test
-    public void TestBasicNoErrors() throws Exception {
+    public void TrueOperatorAllAreReturned() throws Exception {
         var transition = new LtlTransition(new LtlState(1));
         transition.Expression = new LtlTransitionExpression();
         transition.Expression.Operator = LtlTransitionExpressionOperator.TRUE;
-        assertNotNull(StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions));
+        assertEquals(exploringActions.size(),
+                StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions).size());
     }
 
     @Test
-    public void TestBasicNoErrors2() throws Exception {
+    public void TestFiltering() throws Exception {
+        var transition = new LtlTransition(new LtlState(1));
+        transition.Expression = new LtlTransitionExpression();
+
+        // We are checking at atom level here
+        transition.Expression.Operator = LtlTransitionExpressionOperator.ATOM;
+        // create a receive action for 'w'
+        transition.Expression.AtomicProposition
+                = new LtlTransitionExpressionAtomicProposition
+                        (LtlTransitionExpressionAtomicPropositionDirection.RECEIVE, "java.lang.String", "w", null);
+
+        assertEquals(
+                1,
+                StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions).size());
+    }
+
+    @Test
+    public void FalseOperatorNoneAreReturned() throws Exception {
         var transition = new LtlTransition(new LtlState(1));
         transition.Expression = new LtlTransitionExpression();
         transition.Expression.Operator = LtlTransitionExpressionOperator.FALSE;
-        assertNull(StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions));
+        assertEquals(0,StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions).size());
     }
 }

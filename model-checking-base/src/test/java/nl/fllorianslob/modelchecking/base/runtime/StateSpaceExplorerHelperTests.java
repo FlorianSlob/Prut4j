@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StateSpaceExplorerHelperTests {
+
     @Test
     public void TestDetermineExploringActions(){
         // ARRANGE
@@ -18,12 +19,12 @@ public class StateSpaceExplorerHelperTests {
 
             @Override
             public String[] threadNames() {
-                return new String[0];
+                return new String[]{"t1", "t2"};
             }
 
             @Override
             public Object[] dummies() {
-                return new Object[0];
+                return new Object[]{"TestObject"};
             }
 
             @Override
