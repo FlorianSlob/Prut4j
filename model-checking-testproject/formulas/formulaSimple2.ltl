@@ -1,1 +1,1 @@
-"SEND dto.Move TO b" -> !X("SEND dto.Move TO b")
+"w SEND dto.Move TO b" -> !X("w SEND dto.Move TO b")

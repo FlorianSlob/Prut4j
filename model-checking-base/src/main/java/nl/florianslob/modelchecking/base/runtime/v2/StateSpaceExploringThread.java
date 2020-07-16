@@ -12,7 +12,7 @@ public class StateSpaceExploringThread {
     private IProtocol protocol;
     private IEnvironment environment;
 
-    public  StateSpaceExploringThread(String participantName){
+    public StateSpaceExploringThread(String participantName){
         this.threadName = participantName;
     }
 
@@ -52,7 +52,7 @@ public class StateSpaceExploringThread {
         executor.shutdown();//        <-- reject all further submissions
 
         try {
-            future.get(250, TimeUnit.MILLISECONDS);  //     <-- wait 8 seconds to finish
+            future.get(100, TimeUnit.MILLISECONDS);  //     <-- wait 20 miliseconds to finish
         } catch (InterruptedException e) {//     <-- possible error cases
             System.out.println("job was interrupted");
         } catch (ExecutionException e) {

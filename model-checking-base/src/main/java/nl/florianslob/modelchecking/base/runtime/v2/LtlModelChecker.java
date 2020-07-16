@@ -72,7 +72,7 @@ public class LtlModelChecker {
                 // If no cycle is detected, we will try this action.
                 // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
                 var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, exploringAction.participant);
-                if (!detectCycle(newTriedTransitionTuple,allTriedTransitions)) {
+//                if (!detectCycle(newTriedTransitionTuple,allTriedTransitions)) {
                     System.out.println("Trying transition from state " + startingProtocolCopy.getState());
                     exploringAction.Print();
 
@@ -87,31 +87,33 @@ public class LtlModelChecker {
 
                     // if there is a result, we just took a transition in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
-                        // we were able to take this transition, add to list to enable cycle detection
-                        allTriedTransitions.add(newTriedTransitionTuple);
+                        if (detectCycle(newTriedTransitionTuple,allTriedTransitions)) {
+                            System.out.println("Detected cycle in state " + startingProtocolCopy.getState());
+                            System.out.println("Starting inner cycle");
 
-                        var protocolStateAfterTransition = optionalResultProtocol.get();
-                        System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
-                        // Call recursively to travel the whole protocol
-                        var recursiveResult = travelStateSpaceGuided(protocolStateAfterTransition, transition.ltlTargetState);
-                        if (recursiveResult) {
-                            return true;
+                            // We detected a transition that has been taken before.
+                            var resultFromCycle2 = doCycleDetectionPhaseTwo(currentLtlState, transition, exploringAction, startingProtocolCopy);
+                            // Case where we did detect a cycle:
+                            // ?
+                            // Store protocol clone, transition to be taken, action to be done, ltl state?
+                            // OR do second cycle directy to be able to report on the fly
+                            if (resultFromCycle2) {
+                                return true; // Only return true if a cycle is found, continue otherwise.
+                            }
+                        } else {
+
+                            // we were able to take this transition, add to list to enable cycle detection
+                            allTriedTransitions.add(newTriedTransitionTuple);
+
+                            var protocolStateAfterTransition = optionalResultProtocol.get();
+                            System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
+                            // Call recursively to travel the whole protocol
+                            var recursiveResult = travelStateSpaceGuided(protocolStateAfterTransition, transition.ltlTargetState);
+                            if (recursiveResult) {
+                                return true;
+                            }
                         }
                     }
-                } else {
-                    System.out.println("Detected cycle in state " + startingProtocolCopy.getState());
-                    System.out.println("Starting inner cycle" );
-
-                    // We detected a transition that has been taken before.
-                    var resultFromCycle2 = doCycleDetectionPhaseTwo(currentLtlState, transition, exploringAction, startingProtocolCopy);
-                    // Case where we did detect a cycle:
-                    // ?
-                    // Store protocol clone, transition to be taken, action to be done, ltl state?
-                    // OR do second cycle directy to be able to report on the fly
-                    if (resultFromCycle2) {
-                        return true; // Only return true if a cycle is found, continue otherwise.
-                    }
-                }
             }
         }
         return false; // Returning false, we took all possible transitions and did not find any accepting cycles.
@@ -132,8 +134,12 @@ public class LtlModelChecker {
                 // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
                 var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, exploringAction.participant);
                 System.out.println("Trying transition from state " + startingProtocolCopy.getState());
+                System.out.println("Trying direction:"+ exploringAction.direction );
+                System.out.println("Trying dummy:"+ exploringAction.dummy );
+                System.out.println("Trying receiver:"+ exploringAction.receiver );
+                System.out.println("Trying messageClass:"+ exploringAction.messageClass );
+                System.out.println("Trying participant:"+ exploringAction.participant );
 
-                if (!detectCycle(newTriedTransitionTuple, locallyTriedTransitions)) {
                     exploringAction.Print();
 
                     // get the participating thread
@@ -150,40 +156,50 @@ public class LtlModelChecker {
                         var protocolStateAfterTransition = optionalResultProtocol.get();
                         System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
 
-                        locallyTriedTransitions.add(newTriedTransitionTuple);
-
-                        if(transition.AcceptanceSet0 || transition.AcceptanceSet1){
-                            // TODO do we need to check the first transition(before starting the recursive behavior)?
-                            System.out.println("Transition we took was part of an accepting cycle.");
-                            isAcceptingCycle = true; // Mark the cycle we are checking as accepting.
-                        }
-                        // Call recursively to travel the whole protocol
-                        var recursiveResult = travelStateSpaceGuidedForSecondCycle(
-                                protocolStateAfterTransition,
-                                transition.ltlTargetState,
-                                locallyTriedTransitions,
-                                markedTransitionTuple,
-                                isAcceptingCycle);
-                        if (recursiveResult) {
-                            return true;
-                        }
-                    }
-                } else {
-                    System.out.println("Detected Cycle in state " + startingProtocolCopy.getState());
+                        if (detectCycle(newTriedTransitionTuple, locallyTriedTransitions)) {
+                            System.out.println("Detected Cycle in state, We are already in inner cycle!" + startingProtocolCopy.getState());
 
 //                    // Need as parameters, starting state info to check here....
-//                    var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, threadName);
-                    // are we in the starting state again?
-                    // Yes? Return value of isAccepting...
-                    if (newTriedTransitionTuple.equals(markedTransitionTuple)) {
-                        System.out.println("It is the state we are checking! ");
+                            //                  var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, threadName);
+                            // are we in the starting state again?
+                            // Yes? Return value of isAccepting...
+                            if (newTriedTransitionTuple.equals(markedTransitionTuple)) {
+                                System.out.println("It is the state we are checking! ");
 
-                        return isAcceptingCycle;
+                                return isAcceptingCycle;
+                            } else {
+                                System.out.println("It is not the state we wer checking for, we are ignoring this cycle! ");
+
+                            }
+                        } else {
+
+
+                            locallyTriedTransitions.add(newTriedTransitionTuple);
+
+                            if (transition.AcceptanceSet0 || transition.AcceptanceSet1) {
+                                // TODO do we need to check the first transition(before starting the recursive behavior)?
+                                System.out.println("Transition we took was part of an accepting cycle.");
+                                isAcceptingCycle = true; // Mark the cycle we are checking as accepting.
+                            }
+                            // Call recursively to travel the whole protocol
+                            var recursiveResult = travelStateSpaceGuidedForSecondCycle(
+                                    protocolStateAfterTransition,
+                                    transition.ltlTargetState,
+                                    locallyTriedTransitions,
+                                    markedTransitionTuple,
+                                    isAcceptingCycle);
+                            if (recursiveResult) {
+                                return true;
+                            }
+                        }
                     }
-                    // No? end recursion but continue, we could be in a sub cycle
-                }
+//                } else {
+//
+//                    // No? end recursion but continue, we could be in a sub cycle
+//                }
             }
         }
+        System.out.println("Returning false, we took all possible transitions and did not find any accepting cycles.");
         return false; // Returning false, we took all possible transitions and did not find any accepting cycles.
     }
 
@@ -270,6 +286,7 @@ public class LtlModelChecker {
     }
 
     ///////// OBSOLETE:
+    @Deprecated
     public void ExploreStateSpace() {
         // TODO How do we visualize the results?
         System.out.println("Starting to explore state space for protocol. ");

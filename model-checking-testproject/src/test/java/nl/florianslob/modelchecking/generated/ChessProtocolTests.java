@@ -8,20 +8,20 @@ import static org.junit.Assert.assertTrue;
 
 public class ChessProtocolTests {
 
-    private LtlModelChecker GetModelCheckerForChessProtocol(){
+    private static LtlModelChecker GetModelCheckerForChessProtocol(){
         return new LtlModelChecker(new GeneratedChessProtocolDebug());
     }
 
-    private void LogTest(String formulaString){
+    private static void LogTest(String formulaString){
         System.out.println("Testing the protocol for: "+formulaString);
     }
 
-    @Test
+//    @Test
     public void TestSimpleFormula() throws Exception {
         TestFormulaFromFile("formulas/formulaSimple.ltl", true);
     }
 
-    @Test
+//    @Test
     public void TestSimple2Formula() throws Exception {
         TestFormulaFromFile("formulas/formulaSimple2.ltl", true);
     }
@@ -31,7 +31,7 @@ public class ChessProtocolTests {
         TestFormulaFromFile("formulas/formula.ltl", true);
     }
 
-    public void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult) throws Exception {
+    public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult) throws Exception {
         // Arrange
         var formulaString = LtlFormulaDefinitionHelper.GetFormulaStringFromFile(absolutePathToFormulaFile);
         LogTest(formulaString);

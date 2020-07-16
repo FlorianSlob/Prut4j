@@ -5,7 +5,6 @@ import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExploringActionsHe
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class StateSpaceExploringActionsHelperTests {
     }
 
     @Test
-    public void TestFiltering() throws Exception {
+    public void FiltersReceivingCorrectlyForReceive() throws Exception {
         var transition = new LtlTransition(new LtlState(1));
         transition.Expression = new LtlTransitionExpression();
 
@@ -38,11 +37,40 @@ public class StateSpaceExploringActionsHelperTests {
                 = new LtlTransitionExpressionAtomicProposition
                         (LtlTransitionExpressionAtomicPropositionDirection.RECEIVE, "java.lang.String", "w", null);
 
+        var result = StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions);
+        // Should have one result
         assertEquals(
                 1,
-                StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions).size());
+                result.size());
+        // with correct direction, messageType and participant
+        assertEquals(LtlTransitionExpressionAtomicPropositionDirection.RECEIVE,result.get(0).direction);
+        assertEquals("w",result.get(0).participant);
+        assertEquals("java.lang.String",result.get(0).messageClass.getTypeName());
     }
 
+    @Test
+    public void FiltersReceivingCorrectlyForSend() throws Exception {
+        var transition = new LtlTransition(new LtlState(1));
+        transition.Expression = new LtlTransitionExpression();
+
+        // We are checking at atom level here
+        transition.Expression.Operator = LtlTransitionExpressionOperator.ATOM;
+        // create a receive action for 'w'
+        transition.Expression.AtomicProposition
+                = new LtlTransitionExpressionAtomicProposition
+                (LtlTransitionExpressionAtomicPropositionDirection.SEND, "java.lang.String", "w", "b");
+
+        var result = StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions);
+        // Should have one result
+        assertEquals(
+                1,
+                result.size());
+        // with correct direction, messageType and participant
+        assertEquals(LtlTransitionExpressionAtomicPropositionDirection.SEND,result.get(0).direction);
+        assertEquals("w",result.get(0).participant);
+        assertEquals("b",result.get(0).receiver);
+        assertEquals("java.lang.String",result.get(0).messageClass.getTypeName());
+    }
     @Test
     public void FalseOperatorNoneAreReturned() throws Exception {
         var transition = new LtlTransition(new LtlState(1));

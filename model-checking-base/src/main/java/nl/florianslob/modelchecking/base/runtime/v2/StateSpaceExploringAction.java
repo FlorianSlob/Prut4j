@@ -38,4 +38,27 @@ public class StateSpaceExploringAction {
     public void Print(){
         System.out.println("Action from "+this.participant+" with type "+this.direction.toString()+" with dummy: "+this.dummy +" + with class "+this.messageClass);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() == StateSpaceExploringAction.class) {
+            var castedObj = (StateSpaceExploringAction) obj;
+            if(castedObj.participant.equalsIgnoreCase(this.participant)
+                    && castedObj.direction == this.direction
+                    // TODO Wow, this needs simplification
+                    && (
+                            (castedObj.dummy == null && this.dummy == null)
+                                    ||
+                            (castedObj.dummy != null && this.dummy != null && castedObj.dummy.getClass() == this.dummy.getClass())
+                        )
+                    && castedObj.messageClass == this.messageClass
+                    && castedObj.receiver.equalsIgnoreCase(this.receiver)){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }
