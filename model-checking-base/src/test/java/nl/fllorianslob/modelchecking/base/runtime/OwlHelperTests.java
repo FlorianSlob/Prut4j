@@ -9,11 +9,6 @@ import static org.junit.Assert.*;
 
 public class OwlHelperTests {
     @Test
-    public void TestFailingTestAzureDevOps(){
-        assertTrue(false);
-    }
-
-    @Test
     public void TestLtlParsingForImplies(){
         //Arrange
         String ltlFormulaString = "\"w SEND dto.Move TO b\" -> X(!\"w SEND dto.Move TO b\")";
