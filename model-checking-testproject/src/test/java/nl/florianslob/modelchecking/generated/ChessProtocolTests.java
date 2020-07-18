@@ -16,19 +16,29 @@ public class ChessProtocolTests {
         System.out.println("Testing the protocol for: "+formulaString);
     }
 
-//    @Test
+    @Test
     public void TestSimpleFormula() throws Exception {
         TestFormulaFromFile("formulas/formulaSimple.ltl", true);
     }
 
-//    @Test
+    @Test
     public void TestSimple2Formula() throws Exception {
         TestFormulaFromFile("formulas/formulaSimple2.ltl", true);
     }
 
     @Test
-    public void TestComplexFormula() throws Exception {
+    public void TestComplexFormulaFull() throws Exception {
         TestFormulaFromFile("formulas/formula.ltl", true);
+    }
+
+    @Test
+    public void TestComplexFormulaPart1() throws Exception {
+        TestFormulaFromFile("formulas/formula2.ltl", true);
+    }
+
+    @Test
+    public void TestComplexFormulaPart2() throws Exception {
+        TestFormulaFromFile("formulas/formula3.ltl", true);
     }
 
     public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult) throws Exception {

@@ -16,7 +16,8 @@ public class StateSpaceExplorerHelper {
                 // add a send action for all possible receivers
                 // TODO Exclude the thread itself?
                 for(var possibleReceiverThread : protocol.threadNames()) {
-                    exploringActions.add(StateSpaceExploringAction.CreateSendStateSpaceExploringAction(threadName, dummy, possibleReceiverThread));
+                    if(!possibleReceiverThread.equalsIgnoreCase(threadName))
+                        exploringActions.add(StateSpaceExploringAction.CreateSendStateSpaceExploringAction(threadName, dummy, possibleReceiverThread));
                 }
             }
         }
