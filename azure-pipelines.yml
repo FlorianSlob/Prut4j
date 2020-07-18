@@ -17,3 +17,14 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
   
+- task: Gradle@2
+  inputs:
+    workingDirectory: 'model-checking-testproject'
+    gradleWrapperFile: 'model-checking-testproject/gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.12'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'build'
