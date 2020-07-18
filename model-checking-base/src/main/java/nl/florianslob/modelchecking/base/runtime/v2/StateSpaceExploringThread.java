@@ -52,7 +52,8 @@ public class StateSpaceExploringThread {
         executor.shutdown();//        <-- reject all further submissions
 
         try {
-            future.get(100, TimeUnit.MILLISECONDS);  //     <-- wait 20 miliseconds to finish
+            // TODO, replace with check for interrupts instead of a timeout.
+            future.get(10, TimeUnit.MILLISECONDS);  //     <-- wait 10 milliseconds to finish
         } catch (InterruptedException e) {//     <-- possible error cases
             System.out.println("job was interrupted");
         } catch (ExecutionException e) {
