@@ -1,6 +1,7 @@
 package nl.florianslob.modelchecking.base.runtime.v2;
 
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
+import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionAtomicPropositionDirection;
 
 import java.util.*;
 
@@ -47,7 +48,7 @@ public class GenericParticipant {
     // chose for a non recursive implementation, otherwise we will encounter stack overflow exceptions.
     private void executeAction(IEnvironment environment) throws Exception {
 
-        if(this.currentExecutingAction.type == ParticipantActionType.SEND){
+        if(this.currentExecutingAction.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
             System.out.println("Sending message from "+environment.getName());
             environment.send(this.currentExecutingAction.message);
             Set<GenericParticipantAction> actionSet = AfterSendActionsPerSendAction.get(this.currentExecutingAction);
@@ -59,7 +60,7 @@ public class GenericParticipant {
             }
         }
 
-        if(this.currentExecutingAction.type == ParticipantActionType.RECEIVE){
+        if(this.currentExecutingAction.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
             System.out.println("Receiving message in "+environment.getName());
             Object protocolMessage = environment.receive();
             Set<GenericParticipantAction> actionSet = AfterReceiveActionsPerMessageClass.get(protocolMessage.getClass());

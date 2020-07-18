@@ -24,7 +24,7 @@ public class GeneratedChessProtocolDebug implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "B": return new IEnvironment() {
+			case "b": return new IEnvironment() {
 				
 				@Override
 				public String getName(){
@@ -89,7 +89,7 @@ public class GeneratedChessProtocolDebug implements IProtocol {
 					}
 				}
 			};
-			case "W": return new IEnvironment() {
+			case "w": return new IEnvironment() {
 				
 				@Override
 				public String getName(){
@@ -153,7 +153,7 @@ public class GeneratedChessProtocolDebug implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "W", "B" };
+		return new String[] { "w", "b" };
 	}
 	
 	@Override

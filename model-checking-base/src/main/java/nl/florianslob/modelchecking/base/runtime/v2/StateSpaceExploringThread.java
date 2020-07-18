@@ -2,6 +2,7 @@ package nl.florianslob.modelchecking.base.runtime.v2;
 
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionAtomicPropositionDirection;
 
 import java.util.Optional;
 import java.util.concurrent.*;
@@ -11,7 +12,7 @@ public class StateSpaceExploringThread {
     private IProtocol protocol;
     private IEnvironment environment;
 
-    public  StateSpaceExploringThread(String participantName){
+    public StateSpaceExploringThread(String participantName){
         this.threadName = participantName;
     }
 
@@ -32,12 +33,12 @@ public class StateSpaceExploringThread {
         Future<Optional<IProtocol>> future = executor.submit(new Callable<Optional<IProtocol>>() {
             @Override
             public Optional<IProtocol> call() throws Exception {
-                if(actionToBeExecuted.actionType == ParticipantActionType.SEND){
+                if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
                     self.environment.send(actionToBeExecuted.dummy);
                     return Optional.of(self.protocol);
                 }
 
-                if(actionToBeExecuted.actionType == ParticipantActionType.RECEIVE){
+                if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
                     var result = self.environment.receive();
                     if(result.getClass() == actionToBeExecuted.messageClass){
                         return Optional.of(self.protocol);
@@ -51,7 +52,8 @@ public class StateSpaceExploringThread {
         executor.shutdown();//        <-- reject all further submissions
 
         try {
-            future.get(250, TimeUnit.MILLISECONDS);  //     <-- wait 8 seconds to finish
+            // TODO, replace with check for interrupts instead of a timeout.
+            future.get(10, TimeUnit.MILLISECONDS);  //     <-- wait 10 milliseconds to finish
         } catch (InterruptedException e) {//     <-- possible error cases
             System.out.println("job was interrupted");
         } catch (ExecutionException e) {

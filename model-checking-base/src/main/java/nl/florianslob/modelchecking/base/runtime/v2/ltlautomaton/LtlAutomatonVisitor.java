@@ -21,9 +21,6 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
 
     public LtlAutomatonVisitor(Automaton<S, GeneralizedBuchiAcceptance> automaton) {
         this.alphabet = automaton.factory().alphabet();
-
-
-
         this.automaton = automaton;
     }
 
@@ -33,7 +30,6 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
                 automaton.initialStates()) {
             var ltlState = getLtlState(initialState);
 
-
             ltlStates.add(ltlState);
         }
 
@@ -42,7 +38,6 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
 
     private LtlState getLtlState(S state) {
         var stateNumber = stateNumbers.computeIntIfAbsent(state, k -> stateNumbers.size());
-
         var ltlState = stateIdToState.getOrDefault(stateNumber,null);
         if(ltlState == null){
             ltlState = new LtlState(stateNumber);
@@ -65,12 +60,8 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
 
             var ltlTargetState = getLtlState(targetState);
             var ltlState = getLtlState(state);
-
             var targetStateId = ltlTargetState.stateNumber;
-
             var newTransition = new LtlTransition(ltlTargetState);
-
-
 
             if (valuationSet.isEmpty()) {
                 return;
@@ -99,7 +90,7 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
                     newTransition.AcceptanceSet1 = true;
                 }
             }
-            ltlState.OutgoingTransactions.add(newTransition);
+            ltlState.OutgoingTransitions.add(newTransition);
         });
     }
 
@@ -112,23 +103,32 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
 
             var expressionString = owlExpression.getAtom().toString();
 
+            // resetting the labels to the string... is this a good idea??
+            // No, remove logic below and separate parsing logic.
+            // TODO extract parsing logic.
             for (int i = 0; i< alphabet.size(); i++) {
                 expressionString  = expressionString.replace(""+i, ""+alphabet.get(i)+"");
             }
-            // TODO Convert to expression we can use while model checking
 
             var atomicProposition = new LtlTransitionExpressionAtomicProposition();
-            // TODO make a nicer parser for this?
-            // Move to separate method.
-            if(expressionString.startsWith("RECEIVE")){
-                atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.RECEIVE;
-                // Remove the receive keyword an trim the rest.
-                atomicProposition.MessageType = expressionString.replace("RECEIVE", "").trim();
-            }else if(expressionString.startsWith("SEND")){
-                atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.SEND;
-                atomicProposition.MessageType = expressionString.replace("SEND", "").split("TO")[0].trim();
-                // Take the part after keyword TO and trim the rest
-                atomicProposition.Receiver = expressionString.split("TO")[1].trim();
+
+            var expressionSplitted = expressionString.split(" "); // TODO Should we allow multiple spaces?
+            atomicProposition.Participant = expressionSplitted[0]; // The first thing you find is the participant
+
+            if(expressionSplitted.length >2) {
+                // TODO make a nicer parser for this?
+                // Move to separate method.
+                if (expressionSplitted[1].equalsIgnoreCase("RECEIVE")) {
+                    atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.RECEIVE;
+                } else if (expressionSplitted[1].equalsIgnoreCase("SEND")) {
+                    atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.SEND;
+                    // Take the part after keyword TO and trim the rest
+                    atomicProposition.Receiver = expressionSplitted[4];
+                }
+                atomicProposition.MessageType = expressionSplitted[2];
+
+            }else{
+                // TODO Throw exception??
             }
 
             expression.AtomicProposition = atomicProposition;
