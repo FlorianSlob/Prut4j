@@ -272,9 +272,4 @@ public class OnTheFlyLtlTest {
         ).count());
 
     }
-
-    @Test
-    public void TestFailingTestAzureDevOps(){
-        assertTrue(false);
-    }
 }

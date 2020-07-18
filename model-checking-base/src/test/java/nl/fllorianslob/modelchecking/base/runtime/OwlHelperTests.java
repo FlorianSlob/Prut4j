@@ -8,6 +8,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class OwlHelperTests {
+    @Test
+    public void TestFailingTestAzureDevOps(){
+        assertTrue(false);
+    }
 
     @Test
     public void TestLtlParsingForImplies(){
