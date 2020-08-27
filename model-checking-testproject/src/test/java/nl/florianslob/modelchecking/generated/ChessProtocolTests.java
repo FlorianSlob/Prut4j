@@ -17,6 +17,11 @@ public class ChessProtocolTests {
     }
 
     @Test
+    public void TestSimpleFormulaFalse() throws Exception {
+        TestFormulaFromFile("formulas/formulaSimpleFalse.ltl", false);
+    }
+
+    @Test
     public void TestSimpleFormula() throws Exception {
         TestFormulaFromFile("formulas/formulaSimple.ltl", true);
     }
@@ -40,6 +45,11 @@ public class ChessProtocolTests {
     public void TestComplexFormulaPart2() throws Exception {
         TestFormulaFromFile("formulas/formula3.ltl", true);
     }
+    @Test
+    public void TestComplexFormula4() throws Exception {
+        TestFormulaFromFile("formulas/formula4.ltl", true);
+    }
+
 
     public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult) throws Exception {
         // Arrange

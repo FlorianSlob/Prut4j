@@ -40,7 +40,7 @@ public class GeneratedChessProtocolDebug implements IProtocol {
 									monitor.wait();
 									break;
 								case 1:
-									if (queueFromWToB.peek() != null && queueFromWToB.peek().getClass() == Move.class) {
+									if (box.isEmpty() && queueFromWToB.peek() != null && queueFromWToB.peek().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 2;
 										// Disabling unchecked inspection: We did check the class in the if statement above
@@ -65,7 +65,9 @@ public class GeneratedChessProtocolDebug implements IProtocol {
 									monitor.wait();
 									break;
 								case 5:
-									if (queueFromWToB.peek() != null && queueFromWToB.peek().getClass() == Move.class) {
+									// Added box.isEmpty to check if it is not a send action!
+									// TODO Move this to the code generation algorithm!
+									if (box.isEmpty() && queueFromWToB.peek() != null && queueFromWToB.peek().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 6;
 										// Disabling unchecked inspection: We did check the class in the if statement above
@@ -117,7 +119,7 @@ public class GeneratedChessProtocolDebug implements IProtocol {
 									monitor.wait();
 									break;
 								case 3:
-									if (queueFromBToW.peek() != null && queueFromBToW.peek().getClass() == Move.class) {
+									if (box.isEmpty() && queueFromBToW.peek() != null && queueFromBToW.peek().getClass() == Move.class) {
 										monitor.notifyAll();
 										state = 4;
 										// Disabling unchecked inspection: We did check the class in the if statement above

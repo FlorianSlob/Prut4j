@@ -5,7 +5,7 @@ import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionAtomicPropositionDirection;
 
 import java.util.Optional;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
 
 public class StateSpaceExploringThread {
     private String threadName;
@@ -25,49 +25,69 @@ public class StateSpaceExploringThread {
     /**
      * @param actionToBeExecuted Action to be executed represents a possible transaction on the protocol automaton
      * @return Will return the protocol after a successful action, is empty otherwise.
+     *
+     * This method tries a transition, if it is interupted it has encountered a wait operation.
      */
-    public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) throws InterruptedException, ExecutionException {
-        ExecutorService executor = Executors.newFixedThreadPool(1); // TODO Do we want to set this?
+    public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted)
+    {
+        final CountDownLatch latch = new CountDownLatch(1);
+        final Optional[] value = {Optional.empty()};
 
-        var self = this;
-        Future<Optional<IProtocol>> future = executor.submit(new Callable<Optional<IProtocol>>() {
-            @Override
-            public Optional<IProtocol> call() throws Exception {
+        var baseThread =
+        new Thread(() -> {
+
+            synchronized (this.protocol){
+                Thread thread = Thread.currentThread();
+                new Thread(() -> {
+                    synchronized (this.protocol) {
+                        thread.interrupt();
+                    }
+                }).start();
+            }
+            var self = this;
+
+            try {
+    //// Action block
                 if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
                     self.environment.send(actionToBeExecuted.dummy);
-                    return Optional.of(self.protocol);
+                    value[0] = Optional.of(self.protocol);
+                    latch.countDown();
+                    return;
                 }
 
                 if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
                     var result = self.environment.receive();
                     if(result.getClass() == actionToBeExecuted.messageClass){
-                        return Optional.of(self.protocol);
+                        value[0] = Optional.of(self.protocol);
+                        latch.countDown();
+                        return;
                     }
                 }
-
-                return Optional.empty();
+                value[0] = Optional.empty();
+                latch.countDown();
+                return;
+    //// End action block
+            } catch (InterruptedException e) { // <<-- This means no possible action!
+                System.out.println("job was interrupted");
+                value[0] = Optional.empty();
+                latch.countDown();
+                return;
+            } catch (Exception e2) {
+                System.out.println("caught other exception: " + e2.getCause());
+                e2.printStackTrace();
+                value[0] = Optional.empty();
+                latch.countDown();
+                return;
             }
         });
 
-        executor.shutdown();//        <-- reject all further submissions
-
+        baseThread.start();
         try {
-            // TODO, replace with check for interrupts instead of a timeout.
-            future.get(10, TimeUnit.MILLISECONDS);  //     <-- wait 10 milliseconds to finish
-        } catch (InterruptedException e) {//     <-- possible error cases
-            System.out.println("job was interrupted");
-        } catch (ExecutionException e) {
-            System.out.println("caught exception: " + e.getCause());
-        } catch (TimeoutException e) {
-            future.cancel(true);//     <-- interrupt the job
-            System.out.println("timeout");
-            // Nothing has happened before timeout, transaction is nog possible
-            return Optional.empty();
+            latch.await(); // Wait for countDown() in the thread.
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        // force them to quit by interrupting
-        executor.shutdownNow();
-
-        return future.get();
+        return value[0];
+        
     }
 }

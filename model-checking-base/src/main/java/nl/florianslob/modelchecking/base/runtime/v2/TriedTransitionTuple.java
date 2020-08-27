@@ -25,4 +25,9 @@ public class TriedTransitionTuple {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return " ( State: "+this.stateId +" Exploring action: "+ exploringAction.toString()+")";
+    }
 }
