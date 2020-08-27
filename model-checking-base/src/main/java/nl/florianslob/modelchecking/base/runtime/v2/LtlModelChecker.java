@@ -10,7 +10,6 @@ import java.util.*;
 public class LtlModelChecker {
     private final IProtocol protocolUnderVerification;
     private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
-    private HashMap<String, StateSpaceExploringThread> threadPerParticipant = new HashMap<>();
     private List<LtlState> initialStatesForNegatedFormula;
 
     public LtlModelChecker(IProtocol protocolUnderVerification) {
@@ -39,15 +38,13 @@ public class LtlModelChecker {
             exploringAction.Print();
         }
 
-        this.threadPerParticipant = StateSpaceExplorerHelper.startExploringThreads(protocolUnderVerification);
-
         try {
             return executeModelCheckingAlgorithm();
         } catch (Exception e) {
             e.printStackTrace();
 
-            // TODO what should we do here? Throw the exception?
-            return true;
+            // TODO what should we do here?
+            return false;
         }
     }
 
@@ -67,7 +64,6 @@ public class LtlModelChecker {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
             for (var exploringAction : StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions)) {
-                var threadName = exploringAction.participant; // TODO is this correct??
                 // We have selected an action to explore (a possible transition on the protocol automaton)
                 // If no cycle is detected, we will try this action.
                 // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
@@ -107,6 +103,11 @@ public class LtlModelChecker {
 
                             var protocolStateAfterTransition = optionalResultProtocol.get();
                             System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
+
+
+                            // TODO Should we check for acceptance set 0 here?  and then return true??????
+                            // Acc set 0 = finite...
+                            // Acc set 1 = infinite .... --> Need cycle
                             // Call recursively to travel the whole protocol
                             var recursiveResult = travelStateSpaceGuided(protocolStateAfterTransition, transition.ltlTargetState);
                             if (recursiveResult) {
@@ -123,12 +124,12 @@ public class LtlModelChecker {
                                                          LtlState currentLtlState,
                                                          Set<TriedTransitionTuple> locallyTriedTransitions,
                                                          TriedTransitionTuple markedTransitionTuple,
-                                                         boolean isAcceptingCycle) // TODO will this work with value type?
+                                                         boolean isAcceptingCycle)
             throws Exception {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
-            for (var exploringAction :  StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions)) {
-                var threadName = exploringAction.participant; // TODO is this correct??
+            var possibleExploringActions =  StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions);
+            for (var exploringAction :  possibleExploringActions) {
                 // We have selected an action to explore (a possible transition on the protocol automaton)
                 // If no cycle is detected, we will try this action.
                 // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
@@ -163,12 +164,22 @@ public class LtlModelChecker {
                             //                  var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, threadName);
                             // are we in the starting state again?
                             // Yes? Return value of isAccepting...
+                            var messageForDebugging = " This is what we were checking: Marked: " + markedTransitionTuple.toString() + " newTried: " + newTriedTransitionTuple.toString();
+
                             if (newTriedTransitionTuple.equals(markedTransitionTuple)) {
                                 System.out.println("It is the state we are checking! ");
+                                System.out.println(messageForDebugging);
 
-                                return isAcceptingCycle;
+
+                                if((transition.AcceptanceSet0 || transition.AcceptanceSet1) && isAcceptingCycle)
+                                    return true;
+                                else{
+                                    return false;
+                                }
+//                                return isAcceptingCycle;
                             } else {
-                                System.out.println("It is not the state we wer checking for, we are ignoring this cycle! ");
+                                System.out.println("It is not the state we were checking for, we are ignoring this cycle!" );
+                                System.out.println(messageForDebugging);
 
                             }
                         } else {
@@ -246,10 +257,15 @@ public class LtlModelChecker {
             // Add transition to tried transition, so when taken again a cycle will be detected.
             var markedTransitionTuple =
                     new TriedTransitionTuple(
-                            protocolStateAfterTransition.getState()
+                            startingProtocolCopy.getState()
                             , exploringAction
                             , exploringAction.participant);
             locallyTriedTransitions.add(markedTransitionTuple);
+
+            var firstAcceptingValue = false;
+            if(transition.AcceptanceSet0 || transition.AcceptanceSet1){
+                firstAcceptingValue = true;
+            }
 
             // Call recursively to travel the whole protocol
             var recursiveResult = travelStateSpaceGuidedForSecondCycle(
@@ -257,18 +273,18 @@ public class LtlModelChecker {
                     transition.ltlTargetState,
                     locallyTriedTransitions,
                     markedTransitionTuple,
-                    false // start with false as accepting cycle value
+                    firstAcceptingValue // start with value from current transition
             );
+
             return recursiveResult;
         } else {
             // TODO give decent exception message (Do for all exceptions!)
             throw new Exception("This should not have happened, we already tries this before!");
         }
-//        return false;
     }
 
     private StateSpaceExploringThread GetThreadForAction(StateSpaceExploringAction action) {
-        return this.threadPerParticipant.get(action.participant);
+        return new StateSpaceExploringThread(action.participant);
     }
 
     private final Set<TriedTransitionTuple> allTriedTransitions = new HashSet<>();
@@ -284,73 +300,4 @@ public class LtlModelChecker {
 
         return false;
     }
-
-    ///////// OBSOLETE:
-    @Deprecated
-    public void ExploreStateSpace() {
-        // TODO How do we visualize the results?
-        System.out.println("Starting to explore state space for protocol. ");
-        System.out.println("Logging Participants: ");
-
-        for (var threadName : this.protocolUnderVerification.threadNames()) {
-            System.out.println(threadName);
-        }
-
-        System.out.println("Logging Dummy objects: ");
-        for (var dummy : this.protocolUnderVerification.dummies()) {
-            System.out.println(dummy);
-        }
-
-        this.exploringActions = StateSpaceExplorerHelper.getExploringActions(protocolUnderVerification);
-        System.out.println("Logging all available state space exploring actions: ");
-
-        for (var exploringAction : this.exploringActions) {
-            exploringAction.Print();
-        }
-
-        this.threadPerParticipant = StateSpaceExplorerHelper.startExploringThreads(this.protocolUnderVerification);
-
-        try {
-            travelStateSpace(this.protocolUnderVerification);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @Deprecated
-    private void travelStateSpace(IProtocol startingProtocolCopy) throws Exception {
-        // We will try all available actions for every available threadNames (participants)
-        for (var threadName : this.protocolUnderVerification.threadNames()) {
-            for (var exploringAction : this.exploringActions) {
-                // We have selected an action to explore (a possible transition on the protocol automaton)
-                // If no cycle is detected, we will try this action.
-                // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
-                var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, exploringAction.participant);
-                if (!detectCycle(newTriedTransitionTuple,allTriedTransitions)) {
-                    System.out.println("Trying transition from state " + startingProtocolCopy.getState());
-                    exploringAction.Print();
-
-                    // get the participating thread
-                    var participatingThread = threadPerParticipant.get(threadName);
-
-                    // set the protocol of the thread to a clone of the protocol
-                    participatingThread.SetProtocolClone(StateSpaceExplorerHelper.deepClone(startingProtocolCopy));
-
-                    // try to execute the action
-                    Optional<IProtocol> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
-
-                    // if there is a result, we just took a transition in the protocol automaton
-                    if (optionalResultProtocol.isPresent()) {
-                        var protocolStateAfterTransition = optionalResultProtocol.get();
-                        allTriedTransitions.add(newTriedTransitionTuple);
-                        System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
-                        // Call recursively to travel the whole protocol
-                        travelStateSpace(protocolStateAfterTransition);
-                    }
-                }
-            }
-        }
-    }
-
 }

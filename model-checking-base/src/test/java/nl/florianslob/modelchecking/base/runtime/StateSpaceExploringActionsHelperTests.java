@@ -1,4 +1,4 @@
-package nl.fllorianslob.modelchecking.base.runtime;
+package nl.florianslob.modelchecking.base.runtime;
 
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExploringAction;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExploringActionsHelper;

@@ -1,4 +1,4 @@
-package nl.fllorianslob.modelchecking.base.runtime;
+package nl.florianslob.modelchecking.base.runtime;
 
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;

@@ -24,15 +24,6 @@ public class StateSpaceExplorerHelper {
         return exploringActions;
     }
 
-
-    public static HashMap<String, StateSpaceExploringThread> startExploringThreads(IProtocol protocol) {
-        var threadPerParticipant =new HashMap<String, StateSpaceExploringThread>();
-        for (var threadName : protocol.threadNames()) {
-            threadPerParticipant.put(threadName, new StateSpaceExploringThread(threadName));
-        }
-        return threadPerParticipant;
-    }
-
     public static IProtocol deepClone(IProtocol protocol) {
         // Clone the IProtocol with the third party library
         // https://github.com/kostaskougios/cloning
