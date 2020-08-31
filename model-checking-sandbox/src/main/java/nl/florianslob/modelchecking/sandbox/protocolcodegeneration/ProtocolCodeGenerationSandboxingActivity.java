@@ -1,5 +1,9 @@
 package nl.florianslob.modelchecking.sandbox.protocolcodegeneration;
 
+import clojure.java.api.Clojure;
+import clojure.lang.IFn;
+import discourje.core.graph.Florian;
+import discourje.core.graph.Graph;
 import nl.florianslob.modelchecking.sandbox.ISandboxingActivity;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
@@ -74,6 +78,26 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     }
 
     private ProtocolStateNode getInitialStateForChessProtocol() {
+//        var FlorianImpl = new  discourje.core.main.();
+        IFn require = Clojure.var("clojure.core","require");
+//
+//        // NB: our namespace interop-blog contains a hyphen.  This is translated to
+//        // an underscore in the file path.  It can be tricky to remember when to use a
+//        // hyphen and when to use an underscore, so maybe a better practice is to
+//        // avoid hypens in namespaces
+        require.invoke(Clojure.read("discourje.core.main"));
+//        var result = require.invoke(Clojure.read("discourje.core.main.test"), "C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
+
+        IFn testFunc1  = Clojure.var("discourje.core.main", "-test");
+        var test = testFunc1.invoke("C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
+        IFn testFunc2  = Clojure.var("discourje.core.main", "-test2");
+
+        var test2 = (Graph)testFunc2.invoke("C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
+
+        var java = test2.toJava();
+
+//        discourje.core.main.main(new String[]{"C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj"});
+
         var state0 = new ProtocolStateNode(0);
         var state1 = new ProtocolStateNode(1);
         var state2 = new ProtocolStateNode(2);
