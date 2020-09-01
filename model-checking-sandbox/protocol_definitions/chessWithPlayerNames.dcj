@@ -1,0 +1,5 @@
+(cat (loop :chess [x 2]
+       (-->> String "alice" "bob")
+       (-->> String "bob" "alice")
+       (? (s/recur :chess)))
+     (? (-->> String "alice" "bob")))

@@ -89,14 +89,16 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 //        var result = require.invoke(Clojure.read("discourje.core.main.test"), "C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
 
         IFn testFunc1  = Clojure.var("discourje.core.main", "-test");
-        var test = testFunc1.invoke("C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
+        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+        var test = testFunc1.invoke(pathToProtocolDefinition);
         IFn testFunc2  = Clojure.var("discourje.core.main", "-test2");
 
-        var test2 = (Graph)testFunc2.invoke("C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
+        // TODO Now we have the graph here
+        var test2 = (Graph)testFunc2.invoke(pathToProtocolDefinition);
 
-        var java = test2.toJava();
-
-//        discourje.core.main.main(new String[]{"C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj"});
+        // Find a way for .toJava to return the initial state node.
+        // Adapter pattern? --> Move logic to this project.
+        var javaSyntax = test2.toJava();
 
         var state0 = new ProtocolStateNode(0);
         var state1 = new ProtocolStateNode(1);
