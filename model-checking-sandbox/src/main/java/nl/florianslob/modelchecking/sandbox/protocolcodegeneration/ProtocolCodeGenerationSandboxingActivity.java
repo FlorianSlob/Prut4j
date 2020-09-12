@@ -81,39 +81,14 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     }
 
     private ProtocolStateNode getInitialStateForChessProtocol() {
-//        var FlorianImpl = new  discourje.core.main.();
+        // Call Clojure function
         IFn require = Clojure.var("clojure.core","require");
-//
-//        // NB: our namespace interop-blog contains a hyphen.  This is translated to
-//        // an underscore in the file path.  It can be tricky to remember when to use a
-//        // hyphen and when to use an underscore, so maybe a better practice is to
-//        // avoid hypens in namespaces
         require.invoke(Clojure.read("discourje.core.main"));
-//        var result = require.invoke(Clojure.read("discourje.core.main.test"), "C:/src/study/model-checking-sandbox/model-checking-sandbox/chess.dcj");
-
-        IFn testFunc1  = Clojure.var("discourje.core.main", "-test");
         var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
-        var test = testFunc1.invoke(pathToProtocolDefinition);
-        IFn testFunc2  = Clojure.var("discourje.core.main", "-test2");
+        IFn toGraphFunction  = Clojure.var("discourje.core.main", "-test2");
 
         // TODO Now we have the graph here
-        var protocolDefinitionGraph = (Graph)testFunc2.invoke(pathToProtocolDefinition);
-
-
-        // Find a way for .toJava to return the initial state node.
-        // Adapter pattern? --> Move logic to this project.
-        var javaSyntax = protocolDefinitionGraph.toJava();
-        var javaSyntaxParsedHere = ClojureGraphToDtoHelper.toJava(protocolDefinitionGraph);
-
-        var testResult = javaSyntax.compareTo(javaSyntaxParsedHere);
-
-        if(testResult != 0){
-            System.out.println("Strings should be the same.");
-            System.out.println("javaSyntax");
-            System.out.println(javaSyntax);
-            System.out.println("javaSyntaxParsedHere");
-            System.out.println(javaSyntaxParsedHere);
-        }
+        var protocolDefinitionGraph = (Graph)toGraphFunction.invoke(pathToProtocolDefinition);
 
         System.out.println("Starting to parse to real DTO's for code generation.");
         System.out.println("TODO We should really support parameterization! (NPB!).");
