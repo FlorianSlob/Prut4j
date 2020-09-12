@@ -38,7 +38,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
     private ASTCommunicationChannel getCommunicationChannelSyntaxTreeItem(String fromRole, String toRole) throws Exception {
         for (ASTCommunicationChannel item : this.ASTCommunicationChannels) {
-            if (item.fromRole == fromRole && item.toRole == toRole) {
+            if (item.fromRole.equals(fromRole) && item.toRole.equals(toRole)) {
                 return item;
             }
         }
