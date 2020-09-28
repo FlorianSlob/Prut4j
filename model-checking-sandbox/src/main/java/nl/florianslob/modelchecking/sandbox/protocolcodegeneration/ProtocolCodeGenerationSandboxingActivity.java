@@ -1,20 +1,27 @@
 package nl.florianslob.modelchecking.sandbox.protocolcodegeneration;
 
+import clojure.java.api.Clojure;
+import clojure.lang.IFn;
+import discourje.core.graph.Edge;
+import discourje.core.graph.Florian;
+import discourje.core.graph.Graph;
+import discourje.core.graph.Vertex;
 import nl.florianslob.modelchecking.sandbox.ISandboxingActivity;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransition;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.*;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.helpers.ClojureGraphToDtoHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.SyntaxWriterProvider;
+import owl.translations.delag.State;
 
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
@@ -74,26 +81,20 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     }
 
     private ProtocolStateNode getInitialStateForChessProtocol() {
-        var state0 = new ProtocolStateNode(0);
-        var state1 = new ProtocolStateNode(1);
-        var state2 = new ProtocolStateNode(2);
-        var state3 = new ProtocolStateNode(3);
-        var state4 = new ProtocolStateNode(4);
-        var state5 = new ProtocolStateNode(5);
-        var state6 = new ProtocolStateNode(6);
+        // Call Clojure function
+        IFn require = Clojure.var("clojure.core","require");
+        require.invoke(Clojure.read("discourje.core.main"));
 
-        var roleWhiteName = "W";
-        var roleBlackName = "B";
-        var messageTypeName = "Move";
+        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+        IFn toGraphFunction  = Clojure.var("discourje.core.main", "-test2");
 
-        state0.AddOutgoingTransaction(new ProtocolTransition(state1, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
-        state1.AddOutgoingTransaction(new ProtocolTransition(state2, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
-        state2.AddOutgoingTransaction(new ProtocolTransition(state3, ProtocolMessageActionType.SEND,  roleBlackName, roleWhiteName, messageTypeName));
-        state3.AddOutgoingTransaction(new ProtocolTransition(state4, ProtocolMessageActionType.RECEIVE, roleBlackName, roleWhiteName, messageTypeName));
-        state4.AddOutgoingTransaction(new ProtocolTransition(state5, ProtocolMessageActionType.SEND, roleWhiteName, roleBlackName, messageTypeName));
-        state5.AddOutgoingTransaction(new ProtocolTransition(state6, ProtocolMessageActionType.RECEIVE, roleWhiteName, roleBlackName, messageTypeName));
-        state6.AddOutgoingTransaction(new ProtocolTransition(state3, ProtocolMessageActionType.SEND, roleBlackName, roleWhiteName, messageTypeName));
+        // Now we have the graph here
+        var protocolDefinitionGraph = (Graph)toGraphFunction.invoke(pathToProtocolDefinition);
 
-        return state0;
+        System.out.println("Starting to parse to real DTO's for code generation.");
+        System.out.println("TODO We should really support parameterization! (NPB!).");
+
+        return new ClojureGraphToDtoHelper()
+                .parseGraphAndReturnInitialState(protocolDefinitionGraph);
     }
 }
