@@ -84,10 +84,11 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         // Call Clojure function
         IFn require = Clojure.var("clojure.core","require");
         require.invoke(Clojure.read("discourje.core.main"));
+
         var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
         IFn toGraphFunction  = Clojure.var("discourje.core.main", "-test2");
 
-        // TODO Now we have the graph here
+        // Now we have the graph here
         var protocolDefinitionGraph = (Graph)toGraphFunction.invoke(pathToProtocolDefinition);
 
         System.out.println("Starting to parse to real DTO's for code generation.");
