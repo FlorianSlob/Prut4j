@@ -8,7 +8,8 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 public class ReceiveActionWriterForJava11 implements ISyntaxWriter<ASTReceiveAction> {
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTReceiveAction SyntaxTreeItem) {
-        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if ("+SyntaxTreeItem.communicationChannel.queueName+".peek() != null && "+SyntaxTreeItem.communicationChannel.queueName+".peek().getClass() == "+SyntaxTreeItem.messageContentType+".class) {", "}", tabCount,
+//        && "+SyntaxTreeItem.communicationChannel.queueName+".peek().getClass() == "+SyntaxTreeItem.messageContentType+".class
+        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if ("+SyntaxTreeItem.communicationChannel.queueName+".peek() != null ) {", "}", tabCount,
                 (tabCountLvl0) -> {
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "state = "+SyntaxTreeItem.nextStateId+";");

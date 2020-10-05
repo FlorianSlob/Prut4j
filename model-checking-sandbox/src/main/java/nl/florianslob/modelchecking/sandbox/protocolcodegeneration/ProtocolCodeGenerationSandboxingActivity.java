@@ -2,22 +2,14 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration;
 
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
-import discourje.core.graph.Edge;
-import discourje.core.graph.Florian;
 import discourje.core.graph.Graph;
-import discourje.core.graph.Vertex;
 import nl.florianslob.modelchecking.sandbox.ISandboxingActivity;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolMessageActionType;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolStateNode;
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.ProtocolTransition;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.helpers.ClojureGraphToDtoHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.SyntaxWriterProvider;
-import owl.translations.delag.State;
 
-import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,11 +18,27 @@ import java.util.*;
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
+        var protocolName = "CGProtocol";
+        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/cg.dcj";
+        var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+        GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName);
+
+        var protocolName2 = "GeneratedChessProtocol";
+        var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chess.dcj";
+        var filePath2 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
+        GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2);
+
+        var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
+        var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+        var filePath3 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
+        GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3);
+    }
+
+    public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName) throws Exception{
         // TODO Replace with some form of dependency injection
         var writerProvider = new SyntaxWriterProvider("Java11");
 
-//        var allProtocolStateNodes = new LinkedList<ProtocolStateNode>();
-        var protocolStateNodesResult = getInitialStateForChessProtocol();
+        var protocolStateNodesResult = getInitialStateForChessProtocol(pathToProtocolDefinition);
 
         List<IProtocolDefinitionVisitor> visitorsFirstPass = new LinkedList<>();
         var plantUmlVisualizationVisitor =
@@ -51,7 +59,6 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
         plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
 
-
         var visitorsSecondPass = new LinkedList<CreateEnvironmentForRoleProtocolDefinitionVisitor>();
 
         for(String roleName : findUniqueRoleNamesProtocolDefinitionVisitor.roleNames){
@@ -71,14 +78,14 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             environments.add(visitor.getASTStateCaseStatements());
         }
 
-        var protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, "CGProtocol",
+        var protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, protocolName,
             uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels, environments);
 
         var builder = new StringBuilder();
         protocolSyntaxTree.buildSyntax(builder,0);
 
         //append string buffer/builder to buffered writer
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CGProtocol.java"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath+protocolName+".java"))) {
             bw.append(builder);//Internally it does aSB.toString();
             bw.flush();
         } catch (IOException e) {
@@ -86,14 +93,11 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
     }
 
-    private ProtocolStateNodesResult getInitialStateForChessProtocol() {
+    private ProtocolStateNodesResult getInitialStateForChessProtocol(String pathToProtocolDefinition) {
         var result = new ProtocolStateNodesResult();
         // Call Clojure function
         IFn require = Clojure.var("clojure.core","require");
         require.invoke(Clojure.read("discourje.core.main"));
-
-//        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
-        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/cg.dcj";
 
         IFn toGraphFunction  = Clojure.var("discourje.core.main", "-test2");
 

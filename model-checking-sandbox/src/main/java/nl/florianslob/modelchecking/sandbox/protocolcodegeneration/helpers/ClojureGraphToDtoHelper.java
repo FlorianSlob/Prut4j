@@ -80,7 +80,8 @@ public class ClojureGraphToDtoHelper {
                 break;
             case ":receive":
                 action = ProtocolMessageActionType.RECEIVE;
-                type = "Object";
+                type = "NotUsed";
+//                type = edge.label.name.substring(edge.label.name.indexOf("(") + 1, edge.label.name.indexOf(","));
                 break;
             case ":close": // TODO Do something with this???!
                 action = ProtocolMessageActionType.RECEIVE;

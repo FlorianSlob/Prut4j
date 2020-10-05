@@ -5,6 +5,9 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTProtocol SyntaxTreeItem) {
@@ -62,13 +65,15 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String[] threadNames()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new String[] { \"W\", \"B\" };");
+                        var listOfEnvironments = SyntaxTreeItem.environments.stream().map(a -> "\""+a.roleName+"\"").collect(Collectors.joining(","));
+
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new String[] { "+listOfEnvironments+" };");
                     }
                 );
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public Object[] dummies()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[0];");
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[]{\"TestStringDummy\"};"); // TODO Make this more dynamic (Default for all types used in the protocol)
                     }
                 );
 

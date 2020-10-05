@@ -7,9 +7,10 @@ public interface IEnvironment {
     String getName();
 
     <Any,Any2> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<Any2> box) throws Exception;
+    <Any, AnyInput> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver) throws Exception;
 
-    default <Any> void send(Any m) throws Exception {
-        exchange(Optional.of(m));
+    default <Any> void send(Any m, String receiver) throws Exception {
+        exchange(Optional.of(m), receiver);
     }
 
     default <Any> Any receive() throws Exception {

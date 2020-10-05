@@ -49,7 +49,7 @@ public class StateSpaceExploringThread {
             try {
     //// Action block
                 if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
-                    self.environment.send(actionToBeExecuted.dummy);
+                    self.environment.send(actionToBeExecuted.dummy, actionToBeExecuted.receiver);
                     value[0] = Optional.of(self.protocol);
                     latch.countDown();
                     return;

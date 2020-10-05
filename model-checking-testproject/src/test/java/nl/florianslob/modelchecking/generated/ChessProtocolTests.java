@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class ChessProtocolTests {
 
     private static LtlModelChecker GetModelCheckerForChessProtocol(){
-        return new LtlModelChecker(new GeneratedChessProtocolDebug());
+        return new LtlModelChecker(new GeneratedChessProtocol());
     }
 
     private static void LogTest(String formulaString){
