@@ -50,7 +50,7 @@ public class GenericParticipant {
 
         if(this.currentExecutingAction.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
             System.out.println("Sending message from "+environment.getName());
-            environment.send(this.currentExecutingAction.message);
+            environment.send(this.currentExecutingAction.message, null);
             Set<GenericParticipantAction> actionSet = AfterSendActionsPerSendAction.get(this.currentExecutingAction);
 
             if(actionSet != null && actionSet.size() > 0){

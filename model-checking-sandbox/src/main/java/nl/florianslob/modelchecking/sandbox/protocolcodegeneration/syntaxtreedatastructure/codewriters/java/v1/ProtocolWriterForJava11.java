@@ -5,6 +5,9 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTProtocol SyntaxTreeItem) {
@@ -24,7 +27,8 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         // Start with all imports
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.v2.*;");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
+        // TODO Import custom type or only support primitive types
+//        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
 
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount); // White line to distinguish imports from the java SDK with imports from our own API.
@@ -61,19 +65,21 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String[] threadNames()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new String[] { \"W\", \"B\" };");
+                        var listOfEnvironments = SyntaxTreeItem.environments.stream().map(a -> "\""+a.roleName+"\"").collect(Collectors.joining(","));
+
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new String[] { "+listOfEnvironments+" };");
                     }
                 );
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public Object[] dummies()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[0];");
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[]{\"TestStringDummy\"};"); // TODO Make this more dynamic (Default for all types used in the protocol)
                     }
                 );
 
-                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public IProtocol deepClone()", tabCountLvl0,
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public int getState()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return null;");
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return this.state;");
                     }
                 );
             }

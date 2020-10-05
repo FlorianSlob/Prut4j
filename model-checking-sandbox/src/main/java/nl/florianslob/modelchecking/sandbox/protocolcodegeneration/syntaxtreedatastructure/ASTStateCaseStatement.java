@@ -16,6 +16,12 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
     }
 
     public void addAction(ASTEnvironmentActionFromState<?> actionFromState){
-        actionsFromState.add(actionFromState);
+        // Only add action if it is not already present in the list.
+        var existingActionFromState
+                = actionsFromState.stream().filter(a -> a.equals(actionFromState)).findAny();
+        if(existingActionFromState.isEmpty()){
+            actionsFromState.add(actionFromState);
+
+        }
     }
 }

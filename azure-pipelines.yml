@@ -28,3 +28,15 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
+
+- task: Gradle@2
+  inputs:
+    workingDirectory: 'model-checking-benchmarks'
+    gradleWrapperFile: 'model-checking-benchmarks/gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.12'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'build'

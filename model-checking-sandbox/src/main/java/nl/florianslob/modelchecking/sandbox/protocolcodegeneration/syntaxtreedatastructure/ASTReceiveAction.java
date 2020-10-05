@@ -17,4 +17,20 @@ public class ASTReceiveAction extends ASTEnvironmentActionFromState<ASTReceiveAc
         this.currentStateId = currentStateId;
         this.messageContentType = messageContentType;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() != ASTReceiveAction.class){
+            return false;
+        }
+        var castedObject = (ASTReceiveAction)obj;
+        // Return true if all conditions are met
+        return this.communicationChannel == castedObject.communicationChannel
+                &&
+                this.nextStateId == castedObject.nextStateId
+                &&
+                this.currentStateId == castedObject.currentStateId
+                &&
+                this.messageContentType.equals(castedObject.messageContentType);
+    }
 }

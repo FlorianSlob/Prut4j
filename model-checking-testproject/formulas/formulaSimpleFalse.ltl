@@ -1,1 +1,1 @@
-X("w SEND dto.Move TO b")
+X("b SEND String TO w")

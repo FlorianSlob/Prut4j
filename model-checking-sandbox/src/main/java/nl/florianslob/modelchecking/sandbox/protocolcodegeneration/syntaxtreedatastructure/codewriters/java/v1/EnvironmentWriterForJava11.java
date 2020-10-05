@@ -19,6 +19,12 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                 );
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception", tabCountLvl0,
+                        (tabCountLvl1) -> {
+                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return this.exchange(box, null);");
+                        }
+                );
+
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception", tabCountLvl0,
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
                             (tabCountLvl2) -> {
