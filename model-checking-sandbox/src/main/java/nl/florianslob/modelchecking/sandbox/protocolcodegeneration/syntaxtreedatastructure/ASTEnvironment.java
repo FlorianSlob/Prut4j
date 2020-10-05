@@ -11,7 +11,8 @@ public class ASTEnvironment extends SyntaxTreeItemBase<ASTEnvironment> {
 
     public ASTEnvironment(ISyntaxWriter<ASTEnvironment> syntaxWriter, String roleName, LinkedList<ASTStateCaseStatement> ASTStateCaseStatements){
         super(syntaxWriter);
-        this.roleName = roleName;
+        this.roleName = ASTHelper.EscapeRoleName(roleName);
         this.ASTStateCaseStatements = ASTStateCaseStatements;
     }
+
 }

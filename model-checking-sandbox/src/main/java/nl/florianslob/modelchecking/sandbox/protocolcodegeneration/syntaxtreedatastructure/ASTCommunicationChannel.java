@@ -11,9 +11,9 @@ public class ASTCommunicationChannel extends SyntaxTreeItemBase<ASTCommunication
 
     public ASTCommunicationChannel(ISyntaxWriter<ASTCommunicationChannel> syntaxWriter, String fromRole, String toRole){
         super(syntaxWriter);
-        this.fromRole = fromRole;
-        this.toRole = toRole;
-        this.queueName = "queueFrom"+fromRole+"To"+toRole;
+        this.fromRole = ASTHelper.EscapeRoleName(fromRole);
+        this.toRole = ASTHelper.EscapeRoleName(toRole);
+        this.queueName = "queueFrom"+this.fromRole+"To"+this.toRole;
     }
 
     // Override the equals method to enable comparison based on the fields

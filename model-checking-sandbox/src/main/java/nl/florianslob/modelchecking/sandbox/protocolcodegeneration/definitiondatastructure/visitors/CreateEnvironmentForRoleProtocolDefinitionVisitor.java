@@ -38,7 +38,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
     private ASTCommunicationChannel getCommunicationChannelSyntaxTreeItem(String fromRole, String toRole) throws Exception {
         for (ASTCommunicationChannel item : this.ASTCommunicationChannels) {
-            if (item.fromRole.equals(fromRole) && item.toRole.equals(toRole)) {
+            if (item.fromRole.equals(ASTHelper.EscapeRoleName(fromRole)) && item.toRole.equals(ASTHelper.EscapeRoleName(toRole))) {
                 return item;
             }
         }
@@ -47,9 +47,22 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
     @Override
     public void Visit(ProtocolStateNode protocolStateNode) throws Exception {
+
+        var stateCaseStatementOptional = ASTStateCaseStatements.stream().filter(item -> item.stateIdCondition == protocolStateNode.stateId).findFirst();
         // Create a case statement item for this protocol state
-        ASTStateCaseStatement caseStatement =
+        ASTStateCaseStatement caseStatement;
+
+        if(stateCaseStatementOptional.isEmpty()){
+            caseStatement  =
             new ASTStateCaseStatement(this.caseStatementWriter, protocolStateNode.stateId);
+        }else{
+            // TODO Check if we need to do this.
+            // We will add it later again.
+            ASTStateCaseStatements.remove(stateCaseStatementOptional.get());
+            caseStatement = stateCaseStatementOptional.get();
+        }
+
+
 
 
         // Fill the body of the case statement with the actions possible for this environment in this state.

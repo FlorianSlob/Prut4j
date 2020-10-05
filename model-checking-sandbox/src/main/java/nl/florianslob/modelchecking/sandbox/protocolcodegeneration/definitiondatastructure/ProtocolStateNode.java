@@ -8,7 +8,7 @@ import java.util.List;
 public class ProtocolStateNode {
     public HashSet<ProtocolTransition> outgoingTransactions = new HashSet<>();
     public int stateId;
-    private boolean visitedBefore = false;
+    public boolean VisitedBefore = false;
 
     public ProtocolStateNode(int stateId){
         this.stateId = stateId;
@@ -23,14 +23,14 @@ public class ProtocolStateNode {
      */
     public void Accept(List<? extends IProtocolDefinitionVisitor> visitors) throws Exception {
         // Stop execution if visited before
-        if(visitedBefore) {
+        if(VisitedBefore) {
             // Resetting to enable multiple passes.
-            visitedBefore = false;
+            VisitedBefore = false;
             return;
         }
 
         // Prevent second visits
-        visitedBefore = true;
+        VisitedBefore = true;
 
         // Do visit action for all visitors
         for(IProtocolDefinitionVisitor visitor : visitors){
@@ -42,7 +42,7 @@ public class ProtocolStateNode {
             transaction.targetState.Accept(visitors);
         }
 
-        // Resetting to enable multiple passes.
-        visitedBefore = false;
+        // Resetting to enable multiple passes. --> No this could be a problem!
+//        visitedBefore = false;
     }
 }

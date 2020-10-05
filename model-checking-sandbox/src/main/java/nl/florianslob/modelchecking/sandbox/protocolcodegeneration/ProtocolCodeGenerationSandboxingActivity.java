@@ -29,7 +29,8 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         // TODO Replace with some form of dependency injection
         var writerProvider = new SyntaxWriterProvider("Java11");
 
-        var chessProtocolState0 = getInitialStateForChessProtocol();
+//        var allProtocolStateNodes = new LinkedList<ProtocolStateNode>();
+        var protocolStateNodesResult = getInitialStateForChessProtocol();
 
         List<IProtocolDefinitionVisitor> visitorsFirstPass = new LinkedList<>();
         var plantUmlVisualizationVisitor =
@@ -43,7 +44,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         visitorsFirstPass.add(uniqueCommunicationChannelFinderVisitor);
         visitorsFirstPass.add(findUniqueRoleNamesProtocolDefinitionVisitor);
 
-        chessProtocolState0.Accept(visitorsFirstPass);
+        protocolStateNodesResult.InitialState.Accept(visitorsFirstPass);
 
         System.out.println("Printing PlantUml");
         System.out.println(plantUmlVisualizationVisitor.getPlantUmlSyntax());
@@ -56,8 +57,13 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         for(String roleName : findUniqueRoleNamesProtocolDefinitionVisitor.roleNames){
             visitorsSecondPass.add(new CreateEnvironmentForRoleProtocolDefinitionVisitor(roleName, writerProvider, uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels));
         }
+
+        // Dirty fix to enable a second pass.
+        for(var node : protocolStateNodesResult.AllProtocolStateNodes){
+            node.VisitedBefore = false;
+        }
         // pass2
-        chessProtocolState0.Accept(visitorsSecondPass);
+        protocolStateNodesResult.InitialState.Accept(visitorsSecondPass);
 
         var environments = new HashSet<ASTEnvironment>();
 
@@ -65,14 +71,14 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             environments.add(visitor.getASTStateCaseStatements());
         }
 
-        var protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, "GeneratedChessProtocol",
+        var protocolSyntaxTree = new ASTProtocol(writerProvider.ProtocolWriter, "CGProtocol",
             uniqueCommunicationChannelFinderVisitor.ASTCommunicationChannels, environments);
 
         var builder = new StringBuilder();
         protocolSyntaxTree.buildSyntax(builder,0);
 
         //append string buffer/builder to buffered writer
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/GeneratedChessProtocol.java"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CGProtocol.java"))) {
             bw.append(builder);//Internally it does aSB.toString();
             bw.flush();
         } catch (IOException e) {
@@ -80,12 +86,15 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
     }
 
-    private ProtocolStateNode getInitialStateForChessProtocol() {
+    private ProtocolStateNodesResult getInitialStateForChessProtocol() {
+        var result = new ProtocolStateNodesResult();
         // Call Clojure function
         IFn require = Clojure.var("clojure.core","require");
         require.invoke(Clojure.read("discourje.core.main"));
 
-        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+//        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/cg.dcj";
+
         IFn toGraphFunction  = Clojure.var("discourje.core.main", "-test2");
 
         // Now we have the graph here
@@ -94,7 +103,9 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         System.out.println("Starting to parse to real DTO's for code generation.");
         System.out.println("TODO We should really support parameterization! (NPB!).");
 
-        return new ClojureGraphToDtoHelper()
+
+        result = new ClojureGraphToDtoHelper()
                 .parseGraphAndReturnInitialState(protocolDefinitionGraph);
+        return result;
     }
 }
