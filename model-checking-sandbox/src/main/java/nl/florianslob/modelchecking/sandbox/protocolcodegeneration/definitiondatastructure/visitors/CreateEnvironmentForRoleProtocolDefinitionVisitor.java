@@ -62,9 +62,6 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
             caseStatement = stateCaseStatementOptional.get();
         }
 
-
-
-
         // Fill the body of the case statement with the actions possible for this environment in this state.
         boolean noActionAdded = true;
 

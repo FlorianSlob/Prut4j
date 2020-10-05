@@ -24,7 +24,8 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         // Start with all imports
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.v2.*;");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
+        // TODO Import custom type or only support primitive types
+//        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
 
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount); // White line to distinguish imports from the java SDK with imports from our own API.
@@ -71,9 +72,9 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
                     }
                 );
 
-                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public IProtocol deepClone()", tabCountLvl0,
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public int getState()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return null;");
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return this.state;");
                     }
                 );
             }

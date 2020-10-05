@@ -7,7 +7,6 @@ package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
 import nl.florianslob.modelchecking.base.api.v2.*;
-//import dto.Move;
 
 import java.util.Optional;
 import java.util.concurrent.BlockingQueue;
@@ -593,6 +592,582 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 2:
+									monitor.wait();
+									break;
+								default: throw new Exception("State number out of bounds");
+							}
+						}
+					}
+				}
+			};
+			case "worker_0_": return new IEnvironment() {
+				
+				@Override
+				public String getName(){
+					return environmentName;
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
+					synchronized (monitor){
+						while (true){
+							switch (state){
+								case 0:
+									monitor.wait();
+									break;
+								case 76:
+									monitor.wait();
+									break;
+								case 52:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 53;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 53:
+									monitor.wait();
+									break;
+								case 26:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 29;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 38:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 35;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 40:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 34;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 35:
+									monitor.wait();
+									break;
+								case 29:
+									monitor.wait();
+									break;
+								case 33:
+									monitor.wait();
+									break;
+								case 32:
+									monitor.wait();
+									break;
+								case 39:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 37;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 37:
+									monitor.wait();
+									break;
+								case 25:
+									monitor.wait();
+									break;
+								case 31:
+									monitor.wait();
+									break;
+								case 36:
+									monitor.wait();
+									break;
+								case 30:
+									monitor.wait();
+									break;
+								case 28:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 31;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 41:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 42;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 42:
+									monitor.wait();
+									break;
+								case 34:
+									monitor.wait();
+									break;
+								case 43:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 34;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 27:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 30;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 49:
+									monitor.wait();
+									break;
+								case 48:
+									monitor.wait();
+									break;
+								case 24:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 25;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 25;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 46:
+									monitor.wait();
+									break;
+								case 23:
+									monitor.wait();
+									break;
+								case 56:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 57;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 57:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 53;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 77:
+									monitor.wait();
+									break;
+								case 78:
+									monitor.wait();
+									break;
+								case 79:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 57;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 44:
+									monitor.wait();
+									break;
+								case 22:
+									monitor.wait();
+									break;
+								case 5:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 7;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 68:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 69;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 69:
+									monitor.wait();
+									break;
+								case 15:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 17;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 17:
+									monitor.wait();
+									break;
+								case 19:
+									monitor.wait();
+									break;
+								case 21:
+									monitor.wait();
+									break;
+								case 71:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 72;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 72:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 69;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 58:
+									monitor.wait();
+									break;
+								case 73:
+									monitor.wait();
+									break;
+								case 74:
+									monitor.wait();
+									break;
+								case 75:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 72;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 65:
+									monitor.wait();
+									break;
+								case 66:
+									monitor.wait();
+									break;
+								case 14:
+									monitor.wait();
+									break;
+								case 1:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 5;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 5;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 4:
+									monitor.wait();
+									break;
+								case 16:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 18;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 18;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 54:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 50;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 50;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 50:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 45;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 45;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 51:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 47;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 47;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 47:
+									monitor.wait();
+									break;
+								case 45:
+									monitor.wait();
+									break;
+								case 55:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 51;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 51;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 18:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 20;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 20;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 20:
+									monitor.wait();
+									break;
+								case 63:
+									monitor.wait();
+									break;
+								case 13:
+									monitor.wait();
+									break;
+								case 61:
+									monitor.wait();
+									break;
+								case 12:
+									monitor.wait();
+									break;
+								case 7:
+									monitor.wait();
+									break;
+								case 9:
+									monitor.wait();
+									break;
+								case 11:
+									monitor.wait();
+									break;
+								case 6:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 8;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 8;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 59:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 60;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 60;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 60:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 62;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 62;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 67:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 64;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 64;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 64:
+									monitor.wait();
+									break;
+								case 62:
+									monitor.wait();
+									break;
+								case 70:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 67;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 67;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									monitor.wait();
+									break;
+								case 8:
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 10;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == String.class) {
+										monitor.notifyAll();
+										state = 10;
+										queueFromworker_0_Tomaster.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 10:
+									monitor.wait();
+									break;
+								case 3:
+									monitor.wait();
+									break;
+								case 2:
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 15;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
+									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
+										monitor.notifyAll();
+										state = 15;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_0_.take());
+									}
 									monitor.wait();
 									break;
 								default: throw new Exception("State number out of bounds");
@@ -1443,582 +2018,6 @@ public class CGProtocol implements IProtocol {
 					}
 				}
 			};
-			case "worker_0_": return new IEnvironment() {
-				
-				@Override
-				public String getName(){
-					return environmentName;
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					synchronized (monitor){
-						while (true){
-							switch (state){
-								case 0:
-									monitor.wait();
-									break;
-								case 76:
-									monitor.wait();
-									break;
-								case 52:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 53;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 53:
-									monitor.wait();
-									break;
-								case 26:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 29;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 38:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 35;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 40:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 34;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 35:
-									monitor.wait();
-									break;
-								case 29:
-									monitor.wait();
-									break;
-								case 33:
-									monitor.wait();
-									break;
-								case 32:
-									monitor.wait();
-									break;
-								case 39:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 37;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 37:
-									monitor.wait();
-									break;
-								case 25:
-									monitor.wait();
-									break;
-								case 31:
-									monitor.wait();
-									break;
-								case 36:
-									monitor.wait();
-									break;
-								case 30:
-									monitor.wait();
-									break;
-								case 28:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 31;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 41:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 42;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 42:
-									monitor.wait();
-									break;
-								case 34:
-									monitor.wait();
-									break;
-								case 43:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 34;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 27:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 30;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 49:
-									monitor.wait();
-									break;
-								case 48:
-									monitor.wait();
-									break;
-								case 24:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 25;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 25;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 46:
-									monitor.wait();
-									break;
-								case 23:
-									monitor.wait();
-									break;
-								case 56:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 57;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 57:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 53;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 77:
-									monitor.wait();
-									break;
-								case 78:
-									monitor.wait();
-									break;
-								case 79:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 57;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 44:
-									monitor.wait();
-									break;
-								case 22:
-									monitor.wait();
-									break;
-								case 5:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 7;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 68:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 69;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 69:
-									monitor.wait();
-									break;
-								case 15:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 17;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 17:
-									monitor.wait();
-									break;
-								case 19:
-									monitor.wait();
-									break;
-								case 21:
-									monitor.wait();
-									break;
-								case 71:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 72;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 72:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 69;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 58:
-									monitor.wait();
-									break;
-								case 73:
-									monitor.wait();
-									break;
-								case 74:
-									monitor.wait();
-									break;
-								case 75:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 72;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 65:
-									monitor.wait();
-									break;
-								case 66:
-									monitor.wait();
-									break;
-								case 14:
-									monitor.wait();
-									break;
-								case 1:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 5;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 5;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 4:
-									monitor.wait();
-									break;
-								case 16:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 18;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 18;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 54:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 50;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 50;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 50:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 45;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 45;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 51:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 47;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 47;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 47:
-									monitor.wait();
-									break;
-								case 45:
-									monitor.wait();
-									break;
-								case 55:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 51;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 51;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 18:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 20;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 20;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 20:
-									monitor.wait();
-									break;
-								case 63:
-									monitor.wait();
-									break;
-								case 13:
-									monitor.wait();
-									break;
-								case 61:
-									monitor.wait();
-									break;
-								case 12:
-									monitor.wait();
-									break;
-								case 7:
-									monitor.wait();
-									break;
-								case 9:
-									monitor.wait();
-									break;
-								case 11:
-									monitor.wait();
-									break;
-								case 6:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 8;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 8;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 59:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 60;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 60;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 60:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 62;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 62;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 67:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 64;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 64;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 64:
-									monitor.wait();
-									break;
-								case 62:
-									monitor.wait();
-									break;
-								case 70:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 67;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 67;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								case 8:
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 10;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class) {
-										monitor.notifyAll();
-										state = 10;
-										queueFromworker_0_Tomaster.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 10:
-									monitor.wait();
-									break;
-								case 3:
-									monitor.wait();
-									break;
-								case 2:
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 15;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									if (queueFrommasterToworker_0_.peek() != null && queueFrommasterToworker_0_.peek().getClass() == Object.class) {
-										monitor.notifyAll();
-										state = 15;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_0_.take());
-									}
-									monitor.wait();
-									break;
-								default: throw new Exception("State number out of bounds");
-							}
-						}
-					}
-				}
-			};
 			default: throw new Exception("Unknown environment");
 		}
 	}
@@ -2032,14 +2031,9 @@ public class CGProtocol implements IProtocol {
 	public Object[] dummies(){
 		return new Object[0];
 	}
-
+	
 	@Override
-	public int getState() {
+	public int getState(){
 		return this.state;
 	}
-// TODO Fix this
-//	@Override
-//	public IProtocol deepClone(){
-//		return null;
-//	}
 }
