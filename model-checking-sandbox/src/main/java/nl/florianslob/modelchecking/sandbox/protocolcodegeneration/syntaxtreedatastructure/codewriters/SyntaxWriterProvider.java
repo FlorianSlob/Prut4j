@@ -5,6 +5,8 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.psuedocode.ProtocolWriterForPseudoCode;
 
 public class SyntaxWriterProvider {
+
+
     public SyntaxWriterProvider(String targetLanguage) throws UnsupportedOperationException {
         // TODO Replace with some for of Dependency Injection
         // Autofac alternative for Java = ???
@@ -16,6 +18,8 @@ public class SyntaxWriterProvider {
             CaseStatementWriter = new CaseStatementWriterForJava11();
             WaitActionWriter = new WaitActionWriterForJava11();
             SendActionWriter = new SendActionWriterForJava11();
+            CloseActionWriter = new CloseActionWriterForJava11();
+
             ReceiveActionWriter = new ReceiveActionWriterForJava11();
             // init fields
         }
@@ -26,6 +30,7 @@ public class SyntaxWriterProvider {
             CaseStatementWriter = null;
             WaitActionWriter = null;
             SendActionWriter = null;
+            CloseActionWriter = null;
             ReceiveActionWriter = null;
         }
     }
@@ -37,4 +42,5 @@ public class SyntaxWriterProvider {
     public ISyntaxWriter<ASTWaitAction> WaitActionWriter = null;
     public ISyntaxWriter<ASTSendAction> SendActionWriter = null;
     public ISyntaxWriter<ASTReceiveAction> ReceiveActionWriter = null;
+    public ISyntaxWriter<ASTCloseAction> CloseActionWriter = null;
 }

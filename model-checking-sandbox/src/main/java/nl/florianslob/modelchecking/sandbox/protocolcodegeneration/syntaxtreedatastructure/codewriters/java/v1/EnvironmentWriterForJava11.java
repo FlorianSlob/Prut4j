@@ -12,6 +12,8 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
     public void buildSyntax(StringBuilder builder, int tabCount, ASTEnvironment SyntaxTreeItem) {
         StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"case \""+SyntaxTreeItem.roleName+"\": return new IEnvironment() {", "};", tabCount,
             (tabCountLvl0) -> {
+                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private boolean "+SyntaxTreeItem.roleName+"IsActive = true;");
+
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String getName()", tabCountLvl0,
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return environmentName;");
@@ -28,7 +30,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
                             (tabCountLvl2) -> {
-                                StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while (true)", tabCountLvl2,
+                                StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while ("+SyntaxTreeItem.roleName+"IsActive)", tabCountLvl2,
                                     (tabCountLvl3) -> {
                                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (state)", tabCountLvl3,
                                             (tabCountLvl4) -> {
@@ -44,6 +46,8 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                 );
                             }
                         );
+                        StringBuilderSyntaxHelper.addEmptyLine(builder, tabCountLvl1);
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return Optional.empty();");
                     }
                 );
             }

@@ -19,6 +19,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
     public final ISyntaxWriter<ASTEnvironment> environmentWriter;
     public final ISyntaxWriter<ASTStateCaseStatement> caseStatementWriter;
     public final ISyntaxWriter<ASTSendAction> sendActionWriter;
+    public final ISyntaxWriter<ASTCloseAction> closeActionWriter;
     public final ISyntaxWriter<ASTReceiveAction> receiveActionWriter;
 
     private HashSet<ASTCommunicationChannel> ASTCommunicationChannels;
@@ -29,6 +30,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         this.environmentWriter = writerProvider.EnvironmentWriter;
         this.caseStatementWriter = writerProvider.CaseStatementWriter;
         this.sendActionWriter = writerProvider.SendActionWriter;
+        this.closeActionWriter = writerProvider.CloseActionWriter;
         this.receiveActionWriter = writerProvider.ReceiveActionWriter;
     }
 
@@ -63,8 +65,6 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
         }
 
         // Fill the body of the case statement with the actions possible for this environment in this state.
-        boolean noActionAdded = true;
-
         // Check for outgoing transactions that concern the role and add an ActionFromState item for every send/receive action.
         for (ProtocolTransition transaction : protocolStateNode.outgoingTransactions) {
             if (transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageActionType.SEND) {
@@ -74,8 +74,13 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
                 caseStatement.addAction(
                     new ASTSendAction(this.sendActionWriter, ASTCommunicationChannel, transaction.targetState.stateId, transaction.messageContentType)
                 );
+            }
 
-                noActionAdded = false;
+            if (transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageActionType.CLOSE) {
+                // add close action
+                caseStatement.addAction(
+                        new ASTCloseAction(this.closeActionWriter, transaction.targetState.stateId, transaction.messageContentType, transaction.fromRole)
+                );
             }
 
             if (transaction.toRole.equals(roleName) && transaction.action == ProtocolMessageActionType.RECEIVE) {
@@ -84,9 +89,9 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
 
                 // add receive action of type
                 caseStatement.addAction(new ASTReceiveAction(this.receiveActionWriter, ASTCommunicationChannel, protocolStateNode.stateId, transaction.targetState.stateId, transaction.messageContentType));
-
-                noActionAdded = false;
             }
+
+
         }
 
         ASTStateCaseStatements.add(caseStatement);
