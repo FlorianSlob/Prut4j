@@ -23,8 +23,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "bob": return new IEnvironment() {
-				private boolean bobIsActive = true;
+			case "alice": return new IEnvironment() {
+				private boolean aliceIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -39,44 +39,37 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
 					synchronized (monitor){
-						while (bobIsActive){
+						while (aliceIsActive){
 							switch (state){
 								case 0:
 									monitor.wait();
 									break;
 								case 1:
-									if (queueFromalice2Tobob.peek() != null ) {
-										monitor.notifyAll();
-										state = 2;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromalice2Tobob.take());
-									}
 									monitor.wait();
 									break;
 								case 2:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("alice") ) ) {
+									monitor.wait();
+									break;
+								case 3:
+									if (queueFrombobToalice.peek() != null ) {
 										monitor.notifyAll();
-										state = 3;
-										queueFrombobToalice.put(box.get());
+										state = 4;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrombobToalice.take());
+									}
+									monitor.wait();
+									break;
+								case 4:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
+										monitor.notifyAll();
+										state = 5;
+										queueFromaliceTobob.put(box.get());
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
-								case 3:
-									monitor.wait();
-									break;
-								case 4:
-									monitor.wait();
-									break;
 								case 5:
-									if (queueFromaliceTobob.peek() != null ) {
-										monitor.notifyAll();
-										state = 6;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromaliceTobob.take());
-									}
 									monitor.wait();
 									break;
 								case 6:
@@ -149,8 +142,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 					return Optional.empty();
 				}
 			};
-			case "alice": return new IEnvironment() {
-				private boolean aliceIsActive = true;
+			case "bob": return new IEnvironment() {
+				private boolean bobIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -165,37 +158,44 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
 					synchronized (monitor){
-						while (aliceIsActive){
+						while (bobIsActive){
 							switch (state){
 								case 0:
 									monitor.wait();
 									break;
 								case 1:
-									monitor.wait();
-									break;
-								case 2:
-									monitor.wait();
-									break;
-								case 3:
-									if (queueFrombobToalice.peek() != null ) {
+									if (queueFromalice2Tobob.peek() != null ) {
 										monitor.notifyAll();
-										state = 4;
+										state = 2;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
-										return Optional.of((Any)queueFrombobToalice.take());
+										return Optional.of((Any)queueFromalice2Tobob.take());
 									}
 									monitor.wait();
 									break;
-								case 4:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
+								case 2:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("alice") ) ) {
 										monitor.notifyAll();
-										state = 5;
-										queueFromaliceTobob.put(box.get());
+										state = 3;
+										queueFrombobToalice.put(box.get());
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
+								case 3:
+									monitor.wait();
+									break;
+								case 4:
+									monitor.wait();
+									break;
 								case 5:
+									if (queueFromaliceTobob.peek() != null ) {
+										monitor.notifyAll();
+										state = 6;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromaliceTobob.take());
+									}
 									monitor.wait();
 									break;
 								case 6:
@@ -215,7 +215,7 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "bob","alice2","alice" };
+		return new String[] { "alice","alice2","bob" };
 	}
 	
 	@Override

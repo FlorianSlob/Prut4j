@@ -21,7 +21,6 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
                 = actionsFromState.stream().filter(a -> a.equals(actionFromState)).findAny();
         if(existingActionFromState.isEmpty()){
             actionsFromState.add(actionFromState);
-
         }
     }
 }

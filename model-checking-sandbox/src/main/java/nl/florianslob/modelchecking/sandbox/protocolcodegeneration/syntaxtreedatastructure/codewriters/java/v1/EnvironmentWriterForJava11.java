@@ -6,6 +6,9 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 
 public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment> {
     @Override
@@ -34,6 +37,9 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                     (tabCountLvl3) -> {
                                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (state)", tabCountLvl3,
                                             (tabCountLvl4) -> {
+                                                // Order all statements by id, this is not necessary, but makes the generated code more readable.
+                                                SyntaxTreeItem.ASTStateCaseStatements.sort(Comparator.comparingInt(s -> s.stateIdCondition));
+
                                                 // Writing all case statements to the switch block
                                                 for(ASTStateCaseStatement stateCaseStatement : SyntaxTreeItem.ASTStateCaseStatements)
                                                     stateCaseStatement.buildSyntax(builder,tabCountLvl4);

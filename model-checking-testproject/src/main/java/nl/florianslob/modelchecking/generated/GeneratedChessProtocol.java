@@ -68,13 +68,13 @@ public class GeneratedChessProtocol implements IProtocol {
 								case 4:
 									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
 										monitor.notifyAll();
-										state = 1;
+										state = 5;
 										queueFromwTob.put(box.get());
 										return Optional.empty();
 									}
 									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
 										monitor.notifyAll();
-										state = 5;
+										state = 1;
 										queueFromwTob.put(box.get());
 										return Optional.empty();
 									}
