@@ -5,7 +5,8 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
-import java.util.stream.Collector;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
@@ -52,7 +53,12 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (environmentName)", tabCountLvl1,
                             (tabCountLvl2) -> {
-                                for(nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment ASTEnvironment : SyntaxTreeItem.environments){
+                                // Order all Environments by name, this is not necessary, but makes the generated code more readable and consistent.
+                                var orderedEnvironments = new ArrayList<>(SyntaxTreeItem.environments);
+                                orderedEnvironments.sort(Comparator.comparing(o -> o.roleName));
+
+                                // Build the syntax of each environment in alphabetical order
+                                for(nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment ASTEnvironment : orderedEnvironments){
                                     ASTEnvironment.buildSyntax(builder,tabCountLvl2);
                                 }
 

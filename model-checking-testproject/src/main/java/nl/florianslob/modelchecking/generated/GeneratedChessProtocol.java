@@ -22,78 +22,6 @@ public class GeneratedChessProtocol implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "w": return new IEnvironment() {
-				private boolean wIsActive = true;
-				
-				@Override
-				public String getName(){
-					return environmentName;
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
-					synchronized (monitor){
-						while (wIsActive){
-							switch (state){
-								case 0:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromwTob.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
-									monitor.wait();
-									break;
-								case 3:
-									if (queueFrombTow.peek() != null ) {
-										monitor.notifyAll();
-										state = 4;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrombTow.take());
-									}
-									monitor.wait();
-									break;
-								case 4:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
-										monitor.notifyAll();
-										state = 5;
-										queueFromwTob.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromwTob.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
-								case 6:
-									monitor.wait();
-									break;
-								default: throw new Exception("State number out of bounds");
-							}
-						}
-					}
-					
-					return Optional.empty();
-				}
-			};
 			case "b": return new IEnvironment() {
 				private boolean bIsActive = true;
 				
@@ -140,17 +68,64 @@ public class GeneratedChessProtocol implements IProtocol {
 								case 4:
 									monitor.wait();
 									break;
-								case 5:
-									if (queueFromwTob.peek() != null ) {
+								default: throw new Exception("State number out of bounds");
+							}
+						}
+					}
+					
+					return Optional.empty();
+				}
+			};
+			case "w": return new IEnvironment() {
+				private boolean wIsActive = true;
+				
+				@Override
+				public String getName(){
+					return environmentName;
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
+					return this.exchange(box, null);
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+					synchronized (monitor){
+						while (wIsActive){
+							switch (state){
+								case 0:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
 										monitor.notifyAll();
-										state = 6;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromwTob.take());
+										state = 1;
+										queueFromwTob.put(box.get());
+										return Optional.empty();
 									}
 									monitor.wait();
 									break;
-								case 6:
+								case 1:
+									monitor.wait();
+									break;
+								case 2:
+									monitor.wait();
+									break;
+								case 3:
+									if (queueFrombTow.peek() != null ) {
+										monitor.notifyAll();
+										state = 4;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrombTow.take());
+									}
+									monitor.wait();
+									break;
+								case 4:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
+										monitor.notifyAll();
+										state = 1;
+										queueFromwTob.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								default: throw new Exception("State number out of bounds");

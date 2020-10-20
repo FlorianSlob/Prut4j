@@ -24,8 +24,8 @@ public class CGProtocol implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "worker_1_": return new IEnvironment() {
-				private boolean worker_1_IsActive = true;
+			case "master": return new IEnvironment() {
+				private boolean masterIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -40,90 +40,118 @@ public class CGProtocol implements IProtocol {
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
 					synchronized (monitor){
-						while (worker_1_IsActive){
+						while (masterIsActive){
 							switch (state){
 								case 0:
-									monitor.wait();
-									break;
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
-									if (queueFrommasterToworker_1_.peek() != null ) {
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
 										monitor.notifyAll();
-										state = 46;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_1_.take());
+										state = 1;
+										queueFrommasterToworker_0_.put(box.get());
+										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 3:
-									monitor.wait();
-									break;
-								case 4:
-									if (queueFrommasterToworker_1_.peek() != null ) {
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
 										monitor.notifyAll();
-										state = 42;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_1_.take());
-									}
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
-								case 6:
-									if (queueFrommasterToworker_1_.peek() != null ) {
-										monitor.notifyAll();
-										state = 38;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_1_.take());
-									}
-									monitor.wait();
-									break;
-								case 7:
-									monitor.wait();
-									break;
-								case 8:
-									if (queueFrommasterToworker_1_.peek() != null ) {
-										monitor.notifyAll();
-										state = 33;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_1_.take());
-									}
-									monitor.wait();
-									break;
-								case 9:
-									if (queueFrommasterToworker_1_.peek() != null ) {
-										monitor.notifyAll();
-										state = 10;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_1_.take());
-									}
-									monitor.wait();
-									break;
-								case 10:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
-										monitor.notifyAll();
-										state = 11;
-										queueFromworker_1_Tomaster.put(box.get());
+										state = 2;
+										queueFrommasterToworker_1_.put(box.get());
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
+								case 1:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
+										monitor.notifyAll();
+										state = 4;
+										queueFrommasterToworker_1_.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 2:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
+										monitor.notifyAll();
+										state = 4;
+										queueFrommasterToworker_0_.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 3:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
+										monitor.notifyAll();
+										state = 6;
+										queueFrommasterToworker_1_.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 4:
+									monitor.wait();
+									break;
+								case 5:
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 7;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
+										monitor.notifyAll();
+										state = 8;
+										queueFrommasterToworker_1_.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 6:
+									monitor.wait();
+									break;
+								case 7:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
+										monitor.notifyAll();
+										state = 9;
+										queueFrommasterToworker_1_.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 8:
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 32;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									monitor.wait();
+									break;
+								case 9:
+									monitor.wait();
+									break;
+								case 10:
+									monitor.wait();
+									break;
 								case 11:
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 12;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
 									monitor.wait();
 									break;
 								case 12:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 16;
-										worker_1_IsActive = false;
+										state = 14;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 13;
+										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -131,8 +159,8 @@ public class CGProtocol implements IProtocol {
 								case 13:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 19;
-										worker_1_IsActive = false;
+										state = 17;
+										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -140,8 +168,8 @@ public class CGProtocol implements IProtocol {
 								case 14:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 27;
-										worker_1_IsActive = false;
+										state = 17;
+										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -149,43 +177,55 @@ public class CGProtocol implements IProtocol {
 								case 15:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 29;
-										worker_1_IsActive = false;
+										state = 26;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 18;
+										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 16:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 19;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 27;
+										masterIsActive = false;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 17:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 21;
-										worker_1_IsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 18:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 24;
-										worker_1_IsActive = false;
+										state = 23;
+										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 19:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 25;
+										masterIsActive = false;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 20:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 22;
-										worker_1_IsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 21:
@@ -195,15 +235,15 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 23:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 22;
-										worker_1_IsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 24:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 22;
+										masterIsActive = false;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 25:
@@ -212,92 +252,153 @@ public class CGProtocol implements IProtocol {
 								case 26:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 28;
-										worker_1_IsActive = false;
+										state = 23;
+										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 27:
-									monitor.wait();
-									break;
-								case 28:
-									monitor.wait();
-									break;
-								case 29:
-									monitor.wait();
-									break;
-								case 30:
-									monitor.wait();
-									break;
-								case 31:
-									monitor.wait();
-									break;
-								case 32:
-									if (queueFrommasterToworker_1_.peek() != null ) {
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 10;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFrommasterToworker_1_.take());
+										state = 25;
+										masterIsActive = false;
+										return Optional.empty();
 									}
 									monitor.wait();
 									break;
-								case 33:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+								case 28:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 35;
-										queueFromworker_1_Tomaster.put(box.get());
+										state = 22;
+										masterIsActive = false;
 										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 29:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 30;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 31;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 30:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 22;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 31:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 22;
+										masterIsActive = false;
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 32:
+									monitor.wait();
+									break;
+								case 33:
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 34;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
 								case 34:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
-										monitor.notifyAll();
-										state = 11;
-										queueFromworker_1_Tomaster.put(box.get());
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 35:
-									monitor.wait();
-									break;
-								case 36:
-									monitor.wait();
-									break;
-								case 37:
-									monitor.wait();
-									break;
-								case 38:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
-										state = 39;
-										queueFromworker_1_Tomaster.put(box.get());
-										return Optional.empty();
+										state = 36;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 37;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
+								case 36:
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 12;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									monitor.wait();
+									break;
+								case 37:
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 12;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									monitor.wait();
+									break;
+								case 38:
+									monitor.wait();
+									break;
 								case 39:
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 40;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
 									monitor.wait();
 									break;
 								case 40:
 									monitor.wait();
 									break;
 								case 41:
-									monitor.wait();
-									break;
-								case 42:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
-										state = 43;
-										queueFromworker_1_Tomaster.put(box.get());
-										return Optional.empty();
+										state = 12;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
+								case 42:
+									monitor.wait();
+									break;
 								case 43:
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 44;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
 									monitor.wait();
 									break;
 								case 44:
@@ -307,18 +408,37 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 46:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
 										monitor.notifyAll();
-										state = 47;
-										queueFromworker_1_Tomaster.put(box.get());
+										state = 42;
+										queueFrommasterToworker_0_.put(box.get());
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 47:
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 48;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
+										monitor.notifyAll();
+										state = 43;
+										queueFrommasterToworker_0_.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 48:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
+										monitor.notifyAll();
+										state = 49;
+										queueFrommasterToworker_0_.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 49:
@@ -640,8 +760,8 @@ public class CGProtocol implements IProtocol {
 					return Optional.empty();
 				}
 			};
-			case "master": return new IEnvironment() {
-				private boolean masterIsActive = true;
+			case "worker_1_": return new IEnvironment() {
+				private boolean worker_1_IsActive = true;
 				
 				@Override
 				public String getName(){
@@ -656,118 +776,90 @@ public class CGProtocol implements IProtocol {
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
 					synchronized (monitor){
-						while (masterIsActive){
+						while (worker_1_IsActive){
 							switch (state){
 								case 0:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
-										monitor.notifyAll();
-										state = 2;
-										queueFrommasterToworker_1_.put(box.get());
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFrommasterToworker_0_.put(box.get());
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 1:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
-										monitor.notifyAll();
-										state = 4;
-										queueFrommasterToworker_1_.put(box.get());
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 2:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
+									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
-										state = 4;
-										queueFrommasterToworker_0_.put(box.get());
-										return Optional.empty();
+										state = 46;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
 									monitor.wait();
 									break;
 								case 3:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
-										monitor.notifyAll();
-										state = 6;
-										queueFrommasterToworker_1_.put(box.get());
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 4:
+									if (queueFrommasterToworker_1_.peek() != null ) {
+										monitor.notifyAll();
+										state = 42;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_1_.take());
+									}
 									monitor.wait();
 									break;
 								case 5:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 7;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
-										monitor.notifyAll();
-										state = 8;
-										queueFrommasterToworker_1_.put(box.get());
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 6:
-									monitor.wait();
-									break;
-								case 7:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_1_") ) ) {
+									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
-										state = 9;
-										queueFrommasterToworker_1_.put(box.get());
-										return Optional.empty();
+										state = 38;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
 									monitor.wait();
 									break;
+								case 7:
+									monitor.wait();
+									break;
 								case 8:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
+									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
-										state = 32;
+										state = 33;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
 									monitor.wait();
 									break;
 								case 9:
+									if (queueFrommasterToworker_1_.peek() != null ) {
+										monitor.notifyAll();
+										state = 10;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_1_.take());
+									}
 									monitor.wait();
 									break;
 								case 10:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+										monitor.notifyAll();
+										state = 11;
+										queueFromworker_1_Tomaster.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 11:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 12;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 12:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 13;
-										masterIsActive = false;
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 14;
-										masterIsActive = false;
+										state = 16;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -775,8 +867,8 @@ public class CGProtocol implements IProtocol {
 								case 13:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 17;
-										masterIsActive = false;
+										state = 19;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -784,8 +876,8 @@ public class CGProtocol implements IProtocol {
 								case 14:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 17;
-										masterIsActive = false;
+										state = 27;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -793,55 +885,43 @@ public class CGProtocol implements IProtocol {
 								case 15:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 26;
-										masterIsActive = false;
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 18;
-										masterIsActive = false;
+										state = 29;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 16:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 27;
-										masterIsActive = false;
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 19;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 17:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 21;
+										worker_1_IsActive = false;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 18:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 23;
-										masterIsActive = false;
+										state = 24;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 19:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 25;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 20:
+									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+										monitor.notifyAll();
+										state = 22;
+										worker_1_IsActive = false;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 21:
@@ -851,15 +931,15 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 23:
-									monitor.wait();
-									break;
-								case 24:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
 										state = 22;
-										masterIsActive = false;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
+									monitor.wait();
+									break;
+								case 24:
 									monitor.wait();
 									break;
 								case 25:
@@ -868,153 +948,92 @@ public class CGProtocol implements IProtocol {
 								case 26:
 									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
 										monitor.notifyAll();
-										state = 23;
-										masterIsActive = false;
+										state = 28;
+										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 27:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 25;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 28:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 22;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 29:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 30;
-										masterIsActive = false;
-										return Optional.empty();
-									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 31;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 30:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 22;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 31:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
-										monitor.notifyAll();
-										state = 22;
-										masterIsActive = false;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 32:
+									if (queueFrommasterToworker_1_.peek() != null ) {
+										monitor.notifyAll();
+										state = 10;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFrommasterToworker_1_.take());
+									}
 									monitor.wait();
 									break;
 								case 33:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
 										monitor.notifyAll();
-										state = 34;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+										state = 35;
+										queueFromworker_1_Tomaster.put(box.get());
+										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 34:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+										monitor.notifyAll();
+										state = 11;
+										queueFromworker_1_Tomaster.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 35:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 37;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 36;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 36:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 12;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 37:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 12;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 38:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+										monitor.notifyAll();
+										state = 39;
+										queueFromworker_1_Tomaster.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 39:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 40;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 40:
 									monitor.wait();
 									break;
 								case 41:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 12;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 42:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
+										monitor.notifyAll();
+										state = 43;
+										queueFromworker_1_Tomaster.put(box.get());
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 43:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 44;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 44:
@@ -1024,37 +1043,18 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 46:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("master") ) ) {
 										monitor.notifyAll();
-										state = 42;
-										queueFrommasterToworker_0_.put(box.get());
+										state = 47;
+										queueFromworker_1_Tomaster.put(box.get());
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 47:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
-										monitor.notifyAll();
-										state = 43;
-										queueFrommasterToworker_0_.put(box.get());
-										return Optional.empty();
-									}
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 48;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									monitor.wait();
 									break;
 								case 48:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
-										monitor.notifyAll();
-										state = 49;
-										queueFrommasterToworker_0_.put(box.get());
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 49:
@@ -1074,7 +1074,7 @@ public class CGProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","worker_0_","master" };
+		return new String[] { "master","worker_0_","worker_1_" };
 	}
 	
 	@Override

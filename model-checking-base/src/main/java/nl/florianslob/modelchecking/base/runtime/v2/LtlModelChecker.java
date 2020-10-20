@@ -180,7 +180,6 @@ public class LtlModelChecker {
                             } else {
                                 System.out.println("It is not the state we were checking for, we are ignoring this cycle!" );
                                 System.out.println(messageForDebugging);
-
                             }
                         } else {
 
