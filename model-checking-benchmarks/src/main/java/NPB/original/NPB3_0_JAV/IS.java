@@ -42,9 +42,9 @@
 !	   M. Schultz							  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV;
-import NPB3_0_JAV.ISThreads.*;
-import NPB3_0_JAV.BMInOut.*;
+package NPB.original.NPB3_0_JAV;
+import NPB.original.NPB3_0_JAV.ISThreads.*;
+import NPB.original.NPB3_0_JAV.BMInOut.*;
 
 public class IS extends ISBase{
   public int bid=-1;

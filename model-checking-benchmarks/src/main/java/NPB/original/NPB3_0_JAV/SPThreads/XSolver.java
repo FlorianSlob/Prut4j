@@ -41,8 +41,8 @@
 !     Mathew Schultz	   					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.SPThreads;
-import NPB3_0_JAV.SP;
+package NPB.original.NPB3_0_JAV.SPThreads;
+import NPB.original.NPB3_0_JAV.SP;
 
 public class XSolver extends SPBase{
   public int id;

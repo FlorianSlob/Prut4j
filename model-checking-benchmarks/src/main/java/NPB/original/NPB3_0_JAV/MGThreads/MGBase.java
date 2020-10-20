@@ -40,9 +40,9 @@
 !	   M. Schultz							  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.MGThreads;
-import NPB3_0_JAV.*;
-import NPB3_0_JAV.MG;
+package NPB.original.NPB3_0_JAV.MGThreads;
+import NPB.original.NPB3_0_JAV.*;
+import NPB.original.NPB3_0_JAV.MG;
 
 public class MGBase extends Thread{
   public static final String BMName="MG";

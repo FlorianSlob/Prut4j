@@ -40,8 +40,8 @@
 !	   M. Schultz							  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.CGThreads;
-import NPB3_0_JAV.CG;
+package NPB.original.NPB3_0_JAV.CGThreads;
+import NPB.original.NPB3_0_JAV.CG;
 
 public class CGWorker extends CGBase{
   public boolean done = true;

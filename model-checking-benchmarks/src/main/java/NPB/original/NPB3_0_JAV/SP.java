@@ -48,9 +48,9 @@
 !-------------------------------------------------------------------------!
 */
 
-package NPB3_0_JAV;
-import NPB3_0_JAV.SPThreads.*;
-import NPB3_0_JAV.BMInOut.*;
+package NPB.original.NPB3_0_JAV;
+import NPB.original.NPB3_0_JAV.SPThreads.*;
+import NPB.original.NPB3_0_JAV.BMInOut.*;
 import java.io.*;
 import java.text.*;
 

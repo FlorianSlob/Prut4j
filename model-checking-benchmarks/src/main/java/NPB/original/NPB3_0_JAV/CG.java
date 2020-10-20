@@ -43,9 +43,9 @@
 !	   M. Schultz							  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV;
-import NPB3_0_JAV.CGThreads.*;
-import NPB3_0_JAV.BMInOut.*;
+package NPB.original.NPB3_0_JAV;
+import NPB.original.NPB3_0_JAV.CGThreads.*;
+import NPB.original.NPB3_0_JAV.BMInOut.*;
 import java.io.*;
 import java.text.*;
 

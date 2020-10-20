@@ -40,9 +40,9 @@
 !     Mathew Schultz	   					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.CGThreads;
-import NPB3_0_JAV.*;
-import NPB3_0_JAV.CG;
+package NPB.original.NPB3_0_JAV.CGThreads;
+import NPB.original.NPB3_0_JAV.*;
+import NPB.original.NPB3_0_JAV.CG;
 
 public class CGBase extends Thread{
   public static final String BMName="CG";

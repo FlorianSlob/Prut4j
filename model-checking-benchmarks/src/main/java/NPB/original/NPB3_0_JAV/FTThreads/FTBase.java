@@ -35,9 +35,9 @@
 !          M. Schultz           					  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.FTThreads;
-import NPB3_0_JAV.*;
-import NPB3_0_JAV.FT;
+package NPB.original.NPB3_0_JAV.FTThreads;
+import NPB.original.NPB3_0_JAV.*;
+import NPB.original.NPB3_0_JAV.FT;
 
 public class FTBase extends Thread{
     
