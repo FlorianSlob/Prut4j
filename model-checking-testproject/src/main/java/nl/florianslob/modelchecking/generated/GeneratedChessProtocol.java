@@ -23,7 +23,6 @@ public class GeneratedChessProtocol implements IProtocol {
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
 			case "b": return new IEnvironment() {
-				private boolean bIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -31,14 +30,9 @@ public class GeneratedChessProtocol implements IProtocol {
 				}
 				
 				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
-						while (bIsActive){
+						while (true){
 							switch (state){
 								case 0:
 									monitor.wait();
@@ -73,11 +67,9 @@ public class GeneratedChessProtocol implements IProtocol {
 						}
 					}
 					
-					return Optional.empty();
 				}
 			};
 			case "w": return new IEnvironment() {
-				private boolean wIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -85,14 +77,9 @@ public class GeneratedChessProtocol implements IProtocol {
 				}
 				
 				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
-						while (wIsActive){
+						while (true){
 							switch (state){
 								case 0:
 									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
@@ -133,7 +120,6 @@ public class GeneratedChessProtocol implements IProtocol {
 						}
 					}
 					
-					return Optional.empty();
 				}
 			};
 			default: throw new Exception("Unknown environment");
@@ -142,7 +128,7 @@ public class GeneratedChessProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "w","b" };
+		return new String[] { "b","w" };
 	}
 	
 	@Override

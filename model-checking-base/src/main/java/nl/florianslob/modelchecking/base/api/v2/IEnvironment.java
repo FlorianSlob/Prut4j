@@ -6,8 +6,15 @@ public interface IEnvironment {
 
     String getName();
 
-    <Any,Any2> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<Any2> box) throws Exception;
-    <Any, AnyInput> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver) throws Exception;
+    <Any, AnyInput> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception;
+
+    default <Any, AnyInput> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box) throws Exception{
+        return exchange(box,null, false);
+    }
+
+    default <Any, AnyInput> Optional<Any> exchange(@SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver) throws Exception{
+        return exchange(box,receiver, false);
+    }
 
     default <Any> void send(Any m, String receiver) throws Exception {
         exchange(Optional.of(m), receiver);
@@ -17,5 +24,11 @@ public interface IEnvironment {
         // Suppressing warnings, protocols are generated code that do type checks and present check manually
         //noinspection unchecked,OptionalGetWithoutIsPresent
         return (Any) exchange(Optional.empty()).get();
+    }
+
+    default <Any> Any close() throws Exception {
+        // Suppressing warnings, protocols are generated code that do type checks and present check manually
+        //noinspection unchecked,OptionalGetWithoutIsPresent
+        return (Any) exchange(Optional.empty(), null, true).get();
     }
 }

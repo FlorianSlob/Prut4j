@@ -25,7 +25,6 @@ public class CGProtocol implements IProtocol {
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
 			case "master": return new IEnvironment() {
-				private boolean masterIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -33,14 +32,9 @@ public class CGProtocol implements IProtocol {
 				}
 				
 				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
-						while (masterIsActive){
+						while (true){
 							switch (state){
 								case 0:
 									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("worker_0_") ) ) {
@@ -142,64 +136,56 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 12:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 14;
-										masterIsActive = false;
 										return Optional.empty();
 									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 13;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 13:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 17;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 14:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 17;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 15:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 26;
-										masterIsActive = false;
 										return Optional.empty();
 									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 18;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 16:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 19;
-										masterIsActive = false;
 										return Optional.empty();
 									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 27;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -208,19 +194,17 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 18:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 23;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 19:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 25;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -238,10 +222,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 24:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -250,61 +233,54 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 26:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 23;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 27:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 25;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 28:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 29:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 30;
-										masterIsActive = false;
 										return Optional.empty();
 									}
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 31;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 30:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 31:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										masterIsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -449,11 +425,9 @@ public class CGProtocol implements IProtocol {
 						}
 					}
 					
-					return Optional.empty();
 				}
 			};
 			case "worker_0_": return new IEnvironment() {
-				private boolean worker_0_IsActive = true;
 				
 				@Override
 				public String getName(){
@@ -461,14 +435,9 @@ public class CGProtocol implements IProtocol {
 				}
 				
 				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
-						while (worker_0_IsActive){
+						while (true){
 							switch (state){
 								case 0:
 									monitor.wait();
@@ -533,28 +502,25 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 12:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 15;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 13:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 18;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 14:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 26;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -563,19 +529,17 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 16:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 29;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 17:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 20;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -584,10 +548,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 19:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 24;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -596,10 +559,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 21:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -614,10 +576,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 25:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -626,10 +587,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 27:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 28;
-										worker_0_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -757,11 +717,9 @@ public class CGProtocol implements IProtocol {
 						}
 					}
 					
-					return Optional.empty();
 				}
 			};
 			case "worker_1_": return new IEnvironment() {
-				private boolean worker_1_IsActive = true;
 				
 				@Override
 				public String getName(){
@@ -769,14 +727,9 @@ public class CGProtocol implements IProtocol {
 				}
 				
 				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
-						while (worker_1_IsActive){
+						while (true){
 							switch (state){
 								case 0:
 									monitor.wait();
@@ -856,37 +809,33 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 12:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 16;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 13:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 19;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 14:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 27;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 15:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 29;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -895,19 +844,17 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 17:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 21;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 18:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 24;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -916,10 +863,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 20:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -931,10 +877,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 23:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 22;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -946,10 +891,9 @@ public class CGProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 26:
-									if (box.isPresent() && box.get().getClass() == CloseMessage.class ) {
+									if (isCloseAction == true) {
 										monitor.notifyAll();
 										state = 28;
-										worker_1_IsActive = false;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1065,7 +1009,6 @@ public class CGProtocol implements IProtocol {
 						}
 					}
 					
-					return Optional.empty();
 				}
 			};
 			default: throw new Exception("Unknown environment");
@@ -1074,7 +1017,7 @@ public class CGProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "master","worker_0_","worker_1_" };
+		return new String[] { "worker_0_","master","worker_1_" };
 	}
 	
 	@Override
