@@ -40,8 +40,8 @@
 !     Mathew Schultz	   					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.LUThreads;
-import NPB3_0_JAV.LU;
+package NPB.original.NPB3_0_JAV.LUThreads;
+import NPB.original.NPB3_0_JAV.LU;
 
 public class LowerJac extends LUBase{
   public int id;

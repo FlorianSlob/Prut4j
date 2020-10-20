@@ -41,9 +41,9 @@
 !	   M. Schultz							  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.ISThreads;
-import NPB3_0_JAV.IS;
-import NPB3_0_JAV.*;
+package NPB.original.NPB3_0_JAV.ISThreads;
+import NPB.original.NPB3_0_JAV.IS;
+import NPB.original.NPB3_0_JAV.*;
 
 public class RankThread extends ISBase{
   public int id;

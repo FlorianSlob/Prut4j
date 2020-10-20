@@ -104,7 +104,7 @@ public class BMArgs implements Serializable{
   }
   public static void Banner(String BMName,
                             char clss,boolean serial,int np){
-    System.out.println(" NAS Parallel Benchmarks Java version (NPB3_0_JAV)");
+    System.out.println(" NAS Parallel Benchmarks Java version (NPB3_0_JAV, updated with auto generated protocol)");
     if(serial) System.out.println(" Serial Version "+BMName+"."+clss);
     else System.out.println(" Multithreaded Version "+BMName+"."+clss+
                             " np="+np);

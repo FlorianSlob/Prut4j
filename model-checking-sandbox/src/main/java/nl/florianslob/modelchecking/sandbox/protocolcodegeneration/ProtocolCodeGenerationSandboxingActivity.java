@@ -35,7 +35,6 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     }
 
     public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName) throws Exception{
-        // TODO Replace with some form of dependency injection
         var writerProvider = new SyntaxWriterProvider("Java11");
 
         var protocolStateNodesResult = getInitialStateForChessProtocol(pathToProtocolDefinition);

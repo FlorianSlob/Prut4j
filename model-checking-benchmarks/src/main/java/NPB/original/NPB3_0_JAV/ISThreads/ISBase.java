@@ -40,9 +40,9 @@
 !     Mathew Schultz	   					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.ISThreads;
-import NPB3_0_JAV.*;
-import NPB3_0_JAV.IS;
+package NPB.original.NPB3_0_JAV.ISThreads;
+import NPB.original.NPB3_0_JAV.*;
+import NPB.original.NPB3_0_JAV.IS;
 
 public class ISBase extends Thread{
   public static final String BMName="IS";

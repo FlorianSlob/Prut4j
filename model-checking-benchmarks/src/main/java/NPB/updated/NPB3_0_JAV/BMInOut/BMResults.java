@@ -101,7 +101,7 @@ public class BMResults implements Serializable{
                                          +"                               *");
     int len=outbuf.length();
     String outline=new String("***** NAS Parallel Benchmarks"+
-                              " Java version (NPB3_0_JAV) "+name+" ****");
+                              " Java version (NPB3_0_JAV ) "+name+" ****");
     outbuf.insert(0,outline);
     outbuf.setLength(len);
     outbuf.insert(len-1,"*");
@@ -226,7 +226,7 @@ public class BMResults implements Serializable{
     
     if(out!=null){
       try{
- 	outline="***** NAS Parallel Benchmarks Java version (NPB3_0_JAV) "
+ 	outline="***** NAS Parallel Benchmarks Java version (NPB3_0_JAV updated with auto generated protocol) "
 	              +name+" Report *****";
         out.write(outline,0,outline.length());
         out.newLine();

@@ -40,8 +40,8 @@
 !	   M. Schultz							  !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.FTThreads;
-import NPB3_0_JAV.FT;
+package NPB.original.NPB3_0_JAV.FTThreads;
+import NPB.original.NPB3_0_JAV.FT;
 
 public class EvolveThread extends FTBase{
   public int kt=0;

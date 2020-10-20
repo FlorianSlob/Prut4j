@@ -41,8 +41,8 @@
 !     Mathew Schultz	   					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV.BTThreads;
-import NPB3_0_JAV.BT;
+package NPB.original.NPB3_0_JAV.BTThreads;
+import NPB.original.NPB3_0_JAV.BT;
 
 public class RHSCompute extends BTBase{
   public int id;

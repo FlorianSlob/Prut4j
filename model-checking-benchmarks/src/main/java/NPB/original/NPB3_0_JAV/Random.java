@@ -40,7 +40,7 @@
 !     Michael A. Frumkin					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV;
+package NPB.original.NPB3_0_JAV;
 
 public class Random{
 

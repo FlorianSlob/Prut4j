@@ -6,12 +6,16 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
+import java.util.Comparator;
+
 
 public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment> {
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTEnvironment SyntaxTreeItem) {
         StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"case \""+SyntaxTreeItem.roleName+"\": return new IEnvironment() {", "};", tabCount,
             (tabCountLvl0) -> {
+                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private boolean "+SyntaxTreeItem.roleName+"IsActive = true;");
+
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String getName()", tabCountLvl0,
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return environmentName;");
@@ -28,10 +32,13 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
                             (tabCountLvl2) -> {
-                                StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while (true)", tabCountLvl2,
+                                StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while ("+SyntaxTreeItem.roleName+"IsActive)", tabCountLvl2,
                                     (tabCountLvl3) -> {
                                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (state)", tabCountLvl3,
                                             (tabCountLvl4) -> {
+                                                // Order all statements by id, this is not necessary, but makes the generated code more readable.
+                                                SyntaxTreeItem.ASTStateCaseStatements.sort(Comparator.comparingInt(s -> s.stateIdCondition));
+
                                                 // Writing all case statements to the switch block
                                                 for(ASTStateCaseStatement stateCaseStatement : SyntaxTreeItem.ASTStateCaseStatements)
                                                     stateCaseStatement.buildSyntax(builder,tabCountLvl4);
@@ -44,6 +51,8 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                 );
                             }
                         );
+                        StringBuilderSyntaxHelper.addEmptyLine(builder, tabCountLvl1);
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return Optional.empty();");
                     }
                 );
             }

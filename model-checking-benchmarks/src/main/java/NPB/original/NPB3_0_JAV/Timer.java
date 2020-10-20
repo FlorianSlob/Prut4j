@@ -39,7 +39,7 @@
 !     Mathew Schultz	   					          !
 !-------------------------------------------------------------------------!
 */
-package NPB3_0_JAV;
+package NPB.original.NPB3_0_JAV;
 
 public class Timer{
   public static final int max_counters=64;

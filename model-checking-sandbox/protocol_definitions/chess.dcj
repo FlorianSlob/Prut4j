@@ -2,4 +2,4 @@
        (-->> String "w" "b")
        (-->> String "b" "w")
        (? (s/recur :chess)))
-     (? (-->> String "w" "b")))
+    )

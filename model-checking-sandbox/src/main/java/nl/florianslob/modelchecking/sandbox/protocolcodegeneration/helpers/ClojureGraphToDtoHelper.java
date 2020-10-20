@@ -81,11 +81,10 @@ public class ClojureGraphToDtoHelper {
             case ":receive":
                 action = ProtocolMessageActionType.RECEIVE;
                 type = "NotUsed";
-//                type = edge.label.name.substring(edge.label.name.indexOf("(") + 1, edge.label.name.indexOf(","));
                 break;
             case ":close": // TODO Do something with this???!
-                action = ProtocolMessageActionType.RECEIVE;
-                type = "Object";
+                action = ProtocolMessageActionType.CLOSE;
+                type = "CloseMessage";
                 break;
             default:
                 throw new IllegalStateException("The following action is not supported: "+actionString);

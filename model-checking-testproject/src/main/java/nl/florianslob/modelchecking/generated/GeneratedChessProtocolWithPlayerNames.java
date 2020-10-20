@@ -23,63 +23,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "alice2": return new IEnvironment() {
-				
-				@Override
-				public String getName(){
-					return environmentName;
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
-					return this.exchange(box, null);
-				}
-				
-				@Override
-				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
-					synchronized (monitor){
-						while (true){
-							switch (state){
-								case 0:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromalice2Tobob.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
-									monitor.wait();
-									break;
-								case 3:
-									monitor.wait();
-									break;
-								case 4:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromalice2Tobob.put(box.get());
-										return Optional.empty();
-									}
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
-								case 6:
-									monitor.wait();
-									break;
-								default: throw new Exception("State number out of bounds");
-							}
-						}
-					}
-				}
-			};
 			case "alice": return new IEnvironment() {
+				private boolean aliceIsActive = true;
 				
 				@Override
 				public String getName(){
@@ -94,7 +39,7 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
 					synchronized (monitor){
-						while (true){
+						while (aliceIsActive){
 							switch (state){
 								case 0:
 									monitor.wait();
@@ -134,9 +79,12 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 							}
 						}
 					}
+					
+					return Optional.empty();
 				}
 			};
-			case "bob": return new IEnvironment() {
+			case "alice2": return new IEnvironment() {
+				private boolean alice2IsActive = true;
 				
 				@Override
 				public String getName(){
@@ -151,7 +99,66 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
 					synchronized (monitor){
-						while (true){
+						while (alice2IsActive){
+							switch (state){
+								case 0:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
+										monitor.notifyAll();
+										state = 1;
+										queueFromalice2Tobob.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 1:
+									monitor.wait();
+									break;
+								case 2:
+									monitor.wait();
+									break;
+								case 3:
+									monitor.wait();
+									break;
+								case 4:
+									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
+										monitor.notifyAll();
+										state = 1;
+										queueFromalice2Tobob.put(box.get());
+										return Optional.empty();
+									}
+									monitor.wait();
+									break;
+								case 5:
+									monitor.wait();
+									break;
+								case 6:
+									monitor.wait();
+									break;
+								default: throw new Exception("State number out of bounds");
+							}
+						}
+					}
+					
+					return Optional.empty();
+				}
+			};
+			case "bob": return new IEnvironment() {
+				private boolean bobIsActive = true;
+				
+				@Override
+				public String getName(){
+					return environmentName;
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box) throws Exception{
+					return this.exchange(box, null);
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver) throws Exception{
+					synchronized (monitor){
+						while (bobIsActive){
 							switch (state){
 								case 0:
 									monitor.wait();
@@ -198,6 +205,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 							}
 						}
 					}
+					
+					return Optional.empty();
 				}
 			};
 			default: throw new Exception("Unknown environment");
@@ -206,7 +215,7 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "alice2","alice","bob" };
+		return new String[] { "alice","bob","alice2" };
 	}
 	
 	@Override
