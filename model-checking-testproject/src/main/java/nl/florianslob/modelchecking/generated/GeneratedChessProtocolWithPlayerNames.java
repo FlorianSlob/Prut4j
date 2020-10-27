@@ -9,6 +9,7 @@ package nl.florianslob.modelchecking.generated;
 import nl.florianslob.modelchecking.base.api.v2.*;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -55,11 +56,16 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 									monitor.wait();
 									break;
 								case 4:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
-										monitor.notifyAll();
-										state = 5;
-										queueFromaliceTobob.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "bob";
+										}
+										if (receiver.equals("bob")) {
+											monitor.notifyAll();
+											state = 5;
+											queueFromaliceTobob.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -89,11 +95,16 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 						while (true){
 							switch (state){
 								case 0:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromalice2Tobob.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "bob";
+										}
+										if (receiver.equals("bob")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFromalice2Tobob.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -107,11 +118,16 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 									monitor.wait();
 									break;
 								case 4:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("bob") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromalice2Tobob.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "bob";
+										}
+										if (receiver.equals("bob")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFromalice2Tobob.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -154,11 +170,16 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 									monitor.wait();
 									break;
 								case 2:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("alice") ) ) {
-										monitor.notifyAll();
-										state = 3;
-										queueFrombobToalice.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "alice";
+										}
+										if (receiver.equals("alice")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrombobToalice.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -194,7 +215,7 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "bob","alice2","alice" };
+		return new String[] { "bob","alice","alice2" };
 	}
 	
 	@Override

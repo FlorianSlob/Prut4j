@@ -9,6 +9,7 @@ package nl.florianslob.modelchecking.generated;
 import nl.florianslob.modelchecking.base.api.v2.*;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -48,11 +49,16 @@ public class GeneratedChessProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 2:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("w") ) ) {
-										monitor.notifyAll();
-										state = 3;
-										queueFrombTow.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "w";
+										}
+										if (receiver.equals("w")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrombTow.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -82,11 +88,16 @@ public class GeneratedChessProtocol implements IProtocol {
 						while (true){
 							switch (state){
 								case 0:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromwTob.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "b";
+										}
+										if (receiver.equals("b")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFromwTob.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -107,11 +118,16 @@ public class GeneratedChessProtocol implements IProtocol {
 									monitor.wait();
 									break;
 								case 4:
-									if (box.isPresent() && box.get().getClass() == String.class && (receiver == null || receiver.equals("b") ) ) {
-										monitor.notifyAll();
-										state = 1;
-										queueFromwTob.put(box.get());
-										return Optional.empty();
+									if (box.isPresent() && box.get().getClass() == String.class ) {
+										if (receiver == null) {
+											receiver = "b";
+										}
+										if (receiver.equals("b")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFromwTob.put(box.get());
+											return Optional.empty();
+										}
 									}
 									monitor.wait();
 									break;
@@ -128,7 +144,7 @@ public class GeneratedChessProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "b","w" };
+		return new String[] { "w","b" };
 	}
 	
 	@Override

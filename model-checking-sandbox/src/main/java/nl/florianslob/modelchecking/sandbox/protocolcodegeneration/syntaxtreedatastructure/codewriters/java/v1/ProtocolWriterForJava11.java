@@ -34,6 +34,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount); // White line to distinguish imports from the java SDK with imports from our own API.
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.Optional;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.Random;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.BlockingQueue;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.LinkedBlockingQueue;");
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount);
@@ -66,7 +67,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
                                 StringBuilderSyntaxHelper.addLine(builder, tabCountLvl2, "default: throw new Exception(\"Unknown environment\");");
                             }
                         );
-                }
+                    }
                 );
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String[] threadNames()", tabCountLvl0,

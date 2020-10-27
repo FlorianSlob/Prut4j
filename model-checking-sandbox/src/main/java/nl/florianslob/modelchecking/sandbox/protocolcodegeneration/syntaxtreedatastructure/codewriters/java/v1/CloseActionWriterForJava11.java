@@ -10,7 +10,7 @@ public class CloseActionWriterForJava11 implements ISyntaxWriter<ASTCloseAction>
 
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTCloseAction SyntaxTreeItem) {
-        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if (isCloseAction == true) {", "}", tabCount,
+        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if (isCloseAction) {", "}", tabCount,
                 (tabCountLvl0) -> {
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "state = "+SyntaxTreeItem.nextStateId+";");
