@@ -1,0 +1,7 @@
+ (s/cat (s/par-every [i (range 3)]
+                      (s/cat (s/-->> String "master" ("worker" i))
+                             (s/-->> String ("worker" i) "master")))
+         (s/par (s/par-every [i (range 3)]
+                             (s/close "master" ("worker" i)))
+                (s/par-every [i (range 3)]
+                             (s/close ("worker" i) "master"))))
