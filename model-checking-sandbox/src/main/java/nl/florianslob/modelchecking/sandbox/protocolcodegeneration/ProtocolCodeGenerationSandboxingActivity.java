@@ -18,23 +18,42 @@ import java.util.*;
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
-        for(int i = 1; i <= 4; i++){
-            var protocolName = "CGProtocol_n_"+i;
-            var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/cg_n_"+i+".dcj";
-            var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
-            GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+
+        // Toggle what protocols need to be generated
+        boolean genCGProtocol = true, genFTProtocol = true, genDemoProtocols = false;
+
+        if(genCGProtocol){
+            for(int i = 1; i <= 4; i++){
+                var protocolName = "CGProtocol_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/cg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
         }
 
-        var protocolName2 = "GeneratedChessProtocol";
-        var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chess.dcj";
-        var filePath2 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
-        GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2, true);
+        if(genFTProtocol){
+            for(int i = 1; i <= 2; i++){
+                var protocolName = "FTProtocol_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/ft_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
 
-        var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
-        var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
-        var filePath3 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
-        GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3, true);
+        if(genDemoProtocols){
+            var protocolName2 = "GeneratedChessProtocol";
+            var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chess.dcj";
+            var filePath2 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
+            GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2, true);
+
+            var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
+            var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+            var filePath3 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
+            GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3, true);
+        }
+
     }
+
 
     public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName, boolean generatePlantUmlFile) throws Exception{
         var writerProvider = new SyntaxWriterProvider("Java11");
