@@ -20,10 +20,10 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     public void runActivity() throws Exception {
 
         // Toggle what protocols need to be generated
-        boolean genCGProtocol = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = true, genDemoProtocols = false;
+        boolean genCGProtocol = true, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
 
         if(genCGProtocol){
-            for(int i = 1; i <= 4; i++){
+            for(int i = 1; i <= 3; i++){ // TODO Max is 3 for now, max method size :-s
                 var protocolName = "CGProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/cg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
@@ -69,9 +69,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             var filePath3 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
             GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3, true);
         }
-
     }
-
 
     public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName, boolean generatePlantUmlFile) throws Exception{
         var writerProvider = new SyntaxWriterProvider("Java11");

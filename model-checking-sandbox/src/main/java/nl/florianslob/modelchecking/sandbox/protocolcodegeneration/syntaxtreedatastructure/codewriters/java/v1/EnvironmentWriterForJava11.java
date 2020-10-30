@@ -35,15 +35,14 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
 
                                                 // Handle all wait-action-only cases in one case statement.
                                                 {
-                                                    var caseStatementsWithOnlyWaitActionStateIdsString = SyntaxTreeItem
+                                                    SyntaxTreeItem
                                                             .ASTStateCaseStatements
                                                             .stream()
                                                             .filter(s -> s.actionsFromState.size() == 0)
-                                                            .map(s -> s.stateIdCondition)
-                                                            .map(String::valueOf)
-                                                            .collect(Collectors.joining(","));
+                                                            .forEach(s -> {
+                                                                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "case "+s.stateIdCondition + " :");
+                                                            });
 
-                                                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "case " + caseStatementsWithOnlyWaitActionStateIdsString + " :");
                                                     StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl4 + 1), "monitor.wait();");
                                                     StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl4 + 1), "break;");
                                                 }

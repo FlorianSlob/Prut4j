@@ -37,29 +37,39 @@ public class CGProtocol_n_2 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 6,8,11,12,16,18,21,22,29,32,33,34,35,37,44,46,50,52,54,56,57,59,60,61,63,68,71,72,75,79 :
+								case 6 :
+								case 8 :
+								case 11 :
+								case 12 :
+								case 16 :
+								case 18 :
+								case 21 :
+								case 22 :
+								case 29 :
+								case 32 :
+								case 33 :
+								case 34 :
+								case 35 :
+								case 37 :
+								case 44 :
+								case 46 :
+								case 50 :
+								case 52 :
+								case 54 :
+								case 56 :
+								case 57 :
+								case 59 :
+								case 60 :
+								case 61 :
+								case 63 :
+								case 68 :
+								case 71 :
+								case 72 :
+								case 75 :
+								case 79 :
 									monitor.wait();
 									break;
 								case 0:
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-										if (receiver == null) {
-											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
-											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 4;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 3;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
-										}
-									}
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
@@ -76,6 +86,25 @@ public class CGProtocol_n_2 implements IProtocol {
 											monitor.notifyAll();
 											state = 2;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+									}
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+										if (receiver == null) {
+											int rnd = new Random().nextInt(2);
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											receiver = receiverOptionsArray[rnd];
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 4;
+											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -210,14 +239,8 @@ public class CGProtocol_n_2 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 1;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
@@ -225,23 +248,29 @@ public class CGProtocol_n_2 implements IProtocol {
 											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
 									}
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 4;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 3;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 4;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -319,12 +348,12 @@ public class CGProtocol_n_2 implements IProtocol {
 								case 24:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 26;
+										state = 25;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 25;
+										state = 26;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -348,12 +377,12 @@ public class CGProtocol_n_2 implements IProtocol {
 								case 27:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 30;
+										state = 38;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 38;
+										state = 30;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -361,12 +390,12 @@ public class CGProtocol_n_2 implements IProtocol {
 								case 28:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 39;
+										state = 31;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 31;
+										state = 39;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -459,19 +488,19 @@ public class CGProtocol_n_2 implements IProtocol {
 									monitor.wait();
 									break;
 								case 47:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 49;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 48;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 49;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -719,7 +748,53 @@ public class CGProtocol_n_2 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0,2,4,7,9,10,11,12,13,14,17,19,20,21,22,23,27,30,32,34,35,36,38,40,41,42,43,44,45,46,47,48,49,53,58,61,62,63,64,65,66,69,73,74,76,77,78 :
+								case 0 :
+								case 2 :
+								case 4 :
+								case 7 :
+								case 9 :
+								case 10 :
+								case 11 :
+								case 12 :
+								case 13 :
+								case 14 :
+								case 17 :
+								case 19 :
+								case 20 :
+								case 21 :
+								case 22 :
+								case 23 :
+								case 27 :
+								case 30 :
+								case 32 :
+								case 34 :
+								case 35 :
+								case 36 :
+								case 38 :
+								case 40 :
+								case 41 :
+								case 42 :
+								case 43 :
+								case 44 :
+								case 45 :
+								case 46 :
+								case 47 :
+								case 48 :
+								case 49 :
+								case 53 :
+								case 58 :
+								case 61 :
+								case 62 :
+								case 63 :
+								case 64 :
+								case 65 :
+								case 66 :
+								case 69 :
+								case 73 :
+								case 74 :
+								case 76 :
+								case 77 :
+								case 78 :
 									monitor.wait();
 									break;
 								case 1:
@@ -1101,7 +1176,53 @@ public class CGProtocol_n_2 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0,1,3,5,7,9,13,14,15,17,19,23,28,31,33,34,36,37,39,40,41,42,43,47,48,49,51,52,53,55,56,57,64,65,66,67,68,69,70,71,72,73,74,75,77,78,79 :
+								case 0 :
+								case 1 :
+								case 3 :
+								case 5 :
+								case 7 :
+								case 9 :
+								case 13 :
+								case 14 :
+								case 15 :
+								case 17 :
+								case 19 :
+								case 23 :
+								case 28 :
+								case 31 :
+								case 33 :
+								case 34 :
+								case 36 :
+								case 37 :
+								case 39 :
+								case 40 :
+								case 41 :
+								case 42 :
+								case 43 :
+								case 47 :
+								case 48 :
+								case 49 :
+								case 51 :
+								case 52 :
+								case 53 :
+								case 55 :
+								case 56 :
+								case 57 :
+								case 64 :
+								case 65 :
+								case 66 :
+								case 67 :
+								case 68 :
+								case 69 :
+								case 70 :
+								case 71 :
+								case 72 :
+								case 73 :
+								case 74 :
+								case 75 :
+								case 77 :
+								case 78 :
+								case 79 :
 									monitor.wait();
 									break;
 								case 2:
@@ -1477,7 +1598,7 @@ public class CGProtocol_n_2 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","master","worker_0_" };
+		return new String[] { "worker_0_","master","worker_1_" };
 	}
 	
 	@Override

@@ -39,11 +39,118 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 19,21,24,25,40,42,45,46,60,64,65,66,67,68,69,70,71,72,75,77,78,80,81,83,143,145,149,151,153,155,156,160,184,186,190,192,194,198,209,211,215,216,218,220,222,226,228,230,232,233,238,240,242,246,247,249,250,251,253,257,259,261,263,264,269,273,275,279,280,281,283,288,291,292,313,315,319,321,323,327,330,334,335,337,339,341,345,347,349,351,353,355,359,360,362,363,364,366,370,372,374,376,377,378,388,402,415,438 :
+								case 19 :
+								case 21 :
+								case 24 :
+								case 25 :
+								case 40 :
+								case 42 :
+								case 45 :
+								case 46 :
+								case 60 :
+								case 64 :
+								case 65 :
+								case 66 :
+								case 67 :
+								case 68 :
+								case 69 :
+								case 70 :
+								case 71 :
+								case 72 :
+								case 75 :
+								case 77 :
+								case 78 :
+								case 80 :
+								case 81 :
+								case 83 :
+								case 143 :
+								case 145 :
+								case 149 :
+								case 151 :
+								case 153 :
+								case 155 :
+								case 156 :
+								case 160 :
+								case 184 :
+								case 186 :
+								case 190 :
+								case 192 :
+								case 194 :
+								case 198 :
+								case 209 :
+								case 211 :
+								case 215 :
+								case 216 :
+								case 218 :
+								case 220 :
+								case 222 :
+								case 226 :
+								case 228 :
+								case 230 :
+								case 232 :
+								case 233 :
+								case 238 :
+								case 240 :
+								case 242 :
+								case 246 :
+								case 247 :
+								case 249 :
+								case 250 :
+								case 251 :
+								case 253 :
+								case 257 :
+								case 259 :
+								case 261 :
+								case 263 :
+								case 264 :
+								case 269 :
+								case 273 :
+								case 275 :
+								case 279 :
+								case 280 :
+								case 281 :
+								case 283 :
+								case 288 :
+								case 291 :
+								case 292 :
+								case 313 :
+								case 315 :
+								case 319 :
+								case 321 :
+								case 323 :
+								case 327 :
+								case 330 :
+								case 334 :
+								case 335 :
+								case 337 :
+								case 339 :
+								case 341 :
+								case 345 :
+								case 347 :
+								case 349 :
+								case 351 :
+								case 353 :
+								case 355 :
+								case 359 :
+								case 360 :
+								case 362 :
+								case 363 :
+								case 364 :
+								case 366 :
+								case 370 :
+								case 372 :
+								case 374 :
+								case 376 :
+								case 377 :
+								case 378 :
+								case 388 :
+								case 402 :
+								case 415 :
+								case 438 :
 									monitor.wait();
 									break;
 								case 0:
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(3);
 											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_","worker_2_" };
@@ -51,9 +158,28 @@ public class CGProtocol_n_3 implements IProtocol {
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
-											state = 5;
+											state = 2;
 											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+									}
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+										if (receiver == null) {
+											int rnd = new Random().nextInt(3);
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_","worker_1_" };
+											receiver = receiverOptionsArray[rnd];
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
@@ -67,29 +193,10 @@ public class CGProtocol_n_3 implements IProtocol {
 											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
-									}
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-										if (receiver == null) {
-											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_","worker_0_" };
-											receiver = receiverOptionsArray[rnd];
-										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
-											state = 2;
+											state = 5;
 											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 3;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 1;
-											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -99,19 +206,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 9;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 8;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 9;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -121,19 +228,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 271;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 8;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 271;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -143,19 +250,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 9;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 271;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 9;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -165,19 +272,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 29;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
 											state = 30;
 											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 29;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -209,19 +316,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 30;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 405;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 30;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -281,19 +388,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 15;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 14;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 15;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -496,36 +603,17 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 27:
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-										if (receiver == null) {
-											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_","worker_1_" };
-											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 1;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 3;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 2;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
-										}
-									}
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 5;
+											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
@@ -539,9 +627,28 @@ public class CGProtocol_n_3 implements IProtocol {
 											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
+									}
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+										if (receiver == null) {
+											int rnd = new Random().nextInt(3);
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_","worker_1_" };
+											receiver = receiverOptionsArray[rnd];
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 1;
+											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
-											state = 5;
+											state = 2;
 											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
@@ -824,12 +931,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 51;
+										state = 49;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 49;
+										state = 51;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -881,22 +988,17 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 100;
+										state = 118;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 118;
+										state = 100;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 53:
-									if (isCloseAction) {
-										monitor.notifyAll();
-										state = 119;
-										return Optional.empty();
-									}
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 58;
@@ -907,9 +1009,19 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 101;
 										return Optional.empty();
 									}
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 119;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 54:
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 120;
+										return Optional.empty();
+									}
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 59;
@@ -918,11 +1030,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 102;
-										return Optional.empty();
-									}
-									if (isCloseAction) {
-										monitor.notifyAll();
-										state = 120;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -972,12 +1079,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 59:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 63;
+										state = 86;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 86;
+										state = 63;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1113,12 +1220,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 92:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 73;
+										state = 87;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 87;
+										state = 73;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1139,12 +1246,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 94:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 96;
+										state = 95;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 95;
+										state = 96;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1168,12 +1275,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 97:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 79;
+										state = 90;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 90;
+										state = 79;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1215,12 +1322,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 101:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 104;
+										state = 62;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 62;
+										state = 104;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1228,12 +1335,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 102:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 105;
+										state = 63;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 63;
+										state = 105;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1305,12 +1412,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 111:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 73;
+										state = 106;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 106;
+										state = 73;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1352,12 +1459,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 115:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 109;
+										state = 79;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 79;
+										state = 109;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1365,12 +1472,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 116:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 82;
+										state = 110;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 110;
+										state = 82;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1386,12 +1493,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 118:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 103;
+										state = 121;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 121;
+										state = 103;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1399,12 +1506,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 119:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 104;
+										state = 122;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 122;
+										state = 104;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1412,12 +1519,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 120:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 123;
+										state = 105;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 105;
+										state = 123;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1489,12 +1596,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 129:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 124;
+										state = 106;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 106;
+										state = 124;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1536,12 +1643,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 133:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 109;
+										state = 127;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 127;
+										state = 109;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1549,12 +1656,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 134:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 128;
+										state = 110;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 110;
+										state = 128;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1562,12 +1669,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 135:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 129;
+										state = 111;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 111;
+										state = 129;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
@@ -1585,22 +1692,17 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 112;
+										state = 130;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 130;
+										state = 112;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 137:
-									if (isCloseAction) {
-										monitor.notifyAll();
-										state = 139;
-										return Optional.empty();
-									}
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 140;
@@ -1611,17 +1713,22 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 138;
 										return Optional.empty();
 									}
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 139;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 138:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 95;
+										state = 96;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 96;
+										state = 95;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1629,12 +1736,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 139:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 95;
+										state = 114;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 114;
+										state = 95;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1642,12 +1749,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 140:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 132;
+										state = 114;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 114;
+										state = 132;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1660,12 +1767,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 115;
+										state = 97;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 97;
+										state = 115;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1673,7 +1780,7 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 142:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 116;
+										state = 134;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
@@ -1683,7 +1790,7 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 134;
+										state = 116;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1885,19 +1992,19 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 168;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 167;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 168;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -1954,19 +2061,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 169:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 175;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 174;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 175;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -1991,19 +2098,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 172:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 147;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 173;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 147;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2082,19 +2189,19 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 182;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 180;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 182;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2207,19 +2314,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 191:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 183;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 173;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 183;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2234,19 +2341,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 195:
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 197;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 196;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 197;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2341,19 +2448,19 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 204;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 205;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 204;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2897,19 +3004,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 272;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
 											state = 380;
 											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 272;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -3013,19 +3120,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 284:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 285;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 286;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 285;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3174,19 +3281,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 298:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 304;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 303;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 304;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3258,19 +3365,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 305:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 306;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 307;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 306;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3295,13 +3402,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 308:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 309;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 310;
@@ -3315,6 +3415,13 @@ public class CGProtocol_n_3 implements IProtocol {
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 309;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3353,19 +3460,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 311:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 302;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 312;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 302;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3427,19 +3534,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 320:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 302;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 312;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 302;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3454,19 +3561,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 324:
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 326;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 325;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 326;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3753,19 +3860,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 367:
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 369;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 368;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 369;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3866,19 +3973,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 383;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
 											state = 384;
 											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 383;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4043,19 +4150,19 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 393;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 394;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 393;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -4238,19 +4345,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 407;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 239;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 407;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4317,19 +4424,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 411;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 410;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 411;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4689,19 +4796,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 431;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 399;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 431;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4845,19 +4952,19 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 441;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 442;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 441;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -5026,19 +5133,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 447;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 400;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 447;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5105,19 +5212,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 426;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 265;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 426;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5127,19 +5234,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 266;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 427;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 266;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5156,19 +5263,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 458;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 457;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 458;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5221,7 +5328,290 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0,2,3,5,6,10,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,52,57,61,64,67,68,69,71,72,73,74,75,76,77,82,83,84,87,88,89,91,92,93,94,95,96,98,100,103,106,107,108,110,111,112,113,114,116,118,121,124,125,126,128,129,130,131,132,134,135,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,214,219,237,270,271,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,333,338,352,379,380,381,382,384,385,386,387,389,390,391,392,393,394,395,396,397,398,399,400,401,403,404,405,406,407,408,409,411,412,413,414,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,433,434,435,436,437,438,439,440,441,442,443,446,450,451,453,454,455,456,458 :
+								case 0 :
+								case 2 :
+								case 3 :
+								case 5 :
+								case 6 :
+								case 10 :
+								case 13 :
+								case 14 :
+								case 15 :
+								case 16 :
+								case 17 :
+								case 18 :
+								case 19 :
+								case 20 :
+								case 21 :
+								case 22 :
+								case 23 :
+								case 24 :
+								case 25 :
+								case 26 :
+								case 27 :
+								case 31 :
+								case 34 :
+								case 35 :
+								case 36 :
+								case 37 :
+								case 38 :
+								case 39 :
+								case 40 :
+								case 41 :
+								case 42 :
+								case 43 :
+								case 44 :
+								case 45 :
+								case 46 :
+								case 47 :
+								case 52 :
+								case 57 :
+								case 61 :
+								case 64 :
+								case 67 :
+								case 68 :
+								case 69 :
+								case 71 :
+								case 72 :
+								case 73 :
+								case 74 :
+								case 75 :
+								case 76 :
+								case 77 :
+								case 82 :
+								case 83 :
+								case 84 :
+								case 87 :
+								case 88 :
+								case 89 :
+								case 91 :
+								case 92 :
+								case 93 :
+								case 94 :
+								case 95 :
+								case 96 :
+								case 98 :
+								case 100 :
+								case 103 :
+								case 106 :
+								case 107 :
+								case 108 :
+								case 110 :
+								case 111 :
+								case 112 :
+								case 113 :
+								case 114 :
+								case 116 :
+								case 118 :
+								case 121 :
+								case 124 :
+								case 125 :
+								case 126 :
+								case 128 :
+								case 129 :
+								case 130 :
+								case 131 :
+								case 132 :
+								case 134 :
+								case 135 :
+								case 136 :
+								case 137 :
+								case 138 :
+								case 139 :
+								case 140 :
+								case 142 :
+								case 143 :
+								case 144 :
+								case 145 :
+								case 146 :
+								case 147 :
+								case 148 :
+								case 149 :
+								case 150 :
+								case 151 :
+								case 152 :
+								case 153 :
+								case 154 :
+								case 155 :
+								case 156 :
+								case 157 :
+								case 158 :
+								case 159 :
+								case 160 :
+								case 161 :
+								case 162 :
+								case 163 :
+								case 164 :
+								case 165 :
+								case 166 :
+								case 167 :
+								case 168 :
+								case 169 :
+								case 170 :
+								case 171 :
+								case 172 :
+								case 173 :
+								case 174 :
+								case 175 :
+								case 176 :
+								case 177 :
+								case 178 :
+								case 179 :
+								case 180 :
+								case 181 :
+								case 182 :
+								case 183 :
+								case 184 :
+								case 185 :
+								case 186 :
+								case 187 :
+								case 188 :
+								case 189 :
+								case 190 :
+								case 191 :
+								case 192 :
+								case 193 :
+								case 194 :
+								case 195 :
+								case 196 :
+								case 197 :
+								case 198 :
+								case 199 :
+								case 200 :
+								case 201 :
+								case 202 :
+								case 203 :
+								case 204 :
+								case 205 :
+								case 206 :
+								case 207 :
+								case 214 :
+								case 219 :
+								case 237 :
+								case 270 :
+								case 271 :
+								case 276 :
+								case 277 :
+								case 278 :
+								case 279 :
+								case 280 :
+								case 281 :
+								case 282 :
+								case 283 :
+								case 284 :
+								case 285 :
+								case 286 :
+								case 287 :
+								case 288 :
+								case 289 :
+								case 290 :
+								case 291 :
+								case 292 :
+								case 293 :
+								case 294 :
+								case 295 :
+								case 296 :
+								case 297 :
+								case 298 :
+								case 299 :
+								case 300 :
+								case 301 :
+								case 302 :
+								case 303 :
+								case 304 :
+								case 305 :
+								case 306 :
+								case 307 :
+								case 308 :
+								case 309 :
+								case 310 :
+								case 311 :
+								case 312 :
+								case 313 :
+								case 314 :
+								case 315 :
+								case 316 :
+								case 317 :
+								case 318 :
+								case 319 :
+								case 320 :
+								case 321 :
+								case 322 :
+								case 323 :
+								case 324 :
+								case 325 :
+								case 326 :
+								case 327 :
+								case 328 :
+								case 333 :
+								case 338 :
+								case 352 :
+								case 379 :
+								case 380 :
+								case 381 :
+								case 382 :
+								case 384 :
+								case 385 :
+								case 386 :
+								case 387 :
+								case 389 :
+								case 390 :
+								case 391 :
+								case 392 :
+								case 393 :
+								case 394 :
+								case 395 :
+								case 396 :
+								case 397 :
+								case 398 :
+								case 399 :
+								case 400 :
+								case 401 :
+								case 403 :
+								case 404 :
+								case 405 :
+								case 406 :
+								case 407 :
+								case 408 :
+								case 409 :
+								case 411 :
+								case 412 :
+								case 413 :
+								case 414 :
+								case 416 :
+								case 417 :
+								case 418 :
+								case 419 :
+								case 420 :
+								case 421 :
+								case 422 :
+								case 423 :
+								case 424 :
+								case 425 :
+								case 426 :
+								case 427 :
+								case 428 :
+								case 429 :
+								case 430 :
+								case 433 :
+								case 434 :
+								case 435 :
+								case 436 :
+								case 437 :
+								case 438 :
+								case 439 :
+								case 440 :
+								case 441 :
+								case 442 :
+								case 443 :
+								case 446 :
+								case 450 :
+								case 451 :
+								case 453 :
+								case 454 :
+								case 455 :
+								case 456 :
+								case 458 :
 									monitor.wait();
 									break;
 								case 1:
@@ -7187,7 +7577,276 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0,1,3,4,6,7,9,10,12,13,15,17,20,22,23,24,25,26,27,28,30,31,33,34,36,38,41,43,44,45,46,47,53,58,62,65,67,69,70,73,75,76,78,79,80,85,87,89,90,92,94,95,96,97,101,104,106,108,109,111,113,114,115,119,122,124,126,127,129,131,132,133,135,137,138,139,140,141,143,144,145,146,147,148,152,157,158,159,165,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,191,200,201,202,203,204,205,206,210,212,213,214,215,216,217,218,219,220,221,222,223,224,225,229,234,235,236,237,241,243,244,245,246,247,248,249,250,251,252,253,254,255,256,260,265,266,267,268,281,282,283,284,285,286,289,294,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,320,329,331,332,333,334,335,336,337,338,339,340,341,342,343,344,348,354,356,357,358,359,360,361,362,363,364,365,366,367,368,369,373,379,381,382,383,384,385,386,387,388,389,390,391,392,393,394,398,406,408,409,410,411,412,413,414,415,416,417,418,419,420,421,425,430,431,432,433,434,435,436,437,439,440,441,442,443,444,445,446,447,448,449,450,451,452,454,455,456,457 :
+								case 0 :
+								case 1 :
+								case 3 :
+								case 4 :
+								case 6 :
+								case 7 :
+								case 9 :
+								case 10 :
+								case 12 :
+								case 13 :
+								case 15 :
+								case 17 :
+								case 20 :
+								case 22 :
+								case 23 :
+								case 24 :
+								case 25 :
+								case 26 :
+								case 27 :
+								case 28 :
+								case 30 :
+								case 31 :
+								case 33 :
+								case 34 :
+								case 36 :
+								case 38 :
+								case 41 :
+								case 43 :
+								case 44 :
+								case 45 :
+								case 46 :
+								case 47 :
+								case 53 :
+								case 58 :
+								case 62 :
+								case 65 :
+								case 67 :
+								case 69 :
+								case 70 :
+								case 73 :
+								case 75 :
+								case 76 :
+								case 78 :
+								case 79 :
+								case 80 :
+								case 85 :
+								case 87 :
+								case 89 :
+								case 90 :
+								case 92 :
+								case 94 :
+								case 95 :
+								case 96 :
+								case 97 :
+								case 101 :
+								case 104 :
+								case 106 :
+								case 108 :
+								case 109 :
+								case 111 :
+								case 113 :
+								case 114 :
+								case 115 :
+								case 119 :
+								case 122 :
+								case 124 :
+								case 126 :
+								case 127 :
+								case 129 :
+								case 131 :
+								case 132 :
+								case 133 :
+								case 135 :
+								case 137 :
+								case 138 :
+								case 139 :
+								case 140 :
+								case 141 :
+								case 143 :
+								case 144 :
+								case 145 :
+								case 146 :
+								case 147 :
+								case 148 :
+								case 152 :
+								case 157 :
+								case 158 :
+								case 159 :
+								case 165 :
+								case 167 :
+								case 168 :
+								case 169 :
+								case 170 :
+								case 171 :
+								case 172 :
+								case 173 :
+								case 174 :
+								case 175 :
+								case 176 :
+								case 177 :
+								case 178 :
+								case 179 :
+								case 180 :
+								case 181 :
+								case 182 :
+								case 183 :
+								case 191 :
+								case 200 :
+								case 201 :
+								case 202 :
+								case 203 :
+								case 204 :
+								case 205 :
+								case 206 :
+								case 210 :
+								case 212 :
+								case 213 :
+								case 214 :
+								case 215 :
+								case 216 :
+								case 217 :
+								case 218 :
+								case 219 :
+								case 220 :
+								case 221 :
+								case 222 :
+								case 223 :
+								case 224 :
+								case 225 :
+								case 229 :
+								case 234 :
+								case 235 :
+								case 236 :
+								case 237 :
+								case 241 :
+								case 243 :
+								case 244 :
+								case 245 :
+								case 246 :
+								case 247 :
+								case 248 :
+								case 249 :
+								case 250 :
+								case 251 :
+								case 252 :
+								case 253 :
+								case 254 :
+								case 255 :
+								case 256 :
+								case 260 :
+								case 265 :
+								case 266 :
+								case 267 :
+								case 268 :
+								case 281 :
+								case 282 :
+								case 283 :
+								case 284 :
+								case 285 :
+								case 286 :
+								case 289 :
+								case 294 :
+								case 296 :
+								case 297 :
+								case 298 :
+								case 299 :
+								case 300 :
+								case 301 :
+								case 302 :
+								case 303 :
+								case 304 :
+								case 305 :
+								case 306 :
+								case 307 :
+								case 308 :
+								case 309 :
+								case 310 :
+								case 311 :
+								case 312 :
+								case 320 :
+								case 329 :
+								case 331 :
+								case 332 :
+								case 333 :
+								case 334 :
+								case 335 :
+								case 336 :
+								case 337 :
+								case 338 :
+								case 339 :
+								case 340 :
+								case 341 :
+								case 342 :
+								case 343 :
+								case 344 :
+								case 348 :
+								case 354 :
+								case 356 :
+								case 357 :
+								case 358 :
+								case 359 :
+								case 360 :
+								case 361 :
+								case 362 :
+								case 363 :
+								case 364 :
+								case 365 :
+								case 366 :
+								case 367 :
+								case 368 :
+								case 369 :
+								case 373 :
+								case 379 :
+								case 381 :
+								case 382 :
+								case 383 :
+								case 384 :
+								case 385 :
+								case 386 :
+								case 387 :
+								case 388 :
+								case 389 :
+								case 390 :
+								case 391 :
+								case 392 :
+								case 393 :
+								case 394 :
+								case 398 :
+								case 406 :
+								case 408 :
+								case 409 :
+								case 410 :
+								case 411 :
+								case 412 :
+								case 413 :
+								case 414 :
+								case 415 :
+								case 416 :
+								case 417 :
+								case 418 :
+								case 419 :
+								case 420 :
+								case 421 :
+								case 425 :
+								case 430 :
+								case 431 :
+								case 432 :
+								case 433 :
+								case 434 :
+								case 435 :
+								case 436 :
+								case 437 :
+								case 439 :
+								case 440 :
+								case 441 :
+								case 442 :
+								case 443 :
+								case 444 :
+								case 445 :
+								case 446 :
+								case 447 :
+								case 448 :
+								case 449 :
+								case 450 :
+								case 451 :
+								case 452 :
+								case 454 :
+								case 455 :
+								case 456 :
+								case 457 :
 									monitor.wait();
 									break;
 								case 2:
@@ -9281,7 +9940,290 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0,1,2,4,5,7,8,10,11,13,14,16,18,20,22,26,27,28,29,31,32,34,35,37,39,41,43,47,54,59,63,66,68,69,70,71,74,76,77,79,80,81,82,83,86,88,89,90,91,93,94,95,96,97,98,102,105,107,108,109,110,112,113,114,115,116,120,123,125,126,127,128,130,131,132,133,134,136,137,138,139,140,141,142,146,147,148,150,151,152,154,155,156,158,159,160,161,162,164,165,167,168,172,173,179,180,181,182,183,187,188,189,190,191,195,196,197,198,199,203,204,205,206,207,208,210,212,214,217,218,219,223,224,225,227,228,229,231,232,233,235,236,237,238,239,241,243,245,248,249,250,254,255,256,258,259,260,262,263,264,266,267,268,269,270,272,274,276,277,284,285,286,287,288,289,290,291,292,293,294,296,297,301,302,308,309,310,311,312,316,317,318,319,320,324,325,326,327,328,329,331,333,336,337,338,342,343,344,346,347,348,350,351,352,353,354,356,358,361,362,363,367,368,369,371,372,373,375,376,377,378,379,381,383,386,387,388,392,393,394,396,397,398,400,401,402,403,404,406,408,410,413,414,415,419,420,421,423,424,425,427,428,429,436,437,438,440,441,442,443,444,445,446,447,448,449,450,451,452,453,455,456,457,458 :
+								case 0 :
+								case 1 :
+								case 2 :
+								case 4 :
+								case 5 :
+								case 7 :
+								case 8 :
+								case 10 :
+								case 11 :
+								case 13 :
+								case 14 :
+								case 16 :
+								case 18 :
+								case 20 :
+								case 22 :
+								case 26 :
+								case 27 :
+								case 28 :
+								case 29 :
+								case 31 :
+								case 32 :
+								case 34 :
+								case 35 :
+								case 37 :
+								case 39 :
+								case 41 :
+								case 43 :
+								case 47 :
+								case 54 :
+								case 59 :
+								case 63 :
+								case 66 :
+								case 68 :
+								case 69 :
+								case 70 :
+								case 71 :
+								case 74 :
+								case 76 :
+								case 77 :
+								case 79 :
+								case 80 :
+								case 81 :
+								case 82 :
+								case 83 :
+								case 86 :
+								case 88 :
+								case 89 :
+								case 90 :
+								case 91 :
+								case 93 :
+								case 94 :
+								case 95 :
+								case 96 :
+								case 97 :
+								case 98 :
+								case 102 :
+								case 105 :
+								case 107 :
+								case 108 :
+								case 109 :
+								case 110 :
+								case 112 :
+								case 113 :
+								case 114 :
+								case 115 :
+								case 116 :
+								case 120 :
+								case 123 :
+								case 125 :
+								case 126 :
+								case 127 :
+								case 128 :
+								case 130 :
+								case 131 :
+								case 132 :
+								case 133 :
+								case 134 :
+								case 136 :
+								case 137 :
+								case 138 :
+								case 139 :
+								case 140 :
+								case 141 :
+								case 142 :
+								case 146 :
+								case 147 :
+								case 148 :
+								case 150 :
+								case 151 :
+								case 152 :
+								case 154 :
+								case 155 :
+								case 156 :
+								case 158 :
+								case 159 :
+								case 160 :
+								case 161 :
+								case 162 :
+								case 164 :
+								case 165 :
+								case 167 :
+								case 168 :
+								case 172 :
+								case 173 :
+								case 179 :
+								case 180 :
+								case 181 :
+								case 182 :
+								case 183 :
+								case 187 :
+								case 188 :
+								case 189 :
+								case 190 :
+								case 191 :
+								case 195 :
+								case 196 :
+								case 197 :
+								case 198 :
+								case 199 :
+								case 203 :
+								case 204 :
+								case 205 :
+								case 206 :
+								case 207 :
+								case 208 :
+								case 210 :
+								case 212 :
+								case 214 :
+								case 217 :
+								case 218 :
+								case 219 :
+								case 223 :
+								case 224 :
+								case 225 :
+								case 227 :
+								case 228 :
+								case 229 :
+								case 231 :
+								case 232 :
+								case 233 :
+								case 235 :
+								case 236 :
+								case 237 :
+								case 238 :
+								case 239 :
+								case 241 :
+								case 243 :
+								case 245 :
+								case 248 :
+								case 249 :
+								case 250 :
+								case 254 :
+								case 255 :
+								case 256 :
+								case 258 :
+								case 259 :
+								case 260 :
+								case 262 :
+								case 263 :
+								case 264 :
+								case 266 :
+								case 267 :
+								case 268 :
+								case 269 :
+								case 270 :
+								case 272 :
+								case 274 :
+								case 276 :
+								case 277 :
+								case 284 :
+								case 285 :
+								case 286 :
+								case 287 :
+								case 288 :
+								case 289 :
+								case 290 :
+								case 291 :
+								case 292 :
+								case 293 :
+								case 294 :
+								case 296 :
+								case 297 :
+								case 301 :
+								case 302 :
+								case 308 :
+								case 309 :
+								case 310 :
+								case 311 :
+								case 312 :
+								case 316 :
+								case 317 :
+								case 318 :
+								case 319 :
+								case 320 :
+								case 324 :
+								case 325 :
+								case 326 :
+								case 327 :
+								case 328 :
+								case 329 :
+								case 331 :
+								case 333 :
+								case 336 :
+								case 337 :
+								case 338 :
+								case 342 :
+								case 343 :
+								case 344 :
+								case 346 :
+								case 347 :
+								case 348 :
+								case 350 :
+								case 351 :
+								case 352 :
+								case 353 :
+								case 354 :
+								case 356 :
+								case 358 :
+								case 361 :
+								case 362 :
+								case 363 :
+								case 367 :
+								case 368 :
+								case 369 :
+								case 371 :
+								case 372 :
+								case 373 :
+								case 375 :
+								case 376 :
+								case 377 :
+								case 378 :
+								case 379 :
+								case 381 :
+								case 383 :
+								case 386 :
+								case 387 :
+								case 388 :
+								case 392 :
+								case 393 :
+								case 394 :
+								case 396 :
+								case 397 :
+								case 398 :
+								case 400 :
+								case 401 :
+								case 402 :
+								case 403 :
+								case 404 :
+								case 406 :
+								case 408 :
+								case 410 :
+								case 413 :
+								case 414 :
+								case 415 :
+								case 419 :
+								case 420 :
+								case 421 :
+								case 423 :
+								case 424 :
+								case 425 :
+								case 427 :
+								case 428 :
+								case 429 :
+								case 436 :
+								case 437 :
+								case 438 :
+								case 440 :
+								case 441 :
+								case 442 :
+								case 443 :
+								case 444 :
+								case 445 :
+								case 446 :
+								case 447 :
+								case 448 :
+								case 449 :
+								case 450 :
+								case 451 :
+								case 452 :
+								case 453 :
+								case 455 :
+								case 456 :
+								case 457 :
+								case 458 :
 									monitor.wait();
 									break;
 								case 3:
@@ -11241,7 +12183,7 @@ public class CGProtocol_n_3 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_2_","master","worker_1_" };
+		return new String[] { "worker_2_","master","worker_0_","worker_1_" };
 	}
 	
 	@Override

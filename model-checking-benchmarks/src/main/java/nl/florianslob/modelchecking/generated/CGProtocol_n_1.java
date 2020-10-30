@@ -35,7 +35,12 @@ public class CGProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 1,2,3,6,9,11 :
+								case 1 :
+								case 2 :
+								case 3 :
+								case 6 :
+								case 9 :
+								case 11 :
 									monitor.wait();
 									break;
 								case 0:
@@ -143,7 +148,12 @@ public class CGProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0,4,5,7,10,11 :
+								case 0 :
+								case 4 :
+								case 5 :
+								case 7 :
+								case 10 :
+								case 11 :
 									monitor.wait();
 									break;
 								case 1:
