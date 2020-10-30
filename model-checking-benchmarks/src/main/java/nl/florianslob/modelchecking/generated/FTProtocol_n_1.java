@@ -37,7 +37,7 @@ public class FTProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0:
+								case 0,2,4,6,7,10,12,13,14,15,16,19,22,25,26,27,29,30,31,32,37,38,39,40,41,42,43,47,52,53,54,55,56 :
 									monitor.wait();
 									break;
 								case 1:
@@ -50,9 +50,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 2:
-									monitor.wait();
-									break;
 								case 3:
 									if (queueFrommasterToevolve_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -61,9 +58,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToevolve_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 4:
 									monitor.wait();
 									break;
 								case 5:
@@ -78,12 +72,6 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 6:
-									monitor.wait();
-									break;
-								case 7:
 									monitor.wait();
 									break;
 								case 8:
@@ -110,9 +98,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 10:
-									monitor.wait();
-									break;
 								case 11:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -125,21 +110,6 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 12:
-									monitor.wait();
-									break;
-								case 13:
-									monitor.wait();
-									break;
-								case 14:
-									monitor.wait();
-									break;
-								case 15:
-									monitor.wait();
-									break;
-								case 16:
 									monitor.wait();
 									break;
 								case 17:
@@ -158,9 +128,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 19:
-									monitor.wait();
-									break;
 								case 20:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -175,9 +142,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										state = 37;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 22:
 									monitor.wait();
 									break;
 								case 23:
@@ -196,33 +160,12 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 25:
-									monitor.wait();
-									break;
-								case 26:
-									monitor.wait();
-									break;
-								case 27:
-									monitor.wait();
-									break;
 								case 28:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 27;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 29:
-									monitor.wait();
-									break;
-								case 30:
-									monitor.wait();
-									break;
-								case 31:
-									monitor.wait();
-									break;
-								case 32:
 									monitor.wait();
 									break;
 								case 33:
@@ -255,27 +198,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										state = 29;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 37:
-									monitor.wait();
-									break;
-								case 38:
-									monitor.wait();
-									break;
-								case 39:
-									monitor.wait();
-									break;
-								case 40:
-									monitor.wait();
-									break;
-								case 41:
-									monitor.wait();
-									break;
-								case 42:
-									monitor.wait();
-									break;
-								case 43:
 									monitor.wait();
 									break;
 								case 44:
@@ -318,9 +240,6 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 47:
 									monitor.wait();
 									break;
 								case 48:
@@ -367,21 +286,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 52:
-									monitor.wait();
-									break;
-								case 53:
-									monitor.wait();
-									break;
-								case 54:
-									monitor.wait();
-									break;
-								case 55:
-									monitor.wait();
-									break;
-								case 56:
-									monitor.wait();
-									break;
 								case 57:
 									if (queueFrommasterToevolve_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -411,10 +315,7 @@ public class FTProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0:
-									monitor.wait();
-									break;
-								case 1:
+								case 0,1,3,5,6,7,8,10,12,16,21,24,26,27,28,29,31,32,34,35,36,37,41,42,43,45,46,47,49,50,51,53,55,56,57 :
 									monitor.wait();
 									break;
 								case 2:
@@ -427,9 +328,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 3:
-									monitor.wait();
-									break;
 								case 4:
 									if (queueFrommasterTofft_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -438,18 +336,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterTofft_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
-								case 6:
-									monitor.wait();
-									break;
-								case 7:
-									monitor.wait();
-									break;
-								case 8:
 									monitor.wait();
 									break;
 								case 9:
@@ -462,9 +348,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 10:
-									monitor.wait();
-									break;
 								case 11:
 									if (queueFrommasterTofft_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -473,9 +356,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterTofft_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 12:
 									monitor.wait();
 									break;
 								case 13:
@@ -512,9 +392,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 16:
-									monitor.wait();
-									break;
 								case 17:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -547,9 +424,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 21:
-									monitor.wait();
-									break;
 								case 22:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -566,27 +440,12 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 24:
-									monitor.wait();
-									break;
 								case 25:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 27;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 26:
-									monitor.wait();
-									break;
-								case 27:
-									monitor.wait();
-									break;
-								case 28:
-									monitor.wait();
-									break;
-								case 29:
 									monitor.wait();
 									break;
 								case 30:
@@ -597,30 +456,12 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 31:
-									monitor.wait();
-									break;
-								case 32:
-									monitor.wait();
-									break;
 								case 33:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 28;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 34:
-									monitor.wait();
-									break;
-								case 35:
-									monitor.wait();
-									break;
-								case 36:
-									monitor.wait();
-									break;
-								case 37:
 									monitor.wait();
 									break;
 								case 38:
@@ -661,15 +502,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 41:
-									monitor.wait();
-									break;
-								case 42:
-									monitor.wait();
-									break;
-								case 43:
-									monitor.wait();
-									break;
 								case 44:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -682,15 +514,6 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 45:
-									monitor.wait();
-									break;
-								case 46:
-									monitor.wait();
-									break;
-								case 47:
 									monitor.wait();
 									break;
 								case 48:
@@ -707,15 +530,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 49:
-									monitor.wait();
-									break;
-								case 50:
-									monitor.wait();
-									break;
-								case 51:
-									monitor.wait();
-									break;
 								case 52:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -730,9 +544,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 53:
-									monitor.wait();
-									break;
 								case 54:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -745,15 +556,6 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 55:
-									monitor.wait();
-									break;
-								case 56:
-									monitor.wait();
-									break;
-								case 57:
 									monitor.wait();
 									break;
 								default: throw new Exception("State number out of bounds");
@@ -775,15 +577,26 @@ public class FTProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
+								case 1,2,5,9,11,14,15,23,25,27,28,33,35,38,40,44,46,48,50,51,52,57 :
+									monitor.wait();
+									break;
 								case 0:
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
-											receiver = "evolve_0_";
+											int rnd = new Random().nextInt(2);
+											var receiverOptionsArray = new String[]{ "evolve_0_","fft_0_" };
+											receiver = receiverOptionsArray[rnd];
 										}
 										if (receiver.equals("evolve_0_")) {
 											monitor.notifyAll();
-											state = 1;
+											state = 3;
 											queueFrommasterToevolve_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("fft_0_")) {
+											monitor.notifyAll();
+											state = 4;
+											queueFrommasterTofft_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -798,21 +611,13 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 										if (receiver == null) {
-											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "fft_0_","evolve_0_" };
-											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("fft_0_")) {
-											monitor.notifyAll();
-											state = 4;
-											queueFrommasterTofft_0_.put(box.get());
-											return Optional.empty();
+											receiver = "evolve_0_";
 										}
 										if (receiver.equals("evolve_0_")) {
 											monitor.notifyAll();
-											state = 3;
+											state = 1;
 											queueFrommasterToevolve_0_.put(box.get());
 											return Optional.empty();
 										}
@@ -828,12 +633,6 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
 									monitor.wait();
 									break;
 								case 3:
@@ -864,9 +663,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 5:
-									monitor.wait();
-									break;
 								case 6:
 									if (queueFromevolve_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -878,25 +674,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									monitor.wait();
 									break;
 								case 7:
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-										if (receiver == null) {
-											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "fft_0_","evolve_0_" };
-											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("fft_0_")) {
-											monitor.notifyAll();
-											state = 4;
-											queueFrommasterTofft_0_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("evolve_0_")) {
-											monitor.notifyAll();
-											state = 3;
-											queueFrommasterToevolve_0_.put(box.get());
-											return Optional.empty();
-										}
-									}
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 										if (receiver == null) {
 											receiver = "evolve_0_";
@@ -908,7 +685,7 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 										if (receiver == null) {
 											receiver = "fft_0_";
 										}
@@ -919,7 +696,26 @@ public class FTProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+										if (receiver == null) {
+											int rnd = new Random().nextInt(2);
+											var receiverOptionsArray = new String[]{ "evolve_0_","fft_0_" };
+											receiver = receiverOptionsArray[rnd];
+										}
+										if (receiver.equals("evolve_0_")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrommasterToevolve_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("fft_0_")) {
+											monitor.notifyAll();
+											state = 4;
+											queueFrommasterTofft_0_.put(box.get());
+											return Optional.empty();
+										}
+									}
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 										if (receiver == null) {
 											receiver = "fft_0_";
 										}
@@ -946,9 +742,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 9:
-									monitor.wait();
-									break;
 								case 10:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
@@ -968,9 +761,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromevolve_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 11:
 									monitor.wait();
 									break;
 								case 12:
@@ -995,12 +785,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromevolve_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 14:
-									monitor.wait();
-									break;
-								case 15:
 									monitor.wait();
 									break;
 								case 16:
@@ -1037,12 +821,12 @@ public class FTProtocol_n_1 implements IProtocol {
 								case 19:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 30;
+										state = 22;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 22;
+										state = 30;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1058,12 +842,12 @@ public class FTProtocol_n_1 implements IProtocol {
 								case 21:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 34;
+										state = 36;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 36;
+										state = 34;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1076,9 +860,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 23:
-									monitor.wait();
-									break;
 								case 24:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -1087,21 +868,12 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 25:
-									monitor.wait();
-									break;
 								case 26:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 27;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 27:
-									monitor.wait();
-									break;
-								case 28:
 									monitor.wait();
 									break;
 								case 29:
@@ -1141,18 +913,12 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 33:
-									monitor.wait();
-									break;
 								case 34:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 35;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 35:
 									monitor.wait();
 									break;
 								case 36:
@@ -1166,17 +932,14 @@ public class FTProtocol_n_1 implements IProtocol {
 								case 37:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 29;
+										state = 32;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 32;
+										state = 29;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 38:
 									monitor.wait();
 									break;
 								case 39:
@@ -1187,9 +950,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromevolve_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 40:
 									monitor.wait();
 									break;
 								case 41:
@@ -1229,9 +989,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 44:
-									monitor.wait();
-									break;
 								case 45:
 									if (queueFromfft_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -1240,9 +997,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromfft_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 46:
 									monitor.wait();
 									break;
 								case 47:
@@ -1255,9 +1009,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 48:
-									monitor.wait();
-									break;
 								case 49:
 									if (queueFromfft_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -1266,15 +1017,6 @@ public class FTProtocol_n_1 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromfft_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 50:
-									monitor.wait();
-									break;
-								case 51:
-									monitor.wait();
-									break;
-								case 52:
 									monitor.wait();
 									break;
 								case 53:
@@ -1336,9 +1078,6 @@ public class FTProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 57:
-									monitor.wait();
-									break;
 								default: throw new Exception("State number out of bounds");
 							}
 						}
@@ -1352,7 +1091,7 @@ public class FTProtocol_n_1 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "master","evolve_0_","fft_0_" };
+		return new String[] { "evolve_0_","fft_0_","master" };
 	}
 	
 	@Override

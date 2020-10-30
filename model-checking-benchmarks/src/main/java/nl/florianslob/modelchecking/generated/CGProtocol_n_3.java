@@ -39,12 +39,46 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
+								case 19,21,24,25,40,42,45,46,60,64,65,66,67,68,69,70,71,72,75,77,78,80,81,83,143,145,149,151,153,155,156,160,184,186,190,192,194,198,209,211,215,216,218,220,222,226,228,230,232,233,238,240,242,246,247,249,250,251,253,257,259,261,263,264,269,273,275,279,280,281,283,288,291,292,313,315,319,321,323,327,330,334,335,337,339,341,345,347,349,351,353,355,359,360,362,363,364,366,370,372,374,376,377,378,388,402,415,438 :
+									monitor.wait();
+									break;
 								case 0:
+									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+										if (receiver == null) {
+											int rnd = new Random().nextInt(3);
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_","worker_2_" };
+											receiver = receiverOptionsArray[rnd];
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 5;
+											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 4;
+											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 6;
+											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+									}
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 2;
+											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
@@ -58,37 +92,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 2;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
-										}
-									}
-									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-										if (receiver == null) {
-											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_","worker_0_" };
-											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 5;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 6;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 4;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
-										}
 									}
 									monitor.wait();
 									break;
@@ -96,19 +99,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 8;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
 											state = 9;
 											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 8;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -118,19 +121,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 8;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
 											state = 271;
 											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 8;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -140,19 +143,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 271;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 9;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 271;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -206,19 +209,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 405;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 30;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 405;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -228,19 +231,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 12;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 11;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 12;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -437,9 +440,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 19:
-									monitor.wait();
-									break;
 								case 20:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
@@ -459,9 +459,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 21:
 									monitor.wait();
 									break;
 								case 22:
@@ -488,12 +485,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 24:
-									monitor.wait();
-									break;
-								case 25:
-									monitor.wait();
-									break;
 								case 26:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -508,19 +499,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 3;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 1;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 3;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
@@ -533,7 +524,7 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(3);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
 										}
 										if (receiver.equals("worker_2_")) {
@@ -542,16 +533,16 @@ public class CGProtocol_n_3 implements IProtocol {
 											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 5;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
-										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 4;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 5;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -561,19 +552,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 33;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 32;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 33;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -611,19 +602,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 36;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 35;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 36;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -770,9 +761,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 40:
-									monitor.wait();
-									break;
 								case 41:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
@@ -792,9 +780,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 42:
 									monitor.wait();
 									break;
 								case 43:
@@ -821,12 +806,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 45:
-									monitor.wait();
-									break;
-								case 46:
-									monitor.wait();
-									break;
 								case 47:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -840,7 +819,7 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 48:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 49;
+										state = 50;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
@@ -850,7 +829,7 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 50;
+										state = 49;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -858,12 +837,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 49:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 55;
+										state = 56;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 56;
+										state = 55;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -884,22 +863,17 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 51:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 117;
+										state = 99;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 99;
+										state = 117;
 										return Optional.empty();
 									}
 									monitor.wait();
 									break;
 								case 52:
-									if (isCloseAction) {
-										monitor.notifyAll();
-										state = 118;
-										return Optional.empty();
-									}
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 57;
@@ -910,17 +884,22 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 100;
 										return Optional.empty();
 									}
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 118;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 53:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 58;
+										state = 119;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 119;
+										state = 58;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
@@ -980,12 +959,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 58:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 62;
+										state = 85;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 85;
+										state = 62;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1001,9 +980,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 86;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 60:
 									monitor.wait();
 									break;
 								case 61:
@@ -1030,33 +1006,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 64:
-									monitor.wait();
-									break;
-								case 65:
-									monitor.wait();
-									break;
-								case 66:
-									monitor.wait();
-									break;
-								case 67:
-									monitor.wait();
-									break;
-								case 68:
-									monitor.wait();
-									break;
-								case 69:
-									monitor.wait();
-									break;
-								case 70:
-									monitor.wait();
-									break;
-								case 71:
-									monitor.wait();
-									break;
-								case 72:
-									monitor.wait();
-									break;
 								case 73:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -1073,21 +1022,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 75:
-									monitor.wait();
-									break;
 								case 76:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 69;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 77:
-									monitor.wait();
-									break;
-								case 78:
 									monitor.wait();
 									break;
 								case 79:
@@ -1098,21 +1038,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 80:
-									monitor.wait();
-									break;
-								case 81:
-									monitor.wait();
-									break;
 								case 82:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 83;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 83:
 									monitor.wait();
 									break;
 								case 84:
@@ -1182,12 +1113,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 92:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 87;
+										state = 73;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 73;
+										state = 87;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1195,12 +1126,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 93:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 74;
+										state = 88;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 88;
+										state = 74;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1208,12 +1139,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 94:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 95;
+										state = 96;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 96;
+										state = 95;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1271,12 +1202,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 100:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 61;
+										state = 103;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 103;
+										state = 61;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1284,12 +1215,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 101:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 62;
+										state = 104;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 104;
+										state = 62;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1297,12 +1228,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 102:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 63;
+										state = 105;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 105;
+										state = 63;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1374,12 +1305,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 111:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 106;
+										state = 73;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 73;
+										state = 106;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1455,12 +1386,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 118:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 121;
+										state = 103;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 103;
+										state = 121;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1558,12 +1489,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 129:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 106;
+										state = 124;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 124;
+										state = 106;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1571,12 +1502,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 130:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 125;
+										state = 107;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 107;
+										state = 125;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1584,12 +1515,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 131:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 132;
+										state = 114;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 114;
+										state = 132;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1618,12 +1549,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 134:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 110;
+										state = 128;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 128;
+										state = 110;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1631,12 +1562,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 135:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 111;
+										state = 129;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 129;
+										state = 111;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
@@ -1649,11 +1580,6 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 136:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 130;
-										return Optional.empty();
-									}
-									if (isCloseAction) {
-										monitor.notifyAll();
 										state = 93;
 										return Optional.empty();
 									}
@@ -1662,9 +1588,19 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 112;
 										return Optional.empty();
 									}
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 130;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 137:
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 139;
+										return Optional.empty();
+									}
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 140;
@@ -1675,22 +1611,17 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 138;
 										return Optional.empty();
 									}
-									if (isCloseAction) {
-										monitor.notifyAll();
-										state = 139;
-										return Optional.empty();
-									}
 									monitor.wait();
 									break;
 								case 138:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 96;
+										state = 95;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 95;
+										state = 96;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1698,12 +1629,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 139:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 114;
+										state = 95;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 95;
+										state = 114;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1711,12 +1642,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 140:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 114;
+										state = 132;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 132;
+										state = 114;
 										return Optional.empty();
 									}
 									monitor.wait();
@@ -1724,12 +1655,12 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 141:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 115;
+										state = 133;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 133;
+										state = 115;
 										return Optional.empty();
 									}
 									if (isCloseAction) {
@@ -1742,11 +1673,6 @@ public class CGProtocol_n_3 implements IProtocol {
 								case 142:
 									if (isCloseAction) {
 										monitor.notifyAll();
-										state = 134;
-										return Optional.empty();
-									}
-									if (isCloseAction) {
-										monitor.notifyAll();
 										state = 116;
 										return Optional.empty();
 									}
@@ -1755,9 +1681,11 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 98;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 143:
+									if (isCloseAction) {
+										monitor.notifyAll();
+										state = 134;
+										return Optional.empty();
+									}
 									monitor.wait();
 									break;
 								case 144:
@@ -1770,23 +1698,20 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 145:
-									monitor.wait();
-									break;
 								case 146:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 147;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 148;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 147;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -1810,9 +1735,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 149:
-									monitor.wait();
-									break;
 								case 150:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -1821,9 +1743,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 151:
 									monitor.wait();
 									break;
 								case 152:
@@ -1836,9 +1755,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 153:
-									monitor.wait();
-									break;
 								case 154:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -1847,12 +1763,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 155:
-									monitor.wait();
-									break;
-								case 156:
 									monitor.wait();
 									break;
 								case 157:
@@ -1902,9 +1812,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 160:
 									monitor.wait();
 									break;
 								case 161:
@@ -2047,19 +1954,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 169:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 174;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 175;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 174;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2084,19 +1991,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 172:
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 173;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 147;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 173;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2131,19 +2038,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 176:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 177;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 178;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 177;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2168,13 +2075,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 179:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 180;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 181;
@@ -2189,22 +2089,29 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 180;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
 									monitor.wait();
 									break;
 								case 180:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 147;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 148;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 147;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2252,9 +2159,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 184:
-									monitor.wait();
-									break;
 								case 185:
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2263,9 +2167,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 186:
 									monitor.wait();
 									break;
 								case 187:
@@ -2305,17 +2206,7 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 190:
-									monitor.wait();
-									break;
 								case 191:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 173;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 183;
@@ -2323,9 +2214,13 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 192:
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 173;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
 									monitor.wait();
 									break;
 								case 193:
@@ -2338,23 +2233,20 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 194:
-									monitor.wait();
-									break;
 								case 195:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 196;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 197;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 196;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -2376,9 +2268,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 198:
 									monitor.wait();
 									break;
 								case 199:
@@ -2548,9 +2437,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 209:
-									monitor.wait();
-									break;
 								case 210:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
@@ -2570,9 +2456,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 211:
 									monitor.wait();
 									break;
 								case 212:
@@ -2620,12 +2503,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 215:
-									monitor.wait();
-									break;
-								case 216:
-									monitor.wait();
-									break;
 								case 217:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2634,9 +2511,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 218:
 									monitor.wait();
 									break;
 								case 219:
@@ -2649,9 +2523,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 220:
-									monitor.wait();
-									break;
 								case 221:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2660,9 +2531,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 222:
 									monitor.wait();
 									break;
 								case 223:
@@ -2702,9 +2570,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 226:
-									monitor.wait();
-									break;
 								case 227:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2713,9 +2578,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 228:
 									monitor.wait();
 									break;
 								case 229:
@@ -2728,9 +2590,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 230:
-									monitor.wait();
-									break;
 								case 231:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2739,12 +2598,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 232:
-									monitor.wait();
-									break;
-								case 233:
 									monitor.wait();
 									break;
 								case 234:
@@ -2817,9 +2670,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 238:
-									monitor.wait();
-									break;
 								case 239:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
@@ -2832,9 +2682,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 240:
 									monitor.wait();
 									break;
 								case 241:
@@ -2856,9 +2703,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 242:
 									monitor.wait();
 									break;
 								case 243:
@@ -2899,12 +2743,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 246:
-									monitor.wait();
-									break;
-								case 247:
-									monitor.wait();
-									break;
 								case 248:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2915,15 +2753,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 249:
-									monitor.wait();
-									break;
-								case 250:
-									monitor.wait();
-									break;
-								case 251:
-									monitor.wait();
-									break;
 								case 252:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2932,9 +2761,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 253:
 									monitor.wait();
 									break;
 								case 254:
@@ -2974,9 +2800,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 257:
-									monitor.wait();
-									break;
 								case 258:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -2985,9 +2808,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 259:
 									monitor.wait();
 									break;
 								case 260:
@@ -3000,9 +2820,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 261:
-									monitor.wait();
-									break;
 								case 262:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3011,12 +2828,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 263:
-									monitor.wait();
-									break;
-								case 264:
 									monitor.wait();
 									break;
 								case 265:
@@ -3082,9 +2893,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 269:
-									monitor.wait();
-									break;
 								case 270:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
@@ -3135,9 +2943,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 273:
-									monitor.wait();
-									break;
 								case 274:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
@@ -3150,9 +2955,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 275:
 									monitor.wait();
 									break;
 								case 276:
@@ -3200,15 +3002,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 279:
-									monitor.wait();
-									break;
-								case 280:
-									monitor.wait();
-									break;
-								case 281:
-									monitor.wait();
-									break;
 								case 282:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3219,23 +3012,20 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 283:
-									monitor.wait();
-									break;
 								case 284:
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 286;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 285;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 286;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3269,9 +3059,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 288:
-									monitor.wait();
-									break;
 								case 289:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3290,12 +3077,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 291:
-									monitor.wait();
-									break;
-								case 292:
 									monitor.wait();
 									break;
 								case 293:
@@ -3393,19 +3174,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 298:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 303;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 304;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 303;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3430,19 +3211,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 301:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 285;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 302;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 285;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3477,19 +3258,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 305:
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 307;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 306;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 307;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3521,19 +3302,19 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 311;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 310;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 311;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3555,19 +3336,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									monitor.wait();
 									break;
 								case 310:
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 302;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 285;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 302;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3598,9 +3379,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 313:
-									monitor.wait();
-									break;
 								case 314:
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3611,23 +3389,20 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 315:
-									monitor.wait();
-									break;
 								case 316:
-									if (queueFromworker_0_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 317;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_0_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 318;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_0_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 317;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -3651,9 +3426,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 319:
-									monitor.wait();
-									break;
 								case 320:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3671,9 +3443,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 321:
-									monitor.wait();
-									break;
 								case 322:
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3682,9 +3451,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 323:
 									monitor.wait();
 									break;
 								case 324:
@@ -3724,9 +3490,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 327:
-									monitor.wait();
-									break;
 								case 328:
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3756,9 +3519,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 330:
 									monitor.wait();
 									break;
 								case 331:
@@ -3806,12 +3566,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 334:
-									monitor.wait();
-									break;
-								case 335:
-									monitor.wait();
-									break;
 								case 336:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3820,9 +3574,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 337:
 									monitor.wait();
 									break;
 								case 338:
@@ -3835,9 +3586,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 339:
-									monitor.wait();
-									break;
 								case 340:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3846,9 +3594,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 341:
 									monitor.wait();
 									break;
 								case 342:
@@ -3888,9 +3633,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 345:
-									monitor.wait();
-									break;
 								case 346:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3899,9 +3641,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 347:
 									monitor.wait();
 									break;
 								case 348:
@@ -3914,9 +3653,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 349:
-									monitor.wait();
-									break;
 								case 350:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3927,9 +3663,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 351:
-									monitor.wait();
-									break;
 								case 352:
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -3938,9 +3671,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 353:
 									monitor.wait();
 									break;
 								case 354:
@@ -3962,9 +3692,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 355:
 									monitor.wait();
 									break;
 								case 356:
@@ -4005,12 +3732,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 359:
-									monitor.wait();
-									break;
-								case 360:
-									monitor.wait();
-									break;
 								case 361:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -4021,15 +3742,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 362:
-									monitor.wait();
-									break;
-								case 363:
-									monitor.wait();
-									break;
-								case 364:
-									monitor.wait();
-									break;
 								case 365:
 									if (queueFromworker_1_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -4038,9 +3750,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 366:
 									monitor.wait();
 									break;
 								case 367:
@@ -4080,9 +3789,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 370:
-									monitor.wait();
-									break;
 								case 371:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -4091,9 +3797,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 372:
 									monitor.wait();
 									break;
 								case 373:
@@ -4106,9 +3809,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 374:
-									monitor.wait();
-									break;
 								case 375:
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -4117,15 +3817,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
-									monitor.wait();
-									break;
-								case 376:
-									monitor.wait();
-									break;
-								case 377:
-									monitor.wait();
-									break;
-								case 378:
 									monitor.wait();
 									break;
 								case 379:
@@ -4175,19 +3866,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 384;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 383;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 384;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4289,9 +3980,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 388:
 									monitor.wait();
 									break;
 								case 389:
@@ -4532,9 +4220,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 402:
-									monitor.wait();
-									break;
 								case 403:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
@@ -4589,19 +4274,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_2_")) {
-											monitor.notifyAll();
-											state = 409;
-											queueFrommasterToworker_2_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 241;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_2_")) {
+											monitor.notifyAll();
+											state = 409;
+											queueFrommasterToworker_2_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4632,19 +4317,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+											var receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 410;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_2_")) {
 											monitor.notifyAll();
 											state = 411;
 											queueFrommasterToworker_2_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 410;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -4748,9 +4433,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 415:
-									monitor.wait();
-									break;
 								case 416:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
@@ -4812,19 +4494,19 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (queueFromworker_1_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 420;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_1_Tomaster.take());
-									}
 									if (queueFromworker_2_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 421;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_2_Tomaster.take());
+									}
+									if (queueFromworker_1_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 420;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_1_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -5007,19 +4689,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 399;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 431;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 399;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5137,9 +4819,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 438:
-									monitor.wait();
-									break;
 								case 439:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
@@ -5166,19 +4845,19 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									if (queueFromworker_2_Tomaster.peek() != null ) {
-										monitor.notifyAll();
-										state = 442;
-										// Disabling unchecked inspection: We did check the class in the if statement above
-										//noinspection unchecked
-										return Optional.of((Any)queueFromworker_2_Tomaster.take());
-									}
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
 										state = 441;
 										// Disabling unchecked inspection: We did check the class in the if statement above
 										//noinspection unchecked
 										return Optional.of((Any)queueFromworker_0_Tomaster.take());
+									}
+									if (queueFromworker_2_Tomaster.peek() != null ) {
+										monitor.notifyAll();
+										state = 442;
+										// Disabling unchecked inspection: We did check the class in the if statement above
+										//noinspection unchecked
+										return Optional.of((Any)queueFromworker_2_Tomaster.take());
 									}
 									monitor.wait();
 									break;
@@ -5347,19 +5026,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_1_")) {
-											monitor.notifyAll();
-											state = 400;
-											queueFrommasterToworker_1_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_0_")) {
 											monitor.notifyAll();
 											state = 447;
 											queueFrommasterToworker_0_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_1_")) {
+											monitor.notifyAll();
+											state = 400;
+											queueFrommasterToworker_1_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5426,19 +5105,19 @@ public class CGProtocol_n_3 implements IProtocol {
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
 											int rnd = new Random().nextInt(2);
-											var receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+											var receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 											receiver = receiverOptionsArray[rnd];
-										}
-										if (receiver.equals("worker_0_")) {
-											monitor.notifyAll();
-											state = 265;
-											queueFrommasterToworker_0_.put(box.get());
-											return Optional.empty();
 										}
 										if (receiver.equals("worker_1_")) {
 											monitor.notifyAll();
 											state = 426;
 											queueFrommasterToworker_1_.put(box.get());
+											return Optional.empty();
+										}
+										if (receiver.equals("worker_0_")) {
+											monitor.notifyAll();
+											state = 265;
+											queueFrommasterToworker_0_.put(box.get());
 											return Optional.empty();
 										}
 									}
@@ -5542,7 +5221,7 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0:
+								case 0,2,3,5,6,10,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,31,34,35,36,37,38,39,40,41,42,43,44,45,46,47,52,57,61,64,67,68,69,71,72,73,74,75,76,77,82,83,84,87,88,89,91,92,93,94,95,96,98,100,103,106,107,108,110,111,112,113,114,116,118,121,124,125,126,128,129,130,131,132,134,135,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,214,219,237,270,271,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,333,338,352,379,380,381,382,384,385,386,387,389,390,391,392,393,394,395,396,397,398,399,400,401,403,404,405,406,407,408,409,411,412,413,414,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,433,434,435,436,437,438,439,440,441,442,443,446,450,451,453,454,455,456,458 :
 									monitor.wait();
 									break;
 								case 1:
@@ -5555,12 +5234,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 2:
-									monitor.wait();
-									break;
-								case 3:
-									monitor.wait();
-									break;
 								case 4:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -5569,12 +5242,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
-								case 6:
 									monitor.wait();
 									break;
 								case 7:
@@ -5611,9 +5278,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 10:
-									monitor.wait();
-									break;
 								case 11:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -5640,51 +5304,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 13:
-									monitor.wait();
-									break;
-								case 14:
-									monitor.wait();
-									break;
-								case 15:
-									monitor.wait();
-									break;
-								case 16:
-									monitor.wait();
-									break;
-								case 17:
-									monitor.wait();
-									break;
-								case 18:
-									monitor.wait();
-									break;
-								case 19:
-									monitor.wait();
-									break;
-								case 20:
-									monitor.wait();
-									break;
-								case 21:
-									monitor.wait();
-									break;
-								case 22:
-									monitor.wait();
-									break;
-								case 23:
-									monitor.wait();
-									break;
-								case 24:
-									monitor.wait();
-									break;
-								case 25:
-									monitor.wait();
-									break;
-								case 26:
-									monitor.wait();
-									break;
-								case 27:
 									monitor.wait();
 									break;
 								case 28:
@@ -5721,9 +5340,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 31:
-									monitor.wait();
-									break;
 								case 32:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -5750,48 +5366,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 34:
-									monitor.wait();
-									break;
-								case 35:
-									monitor.wait();
-									break;
-								case 36:
-									monitor.wait();
-									break;
-								case 37:
-									monitor.wait();
-									break;
-								case 38:
-									monitor.wait();
-									break;
-								case 39:
-									monitor.wait();
-									break;
-								case 40:
-									monitor.wait();
-									break;
-								case 41:
-									monitor.wait();
-									break;
-								case 42:
-									monitor.wait();
-									break;
-								case 43:
-									monitor.wait();
-									break;
-								case 44:
-									monitor.wait();
-									break;
-								case 45:
-									monitor.wait();
-									break;
-								case 46:
-									monitor.wait();
-									break;
-								case 47:
 									monitor.wait();
 									break;
 								case 48:
@@ -5826,9 +5400,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 52:
-									monitor.wait();
-									break;
 								case 53:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -5861,9 +5432,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 57:
-									monitor.wait();
-									break;
 								case 58:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -5888,9 +5456,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 61:
-									monitor.wait();
-									break;
 								case 62:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -5905,9 +5470,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										state = 82;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 64:
 									monitor.wait();
 									break;
 								case 65:
@@ -5926,42 +5488,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 67:
-									monitor.wait();
-									break;
-								case 68:
-									monitor.wait();
-									break;
-								case 69:
-									monitor.wait();
-									break;
 								case 70:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 69;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 71:
-									monitor.wait();
-									break;
-								case 72:
-									monitor.wait();
-									break;
-								case 73:
-									monitor.wait();
-									break;
-								case 74:
-									monitor.wait();
-									break;
-								case 75:
-									monitor.wait();
-									break;
-								case 76:
-									monitor.wait();
-									break;
-								case 77:
 									monitor.wait();
 									break;
 								case 78:
@@ -5996,15 +5528,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 82:
-									monitor.wait();
-									break;
-								case 83:
-									monitor.wait();
-									break;
-								case 84:
-									monitor.wait();
-									break;
 								case 85:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -6021,39 +5544,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 87:
-									monitor.wait();
-									break;
-								case 88:
-									monitor.wait();
-									break;
-								case 89:
-									monitor.wait();
-									break;
 								case 90:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 89;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 91:
-									monitor.wait();
-									break;
-								case 92:
-									monitor.wait();
-									break;
-								case 93:
-									monitor.wait();
-									break;
-								case 94:
-									monitor.wait();
-									break;
-								case 95:
-									monitor.wait();
-									break;
-								case 96:
 									monitor.wait();
 									break;
 								case 97:
@@ -6064,18 +5560,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 98:
-									monitor.wait();
-									break;
 								case 99:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 103;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 100:
 									monitor.wait();
 									break;
 								case 101:
@@ -6094,9 +5584,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 103:
-									monitor.wait();
-									break;
 								case 104:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -6113,36 +5600,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 106:
-									monitor.wait();
-									break;
-								case 107:
-									monitor.wait();
-									break;
-								case 108:
-									monitor.wait();
-									break;
 								case 109:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 108;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 110:
-									monitor.wait();
-									break;
-								case 111:
-									monitor.wait();
-									break;
-								case 112:
-									monitor.wait();
-									break;
-								case 113:
-									monitor.wait();
-									break;
-								case 114:
 									monitor.wait();
 									break;
 								case 115:
@@ -6153,18 +5616,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 116:
-									monitor.wait();
-									break;
 								case 117:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 121;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 118:
 									monitor.wait();
 									break;
 								case 119:
@@ -6183,9 +5640,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 121:
-									monitor.wait();
-									break;
 								case 122:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -6202,36 +5656,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 124:
-									monitor.wait();
-									break;
-								case 125:
-									monitor.wait();
-									break;
-								case 126:
-									monitor.wait();
-									break;
 								case 127:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 126;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 128:
-									monitor.wait();
-									break;
-								case 129:
-									monitor.wait();
-									break;
-								case 130:
-									monitor.wait();
-									break;
-								case 131:
-									monitor.wait();
-									break;
-								case 132:
 									monitor.wait();
 									break;
 								case 133:
@@ -6242,231 +5672,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 134:
-									monitor.wait();
-									break;
-								case 135:
-									monitor.wait();
-									break;
-								case 136:
-									monitor.wait();
-									break;
-								case 137:
-									monitor.wait();
-									break;
-								case 138:
-									monitor.wait();
-									break;
-								case 139:
-									monitor.wait();
-									break;
-								case 140:
-									monitor.wait();
-									break;
 								case 141:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 137;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 142:
-									monitor.wait();
-									break;
-								case 143:
-									monitor.wait();
-									break;
-								case 144:
-									monitor.wait();
-									break;
-								case 145:
-									monitor.wait();
-									break;
-								case 146:
-									monitor.wait();
-									break;
-								case 147:
-									monitor.wait();
-									break;
-								case 148:
-									monitor.wait();
-									break;
-								case 149:
-									monitor.wait();
-									break;
-								case 150:
-									monitor.wait();
-									break;
-								case 151:
-									monitor.wait();
-									break;
-								case 152:
-									monitor.wait();
-									break;
-								case 153:
-									monitor.wait();
-									break;
-								case 154:
-									monitor.wait();
-									break;
-								case 155:
-									monitor.wait();
-									break;
-								case 156:
-									monitor.wait();
-									break;
-								case 157:
-									monitor.wait();
-									break;
-								case 158:
-									monitor.wait();
-									break;
-								case 159:
-									monitor.wait();
-									break;
-								case 160:
-									monitor.wait();
-									break;
-								case 161:
-									monitor.wait();
-									break;
-								case 162:
-									monitor.wait();
-									break;
-								case 163:
-									monitor.wait();
-									break;
-								case 164:
-									monitor.wait();
-									break;
-								case 165:
-									monitor.wait();
-									break;
-								case 166:
-									monitor.wait();
-									break;
-								case 167:
-									monitor.wait();
-									break;
-								case 168:
-									monitor.wait();
-									break;
-								case 169:
-									monitor.wait();
-									break;
-								case 170:
-									monitor.wait();
-									break;
-								case 171:
-									monitor.wait();
-									break;
-								case 172:
-									monitor.wait();
-									break;
-								case 173:
-									monitor.wait();
-									break;
-								case 174:
-									monitor.wait();
-									break;
-								case 175:
-									monitor.wait();
-									break;
-								case 176:
-									monitor.wait();
-									break;
-								case 177:
-									monitor.wait();
-									break;
-								case 178:
-									monitor.wait();
-									break;
-								case 179:
-									monitor.wait();
-									break;
-								case 180:
-									monitor.wait();
-									break;
-								case 181:
-									monitor.wait();
-									break;
-								case 182:
-									monitor.wait();
-									break;
-								case 183:
-									monitor.wait();
-									break;
-								case 184:
-									monitor.wait();
-									break;
-								case 185:
-									monitor.wait();
-									break;
-								case 186:
-									monitor.wait();
-									break;
-								case 187:
-									monitor.wait();
-									break;
-								case 188:
-									monitor.wait();
-									break;
-								case 189:
-									monitor.wait();
-									break;
-								case 190:
-									monitor.wait();
-									break;
-								case 191:
-									monitor.wait();
-									break;
-								case 192:
-									monitor.wait();
-									break;
-								case 193:
-									monitor.wait();
-									break;
-								case 194:
-									monitor.wait();
-									break;
-								case 195:
-									monitor.wait();
-									break;
-								case 196:
-									monitor.wait();
-									break;
-								case 197:
-									monitor.wait();
-									break;
-								case 198:
-									monitor.wait();
-									break;
-								case 199:
-									monitor.wait();
-									break;
-								case 200:
-									monitor.wait();
-									break;
-								case 201:
-									monitor.wait();
-									break;
-								case 202:
-									monitor.wait();
-									break;
-								case 203:
-									monitor.wait();
-									break;
-								case 204:
-									monitor.wait();
-									break;
-								case 205:
-									monitor.wait();
-									break;
-								case 206:
-									monitor.wait();
-									break;
-								case 207:
 									monitor.wait();
 									break;
 								case 208:
@@ -6553,9 +5764,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 214:
-									monitor.wait();
-									break;
 								case 215:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -6610,9 +5818,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 219:
 									monitor.wait();
 									break;
 								case 220:
@@ -6851,9 +6056,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 237:
 									monitor.wait();
 									break;
 								case 238:
@@ -7192,12 +6394,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 270:
-									monitor.wait();
-									break;
-								case 271:
-									monitor.wait();
-									break;
 								case 272:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -7244,165 +6440,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 276:
-									monitor.wait();
-									break;
-								case 277:
-									monitor.wait();
-									break;
-								case 278:
-									monitor.wait();
-									break;
-								case 279:
-									monitor.wait();
-									break;
-								case 280:
-									monitor.wait();
-									break;
-								case 281:
-									monitor.wait();
-									break;
-								case 282:
-									monitor.wait();
-									break;
-								case 283:
-									monitor.wait();
-									break;
-								case 284:
-									monitor.wait();
-									break;
-								case 285:
-									monitor.wait();
-									break;
-								case 286:
-									monitor.wait();
-									break;
-								case 287:
-									monitor.wait();
-									break;
-								case 288:
-									monitor.wait();
-									break;
-								case 289:
-									monitor.wait();
-									break;
-								case 290:
-									monitor.wait();
-									break;
-								case 291:
-									monitor.wait();
-									break;
-								case 292:
-									monitor.wait();
-									break;
-								case 293:
-									monitor.wait();
-									break;
-								case 294:
-									monitor.wait();
-									break;
-								case 295:
-									monitor.wait();
-									break;
-								case 296:
-									monitor.wait();
-									break;
-								case 297:
-									monitor.wait();
-									break;
-								case 298:
-									monitor.wait();
-									break;
-								case 299:
-									monitor.wait();
-									break;
-								case 300:
-									monitor.wait();
-									break;
-								case 301:
-									monitor.wait();
-									break;
-								case 302:
-									monitor.wait();
-									break;
-								case 303:
-									monitor.wait();
-									break;
-								case 304:
-									monitor.wait();
-									break;
-								case 305:
-									monitor.wait();
-									break;
-								case 306:
-									monitor.wait();
-									break;
-								case 307:
-									monitor.wait();
-									break;
-								case 308:
-									monitor.wait();
-									break;
-								case 309:
-									monitor.wait();
-									break;
-								case 310:
-									monitor.wait();
-									break;
-								case 311:
-									monitor.wait();
-									break;
-								case 312:
-									monitor.wait();
-									break;
-								case 313:
-									monitor.wait();
-									break;
-								case 314:
-									monitor.wait();
-									break;
-								case 315:
-									monitor.wait();
-									break;
-								case 316:
-									monitor.wait();
-									break;
-								case 317:
-									monitor.wait();
-									break;
-								case 318:
-									monitor.wait();
-									break;
-								case 319:
-									monitor.wait();
-									break;
-								case 320:
-									monitor.wait();
-									break;
-								case 321:
-									monitor.wait();
-									break;
-								case 322:
-									monitor.wait();
-									break;
-								case 323:
-									monitor.wait();
-									break;
-								case 324:
-									monitor.wait();
-									break;
-								case 325:
-									monitor.wait();
-									break;
-								case 326:
-									monitor.wait();
-									break;
-								case 327:
-									monitor.wait();
-									break;
-								case 328:
 									monitor.wait();
 									break;
 								case 329:
@@ -7461,9 +6498,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 333:
-									monitor.wait();
-									break;
 								case 334:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -7518,9 +6552,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 338:
 									monitor.wait();
 									break;
 								case 339:
@@ -7703,9 +6734,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 352:
 									monitor.wait();
 									break;
 								case 353:
@@ -7984,18 +7012,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 379:
-									monitor.wait();
-									break;
-								case 380:
-									monitor.wait();
-									break;
-								case 381:
-									monitor.wait();
-									break;
-								case 382:
-									monitor.wait();
-									break;
 								case 383:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -8004,18 +7020,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 384:
-									monitor.wait();
-									break;
-								case 385:
-									monitor.wait();
-									break;
-								case 386:
-									monitor.wait();
-									break;
-								case 387:
 									monitor.wait();
 									break;
 								case 388:
@@ -8028,45 +7032,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 389:
-									monitor.wait();
-									break;
-								case 390:
-									monitor.wait();
-									break;
-								case 391:
-									monitor.wait();
-									break;
-								case 392:
-									monitor.wait();
-									break;
-								case 393:
-									monitor.wait();
-									break;
-								case 394:
-									monitor.wait();
-									break;
-								case 395:
-									monitor.wait();
-									break;
-								case 396:
-									monitor.wait();
-									break;
-								case 397:
-									monitor.wait();
-									break;
-								case 398:
-									monitor.wait();
-									break;
-								case 399:
-									monitor.wait();
-									break;
-								case 400:
-									monitor.wait();
-									break;
-								case 401:
-									monitor.wait();
-									break;
 								case 402:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -8075,27 +7040,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 403:
-									monitor.wait();
-									break;
-								case 404:
-									monitor.wait();
-									break;
-								case 405:
-									monitor.wait();
-									break;
-								case 406:
-									monitor.wait();
-									break;
-								case 407:
-									monitor.wait();
-									break;
-								case 408:
-									monitor.wait();
-									break;
-								case 409:
 									monitor.wait();
 									break;
 								case 410:
@@ -8108,18 +7052,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 411:
-									monitor.wait();
-									break;
-								case 412:
-									monitor.wait();
-									break;
-								case 413:
-									monitor.wait();
-									break;
-								case 414:
-									monitor.wait();
-									break;
 								case 415:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -8128,51 +7060,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 416:
-									monitor.wait();
-									break;
-								case 417:
-									monitor.wait();
-									break;
-								case 418:
-									monitor.wait();
-									break;
-								case 419:
-									monitor.wait();
-									break;
-								case 420:
-									monitor.wait();
-									break;
-								case 421:
-									monitor.wait();
-									break;
-								case 422:
-									monitor.wait();
-									break;
-								case 423:
-									monitor.wait();
-									break;
-								case 424:
-									monitor.wait();
-									break;
-								case 425:
-									monitor.wait();
-									break;
-								case 426:
-									monitor.wait();
-									break;
-								case 427:
-									monitor.wait();
-									break;
-								case 428:
-									monitor.wait();
-									break;
-								case 429:
-									monitor.wait();
-									break;
-								case 430:
 									monitor.wait();
 									break;
 								case 431:
@@ -8197,39 +7084,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 433:
-									monitor.wait();
-									break;
-								case 434:
-									monitor.wait();
-									break;
-								case 435:
-									monitor.wait();
-									break;
-								case 436:
-									monitor.wait();
-									break;
-								case 437:
-									monitor.wait();
-									break;
-								case 438:
-									monitor.wait();
-									break;
-								case 439:
-									monitor.wait();
-									break;
-								case 440:
-									monitor.wait();
-									break;
-								case 441:
-									monitor.wait();
-									break;
-								case 442:
-									monitor.wait();
-									break;
-								case 443:
 									monitor.wait();
 									break;
 								case 444:
@@ -8258,9 +7112,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 446:
 									monitor.wait();
 									break;
 								case 447:
@@ -8297,12 +7148,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 450:
-									monitor.wait();
-									break;
-								case 451:
-									monitor.wait();
-									break;
 								case 452:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -8313,18 +7158,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 453:
-									monitor.wait();
-									break;
-								case 454:
-									monitor.wait();
-									break;
-								case 455:
-									monitor.wait();
-									break;
-								case 456:
-									monitor.wait();
-									break;
 								case 457:
 									if (queueFrommasterToworker_0_.peek() != null ) {
 										monitor.notifyAll();
@@ -8333,9 +7166,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_0_.take());
 									}
-									monitor.wait();
-									break;
-								case 458:
 									monitor.wait();
 									break;
 								default: throw new Exception("State number out of bounds");
@@ -8357,10 +7187,7 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0:
-									monitor.wait();
-									break;
-								case 1:
+								case 0,1,3,4,6,7,9,10,12,13,15,17,20,22,23,24,25,26,27,28,30,31,33,34,36,38,41,43,44,45,46,47,53,58,62,65,67,69,70,73,75,76,78,79,80,85,87,89,90,92,94,95,96,97,101,104,106,108,109,111,113,114,115,119,122,124,126,127,129,131,132,133,135,137,138,139,140,141,143,144,145,146,147,148,152,157,158,159,165,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,191,200,201,202,203,204,205,206,210,212,213,214,215,216,217,218,219,220,221,222,223,224,225,229,234,235,236,237,241,243,244,245,246,247,248,249,250,251,252,253,254,255,256,260,265,266,267,268,281,282,283,284,285,286,289,294,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,320,329,331,332,333,334,335,336,337,338,339,340,341,342,343,344,348,354,356,357,358,359,360,361,362,363,364,365,366,367,368,369,373,379,381,382,383,384,385,386,387,388,389,390,391,392,393,394,398,406,408,409,410,411,412,413,414,415,416,417,418,419,420,421,425,430,431,432,433,434,435,436,437,439,440,441,442,443,444,445,446,447,448,449,450,451,452,454,455,456,457 :
 									monitor.wait();
 									break;
 								case 2:
@@ -8373,12 +7200,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 3:
-									monitor.wait();
-									break;
-								case 4:
-									monitor.wait();
-									break;
 								case 5:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -8387,12 +7208,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
-									monitor.wait();
-									break;
-								case 6:
-									monitor.wait();
-									break;
-								case 7:
 									monitor.wait();
 									break;
 								case 8:
@@ -8405,12 +7220,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 9:
-									monitor.wait();
-									break;
-								case 10:
-									monitor.wait();
-									break;
 								case 11:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -8419,12 +7228,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
-									monitor.wait();
-									break;
-								case 12:
-									monitor.wait();
-									break;
-								case 13:
 									monitor.wait();
 									break;
 								case 14:
@@ -8437,9 +7240,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 15:
-									monitor.wait();
-									break;
 								case 16:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -8448,9 +7248,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
-									monitor.wait();
-									break;
-								case 17:
 									monitor.wait();
 									break;
 								case 18:
@@ -8477,9 +7274,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 20:
-									monitor.wait();
-									break;
 								case 21:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -8494,27 +7288,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 22:
-									monitor.wait();
-									break;
-								case 23:
-									monitor.wait();
-									break;
-								case 24:
-									monitor.wait();
-									break;
-								case 25:
-									monitor.wait();
-									break;
-								case 26:
-									monitor.wait();
-									break;
-								case 27:
-									monitor.wait();
-									break;
-								case 28:
-									monitor.wait();
-									break;
 								case 29:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -8523,12 +7296,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
-									monitor.wait();
-									break;
-								case 30:
-									monitor.wait();
-									break;
-								case 31:
 									monitor.wait();
 									break;
 								case 32:
@@ -8541,12 +7308,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 33:
-									monitor.wait();
-									break;
-								case 34:
-									monitor.wait();
-									break;
 								case 35:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -8557,9 +7318,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 36:
-									monitor.wait();
-									break;
 								case 37:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -8568,9 +7326,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
-									monitor.wait();
-									break;
-								case 38:
 									monitor.wait();
 									break;
 								case 39:
@@ -8597,9 +7352,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 41:
-									monitor.wait();
-									break;
 								case 42:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -8612,21 +7364,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 43:
-									monitor.wait();
-									break;
-								case 44:
-									monitor.wait();
-									break;
-								case 45:
-									monitor.wait();
-									break;
-								case 46:
-									monitor.wait();
-									break;
-								case 47:
 									monitor.wait();
 									break;
 								case 48:
@@ -8669,9 +7406,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 53:
-									monitor.wait();
-									break;
 								case 54:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8704,9 +7438,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 58:
-									monitor.wait();
-									break;
 								case 59:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8731,9 +7462,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 62:
-									monitor.wait();
-									break;
 								case 63:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8750,9 +7478,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 65:
-									monitor.wait();
-									break;
 								case 66:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8761,21 +7486,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 67:
-									monitor.wait();
-									break;
 								case 68:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 69;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 69:
-									monitor.wait();
-									break;
-								case 70:
 									monitor.wait();
 									break;
 								case 71:
@@ -8794,9 +7510,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 73:
-									monitor.wait();
-									break;
 								case 74:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8805,27 +7518,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 75:
-									monitor.wait();
-									break;
-								case 76:
-									monitor.wait();
-									break;
 								case 77:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 69;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 78:
-									monitor.wait();
-									break;
-								case 79:
-									monitor.wait();
-									break;
-								case 80:
 									monitor.wait();
 									break;
 								case 81:
@@ -8860,18 +7558,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 85:
-									monitor.wait();
-									break;
 								case 86:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 90;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 87:
 									monitor.wait();
 									break;
 								case 88:
@@ -8882,12 +7574,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 89:
-									monitor.wait();
-									break;
-								case 90:
-									monitor.wait();
-									break;
 								case 91:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8896,27 +7582,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 92:
-									monitor.wait();
-									break;
 								case 93:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 94;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 94:
-									monitor.wait();
-									break;
-								case 95:
-									monitor.wait();
-									break;
-								case 96:
-									monitor.wait();
-									break;
-								case 97:
 									monitor.wait();
 									break;
 								case 98:
@@ -8943,9 +7614,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 101:
-									monitor.wait();
-									break;
 								case 102:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8962,18 +7630,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 104:
-									monitor.wait();
-									break;
 								case 105:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 109;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 106:
 									monitor.wait();
 									break;
 								case 107:
@@ -8984,12 +7646,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 108:
-									monitor.wait();
-									break;
-								case 109:
-									monitor.wait();
-									break;
 								case 110:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -8998,24 +7654,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 111:
-									monitor.wait();
-									break;
 								case 112:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 113;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 113:
-									monitor.wait();
-									break;
-								case 114:
-									monitor.wait();
-									break;
-								case 115:
 									monitor.wait();
 									break;
 								case 116:
@@ -9042,9 +7686,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 119:
-									monitor.wait();
-									break;
 								case 120:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -9061,18 +7702,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 122:
-									monitor.wait();
-									break;
 								case 123:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 127;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 124:
 									monitor.wait();
 									break;
 								case 125:
@@ -9083,21 +7718,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 126:
-									monitor.wait();
-									break;
-								case 127:
-									monitor.wait();
-									break;
 								case 128:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 126;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 129:
 									monitor.wait();
 									break;
 								case 130:
@@ -9108,24 +7734,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 131:
-									monitor.wait();
-									break;
-								case 132:
-									monitor.wait();
-									break;
-								case 133:
-									monitor.wait();
-									break;
 								case 134:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 131;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 135:
 									monitor.wait();
 									break;
 								case 136:
@@ -9136,45 +7750,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 137:
-									monitor.wait();
-									break;
-								case 138:
-									monitor.wait();
-									break;
-								case 139:
-									monitor.wait();
-									break;
-								case 140:
-									monitor.wait();
-									break;
-								case 141:
-									monitor.wait();
-									break;
 								case 142:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 137;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 143:
-									monitor.wait();
-									break;
-								case 144:
-									monitor.wait();
-									break;
-								case 145:
-									monitor.wait();
-									break;
-								case 146:
-									monitor.wait();
-									break;
-								case 147:
-									monitor.wait();
-									break;
-								case 148:
 									monitor.wait();
 									break;
 								case 149:
@@ -9219,9 +7800,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 152:
-									monitor.wait();
-									break;
 								case 153:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -9264,15 +7842,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 157:
-									monitor.wait();
-									break;
-								case 158:
-									monitor.wait();
-									break;
-								case 159:
 									monitor.wait();
 									break;
 								case 160:
@@ -9333,9 +7902,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 165:
-									monitor.wait();
-									break;
 								case 166:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -9348,57 +7914,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 167:
-									monitor.wait();
-									break;
-								case 168:
-									monitor.wait();
-									break;
-								case 169:
-									monitor.wait();
-									break;
-								case 170:
-									monitor.wait();
-									break;
-								case 171:
-									monitor.wait();
-									break;
-								case 172:
-									monitor.wait();
-									break;
-								case 173:
-									monitor.wait();
-									break;
-								case 174:
-									monitor.wait();
-									break;
-								case 175:
-									monitor.wait();
-									break;
-								case 176:
-									monitor.wait();
-									break;
-								case 177:
-									monitor.wait();
-									break;
-								case 178:
-									monitor.wait();
-									break;
-								case 179:
-									monitor.wait();
-									break;
-								case 180:
-									monitor.wait();
-									break;
-								case 181:
-									monitor.wait();
-									break;
-								case 182:
-									monitor.wait();
-									break;
-								case 183:
 									monitor.wait();
 									break;
 								case 184:
@@ -9499,9 +8014,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 191:
-									monitor.wait();
-									break;
 								case 192:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -9586,27 +8098,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 200:
-									monitor.wait();
-									break;
-								case 201:
-									monitor.wait();
-									break;
-								case 202:
-									monitor.wait();
-									break;
-								case 203:
-									monitor.wait();
-									break;
-								case 204:
-									monitor.wait();
-									break;
-								case 205:
-									monitor.wait();
-									break;
-								case 206:
-									monitor.wait();
-									break;
 								case 207:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -9641,9 +8132,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 210:
-									monitor.wait();
-									break;
 								case 211:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -9656,48 +8144,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 212:
-									monitor.wait();
-									break;
-								case 213:
-									monitor.wait();
-									break;
-								case 214:
-									monitor.wait();
-									break;
-								case 215:
-									monitor.wait();
-									break;
-								case 216:
-									monitor.wait();
-									break;
-								case 217:
-									monitor.wait();
-									break;
-								case 218:
-									monitor.wait();
-									break;
-								case 219:
-									monitor.wait();
-									break;
-								case 220:
-									monitor.wait();
-									break;
-								case 221:
-									monitor.wait();
-									break;
-								case 222:
-									monitor.wait();
-									break;
-								case 223:
-									monitor.wait();
-									break;
-								case 224:
-									monitor.wait();
-									break;
-								case 225:
 									monitor.wait();
 									break;
 								case 226:
@@ -9740,9 +8186,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 229:
 									monitor.wait();
 									break;
 								case 230:
@@ -9789,18 +8232,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 234:
-									monitor.wait();
-									break;
-								case 235:
-									monitor.wait();
-									break;
-								case 236:
-									monitor.wait();
-									break;
-								case 237:
-									monitor.wait();
-									break;
 								case 238:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -9835,9 +8266,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 241:
-									monitor.wait();
-									break;
 								case 242:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -9850,48 +8278,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 243:
-									monitor.wait();
-									break;
-								case 244:
-									monitor.wait();
-									break;
-								case 245:
-									monitor.wait();
-									break;
-								case 246:
-									monitor.wait();
-									break;
-								case 247:
-									monitor.wait();
-									break;
-								case 248:
-									monitor.wait();
-									break;
-								case 249:
-									monitor.wait();
-									break;
-								case 250:
-									monitor.wait();
-									break;
-								case 251:
-									monitor.wait();
-									break;
-								case 252:
-									monitor.wait();
-									break;
-								case 253:
-									monitor.wait();
-									break;
-								case 254:
-									monitor.wait();
-									break;
-								case 255:
-									monitor.wait();
-									break;
-								case 256:
 									monitor.wait();
 									break;
 								case 257:
@@ -9936,9 +8322,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 260:
-									monitor.wait();
-									break;
 								case 261:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -9981,18 +8364,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 265:
-									monitor.wait();
-									break;
-								case 266:
-									monitor.wait();
-									break;
-								case 267:
-									monitor.wait();
-									break;
-								case 268:
 									monitor.wait();
 									break;
 								case 269:
@@ -10135,24 +8506,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 281:
-									monitor.wait();
-									break;
-								case 282:
-									monitor.wait();
-									break;
-								case 283:
-									monitor.wait();
-									break;
-								case 284:
-									monitor.wait();
-									break;
-								case 285:
-									monitor.wait();
-									break;
-								case 286:
-									monitor.wait();
-									break;
 								case 287:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -10179,9 +8532,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 289:
 									monitor.wait();
 									break;
 								case 290:
@@ -10232,9 +8582,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 294:
-									monitor.wait();
-									break;
 								case 295:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -10247,57 +8594,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 296:
-									monitor.wait();
-									break;
-								case 297:
-									monitor.wait();
-									break;
-								case 298:
-									monitor.wait();
-									break;
-								case 299:
-									monitor.wait();
-									break;
-								case 300:
-									monitor.wait();
-									break;
-								case 301:
-									monitor.wait();
-									break;
-								case 302:
-									monitor.wait();
-									break;
-								case 303:
-									monitor.wait();
-									break;
-								case 304:
-									monitor.wait();
-									break;
-								case 305:
-									monitor.wait();
-									break;
-								case 306:
-									monitor.wait();
-									break;
-								case 307:
-									monitor.wait();
-									break;
-								case 308:
-									monitor.wait();
-									break;
-								case 309:
-									monitor.wait();
-									break;
-								case 310:
-									monitor.wait();
-									break;
-								case 311:
-									monitor.wait();
-									break;
-								case 312:
 									monitor.wait();
 									break;
 								case 313:
@@ -10398,9 +8694,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 320:
-									monitor.wait();
-									break;
 								case 321:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -10485,9 +8778,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 329:
-									monitor.wait();
-									break;
 								case 330:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -10500,48 +8790,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 331:
-									monitor.wait();
-									break;
-								case 332:
-									monitor.wait();
-									break;
-								case 333:
-									monitor.wait();
-									break;
-								case 334:
-									monitor.wait();
-									break;
-								case 335:
-									monitor.wait();
-									break;
-								case 336:
-									monitor.wait();
-									break;
-								case 337:
-									monitor.wait();
-									break;
-								case 338:
-									monitor.wait();
-									break;
-								case 339:
-									monitor.wait();
-									break;
-								case 340:
-									monitor.wait();
-									break;
-								case 341:
-									monitor.wait();
-									break;
-								case 342:
-									monitor.wait();
-									break;
-								case 343:
-									monitor.wait();
-									break;
-								case 344:
 									monitor.wait();
 									break;
 								case 345:
@@ -10584,9 +8832,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 348:
 									monitor.wait();
 									break;
 								case 349:
@@ -10643,9 +8888,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 354:
-									monitor.wait();
-									break;
 								case 355:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -10658,48 +8900,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 356:
-									monitor.wait();
-									break;
-								case 357:
-									monitor.wait();
-									break;
-								case 358:
-									monitor.wait();
-									break;
-								case 359:
-									monitor.wait();
-									break;
-								case 360:
-									monitor.wait();
-									break;
-								case 361:
-									monitor.wait();
-									break;
-								case 362:
-									monitor.wait();
-									break;
-								case 363:
-									monitor.wait();
-									break;
-								case 364:
-									monitor.wait();
-									break;
-								case 365:
-									monitor.wait();
-									break;
-								case 366:
-									monitor.wait();
-									break;
-								case 367:
-									monitor.wait();
-									break;
-								case 368:
-									monitor.wait();
-									break;
-								case 369:
 									monitor.wait();
 									break;
 								case 370:
@@ -10742,9 +8942,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 373:
 									monitor.wait();
 									break;
 								case 374:
@@ -10801,9 +8998,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 379:
-									monitor.wait();
-									break;
 								case 380:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -10816,48 +9010,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 381:
-									monitor.wait();
-									break;
-								case 382:
-									monitor.wait();
-									break;
-								case 383:
-									monitor.wait();
-									break;
-								case 384:
-									monitor.wait();
-									break;
-								case 385:
-									monitor.wait();
-									break;
-								case 386:
-									monitor.wait();
-									break;
-								case 387:
-									monitor.wait();
-									break;
-								case 388:
-									monitor.wait();
-									break;
-								case 389:
-									monitor.wait();
-									break;
-								case 390:
-									monitor.wait();
-									break;
-								case 391:
-									monitor.wait();
-									break;
-								case 392:
-									monitor.wait();
-									break;
-								case 393:
-									monitor.wait();
-									break;
-								case 394:
 									monitor.wait();
 									break;
 								case 395:
@@ -10900,9 +9052,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 398:
 									monitor.wait();
 									break;
 								case 399:
@@ -10983,9 +9132,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 406:
-									monitor.wait();
-									break;
 								case 407:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -10998,48 +9144,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 408:
-									monitor.wait();
-									break;
-								case 409:
-									monitor.wait();
-									break;
-								case 410:
-									monitor.wait();
-									break;
-								case 411:
-									monitor.wait();
-									break;
-								case 412:
-									monitor.wait();
-									break;
-								case 413:
-									monitor.wait();
-									break;
-								case 414:
-									monitor.wait();
-									break;
-								case 415:
-									monitor.wait();
-									break;
-								case 416:
-									monitor.wait();
-									break;
-								case 417:
-									monitor.wait();
-									break;
-								case 418:
-									monitor.wait();
-									break;
-								case 419:
-									monitor.wait();
-									break;
-								case 420:
-									monitor.wait();
-									break;
-								case 421:
 									monitor.wait();
 									break;
 								case 422:
@@ -11082,9 +9186,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 425:
 									monitor.wait();
 									break;
 								case 426:
@@ -11131,30 +9232,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 430:
-									monitor.wait();
-									break;
-								case 431:
-									monitor.wait();
-									break;
-								case 432:
-									monitor.wait();
-									break;
-								case 433:
-									monitor.wait();
-									break;
-								case 434:
-									monitor.wait();
-									break;
-								case 435:
-									monitor.wait();
-									break;
-								case 436:
-									monitor.wait();
-									break;
-								case 437:
-									monitor.wait();
-									break;
 								case 438:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -11165,48 +9242,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 439:
-									monitor.wait();
-									break;
-								case 440:
-									monitor.wait();
-									break;
-								case 441:
-									monitor.wait();
-									break;
-								case 442:
-									monitor.wait();
-									break;
-								case 443:
-									monitor.wait();
-									break;
-								case 444:
-									monitor.wait();
-									break;
-								case 445:
-									monitor.wait();
-									break;
-								case 446:
-									monitor.wait();
-									break;
-								case 447:
-									monitor.wait();
-									break;
-								case 448:
-									monitor.wait();
-									break;
-								case 449:
-									monitor.wait();
-									break;
-								case 450:
-									monitor.wait();
-									break;
-								case 451:
-									monitor.wait();
-									break;
-								case 452:
-									monitor.wait();
-									break;
 								case 453:
 									if (queueFrommasterToworker_1_.peek() != null ) {
 										monitor.notifyAll();
@@ -11215,18 +9250,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_1_.take());
 									}
-									monitor.wait();
-									break;
-								case 454:
-									monitor.wait();
-									break;
-								case 455:
-									monitor.wait();
-									break;
-								case 456:
-									monitor.wait();
-									break;
-								case 457:
 									monitor.wait();
 									break;
 								case 458:
@@ -11258,13 +9281,7 @@ public class CGProtocol_n_3 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0:
-									monitor.wait();
-									break;
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
+								case 0,1,2,4,5,7,8,10,11,13,14,16,18,20,22,26,27,28,29,31,32,34,35,37,39,41,43,47,54,59,63,66,68,69,70,71,74,76,77,79,80,81,82,83,86,88,89,90,91,93,94,95,96,97,98,102,105,107,108,109,110,112,113,114,115,116,120,123,125,126,127,128,130,131,132,133,134,136,137,138,139,140,141,142,146,147,148,150,151,152,154,155,156,158,159,160,161,162,164,165,167,168,172,173,179,180,181,182,183,187,188,189,190,191,195,196,197,198,199,203,204,205,206,207,208,210,212,214,217,218,219,223,224,225,227,228,229,231,232,233,235,236,237,238,239,241,243,245,248,249,250,254,255,256,258,259,260,262,263,264,266,267,268,269,270,272,274,276,277,284,285,286,287,288,289,290,291,292,293,294,296,297,301,302,308,309,310,311,312,316,317,318,319,320,324,325,326,327,328,329,331,333,336,337,338,342,343,344,346,347,348,350,351,352,353,354,356,358,361,362,363,367,368,369,371,372,373,375,376,377,378,379,381,383,386,387,388,392,393,394,396,397,398,400,401,402,403,404,406,408,410,413,414,415,419,420,421,423,424,425,427,428,429,436,437,438,440,441,442,443,444,445,446,447,448,449,450,451,452,453,455,456,457,458 :
 									monitor.wait();
 									break;
 								case 3:
@@ -11277,12 +9294,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 4:
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
 								case 6:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11291,12 +9302,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 7:
-									monitor.wait();
-									break;
-								case 8:
 									monitor.wait();
 									break;
 								case 9:
@@ -11309,12 +9314,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 10:
-									monitor.wait();
-									break;
-								case 11:
-									monitor.wait();
-									break;
 								case 12:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11323,12 +9322,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 13:
-									monitor.wait();
-									break;
-								case 14:
 									monitor.wait();
 									break;
 								case 15:
@@ -11341,9 +9334,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 16:
-									monitor.wait();
-									break;
 								case 17:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11352,9 +9342,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 18:
 									monitor.wait();
 									break;
 								case 19:
@@ -11367,9 +9354,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 20:
-									monitor.wait();
-									break;
 								case 21:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11378,9 +9362,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 22:
 									monitor.wait();
 									break;
 								case 23:
@@ -11417,18 +9398,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 26:
-									monitor.wait();
-									break;
-								case 27:
-									monitor.wait();
-									break;
-								case 28:
-									monitor.wait();
-									break;
-								case 29:
-									monitor.wait();
-									break;
 								case 30:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11437,12 +9406,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 31:
-									monitor.wait();
-									break;
-								case 32:
 									monitor.wait();
 									break;
 								case 33:
@@ -11455,12 +9418,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 34:
-									monitor.wait();
-									break;
-								case 35:
-									monitor.wait();
-									break;
 								case 36:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11469,9 +9426,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 37:
 									monitor.wait();
 									break;
 								case 38:
@@ -11484,9 +9438,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 39:
-									monitor.wait();
-									break;
 								case 40:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11497,9 +9448,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 41:
-									monitor.wait();
-									break;
 								case 42:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -11508,9 +9456,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 43:
 									monitor.wait();
 									break;
 								case 44:
@@ -11545,9 +9490,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 47:
 									monitor.wait();
 									break;
 								case 48:
@@ -11598,9 +9540,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 54:
-									monitor.wait();
-									break;
 								case 55:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11633,9 +9572,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 59:
-									monitor.wait();
-									break;
 								case 60:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11660,9 +9596,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 63:
-									monitor.wait();
-									break;
 								case 64:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11679,27 +9612,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 66:
-									monitor.wait();
-									break;
 								case 67:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 69;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 68:
-									monitor.wait();
-									break;
-								case 69:
-									monitor.wait();
-									break;
-								case 70:
-									monitor.wait();
-									break;
-								case 71:
 									monitor.wait();
 									break;
 								case 72:
@@ -11718,9 +9636,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 74:
-									monitor.wait();
-									break;
 								case 75:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11729,33 +9644,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 76:
-									monitor.wait();
-									break;
-								case 77:
-									monitor.wait();
-									break;
 								case 78:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 70;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 79:
-									monitor.wait();
-									break;
-								case 80:
-									monitor.wait();
-									break;
-								case 81:
-									monitor.wait();
-									break;
-								case 82:
-									monitor.wait();
-									break;
-								case 83:
 									monitor.wait();
 									break;
 								case 84:
@@ -11774,9 +9668,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 86:
-									monitor.wait();
-									break;
 								case 87:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11785,42 +9676,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 88:
-									monitor.wait();
-									break;
-								case 89:
-									monitor.wait();
-									break;
-								case 90:
-									monitor.wait();
-									break;
-								case 91:
-									monitor.wait();
-									break;
 								case 92:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 94;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 93:
-									monitor.wait();
-									break;
-								case 94:
-									monitor.wait();
-									break;
-								case 95:
-									monitor.wait();
-									break;
-								case 96:
-									monitor.wait();
-									break;
-								case 97:
-									monitor.wait();
-									break;
-								case 98:
 									monitor.wait();
 									break;
 								case 99:
@@ -11847,9 +9708,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 102:
-									monitor.wait();
-									break;
 								case 103:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11866,9 +9724,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 105:
-									monitor.wait();
-									break;
 								case 106:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11877,39 +9732,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 107:
-									monitor.wait();
-									break;
-								case 108:
-									monitor.wait();
-									break;
-								case 109:
-									monitor.wait();
-									break;
-								case 110:
-									monitor.wait();
-									break;
 								case 111:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 113;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 112:
-									monitor.wait();
-									break;
-								case 113:
-									monitor.wait();
-									break;
-								case 114:
-									monitor.wait();
-									break;
-								case 115:
-									monitor.wait();
-									break;
-								case 116:
 									monitor.wait();
 									break;
 								case 117:
@@ -11936,9 +9764,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 120:
-									monitor.wait();
-									break;
 								case 121:
 									if (isCloseAction) {
 										monitor.notifyAll();
@@ -11955,27 +9780,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 123:
-									monitor.wait();
-									break;
 								case 124:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 126;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 125:
-									monitor.wait();
-									break;
-								case 126:
-									monitor.wait();
-									break;
-								case 127:
-									monitor.wait();
-									break;
-								case 128:
 									monitor.wait();
 									break;
 								case 129:
@@ -11986,48 +9796,12 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 130:
-									monitor.wait();
-									break;
-								case 131:
-									monitor.wait();
-									break;
-								case 132:
-									monitor.wait();
-									break;
-								case 133:
-									monitor.wait();
-									break;
-								case 134:
-									monitor.wait();
-									break;
 								case 135:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 137;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 136:
-									monitor.wait();
-									break;
-								case 137:
-									monitor.wait();
-									break;
-								case 138:
-									monitor.wait();
-									break;
-								case 139:
-									monitor.wait();
-									break;
-								case 140:
-									monitor.wait();
-									break;
-								case 141:
-									monitor.wait();
-									break;
-								case 142:
 									monitor.wait();
 									break;
 								case 143:
@@ -12068,15 +9842,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 146:
-									monitor.wait();
-									break;
-								case 147:
-									monitor.wait();
-									break;
-								case 148:
-									monitor.wait();
-									break;
 								case 149:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -12089,15 +9854,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 150:
-									monitor.wait();
-									break;
-								case 151:
-									monitor.wait();
-									break;
-								case 152:
 									monitor.wait();
 									break;
 								case 153:
@@ -12114,15 +9870,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 154:
-									monitor.wait();
-									break;
-								case 155:
-									monitor.wait();
-									break;
-								case 156:
-									monitor.wait();
-									break;
 								case 157:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -12137,21 +9884,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 158:
-									monitor.wait();
-									break;
-								case 159:
-									monitor.wait();
-									break;
-								case 160:
-									monitor.wait();
-									break;
-								case 161:
-									monitor.wait();
-									break;
-								case 162:
-									monitor.wait();
-									break;
 								case 163:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12162,12 +9894,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 164:
-									monitor.wait();
-									break;
-								case 165:
-									monitor.wait();
-									break;
 								case 166:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12176,12 +9902,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 167:
-									monitor.wait();
-									break;
-								case 168:
 									monitor.wait();
 									break;
 								case 169:
@@ -12216,12 +9936,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 172:
-									monitor.wait();
-									break;
-								case 173:
 									monitor.wait();
 									break;
 								case 174:
@@ -12286,21 +10000,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 179:
-									monitor.wait();
-									break;
-								case 180:
-									monitor.wait();
-									break;
-								case 181:
-									monitor.wait();
-									break;
-								case 182:
-									monitor.wait();
-									break;
-								case 183:
-									monitor.wait();
-									break;
 								case 184:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12337,21 +10036,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 187:
-									monitor.wait();
-									break;
-								case 188:
-									monitor.wait();
-									break;
-								case 189:
-									monitor.wait();
-									break;
-								case 190:
-									monitor.wait();
-									break;
-								case 191:
 									monitor.wait();
 									break;
 								case 192:
@@ -12392,21 +10076,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 195:
-									monitor.wait();
-									break;
-								case 196:
-									monitor.wait();
-									break;
-								case 197:
-									monitor.wait();
-									break;
-								case 198:
-									monitor.wait();
-									break;
-								case 199:
-									monitor.wait();
-									break;
 								case 200:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12445,24 +10114,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 203:
-									monitor.wait();
-									break;
-								case 204:
-									monitor.wait();
-									break;
-								case 205:
-									monitor.wait();
-									break;
-								case 206:
-									monitor.wait();
-									break;
-								case 207:
-									monitor.wait();
-									break;
-								case 208:
-									monitor.wait();
-									break;
 								case 209:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12471,9 +10122,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 210:
 									monitor.wait();
 									break;
 								case 211:
@@ -12486,9 +10134,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 212:
-									monitor.wait();
-									break;
 								case 213:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12497,9 +10142,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 214:
 									monitor.wait();
 									break;
 								case 215:
@@ -12524,15 +10166,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 217:
-									monitor.wait();
-									break;
-								case 218:
-									monitor.wait();
-									break;
-								case 219:
 									monitor.wait();
 									break;
 								case 220:
@@ -12573,15 +10206,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 223:
-									monitor.wait();
-									break;
-								case 224:
-									monitor.wait();
-									break;
-								case 225:
-									monitor.wait();
-									break;
 								case 226:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -12594,15 +10218,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 227:
-									monitor.wait();
-									break;
-								case 228:
-									monitor.wait();
-									break;
-								case 229:
 									monitor.wait();
 									break;
 								case 230:
@@ -12619,15 +10234,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 231:
-									monitor.wait();
-									break;
-								case 232:
-									monitor.wait();
-									break;
-								case 233:
-									monitor.wait();
-									break;
 								case 234:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -12642,21 +10248,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 235:
-									monitor.wait();
-									break;
-								case 236:
-									monitor.wait();
-									break;
-								case 237:
-									monitor.wait();
-									break;
-								case 238:
-									monitor.wait();
-									break;
-								case 239:
-									monitor.wait();
-									break;
 								case 240:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12665,9 +10256,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 241:
 									monitor.wait();
 									break;
 								case 242:
@@ -12680,9 +10268,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 243:
-									monitor.wait();
-									break;
 								case 244:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12691,9 +10276,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 245:
 									monitor.wait();
 									break;
 								case 246:
@@ -12718,15 +10300,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 248:
-									monitor.wait();
-									break;
-								case 249:
-									monitor.wait();
-									break;
-								case 250:
 									monitor.wait();
 									break;
 								case 251:
@@ -12767,15 +10340,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 254:
-									monitor.wait();
-									break;
-								case 255:
-									monitor.wait();
-									break;
-								case 256:
-									monitor.wait();
-									break;
 								case 257:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -12788,15 +10352,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 258:
-									monitor.wait();
-									break;
-								case 259:
-									monitor.wait();
-									break;
-								case 260:
 									monitor.wait();
 									break;
 								case 261:
@@ -12813,15 +10368,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 262:
-									monitor.wait();
-									break;
-								case 263:
-									monitor.wait();
-									break;
-								case 264:
-									monitor.wait();
-									break;
 								case 265:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -12836,21 +10382,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 266:
-									monitor.wait();
-									break;
-								case 267:
-									monitor.wait();
-									break;
-								case 268:
-									monitor.wait();
-									break;
-								case 269:
-									monitor.wait();
-									break;
-								case 270:
-									monitor.wait();
-									break;
 								case 271:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12859,9 +10390,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 272:
 									monitor.wait();
 									break;
 								case 273:
@@ -12874,9 +10402,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 274:
-									monitor.wait();
-									break;
 								case 275:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -12885,12 +10410,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 276:
-									monitor.wait();
-									break;
-								case 277:
 									monitor.wait();
 									break;
 								case 278:
@@ -12969,39 +10488,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 284:
-									monitor.wait();
-									break;
-								case 285:
-									monitor.wait();
-									break;
-								case 286:
-									monitor.wait();
-									break;
-								case 287:
-									monitor.wait();
-									break;
-								case 288:
-									monitor.wait();
-									break;
-								case 289:
-									monitor.wait();
-									break;
-								case 290:
-									monitor.wait();
-									break;
-								case 291:
-									monitor.wait();
-									break;
-								case 292:
-									monitor.wait();
-									break;
-								case 293:
-									monitor.wait();
-									break;
-								case 294:
-									monitor.wait();
-									break;
 								case 295:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13010,12 +10496,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 296:
-									monitor.wait();
-									break;
-								case 297:
 									monitor.wait();
 									break;
 								case 298:
@@ -13050,12 +10530,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 301:
-									monitor.wait();
-									break;
-								case 302:
 									monitor.wait();
 									break;
 								case 303:
@@ -13120,21 +10594,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 308:
-									monitor.wait();
-									break;
-								case 309:
-									monitor.wait();
-									break;
-								case 310:
-									monitor.wait();
-									break;
-								case 311:
-									monitor.wait();
-									break;
-								case 312:
-									monitor.wait();
-									break;
 								case 313:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13171,21 +10630,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 316:
-									monitor.wait();
-									break;
-								case 317:
-									monitor.wait();
-									break;
-								case 318:
-									monitor.wait();
-									break;
-								case 319:
-									monitor.wait();
-									break;
-								case 320:
 									monitor.wait();
 									break;
 								case 321:
@@ -13226,24 +10670,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 324:
-									monitor.wait();
-									break;
-								case 325:
-									monitor.wait();
-									break;
-								case 326:
-									monitor.wait();
-									break;
-								case 327:
-									monitor.wait();
-									break;
-								case 328:
-									monitor.wait();
-									break;
-								case 329:
-									monitor.wait();
-									break;
 								case 330:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13254,9 +10680,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 331:
-									monitor.wait();
-									break;
 								case 332:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13265,9 +10688,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 333:
 									monitor.wait();
 									break;
 								case 334:
@@ -13292,15 +10712,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 336:
-									monitor.wait();
-									break;
-								case 337:
-									monitor.wait();
-									break;
-								case 338:
 									monitor.wait();
 									break;
 								case 339:
@@ -13341,15 +10752,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 342:
-									monitor.wait();
-									break;
-								case 343:
-									monitor.wait();
-									break;
-								case 344:
-									monitor.wait();
-									break;
 								case 345:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -13362,15 +10764,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 346:
-									monitor.wait();
-									break;
-								case 347:
-									monitor.wait();
-									break;
-								case 348:
 									monitor.wait();
 									break;
 								case 349:
@@ -13387,21 +10780,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 350:
-									monitor.wait();
-									break;
-								case 351:
-									monitor.wait();
-									break;
-								case 352:
-									monitor.wait();
-									break;
-								case 353:
-									monitor.wait();
-									break;
-								case 354:
-									monitor.wait();
-									break;
 								case 355:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13412,9 +10790,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 356:
-									monitor.wait();
-									break;
 								case 357:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13423,9 +10798,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 358:
 									monitor.wait();
 									break;
 								case 359:
@@ -13450,15 +10822,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 361:
-									monitor.wait();
-									break;
-								case 362:
-									monitor.wait();
-									break;
-								case 363:
 									monitor.wait();
 									break;
 								case 364:
@@ -13499,15 +10862,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 367:
-									monitor.wait();
-									break;
-								case 368:
-									monitor.wait();
-									break;
-								case 369:
-									monitor.wait();
-									break;
 								case 370:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -13520,15 +10874,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 371:
-									monitor.wait();
-									break;
-								case 372:
-									monitor.wait();
-									break;
-								case 373:
 									monitor.wait();
 									break;
 								case 374:
@@ -13545,21 +10890,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 375:
-									monitor.wait();
-									break;
-								case 376:
-									monitor.wait();
-									break;
-								case 377:
-									monitor.wait();
-									break;
-								case 378:
-									monitor.wait();
-									break;
-								case 379:
-									monitor.wait();
-									break;
 								case 380:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13570,9 +10900,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 381:
-									monitor.wait();
-									break;
 								case 382:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13581,9 +10908,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 383:
 									monitor.wait();
 									break;
 								case 384:
@@ -13608,15 +10932,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 386:
-									monitor.wait();
-									break;
-								case 387:
-									monitor.wait();
-									break;
-								case 388:
 									monitor.wait();
 									break;
 								case 389:
@@ -13657,15 +10972,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 392:
-									monitor.wait();
-									break;
-								case 393:
-									monitor.wait();
-									break;
-								case 394:
-									monitor.wait();
-									break;
 								case 395:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -13678,15 +10984,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 396:
-									monitor.wait();
-									break;
-								case 397:
-									monitor.wait();
-									break;
-								case 398:
 									monitor.wait();
 									break;
 								case 399:
@@ -13703,21 +11000,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 400:
-									monitor.wait();
-									break;
-								case 401:
-									monitor.wait();
-									break;
-								case 402:
-									monitor.wait();
-									break;
-								case 403:
-									monitor.wait();
-									break;
-								case 404:
-									monitor.wait();
-									break;
 								case 405:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13726,9 +11008,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 406:
 									monitor.wait();
 									break;
 								case 407:
@@ -13741,9 +11020,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 408:
-									monitor.wait();
-									break;
 								case 409:
 									if (queueFrommasterToworker_2_.peek() != null ) {
 										monitor.notifyAll();
@@ -13752,9 +11028,6 @@ public class CGProtocol_n_3 implements IProtocol {
 										//noinspection unchecked
 										return Optional.of((Any)queueFrommasterToworker_2_.take());
 									}
-									monitor.wait();
-									break;
-								case 410:
 									monitor.wait();
 									break;
 								case 411:
@@ -13779,15 +11052,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 413:
-									monitor.wait();
-									break;
-								case 414:
-									monitor.wait();
-									break;
-								case 415:
 									monitor.wait();
 									break;
 								case 416:
@@ -13828,15 +11092,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 419:
-									monitor.wait();
-									break;
-								case 420:
-									monitor.wait();
-									break;
-								case 421:
-									monitor.wait();
-									break;
 								case 422:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -13851,15 +11106,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 423:
-									monitor.wait();
-									break;
-								case 424:
-									monitor.wait();
-									break;
-								case 425:
-									monitor.wait();
-									break;
 								case 426:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -13872,15 +11118,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 427:
-									monitor.wait();
-									break;
-								case 428:
-									monitor.wait();
-									break;
-								case 429:
 									monitor.wait();
 									break;
 								case 430:
@@ -13963,15 +11200,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 436:
-									monitor.wait();
-									break;
-								case 437:
-									monitor.wait();
-									break;
-								case 438:
-									monitor.wait();
-									break;
 								case 439:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -13984,48 +11212,6 @@ public class CGProtocol_n_3 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 440:
-									monitor.wait();
-									break;
-								case 441:
-									monitor.wait();
-									break;
-								case 442:
-									monitor.wait();
-									break;
-								case 443:
-									monitor.wait();
-									break;
-								case 444:
-									monitor.wait();
-									break;
-								case 445:
-									monitor.wait();
-									break;
-								case 446:
-									monitor.wait();
-									break;
-								case 447:
-									monitor.wait();
-									break;
-								case 448:
-									monitor.wait();
-									break;
-								case 449:
-									monitor.wait();
-									break;
-								case 450:
-									monitor.wait();
-									break;
-								case 451:
-									monitor.wait();
-									break;
-								case 452:
-									monitor.wait();
-									break;
-								case 453:
 									monitor.wait();
 									break;
 								case 454:
@@ -14042,18 +11228,6 @@ public class CGProtocol_n_3 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 455:
-									monitor.wait();
-									break;
-								case 456:
-									monitor.wait();
-									break;
-								case 457:
-									monitor.wait();
-									break;
-								case 458:
-									monitor.wait();
-									break;
 								default: throw new Exception("State number out of bounds");
 							}
 						}
@@ -14067,7 +11241,7 @@ public class CGProtocol_n_3 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_1_","master","worker_2_" };
+		return new String[] { "worker_0_","worker_2_","master","worker_1_" };
 	}
 	
 	@Override

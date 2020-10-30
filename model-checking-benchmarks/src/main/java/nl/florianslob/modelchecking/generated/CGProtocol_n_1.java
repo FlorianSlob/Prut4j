@@ -35,6 +35,9 @@ public class CGProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
+								case 1,2,3,6,9,11 :
+									monitor.wait();
+									break;
 								case 0:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 										if (receiver == null) {
@@ -58,15 +61,6 @@ public class CGProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 1:
-									monitor.wait();
-									break;
-								case 2:
-									monitor.wait();
-									break;
-								case 3:
 									monitor.wait();
 									break;
 								case 4:
@@ -104,9 +98,6 @@ public class CGProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 6:
-									monitor.wait();
-									break;
 								case 7:
 									if (queueFromworker_0_Tomaster.peek() != null ) {
 										monitor.notifyAll();
@@ -125,18 +116,12 @@ public class CGProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 9:
-									monitor.wait();
-									break;
 								case 10:
 									if (isCloseAction) {
 										monitor.notifyAll();
 										state = 11;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 11:
 									monitor.wait();
 									break;
 								default: throw new Exception("State number out of bounds");
@@ -158,7 +143,7 @@ public class CGProtocol_n_1 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							switch (state){
-								case 0:
+								case 0,4,5,7,10,11 :
 									monitor.wait();
 									break;
 								case 1:
@@ -195,12 +180,6 @@ public class CGProtocol_n_1 implements IProtocol {
 									}
 									monitor.wait();
 									break;
-								case 4:
-									monitor.wait();
-									break;
-								case 5:
-									monitor.wait();
-									break;
 								case 6:
 									if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 										if (receiver == null) {
@@ -213,9 +192,6 @@ public class CGProtocol_n_1 implements IProtocol {
 											return Optional.empty();
 										}
 									}
-									monitor.wait();
-									break;
-								case 7:
 									monitor.wait();
 									break;
 								case 8:
@@ -232,12 +208,6 @@ public class CGProtocol_n_1 implements IProtocol {
 										state = 11;
 										return Optional.empty();
 									}
-									monitor.wait();
-									break;
-								case 10:
-									monitor.wait();
-									break;
-								case 11:
 									monitor.wait();
 									break;
 								default: throw new Exception("State number out of bounds");
