@@ -41,16 +41,20 @@
 !-------------------------------------------------------------------------!
 */
 package NPB.updated.NPB3_0_JAV.CGThreads;
-import NPB.updated.NPB3_0_JAV.CG;
+import discourje.examples.npb3.impl.CGThreads.CGMessage;
+import discourje.examples.npb3.impl.DoneMessage;
+import discourje.examples.npb3.impl.ExitMessage;
+import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 
-public class CGWorker extends CGBase{
+public class CGWorker extends CGBase {
   public boolean done = true;
   public int id;
   public int TaskOrder;
-  
+
   int start1, end1;
   public double alpha,beta;
-  public CGWorker(CG cg,int st,int end){
+  public IEnvironment environment;
+  public CGWorker(NPB.updated.NPB3_0_JAV.CG cg, int st, int end, IEnvironment environment){
     Init(cg);
     start1=st;
     end1=end;
@@ -58,8 +62,9 @@ public class CGWorker extends CGBase{
     setDaemon(true);
     setPriority(Thread.MAX_PRIORITY);
     master=cg;
+    this.environment = environment;
   }
-  void Init(CG cg){
+  void Init(NPB.updated.NPB3_0_JAV.CG cg){
     //initialize shared data
     dmaster = cg.dmaster;
     rhomaster = cg.rhomaster;
@@ -73,52 +78,71 @@ public class CGWorker extends CGBase{
     x = cg.x;
     z = cg.z;
   }
-  
+
   public void run(){
     int state=0;
-    for(;;){
-      synchronized(this){
-        while(done){
-          try{
-             wait();
-             synchronized(master){ 
-	       master.notify();
-//	       alpha=master.alpha;
-//	       beta=master.beta;
-	     }
-          }catch(InterruptedException ie){}
-        }
-        switch(TaskOrder){
-        case 0:
+    for(;;) {
+//      synchronized(this){
+//        while(done){
+//          try{
+//             wait();
+//             synchronized(master){
+//	       master.notify();
+////	       alpha=master.alpha;
+////	       beta=master.beta;
+//	     }
+//          }catch(InterruptedException ie){}
+//        }
+
+      try {
+        var o = environment.receive();
+
+        if (o instanceof CGMessage) {
+          var m = (CGMessage) o;
+          TaskOrder = m.OrderNum;
+          alpha = m.alpha;
+          beta = m.beta;
+          switch (TaskOrder) {
+            case 0:
               step0();
               break;
-        case 1:
+            case 1:
               step1();
               break;
-        case 2:
+            case 2:
               step2();
               break;
-        case 3:
+            case 3:
               step3();
               break;
-        case 4:
+            case 4:
               endWork();
               break;
+          }
+          environment.send(new DoneMessage());
         }
-        synchronized(master){
-  	  done=true;master.notify();	  
+        if (o instanceof ExitMessage) {
+          environment.send(new DoneMessage());
+          return;
         }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
+
+//        synchronized(master){
+//  	  done=true;master.notify();
+//        }
+//      }
     }
   }
   void step0(){
     for(int j=start1;j<=end1;j++){
       double sum = 0.0;
       for(int k=rowstr[j];k<rowstr[j+1];k++){
-  	sum = sum + a[k]*p[colidx[k]];
+        sum = sum + a[k]*p[colidx[k]];
       }
       q[j] = sum;
-    }	
+    }
     double sum = 0.0;
     for(int j=start1;j<=end1;j++) sum += p[j]*q[j];
     dmaster[id]=sum;
@@ -127,7 +151,7 @@ public class CGWorker extends CGBase{
     for(int j=start1;j<=end1;j++){
       z[j] = z[j] + alpha*p[j];
       r[j] = r[j] - alpha*q[j];
-    }	    
+    }
 //---------------------------------------------------------------------
 //  rho = r.r
 //  Now, obtain the norm of r: First, sum squares of r elements locally...
@@ -147,7 +171,7 @@ public class CGWorker extends CGBase{
       r[j] = x[j];
       p[j] = x[j];
       rho += x[j]*x[j];
-    }		 
+    }
     rhomaster[id]=rho;
   }
 
@@ -160,15 +184,15 @@ public class CGWorker extends CGBase{
     for(int j=start1;j<=end1;j++){
       double sum = 0.0;
       for(int k=rowstr[j];k<=rowstr[j+1]-1;k++){
-  	sum += a[k]*z[colidx[k]];
+        sum += a[k]*z[colidx[k]];
       }
       r[j] = sum;
-    }	    
+    }
 //---------------------------------------------------------------------
 //  At this point, r contains A.z
 //---------------------------------------------------------------------
     double sum = 0.0;
-    for(int j=start1;j<=end1;j++) sum+=(x[j]-r[j])*(x[j]-r[j]);      
+    for(int j=start1;j<=end1;j++) sum+=(x[j]-r[j])*(x[j]-r[j]);
     rnormmaster[id]=sum;
   }
 }
