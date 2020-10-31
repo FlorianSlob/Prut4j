@@ -23,7 +23,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         boolean genCGProtocol = true, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
 
         if(genCGProtocol){
-            for(int i = 1; i <= 3; i++){ // TODO Max is 3 for now, max method size :-s
+            for(int i = 5; i <= 5; i++){
                 var protocolName = "CGProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/cg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
@@ -32,7 +32,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genFTProtocol){
-            for(int i = 1; i <= 2; i++){
+            for(int i = 1; i <= 2; i++){ // Max is 2 for now, takes to long....
                 var protocolName = "FTProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/ft_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
