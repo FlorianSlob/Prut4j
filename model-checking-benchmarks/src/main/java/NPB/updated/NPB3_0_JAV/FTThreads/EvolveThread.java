@@ -42,36 +42,45 @@
 */
 package NPB.updated.NPB3_0_JAV.FTThreads;
 import NPB.updated.NPB3_0_JAV.FT;
+import discourje.examples.npb3.impl.DoneMessage;
+import discourje.examples.npb3.impl.ExitMessage;
+import discourje.examples.npb3.impl.FTThreads.EvolveMessage;
+import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 
-public class EvolveThread extends FTBase{
+
+public class EvolveThread extends FTBase {
+  private final IEnvironment environment;
   public int kt=0;
   public int id;
   public boolean done = true;
-  
-  int lower_bound1,upper_bound1; 
-  double xtr[],xnt[]; 
+
+  int lower_bound1,upper_bound1;
+  double xtr[],xnt[];
   int ixnt,jxnt,kxnt;
   int ixtr,jxtr,kxtr;
-  
+
   static final double ap =  (- 4.0 * alpha * pi*pi );
 
-  public EvolveThread(FT ft,int low1, int high1){
+
+  public EvolveThread(FT ft, int low1, int high1, IEnvironment environment){
     Init(ft);
     lower_bound1=low1;
     upper_bound1=high1;
     setPriority(Thread.MAX_PRIORITY);
     setDaemon(true);
     master = ft;
+    this.environment = environment;
   }
+
   void Init(FT ft){
     //initialize shared data
     xtr=ft.xtr;
     xnt=ft.xnt;
-    
+
     nx=ft.nx;
     ny=ft.ny;
     nz=ft.nz;
-    
+
     ixtr=ft.isize3;
     jxtr=ft.jsize3;
     kxtr=ft.ksize3;
@@ -80,18 +89,32 @@ public class EvolveThread extends FTBase{
     kxnt=ft.ksize4;
   }
 
-  public void run(){    
+  public void run(){
     for(;;){
-      synchronized(this){
-        while(done==true){
-  	  try{
-	     wait();
-             synchronized(master){master.notify();}
-          }catch(InterruptedException ie){}
-        }
+//      synchronized(this){
+//        while(done==true){
+//  	  try{
+//	     wait();
+//             synchronized(master){master.notify();}
+//          }catch(InterruptedException ie){}
+//        }
+    try {
+      var o = environment.receive();
+      if (o instanceof EvolveMessage) {
+        var m = (EvolveMessage) o;
+        kt = m.kt;
         step();
-        synchronized(master){done=true;master.notify();}
+        environment.send(new DoneMessage());
       }
+      if (o instanceof ExitMessage) {
+        environment.send(new DoneMessage());
+        return;
+      }
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+//        synchronized(master){done=true;master.notify();}
+//      }
     }
   }
 
@@ -100,17 +123,17 @@ public class EvolveThread extends FTBase{
       int ii = i-(i/(nx/2))*nx;
       int ii2 = ii*ii;
       for(int k=0;k<nz;k++){
-	int kk = k-(k/(nz/2))*nz;
-	int ik2 = ii2 + kk*kk;
-	for(int j=0;j<ny;j++){
-	  int jj = j-(j/(ny/2))*ny;
-	  double lexp=Math.exp((ap*(jj*jj + ik2))*(kt+1));
-	  int xntidx=j*ixnt+k*jxnt+i*kxnt;
-	  int xtridx=j*ixtr+i*jxtr+k*kxtr;
-	  xnt[REAL+xntidx] = lexp*xtr[REAL+xtridx]; 
-	  xnt[IMAG+xntidx] = lexp*xtr[IMAG+xtridx];
-	}
+        int kk = k-(k/(nz/2))*nz;
+        int ik2 = ii2 + kk*kk;
+        for(int j=0;j<ny;j++){
+          int jj = j-(j/(ny/2))*ny;
+          double lexp=Math.exp((ap*(jj*jj + ik2))*(kt+1));
+          int xntidx=j*ixnt+k*jxnt+i*kxnt;
+          int xtridx=j*ixtr+i*jxtr+k*kxtr;
+          xnt[REAL+xntidx] = lexp*xtr[REAL+xtridx];
+          xnt[IMAG+xntidx] = lexp*xtr[IMAG+xtridx];
+        }
       }
-    }   
+    }
   }
 }

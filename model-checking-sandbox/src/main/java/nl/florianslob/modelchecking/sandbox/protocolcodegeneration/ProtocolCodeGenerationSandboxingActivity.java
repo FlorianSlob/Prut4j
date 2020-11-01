@@ -20,22 +20,32 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     public void runActivity() throws Exception {
 
         // Toggle what protocols need to be generated
-        boolean genCGProtocol = true, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
+        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = true, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
 
-        if(genCGProtocol){
-            for(int i = 5; i <= 5; i++){
-                var protocolName = "CGProtocol_n_"+i;
-                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/cg_n_"+i+".dcj";
-                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+        if(genCGProtocolLiberal){
+            for(int i = 1; i <= 5; i++){
+                var protocolName = "CGProtocol_liberal_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/liberal/cg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
+
+        if(genCGProtocolStrict){
+            for(int i = 1; i <= 10; i++){
+                var protocolName = "CGProtocol_strict_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/strict/cg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
+
 
         if(genFTProtocol){
             for(int i = 1; i <= 2; i++){ // Max is 2 for now, takes to long....
                 var protocolName = "FTProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/ft_n_"+i+".dcj";
-                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/FT/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
@@ -44,7 +54,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             for(int i = 1; i <= 1; i++){
                 var protocolName = "ISProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/is_n_"+i+".dcj";
-                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
@@ -53,7 +63,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             for(int i = 1; i <= 1; i++){
                 var protocolName = "MGProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/mg_n_"+i+".dcj";
-                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }

@@ -194,17 +194,3 @@ public class FFTThread extends FTBase{
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

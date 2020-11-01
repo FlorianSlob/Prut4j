@@ -1,7 +1,9 @@
 package NPB.updated.NPB3_0_JAV;
 
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-import nl.florianslob.modelchecking.generated.*;
+import nl.florianslob.modelchecking.generated.CG.*;
+import nl.florianslob.modelchecking.generated.FT.FTProtocol_n_1;
+import nl.florianslob.modelchecking.generated.FT.FTProtocol_n_2;
 
 public class ProtocolHelper {
     public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads){
@@ -10,18 +12,42 @@ public class ProtocolHelper {
             case CG:
                 switch (numberOfThreads){
                     case 1:
-                        return new CGProtocol_n_1();
+                        return new CGProtocol_strict_n_1();
                     case 2:
-                        return new CGProtocol_n_2();
+                        return new CGProtocol_strict_n_2();
                     case 3:
-                        return new CGProtocol_n_3();
+                        return new CGProtocol_strict_n_3();
                     case 4:
-                        return new CGProtocol_n_4();
+                        return new CGProtocol_strict_n_4();
                     case 5:
-                        return new CGProtocol_n_5();
+                        return new CGProtocol_strict_n_5();
+                    case 6:
+                        return new CGProtocol_strict_n_6();
+                    case 7:
+                        return new CGProtocol_strict_n_7();
+                    case 8:
+                        return new CGProtocol_strict_n_8();
+                    case 9:
+                        return new CGProtocol_strict_n_9();
+                    case 10:
+                        return new CGProtocol_strict_n_10();
                     default:
                         throw new UnsupportedOperationException("This N is not supported");
                 }
+            case FT:
+                switch (numberOfThreads){
+                    case 1:
+                        return new FTProtocol_n_1();
+                    case 2:
+                        return new FTProtocol_n_2();
+                    default:
+                        throw new UnsupportedOperationException("This N is not supported");
+                }
+            case BT:
+            case IS:
+            case LU:
+            case MG:
+            case SP:
             default:
                 throw new UnsupportedOperationException("Not Supported");
         }
