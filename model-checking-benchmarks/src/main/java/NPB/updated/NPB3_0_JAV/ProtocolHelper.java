@@ -6,6 +6,7 @@ import nl.florianslob.modelchecking.generated.FT.*;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_1;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_2;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_3;
+import nl.florianslob.modelchecking.generated.MGProtocol_n_1;
 
 public class ProtocolHelper {
     public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads){
@@ -56,10 +57,15 @@ public class ProtocolHelper {
                     default:
                         throw new UnsupportedOperationException("This N is not supported");
                 }
-
+            case MG:
+                switch (numberOfThreads){
+                    case 1:
+                        return new MGProtocol_n_1();
+                    default:
+                        throw new UnsupportedOperationException("This N is not supported");
+                }
             case BT:
             case LU:
-            case MG:
             case SP:
             default:
                 throw new UnsupportedOperationException("Not Supported");

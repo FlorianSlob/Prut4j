@@ -20,7 +20,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     public void runActivity() throws Exception {
 
         // Toggle what protocols need to be generated
-        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = false, genISProtocol = true, genMGProtocol = false, genDemoProtocols = false;
+        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = true, genDemoProtocols = false;
 
         if(genCGProtocolLiberal){
             for(int i = 1; i <= 5; i++){
