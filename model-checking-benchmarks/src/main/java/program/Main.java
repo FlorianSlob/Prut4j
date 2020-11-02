@@ -8,7 +8,7 @@ public class Main {
 
         System.out.println("Executing original benchmark.");
         NPB.original.NPB3_0_JAV.MG.main(BTArgs);
-//
+
         System.out.println("Executing update benchmark.");
         NPB.updated.NPB3_0_JAV.MG.main(BTArgs);
     }

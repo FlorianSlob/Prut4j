@@ -20,7 +20,8 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     public void runActivity() throws Exception {
 
         // Toggle what protocols need to be generated
-        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = true, genDemoProtocols = false;
+        // Needs to be generated first in Florian.jar!
+        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
 
         if(genCGProtocolLiberal){
             for(int i = 1; i <= 5; i++){
