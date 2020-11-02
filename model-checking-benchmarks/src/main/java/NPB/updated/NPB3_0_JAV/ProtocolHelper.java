@@ -2,8 +2,10 @@ package NPB.updated.NPB3_0_JAV;
 
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.generated.CG.*;
-import nl.florianslob.modelchecking.generated.FT.FTProtocol_n_1;
-import nl.florianslob.modelchecking.generated.FT.FTProtocol_n_2;
+import nl.florianslob.modelchecking.generated.FT.*;
+import nl.florianslob.modelchecking.generated.ISProtocol_n_1;
+import nl.florianslob.modelchecking.generated.ISProtocol_n_2;
+import nl.florianslob.modelchecking.generated.ISProtocol_n_3;
 
 public class ProtocolHelper {
     public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads){
@@ -43,8 +45,19 @@ public class ProtocolHelper {
                     default:
                         throw new UnsupportedOperationException("This N is not supported");
                 }
-            case BT:
             case IS:
+                switch (numberOfThreads){
+                    case 1:
+                        return new ISProtocol_n_1();
+                    case 2:
+                        return new ISProtocol_n_2();
+                    case 3:
+                        return new ISProtocol_n_3();
+                    default:
+                        throw new UnsupportedOperationException("This N is not supported");
+                }
+
+            case BT:
             case LU:
             case MG:
             case SP:
