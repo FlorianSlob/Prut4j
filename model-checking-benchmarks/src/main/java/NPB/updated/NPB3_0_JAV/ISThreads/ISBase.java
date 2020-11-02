@@ -42,13 +42,16 @@
 */
 package NPB.updated.NPB3_0_JAV.ISThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import NPB.updated.NPB3_0_JAV.IS;
+import discourje.core.AsyncJ;
+import discourje.core.SpecJ;
+import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 public class ISBase extends Thread{
+  public final IProtocol protocol;
   public static final String BMName="IS";
   public char CLASS = 'S';
   public static final int  MAX_ITERATIONS=10,TEST_ARRAY_SIZE=5;
-  
+
   public int TOTAL_KEYS_LOG_2;
   public int MAX_KEY_LOG_2;
   public int NUM_BUCKETS_LOG_2;
@@ -57,90 +60,93 @@ public class ISBase extends Thread{
   public int MAX_KEY;
   public int NUM_BUCKETS;
   public int NUM_KEYS;
-  public int SIZE_OF_BUFFERS; 
+  public int SIZE_OF_BUFFERS;
 
   public boolean timeron=false;
-  public Timer timer = new Timer();
-  
+  public discourje.examples.npb3.impl.Timer timer = new discourje.examples.npb3.impl.Timer();
+
   public static int test_index_array[], test_rank_array[];
-  public static int 
-       S_test_index_array[] = {48427,17148,23627,62548,4431},
-       S_test_rank_array[] = {0,18,346,64917,65463},
+  public static int
+          S_test_index_array[] = {48427,17148,23627,62548,4431},
+          S_test_rank_array[] = {0,18,346,64917,65463},
 
-       W_test_index_array[] = {357773,934767,875723,898999,404505},
-       W_test_rank_array[] = {1249,11698,1039987,1043896,1048018},
+  W_test_index_array[] = {357773,934767,875723,898999,404505},
+          W_test_rank_array[] = {1249,11698,1039987,1043896,1048018},
 
-       A_test_index_array[] = {2112377,662041,5336171,3642833,4250760},
-       A_test_rank_array[] = {104,17523,123928,8288932,8388264},
+  A_test_index_array[] = {2112377,662041,5336171,3642833,4250760},
+          A_test_rank_array[] = {104,17523,123928,8288932,8388264},
 
-       B_test_index_array[] = {41869,812306,5102857,18232239,26860214},
-       B_test_rank_array[] = {33422937,10244,59149,33135281,99}, 
+  B_test_index_array[] = {41869,812306,5102857,18232239,26860214},
+          B_test_rank_array[] = {33422937,10244,59149,33135281,99},
 
-       C_test_index_array[] = {44172927,72999161,74326391,129606274,21736814},
-       C_test_rank_array[] = {61147,882988,266290,133997595,133525895};
-  
+  C_test_index_array[] = {44172927,72999161,74326391,129606274,21736814},
+          C_test_rank_array[] = {61147,882988,266290,133997595,133525895};
+
 /************************************/
-/* These are the three main arrays. */
-/************************************/
+  /* These are the three main arrays. */
+  /************************************/
   public static int passed_verification;
   public int master_hist[], key_array[], partial_verify_vals[];
-  
-  public ISBase(){}
-  
-  public ISBase(char clss, int np, boolean serial){
+
+  public ISBase( IProtocol protocol){
+    this.protocol = protocol;
+  }
+
+  public ISBase(char clss, int np, boolean serial, IProtocol protocol){
     CLASS=clss;
     num_threads=np;
+    this.protocol = protocol;
     switch(CLASS){
-    case 'S':
-      test_index_array = S_test_index_array;
-      test_rank_array  = S_test_rank_array;
-      TOTAL_KEYS_LOG_2 = 16;
-      MAX_KEY_LOG_2 = 11;
-      NUM_BUCKETS_LOG_2 = 9;
-      break;
-    case 'W':
-      test_index_array = W_test_index_array;
-      test_rank_array  = W_test_rank_array;
-      TOTAL_KEYS_LOG_2 = 20;
-      MAX_KEY_LOG_2 = 16;
-      NUM_BUCKETS_LOG_2 = 10;
-      break;
-    case 'A':
-      test_index_array = A_test_index_array;
-      test_rank_array  = A_test_rank_array;
-      TOTAL_KEYS_LOG_2  =  23;
-      MAX_KEY_LOG_2	=  19;
-      NUM_BUCKETS_LOG_2  = 10;
-      break;
-    case 'B':
-      test_index_array = B_test_index_array;
-      test_rank_array  = B_test_rank_array;
-      TOTAL_KEYS_LOG_2 = 25;
-      MAX_KEY_LOG_2 = 21;
-      NUM_BUCKETS_LOG_2 = 10;
-      break;
-    case 'C':
-      test_index_array = C_test_index_array;
-      test_rank_array  = C_test_rank_array;
-      TOTAL_KEYS_LOG_2 = 27;
-      MAX_KEY_LOG_2 = 23;
-      NUM_BUCKETS_LOG_2 = 10;
-      break;
+      case 'S':
+        test_index_array = S_test_index_array;
+        test_rank_array  = S_test_rank_array;
+        TOTAL_KEYS_LOG_2 = 16;
+        MAX_KEY_LOG_2 = 11;
+        NUM_BUCKETS_LOG_2 = 9;
+        break;
+      case 'W':
+        test_index_array = W_test_index_array;
+        test_rank_array  = W_test_rank_array;
+        TOTAL_KEYS_LOG_2 = 20;
+        MAX_KEY_LOG_2 = 16;
+        NUM_BUCKETS_LOG_2 = 10;
+        break;
+      case 'A':
+        test_index_array = A_test_index_array;
+        test_rank_array  = A_test_rank_array;
+        TOTAL_KEYS_LOG_2  =  23;
+        MAX_KEY_LOG_2	=  19;
+        NUM_BUCKETS_LOG_2  = 10;
+        break;
+      case 'B':
+        test_index_array = B_test_index_array;
+        test_rank_array  = B_test_rank_array;
+        TOTAL_KEYS_LOG_2 = 25;
+        MAX_KEY_LOG_2 = 21;
+        NUM_BUCKETS_LOG_2 = 10;
+        break;
+      case 'C':
+        test_index_array = C_test_index_array;
+        test_rank_array  = C_test_rank_array;
+        TOTAL_KEYS_LOG_2 = 27;
+        MAX_KEY_LOG_2 = 23;
+        NUM_BUCKETS_LOG_2 = 10;
+        break;
     }
     //common variables
     TOTAL_KEYS       = (1 << TOTAL_KEYS_LOG_2);
     MAX_KEY	     = (1 << MAX_KEY_LOG_2);
     NUM_BUCKETS      = (1 << NUM_BUCKETS_LOG_2);
     NUM_KEYS	     = TOTAL_KEYS;
-    SIZE_OF_BUFFERS  = NUM_KEYS; 
+    SIZE_OF_BUFFERS  = NUM_KEYS;
 
     key_array = new int[SIZE_OF_BUFFERS];
-    master_hist = new int[MAX_KEY];    
+    master_hist = new int[MAX_KEY];
     partial_verify_vals =  new int[TEST_ARRAY_SIZE];
 
     for( int i=0; i<MAX_KEY; i++ ) master_hist[i] = 0;
   }
-  
+
   public int num_threads=0;
   public RankThread rankthreads[];
   public IS master;
@@ -148,6 +154,8 @@ public class ISBase extends Thread{
   public void setupThreads(IS is){
     int start=0, end=0, remainder=TOTAL_KEYS%num_threads, offset=0;
     int rstart=0, rend=0, rremainder=MAX_KEY%num_threads, roffset=0;
+
+    var m = AsyncJ.dcj() ? AsyncJ.monitor(SpecJ.session("::is", new Object[]{num_threads})) : null;
 
     rankthreads = new RankThread[num_threads];
     for(int i=0;i<num_threads;i++){
@@ -166,14 +174,22 @@ public class ISBase extends Thread{
         roffset++;
         rend++;
       }
-      rankthreads[i]= new RankThread(is,i,start,end,rstart,rend);
+      try {
+        rankthreads[i] = new RankThread(is, i, start, end, rstart, rend,
+                protocol.getEnvironment("worker_" + i + "_"), protocol);
+      }catch (Exception e){
+        e.printStackTrace();
+        System.exit(0);
+      }
+//              AsyncJ.channel(1, SpecJ.role("::master"), SpecJ.role("::worker", i), m),
+//              AsyncJ.channel(1, SpecJ.role("::worker", i), SpecJ.role("::master"), m));
       rankthreads[i].start();
     }
     for(int i=0;i<num_threads;i++){
       rankthreads[i].rankthreads=rankthreads;
     }
   }
-  
+
   public void checksum(int array[], String name, boolean stop){
     double check=0;
     for(int i=0;i<array.length;i++) check+=array[i];

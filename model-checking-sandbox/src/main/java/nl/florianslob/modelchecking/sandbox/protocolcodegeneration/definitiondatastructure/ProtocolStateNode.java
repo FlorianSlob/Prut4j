@@ -39,7 +39,8 @@ public class ProtocolStateNode {
 
         // Recursively visit the whole tree
         for(ProtocolTransition transaction : outgoingTransactions){
-            transaction.targetState.Accept(visitors);
+            if(!transaction.targetState.VisitedBefore)
+                transaction.targetState.Accept(visitors);
         }
 
         // Resetting to enable multiple passes. --> No this could be a problem!

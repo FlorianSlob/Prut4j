@@ -20,15 +20,19 @@ public interface IEnvironment {
         exchange(Optional.of(m), receiver);
     }
 
+    default <Any> void send(Any m) throws Exception {
+        exchange(Optional.of(m), null);
+    }
+
     default <Any> Any receive() throws Exception {
         // Suppressing warnings, protocols are generated code that do type checks and present check manually
         //noinspection unchecked,OptionalGetWithoutIsPresent
         return (Any) exchange(Optional.empty()).get();
     }
 
-    default <Any> Any close() throws Exception {
+    default void close() throws Exception {
         // Suppressing warnings, protocols are generated code that do type checks and present check manually
         //noinspection unchecked,OptionalGetWithoutIsPresent
-        return (Any) exchange(Optional.empty(), null, true).get();
+        exchange(Optional.empty(), null, true);
     }
 }

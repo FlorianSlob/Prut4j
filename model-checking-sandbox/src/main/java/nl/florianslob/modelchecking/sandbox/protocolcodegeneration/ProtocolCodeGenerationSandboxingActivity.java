@@ -18,23 +18,71 @@ import java.util.*;
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
-        var protocolName = "CGProtocol";
-        var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/cg.dcj";
-        var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/";
-        GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName);
 
-        var protocolName2 = "GeneratedChessProtocol";
-        var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chess.dcj";
-        var filePath2 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
-        GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2);
+        // Toggle what protocols need to be generated
+        // Needs to be generated first in Florian.jar!
+        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
 
-        var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
-        var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
-        var filePath3 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
-        GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3);
+        if(genCGProtocolLiberal){
+            for(int i = 1; i <= 5; i++){
+                var protocolName = "CGProtocol_liberal_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/liberal/cg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
+
+        if(genCGProtocolStrict){
+            for(int i = 1; i <= 10; i++){
+                var protocolName = "CGProtocol_strict_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/strict/cg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
+
+
+        if(genFTProtocol){
+            for(int i = 1; i <= 2; i++){ // Max is 2 for now, takes to long....
+                var protocolName = "FTProtocol_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/ft_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/FT/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
+
+        if(genISProtocol){
+            for(int i = 1; i <= 4; i++){
+                var protocolName = "ISProtocol_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/is_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
+
+        if(genMGProtocol){
+            for(int i = 1; i <= 1; i++){
+                var protocolName = "MGProtocol_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/mg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
+
+        if(genDemoProtocols){
+            var protocolName2 = "GeneratedChessProtocol";
+            var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chess.dcj";
+            var filePath2 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
+            GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2, true);
+
+            var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
+            var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+            var filePath3 = "../model-checking-testproject/src/main/java/nl/florianslob/modelchecking/generated/";
+            GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3, true);
+        }
     }
 
-    public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName) throws Exception{
+    public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName, boolean generatePlantUmlFile) throws Exception{
         var writerProvider = new SyntaxWriterProvider("Java11");
 
         var protocolStateNodesResult = getInitialStateForChessProtocol(pathToProtocolDefinition);
@@ -47,16 +95,20 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         var findUniqueRoleNamesProtocolDefinitionVisitor =
             new FindUniqueRoleNamesProtocolDefinitionVisitor();
 
-        visitorsFirstPass.add(plantUmlVisualizationVisitor);
+        if(generatePlantUmlFile)
+            visitorsFirstPass.add(plantUmlVisualizationVisitor);
+
         visitorsFirstPass.add(uniqueCommunicationChannelFinderVisitor);
         visitorsFirstPass.add(findUniqueRoleNamesProtocolDefinitionVisitor);
 
         protocolStateNodesResult.InitialState.Accept(visitorsFirstPass);
 
-        System.out.println("Printing PlantUml");
-        System.out.println(plantUmlVisualizationVisitor.getPlantUmlSyntax());
+        if(generatePlantUmlFile){
+            System.out.println("Printing PlantUml");
+            System.out.println(plantUmlVisualizationVisitor.getPlantUmlSyntax());
 
-        plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
+            plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
+        }
 
         var visitorsSecondPass = new LinkedList<CreateEnvironmentForRoleProtocolDefinitionVisitor>();
 
@@ -102,10 +154,6 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
         // Now we have the graph here
         var protocolDefinitionGraph = (Graph)toGraphFunction.invoke(pathToProtocolDefinition);
-
-        System.out.println("Starting to parse to real DTO's for code generation.");
-        System.out.println("TODO We should really support parameterization! (NPB!).");
-
 
         result = new ClojureGraphToDtoHelper()
                 .parseGraphAndReturnInitialState(protocolDefinitionGraph);
