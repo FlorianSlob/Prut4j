@@ -164,7 +164,6 @@ public class FT extends FTBase {
                 }
             }
             for (int m = 0; m < num_threads; m++) {
-
                 var evolveEnv = protocol.getEnvironment("evolve_"+m+"_");
                 environment.close();
                 evolveEnv.close();
@@ -172,17 +171,6 @@ public class FT extends FTBase {
                 var fftEnv = protocol.getEnvironment("fft_"+m+"_");
                 environment.close();
                 fftEnv.close();
-//                doFFT[m].in.close();
-//                doFFT[m].out.close();
-
-//                doEvolve[m].in.close();
-//                doEvolve[m].out.close();
-
-//
-//                environment.close();
-//                environment.close();
-//                environment.close();
-//                environment.close();
             }
         }catch (Exception e){
             e.printStackTrace();
