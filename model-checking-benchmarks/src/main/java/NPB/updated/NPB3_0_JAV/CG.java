@@ -52,6 +52,7 @@ import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 
 import java.io.*;
 import java.text.*;
+import java.util.Arrays;
 
 public class CG extends CGBase {
 	public int bid=-1;
@@ -74,6 +75,11 @@ public class CG extends CGBase {
 			argv = new String[]{"-np2", "CLASS=W"};
 		}
 
+		var strict = false;
+		if(Arrays.stream(argv).anyMatch(s -> s.equals("-strict"))){
+			strict = true;
+		}
+
 		CG cg = null;
 
 		discourje.examples.npb3.impl.BMInOut.BMArgs.ParseCmdLineArgs(argv,BMName);
@@ -87,7 +93,7 @@ public class CG extends CGBase {
 			System.exit(0);
 		}
 		try {
-			cg.runBenchMark();
+			cg.runBenchMark(strict);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,14 +101,14 @@ public class CG extends CGBase {
 
 	public void run(){
 		try {
-			runBenchMark();
+			runBenchMark(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void runBenchMark() throws Exception {
-		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads);
+	public void runBenchMark(boolean strict) throws Exception {
+		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, strict);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");

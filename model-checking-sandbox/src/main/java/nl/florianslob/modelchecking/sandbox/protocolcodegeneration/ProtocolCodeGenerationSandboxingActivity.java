@@ -21,7 +21,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
-        boolean genCGProtocolLiberal = false, genCGProtocolStrict = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
+        boolean genCGProtocolLiberal = false, genCGProtocolStrict = true, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
 
         if(genCGProtocolLiberal){
             for(int i = 1; i <= 5; i++){
@@ -33,7 +33,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genCGProtocolStrict){
-            for(int i = 1; i <= 10; i++){
+            for(int i = 1; i <= 32; i++){
                 var protocolName = "CGProtocol_strict_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/strict/cg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
