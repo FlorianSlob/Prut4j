@@ -113,7 +113,7 @@ public class MG extends MGBase {
 
     public void runBenchMark() throws Exception {
 
-        var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads, true);
+        var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads, ProtocolVariant.UNKNOWN);
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName,CLASS,serial,num_threads);
 
         int niter=getInputPars();

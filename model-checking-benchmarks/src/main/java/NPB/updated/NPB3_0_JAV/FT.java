@@ -104,7 +104,7 @@ public class FT extends FTBase {
     }
 
     public void runBenchMark() throws Exception {
-        protocol = ProtocolHelper.GetProtocolImplementation(NpbType.FT, num_threads,true);
+        protocol = ProtocolHelper.GetProtocolImplementation(NpbType.FT, num_threads,ProtocolVariant.UNKNOWN);
         environment = protocol.getEnvironment("master");
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName,CLASS,serial,num_threads);

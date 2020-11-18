@@ -1,7 +1,6 @@
 package NPB.updated.NPB3_0_JAV;
 
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-import nl.florianslob.modelchecking.generated.*;
 import nl.florianslob.modelchecking.generated.CG.CGProtocol_liberal_n_1;
 import nl.florianslob.modelchecking.generated.CG.CGProtocol_liberal_n_2;
 import nl.florianslob.modelchecking.generated.CG.CGProtocol_liberal_n_3;
@@ -44,10 +43,10 @@ import nl.florianslob.modelchecking.generated.ISProtocol_n_3;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_1;
 
 public class ProtocolHelper {
-    public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads, boolean strictDefinition){
+    public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads, ProtocolVariant protocolVariant){
         switch (npbType){
             case CG:
-                if(strictDefinition){
+                if(protocolVariant == ProtocolVariant.STRICT){
                     switch (numberOfThreads) {
                         case 1:
                             return new CGProtocol_strict_n_1();
@@ -116,7 +115,7 @@ public class ProtocolHelper {
                         default:
                             throw new UnsupportedOperationException("This N is not supported");
                     }
-                }else{
+                }else if(protocolVariant == protocolVariant.LIBERAL){
                         switch (numberOfThreads) {
                             case 1:
                                 return new CGProtocol_liberal_n_1();
@@ -127,6 +126,8 @@ public class ProtocolHelper {
                             default:
                                 throw new UnsupportedOperationException("This N is not supported");
                         }
+                }else{
+                    throw new UnsupportedOperationException("This ProtocolVariant is not supported");
                 }
             case FT:
                 switch (numberOfThreads){

@@ -75,9 +75,13 @@ public class CG extends CGBase {
 			argv = new String[]{"-np2", "CLASS=W"};
 		}
 
-		var strict = false;
-		if(Arrays.stream(argv).anyMatch(s -> s.equals("-strict"))){
-			strict = true;
+		ProtocolVariant protocolVariant;
+		if(Arrays.asList(argv).contains("-strict")){
+			protocolVariant = ProtocolVariant.STRICT;
+		}else if(Arrays.asList(argv).contains("-liberal")){
+			protocolVariant = ProtocolVariant.LIBERAL;
+		}else{
+			protocolVariant = ProtocolVariant.UNKNOWN;
 		}
 
 		CG cg = null;
@@ -93,7 +97,7 @@ public class CG extends CGBase {
 			System.exit(0);
 		}
 		try {
-			cg.runBenchMark(strict);
+			cg.runBenchMark(protocolVariant);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,14 +105,14 @@ public class CG extends CGBase {
 
 	public void run(){
 		try {
-			runBenchMark(false);
+			runBenchMark(ProtocolVariant.STRICT);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void runBenchMark(boolean strict) throws Exception {
-		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, strict);
+	public void runBenchMark(ProtocolVariant protocolVariant) throws Exception {
+		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, protocolVariant);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");
