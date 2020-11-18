@@ -3,7 +3,7 @@
  * !!! Any Changes made to this code could be overridden. !!!
  * !!! If you want to change the protocol, change its definition and regenerate this code. !!!
  **/
-package nl.florianslob.modelchecking.generated.CG;
+package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
 import nl.florianslob.modelchecking.base.api.v2.*;
@@ -293,17 +293,6 @@ public class CGProtocol_strict_n_8 implements IProtocol {
 							monitor.wait();
 							break;
 						case 33:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-								if (receiver == null) {
-									receiver = "worker_0_";
-								}
-								if (receiver.equals("worker_0_")) {
-									monitor.notifyAll();
-									state = 2;
-									queueFrommasterToworker_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 								if (receiver == null) {
 									receiver = "worker_0_";
@@ -311,6 +300,17 @@ public class CGProtocol_strict_n_8 implements IProtocol {
 								if (receiver.equals("worker_0_")) {
 									monitor.notifyAll();
 									state = 1;
+									queueFrommasterToworker_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+								if (receiver == null) {
+									receiver = "worker_0_";
+								}
+								if (receiver.equals("worker_0_")) {
+									monitor.notifyAll();
+									state = 2;
 									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -1871,7 +1871,7 @@ public class CGProtocol_strict_n_8 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_5_","worker_2_","worker_3_","worker_7_","master","worker_1_","worker_4_","worker_6_" };
+		return new String[] { "worker_7_","worker_2_","worker_6_","worker_3_","worker_4_","worker_5_","master","worker_1_","worker_0_" };
 	}
 	
 	@Override

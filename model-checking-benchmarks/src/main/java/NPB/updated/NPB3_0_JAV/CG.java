@@ -52,6 +52,7 @@ import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 
 import java.io.*;
 import java.text.*;
+import java.util.Arrays;
 
 public class CG extends CGBase {
 	public int bid=-1;
@@ -74,6 +75,15 @@ public class CG extends CGBase {
 			argv = new String[]{"-np2", "CLASS=W"};
 		}
 
+		ProtocolVariant protocolVariant;
+		if(Arrays.asList(argv).contains("-strict")){
+			protocolVariant = ProtocolVariant.STRICT;
+		}else if(Arrays.asList(argv).contains("-liberal")){
+			protocolVariant = ProtocolVariant.LIBERAL;
+		}else{
+			protocolVariant = ProtocolVariant.UNKNOWN;
+		}
+
 		CG cg = null;
 
 		discourje.examples.npb3.impl.BMInOut.BMArgs.ParseCmdLineArgs(argv,BMName);
@@ -87,7 +97,7 @@ public class CG extends CGBase {
 			System.exit(0);
 		}
 		try {
-			cg.runBenchMark();
+			cg.runBenchMark(protocolVariant);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,14 +105,14 @@ public class CG extends CGBase {
 
 	public void run(){
 		try {
-			runBenchMark();
+			runBenchMark(ProtocolVariant.STRICT);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void runBenchMark() throws Exception {
-		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads);
+	public void runBenchMark(ProtocolVariant protocolVariant) throws Exception {
+		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, protocolVariant);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");
@@ -270,8 +280,11 @@ public class CG extends CGBase {
 		if (timeron) PrintTimers();
 
 		for (int m = 0; m < num_threads; m++) {
-			masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage(), "worker_"+i+"_");
+			masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage(), "worker_"+m+"_");
+
+			var x = 10;
 			masterEnvironment.receive();
+
 			while (true) {
 				try {
 					worker[m].join();
@@ -282,7 +295,9 @@ public class CG extends CGBase {
 		}
 		for (int m = 0; m < num_threads; m++) {
 			masterEnvironment.close();
-			masterEnvironment.close();
+		}
+		for (int m = 0; m < num_threads; m++) {
+			protocol.getEnvironment("worker_"+m+"_").close();
 		}
 	}
 	void setTimers(){

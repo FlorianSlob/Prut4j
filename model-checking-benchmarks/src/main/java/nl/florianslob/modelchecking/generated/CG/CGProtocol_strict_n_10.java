@@ -3,7 +3,7 @@
  * !!! Any Changes made to this code could be overridden. !!!
  * !!! If you want to change the protocol, change its definition and regenerate this code. !!!
  **/
-package nl.florianslob.modelchecking.generated.CG;
+package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
 import nl.florianslob.modelchecking.base.api.v2.*;
@@ -2519,7 +2519,7 @@ public class CGProtocol_strict_n_10 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_8_","worker_7_","worker_4_","worker_0_","worker_9_","worker_6_","worker_1_","worker_5_","worker_2_","worker_3_","master" };
+		return new String[] { "worker_4_","master","worker_8_","worker_3_","worker_9_","worker_5_","worker_2_","worker_1_","worker_7_","worker_0_","worker_6_" };
 	}
 	
 	@Override

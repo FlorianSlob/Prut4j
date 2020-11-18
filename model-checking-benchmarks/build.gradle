@@ -6,6 +6,13 @@ plugins {
 
 mainClassName = 'program.Main'
 
+
+configurations {
+    // configuration that holds jars to include in the jar
+    extraLibs
+    extraLibs2
+}
+
 group 'nl.florianslob.modelchecking.benchmarks'
 version '1.0-SNAPSHOT'
 
@@ -20,8 +27,21 @@ repositories {
 }
 
 dependencies {
-    compile project(':model-checking-base')
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation name: 'discourje-2.0.0'
+    extraLibs group: 'discourje', name: 'discourje-2.0.0'
+    configurations.compile.extendsFrom(configurations.extraLibs)
+    compile project(':model-checking-base')
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'program.Main'
+        )
+    }
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtime.collect { zipTree(it) }
+    }
+}
