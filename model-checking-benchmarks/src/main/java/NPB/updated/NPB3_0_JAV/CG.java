@@ -276,8 +276,11 @@ public class CG extends CGBase {
 		if (timeron) PrintTimers();
 
 		for (int m = 0; m < num_threads; m++) {
-			masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage(), "worker_"+i+"_");
+			masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage(), "worker_"+m+"_");
+
+			var x = 10;
 			masterEnvironment.receive();
+
 			while (true) {
 				try {
 					worker[m].join();
@@ -288,7 +291,9 @@ public class CG extends CGBase {
 		}
 		for (int m = 0; m < num_threads; m++) {
 			masterEnvironment.close();
-			masterEnvironment.close();
+		}
+		for (int m = 0; m < num_threads; m++) {
+			protocol.getEnvironment("worker_"+m+"_").close();
 		}
 	}
 	void setTimers(){
