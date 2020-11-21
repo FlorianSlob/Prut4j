@@ -1,8 +1,3 @@
-; (s/defrole "master")
-; (s/defrole "worker")
-
-;(s/defsession ::cg [k]
-
 (s/cat (s/* (s/cat (s/cat-every [i (range 17)]
                    (s/-->> discourje.examples.npb3.impl.CGThreads.CGMessage "master" ("worker" i)))
                  (s/cat-every [i (range 17)]
@@ -15,13 +10,3 @@
      (s/cat-every [i (range 17)]
        (s/close ("worker" i) "master")))
 
-;)
-;)
-
-; (s/cat (s/par-every [i (range 1)]
-;                      (s/cat (s/-->> String "master" ("worker" i))
-;                             (s/-->> String ("worker" i) "master")))
-;         (s/par (s/par-every [i (range 1)]
-;                             (s/close "master" ("worker" i)))
-;                (s/par-every [i (range 1)]
-;                             (s/close ("worker" i) "master"))))

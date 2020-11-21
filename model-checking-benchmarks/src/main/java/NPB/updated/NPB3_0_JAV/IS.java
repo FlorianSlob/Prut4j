@@ -187,11 +187,12 @@ public class IS extends ISBase {
                 } catch (InterruptedException e) {}
             }
         }
+
         for (int m = 0; m < num_threads; m++) {
-            // TODO Check this!
-            protocol.getEnvironment("worker_"+m+"_").close();
-//            rankthreads[m].in.close();
             masterEnvironment.close();
+        }
+        for (int m = 0; m < num_threads; m++) {
+            protocol.getEnvironment("worker_"+m+"_").close();
         }
     }
 

@@ -1,4 +1,4 @@
-  (s/cat (s/* (s/alt (s/cat (s/cat-every [i (range 8)]
+(s/cat (s/* (s/alt (s/cat (s/cat-every [i (range 8)]
                               (s/-->> discourje.examples.npb3.impl.FTThreads.EvolveMessage "master" ("evolve" i)))
                             (s/cat-every [i (range 8)]
                               (s/-->> discourje.examples.npb3.impl.DoneMessage ("evolve" i) "master")))

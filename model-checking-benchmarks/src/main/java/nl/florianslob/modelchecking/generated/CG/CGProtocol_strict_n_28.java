@@ -872,17 +872,6 @@ public class CGProtocol_strict_n_28 implements IProtocol {
 							monitor.wait();
 							break;
 						case 113:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-								if (receiver == null) {
-									receiver = "worker_0_";
-								}
-								if (receiver.equals("worker_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToworker_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "worker_0_";
@@ -890,6 +879,17 @@ public class CGProtocol_strict_n_28 implements IProtocol {
 								if (receiver.equals("worker_0_")) {
 									monitor.notifyAll();
 									state = 2;
+									queueFrommasterToworker_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+								if (receiver == null) {
+									receiver = "worker_0_";
+								}
+								if (receiver.equals("worker_0_")) {
+									monitor.notifyAll();
+									state = 1;
 									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -12328,7 +12328,7 @@ public class CGProtocol_strict_n_28 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_4_","worker_14_","worker_27_","worker_21_","worker_9_","worker_25_","worker_20_","worker_26_","worker_16_","worker_17_","worker_12_","worker_10_","worker_7_","worker_19_","worker_13_","worker_3_","worker_1_","worker_18_","worker_8_","worker_11_","worker_5_","master","worker_15_","worker_6_","worker_24_","worker_2_","worker_22_","worker_0_","worker_23_" };
+		return new String[] { "worker_0_","worker_1_","worker_22_","worker_10_","worker_13_","worker_15_","worker_26_","worker_5_","worker_18_","worker_7_","worker_20_","worker_14_","worker_6_","worker_25_","master","worker_16_","worker_17_","worker_24_","worker_3_","worker_12_","worker_9_","worker_8_","worker_11_","worker_23_","worker_27_","worker_21_","worker_19_","worker_2_","worker_4_" };
 	}
 	
 	@Override

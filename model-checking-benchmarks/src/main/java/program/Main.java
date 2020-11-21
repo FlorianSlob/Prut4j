@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         if(args == null || args.length == 0){
             // Problem classes to choose from: S,W,A,B,C,D,E,F
-            args = new String[]{"-runUpdatedBenchmark","-BM=FT","class=B", "-np32"};
+            args = new String[]{"-runUpdatedBenchmark","-BM=IS","class=B", "-np1"};
         }
 
         var runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");

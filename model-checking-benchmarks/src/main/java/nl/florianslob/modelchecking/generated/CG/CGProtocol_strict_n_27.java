@@ -11621,7 +11621,7 @@ public class CGProtocol_strict_n_27 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_19_","worker_10_","worker_23_","worker_12_","worker_3_","worker_22_","worker_21_","worker_8_","worker_13_","worker_9_","worker_11_","worker_2_","worker_16_","worker_15_","worker_4_","worker_25_","worker_20_","worker_7_","worker_18_","worker_6_","worker_0_","worker_24_","worker_26_","worker_5_","master","worker_17_","worker_14_","worker_1_" };
+		return new String[] { "worker_7_","worker_26_","worker_24_","worker_18_","worker_19_","worker_1_","worker_17_","worker_21_","master","worker_3_","worker_23_","worker_8_","worker_15_","worker_22_","worker_4_","worker_20_","worker_10_","worker_0_","worker_2_","worker_9_","worker_14_","worker_11_","worker_6_","worker_13_","worker_12_","worker_25_","worker_16_","worker_5_" };
 	}
 	
 	@Override

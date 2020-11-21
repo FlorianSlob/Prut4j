@@ -21,19 +21,18 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
-        boolean genCGProtocol = false, genFTProtocol = true, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
+        boolean genCGProtocol = true, genFTProtocol = true, genISProtocol = true, genMGProtocol = true, genDemoProtocols = false;
         String versionString = "strict";
 
 
         if(genCGProtocol){
-            for(int i = 1; i <= 32; i++){
+            for(int i = 1; i <= 1; i++){
                 var protocolName = "CGProtocol_strict_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
-
 
         if(genFTProtocol){
             for(int i = 1; i <= 32; i++){
@@ -45,7 +44,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genISProtocol){
-            for(int i = 1; i <= 4; i++){
+            for(int i = 1; i <= 32; i++){
                 var protocolName = "ISProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/"+versionString+"/is_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";
@@ -54,7 +53,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genMGProtocol){
-            for(int i = 1; i <= 1; i++){
+            for(int i = 1; i <= 26; i++){ // Max 26, files will become to large.
                 var protocolName = "MGProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/"+versionString+"/mg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";
