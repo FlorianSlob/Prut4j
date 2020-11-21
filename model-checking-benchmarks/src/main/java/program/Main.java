@@ -4,10 +4,9 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        if(args == null){
-            // Override args for testing purposes.
+        if(args == null || args.length == 0){
             // Problem classes to choose from: S,W,A,B,C,D,E,F
-            args = new String[]{"-original","-BM=CG","class=B", "-np3"};
+            args = new String[]{"-runUpdatedBenchmark","-BM=FT","class=B", "-np32"};
         }
 
         var runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");
@@ -64,6 +63,5 @@ public class Main {
                 NPB.updated.NPB3_0_JAV.MG.main(args);
             }
         }
-
     }
 }
