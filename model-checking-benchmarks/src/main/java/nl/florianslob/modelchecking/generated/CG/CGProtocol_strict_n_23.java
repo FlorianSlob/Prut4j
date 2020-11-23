@@ -171,17 +171,6 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-								if (receiver == null) {
-									receiver = "worker_0_";
-								}
-								if (receiver.equals("worker_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToworker_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "worker_0_";
@@ -189,6 +178,17 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 								if (receiver.equals("worker_0_")) {
 									monitor.notifyAll();
 									state = 2;
+									queueFrommasterToworker_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+								if (receiver == null) {
+									receiver = "worker_0_";
+								}
+								if (receiver.equals("worker_0_")) {
+									monitor.notifyAll();
+									state = 1;
 									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -734,17 +734,6 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 							monitor.wait();
 							break;
 						case 93:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-								if (receiver == null) {
-									receiver = "worker_0_";
-								}
-								if (receiver.equals("worker_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToworker_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "worker_0_";
@@ -752,6 +741,17 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 								if (receiver.equals("worker_0_")) {
 									monitor.notifyAll();
 									state = 2;
+									queueFrommasterToworker_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+								if (receiver == null) {
+									receiver = "worker_0_";
+								}
+								if (receiver.equals("worker_0_")) {
+									monitor.notifyAll();
+									state = 1;
 									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -8993,7 +8993,7 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_6_","worker_19_","worker_0_","worker_18_","worker_20_","worker_14_","worker_9_","worker_21_","worker_7_","worker_4_","worker_22_","worker_13_","worker_8_","worker_5_","worker_10_","worker_16_","worker_3_","worker_1_","worker_2_","master","worker_15_","worker_17_","worker_12_","worker_11_" };
+		return new String[] { "worker_12_","worker_20_","worker_17_","worker_14_","worker_19_","worker_2_","worker_6_","master","worker_22_","worker_16_","worker_0_","worker_9_","worker_18_","worker_4_","worker_5_","worker_21_","worker_3_","worker_10_","worker_7_","worker_15_","worker_1_","worker_8_","worker_11_","worker_13_" };
 	}
 	
 	@Override

@@ -28,9 +28,9 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTointerpd_20_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_21_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_16_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrompsinv_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_20_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_16_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_22_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_4_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_17_ = new LinkedBlockingQueue<>(); 
@@ -46,16 +46,16 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFromrprj_11_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_4_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_21_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_19_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_20_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromrprj_19_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_15_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_17_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_16_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_11_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_5_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_13_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromresid_5_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_17_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_19_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_7_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_15_Tomaster = new LinkedBlockingQueue<>(); 
@@ -74,17 +74,17 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTorprj_18_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_20_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_22_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_0_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_22_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_20_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_10_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_4_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTorprj_10_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_23_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTopsinv_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_22_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_18_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_15_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_23_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_8_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_23_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_16_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_4_ = new LinkedBlockingQueue<>(); 
@@ -95,26 +95,26 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTorprj_17_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_11_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_23_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_0_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_2_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTopsinv_14_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_21_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_16_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_14_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_12_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_16_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_4_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_19_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_12_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_15_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_12_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_19_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_16_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_8_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_0_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_17_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_2_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_3_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromrprj_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_13_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_21_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_9_ = new LinkedBlockingQueue<>(); 
@@ -129,8 +129,8 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTorprj_8_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_5_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_20_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_18_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_20_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_9_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_7_ = new LinkedBlockingQueue<>(); 
@@ -140,21 +140,21 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterToresid_8_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_19_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_3_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_13_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_12_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_1_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_13_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_13_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_7_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_17_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_21_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_17_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_23_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_11_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_17_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_17_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_13_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_9_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_17_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_9_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_5_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_18_Tomaster = new LinkedBlockingQueue<>(); 
@@ -170,41 +170,41 @@ public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterToresid_7_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_14_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_23_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_14_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_11_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_14_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_21_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_12_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_6_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_19_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromrprj_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_21_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_1_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_1_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_0_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_10_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_21_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_6_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_8_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_18_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_10_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromrprj_18_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_13_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_0_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_2_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_0_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_22_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_14_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_11_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTointerpd_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_6_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_18_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_10_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_18_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_23_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_18_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_8_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_14_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_14_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTorprj_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_19_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_4_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_10_Tomaster = new LinkedBlockingQueue<>(); 
@@ -26486,17 +26486,6 @@ public class MGProtocol_n_24 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-								if (receiver == null) {
-									receiver = "rprj_0_";
-								}
-								if (receiver.equals("rprj_0_")) {
-									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTorprj_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_0_";
@@ -26508,14 +26497,14 @@ public class MGProtocol_n_24 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
-									receiver = "interpd_0_";
+									receiver = "rprj_0_";
 								}
-								if (receiver.equals("interpd_0_")) {
+								if (receiver.equals("rprj_0_")) {
 									monitor.notifyAll();
-									state = 1;
-									queueFrommasterTointerpd_0_.put(box.get());
+									state = 3;
+									queueFrommasterTorprj_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -26526,6 +26515,17 @@ public class MGProtocol_n_24 implements IProtocol {
 								if (receiver.equals("interpd_0_")) {
 									monitor.notifyAll();
 									state = 5;
+									queueFrommasterTointerpd_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_0_";
+								}
+								if (receiver.equals("interpd_0_")) {
+									monitor.notifyAll();
+									state = 1;
 									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -27106,13 +27106,35 @@ public class MGProtocol_n_24 implements IProtocol {
 							monitor.wait();
 							break;
 						case 100:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+								if (receiver == null) {
+									receiver = "rprj_0_";
+								}
+								if (receiver.equals("rprj_0_")) {
+									monitor.notifyAll();
+									state = 3;
+									queueFrommasterTorprj_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+								if (receiver == null) {
+									receiver = "resid_0_";
+								}
+								if (receiver.equals("resid_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToresid_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
 									monitor.notifyAll();
-									state = 1;
+									state = 5;
 									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -27128,36 +27150,14 @@ public class MGProtocol_n_24 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
 									monitor.notifyAll();
-									state = 5;
+									state = 1;
 									queueFrommasterTointerpd_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-								if (receiver == null) {
-									receiver = "resid_0_";
-								}
-								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 4;
-									queueFrommasterToresid_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-								if (receiver == null) {
-									receiver = "rprj_0_";
-								}
-								if (receiver.equals("rprj_0_")) {
-									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTorprj_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -110843,7 +110843,7 @@ public class MGProtocol_n_24 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "rprj_6_","resid_15_","interpd_13_","interpd_12_","psinv_5_","interpd_17_","interpd_8_","interpd_22_","resid_11_","interpd_21_","rprj_1_","rprj_11_","resid_7_","interpd_3_","rprj_0_","resid_0_","resid_14_","rprj_14_","interpd_23_","rprj_4_","interpd_11_","resid_13_","rprj_19_","rprj_7_","interpd_0_","resid_2_","resid_21_","rprj_22_","master","rprj_17_","interpd_20_","rprj_23_","rprj_20_","psinv_11_","resid_6_","psinv_2_","interpd_19_","resid_8_","resid_12_","resid_19_","resid_16_","interpd_7_","rprj_3_","rprj_15_","rprj_13_","interpd_5_","psinv_7_","psinv_6_","interpd_9_","resid_9_","psinv_17_","interpd_6_","rprj_16_","rprj_8_","interpd_10_","psinv_21_","interpd_18_","psinv_1_","resid_10_","psinv_9_","psinv_20_","psinv_14_","interpd_15_","resid_22_","rprj_10_","psinv_22_","resid_3_","psinv_23_","psinv_12_","psinv_4_","psinv_15_","psinv_19_","rprj_9_","psinv_10_","psinv_13_","rprj_12_","resid_5_","psinv_8_","resid_23_","psinv_16_","interpd_16_","interpd_4_","rprj_2_","rprj_21_","resid_17_","interpd_2_","interpd_1_","psinv_0_","rprj_18_","psinv_3_","interpd_14_","resid_18_","rprj_5_","resid_4_","resid_1_","resid_20_","psinv_18_" };
+		return new String[] { "interpd_16_","rprj_18_","interpd_8_","resid_2_","resid_3_","resid_14_","rprj_2_","resid_4_","rprj_15_","psinv_12_","psinv_5_","interpd_22_","resid_7_","resid_11_","rprj_13_","resid_13_","psinv_3_","psinv_2_","psinv_19_","interpd_11_","interpd_14_","interpd_6_","resid_15_","psinv_7_","rprj_20_","psinv_9_","resid_23_","interpd_7_","master","rprj_23_","rprj_12_","psinv_11_","psinv_15_","resid_9_","interpd_18_","psinv_6_","rprj_7_","interpd_10_","rprj_0_","interpd_3_","psinv_0_","psinv_23_","interpd_2_","resid_10_","rprj_10_","interpd_20_","interpd_1_","psinv_13_","resid_21_","psinv_22_","resid_8_","resid_19_","resid_22_","psinv_20_","psinv_8_","resid_6_","rprj_9_","rprj_8_","resid_12_","resid_1_","psinv_17_","interpd_0_","interpd_19_","psinv_1_","rprj_6_","interpd_21_","resid_5_","rprj_22_","psinv_4_","rprj_5_","psinv_14_","resid_16_","interpd_17_","psinv_10_","resid_18_","rprj_14_","rprj_21_","resid_17_","interpd_23_","interpd_15_","interpd_5_","interpd_4_","rprj_16_","psinv_18_","rprj_1_","rprj_3_","resid_0_","interpd_13_","psinv_16_","rprj_11_","rprj_4_","rprj_19_","psinv_21_","interpd_9_","resid_20_","interpd_12_","rprj_17_" };
 	}
 	
 	@Override

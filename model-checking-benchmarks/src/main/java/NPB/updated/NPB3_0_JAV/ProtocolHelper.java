@@ -1,10 +1,6 @@
 package NPB.updated.NPB3_0_JAV;
 
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-import nl.florianslob.modelchecking.generated.*;
-import nl.florianslob.modelchecking.generated.CG.CGProtocol_liberal_n_1;
-import nl.florianslob.modelchecking.generated.CG.CGProtocol_liberal_n_2;
-import nl.florianslob.modelchecking.generated.CG.CGProtocol_liberal_n_3;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_1;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_10;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_11;
@@ -24,13 +20,7 @@ import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_23;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_24;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_25;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_26;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_27;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_28;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_29;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_3;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_30;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_31;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_32;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_4;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_5;
 import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_6;
@@ -63,12 +53,6 @@ import nl.florianslob.modelchecking.generated.ISProtocol_n_23;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_24;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_25;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_26;
-import nl.florianslob.modelchecking.generated.ISProtocol_n_27;
-import nl.florianslob.modelchecking.generated.ISProtocol_n_28;
-import nl.florianslob.modelchecking.generated.ISProtocol_n_29;
-import nl.florianslob.modelchecking.generated.ISProtocol_n_30;
-import nl.florianslob.modelchecking.generated.ISProtocol_n_31;
-import nl.florianslob.modelchecking.generated.ISProtocol_n_32;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_1;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_2;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_3;
@@ -121,19 +105,12 @@ import nl.florianslob.modelchecking.generated.FTProtocol_n_23;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_24;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_25;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_26;
-import nl.florianslob.modelchecking.generated.FTProtocol_n_27;
-import nl.florianslob.modelchecking.generated.FTProtocol_n_28;
-import nl.florianslob.modelchecking.generated.FTProtocol_n_29;
-import nl.florianslob.modelchecking.generated.FTProtocol_n_30;
-import nl.florianslob.modelchecking.generated.FTProtocol_n_31;
-import nl.florianslob.modelchecking.generated.FTProtocol_n_32;
 
 
 public class ProtocolHelper {
     public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads, ProtocolVariant protocolVariant){
         switch (npbType){
             case CG:
-                if(protocolVariant == ProtocolVariant.STRICT){
                     switch (numberOfThreads) {
                         case 1:
                             return new CGProtocol_strict_n_1();
@@ -187,35 +164,10 @@ public class ProtocolHelper {
                             return new CGProtocol_strict_n_25();
                         case 26:
                             return new CGProtocol_strict_n_26();
-                        case 27:
-                            return new CGProtocol_strict_n_27();
-                        case 28:
-                            return new CGProtocol_strict_n_28();
-                        case 29:
-                            return new CGProtocol_strict_n_29();
-                        case 30:
-                            return new CGProtocol_strict_n_30();
-                        case 31:
-                            return new CGProtocol_strict_n_31();
-                        case 32:
-                            return new CGProtocol_strict_n_32();
                         default:
                             throw new UnsupportedOperationException("This N is not supported");
                     }
-                }else if(protocolVariant == protocolVariant.LIBERAL){
-                        switch (numberOfThreads) {
-                            case 1:
-                                return new CGProtocol_liberal_n_1();
-                            case 2:
-                                return new CGProtocol_liberal_n_2();
-                            case 3:
-                                return new CGProtocol_liberal_n_3();
-                            default:
-                                throw new UnsupportedOperationException("This N is not supported");
-                        }
-                }else{
-                    throw new UnsupportedOperationException("This ProtocolVariant is not supported");
-                }
+
             case FT:
                 switch (numberOfThreads){
                     case 1:
@@ -270,24 +222,11 @@ public class ProtocolHelper {
                         return new FTProtocol_n_25();
                     case 26:
                         return new FTProtocol_n_26();
-                    case 27:
-                        return new FTProtocol_n_27();
-                    case 28:
-                        return new FTProtocol_n_28();
-                    case 29:
-                        return new FTProtocol_n_29();
-                    case 30:
-                        return new FTProtocol_n_30();
-                    case 31:
-                        return new FTProtocol_n_31();
-                    case 32:
-                        return new FTProtocol_n_32();
                     default:
                         throw new UnsupportedOperationException("This N is not supported");
                 }
             case IS:
                 switch (numberOfThreads){
-
                     case 1:
                         return new ISProtocol_n_1();
                     case 2:
@@ -340,18 +279,6 @@ public class ProtocolHelper {
                         return new ISProtocol_n_25();
                     case 26:
                         return new ISProtocol_n_26();
-                    case 27:
-                        return new ISProtocol_n_27();
-                    case 28:
-                        return new ISProtocol_n_28();
-                    case 29:
-                        return new ISProtocol_n_29();
-                    case 30:
-                        return new ISProtocol_n_30();
-                    case 31:
-                        return new ISProtocol_n_31();
-                    case 32:
-                        return new ISProtocol_n_32();
                     default:
                         throw new UnsupportedOperationException("This N is not supported");
                 }

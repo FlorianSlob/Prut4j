@@ -26,7 +26,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
 
         if(genCGProtocol){
-            for(int i = 1; i <= 1; i++){
+            for(int i = 1; i <= 26; i++){
                 var protocolName = "CGProtocol_strict_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
@@ -35,7 +35,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genFTProtocol){
-            for(int i = 1; i <= 32; i++){
+            for(int i = 1; i <= 26; i++){
                 var protocolName = "FTProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/"+versionString+"/ft_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/FT/";
@@ -44,7 +44,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genISProtocol){
-            for(int i = 1; i <= 32; i++){
+            for(int i = 1; i <= 26; i++){
                 var protocolName = "ISProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/"+versionString+"/is_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";

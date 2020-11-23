@@ -27,17 +27,17 @@ public class MGProtocol_n_3 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTointerpd_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_0_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_1_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_0_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_2_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_0_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrominterpd_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_1_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrompsinv_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_2_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrompsinv_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_0_Tomaster = new LinkedBlockingQueue<>(); 
@@ -712,25 +712,14 @@ public class MGProtocol_n_3 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
-									receiver = "rprj_0_";
+									receiver = "resid_0_";
 								}
-								if (receiver.equals("rprj_0_")) {
+								if (receiver.equals("resid_0_")) {
 									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTorprj_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_0_";
-								}
-								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 5;
-									queueFrommasterTointerpd_0_.put(box.get());
+									state = 4;
+									queueFrommasterToresid_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -745,14 +734,14 @@ public class MGProtocol_n_3 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
-									receiver = "resid_0_";
+									receiver = "interpd_0_";
 								}
-								if (receiver.equals("resid_0_")) {
+								if (receiver.equals("interpd_0_")) {
 									monitor.notifyAll();
-									state = 4;
-									queueFrommasterToresid_0_.put(box.get());
+									state = 5;
+									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -764,6 +753,17 @@ public class MGProtocol_n_3 implements IProtocol {
 									monitor.notifyAll();
 									state = 2;
 									queueFrommasterTopsinv_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+								if (receiver == null) {
+									receiver = "rprj_0_";
+								}
+								if (receiver.equals("rprj_0_")) {
+									monitor.notifyAll();
+									state = 3;
+									queueFrommasterTorprj_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -828,6 +828,17 @@ public class MGProtocol_n_3 implements IProtocol {
 							monitor.wait();
 							break;
 						case 16:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+								if (receiver == null) {
+									receiver = "resid_0_";
+								}
+								if (receiver.equals("resid_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToresid_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_0_";
@@ -869,17 +880,6 @@ public class MGProtocol_n_3 implements IProtocol {
 									monitor.notifyAll();
 									state = 5;
 									queueFrommasterTointerpd_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-								if (receiver == null) {
-									receiver = "resid_0_";
-								}
-								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 4;
-									queueFrommasterToresid_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -3235,7 +3235,7 @@ public class MGProtocol_n_3 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "rprj_0_","psinv_2_","master","interpd_1_","psinv_0_","rprj_2_","interpd_2_","rprj_1_","interpd_0_","psinv_1_","resid_0_","resid_2_","resid_1_" };
+		return new String[] { "resid_1_","master","interpd_1_","interpd_2_","rprj_0_","psinv_0_","rprj_2_","interpd_0_","resid_2_","psinv_1_","resid_0_","psinv_2_","rprj_1_" };
 	}
 	
 	@Override

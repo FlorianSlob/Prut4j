@@ -180,14 +180,14 @@ public class MGProtocol_n_1 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
-									receiver = "rprj_0_";
+									receiver = "interpd_0_";
 								}
-								if (receiver.equals("rprj_0_")) {
+								if (receiver.equals("interpd_0_")) {
 									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTorprj_0_.put(box.get());
+									state = 5;
+									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -213,6 +213,17 @@ public class MGProtocol_n_1 implements IProtocol {
 									return Optional.empty();
 								}
 							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+								if (receiver == null) {
+									receiver = "rprj_0_";
+								}
+								if (receiver.equals("rprj_0_")) {
+									monitor.notifyAll();
+									state = 3;
+									queueFrommasterTorprj_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_0_";
@@ -221,17 +232,6 @@ public class MGProtocol_n_1 implements IProtocol {
 									monitor.notifyAll();
 									state = 4;
 									queueFrommasterToresid_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_0_";
-								}
-								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 5;
-									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -248,17 +248,6 @@ public class MGProtocol_n_1 implements IProtocol {
 							monitor.wait();
 							break;
 						case 8:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-								if (receiver == null) {
-									receiver = "resid_0_";
-								}
-								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 4;
-									queueFrommasterToresid_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_0_";
@@ -270,17 +259,6 @@ public class MGProtocol_n_1 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
-								if (receiver == null) {
-									receiver = "psinv_0_";
-								}
-								if (receiver.equals("psinv_0_")) {
-									monitor.notifyAll();
-									state = 2;
-									queueFrommasterTopsinv_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
@@ -289,6 +267,28 @@ public class MGProtocol_n_1 implements IProtocol {
 									monitor.notifyAll();
 									state = 1;
 									queueFrommasterTointerpd_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+								if (receiver == null) {
+									receiver = "resid_0_";
+								}
+								if (receiver.equals("resid_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToresid_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+								if (receiver == null) {
+									receiver = "psinv_0_";
+								}
+								if (receiver.equals("psinv_0_")) {
+									monitor.notifyAll();
+									state = 2;
+									queueFrommasterTopsinv_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -827,7 +827,7 @@ public class MGProtocol_n_1 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "rprj_0_","psinv_0_","resid_0_","interpd_0_","master" };
+		return new String[] { "interpd_0_","master","psinv_0_","rprj_0_","resid_0_" };
 	}
 	
 	@Override

@@ -36,8 +36,8 @@ public class MGProtocol_n_20 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTorprj_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_6_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_11_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_4_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromrprj_11_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_19_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTorprj_15_ = new LinkedBlockingQueue<>(); 
@@ -102,11 +102,11 @@ public class MGProtocol_n_20 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTointerpd_12_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_13_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_12_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_1_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTorprj_12_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_8_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_2_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTorprj_8_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_5_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_18_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_9_Tomaster = new LinkedBlockingQueue<>(); 
@@ -159,11 +159,11 @@ public class MGProtocol_n_20 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTopsinv_8_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTopsinv_10_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromrprj_18_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_13_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrominterpd_0_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_14_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTorprj_13_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToresid_11_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromrprj_14_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTointerpd_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromresid_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrompsinv_10_Tomaster = new LinkedBlockingQueue<>(); 
@@ -18645,17 +18645,6 @@ public class MGProtocol_n_20 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-								if (receiver == null) {
-									receiver = "resid_0_";
-								}
-								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 4;
-									queueFrommasterToresid_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
@@ -18663,17 +18652,6 @@ public class MGProtocol_n_20 implements IProtocol {
 								if (receiver.equals("interpd_0_")) {
 									monitor.notifyAll();
 									state = 1;
-									queueFrommasterTointerpd_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_0_";
-								}
-								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 5;
 									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -18686,6 +18664,28 @@ public class MGProtocol_n_20 implements IProtocol {
 									monitor.notifyAll();
 									state = 3;
 									queueFrommasterTorprj_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+								if (receiver == null) {
+									receiver = "resid_0_";
+								}
+								if (receiver.equals("resid_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToresid_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_0_";
+								}
+								if (receiver.equals("interpd_0_")) {
+									monitor.notifyAll();
+									state = 5;
+									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -19158,17 +19158,6 @@ public class MGProtocol_n_20 implements IProtocol {
 							monitor.wait();
 							break;
 						case 84:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-								if (receiver == null) {
-									receiver = "rprj_0_";
-								}
-								if (receiver.equals("rprj_0_")) {
-									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTorprj_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
@@ -19199,6 +19188,17 @@ public class MGProtocol_n_20 implements IProtocol {
 									monitor.notifyAll();
 									state = 4;
 									queueFrommasterToresid_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+								if (receiver == null) {
+									receiver = "rprj_0_";
+								}
+								if (receiver.equals("rprj_0_")) {
+									monitor.notifyAll();
+									state = 3;
+									queueFrommasterTorprj_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -78542,7 +78542,7 @@ public class MGProtocol_n_20 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "psinv_14_","interpd_18_","resid_19_","rprj_6_","interpd_1_","rprj_5_","psinv_3_","resid_8_","resid_1_","psinv_8_","interpd_6_","rprj_4_","rprj_14_","psinv_15_","resid_11_","rprj_7_","interpd_14_","rprj_16_","rprj_10_","interpd_2_","rprj_2_","rprj_0_","rprj_19_","resid_9_","psinv_0_","rprj_18_","interpd_17_","psinv_9_","interpd_4_","rprj_13_","rprj_1_","psinv_11_","psinv_16_","master","psinv_1_","interpd_10_","interpd_12_","psinv_7_","rprj_12_","psinv_12_","psinv_10_","resid_7_","resid_13_","rprj_8_","rprj_9_","interpd_15_","interpd_3_","psinv_4_","resid_6_","interpd_16_","psinv_18_","psinv_19_","interpd_11_","resid_2_","interpd_5_","resid_15_","interpd_13_","resid_16_","resid_4_","interpd_9_","interpd_8_","resid_17_","resid_3_","rprj_17_","interpd_19_","resid_0_","psinv_2_","interpd_7_","resid_10_","resid_14_","rprj_11_","rprj_15_","resid_5_","interpd_0_","psinv_5_","resid_18_","psinv_13_","rprj_3_","psinv_17_","resid_12_","psinv_6_" };
+		return new String[] { "psinv_19_","psinv_17_","interpd_11_","resid_4_","rprj_8_","rprj_18_","interpd_18_","resid_3_","interpd_1_","interpd_6_","rprj_17_","rprj_16_","resid_5_","resid_9_","psinv_8_","interpd_9_","psinv_11_","interpd_16_","resid_2_","interpd_8_","resid_18_","interpd_15_","rprj_5_","psinv_2_","psinv_14_","rprj_0_","master","interpd_2_","rprj_19_","psinv_12_","interpd_12_","interpd_17_","interpd_19_","psinv_10_","psinv_3_","rprj_14_","interpd_14_","psinv_16_","rprj_12_","resid_17_","psinv_13_","interpd_7_","resid_8_","psinv_7_","resid_16_","psinv_5_","rprj_4_","rprj_11_","rprj_15_","rprj_3_","interpd_13_","resid_15_","resid_13_","resid_0_","psinv_18_","resid_11_","resid_12_","resid_7_","psinv_0_","rprj_13_","rprj_9_","resid_14_","resid_1_","interpd_3_","resid_19_","interpd_5_","psinv_6_","rprj_1_","rprj_10_","psinv_4_","psinv_15_","interpd_10_","psinv_1_","rprj_6_","psinv_9_","resid_10_","rprj_2_","interpd_0_","rprj_7_","interpd_4_","resid_6_" };
 	}
 	
 	@Override

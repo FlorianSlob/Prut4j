@@ -20,17 +20,17 @@ public class FTProtocol_n_17 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterToevolve_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_12_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_10_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_6_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_14_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_10_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_2_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_14_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_12_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_10_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_16_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_14_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_16_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_1_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_11_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_6_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_4_Tomaster = new LinkedBlockingQueue<>(); 
@@ -38,8 +38,8 @@ public class FTProtocol_n_17 implements IProtocol {
 	private final BlockingQueue<Object> queueFromfft_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_11_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_13_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_5_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_13_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_8_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_7_Tomaster = new LinkedBlockingQueue<>(); 
@@ -52,14 +52,14 @@ public class FTProtocol_n_17 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterTofft_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_0_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_16_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_14_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_16_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_5_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_8_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_12_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_4_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_12_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_11_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_15_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_13_Tomaster = new LinkedBlockingQueue<>(); 
@@ -68,12 +68,12 @@ public class FTProtocol_n_17 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterToevolve_8_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_10_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_11_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_5_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_15_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_11_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_1_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_3_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_15_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_16_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_12_Tomaster = new LinkedBlockingQueue<>(); 
@@ -16156,6 +16156,17 @@ public class FTProtocol_n_17 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+								if (receiver == null) {
+									receiver = "evolve_0_";
+								}
+								if (receiver.equals("evolve_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToevolve_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 								if (receiver == null) {
 									receiver = "evolve_0_";
@@ -16164,17 +16175,6 @@ public class FTProtocol_n_17 implements IProtocol {
 									monitor.notifyAll();
 									state = 1;
 									queueFrommasterToevolve_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
-								if (receiver == null) {
-									receiver = "fft_0_";
-								}
-								if (receiver.equals("fft_0_")) {
-									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTofft_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -16189,14 +16189,14 @@ public class FTProtocol_n_17 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
-									receiver = "evolve_0_";
+									receiver = "fft_0_";
 								}
-								if (receiver.equals("evolve_0_")) {
+								if (receiver.equals("fft_0_")) {
 									monitor.notifyAll();
-									state = 4;
-									queueFrommasterToevolve_0_.put(box.get());
+									state = 3;
+									queueFrommasterTofft_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -16597,13 +16597,13 @@ public class FTProtocol_n_17 implements IProtocol {
 							monitor.wait();
 							break;
 						case 71:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 								if (receiver == null) {
 									receiver = "evolve_0_";
 								}
 								if (receiver.equals("evolve_0_")) {
 									monitor.notifyAll();
-									state = 4;
+									state = 1;
 									queueFrommasterToevolve_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -16619,17 +16619,6 @@ public class FTProtocol_n_17 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-								if (receiver == null) {
-									receiver = "evolve_0_";
-								}
-								if (receiver.equals("evolve_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToevolve_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
@@ -16638,6 +16627,17 @@ public class FTProtocol_n_17 implements IProtocol {
 									monitor.notifyAll();
 									state = 3;
 									queueFrommasterTofft_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+								if (receiver == null) {
+									receiver = "evolve_0_";
+								}
+								if (receiver.equals("evolve_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToevolve_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -18458,7 +18458,7 @@ public class FTProtocol_n_17 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "evolve_14_","fft_0_","fft_8_","fft_3_","evolve_15_","evolve_9_","evolve_2_","fft_16_","evolve_1_","fft_15_","evolve_4_","evolve_10_","evolve_12_","fft_10_","evolve_3_","fft_6_","fft_13_","evolve_0_","fft_4_","evolve_7_","fft_2_","evolve_16_","fft_7_","evolve_11_","evolve_13_","fft_5_","evolve_5_","master","evolve_8_","fft_14_","fft_9_","evolve_6_","fft_12_","fft_11_","fft_1_" };
+		return new String[] { "fft_2_","fft_7_","evolve_5_","fft_16_","fft_12_","fft_8_","fft_5_","fft_1_","fft_15_","fft_4_","fft_6_","evolve_7_","evolve_14_","evolve_1_","fft_11_","evolve_10_","fft_3_","evolve_3_","fft_0_","fft_10_","evolve_4_","fft_9_","evolve_12_","fft_14_","master","evolve_11_","evolve_13_","evolve_15_","fft_13_","evolve_6_","evolve_9_","evolve_2_","evolve_8_","evolve_0_","evolve_16_" };
 	}
 	
 	@Override
