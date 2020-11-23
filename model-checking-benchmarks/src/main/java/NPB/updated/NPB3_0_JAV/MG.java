@@ -114,74 +114,74 @@ public class MG extends MGBase {
     public void runBenchMark() throws Exception {
 
         var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads, ProtocolVariant.UNKNOWN);
-        discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName,CLASS,serial,num_threads);
+        discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName, CLASS, serial, num_threads);
 
-        int niter=getInputPars();
+        int niter = getInputPars();
 
-        nsizes=new int[3];
+        nsizes = new int[3];
         setup(nsizes);
-        n1=nsizes[0];
-        n2=nsizes[1];
-        n3=nsizes[2];
+        n1 = nsizes[0];
+        n2 = nsizes[1];
+        n3 = nsizes[2];
 
         setTimers();
         timer.resetAllTimers();
         timer.start(T_init);
 
-        zero3(u,0,n1,n2,n3);
-        zran3(v,n1,n2,n3,nx[lt-1],ny[lt-1]);
+        zero3(u, 0, n1, n2, n3);
+        zran3(v, n1, n2, n3, nx[lt - 1], ny[lt - 1]);
 
         masterEnvironment = protocol.getEnvironment("master");
-        if(!serial) setupThreads(this,protocol);
-        if(serial) resid(u,v,r,0,n1,n2,n3);
-        else residMaster(u,v,r,0,n1,n2,n3);
+        if (!serial) setupThreads(this, protocol);
+        if (serial) resid(u, v, r, 0, n1, n2, n3);
+        else residMaster(u, v, r, 0, n1, n2, n3);
 //--------------------------------------------------------------------
 //    One iteration for startup
 //--------------------------------------------------------------------
-        if(serial){
-            mg3P(u,v,r,n1,n2,n3);
-            resid(u,v,r,0,n1,n2,n3);
-        }else{
-            mg3Pmaster(u,v,r,n1,n2,n3);
-            residMaster(u,v,r,0,n1,n2,n3);
+        if (serial) {
+            mg3P(u, v, r, n1, n2, n3);
+            resid(u, v, r, 0, n1, n2, n3);
+        } else {
+            mg3Pmaster(u, v, r, n1, n2, n3);
+            residMaster(u, v, r, 0, n1, n2, n3);
         }
 
-        zero3(u,0,n1,n2,n3);
-        zran3(v,n1,n2,n3,nx[lt-1],ny[lt-1]);
+        zero3(u, 0, n1, n2, n3);
+        zran3(v, n1, n2, n3, nx[lt - 1], ny[lt - 1]);
 
         timer.stop(T_init);
         timer.start(T_bench);
 
         if (timeron) timer.start(T_resid2);
-        if(serial) resid(u,v,r,0,n1,n2,n3);
-        else residMaster(u,v,r,0,n1,n2,n3);
+        if (serial) resid(u, v, r, 0, n1, n2, n3);
+        else residMaster(u, v, r, 0, n1, n2, n3);
         if (timeron) timer.stop(T_resid2);
-        for(int it=1;it<=nit;it++){
+        for (int it = 1; it <= nit; it++) {
             if (timeron) timer.start(T_mg3P);
-            if(serial) mg3P(u,v,r,n1,n2,n3);
-            else mg3Pmaster(u,v,r,n1,n2,n3);
+            if (serial) mg3P(u, v, r, n1, n2, n3);
+            else mg3Pmaster(u, v, r, n1, n2, n3);
             if (timeron) timer.stop(T_mg3P);
 
             if (timeron) timer.start(T_resid2);
-            if(serial) resid(u,v,r,0,n1,n2,n3);
-            else residMaster(u,v,r,0,n1,n2,n3);
+            if (serial) resid(u, v, r, 0, n1, n2, n3);
+            else residMaster(u, v, r, 0, n1, n2, n3);
             if (timeron) timer.stop(T_resid2);
         }
         timer.stop(T_bench);
 
         double tinit = timer.readTimer(T_init);
-        System.out.println(" Initialization time: "+tinit+" seconds");
-        rnm2=norm2u3(r,n1,n2,n3,rnmu,nx[lt-1],ny[lt-1],nz[lt-1]);
-        verified=verify(rnm2);
+        System.out.println(" Initialization time: " + tinit + " seconds");
+        rnm2 = norm2u3(r, n1, n2, n3, rnmu, nx[lt - 1], ny[lt - 1], nz[lt - 1]);
+        verified = verify(rnm2);
         double tm = timer.readTimer(T_bench);
-        results=new discourje.examples.npb3.impl.BMInOut.BMResults("MG",
+        results = new discourje.examples.npb3.impl.BMInOut.BMResults("MG",
                 CLASS,
-                nx[lt-1],
-                ny[lt-1],
-                nz[lt-1],
+                nx[lt - 1],
+                ny[lt - 1],
+                nz[lt - 1],
                 nit,
                 tm,
-                getMFLOPS(tm,nit),
+                getMFLOPS(tm, nit),
                 "floating point",
                 verified,
                 serial,
@@ -191,44 +191,20 @@ public class MG extends MGBase {
         if (timeron) printTimers();
 
         for (int m = 0; m < num_threads; m++) {
-            // Interp
             masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
             masterEnvironment.receive();
+            masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
+            masterEnvironment.receive();
+            masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
+            masterEnvironment.receive();
+            masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
+            masterEnvironment.receive();
+
             while (true) {
                 try {
                     interp[m].join();
-                    break;
-                } catch (InterruptedException e) {
-                }
-            }
-        }
-        for (int m = 0; m < num_threads; m++) {
-            masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
-            masterEnvironment.receive();
-            while (true) {
-                try {
                     psinv[m].join();
-                    break;
-                } catch (InterruptedException e) {
-                }
-            }
-        }
-        for (int m = 0; m < num_threads; m++) {
-            masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
-            masterEnvironment.receive();
-            while (true) {
-                try {
                     rprj[m].join();
-                    break;
-                } catch (InterruptedException e) {
-                }
-            }
-        }
-        for (int m = 0; m < num_threads; m++) {
-            masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage());
-            masterEnvironment.receive();
-            while (true) {
-                try {
                     resid[m].join();
                     break;
                 } catch (InterruptedException e) {
@@ -236,22 +212,28 @@ public class MG extends MGBase {
             }
         }
         for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("interp_"+m+"_").close();
             masterEnvironment.close();
-//            interp[m].in.close();
-//            interp[m].out.close();
+        }
+        for (int m = 0; m < num_threads; m++) {
+            protocol.getEnvironment("interpd_"+m+"_").close();
+        }
+        for (int m = 0; m < num_threads; m++) {
+            masterEnvironment.close();
+        }
+        for (int m = 0; m < num_threads; m++) {
             protocol.getEnvironment("psinv_"+m+"_").close();
+        }
+        for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
-//            psinv[m].in.close();
-//            psinv[m].out.close();
+        }
+        for (int m = 0; m < num_threads; m++) {
             protocol.getEnvironment("rprj_"+m+"_").close();
+        }
+        for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
-//            rprj[m].in.close();
-//            rprj[m].out.close();
+        }
+        for (int m = 0; m < num_threads; m++) {
             protocol.getEnvironment("resid_"+m+"_").close();
-            masterEnvironment.close();
-//            resid[m].in.close();
-//            resid[m].out.close();
         }
     }
 

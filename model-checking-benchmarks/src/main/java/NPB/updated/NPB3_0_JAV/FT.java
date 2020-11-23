@@ -141,11 +141,15 @@ public class FT extends FTBase {
 
         try{
 
+
             for (int m = 0; m < num_threads; m++) {
+                environment.send(new discourje.examples.npb3.impl.ExitMessage(), "evolve_"+m+"_");
+                environment.receive();
                 environment.send(new discourje.examples.npb3.impl.ExitMessage(), "fft_"+m+"_");
                 environment.receive();
                 while (true) {
                     try {
+                        doEvolve[m].join();
                         doFFT[m].join();
                         break;
                     } catch (InterruptedException e) {
@@ -153,23 +157,17 @@ public class FT extends FTBase {
                 }
             }
             for (int m = 0; m < num_threads; m++) {
-                environment.send(new discourje.examples.npb3.impl.ExitMessage(), "evolve_"+m+"_");
-                environment.receive();
-                while (true) {
-                    try {
-                        doEvolve[m].join();
-                        break;
-                    } catch (InterruptedException e) {
-                    }
-                }
+                environment.close();
             }
             for (int m = 0; m < num_threads; m++) {
-                var evolveEnv = protocol.getEnvironment("evolve_"+m+"_");
-                environment.close();
+                var evolveEnv = protocol.getEnvironment("evolve_" + m + "_");
                 evolveEnv.close();
-
-                var fftEnv = protocol.getEnvironment("fft_"+m+"_");
+            }
+            for (int m = 0; m < num_threads; m++) {
                 environment.close();
+            }
+            for (int m = 0; m < num_threads; m++) {
+                var fftEnv = protocol.getEnvironment("fft_"+m+"_");
                 fftEnv.close();
             }
         }catch (Exception e){

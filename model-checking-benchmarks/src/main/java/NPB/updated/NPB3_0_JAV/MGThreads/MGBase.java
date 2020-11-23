@@ -226,7 +226,7 @@ public class MGBase extends Thread{
 //    var m = AsyncJ.dcj() ? AsyncJ.monitor(SpecJ.session("::mg", new Object[]{num_threads})) : null;
     try {
       for (int i = 0; i < num_threads; i++) {
-        interp[i] = new Interp(mg, protocol.getEnvironment("interp_" + i + "_"));
+        interp[i] = new Interp(mg, protocol.getEnvironment("interpd_" + i + "_"));
         interp[i].id = i;
         interp[i].start();
 

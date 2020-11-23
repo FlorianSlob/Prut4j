@@ -21,49 +21,41 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
-        boolean genCGProtocolLiberal = false, genCGProtocolStrict = true, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
+        boolean genCGProtocol = true, genFTProtocol = true, genISProtocol = true, genMGProtocol = true, genDemoProtocols = false;
+        String versionString = "strict";
 
-        if(genCGProtocolLiberal){
-            for(int i = 1; i <= 5; i++){
-                var protocolName = "CGProtocol_liberal_n_"+i;
-                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/liberal/cg_n_"+i+".dcj";
-                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
-                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
-            }
-        }
 
-        if(genCGProtocolStrict){
-            for(int i = 1; i <= 32; i++){
+        if(genCGProtocol){
+            for(int i = 1; i <= 26; i++){
                 var protocolName = "CGProtocol_strict_n_"+i;
-                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/strict/cg_n_"+i+".dcj";
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
-
 
         if(genFTProtocol){
-            for(int i = 1; i <= 2; i++){ // Max is 2 for now, takes to long....
+            for(int i = 1; i <= 26; i++){
                 var protocolName = "FTProtocol_n_"+i;
-                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/ft_n_"+i+".dcj";
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/"+versionString+"/ft_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/FT/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
 
         if(genISProtocol){
-            for(int i = 1; i <= 4; i++){
+            for(int i = 1; i <= 26; i++){
                 var protocolName = "ISProtocol_n_"+i;
-                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/is_n_"+i+".dcj";
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/"+versionString+"/is_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }
         }
 
         if(genMGProtocol){
-            for(int i = 1; i <= 1; i++){
+            for(int i = 1; i <= 26; i++){ // Max 26, files will become to large.
                 var protocolName = "MGProtocol_n_"+i;
-                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/mg_n_"+i+".dcj";
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/"+versionString+"/mg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";
                 GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
             }

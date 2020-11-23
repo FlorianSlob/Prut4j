@@ -30,14 +30,14 @@ public class ISProtocol_n_1 implements IProtocol {
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_12(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_11(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 1 :
 						case 2 :
 						case 3 :
 						case 6 :
 						case 9 :
-						case 11 :
+						case 10 :
 							monitor.wait();
 							break;
 						case 0:
@@ -76,17 +76,6 @@ public class ISProtocol_n_1 implements IProtocol {
 							monitor.wait();
 							break;
 						case 5:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
-								if (receiver == null) {
-									receiver = "worker_0_";
-								}
-								if (receiver.equals("worker_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToworker_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "worker_0_";
@@ -94,6 +83,17 @@ public class ISProtocol_n_1 implements IProtocol {
 								if (receiver.equals("worker_0_")) {
 									monitor.notifyAll();
 									state = 2;
+									queueFrommasterToworker_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
+								if (receiver == null) {
+									receiver = "worker_0_";
+								}
+								if (receiver.equals("worker_0_")) {
+									monitor.notifyAll();
+									state = 1;
 									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -118,14 +118,6 @@ public class ISProtocol_n_1 implements IProtocol {
 							}
 							monitor.wait();
 							break;
-						case 10:
-							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 11;
-								return Optional.empty();
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
@@ -134,8 +126,8 @@ public class ISProtocol_n_1 implements IProtocol {
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
 						while (true){
-							if (state >=0 && state <= 12){
-								var result = exchange_0_12(box, receiver, isCloseAction);
+							if (state >=0 && state <= 11){
+								var result = exchange_0_11(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -151,14 +143,14 @@ public class ISProtocol_n_1 implements IProtocol {
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_12(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_11(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
 						case 4 :
 						case 5 :
 						case 7 :
+						case 8 :
 						case 10 :
-						case 11 :
 							monitor.wait();
 							break;
 						case 1:
@@ -209,18 +201,10 @@ public class ISProtocol_n_1 implements IProtocol {
 							}
 							monitor.wait();
 							break;
-						case 8:
-							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 10;
-								return Optional.empty();
-							}
-							monitor.wait();
-							break;
 						case 9:
 							if (isCloseAction) {
 								monitor.notifyAll();
-								state = 11;
+								state = 10;
 								return Optional.empty();
 							}
 							monitor.wait();
@@ -233,8 +217,8 @@ public class ISProtocol_n_1 implements IProtocol {
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					synchronized (monitor){
 						while (true){
-							if (state >=0 && state <= 12){
-								var result = exchange_0_12(box, receiver, isCloseAction);
+							if (state >=0 && state <= 11){
+								var result = exchange_0_11(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -249,7 +233,7 @@ public class ISProtocol_n_1 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "master","worker_0_" };
+		return new String[] { "worker_0_","master" };
 	}
 	
 	@Override

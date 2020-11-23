@@ -1,0 +1,14 @@
+
+  (s/cat (s/* (s/cat (s/cat-every [i (range 20)]
+                       (s/-->> discourje.examples.npb3.impl.ISThreads.RankMessage "master" ("worker" i)))
+                     (s/cat-every [i (range 20)]
+                       (s/-->> discourje.examples.npb3.impl.DoneMessage ("worker" i) "master"))))
+         (s/cat-every [i (range 20)]
+           (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("worker" i))
+                  (s/-->> discourje.examples.npb3.impl.DoneMessage ("worker" i) "master")))
+         (s/cat (s/cat-every [i (range 20)]
+                  (s/close "master" ("worker" i)))
+                (s/cat-every [i (range 20)]
+                  (s/close ("worker" i) "master"))))
+
+
