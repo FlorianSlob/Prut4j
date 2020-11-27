@@ -883,7 +883,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1094,7 +1094,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1305,7 +1305,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1516,7 +1516,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1727,7 +1727,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1938,7 +1938,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2149,7 +2149,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2360,7 +2360,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2571,7 +2571,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2782,7 +2782,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2993,7 +2993,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3204,7 +3204,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3415,7 +3415,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3626,7 +3626,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 131){
-								var result = exchange_0_131(box, receiver, isCloseAction);
+								Optional result = exchange_0_131(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}

@@ -568,7 +568,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -729,7 +729,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -890,7 +890,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1051,7 +1051,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1212,7 +1212,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1373,7 +1373,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1534,7 +1534,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1695,7 +1695,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1856,7 +1856,7 @@ public class ISProtocol_n_8 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 81){
-								var result = exchange_0_81(box, receiver, isCloseAction);
+								Optional result = exchange_0_81(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}

@@ -19,21 +19,21 @@ public class FTProtocol_n_6 implements IProtocol {
 	
 	private final BlockingQueue<Object> queueFrommasterTofft_0_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTofft_1_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_2_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTofft_1_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_4_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_5_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_4_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_5_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTofft_4_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_0_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTofft_4_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_5_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTofft_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_1_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterTofft_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_4_Tomaster = new LinkedBlockingQueue<>(); 
@@ -246,7 +246,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -456,7 +456,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -666,7 +666,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -876,7 +876,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1086,7 +1086,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1296,7 +1296,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1515,7 +1515,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1734,7 +1734,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1953,7 +1953,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2172,7 +2172,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2391,7 +2391,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2601,7 +2601,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2688,14 +2688,14 @@ public class FTProtocol_n_6 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 								if (receiver == null) {
-									receiver = "fft_0_";
+									receiver = "evolve_0_";
 								}
-								if (receiver.equals("fft_0_")) {
+								if (receiver.equals("evolve_0_")) {
 									monitor.notifyAll();
-									state = 2;
-									queueFrommasterTofft_0_.put(box.get());
+									state = 1;
+									queueFrommasterToevolve_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -2710,17 +2710,6 @@ public class FTProtocol_n_6 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-								if (receiver == null) {
-									receiver = "evolve_0_";
-								}
-								if (receiver.equals("evolve_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToevolve_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "evolve_0_";
@@ -2729,6 +2718,17 @@ public class FTProtocol_n_6 implements IProtocol {
 									monitor.notifyAll();
 									state = 4;
 									queueFrommasterToevolve_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+								if (receiver == null) {
+									receiver = "fft_0_";
+								}
+								if (receiver.equals("fft_0_")) {
+									monitor.notifyAll();
+									state = 2;
+									queueFrommasterTofft_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -2865,6 +2865,17 @@ public class FTProtocol_n_6 implements IProtocol {
 							monitor.wait();
 							break;
 						case 27:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+								if (receiver == null) {
+									receiver = "evolve_0_";
+								}
+								if (receiver.equals("evolve_0_")) {
+									monitor.notifyAll();
+									state = 4;
+									queueFrommasterToevolve_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
@@ -2873,17 +2884,6 @@ public class FTProtocol_n_6 implements IProtocol {
 									monitor.notifyAll();
 									state = 3;
 									queueFrommasterTofft_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-								if (receiver == null) {
-									receiver = "evolve_0_";
-								}
-								if (receiver.equals("evolve_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToevolve_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -2898,13 +2898,13 @@ public class FTProtocol_n_6 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 								if (receiver == null) {
 									receiver = "evolve_0_";
 								}
 								if (receiver.equals("evolve_0_")) {
 									monitor.notifyAll();
-									state = 4;
+									state = 1;
 									queueFrommasterToevolve_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -3490,7 +3490,7 @@ public class FTProtocol_n_6 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 130){
-								var result = exchange_0_130(box, receiver, isCloseAction);
+								Optional result = exchange_0_130(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3505,7 +3505,7 @@ public class FTProtocol_n_6 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "evolve_0_","fft_3_","fft_4_","fft_0_","evolve_3_","evolve_1_","evolve_2_","evolve_4_","evolve_5_","fft_2_","fft_1_","master","fft_5_" };
+		return new String[] { "evolve_3_","fft_4_","fft_2_","evolve_4_","evolve_2_","fft_1_","fft_0_","master","fft_5_","evolve_1_","evolve_0_","evolve_5_","fft_3_" };
 	}
 	
 	@Override

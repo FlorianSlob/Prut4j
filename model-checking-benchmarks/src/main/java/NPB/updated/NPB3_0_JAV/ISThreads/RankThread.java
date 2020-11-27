@@ -96,7 +96,7 @@ public class RankThread extends ISBase {
 //        	}catch(InterruptedException ie){}
 //          }
             try {
-                var o = environment.receive();
+                Object o = environment.receive();
                 if (o instanceof RankMessage) {
                     switch (state) {
                         case 0:

@@ -99,9 +99,9 @@ public class EvolveThread extends FTBase {
 //          }catch(InterruptedException ie){}
 //        }
     try {
-      var o = environment.receive();
+      Object o = environment.receive();
       if (o instanceof EvolveMessage) {
-        var m = (EvolveMessage) o;
+        EvolveMessage m = (EvolveMessage) o;
         kt = m.kt;
         step();
         environment.send(new DoneMessage());

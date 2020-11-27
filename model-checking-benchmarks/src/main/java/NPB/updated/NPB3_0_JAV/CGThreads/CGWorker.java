@@ -95,10 +95,10 @@ public class CGWorker extends CGBase {
 //        }
 
       try {
-        var o = environment.receive();
+        Object o = environment.receive();
 
         if (o instanceof CGMessage) {
-          var m = (CGMessage) o;
+          CGMessage m = (CGMessage) o;
           TaskOrder = m.OrderNum;
           alpha = m.alpha;
           beta = m.beta;

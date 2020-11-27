@@ -10,7 +10,8 @@
         <module name="model-checking-benchmarks.owl.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
+    <bytecodeTargetLevel target="1.8">
+      <module name="model-checking-benchmarks.model-checking-base" target="12" />
       <module name="model-checking-testproject" target="12" />
       <module name="model-checking-testproject.main" target="12" />
       <module name="model-checking-testproject.model-checking-base" target="12" />

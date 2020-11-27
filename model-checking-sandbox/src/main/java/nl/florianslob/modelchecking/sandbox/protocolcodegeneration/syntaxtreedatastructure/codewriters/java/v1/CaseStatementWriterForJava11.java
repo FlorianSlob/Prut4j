@@ -58,7 +58,7 @@ public class CaseStatementWriterForJava11 implements ISyntaxWriter<ASTStateCaseS
                                                 (tabCountLvl1) -> {
                                                     if(receiverNames.size() > 1) {
                                                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "int rnd = new Random().nextInt(" + receiverNames.size() + ");");
-                                                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "var receiverOptionsArray = new String[]{ \"" + String.join("\",\"", receiverNames) + "\" };");
+                                                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "String[] receiverOptionsArray = new String[]{ \"" + String.join("\",\"", receiverNames) + "\" };");
                                                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "receiver = receiverOptionsArray[rnd];");
                                                     }else{
                                                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "receiver = \""+receiverNames.get(0)+"\";");

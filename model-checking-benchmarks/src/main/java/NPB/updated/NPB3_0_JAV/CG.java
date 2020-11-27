@@ -45,10 +45,10 @@
 */
 package NPB.updated.NPB3_0_JAV;
 import NPB.updated.NPB3_0_JAV.CGThreads.*;
-import NPB.updated.NPB3_0_JAV.BMInOut.*;
 import discourje.examples.npb3.impl.BMInOut.BMResults;
 import discourje.examples.npb3.impl.CGThreads.CGMessage;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
+import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 import java.io.*;
 import java.text.*;
@@ -112,7 +112,7 @@ public class CG extends CGBase {
 	}
 
 	public void runBenchMark(ProtocolVariant protocolVariant) throws Exception {
-		var protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, protocolVariant);
+		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, protocolVariant);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");
@@ -281,8 +281,6 @@ public class CG extends CGBase {
 
 		for (int m = 0; m < num_threads; m++) {
 			masterEnvironment.send(new discourje.examples.npb3.impl.ExitMessage(), "worker_"+m+"_");
-
-			var x = 10;
 			masterEnvironment.receive();
 
 			while (true) {

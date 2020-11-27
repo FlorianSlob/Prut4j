@@ -91,9 +91,9 @@ public class Interp extends MGBase {
 
             try
             {
-                var o = interpEnvironment.receive();
+                Object o = interpEnvironment.receive();
                 if (o instanceof InterpMessage) {
-                    var m = (InterpMessage) o;
+                    InterpMessage m = (InterpMessage) o;
                     wstart = m.wstart;
                     wend = m.wend;
                     mm1 = m.mm1;

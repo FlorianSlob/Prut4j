@@ -42,7 +42,6 @@
 */
 package NPB.updated.NPB3_0_JAV.MGThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import discourje.core.SpecJ;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 public class MGBase extends Thread{

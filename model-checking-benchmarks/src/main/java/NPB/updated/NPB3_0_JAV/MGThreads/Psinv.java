@@ -88,9 +88,9 @@ public class Psinv extends MGBase {
 //              }catch(InterruptedException ie){}
 //          }
             try {
-                var o = psinvEnvironment.receive();
+                Object o = psinvEnvironment.receive();
                 if (o instanceof PsinvMessage) {
-                    var m = (PsinvMessage) o;
+                    PsinvMessage m = (PsinvMessage) o;
                     wstart = m.wstart;
                     wend = m.wend;
                     n1 = m.n1;

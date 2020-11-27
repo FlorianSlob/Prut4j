@@ -1521,12 +1521,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1845,12 +1845,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2169,12 +2169,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2493,12 +2493,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2817,12 +2817,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3141,12 +3141,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3465,12 +3465,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3789,12 +3789,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4113,12 +4113,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4437,12 +4437,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4761,12 +4761,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -5085,12 +5085,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -5409,12 +5409,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -5733,12 +5733,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -6057,12 +6057,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -6381,12 +6381,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -6705,12 +6705,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -7029,12 +7029,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -7353,12 +7353,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -7677,12 +7677,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8001,12 +8001,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8325,12 +8325,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8649,12 +8649,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8973,12 +8973,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 231){
-								var result = exchange_200_231(box, receiver, isCloseAction);
+								Optional result = exchange_200_231(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}

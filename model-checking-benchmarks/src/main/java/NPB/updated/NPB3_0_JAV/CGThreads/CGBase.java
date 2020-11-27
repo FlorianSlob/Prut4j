@@ -42,8 +42,6 @@
 */
 package NPB.updated.NPB3_0_JAV.CGThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import discourje.core.AsyncJ;
-import discourje.core.SpecJ;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 public class CGBase extends Thread{
@@ -140,10 +138,6 @@ public class CGBase extends Thread{
     public void setupThreads(CG cg, IProtocol protocol){
         worker = new CGWorker[num_threads];
         master = cg;
-
-
-
-        var m = AsyncJ.dcj() ? AsyncJ.monitor(SpecJ.session("::cg", new Object[]{num_threads})) : null;
 
         int div = na/num_threads;
         int rem = na%num_threads;
