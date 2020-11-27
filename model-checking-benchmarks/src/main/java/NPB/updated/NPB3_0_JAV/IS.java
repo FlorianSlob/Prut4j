@@ -48,6 +48,7 @@ import discourje.examples.npb3.impl.BMInOut.BMResults;
 import discourje.examples.npb3.impl.ISThreads.RankMessage;
 import discourje.examples.npb3.impl.Random;
 import discourje.examples.npb3.impl.Timer;
+import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 public class IS extends ISBase {
@@ -102,7 +103,7 @@ public class IS extends ISBase {
     }
 
     public void runBenchMark() throws Exception {
-        var masterEnvironment = protocol.getEnvironment("master");
+        IEnvironment masterEnvironment = protocol.getEnvironment("master");
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName,CLASS,serial,num_threads);
 
@@ -304,7 +305,7 @@ public class IS extends ISBase {
     }
 
     void doSort() throws Exception {
-        var masterEnvironment = protocol.getEnvironment("master");
+        IEnvironment masterEnvironment = protocol.getEnvironment("master");
 
 //  synchronized void doSort(){
         int m;

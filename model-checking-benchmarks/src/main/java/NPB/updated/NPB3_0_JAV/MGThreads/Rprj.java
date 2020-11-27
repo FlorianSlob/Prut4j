@@ -89,9 +89,9 @@ public class Rprj extends MGBase {
 //    	  }catch(InterruptedException ie){}
 //    	}
             try {
-                var o = rprjEnvironment.receive();
+                Object o = rprjEnvironment.receive();
                 if (o instanceof RprjMessage) {
-                    var m = (RprjMessage) o;
+                    RprjMessage m = (RprjMessage) o;
                     wstart = m.wstart;
                     wend = m.wend;
                     m1k = m.m1k;

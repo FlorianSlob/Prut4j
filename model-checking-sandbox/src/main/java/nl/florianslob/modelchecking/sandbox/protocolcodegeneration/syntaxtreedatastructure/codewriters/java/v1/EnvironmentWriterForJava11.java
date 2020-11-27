@@ -98,7 +98,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                             }
                                             StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"if (state >="+startIndex+" && state <= "+endIndex+")", tabCountLvl3,
                                                     (tabCountLvl4) -> {
-                                                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "var result = exchange_"+startIndex+"_"+endIndex+"(box, receiver, isCloseAction);");
+                                                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "Optional result = exchange_"+startIndex+"_"+endIndex+"(box, receiver, isCloseAction);");
                                                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "if(result != null)");
                                                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "  return (Optional<Any>) result;");
                                                     }

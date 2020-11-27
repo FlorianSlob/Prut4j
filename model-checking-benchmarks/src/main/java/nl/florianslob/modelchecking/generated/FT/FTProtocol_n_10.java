@@ -22,13 +22,13 @@ public class FTProtocol_n_10 implements IProtocol {
 	private final BlockingQueue<Object> queueFrommasterToevolve_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_5_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_8_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_9_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_6_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_4_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_2_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_1_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFrommasterToevolve_2_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_4_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_6_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterToevolve_8_ = new LinkedBlockingQueue<>(); 
@@ -43,13 +43,13 @@ public class FTProtocol_n_10 implements IProtocol {
 	private final BlockingQueue<Object> queueFromfft_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFrommasterTofft_3_ = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromevolve_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_8_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromevolve_7_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromevolve_6_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_7_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromevolve_7_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_8_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromevolve_9_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromfft_9_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromevolve_9_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_2_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_3_Tomaster = new LinkedBlockingQueue<>(); 
 	private final BlockingQueue<Object> queueFromevolve_4_Tomaster = new LinkedBlockingQueue<>(); 
@@ -358,12 +358,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -669,12 +669,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -980,12 +980,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1291,12 +1291,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1602,12 +1602,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1913,12 +1913,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2224,12 +2224,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2535,12 +2535,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2846,12 +2846,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3157,12 +3157,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3477,12 +3477,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3797,12 +3797,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4117,12 +4117,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4437,12 +4437,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4757,12 +4757,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -5077,12 +5077,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -5397,12 +5397,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -5717,12 +5717,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -6037,12 +6037,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -6348,12 +6348,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -6476,17 +6476,6 @@ public class FTProtocol_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-								if (receiver == null) {
-									receiver = "evolve_0_";
-								}
-								if (receiver.equals("evolve_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterToevolve_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
@@ -6505,6 +6494,17 @@ public class FTProtocol_n_10 implements IProtocol {
 								if (receiver.equals("evolve_0_")) {
 									monitor.notifyAll();
 									state = 4;
+									queueFrommasterToevolve_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+								if (receiver == null) {
+									receiver = "evolve_0_";
+								}
+								if (receiver.equals("evolve_0_")) {
+									monitor.notifyAll();
+									state = 1;
 									queueFrommasterToevolve_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -6749,13 +6749,13 @@ public class FTProtocol_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 43:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
 								}
 								if (receiver.equals("fft_0_")) {
 									monitor.notifyAll();
-									state = 3;
+									state = 2;
 									queueFrommasterTofft_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -6782,13 +6782,13 @@ public class FTProtocol_n_10 implements IProtocol {
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
 								}
 								if (receiver.equals("fft_0_")) {
 									monitor.notifyAll();
-									state = 2;
+									state = 3;
 									queueFrommasterTofft_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -7798,12 +7798,12 @@ public class FTProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 218){
-								var result = exchange_200_218(box, receiver, isCloseAction);
+								Optional result = exchange_200_218(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -7818,7 +7818,7 @@ public class FTProtocol_n_10 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "evolve_9_","fft_7_","evolve_2_","evolve_4_","fft_4_","evolve_1_","evolve_6_","master","fft_2_","evolve_5_","fft_9_","fft_5_","fft_3_","fft_1_","fft_8_","evolve_8_","fft_6_","evolve_7_","fft_0_","evolve_0_","evolve_3_" };
+		return new String[] { "evolve_3_","fft_6_","fft_1_","evolve_7_","evolve_8_","fft_4_","evolve_0_","fft_2_","master","evolve_4_","evolve_6_","fft_7_","fft_9_","fft_0_","fft_3_","evolve_1_","evolve_5_","evolve_9_","evolve_2_","fft_5_","fft_8_" };
 	}
 	
 	@Override

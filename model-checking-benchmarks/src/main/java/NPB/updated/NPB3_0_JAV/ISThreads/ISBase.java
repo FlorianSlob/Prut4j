@@ -42,8 +42,6 @@
 */
 package NPB.updated.NPB3_0_JAV.ISThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import discourje.core.AsyncJ;
-import discourje.core.SpecJ;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 public class ISBase extends Thread{
@@ -154,8 +152,6 @@ public class ISBase extends Thread{
   public void setupThreads(IS is){
     int start=0, end=0, remainder=TOTAL_KEYS%num_threads, offset=0;
     int rstart=0, rend=0, rremainder=MAX_KEY%num_threads, roffset=0;
-
-    var m = AsyncJ.dcj() ? AsyncJ.monitor(SpecJ.session("::is", new Object[]{num_threads})) : null;
 
     rankthreads = new RankThread[num_threads];
     for(int i=0;i<num_threads;i++){

@@ -98,7 +98,7 @@ public class FFTThread extends FTBase {
 //        }
 
             try {
-            var o = environment.receive();
+            Object o = environment.receive();
 
             if (o instanceof FFTMessage) {
                 step();
@@ -107,7 +107,7 @@ public class FFTThread extends FTBase {
                 environment.send(new DoneMessage());
             }
             if (o instanceof FFTSetVariablesMessage) {
-                var m = (FFTSetVariablesMessage) o;
+                FFTSetVariablesMessage m = (FFTSetVariablesMessage) o;
                 setVariables(m.sign1, m.tr, m.x1, m.exp11, m.exp21, m.exp31);
                 environment.send(new DoneMessage());
             }

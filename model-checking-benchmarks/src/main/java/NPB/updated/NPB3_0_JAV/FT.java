@@ -160,14 +160,14 @@ public class FT extends FTBase {
                 environment.close();
             }
             for (int m = 0; m < num_threads; m++) {
-                var evolveEnv = protocol.getEnvironment("evolve_" + m + "_");
+                IEnvironment evolveEnv = protocol.getEnvironment("evolve_" + m + "_");
                 evolveEnv.close();
             }
             for (int m = 0; m < num_threads; m++) {
                 environment.close();
             }
             for (int m = 0; m < num_threads; m++) {
-                var fftEnv = protocol.getEnvironment("fft_"+m+"_");
+                IEnvironment fftEnv = protocol.getEnvironment("fft_"+m+"_");
                 fftEnv.close();
             }
         }catch (Exception e){

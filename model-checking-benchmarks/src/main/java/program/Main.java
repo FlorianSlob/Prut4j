@@ -9,12 +9,12 @@ public class Main {
             args = new String[]{"-runUpdatedBenchmark","-BM=MG","class=B", "-np3"};
         }
 
-        var runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");
-        var runUpdatedBenchmark = Arrays.asList(args).contains("-runUpdatedBenchmark");
-        var runCG = Arrays.asList(args).contains("-BM=CG");
-        var runFT = Arrays.asList(args).contains("-BM=FT");
-        var runIS = Arrays.asList(args).contains("-BM=IS");
-        var runMG = Arrays.asList(args).contains("-BM=MG");
+        boolean runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");
+        boolean runUpdatedBenchmark = Arrays.asList(args).contains("-runUpdatedBenchmark");
+        boolean runCG = Arrays.asList(args).contains("-BM=CG");
+        boolean runFT = Arrays.asList(args).contains("-BM=FT");
+        boolean runIS = Arrays.asList(args).contains("-BM=IS");
+        boolean runMG = Arrays.asList(args).contains("-BM=MG");
 
         if(!runOriginalBenchmark && !runUpdatedBenchmark){
             System.out.println("Unable to start benchmark. Pass one or both parameters ('-runOriginalBenchmark' 'runUpdatedBenchmark') ");

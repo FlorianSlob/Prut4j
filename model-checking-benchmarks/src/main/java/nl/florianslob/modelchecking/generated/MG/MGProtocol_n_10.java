@@ -578,12 +578,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1069,12 +1069,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -1560,12 +1560,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2051,12 +2051,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -2542,12 +2542,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3033,12 +3033,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -3524,12 +3524,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4015,12 +4015,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4506,12 +4506,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -4997,12 +4997,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -7526,12 +7526,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8017,12 +8017,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8508,12 +8508,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -8999,12 +8999,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -9490,12 +9490,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -9981,12 +9981,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -10472,12 +10472,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -10963,12 +10963,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -11454,12 +11454,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -11945,12 +11945,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -12436,12 +12436,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -12927,12 +12927,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -13418,12 +13418,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -13909,12 +13909,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -14400,12 +14400,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -14891,12 +14891,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -15382,12 +15382,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -15873,12 +15873,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -16364,12 +16364,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -16855,12 +16855,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -17346,12 +17346,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -17837,12 +17837,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -18328,12 +18328,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -18819,12 +18819,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -19310,12 +19310,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -19801,12 +19801,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -20292,12 +20292,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -20783,12 +20783,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -21274,12 +21274,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -21765,12 +21765,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
@@ -22256,12 +22256,12 @@ public class MGProtocol_n_10 implements IProtocol {
 					synchronized (monitor){
 						while (true){
 							if (state >=0 && state <= 199){
-								var result = exchange_0_199(box, receiver, isCloseAction);
+								Optional result = exchange_0_199(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}
 							if (state >=200 && state <= 398){
-								var result = exchange_200_398(box, receiver, isCloseAction);
+								Optional result = exchange_200_398(box, receiver, isCloseAction);
 								if(result != null)
 								  return (Optional<Any>) result;
 							}

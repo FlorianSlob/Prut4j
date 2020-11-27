@@ -89,9 +89,9 @@ public class Resid extends MGBase {
 //              }catch(InterruptedException ie){}
 //          }
             try {
-                var o = residEnvironment.receive();
+                Object o = residEnvironment.receive();
                 if (o instanceof ResidMessage) {
-                    var m = (ResidMessage) o;
+                    ResidMessage m = (ResidMessage) o;
                     visr = m.visr;
                     wstart = m.wstart;
                     wend = m.wend;
