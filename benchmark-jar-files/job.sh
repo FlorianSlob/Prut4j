@@ -1,3 +1,4 @@
+#!/bin/sh
 #SBATCH -N 1
 #SBATCH -p normal
 #SBATCH -o out.%A
