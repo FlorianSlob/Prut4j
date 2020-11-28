@@ -11,10 +11,9 @@ ITERS=$3
 
 echo "MODE=$1, PROGRAM=$2, ITERS=$3" 
 echo
-
 hostname
+echo
 cat /proc/cpuinfo
-
 echo
 
 for K in $(seq 2 2 24); do
