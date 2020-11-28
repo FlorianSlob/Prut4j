@@ -70,20 +70,6 @@ public class CG extends CGBase {
 	}
 
 	public static void main(String argv[]){
-		if (argv.length == 0) {
-			argv = new String[]{"-serial", "CLASS=W"};
-			argv = new String[]{"-np2", "CLASS=W"};
-		}
-
-		ProtocolVariant protocolVariant;
-		if(Arrays.asList(argv).contains("-strict")){
-			protocolVariant = ProtocolVariant.STRICT;
-		}else if(Arrays.asList(argv).contains("-liberal")){
-			protocolVariant = ProtocolVariant.LIBERAL;
-		}else{
-			protocolVariant = ProtocolVariant.UNKNOWN;
-		}
-
 		CG cg = null;
 
 		discourje.examples.npb3.impl.BMInOut.BMArgs.ParseCmdLineArgs(argv,BMName);
@@ -97,7 +83,7 @@ public class CG extends CGBase {
 			System.exit(0);
 		}
 		try {
-			cg.runBenchMark(protocolVariant);
+			cg.runBenchMark();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,14 +91,14 @@ public class CG extends CGBase {
 
 	public void run(){
 		try {
-			runBenchMark(ProtocolVariant.STRICT);
+			runBenchMark();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void runBenchMark(ProtocolVariant protocolVariant) throws Exception {
-		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, protocolVariant);
+	public void runBenchMark() throws Exception {
+		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");

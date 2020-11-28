@@ -70,11 +70,6 @@ public class FT extends FTBase {
         serial=ser;
     }
     public static void main(String argv[]) {
-        if (argv.length == 0) {
-            argv = new String[] {"-serial", "CLASS=W"};
-            argv = new String[] {"-np2", "CLASS=W"};
-        }
-
         FT ft = null;
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.ParseCmdLineArgs(argv,BMName);
@@ -104,7 +99,7 @@ public class FT extends FTBase {
     }
 
     public void runBenchMark() throws Exception {
-        protocol = ProtocolHelper.GetProtocolImplementation(NpbType.FT, num_threads,ProtocolVariant.UNKNOWN);
+        protocol = ProtocolHelper.GetProtocolImplementation(NpbType.FT, num_threads);
         environment = protocol.getEnvironment("master");
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName,CLASS,serial,num_threads);

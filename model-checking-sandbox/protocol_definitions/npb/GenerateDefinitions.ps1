@@ -11,6 +11,19 @@
        (s/close ("worker" i) "master")))
 '
 
+$cgProtocolAlt = '  (s/cat (s/* (s/cat (s/cat-every [i (range 1)]
+                            (s/-->> discourje.examples.npb3.impl.CGThreads.CGMessage "master" ("worker" i)))
+                     (s/* (s/alt-every [i (range 1)]
+                            (s/-->> discourje.examples.npb3.impl.DoneMessage ("worker" i) "master")))))
+         (s/* (s/alt-every [i (range 1)]
+                (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("worker" i))
+                       (s/-->> discourje.examples.npb3.impl.DoneMessage ("worker" i) "master"))))
+         (s/* (s/alt-every [i (range 1)]
+                (s/close "master" ("worker" i))))
+         (s/* (s/alt-every [i (range 1)]
+                (s/close ("worker" i) "master"))))
+'
+
 $ftProtocol = '(s/cat (s/* (s/alt (s/cat (s/cat-every [i (range 1)]
                               (s/-->> discourje.examples.npb3.impl.FTThreads.EvolveMessage "master" ("evolve" i)))
                             (s/cat-every [i (range 1)]
@@ -94,12 +107,12 @@ $mgProtocol = '  (s/cat (s/* (s/alt (s/cat (s/cat-every [i (range 1)]
                   (s/close ("resid" i) "master"))))' 
 
 #set these vars to generate the protocol definitions
-$protocol = $cgProtocol
+$protocol = $cgProtocolAlt
 $protocolName = 'cg'
 
 For ($i=1; $i -le 32; $i++) {
     $shouldSaveThisToFile = $protocol.Replace('1', $i);
-    echo $shouldSaveThisToFile | Out-File -Encoding ASCII -FilePath '[protocolName]\strict\[protocolName]_n_[N].dcj'.Replace('[protocolName]', $protocolName).Replace('[protocolName]', $protocolName).Replace('[N]',$i);
+    echo $shouldSaveThisToFile | Out-File -Encoding ASCII -FilePath '[protocolName]\alt\[protocolName]_n_[N].dcj'.Replace('[protocolName]', $protocolName).Replace('[protocolName]', $protocolName).Replace('[N]',$i);
 }
 
 

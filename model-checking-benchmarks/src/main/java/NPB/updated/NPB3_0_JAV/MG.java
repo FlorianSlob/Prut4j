@@ -78,10 +78,6 @@ public class MG extends MGBase {
         serial=ser;
     }
     public static void main(String argv[] ){
-        if (argv.length == 0) {
-            argv = new String[]{"-serial", "CLASS=W"};
-            argv = new String[]{"-np2", "CLASS=W"};
-        }
         MG mg=null;
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.ParseCmdLineArgs(argv,BMName);
@@ -114,7 +110,7 @@ public class MG extends MGBase {
 
     public void runBenchMark() throws Exception {
 
-        IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads, ProtocolVariant.UNKNOWN);
+        IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads);
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName, CLASS, serial, num_threads);
 
         int niter = getInputPars();

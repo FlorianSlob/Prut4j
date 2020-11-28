@@ -705,13 +705,15 @@ public class CG extends CGBase{
      	worker[m].done=false;
       	worker[m].alpha=alpha;
       	worker[m].beta=beta;
-   	worker[m].notify();
+   		worker[m].notify();
       }
     }
+
     for(int m=0;m<num_threads;m++){
       while(!worker[m].done){
-     	try{wait();}catch(InterruptedException e){} 
-  	notifyAll();
+     	try{wait();}
+     	catch(InterruptedException e){}
+  		notifyAll();
       }
     }
   }

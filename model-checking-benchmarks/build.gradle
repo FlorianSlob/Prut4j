@@ -6,12 +6,6 @@ plugins {
 
 mainClassName = 'program.Main'
 
-configurations {
-    // configuration that holds jars to include in the jar
-    extraLibs
-    extraLibs2
-}
-
 group 'nl.florianslob.modelchecking.benchmarks'
 version '1.0-SNAPSHOT'
 
