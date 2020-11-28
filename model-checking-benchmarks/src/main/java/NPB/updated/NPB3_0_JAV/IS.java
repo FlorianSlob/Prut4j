@@ -68,10 +68,6 @@ public class IS extends ISBase {
     }
 
     public static void main(String argv[] ){
-        if (argv.length == 0) {
-            argv = new String[] {"-serial", "CLASS=W"};
-            argv = new String[] {"-np2", "CLASS=W"};
-        }
         IS is = null;
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.ParseCmdLineArgs(argv,BMName);
@@ -80,7 +76,7 @@ public class IS extends ISBase {
         boolean serial= discourje.examples.npb3.impl.BMInOut.BMArgs.serial;
 
         try{
-            is = new IS(CLSS,np,serial, ProtocolHelper.GetProtocolImplementation(NpbType.IS, np,ProtocolVariant.UNKNOWN));
+            is = new IS(CLSS,np,serial, ProtocolHelper.GetProtocolImplementation(NpbType.IS, np));
         }catch(OutOfMemoryError e){
             discourje.examples.npb3.impl.BMInOut.BMArgs.outOfMemoryMessage();
             System.exit(0);

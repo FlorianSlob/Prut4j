@@ -18,12 +18,20 @@ import java.util.*;
 public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
     @Override
     public void runActivity() throws Exception {
-
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
-        boolean genCGProtocol = true, genFTProtocol = true, genISProtocol = true, genMGProtocol = true, genDemoProtocols = false;
+        boolean genCGAltProtocol = true, genCGProtocol = false, genFTProtocol = false, genISProtocol = false, genMGProtocol = false, genDemoProtocols = false;
         String versionString = "strict";
 
+        if(genCGAltProtocol){
+            for(int i = 1; i <= 24; i++){
+                versionString = "alt";
+                var protocolName = "CGProtocol_strict_alt_n_"+i;
+                var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
+                var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
+                GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+            }
+        }
 
         if(genCGProtocol){
             for(int i = 1; i <= 26; i++){
@@ -53,7 +61,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genMGProtocol){
-            for(int i = 1; i <= 26; i++){ // Max 26, files will become to large.
+            for(int i = 1; i <= 24; i++){ // Max 24, files will become to large.
                 var protocolName = "MGProtocol_n_"+i;
                 var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/"+versionString+"/mg_n_"+i+".dcj";
                 var filePath = "../model-checking-benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";

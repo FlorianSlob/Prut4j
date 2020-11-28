@@ -1,0 +1,12 @@
+  (s/cat (s/* (s/cat (s/cat-every [i (range 19)]
+                            (s/-->> discourje.examples.npb3.impl.CGThreads.CGMessage "master" ("worker" i)))
+                     (s/* (s/alt-every [i (range 19)]
+                            (s/-->> discourje.examples.npb3.impl.DoneMessage ("worker" i) "master")))))
+         (s/* (s/alt-every [i (range 19)]
+                (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("worker" i))
+                       (s/-->> discourje.examples.npb3.impl.DoneMessage ("worker" i) "master"))))
+         (s/* (s/alt-every [i (range 19)]
+                (s/close "master" ("worker" i))))
+         (s/* (s/alt-every [i (range 19)]
+                (s/close ("worker" i) "master"))))
+

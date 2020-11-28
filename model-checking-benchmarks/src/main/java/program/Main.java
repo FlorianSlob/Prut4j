@@ -6,12 +6,14 @@ public class Main {
     public static void main(String[] args) {
         if(args == null || args.length == 0){
             // Problem classes to choose from: S,W,A,B,C,D,E,F
-            args = new String[]{"-runUpdatedBenchmark","-BM=MG","class=B", "-np3"};
+            args = new String[]{"-runOriginalBenchmark","-BM=CG-alt","class=B", "-np2"};
+//            args = new String[]{"-runUpdatedBenchmark","-BM=CG-alt","class=B", "-np2"};
         }
 
         boolean runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");
         boolean runUpdatedBenchmark = Arrays.asList(args).contains("-runUpdatedBenchmark");
         boolean runCG = Arrays.asList(args).contains("-BM=CG");
+        boolean runCG_Alt = Arrays.asList(args).contains("-BM=CG-alt");
         boolean runFT = Arrays.asList(args).contains("-BM=FT");
         boolean runIS = Arrays.asList(args).contains("-BM=IS");
         boolean runMG = Arrays.asList(args).contains("-BM=MG");
@@ -21,10 +23,11 @@ public class Main {
             System.exit(0);
         }
 
-        if(!runCG && !runFT && !runIS && !runMG){
+        if(!runCG && !runFT && !runIS && !runMG & !runCG_Alt){
             System.out.println("No benchmark is selected. Choose one or more benchmarks to run by passing one or more of the following parameters:" +
                     "\n" +
                     "'-BM=CG' \n" +
+                    "'-BM=CG-alt' \n" +
                     "'-BM=FT' \n" +
                     "'-BM=IS' \n" +
                     "'-BM=MG' \n" +
@@ -34,7 +37,7 @@ public class Main {
 
         if(runOriginalBenchmark){
             System.out.println("Executing original benchmark.");
-            if(runCG){
+            if(runCG || runCG_Alt){
                 NPB.original.NPB3_0_JAV.CG.main(args);
             }
             if(runFT){
@@ -50,6 +53,9 @@ public class Main {
 
         if(runUpdatedBenchmark){
             System.out.println("Executing update benchmark.");
+            if(runCG_Alt){
+                NPB.updated.NPB3_0_JAV.CG_alt.main(args);
+            }
             if(runCG){
                 NPB.updated.NPB3_0_JAV.CG.main(args);
             }

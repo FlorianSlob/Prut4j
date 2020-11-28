@@ -16,6 +16,13 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
         StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"case \""+SyntaxTreeItem.roleName+"\": return new IEnvironment() {", "};", tabCount,
             (tabCountLvl0) -> {
 
+                StringBuilderSyntaxHelperForJava11.addMethod(builder,"public void setState(int newState)", tabCountLvl0,
+                        (tabCountLvl1) -> {
+//                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "System.out.println(\"Setting state to \"+newState);");// Enable for debugging
+                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "state = newState;");
+                        }
+                );
+
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String getName()", tabCountLvl0,
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return environmentName;");
