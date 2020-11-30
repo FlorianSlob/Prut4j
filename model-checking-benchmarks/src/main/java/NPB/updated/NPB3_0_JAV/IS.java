@@ -46,7 +46,6 @@ package NPB.updated.NPB3_0_JAV;
 import NPB.updated.NPB3_0_JAV.ISThreads.*;
 import discourje.examples.npb3.impl.BMInOut.BMResults;
 import discourje.examples.npb3.impl.ISThreads.RankMessage;
-import discourje.examples.npb3.impl.Random;
 import discourje.examples.npb3.impl.Timer;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
@@ -57,7 +56,7 @@ public class IS extends ISBase {
     public discourje.examples.npb3.impl.BMInOut.BMResults results;
     public boolean serial=false;
 
-    discourje.examples.npb3.impl.Random rng;
+    Random rng;
     protected static final double amult = 1220703125.0;
 
     public IS(char clss, int np, boolean ser, IProtocol protocol){
