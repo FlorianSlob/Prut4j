@@ -91,43 +91,19 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									int rnd = new Random().nextInt(10);
-									String[] receiverOptionsArray = new String[]{ "worker_1_","worker_5_","worker_9_","worker_7_","worker_8_","worker_4_","worker_0_","worker_6_","worker_2_","worker_3_" };
+									String[] receiverOptionsArray = new String[]{ "worker_3_","worker_8_","worker_0_","worker_6_","worker_2_","worker_1_","worker_9_","worker_7_","worker_4_","worker_5_" };
 									receiver = receiverOptionsArray[rnd];
 								}
-								if (receiver.equals("worker_1_")) {
+								if (receiver.equals("worker_3_")) {
 									monitor.notifyAll();
-									setState(4);
-									queueFrommasterToworker_1_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_5_")) {
-									monitor.notifyAll();
-									setState(8);
-									queueFrommasterToworker_5_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_9_")) {
-									monitor.notifyAll();
-									setState(13);
-									queueFrommasterToworker_9_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_7_")) {
-									monitor.notifyAll();
-									setState(11);
-									queueFrommasterToworker_7_.put(box.get());
+									setState(6);
+									queueFrommasterToworker_3_.put(box.get());
 									return Optional.empty();
 								}
 								if (receiver.equals("worker_8_")) {
 									monitor.notifyAll();
 									setState(12);
 									queueFrommasterToworker_8_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_4_")) {
-									monitor.notifyAll();
-									setState(7);
-									queueFrommasterToworker_4_.put(box.get());
 									return Optional.empty();
 								}
 								if (receiver.equals("worker_0_")) {
@@ -148,10 +124,34 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 									queueFrommasterToworker_2_.put(box.get());
 									return Optional.empty();
 								}
-								if (receiver.equals("worker_3_")) {
+								if (receiver.equals("worker_1_")) {
 									monitor.notifyAll();
-									setState(6);
-									queueFrommasterToworker_3_.put(box.get());
+									setState(4);
+									queueFrommasterToworker_1_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_9_")) {
+									monitor.notifyAll();
+									setState(13);
+									queueFrommasterToworker_9_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_7_")) {
+									monitor.notifyAll();
+									setState(11);
+									queueFrommasterToworker_7_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_4_")) {
+									monitor.notifyAll();
+									setState(7);
+									queueFrommasterToworker_4_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_5_")) {
+									monitor.notifyAll();
+									setState(8);
+									queueFrommasterToworker_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -311,38 +311,8 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									int rnd = new Random().nextInt(10);
-									String[] receiverOptionsArray = new String[]{ "worker_8_","worker_9_","worker_7_","worker_1_","worker_4_","worker_0_","worker_6_","worker_5_","worker_3_","worker_2_" };
+									String[] receiverOptionsArray = new String[]{ "worker_0_","worker_8_","worker_3_","worker_9_","worker_6_","worker_1_","worker_2_","worker_7_","worker_5_","worker_4_" };
 									receiver = receiverOptionsArray[rnd];
-								}
-								if (receiver.equals("worker_8_")) {
-									monitor.notifyAll();
-									setState(12);
-									queueFrommasterToworker_8_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_9_")) {
-									monitor.notifyAll();
-									setState(13);
-									queueFrommasterToworker_9_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_7_")) {
-									monitor.notifyAll();
-									setState(11);
-									queueFrommasterToworker_7_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_1_")) {
-									monitor.notifyAll();
-									setState(4);
-									queueFrommasterToworker_1_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_4_")) {
-									monitor.notifyAll();
-									setState(7);
-									queueFrommasterToworker_4_.put(box.get());
-									return Optional.empty();
 								}
 								if (receiver.equals("worker_0_")) {
 									monitor.notifyAll();
@@ -350,16 +320,10 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
-								if (receiver.equals("worker_6_")) {
+								if (receiver.equals("worker_8_")) {
 									monitor.notifyAll();
-									setState(9);
-									queueFrommasterToworker_6_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_5_")) {
-									monitor.notifyAll();
-									setState(8);
-									queueFrommasterToworker_5_.put(box.get());
+									setState(12);
+									queueFrommasterToworker_8_.put(box.get());
 									return Optional.empty();
 								}
 								if (receiver.equals("worker_3_")) {
@@ -368,10 +332,46 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 									queueFrommasterToworker_3_.put(box.get());
 									return Optional.empty();
 								}
+								if (receiver.equals("worker_9_")) {
+									monitor.notifyAll();
+									setState(13);
+									queueFrommasterToworker_9_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_6_")) {
+									monitor.notifyAll();
+									setState(9);
+									queueFrommasterToworker_6_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_1_")) {
+									monitor.notifyAll();
+									setState(4);
+									queueFrommasterToworker_1_.put(box.get());
+									return Optional.empty();
+								}
 								if (receiver.equals("worker_2_")) {
 									monitor.notifyAll();
 									setState(5);
 									queueFrommasterToworker_2_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_7_")) {
+									monitor.notifyAll();
+									setState(11);
+									queueFrommasterToworker_7_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_5_")) {
+									monitor.notifyAll();
+									setState(8);
+									queueFrommasterToworker_5_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_4_")) {
+									monitor.notifyAll();
+									setState(7);
+									queueFrommasterToworker_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -394,7 +394,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 33:
-							if (queueFromworker_8_Tomaster.peek() != null ) {
+							if (!queueFromworker_8_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -404,7 +404,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 34:
-							if (queueFromworker_7_Tomaster.peek() != null ) {
+							if (!queueFromworker_7_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -414,7 +414,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 35:
-							if (queueFromworker_6_Tomaster.peek() != null ) {
+							if (!queueFromworker_6_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -424,7 +424,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 36:
-							if (queueFromworker_5_Tomaster.peek() != null ) {
+							if (!queueFromworker_5_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -434,7 +434,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 37:
-							if (queueFromworker_4_Tomaster.peek() != null ) {
+							if (!queueFromworker_4_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -444,7 +444,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 38:
-							if (queueFromworker_3_Tomaster.peek() != null ) {
+							if (!queueFromworker_3_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -454,7 +454,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 39:
-							if (queueFromworker_2_Tomaster.peek() != null ) {
+							if (!queueFromworker_2_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -464,7 +464,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 40:
-							if (queueFromworker_1_Tomaster.peek() != null ) {
+							if (!queueFromworker_1_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -474,7 +474,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 41:
-							if (queueFromworker_0_Tomaster.peek() != null ) {
+							if (!queueFromworker_0_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -484,7 +484,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 42:
-							if (queueFromworker_9_Tomaster.peek() != null ) {
+							if (!queueFromworker_9_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -494,7 +494,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 44:
-							if (queueFromworker_0_Tomaster.peek() != null ) {
+							if (!queueFromworker_0_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -507,25 +507,13 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									int rnd = new Random().nextInt(10);
-									String[] receiverOptionsArray = new String[]{ "worker_7_","worker_2_","worker_3_","worker_5_","worker_4_","worker_1_","worker_9_","worker_0_","worker_6_","worker_8_" };
+									String[] receiverOptionsArray = new String[]{ "worker_4_","worker_5_","worker_1_","worker_6_","worker_8_","worker_3_","worker_9_","worker_2_","worker_7_","worker_0_" };
 									receiver = receiverOptionsArray[rnd];
 								}
-								if (receiver.equals("worker_7_")) {
+								if (receiver.equals("worker_4_")) {
 									monitor.notifyAll();
-									setState(11);
-									queueFrommasterToworker_7_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_2_")) {
-									monitor.notifyAll();
-									setState(5);
-									queueFrommasterToworker_2_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_3_")) {
-									monitor.notifyAll();
-									setState(6);
-									queueFrommasterToworker_3_.put(box.get());
+									setState(7);
+									queueFrommasterToworker_4_.put(box.get());
 									return Optional.empty();
 								}
 								if (receiver.equals("worker_5_")) {
@@ -534,28 +522,10 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 									queueFrommasterToworker_5_.put(box.get());
 									return Optional.empty();
 								}
-								if (receiver.equals("worker_4_")) {
-									monitor.notifyAll();
-									setState(7);
-									queueFrommasterToworker_4_.put(box.get());
-									return Optional.empty();
-								}
 								if (receiver.equals("worker_1_")) {
 									monitor.notifyAll();
 									setState(4);
 									queueFrommasterToworker_1_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_9_")) {
-									monitor.notifyAll();
-									setState(13);
-									queueFrommasterToworker_9_.put(box.get());
-									return Optional.empty();
-								}
-								if (receiver.equals("worker_0_")) {
-									monitor.notifyAll();
-									setState(3);
-									queueFrommasterToworker_0_.put(box.get());
 									return Optional.empty();
 								}
 								if (receiver.equals("worker_6_")) {
@@ -570,6 +540,36 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 									queueFrommasterToworker_8_.put(box.get());
 									return Optional.empty();
 								}
+								if (receiver.equals("worker_3_")) {
+									monitor.notifyAll();
+									setState(6);
+									queueFrommasterToworker_3_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_9_")) {
+									monitor.notifyAll();
+									setState(13);
+									queueFrommasterToworker_9_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_2_")) {
+									monitor.notifyAll();
+									setState(5);
+									queueFrommasterToworker_2_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_7_")) {
+									monitor.notifyAll();
+									setState(11);
+									queueFrommasterToworker_7_.put(box.get());
+									return Optional.empty();
+								}
+								if (receiver.equals("worker_0_")) {
+									monitor.notifyAll();
+									setState(3);
+									queueFrommasterToworker_0_.put(box.get());
+									return Optional.empty();
+								}
 							}
 							if (isCloseAction) {
 								monitor.notifyAll();
@@ -579,7 +579,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 47:
-							if (queueFromworker_1_Tomaster.peek() != null ) {
+							if (!queueFromworker_1_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -589,7 +589,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 49:
-							if (queueFromworker_2_Tomaster.peek() != null ) {
+							if (!queueFromworker_2_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -599,7 +599,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 51:
-							if (queueFromworker_3_Tomaster.peek() != null ) {
+							if (!queueFromworker_3_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -609,7 +609,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 53:
-							if (queueFromworker_4_Tomaster.peek() != null ) {
+							if (!queueFromworker_4_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -619,7 +619,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 55:
-							if (queueFromworker_5_Tomaster.peek() != null ) {
+							if (!queueFromworker_5_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -629,7 +629,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 57:
-							if (queueFromworker_6_Tomaster.peek() != null ) {
+							if (!queueFromworker_6_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -639,7 +639,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 59:
-							if (queueFromworker_7_Tomaster.peek() != null ) {
+							if (!queueFromworker_7_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -649,7 +649,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 61:
-							if (queueFromworker_8_Tomaster.peek() != null ) {
+							if (!queueFromworker_8_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -659,7 +659,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 63:
-							if (queueFromworker_9_Tomaster.peek() != null ) {
+							if (!queueFromworker_9_Tomaster.isEmpty()) {
 								monitor.notifyAll();
 								setState(45);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -766,7 +766,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 1:
-							if (queueFrommasterToworker_0_.peek() != null ) {
+							if (!queueFrommasterToworker_0_.isEmpty()) {
 								monitor.notifyAll();
 								setState(14);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -784,7 +784,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 3:
-							if (queueFrommasterToworker_0_.peek() != null ) {
+							if (!queueFrommasterToworker_0_.isEmpty()) {
 								monitor.notifyAll();
 								setState(43);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -948,7 +948,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 4:
-							if (queueFrommasterToworker_1_.peek() != null ) {
+							if (!queueFrommasterToworker_1_.isEmpty()) {
 								monitor.notifyAll();
 								setState(46);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -966,7 +966,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 15:
-							if (queueFrommasterToworker_1_.peek() != null ) {
+							if (!queueFrommasterToworker_1_.isEmpty()) {
 								monitor.notifyAll();
 								setState(16);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1122,7 +1122,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 5:
-							if (queueFrommasterToworker_2_.peek() != null ) {
+							if (!queueFrommasterToworker_2_.isEmpty()) {
 								monitor.notifyAll();
 								setState(48);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1140,7 +1140,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 17:
-							if (queueFrommasterToworker_2_.peek() != null ) {
+							if (!queueFrommasterToworker_2_.isEmpty()) {
 								monitor.notifyAll();
 								setState(18);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1296,7 +1296,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 6:
-							if (queueFrommasterToworker_3_.peek() != null ) {
+							if (!queueFrommasterToworker_3_.isEmpty()) {
 								monitor.notifyAll();
 								setState(50);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1314,7 +1314,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 19:
-							if (queueFrommasterToworker_3_.peek() != null ) {
+							if (!queueFrommasterToworker_3_.isEmpty()) {
 								monitor.notifyAll();
 								setState(20);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1470,7 +1470,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 7:
-							if (queueFrommasterToworker_4_.peek() != null ) {
+							if (!queueFrommasterToworker_4_.isEmpty()) {
 								monitor.notifyAll();
 								setState(52);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1488,7 +1488,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 21:
-							if (queueFrommasterToworker_4_.peek() != null ) {
+							if (!queueFrommasterToworker_4_.isEmpty()) {
 								monitor.notifyAll();
 								setState(22);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1644,7 +1644,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 8:
-							if (queueFrommasterToworker_5_.peek() != null ) {
+							if (!queueFrommasterToworker_5_.isEmpty()) {
 								monitor.notifyAll();
 								setState(54);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1662,7 +1662,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 23:
-							if (queueFrommasterToworker_5_.peek() != null ) {
+							if (!queueFrommasterToworker_5_.isEmpty()) {
 								monitor.notifyAll();
 								setState(24);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1818,7 +1818,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 9:
-							if (queueFrommasterToworker_6_.peek() != null ) {
+							if (!queueFrommasterToworker_6_.isEmpty()) {
 								monitor.notifyAll();
 								setState(56);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1836,7 +1836,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 25:
-							if (queueFrommasterToworker_6_.peek() != null ) {
+							if (!queueFrommasterToworker_6_.isEmpty()) {
 								monitor.notifyAll();
 								setState(26);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2000,7 +2000,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 11:
-							if (queueFrommasterToworker_7_.peek() != null ) {
+							if (!queueFrommasterToworker_7_.isEmpty()) {
 								monitor.notifyAll();
 								setState(58);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2010,7 +2010,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 27:
-							if (queueFrommasterToworker_7_.peek() != null ) {
+							if (!queueFrommasterToworker_7_.isEmpty()) {
 								monitor.notifyAll();
 								setState(28);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2174,7 +2174,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 12:
-							if (queueFrommasterToworker_8_.peek() != null ) {
+							if (!queueFrommasterToworker_8_.isEmpty()) {
 								monitor.notifyAll();
 								setState(60);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2184,7 +2184,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 29:
-							if (queueFrommasterToworker_8_.peek() != null ) {
+							if (!queueFrommasterToworker_8_.isEmpty()) {
 								monitor.notifyAll();
 								setState(30);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2348,7 +2348,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 13:
-							if (queueFrommasterToworker_9_.peek() != null ) {
+							if (!queueFrommasterToworker_9_.isEmpty()) {
 								monitor.notifyAll();
 								setState(62);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2358,7 +2358,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 							monitor.wait();
 							break;
 						case 31:
-							if (queueFrommasterToworker_9_.peek() != null ) {
+							if (!queueFrommasterToworker_9_.isEmpty()) {
 								monitor.notifyAll();
 								setState(32);
 								// Disabling unchecked inspection: We did check the class in the if statement above
@@ -2432,7 +2432,7 @@ public class CGProtocol_strict_alt_n_10 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_6_","worker_1_","worker_9_","worker_0_","worker_8_","worker_3_","worker_4_","worker_2_","worker_7_","worker_5_","master" };
+		return new String[] { "worker_1_","master","worker_4_","worker_2_","worker_3_","worker_8_","worker_5_","worker_6_","worker_7_","worker_9_","worker_0_" };
 	}
 	
 	@Override

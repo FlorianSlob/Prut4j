@@ -59,14 +59,14 @@ public class CG_alt extends CGBase {
 	public discourje.examples.npb3.impl.BMInOut.BMResults results;
 	public boolean serial=true;
 
-	discourje.examples.npb3.impl.Random rng;
+	Random rng;
 	public static final double amult = 1220703125.0;
 	private IEnvironment masterEnvironment;
 
 	public CG_alt(char CLSS,int np,boolean ser){
 		super(CLSS,np,ser);
 		serial=ser;
-		rng=new discourje.examples.npb3.impl.Random();
+		rng=new Random();
 	}
 
 	public static void main(String argv[]){

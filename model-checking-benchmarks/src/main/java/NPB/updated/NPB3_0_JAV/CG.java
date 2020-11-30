@@ -52,21 +52,20 @@ import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 import java.io.*;
 import java.text.*;
-import java.util.Arrays;
 
 public class CG extends CGBase {
 	public int bid=-1;
 	public discourje.examples.npb3.impl.BMInOut.BMResults results;
 	public boolean serial=true;
 
-	discourje.examples.npb3.impl.Random rng;
+	Random rng;
 	public static final double amult = 1220703125.0;
 	private IEnvironment masterEnvironment;
 
 	public CG(char CLSS,int np,boolean ser){
 		super(CLSS,np,ser);
 		serial=ser;
-		rng=new discourje.examples.npb3.impl.Random();
+		rng=new Random();
 	}
 
 	public static void main(String argv[]){

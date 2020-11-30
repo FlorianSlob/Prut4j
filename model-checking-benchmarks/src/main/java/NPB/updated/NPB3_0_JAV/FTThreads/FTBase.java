@@ -37,7 +37,6 @@
 */
 package NPB.updated.NPB3_0_JAV.FTThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import discourje.examples.npb3.impl.Random;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
 public class FTBase extends Thread {
@@ -226,7 +225,7 @@ public class FTBase extends Thread {
 //---------------------------------------------------------------------
 // Jump to the starting element for our first plane.
 //---------------------------------------------------------------------
-        discourje.examples.npb3.impl.Random rng = new Random(seed);
+        Random rng = new Random(seed);
         double an = rng.ipow46(a, 0);
         rng.randlc(seed, an);
         an = rng.ipow46(a, 2 * d1 * d2);
