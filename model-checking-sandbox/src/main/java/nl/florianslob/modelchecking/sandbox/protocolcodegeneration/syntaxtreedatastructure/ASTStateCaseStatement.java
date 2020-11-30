@@ -50,7 +50,7 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
     }
 
     public Set<Integer> FindAllPossibleGlobalStateIdsForLocalType(List<ASTStateCaseStatement> allStateCaseStatements, Set<Integer> visitedStates, String sendingMessageType) {
-    // return directly to prevent nesting.
+        // return directly to prevent nesting.
         if(visitedStates.contains(this.stateIdCondition)){
             return new HashSet<>();
         }
@@ -87,5 +87,4 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
         }
         return returnList;
     }
-
 }

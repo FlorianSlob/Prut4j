@@ -9,7 +9,6 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment> {
 
     private Set<Integer> globalStartingSates;
@@ -77,7 +76,6 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                                     StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl2 + 1), "wait();");
                                                     StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl2 + 1), "break;");
                                                 }
-
                                             }
 
                                             // Select all case statements that at least have 1 action
@@ -86,9 +84,6 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                             // Writing all case statements to the switch block
                                             for(ASTStateCaseStatement stateCaseStatement : caseStatementsWithMultipleActions)
                                                 stateCaseStatement.buildSyntax(builder,tabCountLvl2);
-
-                                            // Add default to switch case statement.
-//                                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl2, "default: throw new Exception(\"State number out of bounds\");");
                                         }
                                 );
                                 StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return null;");

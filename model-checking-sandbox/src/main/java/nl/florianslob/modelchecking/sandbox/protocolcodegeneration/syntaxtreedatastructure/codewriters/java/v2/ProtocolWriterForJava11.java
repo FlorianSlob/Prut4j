@@ -29,7 +29,6 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.v2.*;");
 
-
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount); // White line to distinguish imports from the java SDK with imports from our own API.
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.Optional;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.Random;");

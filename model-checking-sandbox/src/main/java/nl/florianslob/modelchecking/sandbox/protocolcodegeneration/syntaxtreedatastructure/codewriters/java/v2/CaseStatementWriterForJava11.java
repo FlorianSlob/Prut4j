@@ -10,10 +10,8 @@ import java.util.stream.Collectors;
 public class CaseStatementWriterForJava11 implements ISyntaxWriter<ASTStateCaseStatement> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTStateCaseStatement SyntaxTreeItem) {
-
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "case "+SyntaxTreeItem.stateIdCondition+":");
         numberOfPrependingTabs++;
-
 
         var sendActions = SyntaxTreeItem
                 .actionsFromState
@@ -28,9 +26,7 @@ public class CaseStatementWriterForJava11 implements ISyntaxWriter<ASTStateCaseS
                 .distinct()
                 .collect(Collectors.toList());
 
-        // TODO Order types by name
         for(var typeName : typeNames){
-
             var sendActionsForType =
                     sendActions
                             .stream()
