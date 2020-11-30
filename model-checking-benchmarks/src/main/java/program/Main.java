@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
         if(args == null || args.length == 0){
             // Problem classes to choose from: S,W,A,B,C,D,E,F
-            args = new String[]{"-runOriginalBenchmark","-BM=CG-alt","class=B", "-np6"};
-//            args = new String[]{"-runUpdatedBenchmark","-BM=CG-alt","class=B", "-np6"};
+//            args = new String[]{"-runOriginalBenchmark","-BM=CG-alt","class=B", "-np2"};
+            args = new String[]{"-runUpdatedBenchmark","-runOriginalBenchmark","-BM=CG-alt","class=B", "-np24"};
         }
 
         boolean runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");

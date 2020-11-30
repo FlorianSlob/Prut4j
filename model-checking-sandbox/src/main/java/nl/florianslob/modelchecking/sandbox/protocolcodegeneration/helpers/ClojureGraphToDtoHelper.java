@@ -63,12 +63,13 @@ public class ClojureGraphToDtoHelper {
             );
         }
     }
-
+    private String previousType = "Unknown";
     private ProtocolTransition parseEdgeToTransition(Edge edge){
         var targetStateNode = allProtocolStateNodes.get(Integer.parseInt(edge.target.toString()));
 
         ProtocolMessageActionType action;
         String type;
+
 
         var actionOnEdge = (clojure.lang.IPersistentVector) edge.label.action;
 
@@ -77,10 +78,11 @@ public class ClojureGraphToDtoHelper {
             case ":send":
                 action = ProtocolMessageActionType.SEND;
                 type = edge.label.name.substring(edge.label.name.indexOf("(") + 1, edge.label.name.indexOf(","));
+                previousType = type;
                 break;
             case ":receive":
                 action = ProtocolMessageActionType.RECEIVE;
-                type = "NotUsed";
+                type = "nope!";
                 break;
             case ":close": // TODO Do something with this???!
                 action = ProtocolMessageActionType.CLOSE;

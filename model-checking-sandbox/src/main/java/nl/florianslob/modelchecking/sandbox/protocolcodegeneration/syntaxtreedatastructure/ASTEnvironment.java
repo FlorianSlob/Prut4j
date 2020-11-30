@@ -8,11 +8,13 @@ public class ASTEnvironment extends SyntaxTreeItemBase<ASTEnvironment> {
 
     public String roleName;
     public LinkedList<ASTStateCaseStatement> ASTStateCaseStatements;
+    public LinkedList<ASTStateCaseStatement> AllASTStateCaseStatements;
 
-    public ASTEnvironment(ISyntaxWriter<ASTEnvironment> syntaxWriter, String roleName, LinkedList<ASTStateCaseStatement> ASTStateCaseStatements){
+    public ASTEnvironment(ISyntaxWriter<ASTEnvironment> syntaxWriter, String roleName, LinkedList<ASTStateCaseStatement> ASTStateCaseStatements, LinkedList<ASTStateCaseStatement> AllASTStateCaseStatements){
         super(syntaxWriter);
         this.roleName = ASTHelper.EscapeRoleName(roleName);
         this.ASTStateCaseStatements = ASTStateCaseStatements;
+        this.AllASTStateCaseStatements = AllASTStateCaseStatements;
     }
 
 }

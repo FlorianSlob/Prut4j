@@ -75,7 +75,7 @@ public class IS extends ISBase {
         boolean serial= discourje.examples.npb3.impl.BMInOut.BMArgs.serial;
 
         try{
-            is = new IS(CLSS,np,serial, ProtocolHelper.GetProtocolImplementation(NpbType.IS, np));
+            is = new IS(CLSS,np,serial, ProtocolHelper.GetProtocolImplementation(NpbType.IS, np, null));
         }catch(OutOfMemoryError e){
             discourje.examples.npb3.impl.BMInOut.BMArgs.outOfMemoryMessage();
             System.exit(0);

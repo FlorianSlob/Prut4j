@@ -1,4 +1,4 @@
-package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1;
+package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v2;
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTStateCaseStatement;
@@ -6,15 +6,29 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
-import java.util.Comparator;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
 public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment> {
+
+    private Set<Integer> globalStartingSates;
+
     @Override
-    public void buildSyntax(StringBuilder builder, int tabCount, ASTEnvironment SyntaxTreeItem) {
-        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"case \""+SyntaxTreeItem.roleName+"\": return new IEnvironment() {", "};", tabCount,
+    public void buildSyntax(StringBuilder builder, int tabCount, ASTEnvironment syntaxTreeItem) {
+        Set<Set<Integer>> combinedLocalStates = new HashSet<>();
+        StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"case \""+syntaxTreeItem.roleName+"\": return new IEnvironment() {", "};", tabCount,
             (tabCountLvl0) -> {
+
+                // TODO, we could have a problem here, multiple starting states? Merge already??
+                FindStartingStateId(syntaxTreeItem.AllASTStateCaseStatements,combinedLocalStates);
+
+                HashMap<String,Integer> globalToLocalStateMap = new HashMap<>();
+
+                var statesAsLocalType = ProjectAsLocalType(syntaxTreeItem,combinedLocalStates,globalToLocalStateMap);
+
+                var startingStateId =globalToLocalStateMap.get(GetKeyForLocalStateId(this.globalStartingSates));
+                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0,"private int state = "+startingStateId+";"); // TODO Normalize state numbers!
 
                 StringBuilderSyntaxHelperForJava11.addMethod(builder,"public void setState(int newState)", tabCountLvl0,
                         (tabCountLvl1) -> {
@@ -28,10 +42,12 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return environmentName;");
                     }
                 );
-                // Order all statements by id, this is not necessary, but makes the generated code more readable.
-                SyntaxTreeItem.ASTStateCaseStatements.sort(Comparator.comparingInt(s -> s.stateIdCondition));
 
-                var numberOfStates = SyntaxTreeItem.ASTStateCaseStatements.size();
+                // Order all statements by id, this is not necessary, but makes the generated code more readable.
+                PrintCombinedStates(syntaxTreeItem,combinedLocalStates);
+
+                // TODO Normalize state Id's --> How??
+                var numberOfStates = statesAsLocalType.size();
                 var blockSize = 200;
                 var numberOfBlocks = numberOfStates/blockSize;
                 // TODO Determine block size...
@@ -46,10 +62,9 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                         blockEndIndex = numberOfStates;
                     }
 
-                    var blockOfASTStateCaseStatements = SyntaxTreeItem.ASTStateCaseStatements.subList(startIndex, blockEndIndex);
+                    var blockOfASTStateCaseStatements = statesAsLocalType.subList(startIndex, blockEndIndex);
                     StringBuilderSyntaxHelperForJava11.addMethod(builder,"public <Any, AnyInput> Optional<Any> exchange_"+startIndex+"_"+endIndex+"(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception", tabCountLvl0,
                             (tabCountLvl1) -> {
-                                StringBuilderSyntaxHelper.addLine(builder,tabCountLvl1, "QueueItem itemToGet;");
                                 StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (state)", tabCountLvl1,
                                         (tabCountLvl2) -> {
 
@@ -68,7 +83,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                                             StringBuilderSyntaxHelper.addLine(builder, tabCountLvl2, "case "+s.stateIdCondition + " :");
                                                         });
 
-                                                    StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl2 + 1), "monitor.wait();");
+                                                    StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl2 + 1), "wait();");
                                                     StringBuilderSyntaxHelper.addLine(builder, (tabCountLvl2 + 1), "break;");
                                                 }
 
@@ -93,7 +108,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                     (tabCountLvl1) -> {
                         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
                             (tabCountLvl2) -> {
-                                StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while (true)", tabCountLvl2,
+                                StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while (true)", tabCountLvl1,
                                     (tabCountLvl3) -> {
 
                                         for(int i = 0; i <= numberOfBlocks; i++) {
@@ -104,6 +119,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                             }else{
                                                 endIndex = ((i+1) * blockSize)-1;
                                             }
+
                                             StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"if (state >="+startIndex+" && state <= "+endIndex+")", tabCountLvl3,
                                                     (tabCountLvl4) -> {
                                                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl4, "Optional result = exchange_"+startIndex+"_"+endIndex+"(box, receiver, isCloseAction);");
@@ -121,5 +137,83 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                 );
             }
         );
+    }
+
+    private void PrintCombinedStates(ASTEnvironment syntaxTreeItem, Set<Set<Integer>> combinedLocalStates) {
+        System.out.println("Printing Sets for: "+syntaxTreeItem.roleName);
+
+        combinedLocalStates.forEach(set -> {
+                    System.out.println("New Set ---------------");
+                    set.forEach(item -> System.out.println("StateId " + item));
+                }
+        );
+    }
+
+    private void DetermineLocalStates(Set<Set<Integer>> combinedLocalStates, HashMap<String, Integer> globalToLocalStateMap) {
+        var localStateCounter = 0;
+        for (var localStateCombination: combinedLocalStates) {
+            System.out.println("New Set ---------------");
+
+            var key = GetKeyForLocalStateId(localStateCombination);
+            System.out.println(key);
+            System.out.println("Will be called locally: "+localStateCounter);
+
+            globalToLocalStateMap.put(key, localStateCounter);
+            localStateCounter++;
+        }
+    }
+
+    private String GetKeyForLocalStateId(Set<Integer> localStateCombination) {
+        return localStateCombination.stream().map(String::valueOf).collect(Collectors.joining(","));
+    }
+
+    private void FindStartingStateId(LinkedList<ASTStateCaseStatement> allASTStateCaseStatements, Set<Set<Integer>> combinedLocalStates) {
+        var state0 = allASTStateCaseStatements.stream().filter(s -> s.stateIdCondition == 0).findFirst().get();
+
+        HashSet<Integer> visitedStates = new HashSet<>();
+
+        this.globalStartingSates = state0.FindAllPossibleGlobalStateIdsForLocalType(allASTStateCaseStatements,visitedStates, "");
+
+        combinedLocalStates.add(this.globalStartingSates);
+    }
+
+    private List<ASTStateCaseStatement> ProjectAsLocalType(ASTEnvironment syntaxTreeItem, Set<Set<Integer>> combinedLocalStates, HashMap<String, Integer> globalToLocalStateMap) {
+        var allNonWaitCaseStatementActions =
+                syntaxTreeItem.ASTStateCaseStatements
+                        .stream()
+                        .filter(sa -> sa.actionsFromState.stream().count() > 0)
+                        .sorted(Comparator.comparingInt(s -> s.stateIdCondition))
+                        .collect(Collectors.toList());
+
+        allNonWaitCaseStatementActions
+                .forEach(state -> state.FillAllNextStatesForLocalType(syntaxTreeItem.AllASTStateCaseStatements, combinedLocalStates));
+
+        DetermineLocalStates(combinedLocalStates,globalToLocalStateMap);
+        var localStates = new LinkedList<ASTStateCaseStatement>();
+
+        for (var localStateCombination: combinedLocalStates) {
+            var states = allNonWaitCaseStatementActions
+                    .stream()
+                    .filter(s -> localStateCombination.contains(s.stateIdCondition))
+                    .collect(Collectors.toList());
+
+
+            var localStateIdKey = GetKeyForLocalStateId(localStateCombination);
+            var localStateId = globalToLocalStateMap.get(localStateIdKey);
+
+            var newLocalState = new ASTStateCaseStatement(new CaseStatementWriterForJava11(), localStateId);
+
+            for (var globalState: states) {
+                for (var actionFromState: globalState.actionsFromState) {
+                    var nextLocalStateIdKey = GetKeyForLocalStateId(actionFromState.allNextStatesForLocalType);
+                    actionFromState.nextLocalStateId = globalToLocalStateMap.get(nextLocalStateIdKey);
+                    newLocalState.addAction(actionFromState);
+                }
+            }
+
+            localStates.add(newLocalState);
+        }
+
+        return localStates;
     }
 }

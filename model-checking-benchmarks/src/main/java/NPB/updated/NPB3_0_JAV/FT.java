@@ -99,7 +99,7 @@ public class FT extends FTBase {
     }
 
     public void runBenchMark() throws Exception {
-        protocol = ProtocolHelper.GetProtocolImplementation(NpbType.FT, num_threads);
+        protocol = ProtocolHelper.GetProtocolImplementation(NpbType.FT, num_threads, null);
         environment = protocol.getEnvironment("master");
 
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName,CLASS,serial,num_threads);

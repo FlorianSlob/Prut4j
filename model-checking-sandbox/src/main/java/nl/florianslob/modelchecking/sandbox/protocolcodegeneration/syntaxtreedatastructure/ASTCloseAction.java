@@ -4,7 +4,6 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 
 public class ASTCloseAction extends ASTEnvironmentActionFromState<ASTCloseAction> {
 
-    public final int nextStateId;
     public final String messageContentType;
     public final String environmentName;
 

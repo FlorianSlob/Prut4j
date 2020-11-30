@@ -123,7 +123,7 @@ import nl.florianslob.modelchecking.generated.MGProtocol_n_9;
 
 
 public class ProtocolHelper {
-    public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads){
+    public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads, Object monitor){
         switch (npbType){
             case CG_ALT:
                 switch (numberOfThreads) {

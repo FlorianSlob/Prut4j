@@ -15,6 +15,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
     public String roleName;
 
     private LinkedList<ASTStateCaseStatement> ASTStateCaseStatements = new LinkedList<>();
+    private LinkedList<ASTStateCaseStatement> AllASTStateCaseStatements = new LinkedList<>();
 
     public final ISyntaxWriter<ASTEnvironment> environmentWriter;
     public final ISyntaxWriter<ASTStateCaseStatement> caseStatementWriter;
@@ -35,7 +36,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
     }
 
     public ASTEnvironment getASTStateCaseStatements() {
-        return new ASTEnvironment(environmentWriter, this.roleName, ASTStateCaseStatements);
+        return new ASTEnvironment(environmentWriter, this.roleName, ASTStateCaseStatements,AllASTStateCaseStatements);
     }
 
     private ASTCommunicationChannel getCommunicationChannelSyntaxTreeItem(String fromRole, String toRole) throws Exception {
@@ -51,8 +52,11 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
     public void Visit(ProtocolStateNode protocolStateNode) throws Exception {
 
         var stateCaseStatementOptional = ASTStateCaseStatements.stream().filter(item -> item.stateIdCondition == protocolStateNode.stateId).findFirst();
+        var allStateCaseStatementOptional = AllASTStateCaseStatements.stream().filter(item -> item.stateIdCondition == protocolStateNode.stateId).findFirst();
         // Create a case statement item for this protocol state
         ASTStateCaseStatement caseStatement;
+        ASTStateCaseStatement allCaseStatement;
+
 
         if(stateCaseStatementOptional.isEmpty()){
             caseStatement  =
@@ -64,36 +68,80 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
             caseStatement = stateCaseStatementOptional.get();
         }
 
+        if(allStateCaseStatementOptional.isEmpty()){
+            allCaseStatement  =
+                    new ASTStateCaseStatement(this.caseStatementWriter, protocolStateNode.stateId);
+        }else{
+            // TODO Check if we need to do this.
+            // We will add it later again.
+            AllASTStateCaseStatements.remove(allStateCaseStatementOptional.get());
+            allCaseStatement = allStateCaseStatementOptional.get();
+        }
+
         // Fill the body of the case statement with the actions possible for this environment in this state.
         // Check for outgoing transactions that concern the role and add an ActionFromState item for every send/receive action.
         for (ProtocolTransition transaction : protocolStateNode.outgoingTransactions) {
-            if (transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageActionType.SEND) {
-                ASTCommunicationChannel ASTCommunicationChannel =
-                    getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
+            if (transaction.action == ProtocolMessageActionType.SEND) {
+
+                ASTCommunicationChannel allASTCommunicationChannel =
+                        getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
                 // add send action
-                caseStatement.addAction(
-                    new ASTSendAction(this.sendActionWriter, ASTCommunicationChannel, transaction.targetState.stateId, transaction.messageContentType)
+                var actionToAdd =new ASTSendAction(this.sendActionWriter, allASTCommunicationChannel, transaction.targetState.stateId, transaction.messageContentType);
+
+
+                if(transaction.fromRole.equals(roleName)) {
+                    allCaseStatement.isInLocalType = true;
+                    actionToAdd.isLocalAction = true;
+
+                    // add send action
+                    caseStatement.addAction(
+                            actionToAdd
+                    );
+                }
+
+                allCaseStatement.addAction(
+                        actionToAdd
                 );
             }
 
-            if (transaction.fromRole.equals(roleName) && transaction.action == ProtocolMessageActionType.CLOSE) {
-                // add close action
-                caseStatement.addAction(
-                        new ASTCloseAction(this.closeActionWriter, transaction.targetState.stateId, transaction.messageContentType, transaction.fromRole)
+            if (transaction.action == ProtocolMessageActionType.CLOSE) {
+
+                var actionToAdd = new ASTCloseAction(this.closeActionWriter, transaction.targetState.stateId, transaction.messageContentType, transaction.fromRole);
+
+                if(transaction.fromRole.equals(roleName)){
+
+                    allCaseStatement.isInLocalType = true;
+                    actionToAdd.isLocalAction = true;
+                    // add close action
+                    caseStatement.addAction(
+                            actionToAdd
+                    );
+                }
+
+                allCaseStatement.addAction(
+                        actionToAdd
                 );
             }
 
-            if (transaction.toRole.equals(roleName) && transaction.action == ProtocolMessageActionType.RECEIVE) {
-
-                ASTCommunicationChannel ASTCommunicationChannel = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
-
+            if (transaction.action == ProtocolMessageActionType.RECEIVE) {
+                ASTCommunicationChannel allASTCommunicationChannel = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
                 // add receive action of type
-                caseStatement.addAction(new ASTReceiveAction(this.receiveActionWriter, ASTCommunicationChannel, protocolStateNode.stateId, transaction.targetState.stateId, transaction.messageContentType));
+                var actionToAdd =new ASTReceiveAction(this.receiveActionWriter, allASTCommunicationChannel, protocolStateNode.stateId, transaction.targetState.stateId, transaction.messageContentType);
+
+
+                if(transaction.toRole.equals(roleName)){
+                    allCaseStatement.isInLocalType = true;
+                    actionToAdd.isLocalAction = true;
+
+                    // add receive action of type
+                    caseStatement.addAction(actionToAdd);
+                }
+
+                allCaseStatement.addAction(actionToAdd);
             }
-
-
         }
 
         ASTStateCaseStatements.add(caseStatement);
+        AllASTStateCaseStatements.add(allCaseStatement);
     }
 }

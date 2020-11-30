@@ -1,6 +1,5 @@
-package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1;
+package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v2;
 
-import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
@@ -38,22 +37,23 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.Random;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.BlockingQueue;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.LinkedBlockingQueue;");
+        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import static java.lang.Thread.sleep;");
+
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount);
 
         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"public class "+SyntaxTreeItem.protocolName+" implements IProtocol ", tabCount,
             (tabCountLvl0) -> {
-                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0,"private volatile int state = 0;");
-                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final Object monitor;");
-                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "public "+SyntaxTreeItem.protocolName+"() {this.monitor = this; };");
-                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "public "+SyntaxTreeItem.protocolName+"(Object monitor) {this.monitor = monitor; };");
+//                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0,"private volatile int state = 0;");
+                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final Object monitor = this;");
 
                 StringBuilderSyntaxHelper.addEmptyLine(builder, tabCountLvl0);
 
-                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final BlockingQueue<QueueItem> BlockingQueue = new LinkedBlockingQueue<>();");
-                //                new ASTCommunicationChannel().buildSyntax(builder,tabCountLvl0);
-//                for(nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel ASTCommunicationChannel : SyntaxTreeItem.ASTCommunicationChannels){
-//                    ASTCommunicationChannel.buildSyntax(builder,tabCountLvl0);
-//                }
+
+//                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final LinkedBlockingDeque<QueueItem> BlockingQueue = new LinkedBlockingDeque<>();");
+//
+                for(nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel ASTCommunicationChannel : SyntaxTreeItem.ASTCommunicationChannels){
+                    ASTCommunicationChannel.buildSyntax(builder,tabCountLvl0);
+                }
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public IEnvironment getEnvironment(String environmentName) throws Exception", tabCountLvl0,
                     (tabCountLvl1) -> {
@@ -91,7 +91,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public int getState()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return this.state;");
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return 0;"); /// TODO Do we still need this:?
                     }
                 );
             }
