@@ -98,7 +98,7 @@ public class CG_alt extends CGBase {
 	}
 
 	public void runBenchMark() throws Exception {
-		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG_ALT, num_threads, this);
+		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG_ALT, num_threads);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");

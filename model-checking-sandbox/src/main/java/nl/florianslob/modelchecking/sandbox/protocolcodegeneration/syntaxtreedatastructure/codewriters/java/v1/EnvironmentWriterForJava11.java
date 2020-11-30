@@ -49,7 +49,6 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                     var blockOfASTStateCaseStatements = SyntaxTreeItem.ASTStateCaseStatements.subList(startIndex, blockEndIndex);
                     StringBuilderSyntaxHelperForJava11.addMethod(builder,"public <Any, AnyInput> Optional<Any> exchange_"+startIndex+"_"+endIndex+"(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception", tabCountLvl0,
                             (tabCountLvl1) -> {
-                                StringBuilderSyntaxHelper.addLine(builder,tabCountLvl1, "QueueItem itemToGet;");
                                 StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (state)", tabCountLvl1,
                                         (tabCountLvl2) -> {
 

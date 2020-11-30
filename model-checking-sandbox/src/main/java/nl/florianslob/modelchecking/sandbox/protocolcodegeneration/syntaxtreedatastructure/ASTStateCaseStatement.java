@@ -46,15 +46,7 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
             combinedLocalStates.add(nextStatesForLocalTypeForAction);
 
             actionFromState.allNextStatesForLocalType.addAll(nextStatesForLocalTypeForAction);
-
-            if(actionFromState.allNextStatesForLocalType.size() > 1){
-                System.out.println("We have a problem we should solve! We are already solving!");
-            }
-
-            // TODO, does this work???... not sure with the close action.
-            actionFromState.nextLocalStateId = actionFromState.allNextStatesForLocalType.stream().findFirst().get();
         }
-
     }
 
     public Set<Integer> FindAllPossibleGlobalStateIdsForLocalType(List<ASTStateCaseStatement> allStateCaseStatements, Set<Integer> visitedStates, String sendingMessageType) {
@@ -75,7 +67,7 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
                 ((ASTReceiveAction) localAction).messageContentType = sendingMessageType;
             }
         }
-            // TODO Do this for actions from state that are not local
+
         for (var actionFromState: this.actionsFromState.stream().filter(a -> !a.isLocalAction).collect(Collectors.toList())) {
 
             var nextStateOptional =

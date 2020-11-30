@@ -97,7 +97,7 @@ public class CG extends CGBase {
 	}
 
 	public void runBenchMark() throws Exception {
-		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads, null);
+		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");

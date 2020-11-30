@@ -28,8 +28,6 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         // Start with all imports
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"// Import types from the API");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import nl.florianslob.modelchecking.base.api.v2.*;");
-        // TODO Import custom type or only support primitive types
-//        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import dto.Move;");
 
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount); // White line to distinguish imports from the java SDK with imports from our own API.
@@ -43,14 +41,10 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
         StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"public class "+SyntaxTreeItem.protocolName+" implements IProtocol ", tabCount,
             (tabCountLvl0) -> {
-//                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0,"private volatile int state = 0;");
                 StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final Object monitor = this;");
 
                 StringBuilderSyntaxHelper.addEmptyLine(builder, tabCountLvl0);
 
-
-//                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final LinkedBlockingDeque<QueueItem> BlockingQueue = new LinkedBlockingDeque<>();");
-//
                 for(nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTCommunicationChannel ASTCommunicationChannel : SyntaxTreeItem.ASTCommunicationChannels){
                     ASTCommunicationChannel.buildSyntax(builder,tabCountLvl0);
                 }

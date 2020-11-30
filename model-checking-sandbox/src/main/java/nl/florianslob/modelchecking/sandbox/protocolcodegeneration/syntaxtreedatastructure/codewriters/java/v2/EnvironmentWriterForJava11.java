@@ -19,8 +19,6 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
         Set<Set<Integer>> combinedLocalStates = new HashSet<>();
         StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"case \""+syntaxTreeItem.roleName+"\": return new IEnvironment() {", "};", tabCount,
             (tabCountLvl0) -> {
-
-                // TODO, we could have a problem here, multiple starting states? Merge already??
                 FindStartingStateId(syntaxTreeItem.AllASTStateCaseStatements,combinedLocalStates);
 
                 HashMap<String,Integer> globalToLocalStateMap = new HashMap<>();
@@ -32,7 +30,6 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
 
                 StringBuilderSyntaxHelperForJava11.addMethod(builder,"public void setState(int newState)", tabCountLvl0,
                         (tabCountLvl1) -> {
-//                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "System.out.println(\"Setting state to \"+newState);");// Enable for debugging
                             StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "state = newState;");
                         }
                 );
@@ -43,14 +40,10 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                     }
                 );
 
-                // Order all statements by id, this is not necessary, but makes the generated code more readable.
-                PrintCombinedStates(syntaxTreeItem,combinedLocalStates);
-
-                // TODO Normalize state Id's --> How??
                 var numberOfStates = statesAsLocalType.size();
                 var blockSize = 200;
                 var numberOfBlocks = numberOfStates/blockSize;
-                // TODO Determine block size...
+
                 // Create blocks
                 for(int i = 0; i <= numberOfBlocks; i++){
                     var startIndex = i*blockSize;
@@ -67,8 +60,6 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                             (tabCountLvl1) -> {
                                 StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"switch (state)", tabCountLvl1,
                                         (tabCountLvl2) -> {
-
-
                                             // Handle all wait-action-only cases in one case statement.
                                             {
                                                 var hasAtLeastOneCaseStatement = blockOfASTStateCaseStatements
@@ -139,25 +130,10 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
         );
     }
 
-    private void PrintCombinedStates(ASTEnvironment syntaxTreeItem, Set<Set<Integer>> combinedLocalStates) {
-        System.out.println("Printing Sets for: "+syntaxTreeItem.roleName);
-
-        combinedLocalStates.forEach(set -> {
-                    System.out.println("New Set ---------------");
-                    set.forEach(item -> System.out.println("StateId " + item));
-                }
-        );
-    }
-
     private void DetermineLocalStates(Set<Set<Integer>> combinedLocalStates, HashMap<String, Integer> globalToLocalStateMap) {
         var localStateCounter = 0;
         for (var localStateCombination: combinedLocalStates) {
-            System.out.println("New Set ---------------");
-
             var key = GetKeyForLocalStateId(localStateCombination);
-            System.out.println(key);
-            System.out.println("Will be called locally: "+localStateCounter);
-
             globalToLocalStateMap.put(key, localStateCounter);
             localStateCounter++;
         }

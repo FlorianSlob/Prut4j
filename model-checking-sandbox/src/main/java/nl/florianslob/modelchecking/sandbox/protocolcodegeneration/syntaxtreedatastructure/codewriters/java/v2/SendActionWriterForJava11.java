@@ -10,13 +10,10 @@ public class SendActionWriterForJava11 implements ISyntaxWriter<ASTSendAction> {
     public void buildSyntax(StringBuilder builder, int tabCount, ASTSendAction SyntaxTreeItem) {
         StringBuilderSyntaxHelperForJava11.addCodeInBlock(builder,"if (receiver.equals(\""+SyntaxTreeItem.communicationChannel.toRole+"\")) {", "}", tabCount,
                 (tabCountLvl0) -> {
-//                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "synchronized(monitor){"); // TODO This could be the problem!
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "setState("+SyntaxTreeItem.nextLocalStateId+");");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, ""+SyntaxTreeItem.communicationChannel.queueName+".put(box.get());");
-                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();"); // TODO This could be the problem!
-
+                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "return Optional.empty();");
-//                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "}"); // TODO This could be the problem!
 
                 }
         );

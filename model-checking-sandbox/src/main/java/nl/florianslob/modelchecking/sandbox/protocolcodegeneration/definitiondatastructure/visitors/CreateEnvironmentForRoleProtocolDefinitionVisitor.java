@@ -62,7 +62,6 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
             caseStatement  =
             new ASTStateCaseStatement(this.caseStatementWriter, protocolStateNode.stateId);
         }else{
-            // TODO Check if we need to do this.
             // We will add it later again.
             ASTStateCaseStatements.remove(stateCaseStatementOptional.get());
             caseStatement = stateCaseStatementOptional.get();
@@ -72,7 +71,6 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
             allCaseStatement  =
                     new ASTStateCaseStatement(this.caseStatementWriter, protocolStateNode.stateId);
         }else{
-            // TODO Check if we need to do this.
             // We will add it later again.
             AllASTStateCaseStatements.remove(allStateCaseStatementOptional.get());
             allCaseStatement = allStateCaseStatementOptional.get();

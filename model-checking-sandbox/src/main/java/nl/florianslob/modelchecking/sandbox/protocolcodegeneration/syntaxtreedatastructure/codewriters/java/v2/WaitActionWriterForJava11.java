@@ -8,7 +8,7 @@ public class WaitActionWriterForJava11 implements ISyntaxWriter<ASTWaitAction> {
     @Override
     public void buildSyntax(StringBuilder builder, int numberOfPrependingTabs, ASTWaitAction SyntaxTreeItem) {
         // a wait action is always the default
-        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.wait();"); // TODO.. wait for some time???
+        StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "monitor.wait();");
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "break;");
     }
 }
