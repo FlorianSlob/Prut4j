@@ -6924,7 +6924,8 @@ MG.C: Verification Successful
 * NPB Working Team                                             * 
 * npb@nas.nasa.gov                                             * 
 **************************************************************** 
-MG: is about to be garbage collectedExecuting update benchmark.
+MG: is about to be garbage collected
+Executing update benchmark.
  NAS Parallel Benchmarks Java version (NPB3_0_JAV)
  Multithreaded Version MG.C np=18
  No input file mg.input, Using compiled defaults
