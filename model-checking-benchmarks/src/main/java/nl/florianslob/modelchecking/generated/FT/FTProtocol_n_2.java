@@ -17,14 +17,11 @@ import static java.lang.Thread.sleep;
 public class FTProtocol_n_2 implements IProtocol {
 	private final Object monitor = this;
 	
-	private final BlockingQueue<Object> queueFrommasterTofft_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTofft_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromfft_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromevolve_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToevolve_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromfft_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromevolve_1_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<ProtocolMessage> evolve_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> evolve_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> fft_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> fft_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -47,20 +44,20 @@ public class FTProtocol_n_2 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToevolve_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class) {
+							ProtocolMessage objectToGet = evolve_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 1) {
 								setState(2);
 								//queueFrommasterToevolve_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 4) {
 								setState(3);
 								//queueFrommasterToevolve_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -69,7 +66,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromevolve_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),8));
 									return Optional.empty();
 								}
 							}
@@ -80,7 +77,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromevolve_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),13));
 									return Optional.empty();
 								}
 							}
@@ -129,26 +126,26 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromevolve_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),21));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterToevolve_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
-								setState(1);
-								//queueFrommasterToevolve_1_);
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of(objectToGet);
-							} else {
+							ProtocolMessage objectToGet = evolve_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 6) {
 								setState(3);
 								//queueFrommasterToevolve_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-
+							if (objectToGet.OriginalTargetStateId == 19) {
+								setState(1);
+								//queueFrommasterToevolve_1_);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of((Any)objectToGet.Message);
+							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
@@ -156,7 +153,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromevolve_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),10));
 									return Optional.empty();
 								}
 							}
@@ -205,7 +202,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromfft_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),17));
 									return Optional.empty();
 								}
 							}
@@ -215,27 +212,27 @@ public class FTProtocol_n_2 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTofft_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class) {
+							ProtocolMessage objectToGet = fft_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 2) {
 								setState(4);
 								//queueFrommasterTofft_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 3) {
 								setState(4);
 								//queueFrommasterTofft_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 15) {
 								setState(0);
 								//queueFrommasterTofft_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -244,7 +241,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromfft_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),38));
 									return Optional.empty();
 								}
 							}
@@ -293,7 +290,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromfft_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),40));
 									return Optional.empty();
 								}
 							}
@@ -304,25 +301,25 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromfft_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),25));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTofft_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = fft_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 23) {
 								setState(3);
 								//queueFrommasterTofft_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							else {
+							if (objectToGet.OriginalTargetStateId == 36) {
 								setState(2);
 								//queueFrommasterTofft_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -358,13 +355,23 @@ public class FTProtocol_n_2 implements IProtocol {
 							wait();
 							break;
 						case 0:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+								if (receiver == null) {
+									receiver = "evolve_0_";
+								}
+								if (receiver.equals("evolve_0_")) {
+									setState(10);
+									evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
+									return Optional.empty();
+								}
+							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
 								}
 								if (receiver.equals("fft_0_")) {
 									setState(2);
-									queueFrommasterTofft_0_.put(box.get());
+									fft_0_Queue.put(new ProtocolMessage(box.get(),2));
 									return Optional.empty();
 								}
 							}
@@ -374,17 +381,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("evolve_0_")) {
 									setState(3);
-									queueFrommasterToevolve_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-								if (receiver == null) {
-									receiver = "evolve_0_";
-								}
-								if (receiver.equals("evolve_0_")) {
-									setState(10);
-									queueFrommasterToevolve_0_.put(box.get());
+									evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -394,7 +391,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("fft_0_")) {
 									setState(7);
-									queueFrommasterTofft_0_.put(box.get());
+									fft_0_Queue.put(new ProtocolMessage(box.get(),3));
 									return Optional.empty();
 								}
 							}
@@ -405,7 +402,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("fft_1_")) {
 									setState(4);
-									queueFrommasterTofft_1_.put(box.get());
+									fft_1_Queue.put(new ProtocolMessage(box.get(),36));
 									return Optional.empty();
 								}
 							}
@@ -416,7 +413,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("evolve_1_")) {
 									setState(5);
-									queueFrommasterToevolve_1_.put(box.get());
+									evolve_1_Queue.put(new ProtocolMessage(box.get(),6));
 									return Optional.empty();
 								}
 							}
@@ -424,17 +421,17 @@ public class FTProtocol_n_2 implements IProtocol {
 							setState(6);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromfft_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 5:
 							setState(8);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromevolve_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 6:
 							setState(9);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromfft_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 7:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
@@ -442,7 +439,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("fft_1_")) {
 									setState(4);
-									queueFrommasterTofft_1_.put(box.get());
+									fft_1_Queue.put(new ProtocolMessage(box.get(),36));
 									return Optional.empty();
 								}
 							}
@@ -450,25 +447,25 @@ public class FTProtocol_n_2 implements IProtocol {
 							setState(9);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromevolve_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 9:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+								if (receiver == null) {
+									receiver = "evolve_0_";
+								}
+								if (receiver.equals("evolve_0_")) {
+									setState(3);
+									evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
+									return Optional.empty();
+								}
+							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 								if (receiver == null) {
 									receiver = "fft_0_";
 								}
 								if (receiver.equals("fft_0_")) {
 									setState(7);
-									queueFrommasterTofft_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
-								if (receiver == null) {
-									receiver = "fft_0_";
-								}
-								if (receiver.equals("fft_0_")) {
-									setState(2);
-									queueFrommasterTofft_0_.put(box.get());
+									fft_0_Queue.put(new ProtocolMessage(box.get(),3));
 									return Optional.empty();
 								}
 							}
@@ -478,17 +475,17 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("evolve_0_")) {
 									setState(10);
-									queueFrommasterToevolve_0_.put(box.get());
+									evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 								if (receiver == null) {
-									receiver = "evolve_0_";
+									receiver = "fft_0_";
 								}
-								if (receiver.equals("evolve_0_")) {
-									setState(3);
-									queueFrommasterToevolve_0_.put(box.get());
+								if (receiver.equals("fft_0_")) {
+									setState(2);
+									fft_0_Queue.put(new ProtocolMessage(box.get(),2));
 									return Optional.empty();
 								}
 							}
@@ -496,7 +493,7 @@ public class FTProtocol_n_2 implements IProtocol {
 							setState(11);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromevolve_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 11:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -504,7 +501,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("fft_0_")) {
 									setState(12);
-									queueFrommasterTofft_0_.put(box.get());
+									fft_0_Queue.put(new ProtocolMessage(box.get(),15));
 									return Optional.empty();
 								}
 							}
@@ -512,7 +509,7 @@ public class FTProtocol_n_2 implements IProtocol {
 							setState(13);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromfft_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 13:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -520,7 +517,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("evolve_1_")) {
 									setState(14);
-									queueFrommasterToevolve_1_.put(box.get());
+									evolve_1_Queue.put(new ProtocolMessage(box.get(),19));
 									return Optional.empty();
 								}
 							}
@@ -528,7 +525,7 @@ public class FTProtocol_n_2 implements IProtocol {
 							setState(15);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromevolve_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 15:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -536,7 +533,7 @@ public class FTProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("fft_1_")) {
 									setState(16);
-									queueFrommasterTofft_1_.put(box.get());
+									fft_1_Queue.put(new ProtocolMessage(box.get(),23));
 									return Optional.empty();
 								}
 							}
@@ -544,7 +541,7 @@ public class FTProtocol_n_2 implements IProtocol {
 							setState(17);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromfft_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 17:
 							if (isCloseAction) {
 								setState(18);
@@ -587,7 +584,7 @@ public class FTProtocol_n_2 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "evolve_1_","evolve_0_","master","fft_1_","fft_0_" };
+		return new String[] { "evolve_0_","fft_1_","evolve_1_","master","fft_0_" };
 	}
 	
 	@Override
