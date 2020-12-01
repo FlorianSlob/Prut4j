@@ -83,14 +83,18 @@ public class CaseStatementWriterForJava11 implements ISyntaxWriter<ASTStateCaseS
 
         if(receiveActions.size() > 1) {
             // We need to solve this
-            StringBuilderSyntaxHelperForJava11
-                    .addCodeInBlock(builder, "while(true) {", " monitor.wait(); }",
-                            numberOfPrependingTabs,
-                            (tabCountLvl0) -> {
-                                for (ASTEnvironmentActionFromState actionFromState : receiveActions) {
-                                    actionFromState.buildSyntax(builder, tabCountLvl0);
+//            StringBuilderSyntaxHelperForJava11
+//                    .addCodeInBlock(builder, "while(true) {", " monitor.wait(); }",
+//                            numberOfPrependingTabs,
+//                            (tabCountLvl0) -> {
+
+            var firstAction = (ASTReceiveAction) receiveActions.stream().findFirst().get();
+            StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "Any objectToGet = (Any)"+firstAction.communicationChannel.queueName+".take();");
+
+            for (ASTEnvironmentActionFromState actionFromState : receiveActions) {
+                                    actionFromState.buildSyntax(builder, numberOfPrependingTabs);
                                 }
-                            });
+//                            });
 
         }else if (receiveActions.size() == 1){
             var receiveAction = (ASTReceiveAction)(receiveActions.stream().findFirst().get());

@@ -29,6 +29,7 @@ public class CGProtocol_strict_alt_n_2 implements IProtocol {
 				private int state = 0;
 				
 				public void setState(int newState){
+					System.out.println("Master to state "+newState);
 					state = newState;
 				}
 				
@@ -196,6 +197,7 @@ public class CGProtocol_strict_alt_n_2 implements IProtocol {
 				private int state = 1;
 				
 				public void setState(int newState){
+					System.out.println("worker_0_ to state "+newState);
 					state = newState;
 				}
 				
@@ -304,6 +306,7 @@ public class CGProtocol_strict_alt_n_2 implements IProtocol {
 				
 				public void setState(int newState){
 					state = newState;
+					System.out.println("worker_0_ to state "+newState);
 				}
 				
 				@Override

@@ -41,6 +41,7 @@ public class ASTStateCaseStatement extends SyntaxTreeItemBase<ASTStateCaseStatem
             if(actionFromState.getClass() == ASTSendAction.class){
                 sendingMessageType = ((ASTSendAction) actionFromState).messageContentType;
             }
+
             // recursively get all possible next global states that are also in the local state.
             var nextStatesForLocalTypeForAction = nextState.FindAllPossibleGlobalStateIdsForLocalType(allStateCaseStatements, visitedStates, sendingMessageType);
             combinedLocalStates.add(nextStatesForLocalTypeForAction);

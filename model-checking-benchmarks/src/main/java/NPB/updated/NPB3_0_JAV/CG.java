@@ -279,9 +279,9 @@ public class CG extends CGBase {
 		for (int m = 0; m < num_threads; m++) {
 			masterEnvironment.close();
 		}
-		for (int m = 0; m < num_threads; m++) {
-			protocol.getEnvironment("worker_"+m+"_").close();
-		}
+//		for (int m = 0; m < num_threads; m++) {
+//			protocol.getEnvironment("worker_"+m+"_").close();
+//		}
 	}
 	void setTimers(){
 		File fp = new File("timer.flag");

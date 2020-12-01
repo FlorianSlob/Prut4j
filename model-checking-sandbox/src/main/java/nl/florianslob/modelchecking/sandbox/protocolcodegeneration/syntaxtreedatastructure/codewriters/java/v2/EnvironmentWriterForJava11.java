@@ -92,8 +92,8 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
-                            (tabCountLvl2) -> {
+//                        StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"synchronized (monitor)", tabCountLvl1,
+//                            (tabCountLvl2) -> {
                                 StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"while (true)", tabCountLvl1,
                                     (tabCountLvl3) -> {
 
@@ -116,8 +116,8 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
                                         }
                                     }
                                 );
-                            }
-                        );
+//                            }
+//                        );
                         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCountLvl1);
                     }
                 );
@@ -135,7 +135,7 @@ public class EnvironmentWriterForJava11 implements ISyntaxWriter<ASTEnvironment>
     }
 
     private String GetKeyForLocalStateId(Set<Integer> localStateCombination) {
-        return localStateCombination.stream().map(String::valueOf).collect(Collectors.joining(","));
+        return localStateCombination.stream().sorted().map(String::valueOf).collect(Collectors.joining(","));
     }
 
     private void FindStartingStateId(LinkedList<ASTStateCaseStatement> allASTStateCaseStatements, Set<Set<Integer>> combinedLocalStates) {

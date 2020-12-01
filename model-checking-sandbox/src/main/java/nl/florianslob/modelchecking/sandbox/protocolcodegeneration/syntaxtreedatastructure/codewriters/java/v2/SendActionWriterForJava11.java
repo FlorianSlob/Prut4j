@@ -12,7 +12,7 @@ public class SendActionWriterForJava11 implements ISyntaxWriter<ASTSendAction> {
                 (tabCountLvl0) -> {
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "setState("+SyntaxTreeItem.nextLocalStateId+");");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, ""+SyntaxTreeItem.communicationChannel.queueName+".put(box.get());");
-                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
+//                    StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "monitor.notifyAll();");
                     StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "return Optional.empty();");
                 }
         );

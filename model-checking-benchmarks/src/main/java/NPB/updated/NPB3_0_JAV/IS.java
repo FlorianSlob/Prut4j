@@ -187,9 +187,9 @@ public class IS extends ISBase {
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("worker_"+m+"_").close();
-        }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("worker_"+m+"_").close();
+//        }
     }
 
     public double getMOPS(double total_time,int niter,int num_keys){

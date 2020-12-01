@@ -12,9 +12,9 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import static java.lang.Thread.sleep;
 
 public class MGProtocol_n_12 implements IProtocol {
-	private volatile int state = 0;
 	private final Object monitor = this;
 	
 	private final BlockingQueue<Object> queueFrommasterTorprj_0_ = new LinkedBlockingQueue<>(); 
@@ -118,7014 +118,899 @@ public class MGProtocol_n_12 implements IProtocol {
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
 			case "interpd_0_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
 						case 1:
-							if (queueFrommasterTointerpd_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 6;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 5:
-							if (queueFrommasterTointerpd_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 53;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 28:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 29;
+									setState(4);
 									queueFrominterpd_0_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 53:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTointerpd_0_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 54;
+									setState(2);
 									queueFrominterpd_0_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 255:
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 256;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_10_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
-						case 0 :
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 25:
-							if (queueFrommasterTointerpd_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 26;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_10_.take());
-							}
-							monitor.wait();
-							break;
-						case 48:
+						case 0:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 49;
+									setState(4);
 									queueFrominterpd_10_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 212:
-							if (queueFrommasterTointerpd_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 213;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_10_.take());
-							}
-							monitor.wait();
-							break;
-						case 213:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 214;
+									setState(3);
 									queueFrominterpd_10_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 265:
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 266;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTointerpd_10_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(0);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_11_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 27:
-							if (queueFrommasterTointerpd_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 28;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_11_.take());
-							}
-							monitor.wait();
-							break;
-						case 50:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 51;
+									setState(4);
 									queueFrominterpd_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 228:
-							if (queueFrommasterTointerpd_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 229;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_11_.take());
-							}
-							monitor.wait();
-							break;
-						case 229:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 230;
+									setState(3);
 									queueFrominterpd_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 266:
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 267;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTointerpd_11_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_1_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
-						case 0 :
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 7:
-							if (queueFrommasterTointerpd_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 8;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_1_.take());
-							}
-							monitor.wait();
-							break;
-						case 30:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 31;
-									queueFrominterpd_1_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 68:
-							if (queueFrommasterTointerpd_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 69;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_1_.take());
-							}
-							monitor.wait();
-							break;
-						case 69:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 70;
-									queueFrominterpd_1_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 256:
+						case 0:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 257;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(0);
+									queueFrominterpd_1_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTointerpd_1_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFrominterpd_1_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_2_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
-						case 0 :
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 9:
-							if (queueFrommasterTointerpd_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 10;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_2_.take());
-							}
-							monitor.wait();
-							break;
-						case 32:
+						case 0:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 33;
+									setState(4);
 									queueFrominterpd_2_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 84:
-							if (queueFrommasterTointerpd_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 85;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_2_.take());
-							}
-							monitor.wait();
-							break;
-						case 85:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 86;
-									queueFrominterpd_2_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 257:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 258;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFrominterpd_2_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTointerpd_2_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(0);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_3_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 11:
-							if (queueFrommasterTointerpd_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 12;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 34:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 35;
+									setState(4);
 									queueFrominterpd_3_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 100:
-							if (queueFrommasterTointerpd_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 101;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 101:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 102;
-									queueFrominterpd_3_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 258:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 259;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFrominterpd_3_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTointerpd_3_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_4_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 13:
-							if (queueFrommasterTointerpd_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 14;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterTointerpd_4_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(3);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_4_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 36:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 37;
-									queueFrominterpd_4_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 116:
-							if (queueFrommasterTointerpd_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 117;
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_4_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 117:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 118;
-									queueFrominterpd_4_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 259:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 260;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFrominterpd_4_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFrominterpd_4_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_5_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 15:
-							if (queueFrommasterTointerpd_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 16;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterTointerpd_5_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_5_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 38:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 39;
-									queueFrominterpd_5_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 132:
-							if (queueFrommasterTointerpd_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 133;
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_5_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 133:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 134;
-									queueFrominterpd_5_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 260:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 261;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFrominterpd_5_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFrominterpd_5_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_6_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 17:
-							if (queueFrommasterTointerpd_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 18;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterTointerpd_6_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_6_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 40:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 41;
+									setState(3);
 									queueFrominterpd_6_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 148:
-							if (queueFrommasterTointerpd_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 149;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_6_.take());
-							}
-							monitor.wait();
-							break;
-						case 149:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 150;
-									queueFrominterpd_6_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 261:
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 262;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFrominterpd_6_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_7_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 19:
-							if (queueFrommasterTointerpd_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 20;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 42:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 43;
+									setState(2);
 									queueFrominterpd_7_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 164:
-							if (queueFrommasterTointerpd_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 165;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 165:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 166;
-									queueFrominterpd_7_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 262:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 263;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTointerpd_7_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFrominterpd_7_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_8_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 21:
-							if (queueFrommasterTointerpd_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 22;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 44:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 45;
+									setState(2);
 									queueFrominterpd_8_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 180:
-							if (queueFrommasterTointerpd_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 181;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 181:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 182;
-									queueFrominterpd_8_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 263:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 264;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTointerpd_8_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFrominterpd_8_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "interpd_9_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 23:
-							if (queueFrommasterTointerpd_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 24;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 46:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 47;
+									setState(2);
 									queueFrominterpd_9_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 196:
-							if (queueFrommasterTointerpd_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 197;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTointerpd_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 197:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 198;
-									queueFrominterpd_9_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 264:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 265;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTointerpd_9_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFrominterpd_9_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "master": return new IEnvironment() {
+				private int state = 0;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
@@ -7135,107 +1020,7 @@ public class MGProtocol_n_12 implements IProtocol {
 				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 7 :
-						case 9 :
-						case 11 :
-						case 13 :
-						case 15 :
-						case 17 :
-						case 19 :
-						case 21 :
-						case 23 :
-						case 25 :
-						case 27 :
-						case 28 :
-						case 30 :
-						case 32 :
-						case 34 :
-						case 36 :
-						case 38 :
-						case 40 :
-						case 42 :
-						case 44 :
-						case 46 :
-						case 48 :
-						case 50 :
-						case 53 :
-						case 56 :
-						case 57 :
-						case 60 :
-						case 61 :
-						case 64 :
-						case 65 :
-						case 68 :
-						case 69 :
-						case 72 :
-						case 73 :
-						case 76 :
-						case 77 :
-						case 80 :
-						case 81 :
-						case 84 :
-						case 85 :
-						case 88 :
-						case 89 :
-						case 92 :
-						case 93 :
-						case 96 :
-						case 97 :
-						case 100 :
-						case 101 :
-						case 104 :
-						case 105 :
-						case 108 :
-						case 109 :
-						case 112 :
-						case 113 :
-						case 116 :
-						case 117 :
-						case 120 :
-						case 121 :
-						case 124 :
-						case 125 :
-						case 128 :
-						case 129 :
-						case 132 :
-						case 133 :
-						case 136 :
-						case 137 :
-						case 140 :
-						case 141 :
-						case 144 :
-						case 145 :
-						case 148 :
-						case 149 :
-						case 152 :
-						case 153 :
-						case 156 :
-						case 157 :
-						case 160 :
-						case 161 :
-						case 164 :
-						case 165 :
-						case 168 :
-						case 169 :
-						case 172 :
-						case 173 :
-						case 176 :
-						case 177 :
-						case 180 :
-						case 181 :
-						case 184 :
-						case 185 :
-						case 188 :
-						case 189 :
-						case 192 :
-						case 193 :
-						case 196 :
-						case 197 :
-							monitor.wait();
+							wait();
 							break;
 						case 0:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
@@ -7243,31 +1028,8 @@ public class MGProtocol_n_12 implements IProtocol {
 									receiver = "psinv_0_";
 								}
 								if (receiver.equals("psinv_0_")) {
-									monitor.notifyAll();
-									state = 2;
+									setState(169);
 									queueFrommasterTopsinv_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_0_";
-								}
-								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 1;
-									queueFrommasterTointerpd_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-								if (receiver == null) {
-									receiver = "rprj_0_";
-								}
-								if (receiver.equals("rprj_0_")) {
-									monitor.notifyAll();
-									state = 3;
-									queueFrommasterTorprj_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -7276,8 +1038,7 @@ public class MGProtocol_n_12 implements IProtocol {
 									receiver = "resid_0_";
 								}
 								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 4;
+									setState(215);
 									queueFrommasterToresid_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -7287,308 +1048,230 @@ public class MGProtocol_n_12 implements IProtocol {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 5;
+									setState(26);
 									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+								if (receiver == null) {
+									receiver = "rprj_0_";
+								}
+								if (receiver.equals("rprj_0_")) {
+									setState(192);
+									queueFrommasterTorprj_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_0_";
+								}
+								if (receiver.equals("interpd_0_")) {
+									setState(2);
+									queueFrommasterTointerpd_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_1_";
+								}
+								if (receiver.equals("interpd_1_")) {
+									setState(3);
+									queueFrommasterTointerpd_1_.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_2_";
+								}
+								if (receiver.equals("interpd_2_")) {
+									setState(4);
+									queueFrommasterTointerpd_2_.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_3_";
+								}
+								if (receiver.equals("interpd_3_")) {
+									setState(5);
+									queueFrommasterTointerpd_3_.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 5:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_4_";
+								}
+								if (receiver.equals("interpd_4_")) {
+									setState(6);
+									queueFrommasterTointerpd_4_.put(box.get());
+									return Optional.empty();
+								}
+							}
 						case 6:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
-									receiver = "interpd_1_";
+									receiver = "interpd_5_";
 								}
-								if (receiver.equals("interpd_1_")) {
-									monitor.notifyAll();
-									state = 7;
-									queueFrommasterTointerpd_1_.put(box.get());
+								if (receiver.equals("interpd_5_")) {
+									setState(7);
+									queueFrommasterTointerpd_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 7:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+								if (receiver == null) {
+									receiver = "interpd_6_";
+								}
+								if (receiver.equals("interpd_6_")) {
+									setState(8);
+									queueFrommasterTointerpd_6_.put(box.get());
+									return Optional.empty();
+								}
+							}
 						case 8:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
-									receiver = "interpd_2_";
-								}
-								if (receiver.equals("interpd_2_")) {
-									monitor.notifyAll();
-									state = 9;
-									queueFrommasterTointerpd_2_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 10:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_3_";
-								}
-								if (receiver.equals("interpd_3_")) {
-									monitor.notifyAll();
-									state = 11;
-									queueFrommasterTointerpd_3_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 12:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_4_";
-								}
-								if (receiver.equals("interpd_4_")) {
-									monitor.notifyAll();
-									state = 13;
-									queueFrommasterTointerpd_4_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 14:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_5_";
-								}
-								if (receiver.equals("interpd_5_")) {
-									monitor.notifyAll();
-									state = 15;
-									queueFrommasterTointerpd_5_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 16:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-								if (receiver == null) {
-									receiver = "interpd_6_";
-								}
-								if (receiver.equals("interpd_6_")) {
-									monitor.notifyAll();
-									state = 17;
-									queueFrommasterTointerpd_6_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 18:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-								if (receiver == null) {
 									receiver = "interpd_7_";
 								}
 								if (receiver.equals("interpd_7_")) {
-									monitor.notifyAll();
-									state = 19;
+									setState(9);
 									queueFrommasterTointerpd_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 20:
+						case 9:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_8_";
 								}
 								if (receiver.equals("interpd_8_")) {
-									monitor.notifyAll();
-									state = 21;
+									setState(10);
 									queueFrommasterTointerpd_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 22:
+						case 10:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_9_";
 								}
 								if (receiver.equals("interpd_9_")) {
-									monitor.notifyAll();
-									state = 23;
+									setState(11);
 									queueFrommasterTointerpd_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 24:
+						case 11:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_10_";
 								}
 								if (receiver.equals("interpd_10_")) {
-									monitor.notifyAll();
-									state = 25;
+									setState(12);
 									queueFrommasterTointerpd_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 26:
+						case 12:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_11_";
 								}
 								if (receiver.equals("interpd_11_")) {
-									monitor.notifyAll();
-									state = 27;
+									setState(13);
 									queueFrommasterTointerpd_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 29:
-							if (queueFrominterpd_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 30;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 31:
-							if (queueFrominterpd_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 32;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 33:
-							if (queueFrominterpd_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 34;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 35:
-							if (queueFrominterpd_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 36;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 37:
-							if (queueFrominterpd_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 38;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 39:
-							if (queueFrominterpd_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 40;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 41:
-							if (queueFrominterpd_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 42;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 43:
-							if (queueFrominterpd_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 44;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 45:
-							if (queueFrominterpd_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 46;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 47:
-							if (queueFrominterpd_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 48;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 49:
-							if (queueFrominterpd_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 50;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 51:
-							if (queueFrominterpd_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 52;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 52:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
-								if (receiver == null) {
-									receiver = "psinv_0_";
-								}
-								if (receiver.equals("psinv_0_")) {
-									monitor.notifyAll();
-									state = 2;
-									queueFrommasterTopsinv_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
+						case 13:
+							setState(14);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_0_Tomaster.take());
+						case 14:
+							setState(15);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_1_Tomaster.take());
+						case 15:
+							setState(16);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_2_Tomaster.take());
+						case 16:
+							setState(17);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_3_Tomaster.take());
+						case 17:
+							setState(18);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_4_Tomaster.take());
+						case 18:
+							setState(19);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_5_Tomaster.take());
+						case 19:
+							setState(20);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_6_Tomaster.take());
+						case 20:
+							setState(21);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_7_Tomaster.take());
+						case 21:
+							setState(22);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_8_Tomaster.take());
+						case 22:
+							setState(23);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_9_Tomaster.take());
+						case 23:
+							setState(24);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_10_Tomaster.take());
+						case 24:
+							setState(25);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_11_Tomaster.take());
+						case 25:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_0_";
 								}
 								if (receiver.equals("rprj_0_")) {
-									monitor.notifyAll();
-									state = 3;
+									setState(192);
 									queueFrommasterTorprj_0_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+								if (receiver == null) {
+									receiver = "psinv_0_";
+								}
+								if (receiver.equals("psinv_0_")) {
+									setState(169);
+									queueFrommasterTopsinv_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
@@ -7597,8 +1280,7 @@ public class MGProtocol_n_12 implements IProtocol {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 5;
+									setState(26);
 									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -7608,8 +1290,7 @@ public class MGProtocol_n_12 implements IProtocol {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
-									monitor.notifyAll();
-									state = 1;
+									setState(2);
 									queueFrommasterTointerpd_0_.put(box.get());
 									return Optional.empty();
 								}
@@ -7619,23561 +1300,4237 @@ public class MGProtocol_n_12 implements IProtocol {
 									receiver = "resid_0_";
 								}
 								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 4;
+									setState(215);
 									queueFrommasterToresid_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 54:
-							if (queueFrominterpd_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 55;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 55:
+						case 26:
+							setState(27);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_0_Tomaster.take());
+						case 27:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_0_";
 								}
 								if (receiver.equals("psinv_0_")) {
-									monitor.notifyAll();
-									state = 56;
+									setState(28);
 									queueFrommasterTopsinv_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 58:
-							if (queueFrompsinv_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 59;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 59:
+						case 28:
+							setState(29);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_0_Tomaster.take());
+						case 29:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_0_";
 								}
 								if (receiver.equals("rprj_0_")) {
-									monitor.notifyAll();
-									state = 60;
+									setState(30);
 									queueFrommasterTorprj_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 62:
-							if (queueFromrprj_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 63;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 63:
+						case 30:
+							setState(31);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_0_Tomaster.take());
+						case 31:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_0_";
 								}
 								if (receiver.equals("resid_0_")) {
-									monitor.notifyAll();
-									state = 64;
+									setState(32);
 									queueFrommasterToresid_0_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 66:
-							if (queueFromresid_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 67;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 67:
+						case 32:
+							setState(33);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_0_Tomaster.take());
+						case 33:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_1_";
 								}
 								if (receiver.equals("interpd_1_")) {
-									monitor.notifyAll();
-									state = 68;
+									setState(34);
 									queueFrommasterTointerpd_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 70:
-							if (queueFrominterpd_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 71;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 71:
+						case 34:
+							setState(35);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_1_Tomaster.take());
+						case 35:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_1_";
 								}
 								if (receiver.equals("psinv_1_")) {
-									monitor.notifyAll();
-									state = 72;
+									setState(36);
 									queueFrommasterTopsinv_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 74:
-							if (queueFrompsinv_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 75;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 75:
+						case 36:
+							setState(37);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_1_Tomaster.take());
+						case 37:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_1_";
 								}
 								if (receiver.equals("rprj_1_")) {
-									monitor.notifyAll();
-									state = 76;
+									setState(38);
 									queueFrommasterTorprj_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 78:
-							if (queueFromrprj_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 79;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 79:
+						case 38:
+							setState(39);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_1_Tomaster.take());
+						case 39:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_1_";
 								}
 								if (receiver.equals("resid_1_")) {
-									monitor.notifyAll();
-									state = 80;
+									setState(40);
 									queueFrommasterToresid_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 82:
-							if (queueFromresid_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 83;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 83:
+						case 40:
+							setState(41);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_1_Tomaster.take());
+						case 41:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_2_";
 								}
 								if (receiver.equals("interpd_2_")) {
-									monitor.notifyAll();
-									state = 84;
+									setState(42);
 									queueFrommasterTointerpd_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 86:
-							if (queueFrominterpd_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 87;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 87:
+						case 42:
+							setState(43);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_2_Tomaster.take());
+						case 43:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_2_";
 								}
 								if (receiver.equals("psinv_2_")) {
-									monitor.notifyAll();
-									state = 88;
+									setState(44);
 									queueFrommasterTopsinv_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 90:
-							if (queueFrompsinv_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 91;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 91:
+						case 44:
+							setState(45);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_2_Tomaster.take());
+						case 45:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_2_";
 								}
 								if (receiver.equals("rprj_2_")) {
-									monitor.notifyAll();
-									state = 92;
+									setState(46);
 									queueFrommasterTorprj_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 94:
-							if (queueFromrprj_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 95;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 95:
+						case 46:
+							setState(47);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_2_Tomaster.take());
+						case 47:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_2_";
 								}
 								if (receiver.equals("resid_2_")) {
-									monitor.notifyAll();
-									state = 96;
+									setState(48);
 									queueFrommasterToresid_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 98:
-							if (queueFromresid_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 99;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 99:
+						case 48:
+							setState(49);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_2_Tomaster.take());
+						case 49:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_3_";
 								}
 								if (receiver.equals("interpd_3_")) {
-									monitor.notifyAll();
-									state = 100;
+									setState(50);
 									queueFrommasterTointerpd_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 102:
-							if (queueFrominterpd_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 103;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 103:
+						case 50:
+							setState(51);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_3_Tomaster.take());
+						case 51:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_3_";
 								}
 								if (receiver.equals("psinv_3_")) {
-									monitor.notifyAll();
-									state = 104;
+									setState(52);
 									queueFrommasterTopsinv_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 106:
-							if (queueFrompsinv_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 107;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 107:
+						case 52:
+							setState(53);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_3_Tomaster.take());
+						case 53:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_3_";
 								}
 								if (receiver.equals("rprj_3_")) {
-									monitor.notifyAll();
-									state = 108;
+									setState(54);
 									queueFrommasterTorprj_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 110:
-							if (queueFromrprj_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 111;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 111:
+						case 54:
+							setState(55);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_3_Tomaster.take());
+						case 55:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_3_";
 								}
 								if (receiver.equals("resid_3_")) {
-									monitor.notifyAll();
-									state = 112;
+									setState(56);
 									queueFrommasterToresid_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 114:
-							if (queueFromresid_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 115;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 115:
+						case 56:
+							setState(57);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_3_Tomaster.take());
+						case 57:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_4_";
 								}
 								if (receiver.equals("interpd_4_")) {
-									monitor.notifyAll();
-									state = 116;
+									setState(58);
 									queueFrommasterTointerpd_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 118:
-							if (queueFrominterpd_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 119;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 119:
+						case 58:
+							setState(59);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_4_Tomaster.take());
+						case 59:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_4_";
 								}
 								if (receiver.equals("psinv_4_")) {
-									monitor.notifyAll();
-									state = 120;
+									setState(60);
 									queueFrommasterTopsinv_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 122:
-							if (queueFrompsinv_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 123;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 123:
+						case 60:
+							setState(61);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_4_Tomaster.take());
+						case 61:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_4_";
 								}
 								if (receiver.equals("rprj_4_")) {
-									monitor.notifyAll();
-									state = 124;
+									setState(62);
 									queueFrommasterTorprj_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 126:
-							if (queueFromrprj_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 127;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 127:
+						case 62:
+							setState(63);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_4_Tomaster.take());
+						case 63:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_4_";
 								}
 								if (receiver.equals("resid_4_")) {
-									monitor.notifyAll();
-									state = 128;
+									setState(64);
 									queueFrommasterToresid_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 130:
-							if (queueFromresid_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 131;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 131:
+						case 64:
+							setState(65);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_4_Tomaster.take());
+						case 65:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_5_";
 								}
 								if (receiver.equals("interpd_5_")) {
-									monitor.notifyAll();
-									state = 132;
+									setState(66);
 									queueFrommasterTointerpd_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 134:
-							if (queueFrominterpd_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 135;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 135:
+						case 66:
+							setState(67);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_5_Tomaster.take());
+						case 67:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_5_";
 								}
 								if (receiver.equals("psinv_5_")) {
-									monitor.notifyAll();
-									state = 136;
+									setState(68);
 									queueFrommasterTopsinv_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 138:
-							if (queueFrompsinv_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 139;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 139:
+						case 68:
+							setState(69);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_5_Tomaster.take());
+						case 69:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_5_";
 								}
 								if (receiver.equals("rprj_5_")) {
-									monitor.notifyAll();
-									state = 140;
+									setState(70);
 									queueFrommasterTorprj_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 142:
-							if (queueFromrprj_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 143;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 143:
+						case 70:
+							setState(71);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_5_Tomaster.take());
+						case 71:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_5_";
 								}
 								if (receiver.equals("resid_5_")) {
-									monitor.notifyAll();
-									state = 144;
+									setState(72);
 									queueFrommasterToresid_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 146:
-							if (queueFromresid_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 147;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 147:
+						case 72:
+							setState(73);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_5_Tomaster.take());
+						case 73:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_6_";
 								}
 								if (receiver.equals("interpd_6_")) {
-									monitor.notifyAll();
-									state = 148;
+									setState(74);
 									queueFrommasterTointerpd_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 150:
-							if (queueFrominterpd_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 151;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 151:
+						case 74:
+							setState(75);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_6_Tomaster.take());
+						case 75:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_6_";
 								}
 								if (receiver.equals("psinv_6_")) {
-									monitor.notifyAll();
-									state = 152;
+									setState(76);
 									queueFrommasterTopsinv_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 154:
-							if (queueFrompsinv_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 155;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 155:
+						case 76:
+							setState(77);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_6_Tomaster.take());
+						case 77:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_6_";
 								}
 								if (receiver.equals("rprj_6_")) {
-									monitor.notifyAll();
-									state = 156;
+									setState(78);
 									queueFrommasterTorprj_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 158:
-							if (queueFromrprj_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 159;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 159:
+						case 78:
+							setState(79);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_6_Tomaster.take());
+						case 79:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_6_";
 								}
 								if (receiver.equals("resid_6_")) {
-									monitor.notifyAll();
-									state = 160;
+									setState(80);
 									queueFrommasterToresid_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 162:
-							if (queueFromresid_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 163;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 163:
+						case 80:
+							setState(81);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_6_Tomaster.take());
+						case 81:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_7_";
 								}
 								if (receiver.equals("interpd_7_")) {
-									monitor.notifyAll();
-									state = 164;
+									setState(82);
 									queueFrommasterTointerpd_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 166:
-							if (queueFrominterpd_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 167;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 167:
+						case 82:
+							setState(83);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_7_Tomaster.take());
+						case 83:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_7_";
 								}
 								if (receiver.equals("psinv_7_")) {
-									monitor.notifyAll();
-									state = 168;
+									setState(84);
 									queueFrommasterTopsinv_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 170:
-							if (queueFrompsinv_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 171;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 171:
+						case 84:
+							setState(85);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_7_Tomaster.take());
+						case 85:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_7_";
 								}
 								if (receiver.equals("rprj_7_")) {
-									monitor.notifyAll();
-									state = 172;
+									setState(86);
 									queueFrommasterTorprj_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 174:
-							if (queueFromrprj_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 175;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 175:
+						case 86:
+							setState(87);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_7_Tomaster.take());
+						case 87:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_7_";
 								}
 								if (receiver.equals("resid_7_")) {
-									monitor.notifyAll();
-									state = 176;
+									setState(88);
 									queueFrommasterToresid_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 178:
-							if (queueFromresid_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 179;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 179:
+						case 88:
+							setState(89);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_7_Tomaster.take());
+						case 89:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_8_";
 								}
 								if (receiver.equals("interpd_8_")) {
-									monitor.notifyAll();
-									state = 180;
+									setState(90);
 									queueFrommasterTointerpd_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 182:
-							if (queueFrominterpd_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 183;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 183:
+						case 90:
+							setState(91);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_8_Tomaster.take());
+						case 91:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_8_";
 								}
 								if (receiver.equals("psinv_8_")) {
-									monitor.notifyAll();
-									state = 184;
+									setState(92);
 									queueFrommasterTopsinv_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 186:
-							if (queueFrompsinv_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 187;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 187:
+						case 92:
+							setState(93);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_8_Tomaster.take());
+						case 93:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_8_";
 								}
 								if (receiver.equals("rprj_8_")) {
-									monitor.notifyAll();
-									state = 188;
+									setState(94);
 									queueFrommasterTorprj_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 190:
-							if (queueFromrprj_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 191;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 191:
+						case 94:
+							setState(95);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_8_Tomaster.take());
+						case 95:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_8_";
 								}
 								if (receiver.equals("resid_8_")) {
-									monitor.notifyAll();
-									state = 192;
+									setState(96);
 									queueFrommasterToresid_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 194:
-							if (queueFromresid_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 195;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 195:
+						case 96:
+							setState(97);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_8_Tomaster.take());
+						case 97:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_9_";
 								}
 								if (receiver.equals("interpd_9_")) {
-									monitor.notifyAll();
-									state = 196;
+									setState(98);
 									queueFrommasterTointerpd_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 198:
-							if (queueFrominterpd_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 199;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 199:
+						case 98:
+							setState(99);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_9_Tomaster.take());
+						case 99:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_9_";
 								}
 								if (receiver.equals("psinv_9_")) {
-									monitor.notifyAll();
-									state = 200;
+									setState(100);
 									queueFrommasterTopsinv_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 204 :
-						case 205 :
-						case 208 :
-						case 209 :
-						case 212 :
-						case 213 :
-						case 216 :
-						case 217 :
-						case 220 :
-						case 221 :
-						case 224 :
-						case 225 :
-						case 228 :
-						case 229 :
-						case 232 :
-						case 233 :
-						case 236 :
-						case 237 :
-						case 240 :
-						case 241 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 341 :
-						case 343 :
-						case 345 :
-						case 347 :
-						case 349 :
-						case 351 :
-						case 353 :
-						case 355 :
-						case 357 :
-						case 359 :
-						case 361 :
-						case 362 :
-						case 364 :
-						case 366 :
-						case 368 :
-						case 370 :
-						case 372 :
-						case 374 :
-						case 376 :
-						case 378 :
-						case 380 :
-						case 382 :
-						case 384 :
-						case 387 :
-						case 389 :
-						case 391 :
-						case 393 :
-						case 395 :
-						case 397 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 202:
-							if (queueFrompsinv_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 203;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 203:
+						case 100:
+							setState(101);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_9_Tomaster.take());
+						case 101:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_9_";
 								}
 								if (receiver.equals("rprj_9_")) {
-									monitor.notifyAll();
-									state = 204;
+									setState(102);
 									queueFrommasterTorprj_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 206:
-							if (queueFromrprj_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 207;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 207:
+						case 102:
+							setState(103);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_9_Tomaster.take());
+						case 103:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_9_";
 								}
 								if (receiver.equals("resid_9_")) {
-									monitor.notifyAll();
-									state = 208;
+									setState(104);
 									queueFrommasterToresid_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 210:
-							if (queueFromresid_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 211;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 211:
+						case 104:
+							setState(105);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_9_Tomaster.take());
+						case 105:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_10_";
 								}
 								if (receiver.equals("interpd_10_")) {
-									monitor.notifyAll();
-									state = 212;
+									setState(106);
 									queueFrommasterTointerpd_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 214:
-							if (queueFrominterpd_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 215;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 215:
+						case 106:
+							setState(107);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_10_Tomaster.take());
+						case 107:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_10_";
 								}
 								if (receiver.equals("psinv_10_")) {
-									monitor.notifyAll();
-									state = 216;
+									setState(108);
 									queueFrommasterTopsinv_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 218:
-							if (queueFrompsinv_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 219;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 219:
+						case 108:
+							setState(109);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_10_Tomaster.take());
+						case 109:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_10_";
 								}
 								if (receiver.equals("rprj_10_")) {
-									monitor.notifyAll();
-									state = 220;
+									setState(110);
 									queueFrommasterTorprj_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 222:
-							if (queueFromrprj_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 223;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 223:
+						case 110:
+							setState(111);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_10_Tomaster.take());
+						case 111:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_10_";
 								}
 								if (receiver.equals("resid_10_")) {
-									monitor.notifyAll();
-									state = 224;
+									setState(112);
 									queueFrommasterToresid_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 226:
-							if (queueFromresid_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 227;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 227:
+						case 112:
+							setState(113);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_10_Tomaster.take());
+						case 113:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_11_";
 								}
 								if (receiver.equals("interpd_11_")) {
-									monitor.notifyAll();
-									state = 228;
+									setState(114);
 									queueFrommasterTointerpd_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 230:
-							if (queueFrominterpd_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 231;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrominterpd_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 231:
+						case 114:
+							setState(115);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrominterpd_11_Tomaster.take());
+						case 115:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_11_";
 								}
 								if (receiver.equals("psinv_11_")) {
-									monitor.notifyAll();
-									state = 232;
+									setState(116);
 									queueFrommasterTopsinv_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 234:
-							if (queueFrompsinv_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 235;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 235:
+						case 116:
+							setState(117);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_11_Tomaster.take());
+						case 117:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_11_";
 								}
 								if (receiver.equals("rprj_11_")) {
-									monitor.notifyAll();
-									state = 236;
+									setState(118);
 									queueFrommasterTorprj_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 238:
-							if (queueFromrprj_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 239;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 239:
+						case 118:
+							setState(119);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_11_Tomaster.take());
+						case 119:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_11_";
 								}
 								if (receiver.equals("resid_11_")) {
-									monitor.notifyAll();
-									state = 240;
+									setState(120);
 									queueFrommasterToresid_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 242:
-							if (queueFromresid_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 243;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 243:
+						case 120:
+							setState(121);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_11_Tomaster.take());
+						case 121:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 244;
+								setState(122);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 244:
+						case 122:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 245;
+								setState(123);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 245:
+						case 123:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 246;
+								setState(124);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 246:
+						case 124:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 247;
+								setState(125);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 247:
+						case 125:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 248;
+								setState(126);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 248:
+						case 126:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 249;
+								setState(127);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 249:
+						case 127:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 250;
+								setState(128);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 250:
+						case 128:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 251;
+								setState(129);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 251:
+						case 129:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 252;
+								setState(130);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 252:
+						case 130:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 253;
+								setState(131);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 253:
+						case 131:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 254;
+								setState(132);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 254:
+						case 132:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 255;
+								setState(133);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 267:
+						case 133:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 268;
+								setState(134);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 268:
+						case 134:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 269;
+								setState(135);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 269:
+						case 135:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 270;
+								setState(136);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 270:
+						case 136:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 271;
+								setState(137);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 271:
+						case 137:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 272;
+								setState(138);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 272:
+						case 138:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 273;
+								setState(139);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 273:
+						case 139:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 274;
+								setState(140);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 274:
+						case 140:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 275;
+								setState(141);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 275:
+						case 141:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 276;
+								setState(142);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 276:
+						case 142:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 277;
+								setState(143);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 277:
+						case 143:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 278;
+								setState(144);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 278:
+						case 144:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 279;
+								setState(145);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 291:
+						case 145:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 292;
+								setState(146);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 292:
+						case 146:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 293;
+								setState(147);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 293:
+						case 147:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 294;
+								setState(148);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 294:
+						case 148:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 295;
+								setState(149);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 295:
+						case 149:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 296;
+								setState(150);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 296:
+						case 150:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 297;
+								setState(151);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 297:
+						case 151:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 298;
+								setState(152);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 298:
+						case 152:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 299;
+								setState(153);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 299:
+						case 153:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 300;
+								setState(154);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 300:
+						case 154:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 301;
+								setState(155);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 301:
+						case 155:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 302;
+								setState(156);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 302:
+						case 156:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 303;
+								setState(157);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 315:
+						case 157:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 316;
+								setState(158);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 316:
+						case 158:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 317;
+								setState(159);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 317:
+						case 159:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 318;
+								setState(160);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 318:
+						case 160:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 319;
+								setState(161);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 319:
+						case 161:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 320;
+								setState(162);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 320:
+						case 162:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 321;
+								setState(163);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 321:
+						case 163:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 322;
+								setState(164);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 322:
+						case 164:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 323;
+								setState(165);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 323:
+						case 165:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 324;
+								setState(166);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 324:
+						case 166:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 325;
+								setState(167);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 325:
+						case 167:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 326;
+								setState(168);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 326:
+						case 168:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 327;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 340:
+						case 169:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_1_";
 								}
 								if (receiver.equals("psinv_1_")) {
-									monitor.notifyAll();
-									state = 341;
+									setState(170);
 									queueFrommasterTopsinv_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 342:
+						case 170:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_2_";
 								}
 								if (receiver.equals("psinv_2_")) {
-									monitor.notifyAll();
-									state = 343;
+									setState(171);
 									queueFrommasterTopsinv_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 344:
+						case 171:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_3_";
 								}
 								if (receiver.equals("psinv_3_")) {
-									monitor.notifyAll();
-									state = 345;
+									setState(172);
 									queueFrommasterTopsinv_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 346:
+						case 172:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_4_";
 								}
 								if (receiver.equals("psinv_4_")) {
-									monitor.notifyAll();
-									state = 347;
+									setState(173);
 									queueFrommasterTopsinv_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 348:
+						case 173:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_5_";
 								}
 								if (receiver.equals("psinv_5_")) {
-									monitor.notifyAll();
-									state = 349;
+									setState(174);
 									queueFrommasterTopsinv_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 350:
+						case 174:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_6_";
 								}
 								if (receiver.equals("psinv_6_")) {
-									monitor.notifyAll();
-									state = 351;
+									setState(175);
 									queueFrommasterTopsinv_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 352:
+						case 175:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_7_";
 								}
 								if (receiver.equals("psinv_7_")) {
-									monitor.notifyAll();
-									state = 353;
+									setState(176);
 									queueFrommasterTopsinv_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 354:
+						case 176:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_8_";
 								}
 								if (receiver.equals("psinv_8_")) {
-									monitor.notifyAll();
-									state = 355;
+									setState(177);
 									queueFrommasterTopsinv_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 356:
+						case 177:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_9_";
 								}
 								if (receiver.equals("psinv_9_")) {
-									monitor.notifyAll();
-									state = 357;
+									setState(178);
 									queueFrommasterTopsinv_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 358:
+						case 178:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_10_";
 								}
 								if (receiver.equals("psinv_10_")) {
-									monitor.notifyAll();
-									state = 359;
+									setState(179);
 									queueFrommasterTopsinv_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 360:
+						case 179:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 								if (receiver == null) {
 									receiver = "psinv_11_";
 								}
 								if (receiver.equals("psinv_11_")) {
-									monitor.notifyAll();
-									state = 361;
+									setState(180);
 									queueFrommasterTopsinv_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 363:
-							if (queueFrompsinv_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 364;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 365:
-							if (queueFrompsinv_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 366;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 367:
-							if (queueFrompsinv_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 368;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 369:
-							if (queueFrompsinv_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 370;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 371:
-							if (queueFrompsinv_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 372;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 373:
-							if (queueFrompsinv_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 374;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 375:
-							if (queueFrompsinv_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 376;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 377:
-							if (queueFrompsinv_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 378;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 379:
-							if (queueFrompsinv_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 380;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 381:
-							if (queueFrompsinv_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 382;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 383:
-							if (queueFrompsinv_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 384;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 385:
-							if (queueFrompsinv_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 52;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrompsinv_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 386:
+						case 180:
+							setState(181);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_0_Tomaster.take());
+						case 181:
+							setState(182);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_1_Tomaster.take());
+						case 182:
+							setState(183);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_2_Tomaster.take());
+						case 183:
+							setState(184);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_3_Tomaster.take());
+						case 184:
+							setState(185);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_4_Tomaster.take());
+						case 185:
+							setState(186);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_5_Tomaster.take());
+						case 186:
+							setState(187);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_6_Tomaster.take());
+						case 187:
+							setState(188);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_7_Tomaster.take());
+						case 188:
+							setState(189);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_8_Tomaster.take());
+						case 189:
+							setState(190);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_9_Tomaster.take());
+						case 190:
+							setState(191);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_10_Tomaster.take());
+						case 191:
+							setState(25);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFrompsinv_11_Tomaster.take());
+						case 192:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_1_";
 								}
 								if (receiver.equals("rprj_1_")) {
-									monitor.notifyAll();
-									state = 387;
+									setState(193);
 									queueFrommasterTorprj_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 388:
+						case 193:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_2_";
 								}
 								if (receiver.equals("rprj_2_")) {
-									monitor.notifyAll();
-									state = 389;
+									setState(194);
 									queueFrommasterTorprj_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 390:
+						case 194:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_3_";
 								}
 								if (receiver.equals("rprj_3_")) {
-									monitor.notifyAll();
-									state = 391;
+									setState(195);
 									queueFrommasterTorprj_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 392:
+						case 195:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_4_";
 								}
 								if (receiver.equals("rprj_4_")) {
-									monitor.notifyAll();
-									state = 393;
+									setState(196);
 									queueFrommasterTorprj_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 394:
+						case 196:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_5_";
 								}
 								if (receiver.equals("rprj_5_")) {
-									monitor.notifyAll();
-									state = 395;
+									setState(197);
 									queueFrommasterTorprj_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 396:
+						case 197:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_6_";
 								}
 								if (receiver.equals("rprj_6_")) {
-									monitor.notifyAll();
-									state = 397;
+									setState(198);
 									queueFrommasterTorprj_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 398:
+						case 198:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_7_";
 								}
 								if (receiver.equals("rprj_7_")) {
-									monitor.notifyAll();
-									state = 399;
+									setState(199);
 									queueFrommasterTorprj_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 401 :
-						case 403 :
-						case 405 :
-						case 407 :
-						case 408 :
-						case 410 :
-						case 412 :
-						case 414 :
-						case 416 :
-						case 418 :
-						case 420 :
-						case 422 :
-						case 424 :
-						case 426 :
-						case 428 :
-						case 430 :
-						case 433 :
-						case 435 :
-						case 437 :
-						case 439 :
-						case 441 :
-						case 443 :
-						case 445 :
-						case 447 :
-						case 449 :
-						case 451 :
-						case 453 :
-						case 454 :
-						case 456 :
-						case 458 :
-						case 460 :
-						case 462 :
-						case 464 :
-						case 466 :
-						case 468 :
-						case 470 :
-						case 472 :
-						case 474 :
-						case 476 :
-							monitor.wait();
-							break;
-						case 400:
+						case 199:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_8_";
 								}
 								if (receiver.equals("rprj_8_")) {
-									monitor.notifyAll();
-									state = 401;
+									setState(200);
 									queueFrommasterTorprj_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 402:
+					}
+					return null;
+				}
+				
+				public <Any, AnyInput> Optional<Any> exchange_200_238(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+					switch (state){
+						case 200:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_9_";
 								}
 								if (receiver.equals("rprj_9_")) {
-									monitor.notifyAll();
-									state = 403;
+									setState(201);
 									queueFrommasterTorprj_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 404:
+						case 201:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_10_";
 								}
 								if (receiver.equals("rprj_10_")) {
-									monitor.notifyAll();
-									state = 405;
+									setState(202);
 									queueFrommasterTorprj_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 406:
+						case 202:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
 									receiver = "rprj_11_";
 								}
 								if (receiver.equals("rprj_11_")) {
-									monitor.notifyAll();
-									state = 407;
+									setState(203);
 									queueFrommasterTorprj_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 409:
-							if (queueFromrprj_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 410;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 411:
-							if (queueFromrprj_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 412;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 413:
-							if (queueFromrprj_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 414;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 415:
-							if (queueFromrprj_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 416;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 417:
-							if (queueFromrprj_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 418;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 419:
-							if (queueFromrprj_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 420;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 421:
-							if (queueFromrprj_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 422;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 423:
-							if (queueFromrprj_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 424;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 425:
-							if (queueFromrprj_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 426;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 427:
-							if (queueFromrprj_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 428;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 429:
-							if (queueFromrprj_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 430;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 431:
-							if (queueFromrprj_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 52;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromrprj_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 432:
+						case 203:
+							setState(204);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_0_Tomaster.take());
+						case 204:
+							setState(205);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_1_Tomaster.take());
+						case 205:
+							setState(206);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_2_Tomaster.take());
+						case 206:
+							setState(207);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_3_Tomaster.take());
+						case 207:
+							setState(208);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_4_Tomaster.take());
+						case 208:
+							setState(209);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_5_Tomaster.take());
+						case 209:
+							setState(210);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_6_Tomaster.take());
+						case 210:
+							setState(211);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_7_Tomaster.take());
+						case 211:
+							setState(212);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_8_Tomaster.take());
+						case 212:
+							setState(213);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_9_Tomaster.take());
+						case 213:
+							setState(214);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_10_Tomaster.take());
+						case 214:
+							setState(25);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromrprj_11_Tomaster.take());
+						case 215:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_1_";
 								}
 								if (receiver.equals("resid_1_")) {
-									monitor.notifyAll();
-									state = 433;
+									setState(216);
 									queueFrommasterToresid_1_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 434:
+						case 216:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_2_";
 								}
 								if (receiver.equals("resid_2_")) {
-									monitor.notifyAll();
-									state = 435;
+									setState(217);
 									queueFrommasterToresid_2_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 436:
+						case 217:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_3_";
 								}
 								if (receiver.equals("resid_3_")) {
-									monitor.notifyAll();
-									state = 437;
+									setState(218);
 									queueFrommasterToresid_3_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 438:
+						case 218:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_4_";
 								}
 								if (receiver.equals("resid_4_")) {
-									monitor.notifyAll();
-									state = 439;
+									setState(219);
 									queueFrommasterToresid_4_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 440:
+						case 219:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_5_";
 								}
 								if (receiver.equals("resid_5_")) {
-									monitor.notifyAll();
-									state = 441;
+									setState(220);
 									queueFrommasterToresid_5_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 442:
+						case 220:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_6_";
 								}
 								if (receiver.equals("resid_6_")) {
-									monitor.notifyAll();
-									state = 443;
+									setState(221);
 									queueFrommasterToresid_6_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 444:
+						case 221:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_7_";
 								}
 								if (receiver.equals("resid_7_")) {
-									monitor.notifyAll();
-									state = 445;
+									setState(222);
 									queueFrommasterToresid_7_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 446:
+						case 222:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_8_";
 								}
 								if (receiver.equals("resid_8_")) {
-									monitor.notifyAll();
-									state = 447;
+									setState(223);
 									queueFrommasterToresid_8_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 448:
+						case 223:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_9_";
 								}
 								if (receiver.equals("resid_9_")) {
-									monitor.notifyAll();
-									state = 449;
+									setState(224);
 									queueFrommasterToresid_9_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 450:
+						case 224:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_10_";
 								}
 								if (receiver.equals("resid_10_")) {
-									monitor.notifyAll();
-									state = 451;
+									setState(225);
 									queueFrommasterToresid_10_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 452:
+						case 225:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
 									receiver = "resid_11_";
 								}
 								if (receiver.equals("resid_11_")) {
-									monitor.notifyAll();
-									state = 453;
+									setState(226);
 									queueFrommasterToresid_11_.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 455:
-							if (queueFromresid_0_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 456;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_0_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 457:
-							if (queueFromresid_1_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 458;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_1_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 459:
-							if (queueFromresid_2_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 460;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_2_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 461:
-							if (queueFromresid_3_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 462;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_3_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 463:
-							if (queueFromresid_4_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 464;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_4_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 465:
-							if (queueFromresid_5_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 466;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_5_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 467:
-							if (queueFromresid_6_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 468;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_6_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 469:
-							if (queueFromresid_7_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 470;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_7_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 471:
-							if (queueFromresid_8_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 472;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_8_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 473:
-							if (queueFromresid_9_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 474;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_9_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 475:
-							if (queueFromresid_10_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 476;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_10_Tomaster.take());
-							}
-							monitor.wait();
-							break;
-						case 477:
-							if (queueFromresid_11_Tomaster.peek() != null ) {
-								monitor.notifyAll();
-								state = 52;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFromresid_11_Tomaster.take());
-							}
-							monitor.wait();
-							break;
+						case 226:
+							setState(227);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_0_Tomaster.take());
+						case 227:
+							setState(228);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_1_Tomaster.take());
+						case 228:
+							setState(229);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_2_Tomaster.take());
+						case 229:
+							setState(230);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_3_Tomaster.take());
+						case 230:
+							setState(231);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_4_Tomaster.take());
+						case 231:
+							setState(232);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_5_Tomaster.take());
+						case 232:
+							setState(233);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_6_Tomaster.take());
+						case 233:
+							setState(234);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_7_Tomaster.take());
+						case 234:
+							setState(235);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_8_Tomaster.take());
+						case 235:
+							setState(236);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_9_Tomaster.take());
+						case 236:
+							setState(237);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_10_Tomaster.take());
+						case 237:
+							setState(25);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)queueFromresid_11_Tomaster.take());
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 199){
+							Optional result = exchange_0_199(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
+						}
+						if (state >=200 && state <= 238){
+							Optional result = exchange_200_238(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_0_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 2:
-							if (queueFrommasterTopsinv_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 340;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 56:
-							if (queueFrommasterTopsinv_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 57;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 57:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 58;
-									queueFrompsinv_0_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 279:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 280;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 362:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 363;
+									setState(1);
 									queueFrompsinv_0_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTopsinv_0_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFrompsinv_0_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_10_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 216:
-							if (queueFrommasterTopsinv_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 217;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_10_.take());
-							}
-							monitor.wait();
-							break;
-						case 217:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 218;
-									queueFrompsinv_10_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 289:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 290;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 359:
-							if (queueFrommasterTopsinv_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 360;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_10_.take());
-							}
-							monitor.wait();
-							break;
-						case 382:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 383;
+									setState(1);
 									queueFrompsinv_10_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_10_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTopsinv_10_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_11_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 232:
-							if (queueFrommasterTopsinv_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 233;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_11_.take());
-							}
-							monitor.wait();
-							break;
-						case 233:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 234;
+									setState(2);
 									queueFrompsinv_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 290:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTopsinv_11_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 291;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 361:
-							if (queueFrommasterTopsinv_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 362;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_11_.take());
-							}
-							monitor.wait();
-							break;
-						case 384:
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 385;
+									setState(3);
 									queueFrompsinv_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_1_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 72:
-							if (queueFrommasterTopsinv_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 73;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_1_.take());
-							}
-							monitor.wait();
-							break;
-						case 73:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 74;
-									queueFrompsinv_1_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 280:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 281;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 341:
-							if (queueFrommasterTopsinv_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 342;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_1_.take());
-							}
-							monitor.wait();
-							break;
-						case 364:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 365;
+									setState(1);
 									queueFrompsinv_1_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_1_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTopsinv_1_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_2_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 88:
-							if (queueFrommasterTopsinv_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 89;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_2_.take());
-							}
-							monitor.wait();
-							break;
-						case 89:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 90;
+									setState(2);
 									queueFrompsinv_2_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 281:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 282;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 343:
-							if (queueFrommasterTopsinv_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 344;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_2_.take());
-							}
-							monitor.wait();
-							break;
-						case 366:
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 367;
+									setState(4);
 									queueFrompsinv_2_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTopsinv_2_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_3_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 104:
-							if (queueFrommasterTopsinv_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 105;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 105:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 106;
+									setState(2);
 									queueFrompsinv_3_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 282:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTopsinv_3_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_3_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 283;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 345:
-							if (queueFrommasterTopsinv_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 346;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 368:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 369;
-									queueFrompsinv_3_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_4_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 120:
-							if (queueFrommasterTopsinv_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 121;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_4_.take());
-							}
-							monitor.wait();
-							break;
-						case 121:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 122;
+									setState(2);
 									queueFrompsinv_4_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 283:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTopsinv_4_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_4_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 284;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 347:
-							if (queueFrommasterTopsinv_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 348;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_4_.take());
-							}
-							monitor.wait();
-							break;
-						case 370:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 371;
-									queueFrompsinv_4_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_5_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 136:
-							if (queueFrommasterTopsinv_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 137;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_5_.take());
-							}
-							monitor.wait();
-							break;
-						case 137:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 138;
+									setState(2);
 									queueFrompsinv_5_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 284:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTopsinv_5_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_5_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 285;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 349:
-							if (queueFrommasterTopsinv_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 350;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_5_.take());
-							}
-							monitor.wait();
-							break;
-						case 372:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 373;
-									queueFrompsinv_5_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_6_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 152:
-							if (queueFrommasterTopsinv_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 153;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_6_.take());
-							}
-							monitor.wait();
-							break;
-						case 153:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 154;
+									setState(2);
 									queueFrompsinv_6_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 285:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTopsinv_6_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_6_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 286;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 351:
-							if (queueFrommasterTopsinv_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 352;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_6_.take());
-							}
-							monitor.wait();
-							break;
-						case 374:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 375;
-									queueFrompsinv_6_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_7_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 168:
-							if (queueFrommasterTopsinv_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 169;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 169:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 170;
+									setState(2);
 									queueFrompsinv_7_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 286:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTopsinv_7_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_7_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 287;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 353:
-							if (queueFrommasterTopsinv_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 354;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 376:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 377;
-									queueFrompsinv_7_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_8_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 184:
-							if (queueFrommasterTopsinv_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 185;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 185:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 186;
+									setState(4);
 									queueFrompsinv_8_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 287:
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFrompsinv_8_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTopsinv_8_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 288;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 355:
-							if (queueFrommasterTopsinv_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 356;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 378:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 379;
-									queueFrompsinv_8_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "psinv_9_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
-						case 0 :
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 200:
-							if (queueFrommasterTopsinv_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 201;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 201:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 202;
-									queueFrompsinv_9_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 288:
+						case 0:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 289;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 357:
-							if (queueFrommasterTopsinv_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 358;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTopsinv_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 380:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 381;
+									setState(0);
 									queueFrompsinv_9_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFrompsinv_9_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTopsinv_9_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_0_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 4:
-							if (queueFrommasterToresid_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 432;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 64:
-							if (queueFrommasterToresid_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 65;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 65:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 66;
+									setState(4);
 									queueFromresid_0_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 327:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterToresid_0_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFromresid_0_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 328;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 454:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 455;
-									queueFromresid_0_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_10_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 224:
-							if (queueFrommasterToresid_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 225;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_10_.take());
-							}
-							monitor.wait();
-							break;
-						case 225:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 226;
+									setState(2);
 									queueFromresid_10_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 337:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 338;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 451:
-							if (queueFrommasterToresid_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 452;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterToresid_10_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_10_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 474:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 475;
+									setState(3);
 									queueFromresid_10_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_11_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 240:
-							if (queueFrommasterToresid_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 241;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_11_.take());
-							}
-							monitor.wait();
-							break;
-						case 241:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 242;
+									setState(2);
 									queueFromresid_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-						case 338:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 339;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 453:
-							if (queueFrommasterToresid_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 454;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterToresid_11_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_11_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 476:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 477;
+									setState(3);
 									queueFromresid_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_1_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 80:
-							if (queueFrommasterToresid_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 81;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterToresid_1_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_1_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 81:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 82;
+									setState(3);
 									queueFromresid_1_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 328:
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 329;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 433:
-							if (queueFrommasterToresid_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 434;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_1_.take());
-							}
-							monitor.wait();
-							break;
-						case 456:
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 457;
+									setState(1);
 									queueFromresid_1_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_2_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 96:
-							if (queueFrommasterToresid_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 97;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_2_.take());
-							}
-							monitor.wait();
-							break;
-						case 97:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 98;
+									setState(3);
 									queueFromresid_2_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 329:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterToresid_2_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 330;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 435:
-							if (queueFrommasterToresid_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 436;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_2_.take());
-							}
-							monitor.wait();
-							break;
-						case 458:
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 459;
+									setState(2);
 									queueFromresid_2_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_3_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 112:
-							if (queueFrommasterToresid_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 113;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 113:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 114;
+									setState(3);
 									queueFromresid_3_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 330:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterToresid_3_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 331;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 437:
-							if (queueFrommasterToresid_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 438;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 460:
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 461;
+									setState(2);
 									queueFromresid_3_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_4_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 128:
-							if (queueFrommasterToresid_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 129;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_4_.take());
-							}
-							monitor.wait();
-							break;
-						case 129:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 130;
+									setState(3);
 									queueFromresid_4_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 331:
+						case 2:
+							Any objectToGet = (Any)queueFrommasterToresid_4_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 332;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 439:
-							if (queueFrommasterToresid_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 440;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_4_.take());
-							}
-							monitor.wait();
-							break;
-						case 462:
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 463;
+									setState(2);
 									queueFromresid_4_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_5_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 144:
-							if (queueFrommasterToresid_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 145;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_5_.take());
-							}
-							monitor.wait();
-							break;
-						case 145:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 146;
+									setState(3);
 									queueFromresid_5_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 332:
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFromresid_5_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterToresid_5_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 333;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 441:
-							if (queueFrommasterToresid_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 442;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_5_.take());
-							}
-							monitor.wait();
-							break;
-						case 464:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 465;
-									queueFromresid_5_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_6_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 160:
-							if (queueFrommasterToresid_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 161;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_6_.take());
-							}
-							monitor.wait();
-							break;
-						case 161:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 162;
+									setState(4);
 									queueFromresid_6_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 333:
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFromresid_6_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterToresid_6_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 334;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 443:
-							if (queueFrommasterToresid_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 444;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_6_.take());
-							}
-							monitor.wait();
-							break;
-						case 466:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 467;
-									queueFromresid_6_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_7_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 176:
-							if (queueFrommasterToresid_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 177;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 177:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 178;
+									setState(4);
 									queueFromresid_7_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 334:
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFromresid_7_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterToresid_7_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 335;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 445:
-							if (queueFrommasterToresid_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 446;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 468:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 469;
-									queueFromresid_7_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_8_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 192:
-							if (queueFrommasterToresid_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 193;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 193:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 194;
+									setState(4);
 									queueFromresid_8_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 335:
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(3);
+									queueFromresid_8_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterToresid_8_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 336;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 447:
-							if (queueFrommasterToresid_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 448;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 470:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 471;
-									queueFromresid_8_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "resid_9_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
-						case 0 :
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 208:
-							if (queueFrommasterToresid_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 209;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 209:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 210;
-									queueFromresid_9_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 336:
+						case 0:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 337;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 449:
-							if (queueFrommasterToresid_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 450;
+						case 2:
+							Any objectToGet = (Any)queueFrommasterToresid_9_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterToresid_9_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 472:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 473;
+									setState(0);
 									queueFromresid_9_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFromresid_9_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_0_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 3:
-							if (queueFrommasterTorprj_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 386;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 60:
-							if (queueFrommasterTorprj_0_.peek() != null ) {
-								monitor.notifyAll();
-								state = 61;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_0_.take());
-							}
-							monitor.wait();
-							break;
-						case 61:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 62;
+									setState(3);
 									queueFromrprj_0_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 303:
+						case 2:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(4);
+									queueFromrprj_0_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTorprj_0_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 304;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 408:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 409;
-									queueFromrprj_0_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_10_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 220:
-							if (queueFrommasterTorprj_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 221;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterTorprj_10_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_10_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 221:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 222;
-									queueFromrprj_10_Tomaster.put(box.get());
-									return Optional.empty();
-								}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 313:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 314;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 405:
-							if (queueFrommasterTorprj_10_.peek() != null ) {
-								monitor.notifyAll();
-								state = 406;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_10_.take());
-							}
-							monitor.wait();
-							break;
-						case 428:
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 429;
+									setState(1);
 									queueFromrprj_10_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFromrprj_10_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_11_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 236:
-							if (queueFrommasterTorprj_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 237;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterTorprj_11_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_11_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 237:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 238;
-									queueFromrprj_11_Tomaster.put(box.get());
-									return Optional.empty();
-								}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 314:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 315;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 407:
-							if (queueFrommasterTorprj_11_.peek() != null ) {
-								monitor.notifyAll();
-								state = 408;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_11_.take());
-							}
-							monitor.wait();
-							break;
-						case 430:
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 431;
+									setState(2);
 									queueFromrprj_11_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFromrprj_11_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_1_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
-						case 0 :
 						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 76:
-							if (queueFrommasterTorprj_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 77;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_1_.take());
-							}
-							monitor.wait();
-							break;
-						case 77:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 78;
-									queueFromrprj_1_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 304:
+						case 0:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 305;
+								setState(1);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 387:
-							if (queueFrommasterTorprj_1_.peek() != null ) {
-								monitor.notifyAll();
-								state = 388;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_1_.take());
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 410:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 411;
+									setState(4);
 									queueFromrprj_1_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(0);
+									queueFromrprj_1_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTorprj_1_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_2_": return new IEnvironment() {
+				private int state = 1;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 92:
-							if (queueFrommasterTorprj_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 93;
+						case 1:
+							Any objectToGet = (Any)queueFrommasterTorprj_2_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_2_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-						case 93:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 94;
-									queueFromrprj_2_Tomaster.put(box.get());
-									return Optional.empty();
-								}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 305:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 306;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 389:
-							if (queueFrommasterTorprj_2_.peek() != null ) {
-								monitor.notifyAll();
-								state = 390;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_2_.take());
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 412:
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 413;
+									setState(1);
 									queueFromrprj_2_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFromrprj_2_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_3_": return new IEnvironment() {
+				private int state = 2;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 108:
-							if (queueFrommasterTorprj_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 109;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_3_.take());
-							}
-							monitor.wait();
-							break;
-						case 109:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 110;
-									queueFromrprj_3_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 306:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 307;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 391:
-							if (queueFrommasterTorprj_3_.peek() != null ) {
-								monitor.notifyAll();
-								state = 392;
+						case 2:
+							Any objectToGet = (Any)queueFrommasterTorprj_3_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_3_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 414:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 415;
+									setState(1);
 									queueFromrprj_3_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(2);
+									queueFromrprj_3_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_4_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 124:
-							if (queueFrommasterTorprj_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 125;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_4_.take());
-							}
-							monitor.wait();
-							break;
-						case 125:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 126;
+									setState(3);
 									queueFromrprj_4_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 307:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 308;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 393:
-							if (queueFrommasterTorprj_4_.peek() != null ) {
-								monitor.notifyAll();
-								state = 394;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTorprj_4_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_4_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 416:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 417;
+									setState(2);
 									queueFromrprj_4_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_5_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 140:
-							if (queueFrommasterTorprj_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 141;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_5_.take());
-							}
-							monitor.wait();
-							break;
-						case 141:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 142;
+									setState(3);
 									queueFromrprj_5_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 308:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 309;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 395:
-							if (queueFrommasterTorprj_5_.peek() != null ) {
-								monitor.notifyAll();
-								state = 396;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTorprj_5_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_5_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 418:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 419;
+									setState(2);
 									queueFromrprj_5_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_6_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 156:
-							if (queueFrommasterTorprj_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 157;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_6_.take());
-							}
-							monitor.wait();
-							break;
-						case 157:
+						case 1:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 158;
+									setState(3);
 									queueFromrprj_6_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 310 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 309:
+						case 2:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 310;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 397:
-							if (queueFrommasterTorprj_6_.peek() != null ) {
-								monitor.notifyAll();
-								state = 398;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTorprj_6_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_6_.take());
+								return Optional.of(objectToGet);
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 420:
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(1);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 421;
+									setState(2);
 									queueFromrprj_6_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_7_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 172:
-							if (queueFrommasterTorprj_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 173;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_7_.take());
-							}
-							monitor.wait();
-							break;
-						case 173:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 174;
-									queueFromrprj_7_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 311 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-							monitor.wait();
-							break;
-						case 310:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 311;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-						case 399:
-							if (queueFrommasterTorprj_7_.peek() != null ) {
-								monitor.notifyAll();
-								state = 400;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_7_.take());
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 422:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 423;
+									setState(3);
 									queueFromrprj_7_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTorprj_7_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFromrprj_7_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_8_": return new IEnvironment() {
+				private int state = 3;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-						case 188:
-							if (queueFrommasterTorprj_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 189;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 189:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 190;
-									queueFromrprj_8_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 204 :
-						case 205 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 312 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 311:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 312;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 402 :
-						case 403 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 425 :
-						case 426 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 401:
-							if (queueFrommasterTorprj_8_.peek() != null ) {
-								monitor.notifyAll();
-								state = 402;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_8_.take());
-							}
-							monitor.wait();
-							break;
-						case 424:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 425;
+									setState(3);
 									queueFromrprj_8_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 3:
+							Any objectToGet = (Any)queueFrommasterTorprj_8_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFromrprj_8_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
 				}
 			};
 			case "rprj_9_": return new IEnvironment() {
+				private int state = 4;
+				
+				public void setState(int newState){
+					state = newState;
+				}
 				
 				@Override
 				public String getName(){
 					return environmentName;
 				}
 				
-				public <Any, AnyInput> Optional<Any> exchange_0_199(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 					switch (state){
 						case 0 :
-						case 1 :
-						case 2 :
-						case 3 :
-						case 4 :
-						case 5 :
-						case 6 :
-						case 7 :
-						case 8 :
-						case 9 :
-						case 10 :
-						case 11 :
-						case 12 :
-						case 13 :
-						case 14 :
-						case 15 :
-						case 16 :
-						case 17 :
-						case 18 :
-						case 19 :
-						case 20 :
-						case 21 :
-						case 22 :
-						case 23 :
-						case 24 :
-						case 25 :
-						case 26 :
-						case 27 :
-						case 28 :
-						case 29 :
-						case 30 :
-						case 31 :
-						case 32 :
-						case 33 :
-						case 34 :
-						case 35 :
-						case 36 :
-						case 37 :
-						case 38 :
-						case 39 :
-						case 40 :
-						case 41 :
-						case 42 :
-						case 43 :
-						case 44 :
-						case 45 :
-						case 46 :
-						case 47 :
-						case 48 :
-						case 49 :
-						case 50 :
-						case 51 :
-						case 52 :
-						case 53 :
-						case 54 :
-						case 55 :
-						case 56 :
-						case 57 :
-						case 58 :
-						case 59 :
-						case 60 :
-						case 61 :
-						case 62 :
-						case 63 :
-						case 64 :
-						case 65 :
-						case 66 :
-						case 67 :
-						case 68 :
-						case 69 :
-						case 70 :
-						case 71 :
-						case 72 :
-						case 73 :
-						case 74 :
-						case 75 :
-						case 76 :
-						case 77 :
-						case 78 :
-						case 79 :
-						case 80 :
-						case 81 :
-						case 82 :
-						case 83 :
-						case 84 :
-						case 85 :
-						case 86 :
-						case 87 :
-						case 88 :
-						case 89 :
-						case 90 :
-						case 91 :
-						case 92 :
-						case 93 :
-						case 94 :
-						case 95 :
-						case 96 :
-						case 97 :
-						case 98 :
-						case 99 :
-						case 100 :
-						case 101 :
-						case 102 :
-						case 103 :
-						case 104 :
-						case 105 :
-						case 106 :
-						case 107 :
-						case 108 :
-						case 109 :
-						case 110 :
-						case 111 :
-						case 112 :
-						case 113 :
-						case 114 :
-						case 115 :
-						case 116 :
-						case 117 :
-						case 118 :
-						case 119 :
-						case 120 :
-						case 121 :
-						case 122 :
-						case 123 :
-						case 124 :
-						case 125 :
-						case 126 :
-						case 127 :
-						case 128 :
-						case 129 :
-						case 130 :
-						case 131 :
-						case 132 :
-						case 133 :
-						case 134 :
-						case 135 :
-						case 136 :
-						case 137 :
-						case 138 :
-						case 139 :
-						case 140 :
-						case 141 :
-						case 142 :
-						case 143 :
-						case 144 :
-						case 145 :
-						case 146 :
-						case 147 :
-						case 148 :
-						case 149 :
-						case 150 :
-						case 151 :
-						case 152 :
-						case 153 :
-						case 154 :
-						case 155 :
-						case 156 :
-						case 157 :
-						case 158 :
-						case 159 :
-						case 160 :
-						case 161 :
-						case 162 :
-						case 163 :
-						case 164 :
-						case 165 :
-						case 166 :
-						case 167 :
-						case 168 :
-						case 169 :
-						case 170 :
-						case 171 :
-						case 172 :
-						case 173 :
-						case 174 :
-						case 175 :
-						case 176 :
-						case 177 :
-						case 178 :
-						case 179 :
-						case 180 :
-						case 181 :
-						case 182 :
-						case 183 :
-						case 184 :
-						case 185 :
-						case 186 :
-						case 187 :
-						case 188 :
-						case 189 :
-						case 190 :
-						case 191 :
-						case 192 :
-						case 193 :
-						case 194 :
-						case 195 :
-						case 196 :
-						case 197 :
-						case 198 :
-						case 199 :
-							monitor.wait();
+							wait();
 							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_200_399(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 200 :
-						case 201 :
-						case 202 :
-						case 203 :
-						case 206 :
-						case 207 :
-						case 208 :
-						case 209 :
-						case 210 :
-						case 211 :
-						case 212 :
-						case 213 :
-						case 214 :
-						case 215 :
-						case 216 :
-						case 217 :
-						case 218 :
-						case 219 :
-						case 220 :
-						case 221 :
-						case 222 :
-						case 223 :
-						case 224 :
-						case 225 :
-						case 226 :
-						case 227 :
-						case 228 :
-						case 229 :
-						case 230 :
-						case 231 :
-						case 232 :
-						case 233 :
-						case 234 :
-						case 235 :
-						case 236 :
-						case 237 :
-						case 238 :
-						case 239 :
-						case 240 :
-						case 241 :
-						case 242 :
-						case 243 :
-						case 244 :
-						case 245 :
-						case 246 :
-						case 247 :
-						case 248 :
-						case 249 :
-						case 250 :
-						case 251 :
-						case 252 :
-						case 253 :
-						case 254 :
-						case 255 :
-						case 256 :
-						case 257 :
-						case 258 :
-						case 259 :
-						case 260 :
-						case 261 :
-						case 262 :
-						case 263 :
-						case 264 :
-						case 265 :
-						case 266 :
-						case 267 :
-						case 268 :
-						case 269 :
-						case 270 :
-						case 271 :
-						case 272 :
-						case 273 :
-						case 274 :
-						case 275 :
-						case 276 :
-						case 277 :
-						case 278 :
-						case 279 :
-						case 280 :
-						case 281 :
-						case 282 :
-						case 283 :
-						case 284 :
-						case 285 :
-						case 286 :
-						case 287 :
-						case 288 :
-						case 289 :
-						case 290 :
-						case 291 :
-						case 292 :
-						case 293 :
-						case 294 :
-						case 295 :
-						case 296 :
-						case 297 :
-						case 298 :
-						case 299 :
-						case 300 :
-						case 301 :
-						case 302 :
-						case 303 :
-						case 304 :
-						case 305 :
-						case 306 :
-						case 307 :
-						case 308 :
-						case 309 :
-						case 310 :
-						case 311 :
-						case 313 :
-						case 314 :
-						case 315 :
-						case 316 :
-						case 317 :
-						case 318 :
-						case 319 :
-						case 320 :
-						case 321 :
-						case 322 :
-						case 323 :
-						case 324 :
-						case 325 :
-						case 326 :
-						case 327 :
-						case 328 :
-						case 329 :
-						case 330 :
-						case 331 :
-						case 332 :
-						case 333 :
-						case 334 :
-						case 335 :
-						case 336 :
-						case 337 :
-						case 338 :
-						case 339 :
-						case 340 :
-						case 341 :
-						case 342 :
-						case 343 :
-						case 344 :
-						case 345 :
-						case 346 :
-						case 347 :
-						case 348 :
-						case 349 :
-						case 350 :
-						case 351 :
-						case 352 :
-						case 353 :
-						case 354 :
-						case 355 :
-						case 356 :
-						case 357 :
-						case 358 :
-						case 359 :
-						case 360 :
-						case 361 :
-						case 362 :
-						case 363 :
-						case 364 :
-						case 365 :
-						case 366 :
-						case 367 :
-						case 368 :
-						case 369 :
-						case 370 :
-						case 371 :
-						case 372 :
-						case 373 :
-						case 374 :
-						case 375 :
-						case 376 :
-						case 377 :
-						case 378 :
-						case 379 :
-						case 380 :
-						case 381 :
-						case 382 :
-						case 383 :
-						case 384 :
-						case 385 :
-						case 386 :
-						case 387 :
-						case 388 :
-						case 389 :
-						case 390 :
-						case 391 :
-						case 392 :
-						case 393 :
-						case 394 :
-						case 395 :
-						case 396 :
-						case 397 :
-						case 398 :
-						case 399 :
-							monitor.wait();
-							break;
-						case 204:
-							if (queueFrommasterTorprj_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 205;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 205:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-								if (receiver == null) {
-									receiver = "master";
-								}
-								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 206;
-									queueFromrprj_9_Tomaster.put(box.get());
-									return Optional.empty();
-								}
-							}
-							monitor.wait();
-							break;
-						case 312:
+						case 1:
 							if (isCloseAction) {
-								monitor.notifyAll();
-								state = 313;
+								setState(0);
 								return Optional.empty();
 							}
-							monitor.wait();
-							break;
-					}
-					return null;
-				}
-				
-				public <Any, AnyInput> Optional<Any> exchange_400_478(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					switch (state){
-						case 400 :
-						case 401 :
-						case 402 :
-						case 404 :
-						case 405 :
-						case 406 :
-						case 407 :
-						case 408 :
-						case 409 :
-						case 410 :
-						case 411 :
-						case 412 :
-						case 413 :
-						case 414 :
-						case 415 :
-						case 416 :
-						case 417 :
-						case 418 :
-						case 419 :
-						case 420 :
-						case 421 :
-						case 422 :
-						case 423 :
-						case 424 :
-						case 425 :
-						case 427 :
-						case 428 :
-						case 429 :
-						case 430 :
-						case 431 :
-						case 432 :
-						case 433 :
-						case 434 :
-						case 435 :
-						case 436 :
-						case 437 :
-						case 438 :
-						case 439 :
-						case 440 :
-						case 441 :
-						case 442 :
-						case 443 :
-						case 444 :
-						case 445 :
-						case 446 :
-						case 447 :
-						case 448 :
-						case 449 :
-						case 450 :
-						case 451 :
-						case 452 :
-						case 453 :
-						case 454 :
-						case 455 :
-						case 456 :
-						case 457 :
-						case 458 :
-						case 459 :
-						case 460 :
-						case 461 :
-						case 462 :
-						case 463 :
-						case 464 :
-						case 465 :
-						case 466 :
-						case 467 :
-						case 468 :
-						case 469 :
-						case 470 :
-						case 471 :
-						case 472 :
-						case 473 :
-						case 474 :
-						case 475 :
-						case 476 :
-						case 477 :
-							monitor.wait();
-							break;
-						case 403:
-							if (queueFrommasterTorprj_9_.peek() != null ) {
-								monitor.notifyAll();
-								state = 404;
-								// Disabling unchecked inspection: We did check the class in the if statement above
-								//noinspection unchecked
-								return Optional.of((Any)queueFrommasterTorprj_9_.take());
-							}
-							monitor.wait();
-							break;
-						case 426:
+						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 								if (receiver == null) {
 									receiver = "master";
 								}
 								if (receiver.equals("master")) {
-									monitor.notifyAll();
-									state = 427;
+									setState(4);
 									queueFromrprj_9_Tomaster.put(box.get());
 									return Optional.empty();
 								}
 							}
-							monitor.wait();
-							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+								if (receiver == null) {
+									receiver = "master";
+								}
+								if (receiver.equals("master")) {
+									setState(1);
+									queueFromrprj_9_Tomaster.put(box.get());
+									return Optional.empty();
+								}
+							}
+						case 4:
+							Any objectToGet = (Any)queueFrommasterTorprj_9_.take();
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
+							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+								setState(2);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of(objectToGet);
+							}
 					}
 					return null;
 				}
 				
 				@Override
 				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-					synchronized (monitor){
-						while (true){
-							if (state >=0 && state <= 199){
-								Optional result = exchange_0_199(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=200 && state <= 399){
-								Optional result = exchange_200_399(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
-							if (state >=400 && state <= 478){
-								Optional result = exchange_400_478(box, receiver, isCloseAction);
-								if(result != null)
-								  return (Optional<Any>) result;
-							}
+					while (true){
+						if (state >=0 && state <= 5){
+							Optional result = exchange_0_5(box, receiver, isCloseAction);
+							if(result != null)
+							  return (Optional<Any>) result;
 						}
 					}
 					
@@ -31185,7 +5542,7 @@ public class MGProtocol_n_12 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "interpd_8_","interpd_0_","psinv_2_","rprj_5_","interpd_4_","psinv_8_","resid_5_","psinv_4_","resid_11_","psinv_3_","rprj_2_","interpd_10_","psinv_5_","psinv_6_","rprj_7_","interpd_1_","interpd_11_","rprj_10_","resid_4_","psinv_9_","psinv_10_","resid_3_","resid_0_","resid_9_","interpd_7_","master","psinv_7_","rprj_0_","psinv_0_","interpd_2_","rprj_6_","resid_7_","psinv_11_","resid_1_","resid_6_","rprj_9_","psinv_1_","interpd_3_","interpd_9_","resid_10_","rprj_4_","resid_8_","resid_2_","rprj_11_","rprj_3_","interpd_6_","rprj_1_","interpd_5_","rprj_8_" };
+		return new String[] { "interpd_0_","master","rprj_9_","psinv_1_","rprj_10_","rprj_3_","rprj_4_","interpd_6_","rprj_11_","psinv_3_","resid_6_","interpd_4_","interpd_5_","interpd_3_","interpd_9_","resid_5_","rprj_2_","resid_2_","psinv_6_","interpd_2_","resid_9_","psinv_7_","interpd_7_","psinv_4_","psinv_10_","psinv_2_","resid_1_","resid_3_","resid_4_","resid_0_","interpd_8_","resid_7_","rprj_5_","rprj_0_","resid_8_","rprj_8_","psinv_0_","psinv_9_","resid_11_","interpd_11_","psinv_5_","rprj_6_","psinv_8_","interpd_1_","resid_10_","rprj_7_","psinv_11_","rprj_1_","interpd_10_" };
 	}
 	
 	@Override
@@ -31195,6 +5552,6 @@ public class MGProtocol_n_12 implements IProtocol {
 	
 	@Override
 	public int getState(){
-		return this.state;
+		return 0;
 	}
 }

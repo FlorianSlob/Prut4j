@@ -211,27 +211,27 @@ public class MG extends MGBase {
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("interpd_"+m+"_").close();
-        }
-        for (int m = 0; m < num_threads; m++) {
-            masterEnvironment.close();
-        }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("psinv_"+m+"_").close();
-        }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("interpd_"+m+"_").close();
+//        }
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("rprj_"+m+"_").close();
-        }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("psinv_"+m+"_").close();
+//        }
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("rprj_"+m+"_").close();
+//        }
         for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("resid_"+m+"_").close();
+            masterEnvironment.close();
         }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("resid_"+m+"_").close();
+//        }
     }
 
     public int verify(double rnm2){
