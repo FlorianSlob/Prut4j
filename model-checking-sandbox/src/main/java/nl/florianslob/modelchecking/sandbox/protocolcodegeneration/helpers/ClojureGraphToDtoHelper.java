@@ -80,9 +80,9 @@ public class ClojureGraphToDtoHelper {
                 break;
             case ":receive":
                 action = ProtocolMessageActionType.RECEIVE;
-                type = "NotUsed";
+                type = "nope!";
                 break;
-            case ":close": // TODO Do something with this???!
+            case ":close":
                 action = ProtocolMessageActionType.CLOSE;
                 type = "CloseMessage";
                 break;

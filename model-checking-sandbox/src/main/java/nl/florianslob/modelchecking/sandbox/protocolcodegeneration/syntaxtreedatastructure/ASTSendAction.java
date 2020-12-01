@@ -5,7 +5,6 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 public class ASTSendAction extends ASTEnvironmentActionFromState<ASTSendAction> {
 
     public final ASTCommunicationChannel communicationChannel;
-    public final int nextStateId;
     public final String messageContentType;
 
 

@@ -6,17 +6,17 @@ public class Main {
     public static void main(String[] args) {
         if(args == null || args.length == 0){
             // Problem classes to choose from: S,W,A,B,C,D,E,F
-            args = new String[]{"-runOriginalBenchmark","-BM=CG-alt","class=B", "-np6"};
-//            args = new String[]{"-runUpdatedBenchmark","-BM=CG-alt","class=B", "-np6"};
+//            args = new String[]{"-runOriginalBenchmark","-BM=CG-alt","class=B", "-np2"};
+            args = new String[]{"-runUpdatedBenchmark","-runOriginalBenchmark","-BM=FT","class=A", "-np24"};
         }
 
         boolean runOriginalBenchmark = Arrays.asList(args).contains("-runOriginalBenchmark");
         boolean runUpdatedBenchmark = Arrays.asList(args).contains("-runUpdatedBenchmark");
-        boolean runCG = Arrays.asList(args).contains("-BM=CG");
+        boolean runCG = Arrays.asList(args).contains("-BM=CG"); // DONE
         boolean runCG_Alt = Arrays.asList(args).contains("-BM=CG-alt");
-        boolean runFT = Arrays.asList(args).contains("-BM=FT");
-        boolean runIS = Arrays.asList(args).contains("-BM=IS");
-        boolean runMG = Arrays.asList(args).contains("-BM=MG");
+        boolean runFT = Arrays.asList(args).contains("-BM=FT"); // Fail....
+        boolean runIS = Arrays.asList(args).contains("-BM=IS"); // DONE
+        boolean runMG = Arrays.asList(args).contains("-BM=MG"); // DONE
 
         if(!runOriginalBenchmark && !runUpdatedBenchmark){
             System.out.println("Unable to start benchmark. Pass one or both parameters ('-runOriginalBenchmark' 'runUpdatedBenchmark') ");
