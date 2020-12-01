@@ -17,10 +17,9 @@ import static java.lang.Thread.sleep;
 public class ISProtocol_n_2 implements IProtocol {
 	private final Object monitor = this;
 	
-	private final BlockingQueue<Object> queueFrommasterToworker_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToworker_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromworker_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromworker_1_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> worker_1_Queue = new LinkedBlockingQueue<>();
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -49,7 +48,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(4);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -59,7 +58,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(8);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 									return Optional.empty();
 								}
 							}
@@ -80,7 +79,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("worker_1_")) {
 									setState(5);
-									queueFrommasterToworker_1_.put(box.get());
+									worker_1_Queue.put(new ProtocolMessage(box.get(),4));
 									return Optional.empty();
 								}
 							}
@@ -88,30 +87,30 @@ public class ISProtocol_n_2 implements IProtocol {
 							setState(6);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromworker_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 6:
 							setState(7);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromworker_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 7:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
-								if (receiver == null) {
-									receiver = "worker_0_";
-								}
-								if (receiver.equals("worker_0_")) {
-									setState(4);
-									queueFrommasterToworker_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "worker_0_";
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(8);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),2));
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
+								if (receiver == null) {
+									receiver = "worker_0_";
+								}
+								if (receiver.equals("worker_0_")) {
+									setState(4);
+									worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -119,7 +118,7 @@ public class ISProtocol_n_2 implements IProtocol {
 							setState(9);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromworker_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 9:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -127,7 +126,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("worker_1_")) {
 									setState(10);
-									queueFrommasterToworker_1_.put(box.get());
+									worker_1_Queue.put(new ProtocolMessage(box.get(),13));
 									return Optional.empty();
 								}
 							}
@@ -135,7 +134,7 @@ public class ISProtocol_n_2 implements IProtocol {
 							setState(1);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromworker_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 					}
 					return null;
 				}
@@ -175,18 +174,20 @@ public class ISProtocol_n_2 implements IProtocol {
 								return Optional.empty();
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterToworker_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class) {
+							ProtocolMessage objectToGet = worker_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 1) {
 								setState(3);
+								//queueFrommasterToworker_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 2) {
 								setState(4);
+								//queueFrommasterToworker_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -195,7 +196,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromworker_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),6));
 									return Optional.empty();
 								}
 							}
@@ -206,7 +207,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromworker_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),11));
 									return Optional.empty();
 								}
 							}
@@ -244,18 +245,20 @@ public class ISProtocol_n_2 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToworker_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class) {
+							ProtocolMessage objectToGet = worker_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 4) {
 								setState(3);
+								//queueFrommasterToworker_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 13) {
 								setState(4);
+								//queueFrommasterToworker_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -269,7 +272,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromworker_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),8));
 									return Optional.empty();
 								}
 							}
@@ -280,7 +283,7 @@ public class ISProtocol_n_2 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromworker_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),15));
 									return Optional.empty();
 								}
 							}
@@ -306,7 +309,7 @@ public class ISProtocol_n_2 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","master","worker_0_" };
+		return new String[] { "worker_0_","worker_1_","master" };
 	}
 	
 	@Override

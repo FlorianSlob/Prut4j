@@ -17,8 +17,8 @@ import static java.lang.Thread.sleep;
 public class CGProtocol_strict_n_1 implements IProtocol {
 	private final Object monitor = this;
 	
-	private final BlockingQueue<Object> queueFrommasterToworker_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromworker_0_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -47,7 +47,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(2);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -57,7 +57,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(4);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 									return Optional.empty();
 								}
 							}
@@ -65,7 +65,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 							setState(3);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromworker_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -73,7 +73,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(4);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 									return Optional.empty();
 								}
 							}
@@ -83,7 +83,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 								}
 								if (receiver.equals("worker_0_")) {
 									setState(2);
-									queueFrommasterToworker_0_.put(box.get());
+									worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -91,7 +91,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 							setState(5);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromworker_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 5:
 							if (isCloseAction) {
 								setState(1);
@@ -131,18 +131,20 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToworker_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class) {
+							ProtocolMessage objectToGet = worker_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 1) {
 								setState(2);
+								//queueFrommasterToworker_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 2) {
 								setState(3);
+								//queueFrommasterToworker_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -151,7 +153,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromworker_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),4));
 									return Optional.empty();
 								}
 							}
@@ -162,7 +164,7 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromworker_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),7));
 									return Optional.empty();
 								}
 							}

@@ -17,150 +17,79 @@ import static java.lang.Thread.sleep;
 public class MGProtocol_n_18 implements IProtocol {
 	private final Object monitor = this;
 	
-	private final BlockingQueue<Object> queueFromresid_15_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_8_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_11_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_4_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_6_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_5_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_16_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_16_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_3_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_4_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_14_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_17_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_7_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_3_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_6_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_4_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_11_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_15_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_15_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_13_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_5_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_17_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_16_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_11_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_7_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_15_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_15_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_3_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_9_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_11_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_16_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_5_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_12_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_6_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_7_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_4_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_3_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_4_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_15_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_8_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_3_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_16_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_4_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_5_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_5_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_12_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_17_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_11_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_16_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_14_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_12_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_16_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_2_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_4_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_15_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_12_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_16_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_8_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_6_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_17_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_2_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_6_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_3_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_13_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_9_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_12_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_13_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_12_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_8_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_5_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_9_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_3_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_2_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_13_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_8_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_3_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_13_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_12_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_7_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_13_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_17_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_11_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_17_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_17_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_13_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_17_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_9_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_5_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_2_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_9_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_14_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_5_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_10_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_8_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_7_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_9_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_14_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_14_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_11_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_12_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_6_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_1_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_1_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_0_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_10_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_9_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_6_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_8_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTopsinv_10_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_2_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_13_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_0_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterToresid_11_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromrprj_14_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTointerpd_15_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFromresid_6_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_10_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_8_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_14_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrommasterTorprj_9_ = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrompsinv_14_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_4_Tomaster = new LinkedBlockingQueue<>(); 
-	private final BlockingQueue<Object> queueFrominterpd_10_Tomaster = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<ProtocolMessage> interpd_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_10_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_11_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_12_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_13_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_14_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_15_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_16_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_17_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_2_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_3_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_4_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_5_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_6_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_7_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_8_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interpd_9_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_10_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_11_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_12_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_13_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_14_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_15_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_16_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_17_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_2_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_3_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_4_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_5_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_6_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_7_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_8_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> psinv_9_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_10_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_11_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_12_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_13_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_14_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_15_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_16_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_17_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_2_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_3_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_4_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_5_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_6_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_7_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_8_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> resid_9_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_10_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_11_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_12_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_13_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_14_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_15_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_16_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_17_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_2_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_3_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_4_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_5_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_6_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_7_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_8_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> rprj_9_Queue = new LinkedBlockingQueue<>();
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
@@ -183,18 +112,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 1) {
 								setState(2);
+								//queueFrommasterTointerpd_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 5) {
 								setState(3);
+								//queueFrommasterTointerpd_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -203,7 +134,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),41));
 									return Optional.empty();
 								}
 							}
@@ -214,7 +145,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),78));
 									return Optional.empty();
 								}
 							}
@@ -257,18 +188,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_10_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_10_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 25) {
 								setState(3);
+								//queueFrommasterTointerpd_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 236) {
 								setState(4);
+								//queueFrommasterTointerpd_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -282,7 +215,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),61));
 									return Optional.empty();
 								}
 							}
@@ -293,7 +226,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),238));
 									return Optional.empty();
 								}
 							}
@@ -331,18 +264,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_11_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_11_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 27) {
 								setState(4);
+								//queueFrommasterTointerpd_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 252) {
 								setState(3);
+								//queueFrommasterTointerpd_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -356,7 +291,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),254));
 									return Optional.empty();
 								}
 							}
@@ -367,7 +302,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),63));
 									return Optional.empty();
 								}
 							}
@@ -411,23 +346,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),65));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTointerpd_12_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_12_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 29) {
 								setState(0);
+								//queueFrommasterTointerpd_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 268) {
 								setState(4);
+								//queueFrommasterTointerpd_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (isCloseAction) {
@@ -441,7 +378,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrominterpd_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),270));
 									return Optional.empty();
 								}
 							}
@@ -485,7 +422,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrominterpd_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),67));
 									return Optional.empty();
 								}
 							}
@@ -495,18 +432,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTointerpd_13_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_13_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 31) {
 								setState(1);
+								//queueFrommasterTointerpd_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 284) {
 								setState(4);
+								//queueFrommasterTointerpd_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -515,7 +454,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),286));
 									return Optional.empty();
 								}
 							}
@@ -559,7 +498,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrominterpd_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),69));
 									return Optional.empty();
 								}
 							}
@@ -569,18 +508,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTointerpd_14_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_14_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 33) {
 								setState(1);
+								//queueFrommasterTointerpd_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 300) {
 								setState(4);
+								//queueFrommasterTointerpd_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -589,7 +530,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),302));
 									return Optional.empty();
 								}
 							}
@@ -633,7 +574,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),71));
 									return Optional.empty();
 								}
 							}
@@ -649,23 +590,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),318));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTointerpd_15_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_15_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 35) {
 								setState(1);
+								//queueFrommasterTointerpd_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 316) {
 								setState(3);
+								//queueFrommasterTointerpd_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -701,18 +644,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_16_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_16_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 37) {
 								setState(2);
+								//queueFrommasterTointerpd_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 332) {
 								setState(3);
+								//queueFrommasterTointerpd_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -721,7 +666,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),73));
 									return Optional.empty();
 								}
 							}
@@ -732,7 +677,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),334));
 									return Optional.empty();
 								}
 							}
@@ -775,18 +720,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_17_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_17_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 39) {
 								setState(2);
+								//queueFrommasterTointerpd_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 348) {
 								setState(3);
+								//queueFrommasterTointerpd_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -795,7 +742,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),75));
 									return Optional.empty();
 								}
 							}
@@ -806,7 +753,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),350));
 									return Optional.empty();
 								}
 							}
@@ -849,18 +796,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 7) {
 								setState(2);
+								//queueFrommasterTointerpd_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 92) {
 								setState(3);
+								//queueFrommasterTointerpd_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -869,7 +818,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),43));
 									return Optional.empty();
 								}
 							}
@@ -880,7 +829,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),94));
 									return Optional.empty();
 								}
 							}
@@ -923,18 +872,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_2_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_2_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 9) {
 								setState(2);
+								//queueFrommasterTointerpd_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 108) {
 								setState(3);
+								//queueFrommasterTointerpd_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -943,7 +894,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),45));
 									return Optional.empty();
 								}
 							}
@@ -954,7 +905,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),110));
 									return Optional.empty();
 								}
 							}
@@ -1002,18 +953,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTointerpd_3_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_3_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 11) {
 								setState(4);
+								//queueFrommasterTointerpd_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 124) {
 								setState(3);
+								//queueFrommasterTointerpd_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -1022,7 +975,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(0);
-									queueFrominterpd_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),126));
 									return Optional.empty();
 								}
 							}
@@ -1033,7 +986,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),47));
 									return Optional.empty();
 								}
 							}
@@ -1077,7 +1030,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrominterpd_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),49));
 									return Optional.empty();
 								}
 							}
@@ -1087,18 +1040,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTointerpd_4_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_4_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 13) {
 								setState(0);
+								//queueFrommasterTointerpd_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 140) {
 								setState(4);
+								//queueFrommasterTointerpd_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -1107,7 +1062,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),142));
 									return Optional.empty();
 								}
 							}
@@ -1151,7 +1106,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrominterpd_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),51));
 									return Optional.empty();
 								}
 							}
@@ -1161,18 +1116,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTointerpd_5_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_5_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 15) {
 								setState(1);
+								//queueFrommasterTointerpd_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 156) {
 								setState(4);
+								//queueFrommasterTointerpd_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -1181,7 +1138,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),158));
 									return Optional.empty();
 								}
 							}
@@ -1230,23 +1187,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrominterpd_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),53));
 									return Optional.empty();
 								}
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTointerpd_6_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_6_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 17) {
 								setState(2);
+								//queueFrommasterTointerpd_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 172) {
 								setState(4);
+								//queueFrommasterTointerpd_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -1255,7 +1214,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),174));
 									return Optional.empty();
 								}
 							}
@@ -1304,7 +1263,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrominterpd_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),55));
 									return Optional.empty();
 								}
 							}
@@ -1315,23 +1274,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),190));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTointerpd_7_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_7_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 19) {
 								setState(2);
+								//queueFrommasterTointerpd_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 188) {
 								setState(3);
+								//queueFrommasterTointerpd_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -1367,18 +1328,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_8_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_8_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 21) {
 								setState(3);
+								//queueFrommasterTointerpd_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 204) {
 								setState(4);
+								//queueFrommasterTointerpd_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -1392,7 +1355,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),57));
 									return Optional.empty();
 								}
 							}
@@ -1403,7 +1366,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),206));
 									return Optional.empty();
 								}
 							}
@@ -1441,18 +1404,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTointerpd_9_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class) {
+							ProtocolMessage objectToGet = interpd_9_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 23) {
 								setState(3);
+								//queueFrommasterTointerpd_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 220) {
 								setState(4);
+								//queueFrommasterTointerpd_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -1466,7 +1431,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrominterpd_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),59));
 									return Optional.empty();
 								}
 							}
@@ -1477,7 +1442,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrominterpd_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),222));
 									return Optional.empty();
 								}
 							}
@@ -1515,33 +1480,13 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 0:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-								if (receiver == null) {
-									receiver = "resid_0_";
-								}
-								if (receiver.equals("resid_0_")) {
-									setState(136);
-									queueFrommasterToresid_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
-								if (receiver == null) {
-									receiver = "psinv_0_";
-								}
-								if (receiver.equals("psinv_0_")) {
-									setState(356);
-									queueFrommasterTopsinv_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
-									setState(77);
-									queueFrommasterTointerpd_0_.put(box.get());
+									setState(5);
+									interpd_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -1551,17 +1496,37 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_0_")) {
 									setState(65);
-									queueFrommasterTorprj_0_.put(box.get());
+									rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
 									return Optional.empty();
 								}
 							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+								if (receiver == null) {
+									receiver = "psinv_0_";
+								}
+								if (receiver.equals("psinv_0_")) {
+									setState(356);
+									psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+								if (receiver == null) {
+									receiver = "resid_0_";
+								}
+								if (receiver.equals("resid_0_")) {
+									setState(136);
+									resid_0_Queue.put(new ProtocolMessage(box.get(),4));
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
-									setState(5);
-									queueFrommasterTointerpd_0_.put(box.get());
+									setState(77);
+									interpd_0_Queue.put(new ProtocolMessage(box.get(),5));
 									return Optional.empty();
 								}
 							}
@@ -1572,7 +1537,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_3_")) {
 									setState(3);
-									queueFrommasterTopsinv_3_.put(box.get());
+									psinv_3_Queue.put(new ProtocolMessage(box.get(),513));
 									return Optional.empty();
 								}
 							}
@@ -1583,7 +1548,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_4_")) {
 									setState(4);
-									queueFrommasterTopsinv_4_.put(box.get());
+									psinv_4_Queue.put(new ProtocolMessage(box.get(),515));
 									return Optional.empty();
 								}
 							}
@@ -1594,7 +1559,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_5_")) {
 									setState(6);
-									queueFrommasterTopsinv_5_.put(box.get());
+									psinv_5_Queue.put(new ProtocolMessage(box.get(),517));
 									return Optional.empty();
 								}
 							}
@@ -1605,7 +1570,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_1_")) {
 									setState(7);
-									queueFrommasterTointerpd_1_.put(box.get());
+									interpd_1_Queue.put(new ProtocolMessage(box.get(),7));
 									return Optional.empty();
 								}
 							}
@@ -1616,7 +1581,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_6_")) {
 									setState(8);
-									queueFrommasterTopsinv_6_.put(box.get());
+									psinv_6_Queue.put(new ProtocolMessage(box.get(),519));
 									return Optional.empty();
 								}
 							}
@@ -1627,7 +1592,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_2_")) {
 									setState(9);
-									queueFrommasterTointerpd_2_.put(box.get());
+									interpd_2_Queue.put(new ProtocolMessage(box.get(),9));
 									return Optional.empty();
 								}
 							}
@@ -1638,7 +1603,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_7_")) {
 									setState(10);
-									queueFrommasterTopsinv_7_.put(box.get());
+									psinv_7_Queue.put(new ProtocolMessage(box.get(),521));
 									return Optional.empty();
 								}
 							}
@@ -1649,7 +1614,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_3_")) {
 									setState(11);
-									queueFrommasterTointerpd_3_.put(box.get());
+									interpd_3_Queue.put(new ProtocolMessage(box.get(),11));
 									return Optional.empty();
 								}
 							}
@@ -1660,7 +1625,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_8_")) {
 									setState(12);
-									queueFrommasterTopsinv_8_.put(box.get());
+									psinv_8_Queue.put(new ProtocolMessage(box.get(),523));
 									return Optional.empty();
 								}
 							}
@@ -1671,7 +1636,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_4_")) {
 									setState(13);
-									queueFrommasterTointerpd_4_.put(box.get());
+									interpd_4_Queue.put(new ProtocolMessage(box.get(),13));
 									return Optional.empty();
 								}
 							}
@@ -1682,7 +1647,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_9_")) {
 									setState(14);
-									queueFrommasterTopsinv_9_.put(box.get());
+									psinv_9_Queue.put(new ProtocolMessage(box.get(),525));
 									return Optional.empty();
 								}
 							}
@@ -1693,7 +1658,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_5_")) {
 									setState(15);
-									queueFrommasterTointerpd_5_.put(box.get());
+									interpd_5_Queue.put(new ProtocolMessage(box.get(),15));
 									return Optional.empty();
 								}
 							}
@@ -1704,7 +1669,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_10_")) {
 									setState(16);
-									queueFrommasterTopsinv_10_.put(box.get());
+									psinv_10_Queue.put(new ProtocolMessage(box.get(),527));
 									return Optional.empty();
 								}
 							}
@@ -1715,7 +1680,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_6_")) {
 									setState(17);
-									queueFrommasterTointerpd_6_.put(box.get());
+									interpd_6_Queue.put(new ProtocolMessage(box.get(),17));
 									return Optional.empty();
 								}
 							}
@@ -1726,7 +1691,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_11_")) {
 									setState(18);
-									queueFrommasterTopsinv_11_.put(box.get());
+									psinv_11_Queue.put(new ProtocolMessage(box.get(),529));
 									return Optional.empty();
 								}
 							}
@@ -1737,7 +1702,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_7_")) {
 									setState(19);
-									queueFrommasterTointerpd_7_.put(box.get());
+									interpd_7_Queue.put(new ProtocolMessage(box.get(),19));
 									return Optional.empty();
 								}
 							}
@@ -1748,7 +1713,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_12_")) {
 									setState(20);
-									queueFrommasterTopsinv_12_.put(box.get());
+									psinv_12_Queue.put(new ProtocolMessage(box.get(),531));
 									return Optional.empty();
 								}
 							}
@@ -1759,7 +1724,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_8_")) {
 									setState(21);
-									queueFrommasterTointerpd_8_.put(box.get());
+									interpd_8_Queue.put(new ProtocolMessage(box.get(),21));
 									return Optional.empty();
 								}
 							}
@@ -1770,7 +1735,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_13_")) {
 									setState(22);
-									queueFrommasterTopsinv_13_.put(box.get());
+									psinv_13_Queue.put(new ProtocolMessage(box.get(),533));
 									return Optional.empty();
 								}
 							}
@@ -1781,7 +1746,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_9_")) {
 									setState(23);
-									queueFrommasterTointerpd_9_.put(box.get());
+									interpd_9_Queue.put(new ProtocolMessage(box.get(),23));
 									return Optional.empty();
 								}
 							}
@@ -1792,7 +1757,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_14_")) {
 									setState(24);
-									queueFrommasterTopsinv_14_.put(box.get());
+									psinv_14_Queue.put(new ProtocolMessage(box.get(),535));
 									return Optional.empty();
 								}
 							}
@@ -1803,7 +1768,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_10_")) {
 									setState(25);
-									queueFrommasterTointerpd_10_.put(box.get());
+									interpd_10_Queue.put(new ProtocolMessage(box.get(),25));
 									return Optional.empty();
 								}
 							}
@@ -1814,7 +1779,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_15_")) {
 									setState(26);
-									queueFrommasterTopsinv_15_.put(box.get());
+									psinv_15_Queue.put(new ProtocolMessage(box.get(),537));
 									return Optional.empty();
 								}
 							}
@@ -1825,7 +1790,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_11_")) {
 									setState(27);
-									queueFrommasterTointerpd_11_.put(box.get());
+									interpd_11_Queue.put(new ProtocolMessage(box.get(),27));
 									return Optional.empty();
 								}
 							}
@@ -1836,7 +1801,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_16_")) {
 									setState(28);
-									queueFrommasterTopsinv_16_.put(box.get());
+									psinv_16_Queue.put(new ProtocolMessage(box.get(),539));
 									return Optional.empty();
 								}
 							}
@@ -1847,7 +1812,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_12_")) {
 									setState(29);
-									queueFrommasterTointerpd_12_.put(box.get());
+									interpd_12_Queue.put(new ProtocolMessage(box.get(),29));
 									return Optional.empty();
 								}
 							}
@@ -1858,7 +1823,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_17_")) {
 									setState(30);
-									queueFrommasterTopsinv_17_.put(box.get());
+									psinv_17_Queue.put(new ProtocolMessage(box.get(),541));
 									return Optional.empty();
 								}
 							}
@@ -1869,7 +1834,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_13_")) {
 									setState(31);
-									queueFrommasterTointerpd_13_.put(box.get());
+									interpd_13_Queue.put(new ProtocolMessage(box.get(),31));
 									return Optional.empty();
 								}
 							}
@@ -1877,7 +1842,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(32);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 31:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
@@ -1885,7 +1850,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_14_")) {
 									setState(33);
-									queueFrommasterTointerpd_14_.put(box.get());
+									interpd_14_Queue.put(new ProtocolMessage(box.get(),33));
 									return Optional.empty();
 								}
 							}
@@ -1893,7 +1858,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(34);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 33:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
@@ -1901,7 +1866,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_15_")) {
 									setState(35);
-									queueFrommasterTointerpd_15_.put(box.get());
+									interpd_15_Queue.put(new ProtocolMessage(box.get(),35));
 									return Optional.empty();
 								}
 							}
@@ -1909,7 +1874,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(36);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 35:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
@@ -1917,7 +1882,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_16_")) {
 									setState(37);
-									queueFrommasterTointerpd_16_.put(box.get());
+									interpd_16_Queue.put(new ProtocolMessage(box.get(),37));
 									return Optional.empty();
 								}
 							}
@@ -1925,7 +1890,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(38);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 37:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
@@ -1933,7 +1898,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_17_")) {
 									setState(39);
-									queueFrommasterTointerpd_17_.put(box.get());
+									interpd_17_Queue.put(new ProtocolMessage(box.get(),39));
 									return Optional.empty();
 								}
 							}
@@ -1941,137 +1906,137 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(40);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 39:
 							setState(41);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 40:
 							setState(42);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 41:
 							setState(43);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 42:
 							setState(44);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 43:
 							setState(45);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 44:
 							setState(46);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 45:
 							setState(47);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 46:
 							setState(48);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 47:
 							setState(49);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 48:
 							setState(50);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 49:
 							setState(51);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 50:
 							setState(52);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 51:
 							setState(53);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 52:
 							setState(54);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 53:
 							setState(55);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 54:
 							setState(56);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 55:
 							setState(57);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 56:
 							setState(58);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 57:
 							setState(59);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 58:
 							setState(60);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 59:
 							setState(61);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 60:
 							setState(62);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 61:
 							setState(63);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 62:
 							setState(64);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 63:
 							setState(66);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 64:
 							setState(75);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 65:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2079,7 +2044,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_1_")) {
 									setState(67);
-									queueFrommasterTorprj_1_.put(box.get());
+									rprj_1_Queue.put(new ProtocolMessage(box.get(),579));
 									return Optional.empty();
 								}
 							}
@@ -2087,7 +2052,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(68);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 67:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2095,7 +2060,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_2_")) {
 									setState(69);
-									queueFrommasterTorprj_2_.put(box.get());
+									rprj_2_Queue.put(new ProtocolMessage(box.get(),581));
 									return Optional.empty();
 								}
 							}
@@ -2103,7 +2068,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(70);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 69:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2111,7 +2076,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_3_")) {
 									setState(71);
-									queueFrommasterTorprj_3_.put(box.get());
+									rprj_3_Queue.put(new ProtocolMessage(box.get(),583));
 									return Optional.empty();
 								}
 							}
@@ -2119,7 +2084,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(72);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 71:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2127,7 +2092,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_4_")) {
 									setState(73);
-									queueFrommasterTorprj_4_.put(box.get());
+									rprj_4_Queue.put(new ProtocolMessage(box.get(),585));
 									return Optional.empty();
 								}
 							}
@@ -2135,7 +2100,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(74);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 73:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2143,7 +2108,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_5_")) {
 									setState(76);
-									queueFrommasterTorprj_5_.put(box.get());
+									rprj_5_Queue.put(new ProtocolMessage(box.get(),587));
 									return Optional.empty();
 								}
 							}
@@ -2151,35 +2116,15 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(75);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 75:
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-								if (receiver == null) {
-									receiver = "rprj_0_";
-								}
-								if (receiver.equals("rprj_0_")) {
-									setState(65);
-									queueFrommasterTorprj_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
-							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-								if (receiver == null) {
-									receiver = "resid_0_";
-								}
-								if (receiver.equals("resid_0_")) {
-									setState(136);
-									queueFrommasterToresid_0_.put(box.get());
-									return Optional.empty();
-								}
-							}
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 								if (receiver == null) {
 									receiver = "interpd_0_";
 								}
 								if (receiver.equals("interpd_0_")) {
 									setState(5);
-									queueFrommasterTointerpd_0_.put(box.get());
+									interpd_0_Queue.put(new ProtocolMessage(box.get(),1));
 									return Optional.empty();
 								}
 							}
@@ -2189,7 +2134,27 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_0_")) {
 									setState(356);
-									queueFrommasterTopsinv_0_.put(box.get());
+									psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+								if (receiver == null) {
+									receiver = "resid_0_";
+								}
+								if (receiver.equals("resid_0_")) {
+									setState(136);
+									resid_0_Queue.put(new ProtocolMessage(box.get(),4));
+									return Optional.empty();
+								}
+							}
+							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+								if (receiver == null) {
+									receiver = "rprj_0_";
+								}
+								if (receiver.equals("rprj_0_")) {
+									setState(65);
+									rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
 									return Optional.empty();
 								}
 							}
@@ -2199,7 +2164,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_0_")) {
 									setState(77);
-									queueFrommasterTointerpd_0_.put(box.get());
+									interpd_0_Queue.put(new ProtocolMessage(box.get(),5));
 									return Optional.empty();
 								}
 							}
@@ -2210,7 +2175,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_6_")) {
 									setState(78);
-									queueFrommasterTorprj_6_.put(box.get());
+									rprj_6_Queue.put(new ProtocolMessage(box.get(),589));
 									return Optional.empty();
 								}
 							}
@@ -2218,7 +2183,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(79);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 78:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2226,7 +2191,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_7_")) {
 									setState(80);
-									queueFrommasterTorprj_7_.put(box.get());
+									rprj_7_Queue.put(new ProtocolMessage(box.get(),591));
 									return Optional.empty();
 								}
 							}
@@ -2237,7 +2202,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_0_")) {
 									setState(81);
-									queueFrommasterTopsinv_0_.put(box.get());
+									psinv_0_Queue.put(new ProtocolMessage(box.get(),80));
 									return Optional.empty();
 								}
 							}
@@ -2248,7 +2213,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_8_")) {
 									setState(82);
-									queueFrommasterTorprj_8_.put(box.get());
+									rprj_8_Queue.put(new ProtocolMessage(box.get(),593));
 									return Optional.empty();
 								}
 							}
@@ -2256,7 +2221,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(83);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 82:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2264,7 +2229,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_9_")) {
 									setState(84);
-									queueFrommasterTorprj_9_.put(box.get());
+									rprj_9_Queue.put(new ProtocolMessage(box.get(),595));
 									return Optional.empty();
 								}
 							}
@@ -2275,7 +2240,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_0_")) {
 									setState(85);
-									queueFrommasterTorprj_0_.put(box.get());
+									rprj_0_Queue.put(new ProtocolMessage(box.get(),84));
 									return Optional.empty();
 								}
 							}
@@ -2286,7 +2251,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_10_")) {
 									setState(86);
-									queueFrommasterTorprj_10_.put(box.get());
+									rprj_10_Queue.put(new ProtocolMessage(box.get(),597));
 									return Optional.empty();
 								}
 							}
@@ -2294,7 +2259,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(87);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 86:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2302,7 +2267,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_11_")) {
 									setState(88);
-									queueFrommasterTorprj_11_.put(box.get());
+									rprj_11_Queue.put(new ProtocolMessage(box.get(),599));
 									return Optional.empty();
 								}
 							}
@@ -2313,7 +2278,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_0_")) {
 									setState(89);
-									queueFrommasterToresid_0_.put(box.get());
+									resid_0_Queue.put(new ProtocolMessage(box.get(),88));
 									return Optional.empty();
 								}
 							}
@@ -2324,7 +2289,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_12_")) {
 									setState(90);
-									queueFrommasterTorprj_12_.put(box.get());
+									rprj_12_Queue.put(new ProtocolMessage(box.get(),601));
 									return Optional.empty();
 								}
 							}
@@ -2332,7 +2297,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(91);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 90:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2340,7 +2305,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_13_")) {
 									setState(92);
-									queueFrommasterTorprj_13_.put(box.get());
+									rprj_13_Queue.put(new ProtocolMessage(box.get(),603));
 									return Optional.empty();
 								}
 							}
@@ -2351,7 +2316,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_1_")) {
 									setState(93);
-									queueFrommasterTointerpd_1_.put(box.get());
+									interpd_1_Queue.put(new ProtocolMessage(box.get(),92));
 									return Optional.empty();
 								}
 							}
@@ -2362,7 +2327,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_14_")) {
 									setState(94);
-									queueFrommasterTorprj_14_.put(box.get());
+									rprj_14_Queue.put(new ProtocolMessage(box.get(),605));
 									return Optional.empty();
 								}
 							}
@@ -2370,7 +2335,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(95);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 94:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2378,7 +2343,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_15_")) {
 									setState(96);
-									queueFrommasterTorprj_15_.put(box.get());
+									rprj_15_Queue.put(new ProtocolMessage(box.get(),607));
 									return Optional.empty();
 								}
 							}
@@ -2389,7 +2354,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_1_")) {
 									setState(97);
-									queueFrommasterTopsinv_1_.put(box.get());
+									psinv_1_Queue.put(new ProtocolMessage(box.get(),96));
 									return Optional.empty();
 								}
 							}
@@ -2400,7 +2365,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_16_")) {
 									setState(98);
-									queueFrommasterTorprj_16_.put(box.get());
+									rprj_16_Queue.put(new ProtocolMessage(box.get(),609));
 									return Optional.empty();
 								}
 							}
@@ -2408,7 +2373,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(99);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 98:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 								if (receiver == null) {
@@ -2416,7 +2381,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_17_")) {
 									setState(100);
-									queueFrommasterTorprj_17_.put(box.get());
+									rprj_17_Queue.put(new ProtocolMessage(box.get(),611));
 									return Optional.empty();
 								}
 							}
@@ -2427,7 +2392,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_1_")) {
 									setState(101);
-									queueFrommasterTorprj_1_.put(box.get());
+									rprj_1_Queue.put(new ProtocolMessage(box.get(),100));
 									return Optional.empty();
 								}
 							}
@@ -2435,12 +2400,12 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(103);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 101:
 							setState(102);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 102:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2448,7 +2413,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_1_")) {
 									setState(105);
-									queueFrommasterToresid_1_.put(box.get());
+									resid_1_Queue.put(new ProtocolMessage(box.get(),104));
 									return Optional.empty();
 								}
 							}
@@ -2456,17 +2421,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(104);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 104:
 							setState(107);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 105:
 							setState(106);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 106:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2474,7 +2439,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_2_")) {
 									setState(109);
-									queueFrommasterTointerpd_2_.put(box.get());
+									interpd_2_Queue.put(new ProtocolMessage(box.get(),108));
 									return Optional.empty();
 								}
 							}
@@ -2482,17 +2447,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(108);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 108:
 							setState(111);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 109:
 							setState(110);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 110:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2500,7 +2465,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_2_")) {
 									setState(113);
-									queueFrommasterTopsinv_2_.put(box.get());
+									psinv_2_Queue.put(new ProtocolMessage(box.get(),112));
 									return Optional.empty();
 								}
 							}
@@ -2508,17 +2473,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(112);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 112:
 							setState(115);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 113:
 							setState(114);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 114:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2526,7 +2491,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_2_")) {
 									setState(117);
-									queueFrommasterTorprj_2_.put(box.get());
+									rprj_2_Queue.put(new ProtocolMessage(box.get(),116));
 									return Optional.empty();
 								}
 							}
@@ -2534,17 +2499,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(116);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 116:
 							setState(119);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 117:
 							setState(118);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 118:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2552,7 +2517,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_2_")) {
 									setState(121);
-									queueFrommasterToresid_2_.put(box.get());
+									resid_2_Queue.put(new ProtocolMessage(box.get(),120));
 									return Optional.empty();
 								}
 							}
@@ -2560,17 +2525,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(120);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 120:
 							setState(123);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 121:
 							setState(122);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 122:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2578,7 +2543,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_3_")) {
 									setState(125);
-									queueFrommasterTointerpd_3_.put(box.get());
+									interpd_3_Queue.put(new ProtocolMessage(box.get(),124));
 									return Optional.empty();
 								}
 							}
@@ -2586,17 +2551,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(124);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 124:
 							setState(127);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 125:
 							setState(126);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 126:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2604,7 +2569,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_3_")) {
 									setState(129);
-									queueFrommasterTopsinv_3_.put(box.get());
+									psinv_3_Queue.put(new ProtocolMessage(box.get(),128));
 									return Optional.empty();
 								}
 							}
@@ -2612,17 +2577,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(128);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 128:
 							setState(131);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 129:
 							setState(130);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 130:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2630,7 +2595,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_3_")) {
 									setState(133);
-									queueFrommasterTorprj_3_.put(box.get());
+									rprj_3_Queue.put(new ProtocolMessage(box.get(),132));
 									return Optional.empty();
 								}
 							}
@@ -2638,17 +2603,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(132);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 132:
 							setState(135);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 133:
 							setState(134);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 134:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2656,7 +2621,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_3_")) {
 									setState(137);
-									queueFrommasterToresid_3_.put(box.get());
+									resid_3_Queue.put(new ProtocolMessage(box.get(),136));
 									return Optional.empty();
 								}
 							}
@@ -2664,7 +2629,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(75);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 136:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2672,7 +2637,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_1_")) {
 									setState(138);
-									queueFrommasterToresid_1_.put(box.get());
+									resid_1_Queue.put(new ProtocolMessage(box.get(),649));
 									return Optional.empty();
 								}
 							}
@@ -2680,7 +2645,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(139);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 138:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2688,7 +2653,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_2_")) {
 									setState(140);
-									queueFrommasterToresid_2_.put(box.get());
+									resid_2_Queue.put(new ProtocolMessage(box.get(),651));
 									return Optional.empty();
 								}
 							}
@@ -2699,7 +2664,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_4_")) {
 									setState(141);
-									queueFrommasterTointerpd_4_.put(box.get());
+									interpd_4_Queue.put(new ProtocolMessage(box.get(),140));
 									return Optional.empty();
 								}
 							}
@@ -2710,7 +2675,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_3_")) {
 									setState(142);
-									queueFrommasterToresid_3_.put(box.get());
+									resid_3_Queue.put(new ProtocolMessage(box.get(),653));
 									return Optional.empty();
 								}
 							}
@@ -2718,7 +2683,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(143);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 142:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2726,7 +2691,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_4_")) {
 									setState(144);
-									queueFrommasterToresid_4_.put(box.get());
+									resid_4_Queue.put(new ProtocolMessage(box.get(),655));
 									return Optional.empty();
 								}
 							}
@@ -2737,7 +2702,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_4_")) {
 									setState(145);
-									queueFrommasterTopsinv_4_.put(box.get());
+									psinv_4_Queue.put(new ProtocolMessage(box.get(),144));
 									return Optional.empty();
 								}
 							}
@@ -2748,7 +2713,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_5_")) {
 									setState(146);
-									queueFrommasterToresid_5_.put(box.get());
+									resid_5_Queue.put(new ProtocolMessage(box.get(),657));
 									return Optional.empty();
 								}
 							}
@@ -2756,7 +2721,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(147);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 146:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2764,7 +2729,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_6_")) {
 									setState(148);
-									queueFrommasterToresid_6_.put(box.get());
+									resid_6_Queue.put(new ProtocolMessage(box.get(),659));
 									return Optional.empty();
 								}
 							}
@@ -2775,7 +2740,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_4_")) {
 									setState(149);
-									queueFrommasterTorprj_4_.put(box.get());
+									rprj_4_Queue.put(new ProtocolMessage(box.get(),148));
 									return Optional.empty();
 								}
 							}
@@ -2786,7 +2751,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_7_")) {
 									setState(150);
-									queueFrommasterToresid_7_.put(box.get());
+									resid_7_Queue.put(new ProtocolMessage(box.get(),661));
 									return Optional.empty();
 								}
 							}
@@ -2794,7 +2759,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(151);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 150:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2802,7 +2767,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_8_")) {
 									setState(152);
-									queueFrommasterToresid_8_.put(box.get());
+									resid_8_Queue.put(new ProtocolMessage(box.get(),663));
 									return Optional.empty();
 								}
 							}
@@ -2813,7 +2778,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_4_")) {
 									setState(153);
-									queueFrommasterToresid_4_.put(box.get());
+									resid_4_Queue.put(new ProtocolMessage(box.get(),152));
 									return Optional.empty();
 								}
 							}
@@ -2824,7 +2789,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_9_")) {
 									setState(154);
-									queueFrommasterToresid_9_.put(box.get());
+									resid_9_Queue.put(new ProtocolMessage(box.get(),665));
 									return Optional.empty();
 								}
 							}
@@ -2832,7 +2797,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(155);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 154:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2840,7 +2805,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_10_")) {
 									setState(156);
-									queueFrommasterToresid_10_.put(box.get());
+									resid_10_Queue.put(new ProtocolMessage(box.get(),667));
 									return Optional.empty();
 								}
 							}
@@ -2851,7 +2816,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_5_")) {
 									setState(157);
-									queueFrommasterTointerpd_5_.put(box.get());
+									interpd_5_Queue.put(new ProtocolMessage(box.get(),156));
 									return Optional.empty();
 								}
 							}
@@ -2862,7 +2827,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_11_")) {
 									setState(158);
-									queueFrommasterToresid_11_.put(box.get());
+									resid_11_Queue.put(new ProtocolMessage(box.get(),669));
 									return Optional.empty();
 								}
 							}
@@ -2870,7 +2835,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(159);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 158:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2878,7 +2843,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_12_")) {
 									setState(160);
-									queueFrommasterToresid_12_.put(box.get());
+									resid_12_Queue.put(new ProtocolMessage(box.get(),671));
 									return Optional.empty();
 								}
 							}
@@ -2889,7 +2854,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_5_")) {
 									setState(161);
-									queueFrommasterTopsinv_5_.put(box.get());
+									psinv_5_Queue.put(new ProtocolMessage(box.get(),160));
 									return Optional.empty();
 								}
 							}
@@ -2900,7 +2865,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_13_")) {
 									setState(162);
-									queueFrommasterToresid_13_.put(box.get());
+									resid_13_Queue.put(new ProtocolMessage(box.get(),673));
 									return Optional.empty();
 								}
 							}
@@ -2908,7 +2873,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(163);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 162:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2916,7 +2881,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_14_")) {
 									setState(164);
-									queueFrommasterToresid_14_.put(box.get());
+									resid_14_Queue.put(new ProtocolMessage(box.get(),675));
 									return Optional.empty();
 								}
 							}
@@ -2927,7 +2892,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_5_")) {
 									setState(165);
-									queueFrommasterTorprj_5_.put(box.get());
+									rprj_5_Queue.put(new ProtocolMessage(box.get(),164));
 									return Optional.empty();
 								}
 							}
@@ -2938,7 +2903,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_15_")) {
 									setState(166);
-									queueFrommasterToresid_15_.put(box.get());
+									resid_15_Queue.put(new ProtocolMessage(box.get(),677));
 									return Optional.empty();
 								}
 							}
@@ -2946,7 +2911,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(167);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 166:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 								if (receiver == null) {
@@ -2954,7 +2919,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_16_")) {
 									setState(168);
-									queueFrommasterToresid_16_.put(box.get());
+									resid_16_Queue.put(new ProtocolMessage(box.get(),679));
 									return Optional.empty();
 								}
 							}
@@ -2965,7 +2930,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_5_")) {
 									setState(169);
-									queueFrommasterToresid_5_.put(box.get());
+									resid_5_Queue.put(new ProtocolMessage(box.get(),168));
 									return Optional.empty();
 								}
 							}
@@ -2976,7 +2941,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_17_")) {
 									setState(171);
-									queueFrommasterToresid_17_.put(box.get());
+									resid_17_Queue.put(new ProtocolMessage(box.get(),681));
 									return Optional.empty();
 								}
 							}
@@ -2984,7 +2949,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(170);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 170:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -2992,7 +2957,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_6_")) {
 									setState(173);
-									queueFrommasterTointerpd_6_.put(box.get());
+									interpd_6_Queue.put(new ProtocolMessage(box.get(),172));
 									return Optional.empty();
 								}
 							}
@@ -3000,17 +2965,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(172);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_0_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 172:
 							setState(175);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_1_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 173:
 							setState(174);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 174:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3018,7 +2983,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_6_")) {
 									setState(177);
-									queueFrommasterTopsinv_6_.put(box.get());
+									psinv_6_Queue.put(new ProtocolMessage(box.get(),176));
 									return Optional.empty();
 								}
 							}
@@ -3026,17 +2991,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(176);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_2_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 176:
 							setState(179);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_3_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 177:
 							setState(178);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 178:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3044,7 +3009,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_6_")) {
 									setState(181);
-									queueFrommasterTorprj_6_.put(box.get());
+									rprj_6_Queue.put(new ProtocolMessage(box.get(),180));
 									return Optional.empty();
 								}
 							}
@@ -3052,17 +3017,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(180);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_4_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 180:
 							setState(183);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_5_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 181:
 							setState(182);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 182:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3070,7 +3035,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_6_")) {
 									setState(185);
-									queueFrommasterToresid_6_.put(box.get());
+									resid_6_Queue.put(new ProtocolMessage(box.get(),184));
 									return Optional.empty();
 								}
 							}
@@ -3078,17 +3043,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(184);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 184:
 							setState(187);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 185:
 							setState(186);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_6_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 186:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3096,7 +3061,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_7_")) {
 									setState(189);
-									queueFrommasterTointerpd_7_.put(box.get());
+									interpd_7_Queue.put(new ProtocolMessage(box.get(),188));
 									return Optional.empty();
 								}
 							}
@@ -3104,17 +3069,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(188);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 188:
 							setState(191);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 189:
 							setState(190);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 190:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3122,7 +3087,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_7_")) {
 									setState(193);
-									queueFrommasterTopsinv_7_.put(box.get());
+									psinv_7_Queue.put(new ProtocolMessage(box.get(),192));
 									return Optional.empty();
 								}
 							}
@@ -3130,17 +3095,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(192);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 192:
 							setState(195);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 193:
 							setState(194);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 194:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3148,7 +3113,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_7_")) {
 									setState(197);
-									queueFrommasterTorprj_7_.put(box.get());
+									rprj_7_Queue.put(new ProtocolMessage(box.get(),196));
 									return Optional.empty();
 								}
 							}
@@ -3156,17 +3121,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(196);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 196:
 							setState(199);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 197:
 							setState(198);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 198:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3174,7 +3139,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_7_")) {
 									setState(201);
-									queueFrommasterToresid_7_.put(box.get());
+									resid_7_Queue.put(new ProtocolMessage(box.get(),200));
 									return Optional.empty();
 								}
 							}
@@ -3182,7 +3147,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(200);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 					}
 					return null;
 				}
@@ -3193,12 +3158,12 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(203);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 201:
 							setState(202);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_7_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 202:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3206,7 +3171,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_8_")) {
 									setState(205);
-									queueFrommasterTointerpd_8_.put(box.get());
+									interpd_8_Queue.put(new ProtocolMessage(box.get(),204));
 									return Optional.empty();
 								}
 							}
@@ -3214,17 +3179,17 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(204);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 204:
 							setState(75);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 205:
 							setState(206);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 206:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3232,7 +3197,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_8_")) {
 									setState(207);
-									queueFrommasterTopsinv_8_.put(box.get());
+									psinv_8_Queue.put(new ProtocolMessage(box.get(),208));
 									return Optional.empty();
 								}
 							}
@@ -3240,7 +3205,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(208);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 208:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3248,7 +3213,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_8_")) {
 									setState(209);
-									queueFrommasterTorprj_8_.put(box.get());
+									rprj_8_Queue.put(new ProtocolMessage(box.get(),212));
 									return Optional.empty();
 								}
 							}
@@ -3256,7 +3221,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(210);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 210:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3264,7 +3229,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_8_")) {
 									setState(211);
-									queueFrommasterToresid_8_.put(box.get());
+									resid_8_Queue.put(new ProtocolMessage(box.get(),216));
 									return Optional.empty();
 								}
 							}
@@ -3272,7 +3237,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(212);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_8_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 212:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3280,7 +3245,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_9_")) {
 									setState(213);
-									queueFrommasterTointerpd_9_.put(box.get());
+									interpd_9_Queue.put(new ProtocolMessage(box.get(),220));
 									return Optional.empty();
 								}
 							}
@@ -3288,7 +3253,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(214);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 214:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3296,7 +3261,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_9_")) {
 									setState(215);
-									queueFrommasterTopsinv_9_.put(box.get());
+									psinv_9_Queue.put(new ProtocolMessage(box.get(),224));
 									return Optional.empty();
 								}
 							}
@@ -3304,7 +3269,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(216);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 216:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3312,7 +3277,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_9_")) {
 									setState(217);
-									queueFrommasterTorprj_9_.put(box.get());
+									rprj_9_Queue.put(new ProtocolMessage(box.get(),228));
 									return Optional.empty();
 								}
 							}
@@ -3320,7 +3285,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(218);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 218:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3328,7 +3293,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_9_")) {
 									setState(219);
-									queueFrommasterToresid_9_.put(box.get());
+									resid_9_Queue.put(new ProtocolMessage(box.get(),232));
 									return Optional.empty();
 								}
 							}
@@ -3336,7 +3301,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(220);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_9_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 220:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3344,7 +3309,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_10_")) {
 									setState(221);
-									queueFrommasterTointerpd_10_.put(box.get());
+									interpd_10_Queue.put(new ProtocolMessage(box.get(),236));
 									return Optional.empty();
 								}
 							}
@@ -3352,7 +3317,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(222);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 222:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3360,7 +3325,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_10_")) {
 									setState(223);
-									queueFrommasterTopsinv_10_.put(box.get());
+									psinv_10_Queue.put(new ProtocolMessage(box.get(),240));
 									return Optional.empty();
 								}
 							}
@@ -3368,7 +3333,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(224);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 224:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3376,7 +3341,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_10_")) {
 									setState(225);
-									queueFrommasterTorprj_10_.put(box.get());
+									rprj_10_Queue.put(new ProtocolMessage(box.get(),244));
 									return Optional.empty();
 								}
 							}
@@ -3384,7 +3349,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(226);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 226:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3392,7 +3357,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_10_")) {
 									setState(227);
-									queueFrommasterToresid_10_.put(box.get());
+									resid_10_Queue.put(new ProtocolMessage(box.get(),248));
 									return Optional.empty();
 								}
 							}
@@ -3400,7 +3365,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(228);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_10_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 228:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3408,7 +3373,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_11_")) {
 									setState(229);
-									queueFrommasterTointerpd_11_.put(box.get());
+									interpd_11_Queue.put(new ProtocolMessage(box.get(),252));
 									return Optional.empty();
 								}
 							}
@@ -3416,7 +3381,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(230);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 230:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3424,7 +3389,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_11_")) {
 									setState(231);
-									queueFrommasterTopsinv_11_.put(box.get());
+									psinv_11_Queue.put(new ProtocolMessage(box.get(),256));
 									return Optional.empty();
 								}
 							}
@@ -3432,7 +3397,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(232);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 232:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3440,7 +3405,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_11_")) {
 									setState(233);
-									queueFrommasterTorprj_11_.put(box.get());
+									rprj_11_Queue.put(new ProtocolMessage(box.get(),260));
 									return Optional.empty();
 								}
 							}
@@ -3448,7 +3413,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(234);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 234:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3456,7 +3421,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_11_")) {
 									setState(235);
-									queueFrommasterToresid_11_.put(box.get());
+									resid_11_Queue.put(new ProtocolMessage(box.get(),264));
 									return Optional.empty();
 								}
 							}
@@ -3464,7 +3429,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(236);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_11_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 236:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3472,7 +3437,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_12_")) {
 									setState(237);
-									queueFrommasterTointerpd_12_.put(box.get());
+									interpd_12_Queue.put(new ProtocolMessage(box.get(),268));
 									return Optional.empty();
 								}
 							}
@@ -3480,7 +3445,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(238);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 238:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3488,7 +3453,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_12_")) {
 									setState(239);
-									queueFrommasterTopsinv_12_.put(box.get());
+									psinv_12_Queue.put(new ProtocolMessage(box.get(),272));
 									return Optional.empty();
 								}
 							}
@@ -3496,7 +3461,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(240);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 240:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3504,7 +3469,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_12_")) {
 									setState(241);
-									queueFrommasterTorprj_12_.put(box.get());
+									rprj_12_Queue.put(new ProtocolMessage(box.get(),276));
 									return Optional.empty();
 								}
 							}
@@ -3512,7 +3477,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(242);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 242:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3520,7 +3485,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_12_")) {
 									setState(243);
-									queueFrommasterToresid_12_.put(box.get());
+									resid_12_Queue.put(new ProtocolMessage(box.get(),280));
 									return Optional.empty();
 								}
 							}
@@ -3528,7 +3493,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(244);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_12_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 244:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3536,7 +3501,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_13_")) {
 									setState(245);
-									queueFrommasterTointerpd_13_.put(box.get());
+									interpd_13_Queue.put(new ProtocolMessage(box.get(),284));
 									return Optional.empty();
 								}
 							}
@@ -3544,7 +3509,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(246);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 246:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3552,7 +3517,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_13_")) {
 									setState(247);
-									queueFrommasterTopsinv_13_.put(box.get());
+									psinv_13_Queue.put(new ProtocolMessage(box.get(),288));
 									return Optional.empty();
 								}
 							}
@@ -3560,7 +3525,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(248);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 248:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3568,7 +3533,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_13_")) {
 									setState(249);
-									queueFrommasterTorprj_13_.put(box.get());
+									rprj_13_Queue.put(new ProtocolMessage(box.get(),292));
 									return Optional.empty();
 								}
 							}
@@ -3576,7 +3541,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(250);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 250:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3584,7 +3549,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_13_")) {
 									setState(251);
-									queueFrommasterToresid_13_.put(box.get());
+									resid_13_Queue.put(new ProtocolMessage(box.get(),296));
 									return Optional.empty();
 								}
 							}
@@ -3592,7 +3557,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(252);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_13_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 252:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3600,7 +3565,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_14_")) {
 									setState(253);
-									queueFrommasterTointerpd_14_.put(box.get());
+									interpd_14_Queue.put(new ProtocolMessage(box.get(),300));
 									return Optional.empty();
 								}
 							}
@@ -3608,7 +3573,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(254);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 254:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3616,7 +3581,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_14_")) {
 									setState(255);
-									queueFrommasterTopsinv_14_.put(box.get());
+									psinv_14_Queue.put(new ProtocolMessage(box.get(),304));
 									return Optional.empty();
 								}
 							}
@@ -3624,7 +3589,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(256);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 256:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3632,7 +3597,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_14_")) {
 									setState(257);
-									queueFrommasterTorprj_14_.put(box.get());
+									rprj_14_Queue.put(new ProtocolMessage(box.get(),308));
 									return Optional.empty();
 								}
 							}
@@ -3640,7 +3605,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(258);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 258:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3648,7 +3613,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_14_")) {
 									setState(259);
-									queueFrommasterToresid_14_.put(box.get());
+									resid_14_Queue.put(new ProtocolMessage(box.get(),312));
 									return Optional.empty();
 								}
 							}
@@ -3656,7 +3621,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(260);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_14_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 260:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3664,7 +3629,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_15_")) {
 									setState(261);
-									queueFrommasterTointerpd_15_.put(box.get());
+									interpd_15_Queue.put(new ProtocolMessage(box.get(),316));
 									return Optional.empty();
 								}
 							}
@@ -3672,7 +3637,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(262);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 262:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3680,7 +3645,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_15_")) {
 									setState(263);
-									queueFrommasterTopsinv_15_.put(box.get());
+									psinv_15_Queue.put(new ProtocolMessage(box.get(),320));
 									return Optional.empty();
 								}
 							}
@@ -3688,7 +3653,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(264);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 264:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3696,7 +3661,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_15_")) {
 									setState(265);
-									queueFrommasterTorprj_15_.put(box.get());
+									rprj_15_Queue.put(new ProtocolMessage(box.get(),324));
 									return Optional.empty();
 								}
 							}
@@ -3704,7 +3669,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(266);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 266:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3712,7 +3677,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_15_")) {
 									setState(267);
-									queueFrommasterToresid_15_.put(box.get());
+									resid_15_Queue.put(new ProtocolMessage(box.get(),328));
 									return Optional.empty();
 								}
 							}
@@ -3720,7 +3685,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(268);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_15_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 268:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3728,7 +3693,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_16_")) {
 									setState(269);
-									queueFrommasterTointerpd_16_.put(box.get());
+									interpd_16_Queue.put(new ProtocolMessage(box.get(),332));
 									return Optional.empty();
 								}
 							}
@@ -3736,7 +3701,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(270);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 270:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3744,7 +3709,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_16_")) {
 									setState(271);
-									queueFrommasterTopsinv_16_.put(box.get());
+									psinv_16_Queue.put(new ProtocolMessage(box.get(),336));
 									return Optional.empty();
 								}
 							}
@@ -3752,7 +3717,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(272);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 272:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3760,7 +3725,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_16_")) {
 									setState(273);
-									queueFrommasterTorprj_16_.put(box.get());
+									rprj_16_Queue.put(new ProtocolMessage(box.get(),340));
 									return Optional.empty();
 								}
 							}
@@ -3768,7 +3733,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(274);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 274:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3776,7 +3741,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_16_")) {
 									setState(275);
-									queueFrommasterToresid_16_.put(box.get());
+									resid_16_Queue.put(new ProtocolMessage(box.get(),344));
 									return Optional.empty();
 								}
 							}
@@ -3784,7 +3749,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(276);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_16_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 276:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3792,7 +3757,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("interpd_17_")) {
 									setState(277);
-									queueFrommasterTointerpd_17_.put(box.get());
+									interpd_17_Queue.put(new ProtocolMessage(box.get(),348));
 									return Optional.empty();
 								}
 							}
@@ -3800,7 +3765,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(278);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrominterpd_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 278:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3808,7 +3773,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_17_")) {
 									setState(279);
-									queueFrommasterTopsinv_17_.put(box.get());
+									psinv_17_Queue.put(new ProtocolMessage(box.get(),352));
 									return Optional.empty();
 								}
 							}
@@ -3816,7 +3781,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(280);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFrompsinv_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 280:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3824,7 +3789,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("rprj_17_")) {
 									setState(281);
-									queueFrommasterTorprj_17_.put(box.get());
+									rprj_17_Queue.put(new ProtocolMessage(box.get(),356));
 									return Optional.empty();
 								}
 							}
@@ -3832,7 +3797,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(282);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromrprj_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 282:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 								if (receiver == null) {
@@ -3840,7 +3805,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("resid_17_")) {
 									setState(283);
-									queueFrommasterToresid_17_.put(box.get());
+									resid_17_Queue.put(new ProtocolMessage(box.get(),360));
 									return Optional.empty();
 								}
 							}
@@ -3848,7 +3813,7 @@ public class MGProtocol_n_18 implements IProtocol {
 							setState(284);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
-							return Optional.of((Any)queueFromresid_17_Tomaster.take());
+							return Optional.of((Any)masterQueue.take().Message);
 						case 284:
 							if (isCloseAction) {
 								setState(285);
@@ -4216,7 +4181,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_1_")) {
 									setState(357);
-									queueFrommasterTopsinv_1_.put(box.get());
+									psinv_1_Queue.put(new ProtocolMessage(box.get(),509));
 									return Optional.empty();
 								}
 							}
@@ -4227,7 +4192,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("psinv_2_")) {
 									setState(2);
-									queueFrommasterTopsinv_2_.put(box.get());
+									psinv_2_Queue.put(new ProtocolMessage(box.get(),511));
 									return Optional.empty();
 								}
 							}
@@ -4276,7 +4241,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),82));
 									return Optional.empty();
 								}
 							}
@@ -4286,18 +4251,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTopsinv_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							ProtocolMessage objectToGet = psinv_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 2) {
 								setState(4);
+								//queueFrommasterTopsinv_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 80) {
 								setState(1);
+								//queueFrommasterTopsinv_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4306,7 +4273,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),543));
 									return Optional.empty();
 								}
 							}
@@ -4350,7 +4317,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),242));
 									return Optional.empty();
 								}
 							}
@@ -4361,7 +4328,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),563));
 									return Optional.empty();
 								}
 							}
@@ -4371,18 +4338,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTopsinv_10_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_10_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 240) {
 								setState(1);
+								//queueFrommasterTopsinv_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 527) {
 								setState(2);
+								//queueFrommasterTopsinv_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -4418,18 +4387,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTopsinv_11_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_11_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 256) {
 								setState(2);
+								//queueFrommasterTopsinv_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 529) {
 								setState(3);
+								//queueFrommasterTopsinv_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4438,7 +4409,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),258));
 									return Optional.empty();
 								}
 							}
@@ -4449,7 +4420,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrompsinv_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),565));
 									return Optional.empty();
 								}
 							}
@@ -4498,23 +4469,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),274));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTopsinv_12_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_12_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 272) {
 								setState(1);
+								//queueFrommasterTopsinv_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 531) {
 								setState(3);
+								//queueFrommasterTopsinv_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4523,7 +4496,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),567));
 									return Optional.empty();
 								}
 							}
@@ -4572,23 +4545,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),290));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTopsinv_13_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_13_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 288) {
 								setState(1);
+								//queueFrommasterTopsinv_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 533) {
 								setState(3);
+								//queueFrommasterTopsinv_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4597,7 +4572,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),569));
 									return Optional.empty();
 								}
 							}
@@ -4646,23 +4621,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),306));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTopsinv_14_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_14_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 304) {
 								setState(1);
+								//queueFrommasterTopsinv_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 535) {
 								setState(3);
+								//queueFrommasterTopsinv_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4671,7 +4648,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),571));
 									return Optional.empty();
 								}
 							}
@@ -4725,23 +4702,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(0);
-									queueFrompsinv_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),322));
 									return Optional.empty();
 								}
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTopsinv_15_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_15_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 320) {
 								setState(2);
+								//queueFrommasterTopsinv_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 537) {
 								setState(4);
+								//queueFrommasterTopsinv_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4750,7 +4729,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),573));
 									return Optional.empty();
 								}
 							}
@@ -4794,7 +4773,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),338));
 									return Optional.empty();
 								}
 							}
@@ -4804,18 +4783,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTopsinv_16_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_16_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 336) {
 								setState(1);
+								//queueFrommasterTopsinv_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 539) {
 								setState(4);
+								//queueFrommasterTopsinv_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -4824,7 +4805,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),575));
 									return Optional.empty();
 								}
 							}
@@ -4868,7 +4849,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),577));
 									return Optional.empty();
 								}
 							}
@@ -4879,7 +4860,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),354));
 									return Optional.empty();
 								}
 							}
@@ -4889,18 +4870,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTopsinv_17_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_17_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 352) {
 								setState(2);
+								//queueFrommasterTopsinv_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 541) {
 								setState(1);
+								//queueFrommasterTopsinv_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -4942,7 +4925,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),545));
 									return Optional.empty();
 								}
 							}
@@ -4953,7 +4936,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),98));
 									return Optional.empty();
 								}
 							}
@@ -4963,18 +4946,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTopsinv_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 96) {
 								setState(2);
+								//queueFrommasterTopsinv_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 509) {
 								setState(1);
+								//queueFrommasterTopsinv_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -5016,7 +5001,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),114));
 									return Optional.empty();
 								}
 							}
@@ -5027,7 +5012,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),547));
 									return Optional.empty();
 								}
 							}
@@ -5037,18 +5022,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTopsinv_2_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_2_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 112) {
 								setState(1);
+								//queueFrommasterTopsinv_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 511) {
 								setState(2);
+								//queueFrommasterTopsinv_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -5084,18 +5071,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterTopsinv_3_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_3_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 128) {
 								setState(2);
+								//queueFrommasterTopsinv_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 513) {
 								setState(4);
+								//queueFrommasterTopsinv_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -5104,7 +5093,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),130));
 									return Optional.empty();
 								}
 							}
@@ -5120,7 +5109,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFrompsinv_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),549));
 									return Optional.empty();
 								}
 							}
@@ -5164,23 +5153,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),146));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTopsinv_4_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_4_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 144) {
 								setState(1);
+								//queueFrommasterTopsinv_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 515) {
 								setState(4);
+								//queueFrommasterTopsinv_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (isCloseAction) {
@@ -5194,7 +5185,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),551));
 									return Optional.empty();
 								}
 							}
@@ -5238,23 +5229,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),162));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTopsinv_5_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_5_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 160) {
 								setState(1);
+								//queueFrommasterTopsinv_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 517) {
 								setState(4);
+								//queueFrommasterTopsinv_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (isCloseAction) {
@@ -5268,7 +5261,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),553));
 									return Optional.empty();
 								}
 							}
@@ -5312,23 +5305,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),178));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTopsinv_6_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_6_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 176) {
 								setState(1);
+								//queueFrommasterTopsinv_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 519) {
 								setState(4);
+								//queueFrommasterTopsinv_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (isCloseAction) {
@@ -5342,7 +5337,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),555));
 									return Optional.empty();
 								}
 							}
@@ -5386,7 +5381,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),194));
 									return Optional.empty();
 								}
 							}
@@ -5396,18 +5391,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTopsinv_7_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_7_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 192) {
 								setState(1);
+								//queueFrommasterTopsinv_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 521) {
 								setState(4);
+								//queueFrommasterTopsinv_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -5416,7 +5413,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),557));
 									return Optional.empty();
 								}
 							}
@@ -5460,7 +5457,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFrompsinv_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),210));
 									return Optional.empty();
 								}
 							}
@@ -5470,18 +5467,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTopsinv_8_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_8_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 208) {
 								setState(1);
+								//queueFrommasterTopsinv_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 523) {
 								setState(4);
+								//queueFrommasterTopsinv_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -5490,7 +5489,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),559));
 									return Optional.empty();
 								}
 							}
@@ -5534,7 +5533,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFrompsinv_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),561));
 									return Optional.empty();
 								}
 							}
@@ -5545,7 +5544,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFrompsinv_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),226));
 									return Optional.empty();
 								}
 							}
@@ -5555,18 +5554,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTopsinv_9_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = psinv_9_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 224) {
 								setState(2);
+								//queueFrommasterTopsinv_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 525) {
 								setState(1);
+								//queueFrommasterTopsinv_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -5608,7 +5609,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),90));
 									return Optional.empty();
 								}
 							}
@@ -5624,23 +5625,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),683));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterToresid_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							ProtocolMessage objectToGet = resid_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 4) {
 								setState(3);
+								//queueFrommasterToresid_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 88) {
 								setState(1);
+								//queueFrommasterToresid_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -5676,18 +5679,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToresid_10_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_10_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 248) {
 								setState(3);
+								//queueFrommasterToresid_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 667) {
 								setState(4);
+								//queueFrommasterToresid_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -5701,7 +5706,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),250));
 									return Optional.empty();
 								}
 							}
@@ -5712,7 +5717,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),703));
 									return Optional.empty();
 								}
 							}
@@ -5756,7 +5761,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),705));
 									return Optional.empty();
 								}
 							}
@@ -5766,18 +5771,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterToresid_11_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_11_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 264) {
 								setState(4);
+								//queueFrommasterToresid_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 669) {
 								setState(1);
+								//queueFrommasterToresid_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -5786,7 +5793,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),266));
 									return Optional.empty();
 								}
 							}
@@ -5830,7 +5837,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),707));
 									return Optional.empty();
 								}
 							}
@@ -5840,18 +5847,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterToresid_12_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_12_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 280) {
 								setState(4);
+								//queueFrommasterToresid_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 671) {
 								setState(1);
+								//queueFrommasterToresid_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -5860,7 +5869,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),282));
 									return Optional.empty();
 								}
 							}
@@ -5904,7 +5913,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),709));
 									return Optional.empty();
 								}
 							}
@@ -5914,18 +5923,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterToresid_13_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_13_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 296) {
 								setState(4);
+								//queueFrommasterToresid_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 673) {
 								setState(1);
+								//queueFrommasterToresid_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -5934,7 +5945,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),298));
 									return Optional.empty();
 								}
 							}
@@ -5978,7 +5989,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),711));
 									return Optional.empty();
 								}
 							}
@@ -5994,23 +6005,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),314));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterToresid_14_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_14_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 312) {
 								setState(3);
+								//queueFrommasterToresid_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 675) {
 								setState(1);
+								//queueFrommasterToresid_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -6057,7 +6070,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),713));
 									return Optional.empty();
 								}
 							}
@@ -6068,23 +6081,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),330));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterToresid_15_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_15_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 328) {
 								setState(3);
+								//queueFrommasterToresid_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 677) {
 								setState(2);
+								//queueFrommasterToresid_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -6126,7 +6141,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),346));
 									return Optional.empty();
 								}
 							}
@@ -6142,23 +6157,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),715));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterToresid_16_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_16_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 344) {
 								setState(1);
+								//queueFrommasterToresid_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 679) {
 								setState(3);
+								//queueFrommasterToresid_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -6194,18 +6211,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToresid_17_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_17_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 360) {
 								setState(2);
+								//queueFrommasterToresid_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 681) {
 								setState(4);
+								//queueFrommasterToresid_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -6214,7 +6233,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),362));
 									return Optional.empty();
 								}
 							}
@@ -6230,7 +6249,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),717));
 									return Optional.empty();
 								}
 							}
@@ -6268,18 +6287,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToresid_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 104) {
 								setState(2);
+								//queueFrommasterToresid_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 649) {
 								setState(4);
+								//queueFrommasterToresid_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -6288,7 +6309,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),106));
 									return Optional.empty();
 								}
 							}
@@ -6304,7 +6325,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),685));
 									return Optional.empty();
 								}
 							}
@@ -6342,18 +6363,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToresid_2_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_2_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 120) {
 								setState(2);
+								//queueFrommasterToresid_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 651) {
 								setState(4);
+								//queueFrommasterToresid_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -6362,7 +6385,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),122));
 									return Optional.empty();
 								}
 							}
@@ -6378,7 +6401,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),687));
 									return Optional.empty();
 								}
 							}
@@ -6422,23 +6445,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),689));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterToresid_3_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_3_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 136) {
 								setState(3);
+								//queueFrommasterToresid_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 653) {
 								setState(1);
+								//queueFrommasterToresid_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -6447,7 +6472,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),138));
 									return Optional.empty();
 								}
 							}
@@ -6496,23 +6521,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),691));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterToresid_4_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_4_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 152) {
 								setState(3);
+								//queueFrommasterToresid_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 655) {
 								setState(1);
+								//queueFrommasterToresid_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -6521,7 +6548,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),154));
 									return Optional.empty();
 								}
 							}
@@ -6570,23 +6597,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),693));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterToresid_5_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_5_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 168) {
 								setState(3);
+								//queueFrommasterToresid_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 657) {
 								setState(1);
+								//queueFrommasterToresid_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -6595,7 +6624,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),170));
 									return Optional.empty();
 								}
 							}
@@ -6644,7 +6673,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromresid_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),695));
 									return Optional.empty();
 								}
 							}
@@ -6655,23 +6684,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),186));
 									return Optional.empty();
 								}
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterToresid_6_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_6_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 184) {
 								setState(2);
+								//queueFrommasterToresid_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 659) {
 								setState(1);
+								//queueFrommasterToresid_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (isCloseAction) {
@@ -6723,7 +6754,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),697));
 									return Optional.empty();
 								}
 							}
@@ -6734,23 +6765,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(0);
-									queueFromresid_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),202));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterToresid_7_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_7_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 200) {
 								setState(3);
+								//queueFrommasterToresid_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 661) {
 								setState(2);
+								//queueFrommasterToresid_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -6797,7 +6830,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),218));
 									return Optional.empty();
 								}
 							}
@@ -6808,23 +6841,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromresid_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),699));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterToresid_8_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_8_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 216) {
 								setState(2);
+								//queueFrommasterToresid_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 663) {
 								setState(3);
+								//queueFrommasterToresid_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -6860,18 +6895,20 @@ public class MGProtocol_n_18 implements IProtocol {
 							wait();
 							break;
 						case 1:
-							Any objectToGet = (Any)queueFrommasterToresid_9_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = resid_9_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 232) {
 								setState(3);
+								//queueFrommasterToresid_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 665) {
 								setState(4);
+								//queueFrommasterToresid_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 2:
 							if (isCloseAction) {
@@ -6885,7 +6922,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromresid_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),234));
 									return Optional.empty();
 								}
 							}
@@ -6896,7 +6933,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromresid_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),701));
 									return Optional.empty();
 								}
 							}
@@ -6940,7 +6977,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),613));
 									return Optional.empty();
 								}
 							}
@@ -6951,7 +6988,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromrprj_0_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),86));
 									return Optional.empty();
 								}
 							}
@@ -6961,18 +6998,20 @@ public class MGProtocol_n_18 implements IProtocol {
 								return Optional.empty();
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_0_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							ProtocolMessage objectToGet = rprj_0_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 3) {
 								setState(1);
+								//queueFrommasterTorprj_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 84) {
 								setState(2);
+								//queueFrommasterTorprj_0_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7014,7 +7053,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),246));
 									return Optional.empty();
 								}
 							}
@@ -7025,23 +7064,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromrprj_10_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),633));
 									return Optional.empty();
 								}
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTorprj_10_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_10_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 244) {
 								setState(1);
+								//queueFrommasterTorprj_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 597) {
 								setState(2);
+								//queueFrommasterTorprj_10_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (isCloseAction) {
@@ -7093,7 +7134,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(0);
-									queueFromrprj_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),262));
 									return Optional.empty();
 								}
 							}
@@ -7104,23 +7145,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_11_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),635));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_11_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_11_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 260) {
 								setState(2);
+								//queueFrommasterTorprj_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 599) {
 								setState(3);
+								//queueFrommasterTorprj_11_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7167,7 +7210,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromrprj_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),278));
 									return Optional.empty();
 								}
 							}
@@ -7178,23 +7221,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_12_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),637));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_12_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_12_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 276) {
 								setState(2);
+								//queueFrommasterTorprj_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 601) {
 								setState(3);
+								//queueFrommasterTorprj_12_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7241,7 +7286,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(1);
-									queueFromrprj_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),294));
 									return Optional.empty();
 								}
 							}
@@ -7252,23 +7297,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_13_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),639));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_13_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_13_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 292) {
 								setState(2);
+								//queueFrommasterTorprj_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 603) {
 								setState(3);
+								//queueFrommasterTorprj_13_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7310,23 +7357,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),641));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTorprj_14_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_14_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 308) {
 								setState(4);
+								//queueFrommasterTorprj_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 605) {
 								setState(1);
+								//queueFrommasterTorprj_14_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (isCloseAction) {
@@ -7340,7 +7389,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromrprj_14_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),310));
 									return Optional.empty();
 								}
 							}
@@ -7384,23 +7433,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),643));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTorprj_15_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_15_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 324) {
 								setState(4);
+								//queueFrommasterTorprj_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 607) {
 								setState(1);
+								//queueFrommasterTorprj_15_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (isCloseAction) {
@@ -7414,7 +7465,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromrprj_15_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),326));
 									return Optional.empty();
 								}
 							}
@@ -7458,23 +7509,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),645));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTorprj_16_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_16_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 340) {
 								setState(3);
+								//queueFrommasterTorprj_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 609) {
 								setState(1);
+								//queueFrommasterTorprj_16_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -7483,7 +7536,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_16_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),342));
 									return Optional.empty();
 								}
 							}
@@ -7532,7 +7585,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),358));
 									return Optional.empty();
 								}
 							}
@@ -7548,23 +7601,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_17_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),647));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_17_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_17_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 356) {
 								setState(1);
+								//queueFrommasterTorprj_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 611) {
 								setState(3);
+								//queueFrommasterTorprj_17_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7606,7 +7661,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),102));
 									return Optional.empty();
 								}
 							}
@@ -7622,23 +7677,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_1_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),615));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_1_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_1_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 100) {
 								setState(1);
+								//queueFrommasterTorprj_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 579) {
 								setState(3);
+								//queueFrommasterTorprj_1_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7680,7 +7737,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),118));
 									return Optional.empty();
 								}
 							}
@@ -7696,23 +7753,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_2_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),617));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_2_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_2_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 116) {
 								setState(1);
+								//queueFrommasterTorprj_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 581) {
 								setState(3);
+								//queueFrommasterTorprj_2_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7754,7 +7813,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),134));
 									return Optional.empty();
 								}
 							}
@@ -7770,23 +7829,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_3_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),619));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_3_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_3_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 132) {
 								setState(1);
+								//queueFrommasterTorprj_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 583) {
 								setState(3);
+								//queueFrommasterTorprj_3_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7828,7 +7889,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),150));
 									return Optional.empty();
 								}
 							}
@@ -7844,23 +7905,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_4_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),621));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_4_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_4_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 148) {
 								setState(1);
+								//queueFrommasterTorprj_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 585) {
 								setState(3);
+								//queueFrommasterTorprj_4_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7902,7 +7965,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),166));
 									return Optional.empty();
 								}
 							}
@@ -7918,23 +7981,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_5_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),623));
 									return Optional.empty();
 								}
 							}
 						case 4:
-							Any objectToGet = (Any)queueFrommasterTorprj_5_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_5_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 164) {
 								setState(1);
+								//queueFrommasterTorprj_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 587) {
 								setState(3);
+								//queueFrommasterTorprj_5_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 					}
 					return null;
@@ -7976,23 +8041,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),625));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTorprj_6_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_6_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 180) {
 								setState(3);
+								//queueFrommasterTorprj_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 589) {
 								setState(1);
+								//queueFrommasterTorprj_6_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -8001,7 +8068,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_6_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),182));
 									return Optional.empty();
 								}
 							}
@@ -8050,23 +8117,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),627));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTorprj_7_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_7_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 196) {
 								setState(3);
+								//queueFrommasterTorprj_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 591) {
 								setState(1);
+								//queueFrommasterTorprj_7_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -8075,7 +8144,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_7_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),198));
 									return Optional.empty();
 								}
 							}
@@ -8124,23 +8193,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(2);
-									queueFromrprj_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),629));
 									return Optional.empty();
 								}
 							}
 						case 2:
-							Any objectToGet = (Any)queueFrommasterTorprj_8_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_8_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 212) {
 								setState(3);
+								//queueFrommasterTorprj_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 593) {
 								setState(1);
+								//queueFrommasterTorprj_8_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 3:
 							if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
@@ -8149,7 +8220,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_8_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),214));
 									return Optional.empty();
 								}
 							}
@@ -8198,7 +8269,7 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(4);
-									queueFromrprj_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),230));
 									return Optional.empty();
 								}
 							}
@@ -8209,23 +8280,25 @@ public class MGProtocol_n_18 implements IProtocol {
 								}
 								if (receiver.equals("master")) {
 									setState(3);
-									queueFromrprj_9_Tomaster.put(box.get());
+									masterQueue.put(new ProtocolMessage(box.get(),631));
 									return Optional.empty();
 								}
 							}
 						case 3:
-							Any objectToGet = (Any)queueFrommasterTorprj_9_.take();
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.ExitMessage.class) {
+							ProtocolMessage objectToGet = rprj_9_Queue.take();
+							if (objectToGet.OriginalTargetStateId == 228) {
 								setState(1);
+								//queueFrommasterTorprj_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
-							if (objectToGet.getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class) {
+							if (objectToGet.OriginalTargetStateId == 595) {
 								setState(2);
+								//queueFrommasterTorprj_9_);
 								// Disabling unchecked inspection: We did check the class in the if statement above
 								//noinspection unchecked
-								return Optional.of(objectToGet);
+								return Optional.of((Any)objectToGet.Message);
 							}
 						case 4:
 							if (isCloseAction) {
@@ -8254,7 +8327,7 @@ public class MGProtocol_n_18 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "psinv_0_","resid_12_","psinv_2_","psinv_15_","master","interpd_16_","interpd_2_","psinv_11_","interpd_4_","rprj_13_","interpd_17_","resid_0_","psinv_12_","interpd_7_","psinv_3_","psinv_13_","rprj_4_","rprj_11_","resid_5_","resid_4_","interpd_14_","rprj_5_","interpd_15_","interpd_8_","psinv_16_","rprj_7_","resid_7_","interpd_10_","resid_17_","psinv_10_","rprj_16_","psinv_1_","rprj_12_","rprj_9_","resid_1_","resid_9_","rprj_1_","psinv_17_","resid_2_","psinv_9_","rprj_6_","resid_8_","rprj_0_","psinv_14_","resid_10_","psinv_5_","interpd_0_","resid_16_","interpd_12_","psinv_7_","resid_14_","rprj_17_","psinv_8_","interpd_6_","resid_6_","rprj_15_","psinv_4_","interpd_9_","interpd_3_","rprj_2_","resid_11_","interpd_1_","rprj_14_","rprj_8_","resid_13_","resid_3_","rprj_10_","interpd_13_","psinv_6_","rprj_3_","interpd_11_","interpd_5_","resid_15_" };
+		return new String[] { "resid_9_","interpd_6_","psinv_4_","psinv_16_","psinv_12_","psinv_6_","interpd_17_","rprj_11_","interpd_11_","resid_4_","resid_10_","rprj_16_","interpd_4_","rprj_8_","rprj_9_","psinv_3_","rprj_13_","interpd_12_","rprj_0_","interpd_13_","psinv_14_","psinv_9_","resid_8_","interpd_7_","rprj_15_","psinv_17_","resid_5_","resid_11_","rprj_6_","resid_1_","interpd_16_","interpd_3_","psinv_1_","rprj_1_","resid_0_","interpd_10_","rprj_2_","rprj_10_","resid_16_","interpd_15_","resid_17_","resid_6_","psinv_0_","rprj_5_","psinv_10_","master","rprj_14_","psinv_5_","rprj_3_","resid_14_","resid_2_","interpd_5_","psinv_8_","psinv_13_","interpd_8_","psinv_11_","interpd_1_","interpd_14_","interpd_9_","interpd_2_","psinv_7_","rprj_4_","resid_13_","resid_7_","rprj_7_","resid_15_","psinv_15_","interpd_0_","resid_12_","rprj_17_","rprj_12_","psinv_2_","resid_3_" };
 	}
 	
 	@Override
