@@ -211,27 +211,27 @@ public class MG extends MGBase {
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("interpd_"+m+"_").close();
-        }
-        for (int m = 0; m < num_threads; m++) {
-            masterEnvironment.close();
-        }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("psinv_"+m+"_").close();
-        }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("interpd_"+m+"_").close();
+//        }
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
-        for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("rprj_"+m+"_").close();
-        }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("psinv_"+m+"_").close();
+//        }
         for (int m = 0; m < num_threads; m++) {
             masterEnvironment.close();
         }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("rprj_"+m+"_").close();
+//        }
         for (int m = 0; m < num_threads; m++) {
-            protocol.getEnvironment("resid_"+m+"_").close();
+            masterEnvironment.close();
         }
+//        for (int m = 0; m < num_threads; m++) {
+//            protocol.getEnvironment("resid_"+m+"_").close();
+//        }
     }
 
     public int verify(double rnm2){
@@ -435,7 +435,7 @@ public class MG extends MGBase {
         e3 = ie3 - is3 + 2;
 
         double seed=314159265.0, a=Math.pow(5.0,13);
-        discourje.examples.npb3.impl.Random rng=new discourje.examples.npb3.impl.Random();
+        Random rng=new Random();
         a1 = rng.power( a, nx );
         a2 = rng.power( a, nx*ny );
         ai = rng.power( a, i );

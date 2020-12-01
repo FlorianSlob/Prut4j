@@ -123,6 +123,7 @@ public class CGWorker extends CGBase {
         }
         if (o instanceof ExitMessage) {
           environment.send(new DoneMessage());
+          environment.close();
           return;
         }
       } catch (Exception e) {
