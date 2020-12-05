@@ -28,8 +28,8 @@ public class StateSpaceExplorerHelperTests {
             }
 
             @Override
-            public int getState() {
-                return 0;
+            public String getState() {
+                return "";
             }
         };
     }

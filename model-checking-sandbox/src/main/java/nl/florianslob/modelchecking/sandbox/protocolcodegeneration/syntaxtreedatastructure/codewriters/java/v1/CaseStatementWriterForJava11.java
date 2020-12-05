@@ -18,7 +18,6 @@ public class CaseStatementWriterForJava11 implements ISyntaxWriter<ASTStateCaseS
         StringBuilderSyntaxHelper.addLine(builder, numberOfPrependingTabs, "case "+SyntaxTreeItem.stateIdCondition+":");
         numberOfPrependingTabs++;
 
-
         var sendActions = SyntaxTreeItem
                 .actionsFromState
                 .stream()

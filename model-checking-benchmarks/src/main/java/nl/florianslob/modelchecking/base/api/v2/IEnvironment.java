@@ -35,4 +35,6 @@ public interface IEnvironment {
         //noinspection unchecked,OptionalGetWithoutIsPresent
         exchange(Optional.empty(), null, true);
     }
+
+    int getState();
 }
