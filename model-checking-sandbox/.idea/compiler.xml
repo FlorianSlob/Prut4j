@@ -10,7 +10,7 @@
         <module name="model-checking-sandbox.owl.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
+    <bytecodeTargetLevel target="1.8">
       <module name="model-checking-sandbox.model-checking-testproject.main" target="1.8" />
       <module name="model-checking-sandbox.model-checking-testproject.test" target="1.8" />
     </bytecodeTargetLevel>

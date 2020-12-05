@@ -1,8 +1,4 @@
 rootProject.name = 'model-checking-benchmarks'
 
-include ':owl'
-project(':owl').projectDir = new File(settingsDir, '../owl')
-
-include ':model-checking-base'
-project(':model-checking-base').projectDir = new File(settingsDir, '../model-checking-base')
-
+include ':api'
+project(':api').projectDir = new File(settingsDir, '../api')

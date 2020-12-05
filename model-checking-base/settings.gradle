@@ -2,3 +2,6 @@ rootProject.name = 'model-checking-base'
 
 include ':owl'
 project(':owl').projectDir = new File( '../owl')
+
+include ':model-checking-api'
+project(':model-checking-api').projectDir = new File( '../model-checking-api')
