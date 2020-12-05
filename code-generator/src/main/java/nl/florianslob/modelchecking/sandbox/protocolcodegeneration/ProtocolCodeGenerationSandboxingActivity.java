@@ -29,7 +29,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "CGProtocol_strict_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/" + versionString + "/cg_n_" + i + ".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/cg/" + versionString + "/cg_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -38,7 +38,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if(generateToTestProject){
                 for(int i = 1; i <= 4; i++){
                     var protocolName = "CGProtocol_strict_n_"+i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -49,7 +49,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "FTProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/" + versionString + "/ft_n_" + i + ".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/ft/" + versionString + "/ft_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/FT/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -57,7 +57,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if (generateToTestProject) {
                 for (int i = 1; i <= 4; i++) {
                     var protocolName = "FTProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/ft/" + versionString + "/ft_n_" + i + ".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/ft/" + versionString + "/ft_n_" + i + ".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/FT/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -68,7 +68,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "ISProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/" + versionString + "/is_n_" + i + ".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/is/" + versionString + "/is_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -76,7 +76,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if (generateToTestProject) {
                 for(int i = 1; i <= 4; i++){
                     var protocolName = "ISProtocol_n_"+i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/is/"+versionString+"/is_n_"+i+".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/is/"+versionString+"/is_n_"+i+".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/IS/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -87,7 +87,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "MGProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/" + versionString + "/mg_n_" + i + ".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/mg/" + versionString + "/mg_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -96,7 +96,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             if (generateToTestProject) {
                 for(int i = 1; i <= 4; i++){
                     var protocolName = "MGProtocol_n_"+i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/npb/mg/"+versionString+"/mg_n_"+i+".dcj";
+                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/mg/"+versionString+"/mg_n_"+i+".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/MG/";
                     GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
                 }
@@ -105,12 +105,12 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
 
         if(genDemoProtocols){
             var protocolName2 = "GeneratedChessProtocol";
-            var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chess.dcj";
+            var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/chess.dcj";
             var filePath2 = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
             GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2, true);
 
             var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
-            var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/model-checking-sandbox/protocol_definitions/chessWithPlayerNames.dcj";
+            var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/chessWithPlayerNames.dcj";
             var filePath3 = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
             GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3, true);
         }

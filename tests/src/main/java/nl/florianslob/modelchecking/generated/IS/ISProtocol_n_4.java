@@ -42,16 +42,6 @@ public class ISProtocol_n_4 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(5);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -59,6 +49,16 @@ public class ISProtocol_n_4 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(14);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(5);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -172,16 +172,6 @@ public class ISProtocol_n_4 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 13:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(14);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -189,6 +179,16 @@ public class ISProtocol_n_4 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(14);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -664,12 +664,12 @@ public class ISProtocol_n_4 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_3_","worker_1_","worker_2_","worker_0_","master" };
+		return new String[] { "worker_3_","worker_2_","worker_1_","master","worker_0_" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject()};
 	}
 	
 	@Override

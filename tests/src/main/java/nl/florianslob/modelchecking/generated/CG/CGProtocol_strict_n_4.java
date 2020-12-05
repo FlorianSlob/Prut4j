@@ -664,12 +664,12 @@ public class CGProtocol_strict_n_4 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_3_","worker_1_","worker_2_","master" };
+		return new String[] { "worker_0_","worker_2_","worker_1_","worker_3_","master" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.CGThreads.CGMessage.GetTestDummyObject(),discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
 	}
 	
 	@Override

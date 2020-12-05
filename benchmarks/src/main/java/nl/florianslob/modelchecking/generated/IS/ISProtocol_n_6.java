@@ -954,12 +954,12 @@ public class ISProtocol_n_6 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_1_","worker_3_","worker_0_","worker_4_","master","worker_5_" };
+		return new String[] { "worker_4_","worker_2_","master","worker_0_","worker_3_","worker_1_","worker_5_" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject()};
 	}
 	
 	@Override

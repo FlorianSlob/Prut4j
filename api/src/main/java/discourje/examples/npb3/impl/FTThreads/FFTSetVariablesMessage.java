@@ -16,4 +16,7 @@ public class FFTSetVariablesMessage {
         this.exp21 = exp21;
         this.exp31 = exp31;
     }
+    public static Object GetTestDummyObject(){
+        return new FFTSetVariablesMessage(0, true, null, null, null, null);
+    }
 }

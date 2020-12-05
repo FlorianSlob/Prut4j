@@ -1,15 +1,28 @@
 package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v4;
 
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTProtocol;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTReceiveAction;
+import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTSendAction;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.ISyntaxWriter;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.StringBuilderSyntaxHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.StringBuilderSyntaxHelperForJava11;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
+
+    private final String[] PrimitiveJavaTypes = new String []
+            {"Byte",
+            "Char",
+            "Short",
+            "Integer",
+            "Long",
+            "Float",
+            "Double",
+            "Boolean",
+            "String"};
+
     @Override
     public void buildSyntax(StringBuilder builder, int tabCount, ASTProtocol SyntaxTreeItem) {
         // Write comment at the top of the page.
@@ -84,7 +97,34 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
                 StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public Object[] dummies()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[]{\"TestStringDummy\"};"); // TODO Make this more dynamic (Default for all types used in the protocol)
+
+                    var firstEnvironment =
+                        SyntaxTreeItem.environments.stream().findFirst();
+
+                    Set<String> possibleCommunicationTypes = new HashSet<>();
+
+                    if(firstEnvironment.isPresent()) {
+
+                        firstEnvironment.get().AllASTStateCaseStatements.forEach(cs -> {
+                            possibleCommunicationTypes.addAll(
+                            cs.actionsFromState.stream().filter(a -> a.getClass() == ASTSendAction.class)
+                                    .map( a -> ((ASTSendAction) a).messageContentType)
+                                    .collect(Collectors.toSet())
+                            );
+                        });
+
+                        var objectCreationString = possibleCommunicationTypes.stream().map((action) -> {
+                            if (Arrays.stream(PrimitiveJavaTypes).anyMatch(s -> s.equals(action))) {
+                                return "new " + action + "()";
+                            } else {
+                                return action + ".GetTestDummyObject()";
+                            }
+                        }).collect(Collectors.joining(","));
+
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[]{"+objectCreationString+"};");
+                    }else{
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[]{};"); // No Send actions for this protocol.
+                    }
                     }
                 );
 

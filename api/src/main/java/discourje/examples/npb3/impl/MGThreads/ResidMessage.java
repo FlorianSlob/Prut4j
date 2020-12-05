@@ -19,4 +19,8 @@ public class ResidMessage {
         this.n3 = n3;
         this.off = off;
     }
+
+    public static Object GetTestDummyObject(){
+        return new ResidMessage(true,0,0,0,0,0,0);
+    }
 }

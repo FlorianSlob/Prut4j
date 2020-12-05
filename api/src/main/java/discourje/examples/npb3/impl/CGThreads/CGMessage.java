@@ -10,4 +10,9 @@ public class CGMessage {
         this.alpha = alpha;
         this.beta = beta;
     }
+
+    public static Object GetTestDummyObject() {
+        // Only type is important for testing.
+        return new CGMessage(0,0,0);
+    }
 }

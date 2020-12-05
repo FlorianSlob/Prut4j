@@ -25,4 +25,8 @@ public class RprjMessage {
         this.roff = roff;
         this.zoff = zoff;
     }
+
+    public static Object GetTestDummyObject(){
+        return new RprjMessage(0,0,0,0,0,0,0,0,0,0);
+    }
 }

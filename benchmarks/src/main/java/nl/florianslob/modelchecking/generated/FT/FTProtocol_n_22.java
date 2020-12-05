@@ -4243,6 +4243,16 @@ public class FTProtocol_n_22 implements IProtocol {
 							return Optional.empty();
 						}
 					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+						if (receiver == null) {
+							receiver = "fft_0_";
+						}
+						if (receiver.equals("fft_0_")) {
+							setState(177);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "evolve_0_";
@@ -4260,16 +4270,6 @@ public class FTProtocol_n_22 implements IProtocol {
 						if (receiver.equals("evolve_0_")) {
 							setState(2);
 							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
-						if (receiver == null) {
-							receiver = "fft_0_";
-						}
-						if (receiver.equals("fft_0_")) {
-							setState(177);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -4757,16 +4757,6 @@ public class FTProtocol_n_22 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(2);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
@@ -4774,6 +4764,16 @@ public class FTProtocol_n_22 implements IProtocol {
 						if (receiver.equals("fft_0_")) {
 							setState(177);
 							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(2);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -6942,12 +6942,12 @@ public class FTProtocol_n_22 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "evolve_12_","fft_5_","evolve_19_","evolve_14_","fft_20_","fft_21_","evolve_7_","evolve_20_","fft_11_","evolve_11_","evolve_16_","fft_15_","fft_19_","evolve_13_","fft_17_","fft_0_","fft_4_","fft_1_","fft_18_","master","evolve_18_","evolve_2_","evolve_0_","evolve_10_","evolve_1_","fft_12_","evolve_5_","evolve_3_","fft_16_","fft_7_","fft_10_","fft_14_","evolve_21_","evolve_6_","evolve_8_","fft_8_","fft_13_","evolve_15_","evolve_9_","fft_9_","fft_3_","evolve_17_","fft_6_","evolve_4_","fft_2_" };
+		return new String[] { "fft_5_","fft_6_","evolve_0_","evolve_12_","evolve_13_","evolve_14_","evolve_18_","fft_17_","evolve_6_","evolve_11_","fft_8_","fft_4_","fft_16_","evolve_3_","fft_12_","fft_9_","evolve_21_","fft_19_","evolve_7_","fft_3_","evolve_20_","fft_13_","fft_11_","evolve_10_","fft_21_","master","fft_2_","fft_10_","fft_15_","evolve_9_","evolve_1_","evolve_2_","fft_20_","evolve_17_","fft_0_","fft_14_","fft_7_","evolve_19_","evolve_16_","evolve_4_","evolve_15_","evolve_5_","fft_1_","evolve_8_","fft_18_" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.FTThreads.EvolveMessage.GetTestDummyObject(),discourje.examples.npb3.impl.FTThreads.FFTMessage.GetTestDummyObject(),discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
 	}
 	
 	@Override

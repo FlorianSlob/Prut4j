@@ -3419,12 +3419,12 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_16_","worker_9_","worker_18_","worker_3_","worker_19_","worker_4_","worker_10_","worker_6_","worker_7_","worker_15_","worker_17_","master","worker_8_","worker_0_","worker_13_","worker_22_","worker_2_","worker_14_","worker_11_","worker_1_","worker_21_","worker_5_","worker_12_","worker_20_" };
+		return new String[] { "worker_5_","worker_2_","worker_4_","worker_12_","worker_19_","worker_3_","worker_21_","worker_6_","worker_15_","worker_13_","worker_9_","worker_10_","worker_17_","master","worker_1_","worker_0_","worker_16_","worker_22_","worker_14_","worker_8_","worker_18_","worker_20_","worker_7_","worker_11_" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.CGThreads.CGMessage.GetTestDummyObject(),discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
 	}
 	
 	@Override
