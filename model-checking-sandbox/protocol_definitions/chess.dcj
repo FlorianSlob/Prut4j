@@ -1,5 +1,0 @@
-(cat (loop :chess [x 2]
-       (-->> String "w" "b")
-       (-->> String "b" "w")
-       (? (s/recur :chess)))
-    )

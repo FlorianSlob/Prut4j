@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.8">
+      <module name="model-checking-benchmarks.model-checking-base" target="12" />
+      <module name="model-checking-benchmarks.model-checking-base.main" target="12" />
+      <module name="model-checking-benchmarks.model-checking-base.test" target="12" />
+      <module name="model-checking-benchmarks.owl" target="11" />
+      <module name="model-checking-benchmarks.owl.main" target="11" />
+      <module name="model-checking-benchmarks.owl.test" target="11" />
+      <module name="model-checking-testproject" target="12" />
+      <module name="model-checking-testproject.main" target="12" />
+      <module name="model-checking-testproject.model-checking-base" target="12" />
+      <module name="model-checking-testproject.model-checking-base.main" target="12" />
+      <module name="model-checking-testproject.model-checking-base.test" target="12" />
+      <module name="model-checking-testproject.test" target="12" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

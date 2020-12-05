@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output-test url="file://$MODULE_DIR$/../../../../api/build/classes/java/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../api/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../api/src/test/java" isTestSource="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="model-checking-sandbox.api.main" />
+  </component>
+  <component name="TestModuleProperties" production-module="model-checking-sandbox.api.main" />
+</module>

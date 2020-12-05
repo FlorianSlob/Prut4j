@@ -1,0 +1,29 @@
+
+;(s/defrole "master")
+;(s/defrole "evolve")
+;(s/defrole "fft")
+
+;(s/defsession ::ft [1]
+  (s/cat (s/* (s/alt (s/par-every [i (range 1)]
+                       (s/cat (s/-->> discourje.examples.npb3.impl.FTThreads.EvolveMessage "master" ("evolve" i))
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("evolve" i) "master")))
+                     (s/par-every [i (range 1)]
+                       (s/cat (s/-->> discourje.examples.npb3.impl.FTThreads.FFTMessage "master" ("fft" i))
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("fft" i) "master")))
+                     (s/par-every [i (range 1)]
+                       (s/cat (s/-->> discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage "master" ("fft" i))
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("fft" i) "master")))))
+         (s/par-every [i (range 1)]
+           (s/par (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("evolve" i))
+                         (s/-->> discourje.examples.npb3.impl.DoneMessage ("evolve" i) "master"))
+                  (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("fft" i))
+                         (s/-->> discourje.examples.npb3.impl.DoneMessage ("fft" i) "master"))))
+         (s/par (s/par-every [i (range 1)]
+                  (s/close "master" ("evolve" i)))
+                (s/par-every [i (range 1)]
+                  (s/close ("evolve" i) "master"))
+                (s/par-every [i (range 1)]
+                  (s/close "master" ("fft" i)))
+                (s/par-every [i (range 1)]
+                  (s/close ("fft" i) "master"))))
+;)

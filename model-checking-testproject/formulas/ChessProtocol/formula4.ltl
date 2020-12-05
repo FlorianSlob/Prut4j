@@ -1,1 +1,0 @@
-G("b SEND dto.Move TO w" -> X("w RECEIVE dto.Move TO b"))

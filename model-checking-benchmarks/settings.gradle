@@ -1,4 +1,0 @@
-rootProject.name = 'model-checking-benchmarks'
-
-include ':api'
-project(':api').projectDir = new File(settingsDir, '../api')
