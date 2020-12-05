@@ -1,0 +1,10 @@
+rootProject.name = 'code-generator'
+
+include ':owl'
+project(':owl').projectDir = new File(settingsDir, '../owl')
+
+include ':library'
+project(':library').projectDir = new File(settingsDir, '../library')
+
+include ':api'
+project(':api').projectDir = new File(settingsDir, '../api')

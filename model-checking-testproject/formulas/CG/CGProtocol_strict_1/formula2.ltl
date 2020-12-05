@@ -1,2 +1,0 @@
-G("master SEND discourje.examples.npb3.impl.CGThreads.CGMessage TO worker_0_"
--> F(!"workedsfar_0_ SEND discourje.examples.npb3.impl.DoneMessage TO master"))

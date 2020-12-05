@@ -1,0 +1,41 @@
+  (s/cat (s/* (s/alt (s/cat (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.MGThreads.InterpMessage "master" ("interpd" i)))
+                            (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("interpd" i) "master")))
+                     (s/cat (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.MGThreads.PsinvMessage "master" ("psinv" i)))
+                            (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("psinv" i) "master")))
+                     (s/cat (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.MGThreads.RprjMessage "master" ("rprj" i)))
+                            (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("rprj" i) "master")))
+                     (s/cat (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.MGThreads.ResidMessage "master" ("resid" i)))
+                            (s/cat-every [i (range 26)]
+                              (s/-->> discourje.examples.npb3.impl.DoneMessage ("resid" i) "master")))))
+         (s/cat-every [i (range 26)]
+           (s/cat (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("interpd" i))
+                         (s/-->> discourje.examples.npb3.impl.DoneMessage ("interpd" i) "master"))
+                  (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("psinv" i))
+                         (s/-->> discourje.examples.npb3.impl.DoneMessage ("psinv" i) "master"))
+                  (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("rprj" i))
+                         (s/-->> discourje.examples.npb3.impl.DoneMessage ("rprj" i) "master"))
+                  (s/cat (s/-->> discourje.examples.npb3.impl.ExitMessage "master" ("resid" i))
+                         (s/-->> discourje.examples.npb3.impl.DoneMessage ("resid" i) "master"))))
+         (s/cat (s/cat-every [i (range 26)]
+                  (s/close "master" ("interpd" i)))
+                (s/cat-every [i (range 26)]
+                  (s/close ("interpd" i) "master"))
+                (s/cat-every [i (range 26)]
+                  (s/close "master" ("psinv" i)))
+                (s/cat-every [i (range 26)]
+                  (s/close ("psinv" i) "master"))
+                (s/cat-every [i (range 26)]
+                  (s/close "master" ("rprj" i)))
+                (s/cat-every [i (range 26)]
+                  (s/close ("rprj" i) "master"))
+                (s/cat-every [i (range 26)]
+                  (s/close "master" ("resid" i)))
+                (s/cat-every [i (range 26)]
+                  (s/close ("resid" i) "master"))))
