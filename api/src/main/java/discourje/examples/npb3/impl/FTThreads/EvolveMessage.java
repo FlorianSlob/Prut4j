@@ -6,4 +6,8 @@ public class EvolveMessage {
     public EvolveMessage(int kt) {
         this.kt = kt;
     }
+
+    public static Object GetTestDummyObject(){
+        return new EvolveMessage(0);
+    }
 }

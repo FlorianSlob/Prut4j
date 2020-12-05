@@ -66,13 +66,13 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 							receiver = "bob";
 						}
 						if (receiver.equals("bob")) {
-							setState(2);
-							bobQueue.put(new ProtocolMessage(box.get(),1));
+							setState(1);
+							bobQueue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 						if (receiver.equals("bob")) {
-							setState(1);
-							bobQueue.put(new ProtocolMessage(box.get(),5));
+							setState(2);
+							bobQueue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -184,12 +184,12 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "bob","alice" };
+		return new String[] { "alice","bob" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{new String()};
 	}
 	
 	@Override

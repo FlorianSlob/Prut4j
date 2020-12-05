@@ -1389,12 +1389,12 @@ public class ISProtocol_n_9 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_5_","master","worker_4_","worker_0_","worker_7_","worker_6_","worker_8_","worker_2_","worker_1_","worker_3_" };
+		return new String[] { "worker_3_","worker_5_","master","worker_2_","worker_6_","worker_0_","worker_4_","worker_1_","worker_8_","worker_7_" };
 	}
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject()};
 	}
 	
 	@Override

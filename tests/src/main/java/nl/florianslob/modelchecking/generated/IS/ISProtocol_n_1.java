@@ -234,7 +234,7 @@ public class ISProtocol_n_1 implements IProtocol {
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject()};
 	}
 	
 	@Override

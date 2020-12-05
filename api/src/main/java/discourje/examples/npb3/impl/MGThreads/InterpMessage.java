@@ -25,4 +25,7 @@ public class InterpMessage {
         this.zoff = zoff;
         this.uoff = uoff;
     }
+    public static Object GetTestDummyObject(){
+        return new InterpMessage(0,0,0,0,0,0,0,0,0,0);
+    }
 }

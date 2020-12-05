@@ -159,7 +159,7 @@ public class GeneratedChessProtocol implements IProtocol {
 	
 	@Override
 	public Object[] dummies(){
-		return new Object[]{"TestStringDummy"};
+		return new Object[]{new String()};
 	}
 	
 	@Override
