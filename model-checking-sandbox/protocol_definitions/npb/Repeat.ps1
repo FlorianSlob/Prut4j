@@ -1,6 +1,5 @@
 ﻿$repeatAfterMe = 
-'                    case 1:
-                        return new CGProtocol_strict_alt_n_1();'
+'import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_1;' 
 
 
  For ($i=1; $i -le 24; $i++) {
