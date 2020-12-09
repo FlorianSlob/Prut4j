@@ -1,5 +1,5 @@
 ( ! "worker_0_ SEND discourje.examples.npb3.impl.DoneMessage TO master")
 U
-( "worker_0_ RECEIVE discourje.examples.npb3.impl.CGThreads.CGMessage TO master"
+( "worker_0_ RECEIVE discourje.examples.npb3.impl.CGThreads.CGMessage FROM master"
 |
-"worker_0_ RECEIVE discourje.examples.npb3.impl.ExitMessage TO master" )
+"worker_0_ RECEIVE discourje.examples.npb3.impl.ExitMessage FROM master" )
