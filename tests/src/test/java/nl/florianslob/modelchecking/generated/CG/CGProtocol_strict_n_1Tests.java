@@ -44,4 +44,28 @@ public class CGProtocol_strict_n_1Tests {
         // TODO: Explain test here
         ProtocolTestingHelper.TestFormulaFromFile("formulas/CG/CGProtocol_strict_1/formula5.ltl", true , GetProtocol());
     }
+
+    @Test
+    public void TestFormula6True() throws Exception {
+        // TODO: Explain test here
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/CG/CGProtocol_strict_1/formula6.ltl", true , GetProtocol());
+    }
+
+    @Test
+    public void TestFormula7True() throws Exception {
+        // TODO: Explain test here
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/CG/CGProtocol_strict_1/formula7.ltl", true , GetProtocol());
+    }
+
+    @Test
+    public void TestFormula8True() throws Exception {
+        // TODO: Explain test here
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/CG/CGProtocol_strict_1/formula8.ltl", true , GetProtocol());
+    }
+
+    @Test
+    public void TestFormula9False() throws Exception {
+        // TODO: Explain test here
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/CG/CGProtocol_strict_1/formula9.ltl", false , GetProtocol());
+    }
 }

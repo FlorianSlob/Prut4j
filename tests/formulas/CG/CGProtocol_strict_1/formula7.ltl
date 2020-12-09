@@ -1,0 +1,3 @@
+( ! "worker_0_ RECEIVE discourje.examples.npb3.impl.CGThreads.CGMessage TO master")
+U
+"master SEND discourje.examples.npb3.impl.CGThreads.CGMessage TO worker_0_"

@@ -1,5 +1,3 @@
-G(
-("master SEND discourje.examples.npb3.impl.ExitMessage TO worker_0_"
-|
-"master SEND discourje.examples.npb3.impl.ExitMessage TO worker_0_")
--> F("master RECEIVE discourje.examples.npb3.impl.DoneMessage TO worker_1_"))
+(!"master RECEIVE discourje.examples.npb3.impl.DoneMessage TO worker_0_")
+U
+"worker_0_ SEND discourje.examples.npb3.impl.DoneMessage TO master"
