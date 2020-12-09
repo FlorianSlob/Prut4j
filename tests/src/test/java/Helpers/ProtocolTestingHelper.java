@@ -16,14 +16,14 @@ public class ProtocolTestingHelper {
         System.out.println("Testing the protocol for: "+formulaString);
     }
 
-    public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult, IProtocol protocol, HashMap<String,String> shortTypeNameToFullClassNameMap) throws Exception {
+    public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult, IProtocol protocol, HashMap<String,String> shortTypeNameToFullClassNameMap, Object[] dummies) throws Exception {
         // Arrange
         var formulaString = LtlFormulaDefinitionHelper.GetFormulaStringFromFile(absolutePathToFormulaFile, shortTypeNameToFullClassNameMap);
 
         LogTest(formulaString);
         // Act
         var result = GetModelCheckerForChessProtocol(protocol)
-                .CheckProtocolForLtlFormula(formulaString);
+                .CheckProtocolForLtlFormula(formulaString, dummies);
 
         // Assert
         assertTrue(expectedResult == result);

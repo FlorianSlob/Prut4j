@@ -59,16 +59,6 @@ public class ISProtocol_n_21 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(2);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -76,6 +66,16 @@ public class ISProtocol_n_21 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(44);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(2);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -3129,12 +3129,7 @@ public class ISProtocol_n_21 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "master","worker_1_","worker_18_","worker_4_","worker_6_","worker_13_","worker_7_","worker_5_","worker_19_","worker_14_","worker_3_","worker_10_","worker_20_","worker_15_","worker_9_","worker_11_","worker_17_","worker_8_","worker_12_","worker_0_","worker_16_","worker_2_" };
-	}
-	
-	@Override
-	public Object[] dummies(){
-		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
+		return new String[] { "worker_0_","worker_15_","worker_7_","worker_16_","worker_13_","worker_17_","worker_8_","worker_9_","worker_20_","worker_10_","worker_19_","worker_12_","worker_5_","worker_4_","worker_3_","worker_6_","worker_18_","worker_1_","worker_14_","worker_11_","worker_2_","master" };
 	}
 	
 	@Override

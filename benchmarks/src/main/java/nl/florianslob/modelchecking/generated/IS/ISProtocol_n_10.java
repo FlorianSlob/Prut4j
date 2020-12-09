@@ -278,16 +278,6 @@ public class ISProtocol_n_10 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 21:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(2);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -295,6 +285,16 @@ public class ISProtocol_n_10 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(2);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -1534,12 +1534,7 @@ public class ISProtocol_n_10 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_7_","worker_2_","worker_8_","worker_3_","worker_4_","worker_1_","worker_9_","worker_6_","worker_5_","worker_0_","master" };
-	}
-	
-	@Override
-	public Object[] dummies(){
-		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
+		return new String[] { "worker_8_","worker_5_","worker_2_","worker_7_","worker_6_","master","worker_9_","worker_0_","worker_4_","worker_1_","worker_3_" };
 	}
 	
 	@Override

@@ -188,11 +188,6 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	}
 	
 	@Override
-	public Object[] dummies(){
-		return new Object[]{new String()};
-	}
-	
-	@Override
 	public String getState(){
 		return "/" + aliceEnvironment.getState() + "/" + bobEnvironment.getState() + "/";
 	}

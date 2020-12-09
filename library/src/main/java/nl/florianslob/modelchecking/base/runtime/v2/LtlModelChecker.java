@@ -11,29 +11,31 @@ public class LtlModelChecker {
     private final IProtocol protocolUnderVerification;
     private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
     private List<LtlState> initialStatesForNegatedFormula;
+    private Object[] dummies;
 
     public LtlModelChecker(IProtocol protocolUnderVerification) {
         this.protocolUnderVerification = protocolUnderVerification;
     }
 
-    public boolean CheckProtocolForLtlFormula(String ltlFormulaString) {
+    public boolean CheckProtocolForLtlFormula(String ltlFormulaString, Object[] dummies) {
+        this.dummies = dummies;
         this.initialStatesForNegatedFormula = OwlHelper.GetInitialLtlStatesForFormula(ltlFormulaString, true);
-        var hasAcceptingCycles = CheckForAcceptingCycles();
+        var hasAcceptingCycles = CheckForAcceptingCycles(dummies);
         return !hasAcceptingCycles;
     }
 
-    private boolean CheckForAcceptingCycles() {
+    private boolean CheckForAcceptingCycles(Object[] dummies) {
         System.out.println("Participants: ");
         for (var threadName : protocolUnderVerification.threadNames()) {
             System.out.println(threadName);
         }
 
         System.out.println("Dummy objects: ");
-        for (var dummy : protocolUnderVerification.dummies()) {
+        for (var dummy : this.dummies) {
             System.out.println(dummy);
         }
 
-        this.exploringActions = StateSpaceExplorerHelper.getExploringActions(protocolUnderVerification);
+        this.exploringActions = StateSpaceExplorerHelper.getExploringActions(protocolUnderVerification, this.dummies);
         for (var exploringAction : exploringActions) {
             exploringAction.Print();
         }
