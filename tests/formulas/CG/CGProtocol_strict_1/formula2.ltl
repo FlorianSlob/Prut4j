@@ -1,2 +1,2 @@
-G("master SEND discourje.examples.npb3.impl.CGThreads.CGMessage TO worker_0_"
--> F("worker_0_ SEND discourje.examples.npb3.impl.DoneMessage TO master"))
+G("master SEND <CGMessage> TO worker_0_"
+-> F("worker_0_ SEND <DoneMessage> TO master"))

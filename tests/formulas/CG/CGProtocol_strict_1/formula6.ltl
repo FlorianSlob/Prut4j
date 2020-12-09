@@ -1,3 +1,3 @@
-(!"master RECEIVE discourje.examples.npb3.impl.DoneMessage FROM worker_0_")
+(!"master RECEIVE <DoneMessage> FROM worker_0_")
 U
-"worker_0_ SEND discourje.examples.npb3.impl.DoneMessage TO master"
+"worker_0_ SEND <DoneMessage> TO master"

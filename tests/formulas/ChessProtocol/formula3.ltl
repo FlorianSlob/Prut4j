@@ -1,1 +1,1 @@
-G("b SEND dto.Move TO w" -> X((!"b SEND dto.Move TO w") U "w SEND dto.Move TO b"))
+G("b SEND <Move> TO w" -> X((!"b SEND <Move> TO w") U "w SEND <Move> TO b"))
