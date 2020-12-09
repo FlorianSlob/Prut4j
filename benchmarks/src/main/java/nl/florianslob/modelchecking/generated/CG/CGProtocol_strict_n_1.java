@@ -233,11 +233,6 @@ public class CGProtocol_strict_n_1 implements IProtocol {
 	}
 	
 	@Override
-	public Object[] dummies(){
-		return new Object[]{discourje.examples.npb3.impl.CGThreads.CGMessage.GetTestDummyObject(),discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
-	}
-	
-	@Override
 	public String getState(){
 		return "/" + masterEnvironment.getState() + "/" + worker_0_Environment.getState() + "/";
 	}

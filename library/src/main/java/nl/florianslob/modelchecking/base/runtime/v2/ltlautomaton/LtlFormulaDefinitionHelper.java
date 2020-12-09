@@ -3,13 +3,15 @@ package nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 public class LtlFormulaDefinitionHelper {
 
 
     // TODO replace with some user input?
     // TODO Move to static helper
-    public static String GetFormulaStringFromFile(String absolutePathToFormulaFile) {
+    public static String GetFormulaStringFromFile(String absolutePathToFormulaFile, HashMap<String, String> shortTypeNameToFullClassNameMap) {
         String formulaString = null;
         // we use a demo formula from the Chess example
         try {
@@ -18,6 +20,13 @@ public class LtlFormulaDefinitionHelper {
                     .replace("\r"," ");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        if(!shortTypeNameToFullClassNameMap.isEmpty()){
+            for(var shortTypeNameToFullClass :
+                    shortTypeNameToFullClassNameMap.entrySet()) {
+                formulaString = formulaString.replace("<"+shortTypeNameToFullClass.getKey()+">",shortTypeNameToFullClass.getValue());
+            }
         }
 
         return formulaString;

@@ -519,12 +519,7 @@ public class ISProtocol_n_3 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_1_","worker_2_","master" };
-	}
-	
-	@Override
-	public Object[] dummies(){
-		return new Object[]{discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ISThreads.RankMessage.GetTestDummyObject()};
+		return new String[] { "worker_1_","worker_0_","master","worker_2_" };
 	}
 	
 	@Override

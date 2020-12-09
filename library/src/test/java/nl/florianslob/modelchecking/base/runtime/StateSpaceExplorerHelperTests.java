@@ -23,11 +23,6 @@ public class StateSpaceExplorerHelperTests {
             }
 
             @Override
-            public Object[] dummies() {
-                return new Object[]{"TestObject"};
-            }
-
-            @Override
             public String getState() {
                 return "";
             }
@@ -40,7 +35,7 @@ public class StateSpaceExplorerHelperTests {
         IProtocol protocol = GetSimpleTestProtocol();
 
         // ACT
-        var exploringActions = StateSpaceExplorerHelper.getExploringActions(protocol);
+        var exploringActions = StateSpaceExplorerHelper.getExploringActions(protocol,  new Object[]{"TestObject"});
 
         // ASSERT
         assertNotNull(exploringActions);
@@ -54,7 +49,7 @@ public class StateSpaceExplorerHelperTests {
 
 
         var ltlFormulaStartingNodes = OwlHelper.GetInitialLtlStatesForFormula(ltlFormulaString, true);
-        var exploringActions = StateSpaceExplorerHelper.getExploringActions(protocol);
+        var exploringActions = StateSpaceExplorerHelper.getExploringActions(protocol,  new Object[]{"TestObject"});
         var firstTransition = ltlFormulaStartingNodes.get(0).OutgoingTransitions.get(0);
 
         // ACT

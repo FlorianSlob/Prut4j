@@ -154,12 +154,7 @@ public class GeneratedChessProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "w","b" };
-	}
-	
-	@Override
-	public Object[] dummies(){
-		return new Object[]{new String()};
+		return new String[] { "b","w" };
 	}
 	
 	@Override

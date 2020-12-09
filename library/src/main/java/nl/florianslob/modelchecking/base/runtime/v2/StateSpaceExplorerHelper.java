@@ -7,11 +7,11 @@ import java.util.*;
 
 public class StateSpaceExplorerHelper {
 
-    public static List<StateSpaceExploringAction> getExploringActions(IProtocol protocol) {
+    public static List<StateSpaceExploringAction> getExploringActions(IProtocol protocol, Object[] dummies) {
         var exploringActions = new ArrayList<StateSpaceExploringAction>();
         for (var threadName : protocol.threadNames()) {
             // Add all receive and send actions for every dummy
-            for (var dummy : protocol.dummies()) {
+            for (var dummy : dummies) {
                 exploringActions.add(StateSpaceExploringAction.CreateReceiveStateSpaceExploringAction(threadName, dummy.getClass()));
                 // add a send action for all possible receivers
                 // TODO Exclude the thread itself?

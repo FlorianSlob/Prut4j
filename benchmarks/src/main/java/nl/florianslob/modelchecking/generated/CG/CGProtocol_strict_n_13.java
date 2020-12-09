@@ -1969,12 +1969,7 @@ public class CGProtocol_strict_n_13 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","master","worker_11_","worker_3_","worker_5_","worker_0_","worker_10_","worker_12_","worker_8_","worker_7_","worker_4_","worker_9_","worker_6_","worker_2_" };
-	}
-	
-	@Override
-	public Object[] dummies(){
-		return new Object[]{discourje.examples.npb3.impl.CGThreads.CGMessage.GetTestDummyObject(),discourje.examples.npb3.impl.DoneMessage.GetTestDummyObject(),discourje.examples.npb3.impl.ExitMessage.GetTestDummyObject()};
+		return new String[] { "worker_4_","worker_1_","worker_0_","worker_12_","worker_9_","worker_3_","worker_11_","worker_7_","worker_5_","worker_10_","worker_6_","worker_2_","worker_8_","master" };
 	}
 	
 	@Override
