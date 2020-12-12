@@ -1,5 +1,9 @@
-(cat (loop :chess [x 2]
-       (-->> String "alice" "bob")
-       (-->> String "bob" "alice")
-       (? (s/recur :chess)))
-     (? (-->> String "alice" "bob")))
+(s/defrole ::player)
+
+(s/defsession ::chess-with-player-names []
+  (s/alt (::tic-tac-toe-turn-b 1 2)
+         (::tic-tac-toe-turn-b 2 1)))
+
+(s/defsession ::tic-tac-toe-turn-b [i j]
+  (s/async (s/-->> Long (::player i) (::player j)))
+           (s/alt (::tic-tac-toe-turn-b j i)))

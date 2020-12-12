@@ -1750,16 +1750,6 @@ public class FTProtocol_n_9 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
-						if (receiver == null) {
-							receiver = "fft_0_";
-						}
-						if (receiver.equals("fft_0_")) {
-							setState(90);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
@@ -1777,6 +1767,16 @@ public class FTProtocol_n_9 implements IProtocol {
 						if (receiver.equals("evolve_0_")) {
 							setState(20);
 							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+						if (receiver == null) {
+							receiver = "fft_0_";
+						}
+						if (receiver.equals("fft_0_")) {
+							setState(90);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -1988,6 +1988,16 @@ public class FTProtocol_n_9 implements IProtocol {
 							return Optional.empty();
 						}
 					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+						if (receiver == null) {
+							receiver = "fft_0_";
+						}
+						if (receiver.equals("fft_0_")) {
+							setState(90);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 						if (receiver == null) {
 							receiver = "evolve_0_";
@@ -2005,16 +2015,6 @@ public class FTProtocol_n_9 implements IProtocol {
 						if (receiver.equals("evolve_0_")) {
 							setState(20);
 							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
-						if (receiver == null) {
-							receiver = "fft_0_";
-						}
-						if (receiver.equals("fft_0_")) {
-							setState(90);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -2888,7 +2888,7 @@ public class FTProtocol_n_9 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "fft_6_","evolve_6_","master","evolve_4_","evolve_1_","fft_3_","fft_1_","fft_0_","fft_5_","evolve_3_","evolve_5_","evolve_0_","fft_2_","evolve_7_","fft_8_","evolve_2_","fft_7_","fft_4_","evolve_8_" };
+		return new String[] { "fft_3_","evolve_2_","evolve_4_","fft_4_","evolve_8_","evolve_7_","evolve_1_","evolve_5_","fft_0_","fft_7_","fft_1_","master","evolve_3_","fft_8_","fft_5_","fft_2_","evolve_6_","evolve_0_","fft_6_" };
 	}
 	
 	@Override

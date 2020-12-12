@@ -20,106 +20,156 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
     public void runActivity() throws Exception {
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
-        boolean genCGProtocol = true, genFTProtocol = true, genISProtocol = true, genMGProtocol = true, genDemoProtocols = true;
+        boolean
+                genCGProtocol = false,
+                genFTProtocol = false,
+                genISProtocol = false,
+                genMGProtocol = false,
+                genDemoProtocols = false,
+                genRingProtocol = false,
+                // genMeshProtocol will generate a very large file with large methods.
+                // If we need to test this,
+                // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
+                genMeshProtocol = false,
+                genStarProtocol = false,
+                genGoFishProtocol = false,
+                genRockPaperScissorsProtocol = false
+                        ;
         boolean generateToTestBenchmarkProject = true;
         boolean generateToTestProject = true;
-        String versionString = "strict";
+
+        var filePathForDemoProtocols = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
+
+        if(genRingProtocol){
+            var protocolName = "RingProtocol";
+            var clojureFunctionName = "ring";
+            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+        }
+
+        if(genMeshProtocol){
+            var protocolName = "MeshProtocol";
+            var clojureFunctionName = "mesh";
+            GenerateProtocolFromDefinition(clojureFunctionName,2, filePathForDemoProtocols, protocolName, false);
+        }
+
+        if(genStarProtocol){
+            var protocolName = "StarProtocol";
+            var clojureFunctionName = "star";
+            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+        }
+
+        if(genGoFishProtocol){
+            var protocolName = "GoFishProtocol";
+            var clojureFunctionName = "go-fish";
+            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+        }
+
+
+        if(genRockPaperScissorsProtocol){
+            var protocolName = "RockPaperScissorsProtocol";
+            var clojureFunctionName = "rock-paper-scissors";
+            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+        }
 
         if(genCGProtocol){
+
+            var clojureFunctionName = "cg";
+
+
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "CGProtocol_strict_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/cg/" + versionString + "/cg_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
 
             if(generateToTestProject){
                 for(int i = 1; i <= 4; i++){
                     var protocolName = "CGProtocol_strict_n_"+i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/cg/"+versionString+"/cg_n_"+i+".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
         }
 
         if(genFTProtocol) {
+            var clojureFunctionName = "ft";
+
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "FTProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/ft/" + versionString + "/ft_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/FT/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
             if (generateToTestProject) {
                 for (int i = 1; i <= 4; i++) {
                     var protocolName = "FTProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/ft/" + versionString + "/ft_n_" + i + ".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/FT/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
         }
 
         if(genISProtocol){
+            var clojureFunctionName = "is";
+
+
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "ISProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/is/" + versionString + "/is_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/IS/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
             if (generateToTestProject) {
                 for(int i = 1; i <= 4; i++){
                     var protocolName = "ISProtocol_n_"+i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/is/"+versionString+"/is_n_"+i+".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/IS/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
         }
 
         if(genMGProtocol){
+            var clojureFunctionName = "mg";
+
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
                     var protocolName = "MGProtocol_n_" + i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/mg/" + versionString + "/mg_n_" + i + ".dcj";
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/MG/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
 
             if (generateToTestProject) {
                 for(int i = 1; i <= 4; i++){
                     var protocolName = "MGProtocol_n_"+i;
-                    var pathToProtocolDefinition = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/npb/mg/"+versionString+"/mg_n_"+i+".dcj";
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/MG/";
-                    GenerateProtocolFromDefinition(pathToProtocolDefinition, filePath, protocolName, false);
+                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
             }
         }
 
         if(genDemoProtocols){
             var protocolName2 = "GeneratedChessProtocol";
-            var pathToProtocolDefinition2 = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/chess.dcj";
+            var clojureFunctionName2 = "chess";
             var filePath2 = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
-            GenerateProtocolFromDefinition(pathToProtocolDefinition2, filePath2, protocolName2, true);
+            GenerateProtocolFromDefinition(clojureFunctionName2, 0, filePath2, protocolName2, true);
 
             var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
-            var pathToProtocolDefinition3 = "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/chessWithPlayerNames.dcj";
+            var clojureFunctionName3 = "chess-with-player-names";
             var filePath3 = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
-            GenerateProtocolFromDefinition(pathToProtocolDefinition3, filePath3, protocolName3, true);
+            GenerateProtocolFromDefinition(clojureFunctionName3,0, filePath3, protocolName3, true);
         }
     }
 
-    public void GenerateProtocolFromDefinition(String pathToProtocolDefinition, String filePath, String protocolName, boolean generatePlantUmlFile) throws Exception{
+    public void GenerateProtocolFromDefinition(String clojureFunctionName, int n, String filePath, String protocolName, boolean generatePlantUmlFile) throws Exception{
         var writerProvider = new SyntaxWriterProvider("Java11");
 
-        var protocolStateNodesResult = getInitialStateForChessProtocol(pathToProtocolDefinition);
+        var protocolStateNodesResult = getInitialStateForChessProtocol(clojureFunctionName, n);
 
         List<IProtocolDefinitionVisitor> visitorsFirstPass = new LinkedList<>();
         var plantUmlVisualizationVisitor =
@@ -178,16 +228,19 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
     }
 
-    private ProtocolStateNodesResult getInitialStateForChessProtocol(String pathToProtocolDefinition) {
+    private ProtocolStateNodesResult getInitialStateForChessProtocol(String clojureFunctionName, int n) {
         var result = new ProtocolStateNodesResult();
+
         // Call Clojure function
         IFn require = Clojure.var("clojure.core","require");
+        require.invoke(Clojure.read("clojure.core"));
+
         require.invoke(Clojure.read("discourje.core.main"));
 
-        IFn toGraphFunction  = Clojure.var("discourje.core.main", "-test2");
+        IFn toGraphFunction  = Clojure.var("discourje.core.main", "-spec-to-lts-"+clojureFunctionName);
 
         // Now we have the graph here
-        var protocolDefinitionGraph = (Graph)toGraphFunction.invoke(pathToProtocolDefinition);
+        var protocolDefinitionGraph = (Graph)toGraphFunction.invoke(n);
 
         result = new ClojureGraphToDtoHelper()
                 .parseGraphAndReturnInitialState(protocolDefinitionGraph);

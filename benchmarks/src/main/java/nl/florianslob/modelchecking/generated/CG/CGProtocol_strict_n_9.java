@@ -26,7 +26,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> worker_7_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_8_Queue = new LinkedBlockingQueue<>();
 	private final IEnvironment masterEnvironment = new IEnvironment() {
-		private int state = 0;
+		private int state = 12;
 		
 		public int getState(){
 			return state;
@@ -41,492 +41,669 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 			return "master";
 		}
 		
-		public <Any, AnyInput> Optional<Any> exchange_0_46(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+		public <Any, AnyInput> Optional<Any> exchange_0_14(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 2 :
-					wait();
-					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(33);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 1:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_7_";
-						}
-						if (receiver.equals("worker_7_")) {
-							setState(4);
-							worker_7_Queue.put(new ProtocolMessage(box.get(),65));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 3:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_1_";
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 4:
-					if(!box.isPresent() && !isCloseAction){
-						setState(5);
+						setState(1);
 						// Disabling unchecked inspection: We did check the class in the if statement above
 						//noinspection unchecked
 						return Optional.of((Any)masterQueue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
-				case 5:
+				case 1:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "worker_8_";
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_4_","worker_5_","worker_6_","worker_0_","worker_3_","worker_8_","worker_2_","worker_7_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(2);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_4_")) {
+							setState(6);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(7);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),25));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(8);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(5);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),23));
+							return Optional.empty();
 						}
 						if (receiver.equals("worker_8_")) {
-							setState(8);
-							worker_8_Queue.put(new ProtocolMessage(box.get(),69));
+							setState(13);
+							worker_8_Queue.put(new ProtocolMessage(box.get(),29));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(11);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
+				case 2:
+					if(!box.isPresent() && !isCloseAction){
+						setState(1);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)masterQueue.take().Message);
+					}
+					throw new NotAllowedTransitionException();
+				case 3:
+					if(!box.isPresent() && !isCloseAction){
+						setState(1);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)masterQueue.take().Message);
+					}
+					throw new NotAllowedTransitionException();
+				case 4:
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
+				case 5:
+					if(!box.isPresent() && !isCloseAction){
+						setState(1);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)masterQueue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 6:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_2_";
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(7);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
-						}
-					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(1);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)masterQueue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 7:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_3_";
-						}
-						if (receiver.equals("worker_3_")) {
-							setState(10);
-							worker_3_Queue.put(new ProtocolMessage(box.get(),8));
-							return Optional.empty();
-						}
-					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(1);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)masterQueue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 8:
 					if(!box.isPresent() && !isCloseAction){
-						setState(9);
+						setState(1);
 						// Disabling unchecked inspection: We did check the class in the if statement above
 						//noinspection unchecked
 						return Optional.of((Any)masterQueue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 9:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_5_","worker_4_","worker_3_","worker_2_","worker_6_","worker_8_","worker_7_","worker_1_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(7);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),25));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_4_")) {
+							setState(6);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(5);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),23));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(8);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_8_")) {
+							setState(13);
+							worker_8_Queue.put(new ProtocolMessage(box.get(),29));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(11);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),27));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(2);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_7_","worker_3_","worker_0_","worker_1_","worker_4_","worker_2_","worker_6_","worker_8_","worker_5_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(10);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(10);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(10);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_4_")) {
+							setState(10);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),11));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(10);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),8));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(10);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_8_")) {
+							setState(10);
+							worker_8_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(10);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),14));
+							return Optional.empty();
+						}
+					}
 					if (isCloseAction) {
-						setState(11);
+						setState(4);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = masterQueue.take();
+						if (objectToGet.OriginalTargetStateId == 1) {
+							setState(9);
+							//queueFromworker_8_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 2) {
+							setState(9);
+							//queueFromworker_7_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 4) {
+							setState(9);
+							//queueFromworker_6_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 6) {
+							setState(9);
+							//queueFromworker_5_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 10) {
+							setState(9);
+							//queueFromworker_4_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 12) {
+							setState(9);
+							//queueFromworker_3_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 13) {
+							setState(9);
+							//queueFromworker_2_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 15) {
+							setState(9);
+							//queueFromworker_1_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 18) {
+							setState(9);
+							//queueFromworker_0_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 10:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "worker_4_";
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_","worker_3_","worker_4_","worker_8_","worker_2_","worker_5_","worker_7_","worker_6_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(2);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(5);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),23));
+							return Optional.empty();
 						}
 						if (receiver.equals("worker_4_")) {
+							setState(6);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_8_")) {
 							setState(13);
-							worker_4_Queue.put(new ProtocolMessage(box.get(),10));
+							worker_8_Queue.put(new ProtocolMessage(box.get(),29));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(7);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),25));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(11);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),27));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(8);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),26));
 							return Optional.empty();
 						}
 					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_","worker_2_","worker_8_","worker_7_","worker_3_","worker_5_","worker_4_","worker_6_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(10);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(10);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),8));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_8_")) {
+							setState(10);
+							worker_8_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(10);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(10);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(10);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),14));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_4_")) {
+							setState(10);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),11));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(10);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = masterQueue.take();
+						if (objectToGet.OriginalTargetStateId == 1) {
+							setState(9);
+							//queueFromworker_8_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 2) {
+							setState(9);
+							//queueFromworker_7_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 4) {
+							setState(9);
+							//queueFromworker_6_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 6) {
+							setState(9);
+							//queueFromworker_5_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 10) {
+							setState(9);
+							//queueFromworker_4_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 12) {
+							setState(9);
+							//queueFromworker_3_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 13) {
+							setState(9);
+							//queueFromworker_2_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 15) {
+							setState(9);
+							//queueFromworker_1_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 18) {
+							setState(9);
+							//queueFromworker_0_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 11:
-					if (isCloseAction) {
-						setState(12);
-						return Optional.empty();
-					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(1);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)masterQueue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 12:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_6_","worker_1_","worker_2_","worker_3_","worker_5_","worker_8_","worker_4_","worker_0_","worker_7_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(10);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(10);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),8));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(10);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(10);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),14));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_8_")) {
+							setState(10);
+							worker_8_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_4_")) {
+							setState(10);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),11));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(10);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(10);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(9);
+							String[] receiverOptionsArray = new String[]{ "worker_4_","worker_8_","worker_6_","worker_3_","worker_1_","worker_0_","worker_7_","worker_2_","worker_5_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_4_")) {
+							setState(6);
+							worker_4_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_8_")) {
+							setState(13);
+							worker_8_Queue.put(new ProtocolMessage(box.get(),29));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_6_")) {
+							setState(8);
+							worker_6_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(5);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),23));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(2);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_7_")) {
+							setState(11);
+							worker_7_Queue.put(new ProtocolMessage(box.get(),27));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_5_")) {
+							setState(7);
+							worker_5_Queue.put(new ProtocolMessage(box.get(),25));
+							return Optional.empty();
+						}
+					}
 					if (isCloseAction) {
-						setState(14);
+						setState(4);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = masterQueue.take();
+						if (objectToGet.OriginalTargetStateId == 1) {
+							setState(9);
+							//queueFromworker_8_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 2) {
+							setState(9);
+							//queueFromworker_7_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 4) {
+							setState(9);
+							//queueFromworker_6_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 6) {
+							setState(9);
+							//queueFromworker_5_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 10) {
+							setState(9);
+							//queueFromworker_4_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 12) {
+							setState(9);
+							//queueFromworker_3_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 13) {
+							setState(9);
+							//queueFromworker_2_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 15) {
+							setState(9);
+							//queueFromworker_1_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 18) {
+							setState(9);
+							//queueFromworker_0_Tomaster);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 13:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_5_";
-						}
-						if (receiver.equals("worker_5_")) {
-							setState(16);
-							worker_5_Queue.put(new ProtocolMessage(box.get(),12));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 14:
-					if (isCloseAction) {
-						setState(15);
-						return Optional.empty();
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 15:
-					if (isCloseAction) {
-						setState(17);
-						return Optional.empty();
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 16:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_6_";
-						}
-						if (receiver.equals("worker_6_")) {
-							setState(19);
-							worker_6_Queue.put(new ProtocolMessage(box.get(),14));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 17:
-					if (isCloseAction) {
-						setState(18);
-						return Optional.empty();
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 18:
-					if (isCloseAction) {
-						setState(20);
-						return Optional.empty();
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 19:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_7_";
-						}
-						if (receiver.equals("worker_7_")) {
-							setState(22);
-							worker_7_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 20:
-					if (isCloseAction) {
-						setState(21);
-						return Optional.empty();
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 21:
-					if (isCloseAction) {
-						setState(2);
-						return Optional.empty();
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 22:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_8_";
-						}
-						if (receiver.equals("worker_8_")) {
-							setState(23);
-							worker_8_Queue.put(new ProtocolMessage(box.get(),18));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 23:
-					if(!box.isPresent() && !isCloseAction){
-						setState(24);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 24:
-					if(!box.isPresent() && !isCloseAction){
-						setState(25);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 25:
-					if(!box.isPresent() && !isCloseAction){
-						setState(26);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 26:
-					if(!box.isPresent() && !isCloseAction){
-						setState(27);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 27:
-					if(!box.isPresent() && !isCloseAction){
-						setState(28);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 28:
-					if(!box.isPresent() && !isCloseAction){
-						setState(29);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 29:
-					if(!box.isPresent() && !isCloseAction){
-						setState(30);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 30:
-					if(!box.isPresent() && !isCloseAction){
-						setState(31);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 31:
-					if(!box.isPresent() && !isCloseAction){
-						setState(32);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 32:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(33);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 33:
-					if(!box.isPresent() && !isCloseAction){
-						setState(34);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 34:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_1_";
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(35);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 35:
-					if(!box.isPresent() && !isCloseAction){
-						setState(36);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 36:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_2_";
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(37);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),45));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 37:
-					if(!box.isPresent() && !isCloseAction){
-						setState(38);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 38:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_3_";
-						}
-						if (receiver.equals("worker_3_")) {
-							setState(39);
-							worker_3_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 39:
-					if(!box.isPresent() && !isCloseAction){
-						setState(40);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 40:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_4_";
-						}
-						if (receiver.equals("worker_4_")) {
-							setState(41);
-							worker_4_Queue.put(new ProtocolMessage(box.get(),53));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 41:
-					if(!box.isPresent() && !isCloseAction){
-						setState(42);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 42:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_5_";
-						}
-						if (receiver.equals("worker_5_")) {
-							setState(43);
-							worker_5_Queue.put(new ProtocolMessage(box.get(),57));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 43:
-					if(!box.isPresent() && !isCloseAction){
-						setState(44);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)masterQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 44:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_6_";
-						}
-						if (receiver.equals("worker_6_")) {
-							setState(45);
-							worker_6_Queue.put(new ProtocolMessage(box.get(),61));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 45:
 					if(!box.isPresent() && !isCloseAction){
 						setState(1);
 						// Disabling unchecked inspection: We did check the class in the if statement above
@@ -540,8 +717,8 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		@Override
 		public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			if (state >=0 && state <= 46){
-				Optional result = exchange_0_46(box, receiver, isCloseAction);
+			if (state >=0 && state <= 14){
+				Optional result = exchange_0_14(box, receiver, isCloseAction);
 				if(result != null)
 				  return (Optional<Any>) result;
 			}
@@ -550,7 +727,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_0_Environment = new IEnvironment() {
-		private int state = 2;
+		private int state = 1;
 		
 		public int getState(){
 			return state;
@@ -567,29 +744,79 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
-					if (isCloseAction) {
-						setState(0);
-						return Optional.empty();
+				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(3);
+							masterQueue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
-				case 2:
+				case 1:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(2);
+							masterQueue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 1) {
-							setState(3);
+						if (objectToGet.OriginalTargetStateId == 3) {
+							setState(2);
 							//queueFrommasterToworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
-						if (objectToGet.OriginalTargetStateId == 2) {
-							setState(4);
+						if (objectToGet.OriginalTargetStateId == 20) {
+							setState(0);
+							//queueFrommasterToworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 2:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(2);
+							masterQueue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_0_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 3) {
+							setState(2);
+							//queueFrommasterToworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 20) {
+							setState(0);
 							//queueFrommasterToworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -598,29 +825,21 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(2);
-							masterQueue.put(new ProtocolMessage(box.get(),20));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(0);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_0_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
@@ -641,7 +860,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_1_Environment = new IEnvironment() {
-		private int state = 4;
+		private int state = 2;
 		
 		public int getState(){
 			return state;
@@ -658,15 +877,30 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
+				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+					}
+					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
 				case 1:
 					if (isCloseAction) {
-						setState(0);
+						setState(4);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(0);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_1_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
@@ -675,12 +909,31 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(4);
-							masterQueue.put(new ProtocolMessage(box.get(),22));
+							setState(3);
+							masterQueue.put(new ProtocolMessage(box.get(),15));
 							return Optional.empty();
 						}
 					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_1_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 5) {
+							setState(3);
+							//queueFrommasterToworker_1_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 21) {
+							setState(0);
+							//queueFrommasterToworker_1_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
@@ -689,31 +942,39 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),43));
+							setState(3);
+							masterQueue.put(new ProtocolMessage(box.get(),15));
 							return Optional.empty();
 						}
 					}
-					if(!box.isPresent() && !isCloseAction){
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
 					}
-					throw new NotAllowedTransitionException();
-				case 4:
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_1_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 4) {
-							setState(2);
-							//queueFrommasterToworker_1_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 41) {
+						if (objectToGet.OriginalTargetStateId == 5) {
 							setState(3);
 							//queueFrommasterToworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
+						if (objectToGet.OriginalTargetStateId == 21) {
+							setState(0);
+							//queueFrommasterToworker_1_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 4:
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 			}
@@ -732,7 +993,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_2_Environment = new IEnvironment() {
-		private int state = 1;
+		private int state = 0;
 		
 		public int getState(){
 			return state;
@@ -749,21 +1010,65 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
+				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),13));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 6) {
-							setState(3);
+						if (objectToGet.OriginalTargetStateId == 8) {
+							setState(1);
 							//queueFrommasterToworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
-						if (objectToGet.OriginalTargetStateId == 45) {
-							setState(4);
+						if (objectToGet.OriginalTargetStateId == 22) {
+							setState(2);
+							//queueFrommasterToworker_2_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 1:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),13));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_2_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 8) {
+							setState(1);
+							//queueFrommasterToworker_2_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 22) {
+							setState(2);
 							//queueFrommasterToworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -772,37 +1077,35 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
-					if (isCloseAction) {
-						setState(0);
-						return Optional.empty();
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(3);
+							masterQueue.put(new ProtocolMessage(box.get(),38));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_2_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(2);
-							masterQueue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
@@ -823,7 +1126,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_3_Environment = new IEnvironment() {
-		private int state = 3;
+		private int state = 0;
 		
 		public int getState(){
 			return state;
@@ -840,62 +1143,104 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
+				case 0:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 						if (receiver == null) {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(2);
-							masterQueue.put(new ProtocolMessage(box.get(),51));
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),12));
 							return Optional.empty();
 						}
 					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 2:
 					if (isCloseAction) {
-						setState(0);
+						setState(3);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 3:
-					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_3_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 8) {
-							setState(4);
-							//queueFrommasterToworker_3_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 49) {
+						if (objectToGet.OriginalTargetStateId == 9) {
 							setState(1);
 							//queueFrommasterToworker_3_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
+						if (objectToGet.OriginalTargetStateId == 23) {
+							setState(2);
+							//queueFrommasterToworker_3_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
-				case 4:
+				case 1:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 						if (receiver == null) {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(3);
-							masterQueue.put(new ProtocolMessage(box.get(),26));
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),12));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_3_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 9) {
+							setState(1);
+							//queueFrommasterToworker_3_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 23) {
+							setState(2);
+							//queueFrommasterToworker_3_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 2:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(4);
+							masterQueue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
+				case 3:
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
+				case 4:
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_3_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 			}
@@ -914,7 +1259,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_4_Environment = new IEnvironment() {
-		private int state = 4;
+		private int state = 0;
 		
 		public int getState(){
 			return state;
@@ -931,15 +1276,70 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
+				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+					}
 					if (isCloseAction) {
-						setState(0);
+						setState(3);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_4_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 11) {
+							setState(1);
+							//queueFrommasterToworker_4_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 24) {
+							setState(2);
+							//queueFrommasterToworker_4_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 1:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_4_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 11) {
+							setState(1);
+							//queueFrommasterToworker_4_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 24) {
+							setState(2);
+							//queueFrommasterToworker_4_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
@@ -948,8 +1348,8 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),55));
+							setState(4);
+							masterQueue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
 					}
@@ -957,36 +1357,23 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(4);
-							masterQueue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = worker_4_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 10) {
-							setState(3);
-							//queueFrommasterToworker_4_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 53) {
-							setState(2);
-							//queueFrommasterToworker_4_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_4_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 			}
@@ -1005,7 +1392,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_5_Environment = new IEnvironment() {
-		private int state = 1;
+		private int state = 0;
 		
 		public int getState(){
 			return state;
@@ -1022,21 +1409,65 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
+				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),6));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_5_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 12) {
-							setState(4);
+						if (objectToGet.OriginalTargetStateId == 14) {
+							setState(1);
 							//queueFrommasterToworker_5_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
-						if (objectToGet.OriginalTargetStateId == 57) {
-							setState(3);
+						if (objectToGet.OriginalTargetStateId == 25) {
+							setState(2);
+							//queueFrommasterToworker_5_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 1:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(1);
+							masterQueue.put(new ProtocolMessage(box.get(),6));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_5_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 14) {
+							setState(1);
+							//queueFrommasterToworker_5_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 25) {
+							setState(2);
 							//queueFrommasterToworker_5_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -1045,39 +1476,37 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
-					if (isCloseAction) {
-						setState(0);
-						return Optional.empty();
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(4);
+							masterQueue.put(new ProtocolMessage(box.get(),44));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(2);
-							masterQueue.put(new ProtocolMessage(box.get(),59));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),30));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(3);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_5_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 			}
@@ -1096,7 +1525,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_6_Environment = new IEnvironment() {
-		private int state = 2;
+		private int state = 0;
 		
 		public int getState(){
 			return state;
@@ -1113,28 +1542,72 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
+				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(2);
+							masterQueue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_6_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 16) {
+							setState(2);
+							//queueFrommasterToworker_6_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 26) {
+							setState(3);
+							//queueFrommasterToworker_6_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
 				case 1:
 					if (isCloseAction) {
-						setState(0);
+						setState(1);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(2);
+							masterQueue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_6_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 14) {
-							setState(4);
+						if (objectToGet.OriginalTargetStateId == 16) {
+							setState(2);
 							//queueFrommasterToworker_6_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
-						if (objectToGet.OriginalTargetStateId == 61) {
+						if (objectToGet.OriginalTargetStateId == 26) {
 							setState(3);
 							//queueFrommasterToworker_6_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
@@ -1149,8 +1622,8 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),63));
+							setState(4);
+							masterQueue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
 					}
@@ -1158,17 +1631,15 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
-						if (receiver == null) {
-							receiver = "master";
-						}
-						if (receiver.equals("master")) {
-							setState(2);
-							masterQueue.put(new ProtocolMessage(box.get(),32));
-							return Optional.empty();
-						}
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(3);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_6_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 			}
@@ -1187,7 +1658,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_7_Environment = new IEnvironment() {
-		private int state = 1;
+		private int state = 2;
 		
 		public int getState(){
 			return state;
@@ -1204,26 +1675,24 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
+				case 0:
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = worker_7_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(2);
-							//queueFrommasterToworker_7_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 65) {
-							setState(3);
-							//queueFrommasterToworker_7_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
+						setState(4);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_7_Queue.take().Message);
+					}
+					throw new NotAllowedTransitionException();
+				case 1:
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
@@ -1232,12 +1701,31 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(1);
-							masterQueue.put(new ProtocolMessage(box.get(),34));
+							setState(3);
+							masterQueue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_7_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 17) {
+							setState(3);
+							//queueFrommasterToworker_7_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 27) {
+							setState(4);
+							//queueFrommasterToworker_7_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
@@ -1246,18 +1734,43 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(4);
-							masterQueue.put(new ProtocolMessage(box.get(),67));
+							setState(3);
+							masterQueue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
+					if (isCloseAction) {
+						setState(1);
+						return Optional.empty();
+					}
 					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_7_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 17) {
+							setState(3);
+							//queueFrommasterToworker_7_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 27) {
+							setState(4);
+							//queueFrommasterToworker_7_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
-					if (isCloseAction) {
-						setState(0);
-						return Optional.empty();
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(0);
+							masterQueue.put(new ProtocolMessage(box.get(),48));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 					}
@@ -1278,7 +1791,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		}
 	};
 	private final IEnvironment worker_8_Environment = new IEnvironment() {
-		private int state = 3;
+		private int state = 1;
 		
 		public int getState(){
 			return state;
@@ -1295,21 +1808,51 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
-				case 1:
+				case 0:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
 						if (receiver == null) {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
 							setState(3);
-							masterQueue.put(new ProtocolMessage(box.get(),36));
+							masterQueue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
+				case 1:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.DoneMessage.class ) {
+						if (receiver == null) {
+							receiver = "master";
+						}
+						if (receiver.equals("master")) {
+							setState(2);
+							masterQueue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_8_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 19) {
+							setState(2);
+							//queueFrommasterToworker_8_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 29) {
+							setState(0);
+							//queueFrommasterToworker_8_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
@@ -1318,36 +1861,48 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 							receiver = "master";
 						}
 						if (receiver.equals("master")) {
-							setState(4);
-							masterQueue.put(new ProtocolMessage(box.get(),71));
+							setState(2);
+							masterQueue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
-					if(!box.isPresent() && !isCloseAction){
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
 					}
-					throw new NotAllowedTransitionException();
-				case 3:
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_8_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 18) {
-							setState(1);
-							//queueFrommasterToworker_8_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 69) {
+						if (objectToGet.OriginalTargetStateId == 19) {
 							setState(2);
 							//queueFrommasterToworker_8_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
+						if (objectToGet.OriginalTargetStateId == 29) {
+							setState(0);
+							//queueFrommasterToworker_8_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 3:
+					if (isCloseAction) {
+						setState(4);
+						return Optional.empty();
+					}
+					if(!box.isPresent() && !isCloseAction){
+						setState(0);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)worker_8_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 4:
 					if (isCloseAction) {
-						setState(0);
+						setState(4);
 						return Optional.empty();
 					}
 					if(!box.isPresent() && !isCloseAction){
@@ -1389,7 +1944,7 @@ public class CGProtocol_strict_n_9 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_3_","worker_2_","worker_4_","worker_6_","worker_8_","worker_1_","worker_0_","master","worker_7_","worker_5_" };
+		return new String[] { "worker_3_","worker_4_","worker_6_","worker_2_","worker_5_","worker_1_","worker_0_","master","worker_7_","worker_8_" };
 	}
 	
 	@Override
