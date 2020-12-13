@@ -21,7 +21,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
         boolean
-                genCGProtocol = false,
+                genCGProtocol = true,
                 genFTProtocol = false,
                 genISProtocol = false,
                 genMGProtocol = false,
@@ -35,7 +35,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
                 genGoFishProtocol = false,
                 genRockPaperScissorsProtocol = false
                         ;
-        boolean generateToTestBenchmarkProject = true;
+        boolean generateToTestBenchmarkProject = false;
         boolean generateToTestProject = true;
 
         var filePathForDemoProtocols = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
@@ -72,9 +72,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genCGProtocol){
-
             var clojureFunctionName = "cg";
-
 
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
