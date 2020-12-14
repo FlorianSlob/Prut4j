@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class MGProtocol_n_24 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> interp_0_Queue = new LinkedBlockingQueue<>();
@@ -2338,6 +2337,16 @@ public class MGProtocol_n_24 implements IProtocol {
 							return Optional.empty();
 						}
 					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+						if (receiver == null) {
+							receiver = "resid_0_";
+						}
+						if (receiver.equals("resid_0_")) {
+							setState(431);
+							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "interp_0_";
@@ -2355,16 +2364,6 @@ public class MGProtocol_n_24 implements IProtocol {
 						if (receiver.equals("rprj_0_")) {
 							setState(384);
 							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-						if (receiver == null) {
-							receiver = "resid_0_";
-						}
-						if (receiver.equals("resid_0_")) {
-							setState(431);
-							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
 					}
@@ -2886,13 +2885,13 @@ public class MGProtocol_n_24 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 49:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 						if (receiver == null) {
-							receiver = "resid_0_";
+							receiver = "psinv_0_";
 						}
-						if (receiver.equals("resid_0_")) {
-							setState(431);
-							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
+						if (receiver.equals("psinv_0_")) {
+							setState(337);
+							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -2906,13 +2905,13 @@ public class MGProtocol_n_24 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 						if (receiver == null) {
-							receiver = "psinv_0_";
+							receiver = "resid_0_";
 						}
-						if (receiver.equals("psinv_0_")) {
-							setState(337);
-							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+						if (receiver.equals("resid_0_")) {
+							setState(431);
+							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
 					}
@@ -14044,11 +14043,31 @@ public class MGProtocol_n_24 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "interp_6_","interp_18_","psinv_11_","psinv_18_","rprj_7_","interp_5_","rprj_23_","resid_5_","interp_21_","interp_15_","resid_21_","rprj_16_","psinv_23_","interp_4_","interp_14_","rprj_20_","resid_22_","rprj_6_","interp_23_","rprj_13_","rprj_14_","psinv_5_","rprj_19_","psinv_4_","psinv_9_","psinv_16_","resid_1_","rprj_0_","resid_16_","rprj_11_","rprj_12_","psinv_22_","interp_10_","psinv_20_","resid_18_","interp_9_","interp_2_","interp_7_","resid_20_","resid_17_","interp_8_","resid_15_","psinv_8_","interp_0_","rprj_3_","resid_6_","rprj_9_","psinv_19_","resid_4_","interp_12_","resid_23_","resid_3_","rprj_2_","resid_9_","psinv_14_","interp_1_","psinv_15_","resid_13_","resid_2_","resid_0_","resid_10_","resid_8_","psinv_21_","rprj_4_","psinv_6_","rprj_21_","rprj_18_","rprj_22_","interp_3_","psinv_2_","interp_13_","psinv_1_","resid_19_","interp_20_","interp_16_","interp_11_","resid_14_","master","resid_7_","rprj_10_","rprj_8_","psinv_12_","interp_17_","resid_12_","psinv_0_","psinv_3_","interp_22_","rprj_15_","psinv_13_","rprj_5_","rprj_1_","rprj_17_","resid_11_","psinv_10_","psinv_17_","interp_19_","psinv_7_" };
+		return new String[] { "rprj_0_","resid_19_","resid_4_","psinv_19_","psinv_5_","psinv_17_","rprj_11_","psinv_9_","rprj_7_","resid_22_","rprj_13_","psinv_2_","psinv_4_","rprj_6_","rprj_9_","rprj_16_","rprj_19_","interp_22_","resid_16_","interp_18_","psinv_12_","master","resid_8_","resid_1_","interp_7_","psinv_15_","rprj_17_","psinv_21_","resid_0_","interp_2_","psinv_11_","resid_9_","psinv_13_","rprj_2_","rprj_3_","resid_11_","rprj_23_","psinv_23_","psinv_3_","interp_23_","resid_3_","interp_13_","resid_18_","interp_10_","resid_17_","interp_17_","resid_2_","interp_15_","interp_0_","interp_3_","rprj_4_","rprj_5_","interp_5_","interp_12_","rprj_12_","psinv_20_","psinv_6_","psinv_22_","rprj_10_","psinv_1_","rprj_18_","resid_15_","psinv_14_","resid_12_","rprj_8_","interp_19_","interp_20_","resid_7_","interp_11_","rprj_22_","resid_14_","resid_21_","psinv_8_","resid_13_","rprj_14_","psinv_16_","interp_8_","interp_14_","resid_20_","rprj_20_","interp_9_","resid_5_","psinv_7_","resid_10_","rprj_15_","rprj_1_","interp_1_","interp_16_","psinv_0_","resid_6_","psinv_10_","rprj_21_","interp_21_","psinv_18_","interp_6_","interp_4_","resid_23_" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + interp_0_Environment.getState() + "/" + interp_10_Environment.getState() + "/" + interp_11_Environment.getState() + "/" + interp_12_Environment.getState() + "/" + interp_13_Environment.getState() + "/" + interp_14_Environment.getState() + "/" + interp_15_Environment.getState() + "/" + interp_16_Environment.getState() + "/" + interp_17_Environment.getState() + "/" + interp_18_Environment.getState() + "/" + interp_19_Environment.getState() + "/" + interp_1_Environment.getState() + "/" + interp_20_Environment.getState() + "/" + interp_21_Environment.getState() + "/" + interp_22_Environment.getState() + "/" + interp_23_Environment.getState() + "/" + interp_2_Environment.getState() + "/" + interp_3_Environment.getState() + "/" + interp_4_Environment.getState() + "/" + interp_5_Environment.getState() + "/" + interp_6_Environment.getState() + "/" + interp_7_Environment.getState() + "/" + interp_8_Environment.getState() + "/" + interp_9_Environment.getState() + "/" + masterEnvironment.getState() + "/" + psinv_0_Environment.getState() + "/" + psinv_10_Environment.getState() + "/" + psinv_11_Environment.getState() + "/" + psinv_12_Environment.getState() + "/" + psinv_13_Environment.getState() + "/" + psinv_14_Environment.getState() + "/" + psinv_15_Environment.getState() + "/" + psinv_16_Environment.getState() + "/" + psinv_17_Environment.getState() + "/" + psinv_18_Environment.getState() + "/" + psinv_19_Environment.getState() + "/" + psinv_1_Environment.getState() + "/" + psinv_20_Environment.getState() + "/" + psinv_21_Environment.getState() + "/" + psinv_22_Environment.getState() + "/" + psinv_23_Environment.getState() + "/" + psinv_2_Environment.getState() + "/" + psinv_3_Environment.getState() + "/" + psinv_4_Environment.getState() + "/" + psinv_5_Environment.getState() + "/" + psinv_6_Environment.getState() + "/" + psinv_7_Environment.getState() + "/" + psinv_8_Environment.getState() + "/" + psinv_9_Environment.getState() + "/" + resid_0_Environment.getState() + "/" + resid_10_Environment.getState() + "/" + resid_11_Environment.getState() + "/" + resid_12_Environment.getState() + "/" + resid_13_Environment.getState() + "/" + resid_14_Environment.getState() + "/" + resid_15_Environment.getState() + "/" + resid_16_Environment.getState() + "/" + resid_17_Environment.getState() + "/" + resid_18_Environment.getState() + "/" + resid_19_Environment.getState() + "/" + resid_1_Environment.getState() + "/" + resid_20_Environment.getState() + "/" + resid_21_Environment.getState() + "/" + resid_22_Environment.getState() + "/" + resid_23_Environment.getState() + "/" + resid_2_Environment.getState() + "/" + resid_3_Environment.getState() + "/" + resid_4_Environment.getState() + "/" + resid_5_Environment.getState() + "/" + resid_6_Environment.getState() + "/" + resid_7_Environment.getState() + "/" + resid_8_Environment.getState() + "/" + resid_9_Environment.getState() + "/" + rprj_0_Environment.getState() + "/" + rprj_10_Environment.getState() + "/" + rprj_11_Environment.getState() + "/" + rprj_12_Environment.getState() + "/" + rprj_13_Environment.getState() + "/" + rprj_14_Environment.getState() + "/" + rprj_15_Environment.getState() + "/" + rprj_16_Environment.getState() + "/" + rprj_17_Environment.getState() + "/" + rprj_18_Environment.getState() + "/" + rprj_19_Environment.getState() + "/" + rprj_1_Environment.getState() + "/" + rprj_20_Environment.getState() + "/" + rprj_21_Environment.getState() + "/" + rprj_22_Environment.getState() + "/" + rprj_23_Environment.getState() + "/" + rprj_2_Environment.getState() + "/" + rprj_3_Environment.getState() + "/" + rprj_4_Environment.getState() + "/" + rprj_5_Environment.getState() + "/" + rprj_6_Environment.getState() + "/" + rprj_7_Environment.getState() + "/" + rprj_8_Environment.getState() + "/" + rprj_9_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }

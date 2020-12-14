@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class ISProtocol_n_8 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
@@ -1244,11 +1243,31 @@ public class ISProtocol_n_8 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_3_","worker_4_","worker_5_","worker_2_","worker_6_","worker_0_","master","worker_1_","worker_7_" };
+		return new String[] { "worker_1_","worker_3_","worker_6_","worker_5_","worker_4_","worker_7_","worker_0_","worker_2_","master" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + masterEnvironment.getState() + "/" + worker_0_Environment.getState() + "/" + worker_1_Environment.getState() + "/" + worker_2_Environment.getState() + "/" + worker_3_Environment.getState() + "/" + worker_4_Environment.getState() + "/" + worker_5_Environment.getState() + "/" + worker_6_Environment.getState() + "/" + worker_7_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }

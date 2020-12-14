@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class CGProtocol_strict_n_23 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
@@ -3419,11 +3418,31 @@ public class CGProtocol_strict_n_23 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_19_","worker_8_","worker_15_","worker_10_","worker_12_","worker_3_","worker_17_","master","worker_0_","worker_20_","worker_7_","worker_2_","worker_1_","worker_5_","worker_21_","worker_6_","worker_4_","worker_18_","worker_13_","worker_22_","worker_16_","worker_11_","worker_9_","worker_14_" };
+		return new String[] { "worker_13_","worker_17_","worker_20_","worker_15_","worker_2_","worker_21_","worker_19_","worker_9_","worker_11_","worker_8_","worker_18_","worker_6_","worker_3_","master","worker_0_","worker_7_","worker_14_","worker_1_","worker_5_","worker_22_","worker_10_","worker_4_","worker_12_","worker_16_" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + masterEnvironment.getState() + "/" + worker_0_Environment.getState() + "/" + worker_10_Environment.getState() + "/" + worker_11_Environment.getState() + "/" + worker_12_Environment.getState() + "/" + worker_13_Environment.getState() + "/" + worker_14_Environment.getState() + "/" + worker_15_Environment.getState() + "/" + worker_16_Environment.getState() + "/" + worker_17_Environment.getState() + "/" + worker_18_Environment.getState() + "/" + worker_19_Environment.getState() + "/" + worker_1_Environment.getState() + "/" + worker_20_Environment.getState() + "/" + worker_21_Environment.getState() + "/" + worker_22_Environment.getState() + "/" + worker_2_Environment.getState() + "/" + worker_3_Environment.getState() + "/" + worker_4_Environment.getState() + "/" + worker_5_Environment.getState() + "/" + worker_6_Environment.getState() + "/" + worker_7_Environment.getState() + "/" + worker_8_Environment.getState() + "/" + worker_9_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }

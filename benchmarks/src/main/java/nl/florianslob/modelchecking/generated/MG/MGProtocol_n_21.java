@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class MGProtocol_n_21 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> interp_0_Queue = new LinkedBlockingQueue<>();
@@ -2033,16 +2032,6 @@ public class MGProtocol_n_21 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-						if (receiver == null) {
-							receiver = "interp_0_";
-						}
-						if (receiver.equals("interp_0_")) {
-							setState(2);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 						if (receiver == null) {
 							receiver = "resid_0_";
@@ -2050,6 +2039,16 @@ public class MGProtocol_n_21 implements IProtocol {
 						if (receiver.equals("resid_0_")) {
 							setState(377);
 							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(44);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 					}
@@ -2063,13 +2062,13 @@ public class MGProtocol_n_21 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
 							receiver = "interp_0_";
 						}
 						if (receiver.equals("interp_0_")) {
-							setState(44);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+							setState(2);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -2535,13 +2534,13 @@ public class MGProtocol_n_21 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 43:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 						if (receiver == null) {
-							receiver = "interp_0_";
+							receiver = "resid_0_";
 						}
-						if (receiver.equals("interp_0_")) {
-							setState(2);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
+						if (receiver.equals("resid_0_")) {
+							setState(377);
+							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
 					}
@@ -2555,16 +2554,6 @@ public class MGProtocol_n_21 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-						if (receiver == null) {
-							receiver = "resid_0_";
-						}
-						if (receiver.equals("resid_0_")) {
-							setState(377);
-							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 						if (receiver == null) {
 							receiver = "psinv_0_";
@@ -2572,6 +2561,16 @@ public class MGProtocol_n_21 implements IProtocol {
 						if (receiver.equals("psinv_0_")) {
 							setState(295);
 							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(2);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -12304,11 +12303,31 @@ public class MGProtocol_n_21 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "rprj_16_","psinv_7_","interp_3_","psinv_9_","interp_19_","resid_20_","psinv_10_","psinv_19_","resid_13_","interp_14_","psinv_6_","rprj_18_","resid_7_","interp_8_","rprj_1_","resid_18_","resid_15_","rprj_7_","psinv_13_","interp_16_","resid_1_","rprj_17_","psinv_11_","interp_15_","psinv_15_","resid_12_","rprj_15_","psinv_8_","interp_5_","resid_4_","interp_17_","rprj_2_","psinv_14_","rprj_0_","interp_9_","rprj_3_","interp_13_","master","psinv_5_","resid_17_","resid_3_","rprj_6_","rprj_19_","resid_2_","psinv_3_","psinv_2_","psinv_20_","interp_10_","interp_1_","interp_11_","resid_9_","resid_14_","interp_20_","interp_12_","resid_10_","resid_6_","rprj_13_","resid_19_","rprj_9_","resid_11_","rprj_8_","psinv_4_","interp_0_","interp_7_","interp_2_","resid_8_","rprj_10_","psinv_18_","resid_0_","psinv_1_","resid_5_","psinv_16_","rprj_12_","rprj_5_","rprj_4_","rprj_14_","interp_6_","psinv_12_","psinv_0_","resid_16_","interp_4_","rprj_11_","interp_18_","rprj_20_","psinv_17_" };
+		return new String[] { "psinv_4_","psinv_13_","rprj_18_","psinv_19_","interp_4_","rprj_13_","psinv_8_","resid_0_","resid_4_","resid_15_","psinv_16_","rprj_10_","interp_10_","rprj_2_","resid_19_","resid_2_","interp_16_","rprj_12_","interp_3_","interp_9_","rprj_11_","interp_0_","psinv_2_","psinv_3_","rprj_7_","interp_12_","resid_10_","rprj_5_","interp_11_","rprj_19_","resid_9_","resid_7_","psinv_14_","rprj_1_","psinv_5_","resid_8_","rprj_0_","resid_17_","rprj_3_","psinv_20_","rprj_9_","psinv_12_","psinv_9_","interp_6_","interp_18_","interp_15_","rprj_15_","interp_19_","psinv_7_","rprj_16_","rprj_6_","resid_18_","resid_5_","interp_20_","interp_7_","resid_13_","rprj_8_","interp_14_","interp_13_","psinv_17_","psinv_0_","rprj_20_","resid_14_","resid_12_","psinv_1_","master","rprj_14_","resid_16_","resid_1_","psinv_6_","psinv_11_","resid_20_","psinv_10_","interp_1_","psinv_18_","interp_8_","interp_17_","rprj_17_","rprj_4_","resid_3_","interp_5_","psinv_15_","resid_6_","interp_2_","resid_11_" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + interp_0_Environment.getState() + "/" + interp_10_Environment.getState() + "/" + interp_11_Environment.getState() + "/" + interp_12_Environment.getState() + "/" + interp_13_Environment.getState() + "/" + interp_14_Environment.getState() + "/" + interp_15_Environment.getState() + "/" + interp_16_Environment.getState() + "/" + interp_17_Environment.getState() + "/" + interp_18_Environment.getState() + "/" + interp_19_Environment.getState() + "/" + interp_1_Environment.getState() + "/" + interp_20_Environment.getState() + "/" + interp_2_Environment.getState() + "/" + interp_3_Environment.getState() + "/" + interp_4_Environment.getState() + "/" + interp_5_Environment.getState() + "/" + interp_6_Environment.getState() + "/" + interp_7_Environment.getState() + "/" + interp_8_Environment.getState() + "/" + interp_9_Environment.getState() + "/" + masterEnvironment.getState() + "/" + psinv_0_Environment.getState() + "/" + psinv_10_Environment.getState() + "/" + psinv_11_Environment.getState() + "/" + psinv_12_Environment.getState() + "/" + psinv_13_Environment.getState() + "/" + psinv_14_Environment.getState() + "/" + psinv_15_Environment.getState() + "/" + psinv_16_Environment.getState() + "/" + psinv_17_Environment.getState() + "/" + psinv_18_Environment.getState() + "/" + psinv_19_Environment.getState() + "/" + psinv_1_Environment.getState() + "/" + psinv_20_Environment.getState() + "/" + psinv_2_Environment.getState() + "/" + psinv_3_Environment.getState() + "/" + psinv_4_Environment.getState() + "/" + psinv_5_Environment.getState() + "/" + psinv_6_Environment.getState() + "/" + psinv_7_Environment.getState() + "/" + psinv_8_Environment.getState() + "/" + psinv_9_Environment.getState() + "/" + resid_0_Environment.getState() + "/" + resid_10_Environment.getState() + "/" + resid_11_Environment.getState() + "/" + resid_12_Environment.getState() + "/" + resid_13_Environment.getState() + "/" + resid_14_Environment.getState() + "/" + resid_15_Environment.getState() + "/" + resid_16_Environment.getState() + "/" + resid_17_Environment.getState() + "/" + resid_18_Environment.getState() + "/" + resid_19_Environment.getState() + "/" + resid_1_Environment.getState() + "/" + resid_20_Environment.getState() + "/" + resid_2_Environment.getState() + "/" + resid_3_Environment.getState() + "/" + resid_4_Environment.getState() + "/" + resid_5_Environment.getState() + "/" + resid_6_Environment.getState() + "/" + resid_7_Environment.getState() + "/" + resid_8_Environment.getState() + "/" + resid_9_Environment.getState() + "/" + rprj_0_Environment.getState() + "/" + rprj_10_Environment.getState() + "/" + rprj_11_Environment.getState() + "/" + rprj_12_Environment.getState() + "/" + rprj_13_Environment.getState() + "/" + rprj_14_Environment.getState() + "/" + rprj_15_Environment.getState() + "/" + rprj_16_Environment.getState() + "/" + rprj_17_Environment.getState() + "/" + rprj_18_Environment.getState() + "/" + rprj_19_Environment.getState() + "/" + rprj_1_Environment.getState() + "/" + rprj_20_Environment.getState() + "/" + rprj_2_Environment.getState() + "/" + rprj_3_Environment.getState() + "/" + rprj_4_Environment.getState() + "/" + rprj_5_Environment.getState() + "/" + rprj_6_Environment.getState() + "/" + rprj_7_Environment.getState() + "/" + rprj_8_Environment.getState() + "/" + rprj_9_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }

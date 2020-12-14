@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class GoFishProtocol implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> dealerQueue = new LinkedBlockingQueue<>();
@@ -44,7 +43,7 @@ public class GoFishProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Turn.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "player_0_","player_2_","player_1_" };
+							String[] receiverOptionsArray = new String[]{ "player_0_","player_1_","player_2_" };
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("player_0_")) {
@@ -52,14 +51,14 @@ public class GoFishProtocol implements IProtocol {
 							player_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
-						if (receiver.equals("player_2_")) {
-							setState(4);
-							player_2_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
 						if (receiver.equals("player_1_")) {
 							setState(8);
 							player_1_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+						if (receiver.equals("player_2_")) {
+							setState(4);
+							player_2_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -143,7 +142,7 @@ public class GoFishProtocol implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 5:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
 						}
@@ -153,7 +152,7 @@ public class GoFishProtocol implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
 						}
@@ -167,7 +166,7 @@ public class GoFishProtocol implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 6:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
 						}
@@ -177,7 +176,7 @@ public class GoFishProtocol implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
 						}
@@ -191,7 +190,7 @@ public class GoFishProtocol implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 7:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
 						}
@@ -201,7 +200,7 @@ public class GoFishProtocol implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
 						}
@@ -265,7 +264,7 @@ public class GoFishProtocol implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 10:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
 						}
@@ -275,7 +274,7 @@ public class GoFishProtocol implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.OutOfCards.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
 						}
@@ -701,6 +700,16 @@ public class GoFishProtocol implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 5:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Go.class ) {
+						if (receiver == null) {
+							receiver = "player_0_";
+						}
+						if (receiver.equals("player_0_")) {
+							setState(10);
+							player_0_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Card.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
@@ -713,16 +722,6 @@ public class GoFishProtocol implements IProtocol {
 						if (receiver.equals("player_0_")) {
 							setState(9);
 							player_0_Queue.put(new ProtocolMessage(box.get(),9));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Go.class ) {
-						if (receiver == null) {
-							receiver = "player_0_";
-						}
-						if (receiver.equals("player_0_")) {
-							setState(10);
-							player_0_Queue.put(new ProtocolMessage(box.get(),10));
 							return Optional.empty();
 						}
 					}
@@ -834,17 +833,17 @@ public class GoFishProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == discourje.examples.gofish.Ask.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "player_2_","player_0_" };
+							String[] receiverOptionsArray = new String[]{ "player_0_","player_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("player_2_")) {
-							setState(7);
-							player_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
 						}
 						if (receiver.equals("player_0_")) {
 							setState(3);
 							player_0_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("player_2_")) {
+							setState(7);
+							player_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 					}
@@ -871,13 +870,13 @@ public class GoFishProtocol implements IProtocol {
 							receiver = "player_2_";
 						}
 						if (receiver.equals("player_2_")) {
-							setState(9);
-							player_2_Queue.put(new ProtocolMessage(box.get(),42));
+							setState(0);
+							player_2_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
 						if (receiver.equals("player_2_")) {
-							setState(0);
-							player_2_Queue.put(new ProtocolMessage(box.get(),59));
+							setState(9);
+							player_2_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
 					}
@@ -1035,13 +1034,13 @@ public class GoFishProtocol implements IProtocol {
 							receiver = "player_0_";
 						}
 						if (receiver.equals("player_0_")) {
-							setState(14);
-							player_0_Queue.put(new ProtocolMessage(box.get(),57));
+							setState(0);
+							player_0_Queue.put(new ProtocolMessage(box.get(),67));
 							return Optional.empty();
 						}
 						if (receiver.equals("player_0_")) {
-							setState(0);
-							player_0_Queue.put(new ProtocolMessage(box.get(),67));
+							setState(14);
+							player_0_Queue.put(new ProtocolMessage(box.get(),57));
 							return Optional.empty();
 						}
 					}
@@ -1260,11 +1259,31 @@ public class GoFishProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_1_","dealer","player_0_","player_2_" };
+		return new String[] { "player_1_","dealer","player_2_","player_0_" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + dealerEnvironment.getState() + "/" + player_0_Environment.getState() + "/" + player_1_Environment.getState() + "/" + player_2_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }
