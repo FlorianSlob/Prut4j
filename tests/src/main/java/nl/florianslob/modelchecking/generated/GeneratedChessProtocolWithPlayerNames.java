@@ -15,9 +15,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import static java.lang.Thread.sleep;
 
 public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
-	private final BlockingQueue<ProtocolMessage> aliceQueue = new LinkedBlockingQueue<>();
-	private final BlockingQueue<ProtocolMessage> bobQueue = new LinkedBlockingQueue<>();
-	private final IEnvironment aliceEnvironment = new IEnvironment() {
+	private final BlockingQueue<ProtocolMessage> player_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> player_2_Queue = new LinkedBlockingQueue<>();
+	private final IEnvironment player_1_Environment = new IEnvironment() {
 		private int state = 0;
 		
 		public int getState(){
@@ -30,49 +30,45 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 		
 		@Override
 		public String getName(){
-			return "alice";
+			return "player_1_";
 		}
 		
-		public <Any, AnyInput> Optional<Any> exchange_0_4(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+		public <Any, AnyInput> Optional<Any> exchange_0_3(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 1 :
-					wait();
-					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == String.class ) {
+					if (box.isPresent() && box.get().getClass() == Long.class ) {
 						if (receiver == null) {
-							receiver = "bob";
+							receiver = "player_2_";
 						}
-						if (receiver.equals("bob")) {
-							setState(2);
-							bobQueue.put(new ProtocolMessage(box.get(),1));
+						if (receiver.equals("player_2_")) {
+							setState(1);
+							player_2_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)player_1_Queue.take().Message);
+					}
+					throw new NotAllowedTransitionException();
+				case 1:
+					if(!box.isPresent() && !isCloseAction){
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)player_1_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
-					if(!box.isPresent() && !isCloseAction){
-						setState(3);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)aliceQueue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 3:
-					if (box.isPresent() && box.get().getClass() == String.class ) {
+					if (box.isPresent() && box.get().getClass() == Long.class ) {
 						if (receiver == null) {
-							receiver = "bob";
+							receiver = "player_2_";
 						}
-						if (receiver.equals("bob")) {
+						if (receiver.equals("player_2_")) {
 							setState(1);
-							bobQueue.put(new ProtocolMessage(box.get(),5));
-							return Optional.empty();
-						}
-						if (receiver.equals("bob")) {
-							setState(2);
-							bobQueue.put(new ProtocolMessage(box.get(),1));
+							player_2_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -85,8 +81,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 		
 		@Override
 		public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			if (state >=0 && state <= 4){
-				Optional result = exchange_0_4(box, receiver, isCloseAction);
+			if (state >=0 && state <= 3){
+				Optional result = exchange_0_3(box, receiver, isCloseAction);
 				if(result != null)
 				  return (Optional<Any>) result;
 			}
@@ -94,8 +90,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 			
 		}
 	};
-	private final IEnvironment bobEnvironment = new IEnvironment() {
-		private int state = 1;
+	private final IEnvironment player_2_Environment = new IEnvironment() {
+		private int state = 0;
 		
 		public int getState(){
 			return state;
@@ -107,53 +103,49 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 		
 		@Override
 		public String getName(){
-			return "bob";
+			return "player_2_";
 		}
 		
-		public <Any, AnyInput> Optional<Any> exchange_0_4(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+		public <Any, AnyInput> Optional<Any> exchange_0_3(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
-				case 0 :
-					wait();
-					break;
+				case 0:
+					if (box.isPresent() && box.get().getClass() == Long.class ) {
+						if (receiver == null) {
+							receiver = "player_1_";
+						}
+						if (receiver.equals("player_1_")) {
+							setState(1);
+							player_1_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if(!box.isPresent() && !isCloseAction){
+						setState(2);
+						// Disabling unchecked inspection: We did check the class in the if statement above
+						//noinspection unchecked
+						return Optional.of((Any)player_2_Queue.take().Message);
+					}
+					throw new NotAllowedTransitionException();
 				case 1:
 					if(!box.isPresent() && !isCloseAction){
 						setState(2);
 						// Disabling unchecked inspection: We did check the class in the if statement above
 						//noinspection unchecked
-						return Optional.of((Any)bobQueue.take().Message);
+						return Optional.of((Any)player_2_Queue.take().Message);
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
-					if (box.isPresent() && box.get().getClass() == String.class ) {
+					if (box.isPresent() && box.get().getClass() == Long.class ) {
 						if (receiver == null) {
-							receiver = "alice";
+							receiver = "player_1_";
 						}
-						if (receiver.equals("alice")) {
-							setState(3);
-							aliceQueue.put(new ProtocolMessage(box.get(),3));
+						if (receiver.equals("player_1_")) {
+							setState(1);
+							player_1_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 3:
-					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = bobQueue.take();
-						if (objectToGet.OriginalTargetStateId == 1) {
-							setState(2);
-							//queueFromaliceTobob);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 5) {
-							setState(0);
-							//queueFromaliceTobob);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
 					}
 					throw new NotAllowedTransitionException();
 			}
@@ -162,8 +154,8 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 		
 		@Override
 		public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			if (state >=0 && state <= 4){
-				Optional result = exchange_0_4(box, receiver, isCloseAction);
+			if (state >=0 && state <= 3){
+				Optional result = exchange_0_3(box, receiver, isCloseAction);
 				if(result != null)
 				  return (Optional<Any>) result;
 			}
@@ -176,19 +168,19 @@ public class GeneratedChessProtocolWithPlayerNames implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "alice": return aliceEnvironment;
-			case "bob": return bobEnvironment;
+			case "player_1_": return player_1_Environment;
+			case "player_2_": return player_2_Environment;
 			default: throw new Exception("Unknown environment");
 		}
 	}
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "alice","bob" };
+		return new String[] { "player_2_","player_1_" };
 	}
 	
 	@Override
 	public String getState(){
-		return "/" + aliceEnvironment.getState() + "/" + bobEnvironment.getState() + "/";
+		return "/" + player_1_Environment.getState() + "/" + player_2_Environment.getState() + "/";
 	}
 }

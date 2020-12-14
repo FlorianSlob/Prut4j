@@ -1001,13 +1001,13 @@ public class FTProtocol_n_4 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 17:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 						if (receiver == null) {
-							receiver = "evolve_0_";
+							receiver = "fft_0_";
 						}
-						if (receiver.equals("evolve_0_")) {
-							setState(3);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
+						if (receiver.equals("fft_0_")) {
+							setState(2);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -1021,6 +1021,16 @@ public class FTProtocol_n_4 implements IProtocol {
 							return Optional.empty();
 						}
 					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(3);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "evolve_0_";
@@ -1028,16 +1038,6 @@ public class FTProtocol_n_4 implements IProtocol {
 						if (receiver.equals("evolve_0_")) {
 							setState(19);
 							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
-						if (receiver == null) {
-							receiver = "fft_0_";
-						}
-						if (receiver.equals("fft_0_")) {
-							setState(2);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -1333,7 +1333,7 @@ public class FTProtocol_n_4 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "fft_0_","evolve_0_","master","fft_1_","evolve_3_","fft_2_","evolve_2_","fft_3_","evolve_1_" };
+		return new String[] { "fft_2_","evolve_1_","evolve_2_","fft_0_","fft_3_","master","fft_1_","evolve_0_","evolve_3_" };
 	}
 	
 	@Override

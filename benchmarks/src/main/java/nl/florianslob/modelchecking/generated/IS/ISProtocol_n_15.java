@@ -53,16 +53,6 @@ public class ISProtocol_n_15 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(39);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -70,6 +60,16 @@ public class ISProtocol_n_15 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(39);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -2259,7 +2259,7 @@ public class ISProtocol_n_15 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_6_","worker_1_","worker_8_","worker_3_","worker_2_","worker_12_","worker_9_","worker_11_","worker_0_","worker_14_","worker_5_","worker_4_","worker_13_","master","worker_10_","worker_7_" };
+		return new String[] { "worker_5_","worker_8_","worker_1_","worker_12_","worker_2_","worker_13_","worker_7_","master","worker_4_","worker_6_","worker_9_","worker_3_","worker_10_","worker_11_","worker_14_","worker_0_" };
 	}
 	
 	@Override

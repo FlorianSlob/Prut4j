@@ -2514,13 +2514,23 @@ public class FTProtocol_n_13 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "fft_0_";
+							receiver = "evolve_0_";
 						}
-						if (receiver.equals("fft_0_")) {
+						if (receiver.equals("evolve_0_")) {
+							setState(43);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
 							setState(5);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -2534,23 +2544,13 @@ public class FTProtocol_n_13 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 						if (receiver == null) {
-							receiver = "evolve_0_";
+							receiver = "fft_0_";
 						}
-						if (receiver.equals("evolve_0_")) {
+						if (receiver.equals("fft_0_")) {
 							setState(6);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(43);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
+							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -2582,20 +2582,6 @@ public class FTProtocol_n_13 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 5:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
-						if (receiver == null) {
-							receiver = "fft_1_";
-						}
-						if (receiver.equals("fft_1_")) {
-							setState(8);
-							fft_1_Queue.put(new ProtocolMessage(box.get(),262));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-				case 6:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
 						if (receiver == null) {
 							receiver = "evolve_1_";
@@ -2603,6 +2589,20 @@ public class FTProtocol_n_13 implements IProtocol {
 						if (receiver.equals("evolve_1_")) {
 							setState(7);
 							evolve_1_Queue.put(new ProtocolMessage(box.get(),6));
+							return Optional.empty();
+						}
+					}
+					if(!box.isPresent() && !isCloseAction){
+					}
+					throw new NotAllowedTransitionException();
+				case 6:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+						if (receiver == null) {
+							receiver = "fft_1_";
+						}
+						if (receiver.equals("fft_1_")) {
+							setState(8);
+							fft_1_Queue.put(new ProtocolMessage(box.get(),262));
 							return Optional.empty();
 						}
 					}
@@ -3022,13 +3022,13 @@ public class FTProtocol_n_13 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 42:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
 						}
 						if (receiver.equals("fft_0_")) {
-							setState(5);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
+							setState(120);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -3037,7 +3037,7 @@ public class FTProtocol_n_13 implements IProtocol {
 							receiver = "evolve_0_";
 						}
 						if (receiver.equals("evolve_0_")) {
-							setState(6);
+							setState(5);
 							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
@@ -3052,13 +3052,13 @@ public class FTProtocol_n_13 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
 						}
 						if (receiver.equals("fft_0_")) {
-							setState(120);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
+							setState(6);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -4132,7 +4132,7 @@ public class FTProtocol_n_13 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "fft_1_","fft_4_","fft_11_","evolve_11_","fft_12_","fft_7_","evolve_4_","fft_9_","fft_2_","fft_8_","evolve_2_","fft_10_","fft_6_","evolve_6_","evolve_5_","evolve_3_","evolve_0_","evolve_1_","fft_5_","fft_0_","evolve_9_","fft_3_","evolve_8_","evolve_12_","evolve_7_","evolve_10_","master" };
+		return new String[] { "fft_10_","fft_5_","fft_1_","fft_7_","evolve_7_","evolve_11_","master","evolve_9_","evolve_10_","fft_3_","fft_9_","evolve_12_","evolve_3_","evolve_0_","fft_6_","fft_2_","evolve_2_","evolve_5_","fft_0_","fft_4_","fft_12_","fft_8_","fft_11_","evolve_6_","evolve_1_","evolve_4_","evolve_8_" };
 	}
 	
 	@Override

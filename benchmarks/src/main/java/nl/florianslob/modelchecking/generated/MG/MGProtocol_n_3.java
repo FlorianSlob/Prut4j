@@ -15,9 +15,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import static java.lang.Thread.sleep;
 
 public class MGProtocol_n_3 implements IProtocol {
-	private final BlockingQueue<ProtocolMessage> interpd_0_Queue = new LinkedBlockingQueue<>();
-	private final BlockingQueue<ProtocolMessage> interpd_1_Queue = new LinkedBlockingQueue<>();
-	private final BlockingQueue<ProtocolMessage> interpd_2_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interp_0_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interp_1_Queue = new LinkedBlockingQueue<>();
+	private final BlockingQueue<ProtocolMessage> interp_2_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> psinv_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> psinv_1_Queue = new LinkedBlockingQueue<>();
@@ -28,7 +28,7 @@ public class MGProtocol_n_3 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> rprj_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> rprj_1_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> rprj_2_Queue = new LinkedBlockingQueue<>();
-	private final IEnvironment interpd_0_Environment = new IEnvironment() {
+	private final IEnvironment interp_0_Environment = new IEnvironment() {
 		private int state = 3;
 		
 		public int getState(){
@@ -41,7 +41,7 @@ public class MGProtocol_n_3 implements IProtocol {
 		
 		@Override
 		public String getName(){
-			return "interpd_0_";
+			return "interp_0_";
 		}
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
@@ -73,17 +73,17 @@ public class MGProtocol_n_3 implements IProtocol {
 					throw new NotAllowedTransitionException();
 				case 3:
 					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = interpd_0_Queue.take();
+						ProtocolMessage objectToGet = interp_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 1) {
 							setState(4);
-							//queueFrommasterTointerpd_0_);
+							//queueFrommasterTointerp_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 5) {
 							setState(1);
-							//queueFrommasterTointerpd_0_);
+							//queueFrommasterTointerp_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -119,7 +119,7 @@ public class MGProtocol_n_3 implements IProtocol {
 			
 		}
 	};
-	private final IEnvironment interpd_1_Environment = new IEnvironment() {
+	private final IEnvironment interp_1_Environment = new IEnvironment() {
 		private int state = 3;
 		
 		public int getState(){
@@ -132,7 +132,7 @@ public class MGProtocol_n_3 implements IProtocol {
 		
 		@Override
 		public String getName(){
-			return "interpd_1_";
+			return "interp_1_";
 		}
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
@@ -164,17 +164,17 @@ public class MGProtocol_n_3 implements IProtocol {
 					throw new NotAllowedTransitionException();
 				case 3:
 					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = interpd_1_Queue.take();
+						ProtocolMessage objectToGet = interp_1_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 7) {
 							setState(4);
-							//queueFrommasterTointerpd_1_);
+							//queueFrommasterTointerp_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 32) {
 							setState(1);
-							//queueFrommasterTointerpd_1_);
+							//queueFrommasterTointerp_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -210,7 +210,7 @@ public class MGProtocol_n_3 implements IProtocol {
 			
 		}
 	};
-	private final IEnvironment interpd_2_Environment = new IEnvironment() {
+	private final IEnvironment interp_2_Environment = new IEnvironment() {
 		private int state = 3;
 		
 		public int getState(){
@@ -223,7 +223,7 @@ public class MGProtocol_n_3 implements IProtocol {
 		
 		@Override
 		public String getName(){
-			return "interpd_2_";
+			return "interp_2_";
 		}
 		
 		public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
@@ -255,17 +255,17 @@ public class MGProtocol_n_3 implements IProtocol {
 					throw new NotAllowedTransitionException();
 				case 3:
 					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = interpd_2_Queue.take();
+						ProtocolMessage objectToGet = interp_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 9) {
 							setState(4);
-							//queueFrommasterTointerpd_2_);
+							//queueFrommasterTointerp_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 48) {
 							setState(1);
-							//queueFrommasterTointerpd_2_);
+							//queueFrommasterTointerp_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -323,16 +323,6 @@ public class MGProtocol_n_3 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-						if (receiver == null) {
-							receiver = "interpd_0_";
-						}
-						if (receiver.equals("interpd_0_")) {
-							setState(2);
-							interpd_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 						if (receiver == null) {
 							receiver = "psinv_0_";
@@ -353,13 +343,13 @@ public class MGProtocol_n_3 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
-							receiver = "interpd_0_";
+							receiver = "interp_0_";
 						}
-						if (receiver.equals("interpd_0_")) {
-							setState(8);
-							interpd_0_Queue.put(new ProtocolMessage(box.get(),5));
+						if (receiver.equals("interp_0_")) {
+							setState(2);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -373,17 +363,27 @@ public class MGProtocol_n_3 implements IProtocol {
 							return Optional.empty();
 						}
 					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(8);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+					}
 					if(!box.isPresent() && !isCloseAction){
 					}
 					throw new NotAllowedTransitionException();
 				case 2:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
-							receiver = "interpd_1_";
+							receiver = "interp_1_";
 						}
-						if (receiver.equals("interpd_1_")) {
+						if (receiver.equals("interp_1_")) {
 							setState(3);
-							interpd_1_Queue.put(new ProtocolMessage(box.get(),7));
+							interp_1_Queue.put(new ProtocolMessage(box.get(),7));
 							return Optional.empty();
 						}
 					}
@@ -393,11 +393,11 @@ public class MGProtocol_n_3 implements IProtocol {
 				case 3:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
-							receiver = "interpd_2_";
+							receiver = "interp_2_";
 						}
-						if (receiver.equals("interpd_2_")) {
+						if (receiver.equals("interp_2_")) {
 							setState(4);
-							interpd_2_Queue.put(new ProtocolMessage(box.get(),9));
+							interp_2_Queue.put(new ProtocolMessage(box.get(),9));
 							return Optional.empty();
 						}
 					}
@@ -429,6 +429,36 @@ public class MGProtocol_n_3 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 7:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+						if (receiver == null) {
+							receiver = "psinv_0_";
+						}
+						if (receiver.equals("psinv_0_")) {
+							setState(43);
+							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(2);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(8);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 						if (receiver == null) {
 							receiver = "rprj_0_";
@@ -446,36 +476,6 @@ public class MGProtocol_n_3 implements IProtocol {
 						if (receiver.equals("resid_0_")) {
 							setState(53);
 							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
-						if (receiver == null) {
-							receiver = "psinv_0_";
-						}
-						if (receiver.equals("psinv_0_")) {
-							setState(43);
-							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-						if (receiver == null) {
-							receiver = "interpd_0_";
-						}
-						if (receiver.equals("interpd_0_")) {
-							setState(2);
-							interpd_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "interpd_0_";
-						}
-						if (receiver.equals("interpd_0_")) {
-							setState(8);
-							interpd_0_Queue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 					}
@@ -559,11 +559,11 @@ public class MGProtocol_n_3 implements IProtocol {
 				case 15:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "interpd_1_";
+							receiver = "interp_1_";
 						}
-						if (receiver.equals("interpd_1_")) {
+						if (receiver.equals("interp_1_")) {
 							setState(16);
-							interpd_1_Queue.put(new ProtocolMessage(box.get(),32));
+							interp_1_Queue.put(new ProtocolMessage(box.get(),32));
 							return Optional.empty();
 						}
 					}
@@ -647,11 +647,11 @@ public class MGProtocol_n_3 implements IProtocol {
 				case 23:
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "interpd_2_";
+							receiver = "interp_2_";
 						}
-						if (receiver.equals("interpd_2_")) {
+						if (receiver.equals("interp_2_")) {
 							setState(24);
-							interpd_2_Queue.put(new ProtocolMessage(box.get(),48));
+							interp_2_Queue.put(new ProtocolMessage(box.get(),48));
 							return Optional.empty();
 						}
 					}
@@ -1823,9 +1823,9 @@ public class MGProtocol_n_3 implements IProtocol {
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "interpd_0_": return interpd_0_Environment;
-			case "interpd_1_": return interpd_1_Environment;
-			case "interpd_2_": return interpd_2_Environment;
+			case "interp_0_": return interp_0_Environment;
+			case "interp_1_": return interp_1_Environment;
+			case "interp_2_": return interp_2_Environment;
 			case "master": return masterEnvironment;
 			case "psinv_0_": return psinv_0_Environment;
 			case "psinv_1_": return psinv_1_Environment;
@@ -1842,11 +1842,11 @@ public class MGProtocol_n_3 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "rprj_2_","interpd_0_","rprj_0_","psinv_2_","resid_0_","rprj_1_","master","psinv_0_","interpd_1_","psinv_1_","resid_2_","resid_1_","interpd_2_" };
+		return new String[] { "interp_0_","interp_2_","rprj_0_","psinv_2_","interp_1_","resid_0_","rprj_1_","master","psinv_0_","psinv_1_","resid_2_","resid_1_","rprj_2_" };
 	}
 	
 	@Override
 	public String getState(){
-		return "/" + interpd_0_Environment.getState() + "/" + interpd_1_Environment.getState() + "/" + interpd_2_Environment.getState() + "/" + masterEnvironment.getState() + "/" + psinv_0_Environment.getState() + "/" + psinv_1_Environment.getState() + "/" + psinv_2_Environment.getState() + "/" + resid_0_Environment.getState() + "/" + resid_1_Environment.getState() + "/" + resid_2_Environment.getState() + "/" + rprj_0_Environment.getState() + "/" + rprj_1_Environment.getState() + "/" + rprj_2_Environment.getState() + "/";
+		return "/" + interp_0_Environment.getState() + "/" + interp_1_Environment.getState() + "/" + interp_2_Environment.getState() + "/" + masterEnvironment.getState() + "/" + psinv_0_Environment.getState() + "/" + psinv_1_Environment.getState() + "/" + psinv_2_Environment.getState() + "/" + resid_0_Environment.getState() + "/" + resid_1_Environment.getState() + "/" + resid_2_Environment.getState() + "/" + rprj_0_Environment.getState() + "/" + rprj_1_Environment.getState() + "/" + rprj_2_Environment.getState() + "/";
 	}
 }

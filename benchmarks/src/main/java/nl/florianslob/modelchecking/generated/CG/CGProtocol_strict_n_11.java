@@ -1679,7 +1679,7 @@ public class CGProtocol_strict_n_11 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_5_","worker_10_","worker_3_","worker_0_","master","worker_7_","worker_9_","worker_4_","worker_1_","worker_6_","worker_8_" };
+		return new String[] { "worker_6_","worker_9_","worker_3_","worker_2_","worker_7_","worker_8_","worker_0_","worker_10_","worker_4_","worker_1_","worker_5_","master" };
 	}
 	
 	@Override
