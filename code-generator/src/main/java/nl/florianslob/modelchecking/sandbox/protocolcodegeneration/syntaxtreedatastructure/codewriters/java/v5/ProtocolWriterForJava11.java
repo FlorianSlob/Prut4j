@@ -46,7 +46,6 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.Random;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.BlockingQueue;");
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.LinkedBlockingQueue;");
-        StringBuilderSyntaxHelper.addLine(builder, tabCount,"import static java.lang.Thread.sleep;");
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount);
 
@@ -106,6 +105,26 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
                         StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return "+stateNameBuilder+";"); /// TODO Do we still need this:?
                     }
                 );
+
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any> void send(String threadName, Any m, String receiver) throws Exception", tabCountLvl0,
+                        (tabCountLvl1) -> {
+                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "getEnvironment(threadName).send(m,receiver);");
+                        });
+
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any> void send(String threadName, Any m) throws Exception", tabCountLvl0,
+                        (tabCountLvl1) -> {
+                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "getEnvironment(threadName).send(m);");
+                        });
+
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any> Any receive(String threadName) throws Exception", tabCountLvl0,
+                        (tabCountLvl1) -> {
+                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return getEnvironment(threadName).receive();");
+                        });
+
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public void close(String threadName) throws Exception", tabCountLvl0,
+                        (tabCountLvl1) -> {
+                            StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "getEnvironment(threadName).close();");
+                        });
             }
         );
     }

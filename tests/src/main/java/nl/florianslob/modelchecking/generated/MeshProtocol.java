@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class MeshProtocol implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
@@ -434,5 +433,25 @@ public class MeshProtocol implements IProtocol {
 	@Override
 	public String getState(){
 		return "/" + worker_0_Environment.getState() + "/" + worker_1_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }

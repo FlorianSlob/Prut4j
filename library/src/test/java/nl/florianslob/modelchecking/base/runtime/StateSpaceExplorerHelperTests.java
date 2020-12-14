@@ -18,6 +18,26 @@ public class StateSpaceExplorerHelperTests {
             }
 
             @Override
+            public <Any> void send(String threadName, Any m, String receiver) throws Exception {
+
+            }
+
+            @Override
+            public <Any> void send(String threadName, Any m) throws Exception {
+
+            }
+
+            @Override
+            public <Any> Any receive(String threadName) throws Exception {
+                return null;
+            }
+
+            @Override
+            public void close(String threadName) throws Exception {
+
+            }
+
+            @Override
             public String[] threadNames() {
                 return new String[]{"w", "b"};
             }

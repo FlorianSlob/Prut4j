@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class ISProtocol_n_19 implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
@@ -2839,11 +2838,31 @@ public class ISProtocol_n_19 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_9_","worker_2_","worker_16_","master","worker_14_","worker_12_","worker_7_","worker_4_","worker_6_","worker_10_","worker_8_","worker_18_","worker_5_","worker_0_","worker_11_","worker_3_","worker_13_","worker_15_","worker_17_","worker_1_" };
+		return new String[] { "worker_10_","worker_1_","worker_2_","worker_12_","worker_4_","worker_16_","worker_17_","worker_18_","worker_14_","worker_7_","worker_5_","worker_13_","master","worker_8_","worker_3_","worker_15_","worker_6_","worker_0_","worker_11_","worker_9_" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + masterEnvironment.getState() + "/" + worker_0_Environment.getState() + "/" + worker_10_Environment.getState() + "/" + worker_11_Environment.getState() + "/" + worker_12_Environment.getState() + "/" + worker_13_Environment.getState() + "/" + worker_14_Environment.getState() + "/" + worker_15_Environment.getState() + "/" + worker_16_Environment.getState() + "/" + worker_17_Environment.getState() + "/" + worker_18_Environment.getState() + "/" + worker_1_Environment.getState() + "/" + worker_2_Environment.getState() + "/" + worker_3_Environment.getState() + "/" + worker_4_Environment.getState() + "/" + worker_5_Environment.getState() + "/" + worker_6_Environment.getState() + "/" + worker_7_Environment.getState() + "/" + worker_8_Environment.getState() + "/" + worker_9_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }

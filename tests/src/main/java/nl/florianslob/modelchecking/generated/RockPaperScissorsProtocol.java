@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import static java.lang.Thread.sleep;
 
 public class RockPaperScissorsProtocol implements IProtocol {
 	private final BlockingQueue<ProtocolMessage> player_0_Queue = new LinkedBlockingQueue<>();
@@ -132,6 +131,11 @@ public class RockPaperScissorsProtocol implements IProtocol {
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("player_1_")) {
+							setState(2);
+							player_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+						if (receiver.equals("player_1_")) {
 							setState(1);
 							player_1_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
@@ -139,11 +143,6 @@ public class RockPaperScissorsProtocol implements IProtocol {
 						if (receiver.equals("player_2_")) {
 							setState(5);
 							player_2_Queue.put(new ProtocolMessage(box.get(),15));
-							return Optional.empty();
-						}
-						if (receiver.equals("player_1_")) {
-							setState(2);
-							player_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -476,11 +475,31 @@ public class RockPaperScissorsProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_0_","player_2_","player_1_" };
+		return new String[] { "player_1_","player_0_","player_2_" };
 	}
 	
 	@Override
 	public String getState(){
 		return "/" + player_0_Environment.getState() + "/" + player_1_Environment.getState() + "/" + player_2_Environment.getState() + "/";
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
+		getEnvironment(threadName).send(m,receiver);
+	}
+	
+	@Override
+	public <Any> void send(String threadName, Any m) throws Exception{
+		getEnvironment(threadName).send(m);
+	}
+	
+	@Override
+	public <Any> Any receive(String threadName) throws Exception{
+		return getEnvironment(threadName).receive();
+	}
+	
+	@Override
+	public void close(String threadName) throws Exception{
+		getEnvironment(threadName).close();
 	}
 }
