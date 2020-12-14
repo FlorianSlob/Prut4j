@@ -22,20 +22,20 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         // Needs to be generated first in Florian.jar!
         boolean
                 genCGProtocol = true,
-                genFTProtocol = false,
-                genISProtocol = false,
-                genMGProtocol = false,
-                genDemoProtocols = false,
-                genRingProtocol = false,
+                genFTProtocol = true,
+                genISProtocol = true,
+                genMGProtocol = true,
+                genDemoProtocols = true,
+                genRingProtocol = true,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
-                genMeshProtocol = false,
-                genStarProtocol = false,
-                genGoFishProtocol = false,
-                genRockPaperScissorsProtocol = false
+                genMeshProtocol = true,
+                genStarProtocol = true,
+                genGoFishProtocol = true,
+                genRockPaperScissorsProtocol = true
                         ;
-        boolean generateToTestBenchmarkProject = false;
+        boolean generateToTestBenchmarkProject = true;
         boolean generateToTestProject = true;
 
         var filePathForDemoProtocols = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";

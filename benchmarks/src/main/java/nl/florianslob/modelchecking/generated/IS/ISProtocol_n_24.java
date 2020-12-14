@@ -600,16 +600,6 @@ public class ISProtocol_n_24 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 49:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(50);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -617,6 +607,16 @@ public class ISProtocol_n_24 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(2);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(50);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -3564,7 +3564,7 @@ public class ISProtocol_n_24 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","worker_22_","worker_12_","worker_10_","worker_13_","worker_3_","worker_14_","worker_2_","worker_19_","worker_23_","worker_17_","worker_6_","worker_20_","worker_0_","worker_16_","worker_9_","worker_8_","worker_4_","worker_18_","worker_11_","worker_15_","worker_7_","worker_21_","master","worker_5_" };
+		return new String[] { "worker_7_","worker_0_","worker_9_","worker_19_","worker_11_","worker_10_","worker_14_","worker_1_","worker_6_","worker_2_","worker_13_","worker_22_","worker_12_","worker_3_","worker_15_","master","worker_4_","worker_16_","worker_18_","worker_17_","worker_8_","worker_23_","worker_5_","worker_20_","worker_21_" };
 	}
 	
 	@Override

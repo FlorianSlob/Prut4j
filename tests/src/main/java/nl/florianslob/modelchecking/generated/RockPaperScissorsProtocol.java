@@ -132,11 +132,6 @@ public class RockPaperScissorsProtocol implements IProtocol {
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("player_1_")) {
-							setState(2);
-							player_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-						if (receiver.equals("player_1_")) {
 							setState(1);
 							player_1_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
@@ -144,6 +139,11 @@ public class RockPaperScissorsProtocol implements IProtocol {
 						if (receiver.equals("player_2_")) {
 							setState(5);
 							player_2_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("player_1_")) {
+							setState(2);
+							player_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -476,7 +476,7 @@ public class RockPaperScissorsProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_2_","player_0_","player_1_" };
+		return new String[] { "player_0_","player_2_","player_1_" };
 	}
 	
 	@Override

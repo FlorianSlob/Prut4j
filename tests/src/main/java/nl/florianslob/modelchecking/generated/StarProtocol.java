@@ -53,29 +53,29 @@ public class StarProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -116,19 +116,14 @@ public class StarProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -136,19 +131,24 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -186,14 +186,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -248,15 +248,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -322,15 +322,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -382,15 +382,15 @@ public class StarProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -442,14 +442,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -518,15 +518,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -560,19 +560,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -580,19 +575,24 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -668,24 +668,24 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 					}
@@ -706,15 +706,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -776,14 +776,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -807,15 +807,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -846,14 +846,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 					}
@@ -874,15 +874,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -920,29 +920,29 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1004,19 +1004,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),23));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1024,19 +1019,24 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1092,15 +1092,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1165,15 +1165,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1208,15 +1208,15 @@ public class StarProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1241,17 +1241,17 @@ public class StarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1302,15 +1302,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1376,15 +1376,15 @@ public class StarProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1402,17 +1402,17 @@ public class StarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1477,15 +1477,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1571,15 +1571,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1613,14 +1613,14 @@ public class StarProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -1644,15 +1644,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1683,29 +1683,29 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1723,17 +1723,17 @@ public class StarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -1764,15 +1764,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1797,17 +1797,17 @@ public class StarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -1852,15 +1852,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1912,15 +1912,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -2000,15 +2000,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -2019,17 +2019,17 @@ public class StarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -2073,15 +2073,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -2122,14 +2122,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2160,15 +2160,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -2230,14 +2230,14 @@ public class StarProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(10);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(9);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(10);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2282,15 +2282,15 @@ public class StarProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(20);
-							//queueFromworker_2_Toworker_0_);
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 15) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
+							setState(20);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -2342,15 +2342,15 @@ public class StarProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -4101,7 +4101,7 @@ public class StarProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","worker_0_","worker_2_" };
+		return new String[] { "worker_0_","worker_2_","worker_1_" };
 	}
 	
 	@Override

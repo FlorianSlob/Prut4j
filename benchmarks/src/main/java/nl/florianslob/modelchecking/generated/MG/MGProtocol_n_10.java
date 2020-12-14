@@ -988,16 +988,6 @@ public class MGProtocol_n_10 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-						if (receiver == null) {
-							receiver = "interp_0_";
-						}
-						if (receiver.equals("interp_0_")) {
-							setState(2);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "interp_0_";
@@ -1008,16 +998,6 @@ public class MGProtocol_n_10 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-						if (receiver == null) {
-							receiver = "rprj_0_";
-						}
-						if (receiver.equals("rprj_0_")) {
-							setState(160);
-							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 						if (receiver == null) {
 							receiver = "resid_0_";
@@ -1025,6 +1005,26 @@ public class MGProtocol_n_10 implements IProtocol {
 						if (receiver.equals("resid_0_")) {
 							setState(179);
 							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(2);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+						if (receiver == null) {
+							receiver = "rprj_0_";
+						}
+						if (receiver.equals("rprj_0_")) {
+							setState(160);
+							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -1248,26 +1248,6 @@ public class MGProtocol_n_10 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 21:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
-						if (receiver == null) {
-							receiver = "resid_0_";
-						}
-						if (receiver.equals("resid_0_")) {
-							setState(179);
-							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
-						if (receiver == null) {
-							receiver = "interp_0_";
-						}
-						if (receiver.equals("interp_0_")) {
-							setState(2);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 						if (receiver == null) {
 							receiver = "psinv_0_";
@@ -1275,6 +1255,16 @@ public class MGProtocol_n_10 implements IProtocol {
 						if (receiver.equals("psinv_0_")) {
 							setState(141);
 							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+						if (receiver == null) {
+							receiver = "rprj_0_";
+						}
+						if (receiver.equals("rprj_0_")) {
+							setState(160);
+							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -1288,13 +1278,23 @@ public class MGProtocol_n_10 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
-							receiver = "rprj_0_";
+							receiver = "interp_0_";
 						}
-						if (receiver.equals("rprj_0_")) {
-							setState(160);
-							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
+						if (receiver.equals("interp_0_")) {
+							setState(2);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+						if (receiver == null) {
+							receiver = "resid_0_";
+						}
+						if (receiver.equals("resid_0_")) {
+							setState(179);
+							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
 					}
@@ -5902,7 +5902,7 @@ public class MGProtocol_n_10 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "rprj_4_","interp_6_","rprj_5_","rprj_0_","psinv_0_","rprj_8_","psinv_6_","rprj_2_","psinv_4_","psinv_3_","resid_4_","psinv_8_","resid_3_","rprj_3_","resid_5_","resid_9_","psinv_9_","resid_8_","psinv_1_","master","interp_9_","interp_5_","interp_4_","rprj_9_","resid_1_","resid_7_","psinv_2_","resid_2_","interp_0_","interp_1_","interp_8_","interp_2_","rprj_6_","resid_0_","resid_6_","psinv_7_","interp_3_","rprj_1_","rprj_7_","psinv_5_","interp_7_" };
+		return new String[] { "psinv_1_","resid_7_","psinv_2_","rprj_7_","interp_8_","resid_0_","master","psinv_9_","resid_9_","resid_2_","rprj_9_","interp_2_","psinv_8_","resid_4_","rprj_8_","psinv_0_","rprj_6_","interp_6_","rprj_1_","resid_3_","resid_1_","rprj_2_","psinv_6_","rprj_5_","resid_6_","rprj_4_","psinv_4_","rprj_0_","interp_1_","resid_8_","psinv_7_","interp_0_","interp_3_","interp_9_","resid_5_","interp_7_","rprj_3_","psinv_3_","interp_4_","interp_5_","psinv_5_" };
 	}
 	
 	@Override
