@@ -26,36 +26,36 @@ public class ChessProtocolTests {
 
 //    @Test
     public void TestSimpleFormulaFalse() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimpleFalse.ltl", false, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimpleFalse, false, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 
 //    @Test
     public void TestSimpleFormula() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimple.ltl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimple, true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 
 //    @Test
     public void TestSimple2Formula() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimple2.ltl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimple2, true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 
 //    @Test
     public void TestComplexFormulaFull() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula.ltl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula, true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 
 //    @Test
     public void TestComplexFormulaPart1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula2.ltl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula2, true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 
 //    @Test
     public void TestComplexFormulaPart2() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula3.ltl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula3, true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 
 //    @Test
     public void TestComplexFormula4() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula4.ltl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula4, true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
     }
 }
