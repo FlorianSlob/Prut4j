@@ -1,12 +1,10 @@
 package Helpers;
 
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-import nl.florianslob.modelchecking.base.runtime.v2.LtlModelChecker;
+import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.LtlFormulaDefinitionHelper;
 
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import static org.junit.Assert.assertTrue;
 
@@ -23,13 +21,13 @@ public class ProtocolTestingHelper {
         LogTest(formulaString);
         // Act
         var result = GetModelCheckerForChessProtocol(protocol)
-                .CheckProtocolForLtlFormula(formulaString, dummies);
+                .exec(formulaString, dummies);
 
         // Assert
         assertTrue(expectedResult == result);
     }
 
-    private static LtlModelChecker GetModelCheckerForChessProtocol(IProtocol protocol){
-        return new LtlModelChecker(protocol);
+    private static Engine GetModelCheckerForChessProtocol(IProtocol protocol){
+        return new Engine(protocol);
     }
 }
