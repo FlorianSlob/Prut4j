@@ -7,17 +7,17 @@ import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.OwlHelper;
 
 import java.util.*;
 
-public class LtlModelChecker {
+public class Engine {
     private final IProtocol protocolUnderVerification;
     private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
     private List<LtlState> initialStatesForNegatedFormula;
     private Object[] dummies;
 
-    public LtlModelChecker(IProtocol protocolUnderVerification) {
+    public Engine(IProtocol protocolUnderVerification) {
         this.protocolUnderVerification = protocolUnderVerification;
     }
 
-    public boolean CheckProtocolForLtlFormula(String ltlFormulaString, Object[] dummies) {
+    public boolean exec(String ltlFormulaString, Object[] dummies) {
         this.dummies = dummies;
         this.initialStatesForNegatedFormula = OwlHelper.GetInitialLtlStatesForFormula(ltlFormulaString, true);
         var hasAcceptingCycles = CheckForAcceptingCycles(dummies);
