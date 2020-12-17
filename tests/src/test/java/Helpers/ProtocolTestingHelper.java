@@ -11,7 +11,8 @@ import static org.junit.Assert.assertTrue;
 public class ProtocolTestingHelper {
 
     private static void LogTest(String formulaString){
-        System.out.println("Testing the protocol for: "+formulaString);
+        if(false)
+            System.out.println("Testing the protocol for: "+formulaString);
     }
 
     public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult, IProtocol protocol, HashMap<String,String> shortTypeNameToFullClassNameMap, Object[] dummies) throws Exception {

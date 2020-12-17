@@ -1,9 +1,9 @@
 package nl.florianslob.modelchecking.generated;
 
-import dto.Move;
+import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-
 import Helpers.ProtocolTestingHelper;
+import org.junit.Test;
 
 import java.util.HashMap;
 
@@ -15,44 +15,101 @@ public class ChessProtocolTests {
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){
         {
-            put("Move", "dto.Move");
+            put("Move", "discourje.examples.chess.Move");
         }
     };
 
-    private Object[] dummies = new Object[]{ new Move(), new String()};
+    private Object[] dummies = new Object[]{ new Move()};
 
-//    @Test
-    public void TestSimpleFormulaFalse() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimpleFalse.owl" , false, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void testBlackCannotSend() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/Test1.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
-//    @Test
-    public void TestSimpleFormula() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimple.owl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void testBlackCannotSendUntil() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/Test2.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
-//    @Test
-    public void TestSimple2Formula() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formulaSimple2.owl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void testBlackCannotSendAgainUntil() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/Test3.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
-//    @Test
-    public void TestComplexFormulaFull() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula.owl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void TestWhiteReceivesInNextState_ShouldBeTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestWhiteReceivesInNextState.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
-//    @Test
-    public void TestComplexFormulaPart1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula2.owl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void TestBackSendMoveInNextState_ShouldBeFalse() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestBackSendMoveInNextState.owl" ,
+                false,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
-//    @Test
-    public void TestComplexFormulaPart2() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula3.owl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void TestGloballyWhenWhiteSendItWillNotSendInNextState_ShouldBeTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestGloballyWhenWhiteSendItWillNotSendInNextState.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
-//    @Test
-    public void TestComplexFormula4() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/formula4.owl", true, GetProtocol(),ShortTypeNameToFullClassNameMap, dummies);
+    @Test
+    public void TestAfterWhiteSendNoWhiteReceiveUntilBlackSend_ShouldBeTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestAfterWhiteSendNoWhiteReceiveUntilBlackSend.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
+
+    @Test
+    public void TestGloballyBlackSendWillNotSendAgainUntilWhiteSend_ShouldBeTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestGloballyBlackSendWillNotSendAgainUntilWhiteSend.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestGloballyBlackSendNextWhiteReceive_ShouldBeTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestGloballyBlackSendNextWhiteReceive.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestCombinedComplexFormula() throws Exception {
+        // Combines TestGloballyBlackSendNextWhiteReceive and its inverse
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/ChessProtocol/TestCombinedComplexFormula.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
 }

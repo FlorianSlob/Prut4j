@@ -1,1 +1,0 @@
-G("b SEND <Move> TO w" -> X("w RECEIVE <Move> TO b"))

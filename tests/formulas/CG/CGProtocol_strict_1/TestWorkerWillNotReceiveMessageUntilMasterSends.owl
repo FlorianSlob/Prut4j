@@ -1,0 +1,3 @@
+( ! "worker_0_ RECEIVE <CGMessage> FROM master")
+U
+"master SEND <CGMessage> TO worker_0_"

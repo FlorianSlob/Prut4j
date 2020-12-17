@@ -21,22 +21,22 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
         boolean
-                genCGProtocol = true,
-                genFTProtocol = true,
-                genISProtocol = true,
-                genMGProtocol = true,
+                genCGProtocol = false,
+                genFTProtocol = false,
+                genISProtocol = false,
+                genMGProtocol = false,
                 genDemoProtocols = true,
-                genRingProtocol = true,
+                genRingProtocol = false,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
-                genMeshProtocol = true,
-                genStarProtocol = true,
-                genGoFishProtocol = true,
-                genRockPaperScissorsProtocol = true
+                genMeshProtocol = false,
+                genStarProtocol = false,
+                genGoFishProtocol = false,
+                genRockPaperScissorsProtocol = false
                         ;
-        boolean generateToTestBenchmarkProject = true;
-        boolean generateToTestProject = true;
+        boolean generateToTestBenchmarkProject = false;
+        boolean generateToTestProject = false;
 
         var filePathForDemoProtocols = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
 
@@ -152,15 +152,10 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
         }
 
         if(genDemoProtocols){
-            var protocolName2 = "GeneratedChessProtocol";
-            var clojureFunctionName2 = "chess";
-            var filePath2 = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
-            GenerateProtocolFromDefinition(clojureFunctionName2, 0, filePath2, protocolName2, true);
-
-            var protocolName3 = "GeneratedChessProtocolWithPlayerNames";
-            var clojureFunctionName3 = "chess-with-player-names";
-            var filePath3 = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
-            GenerateProtocolFromDefinition(clojureFunctionName3,0, filePath3, protocolName3, true);
+            var protocolName = "GeneratedChessProtocol";
+            var clojureFunctionName = "chess";
+            var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
+            GenerateProtocolFromDefinition(clojureFunctionName, 0, filePath, protocolName, true);
         }
     }
 
@@ -189,7 +184,7 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             System.out.println("Printing PlantUml");
             System.out.println(plantUmlVisualizationVisitor.getPlantUmlSyntax());
 
-            plantUmlVisualizationVisitor.savePlantUmlGraphToSvg();
+            plantUmlVisualizationVisitor.savePlantUmlGraphToSvg(protocolName);
         }
 
         var visitorsSecondPass = new LinkedList<CreateEnvironmentForRoleProtocolDefinitionVisitor>();
