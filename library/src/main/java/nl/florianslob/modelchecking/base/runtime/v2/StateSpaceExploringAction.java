@@ -36,7 +36,7 @@ public class StateSpaceExploringAction {
     }
 
     public void Print(){
-        System.out.println("Action from "+this.participant+" with type "+this.direction.toString()+" with dummy: "+this.dummy +" + with class "+this.messageClass);
+        Engine.LogTest("Action from "+this.participant+" with type "+this.direction.toString()+" with dummy: "+this.dummy +" + with class "+this.messageClass);
     }
 
     @Override

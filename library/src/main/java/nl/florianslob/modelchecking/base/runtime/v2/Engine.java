@@ -8,6 +8,18 @@ import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.OwlHelper;
 import java.util.*;
 
 public class Engine {
+    
+    public static void LogTest(Object logObject){
+        if(false){
+            System.out.println(logObject);
+        }
+    }
+
+    public static void LogResult(Object logObject){
+            System.out.println(logObject);
+    }
+
+    
     private final IProtocol protocolUnderVerification;
     private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
     private List<LtlState> initialStatesForNegatedFormula;
@@ -25,14 +37,14 @@ public class Engine {
     }
 
     private boolean CheckForAcceptingCycles(Object[] dummies) {
-        System.out.println("Participants: ");
+        Engine.LogTest("Participants: ");
         for (var threadName : protocolUnderVerification.threadNames()) {
-            System.out.println(threadName);
+            Engine.LogTest(threadName);
         }
 
-        System.out.println("Dummy objects: ");
+        Engine.LogTest("Dummy objects: ");
         for (var dummy : this.dummies) {
-            System.out.println(dummy);
+            Engine.LogTest(dummy);
         }
 
         this.exploringActions = StateSpaceExplorerHelper.getExploringActions(protocolUnderVerification, this.dummies);
@@ -55,6 +67,7 @@ public class Engine {
             var result =
                     travelStateSpaceGuided(this.protocolUnderVerification, ltlStateNode);
             if (result) {
+                Engine.LogResult("Found an accepting Cycle");
                 return true;
             }
         }
@@ -71,7 +84,7 @@ public class Engine {
                 // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
                 var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, exploringAction.participant);
 //                if (!detectCycle(newTriedTransitionTuple,allTriedTransitions)) {
-                    System.out.println("Trying transition from state " + startingProtocolCopy.getState());
+                    Engine.LogTest("Trying transition from state " + startingProtocolCopy.getState());
                     exploringAction.Print();
 
                     // get the participating thread
@@ -86,8 +99,8 @@ public class Engine {
                     // if there is a result, we just took a transition in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
                         if (detectCycle(newTriedTransitionTuple,allTriedTransitions)) {
-                            System.out.println("Detected cycle in state " + startingProtocolCopy.getState());
-                            System.out.println("Starting inner cycle");
+                            Engine.LogTest("Detected cycle in state " + startingProtocolCopy.getState());
+                            Engine.LogTest("Starting inner cycle");
 
                             // We detected a transition that has been taken before.
                             var resultFromCycle2 = doCycleDetectionPhaseTwo(currentLtlState, transition, exploringAction, startingProtocolCopy);
@@ -104,7 +117,7 @@ public class Engine {
                             allTriedTransitions.add(newTriedTransitionTuple);
 
                             var protocolStateAfterTransition = optionalResultProtocol.get();
-                            System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
+                            Engine.LogTest("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
 
 
                             // TODO Should we check for acceptance set 0 here?  and then return true??????
@@ -136,12 +149,12 @@ public class Engine {
                 // If no cycle is detected, we will try this action.
                 // Otherwise the exploration stops here, we found a cycle and we can stop exploring the graph for this sub trace.
                 var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, exploringAction.participant);
-                System.out.println("Trying transition from state " + startingProtocolCopy.getState());
-                System.out.println("Trying direction:"+ exploringAction.direction );
-                System.out.println("Trying dummy:"+ exploringAction.dummy );
-                System.out.println("Trying receiver:"+ exploringAction.receiver );
-                System.out.println("Trying messageClass:"+ exploringAction.messageClass );
-                System.out.println("Trying participant:"+ exploringAction.participant );
+                Engine.LogTest("Trying transition from state " + startingProtocolCopy.getState());
+                Engine.LogTest("Trying direction:"+ exploringAction.direction );
+                Engine.LogTest("Trying dummy:"+ exploringAction.dummy );
+                Engine.LogTest("Trying receiver:"+ exploringAction.receiver );
+                Engine.LogTest("Trying messageClass:"+ exploringAction.messageClass );
+                Engine.LogTest("Trying participant:"+ exploringAction.participant );
 
                     exploringAction.Print();
 
@@ -157,10 +170,10 @@ public class Engine {
                     // if there is a result, we just took a transition in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
                         var protocolStateAfterTransition = optionalResultProtocol.get();
-                        System.out.println("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
+                        Engine.LogTest("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
 
                         if (detectCycle(newTriedTransitionTuple, locallyTriedTransitions)) {
-                            System.out.println("Detected Cycle in state, We are already in inner cycle!" + startingProtocolCopy.getState());
+                            Engine.LogTest("Detected Cycle in state, We are already in inner cycle!" + startingProtocolCopy.getState());
 
 //                    // Need as parameters, starting state info to check here....
                             //                  var newTriedTransitionTuple = new TriedTransitionTuple(startingProtocolCopy.getState(), exploringAction, threadName);
@@ -169,19 +182,22 @@ public class Engine {
                             var messageForDebugging = " This is what we were checking: Marked: " + markedTransitionTuple.toString() + " newTried: " + newTriedTransitionTuple.toString();
 
                             if (newTriedTransitionTuple.equals(markedTransitionTuple)) {
-                                System.out.println("It is the state we are checking! ");
-                                System.out.println(messageForDebugging);
+                                Engine.LogTest("It is the state we are checking! ");
+                                Engine.LogTest(messageForDebugging);
 
 
-                                if((transition.AcceptanceSet0 || transition.AcceptanceSet1) && isAcceptingCycle)
+                                if((transition.AcceptanceSet0 || transition.AcceptanceSet1) && isAcceptingCycle) {
+                                    Engine.LogResult("It is the state we are checking! And it was part of an accepting cycle ");
+                                    Engine.LogResult(messageForDebugging);
                                     return true;
+                                }
                                 else{
                                     return false;
                                 }
 //                                return isAcceptingCycle;
                             } else {
-                                System.out.println("It is not the state we were checking for, we are ignoring this cycle!" );
-                                System.out.println(messageForDebugging);
+                                Engine.LogTest("It is not the state we were checking for, we are ignoring this cycle!" );
+                                Engine.LogTest(messageForDebugging);
                             }
                         } else {
 
@@ -190,7 +206,7 @@ public class Engine {
 
                             if (transition.AcceptanceSet0 || transition.AcceptanceSet1) {
                                 // TODO do we need to check the first transition(before starting the recursive behavior)?
-                                System.out.println("Transition we took was part of an accepting cycle.");
+                                Engine.LogTest("Transition we took was part of an accepting cycle.");
                                 isAcceptingCycle = true; // Mark the cycle we are checking as accepting.
                             }
                             // Call recursively to travel the whole protocol
@@ -211,7 +227,7 @@ public class Engine {
 //                }
             }
         }
-        System.out.println("Returning false, we took all possible transitions and did not find any accepting cycles.");
+        Engine.LogTest("Returning false, we took all possible transitions and did not find any accepting cycles.");
         return false; // Returning false, we took all possible transitions and did not find any accepting cycles.
     }
 
@@ -220,8 +236,8 @@ public class Engine {
                                             LtlTransition transition,
                                             StateSpaceExploringAction exploringAction,
                                             IProtocol startingProtocolCopy) throws Exception {
-        System.out.println("Found potential cycle");
-        System.out.println("Starting inner cycle");
+        Engine.LogTest("Found potential cycle");
+        Engine.LogTest("Starting inner cycle");
 
         // starting phase 2
 //        var isAcceptingCycle = false;
@@ -233,9 +249,9 @@ public class Engine {
         // --> Yes? Return isAcceptingCycle
         // --> No select all possible exploring actions again an
 
-        System.out.println("Taking transition from state " + startingProtocolCopy.getState());
+        Engine.LogTest("Taking transition from state " + startingProtocolCopy.getState());
 
-        System.out.println("From now on, we will try to detect if this transition will be taken again.");
+        Engine.LogTest("From now on, we will try to detect if this transition will be taken again.");
         exploringAction.Print();
 
         // get the participating thread
@@ -250,7 +266,7 @@ public class Engine {
         // if there is a result, we just took a transition in the protocol automaton
         if (optionalResultProtocol.isPresent()) {
             var protocolStateAfterTransition = optionalResultProtocol.get();
-            System.out.println("Took transition from state "
+            Engine.LogTest("Took transition from state "
                     + startingProtocolCopy.getState()
                     + " to "
                     + protocolStateAfterTransition.getState());

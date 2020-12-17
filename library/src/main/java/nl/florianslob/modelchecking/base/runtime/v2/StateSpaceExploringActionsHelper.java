@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StateSpaceExploringActionsHelper {
+    private static String WILDCARD = "*";
     /// Returns all actions that are possible to take a certain transition
     public static List<StateSpaceExploringAction> GetPossibleExploringActions(LtlTransition transition, List<StateSpaceExploringAction> exploringActions) {
         return exploringActions
@@ -39,21 +40,28 @@ public class StateSpaceExploringActionsHelper {
         } else if (expression.Operator == LtlTransitionExpressionOperator.ATOM) {
             if (
                     expression.AtomicProposition.Direction == exploringAction.direction
-                            &&
-                            // TODO Are we sure we want to ignore casing here?
+                    &&
+                    (
+                            expression.AtomicProposition.MessageType.equalsIgnoreCase(WILDCARD) // Should be true for every message class
+                            ||
                             expression.AtomicProposition.MessageType.equalsIgnoreCase(exploringAction.messageClass.getTypeName())
-                            &&
-                            (
-                                    expression.AtomicProposition.Participant == null
-                                    ||
-                                    expression.AtomicProposition.Participant.equalsIgnoreCase(exploringAction.participant)
-                            )
-                            &&
-                            (
-                                    expression.AtomicProposition.Receiver == null
-                                    ||
-                                    expression.AtomicProposition.Receiver.equalsIgnoreCase(exploringAction.receiver)
-                            )
+                    )
+                    &&
+                    (
+                            expression.AtomicProposition.Participant == null
+                            ||
+                            expression.AtomicProposition.Participant.equalsIgnoreCase(WILDCARD) // Should be true for every sender
+                            ||
+                            expression.AtomicProposition.Participant.equalsIgnoreCase(exploringAction.participant)
+                    )
+                    &&
+                    (
+                            expression.AtomicProposition.Receiver == null
+                            ||
+                            expression.AtomicProposition.Receiver.equalsIgnoreCase(WILDCARD) // Should be true for every receiver
+                            ||
+                            expression.AtomicProposition.Receiver.equalsIgnoreCase(exploringAction.receiver)
+                    )
             ) {
                 return true;
             } else {

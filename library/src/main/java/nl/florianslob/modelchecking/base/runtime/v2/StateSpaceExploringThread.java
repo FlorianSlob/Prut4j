@@ -40,12 +40,10 @@ public class StateSpaceExploringThread {
                 this.environment.send(actionToBeExecuted.dummy, actionToBeExecuted.receiver);
                 return Optional.of(this.protocol);
             } catch (NotAllowedTransitionException notAllowedTransitionException) {
-                System.out.println("Transition is not allowed.");
-                notAllowedTransitionException.printStackTrace();
+                Engine.LogTest("Transition is not allowed.");
                 return Optional.empty();
             } catch (Exception e2) {
-                System.out.println("caught other exception: " + e2.getCause());
-                e2.printStackTrace();
+                Engine.LogTest("caught other exception: " + e2.getCause());
                 return Optional.empty();
             }
         }
@@ -79,19 +77,17 @@ public class StateSpaceExploringThread {
                             return;
                             //// End action block
                         } catch (InterruptedException e) { // <<-- This means no possible action!
-                            System.out.println("job was interrupted");
+                            Engine.LogTest("job was interrupted");
                             value[0] = Optional.empty();
                             latch.countDown();
                             return;
                         } catch (NotAllowedTransitionException notAllowedTransitionException) {
-                            System.out.println("Transition is not allowed.");
-                            notAllowedTransitionException.printStackTrace();
+                            Engine.LogTest("Transition is not allowed.");
                             value[0] = Optional.empty();
                             latch.countDown();
                             return;
                         } catch (Exception e2) {
-                            System.out.println("caught other exception: " + e2.getCause());
-                            e2.printStackTrace();
+                            Engine.LogTest("caught other exception: " + e2.getCause());
                             value[0] = Optional.empty();
                             latch.countDown();
                             return;
