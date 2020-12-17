@@ -50,13 +50,13 @@ public class CreatePlantUmlVisualizationProtocolDefinitionVisitor implements IPr
             "@enduml \n\n";
     }
 
-    public void savePlantUmlGraphToSvg() {
+    public void savePlantUmlGraphToSvg(String filename) {
         System.out.println("Writing protocol visualization to file?");
         String plantUmlGraph = getPlantUmlSyntax();
         System.out.print(plantUmlGraph);
 
         try {
-            GraphVisualizationHelpers.saveSvgStringToFile(plantUmlGraph, "protocol_definition.svg");
+            GraphVisualizationHelpers.saveSvgStringToFile(plantUmlGraph, "protocol_definition_"+filename+".svg");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,9 +1,10 @@
-(s/defrole ::player)
+(s/defrole ::white)
+(s/defrole ::black)
 
 (s/defsession ::chess []
-  (s/alt (::tic-tac-toe-turn-a 1 2)
-         (::tic-tac-toe-turn-a 2 1)))
-
-(s/defsession ::tic-tac-toe-turn-a [i j]
-  (s/async (s/-->> Long (::player i) (::player j)))
-           (s/alt (::tic-tac-toe-turn-a j i)))
+    (loop :chess-loop [x 2]
+       (-->> discourje.examples.chess.Move ::white ::black)
+       (-->> discourje.examples.chess.Move ::black ::white)
+       (? (s/recur :chess-loop))
+       )
+)

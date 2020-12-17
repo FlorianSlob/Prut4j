@@ -1,6 +1,7 @@
 package program;
 
-import dto.Move;
+
+import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipant;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
