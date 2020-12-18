@@ -17,6 +17,8 @@ public class FTProtocol_n_1Tests {
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){
         {
+            put("FFTSetVariablesMessage", "discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage");
+            put("EvolveMessage", "discourje.examples.npb3.impl.FTThreads.EvolveMessage");
             put("FFTMessage", "discourje.examples.npb3.impl.FTThreads.FFTMessage");
             put("DoneMessage", "discourje.examples.npb3.impl.DoneMessage");
             put("ExitMessage", "discourje.examples.npb3.impl.ExitMessage");
@@ -27,7 +29,7 @@ public class FTProtocol_n_1Tests {
 
     @Test
     public void TestNextMasterSFTMessage_ShouldReturnFalse() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestNextMasterSFTMessage.owl",
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestNextMasterFTTMessage.owl",
                 false ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -36,7 +38,7 @@ public class FTProtocol_n_1Tests {
 
     @Test
     public void TestIfMessageToWorker0FinallyDoneMessageToMaster_ShouldReturnTrue() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl",
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -44,8 +46,17 @@ public class FTProtocol_n_1Tests {
     }
 
     @Test
-    public void TestMasterSendGGMessageToWorker_0__ShouldReturnTrue() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestMasterSendGGMessageToWorker_0_.owl",
+    public void TestMasterSendMessage_ShouldReturnTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestMasterSendMessage.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMasterSendMessageWillAlwaysReturnMessage_ShouldReturnTrue() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestMasterSendMessageWillAlwaysReturnMessage.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -54,7 +65,7 @@ public class FTProtocol_n_1Tests {
 
     @Test
     public void TestWorker_0_AlwaysSendsDoneMessage_ShouldReturnTrue() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestWorker_0_AlwaysSendsDoneMessage.owl",
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestWorker_0_AlwaysSendsDoneMessage.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -63,7 +74,7 @@ public class FTProtocol_n_1Tests {
 
     @Test
     public void TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone_ShouldReturnTrue() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl",
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -73,7 +84,7 @@ public class FTProtocol_n_1Tests {
     @Test
     public void TestWorkerWillNotReceiveMessageUntilMasterSends_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper
-                .TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl",
+                .TestFormulaFromFile("formulas/FT/FTProtocol_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl",
                         true ,
                         GetProtocol(),
                         ShortTypeNameToFullClassNameMap,
@@ -82,7 +93,7 @@ public class FTProtocol_n_1Tests {
 
     @Test
     public void TestWorkerOnlySendDoneWhenReceivedFTOrExit_ShouldReturnTrue() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_strict_1/TestWorkerOnlySendDoneWhenReceivedFTOrExit.owl",
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestWorkerOnlySendDoneWhenReceivedFTOrExit.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -92,7 +103,7 @@ public class FTProtocol_n_1Tests {
     @Test
     public void TestWorkerWillNotSendDoneMessageUntilReceiveExit_ShouldBeFalse() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile(
-                "formulas/FT/FTProtocol_strict_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl",
+                "formulas/FT/FTProtocol_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl",
                 false ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
