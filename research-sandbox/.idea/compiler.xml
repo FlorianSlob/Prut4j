@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.auto.value/auto-value/1.7.1/b995de0a53b58b59c08a3d6f4f9379b29b8e4bdc/auto-value-1.7.1.jar" />
+        </processorPath>
+        <module name="research-sandbox.owl.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="code-generator" target="12" />
+      <module name="code-generator.library" target="12" />
+      <module name="code-generator.library.main" target="12" />
+      <module name="code-generator.library.test" target="12" />
+      <module name="code-generator.main" target="12" />
+      <module name="code-generator.owl" target="11" />
+      <module name="code-generator.owl.main" target="11" />
+      <module name="code-generator.owl.test" target="11" />
+      <module name="code-generator.test" target="12" />
+      <module name="model-checking-sandbox" target="12" />
+      <module name="model-checking-sandbox.library" target="12" />
+      <module name="model-checking-sandbox.library.main" target="12" />
+      <module name="model-checking-sandbox.library.test" target="12" />
+      <module name="model-checking-sandbox.main" target="12" />
+      <module name="model-checking-sandbox.model-checking-base" target="12" />
+      <module name="model-checking-sandbox.model-checking-base.main" target="12" />
+      <module name="model-checking-sandbox.model-checking-base.test" target="12" />
+      <module name="model-checking-sandbox.model-checking-testproject.main" target="1.8" />
+      <module name="model-checking-sandbox.model-checking-testproject.test" target="1.8" />
+      <module name="model-checking-sandbox.owl" target="11" />
+      <module name="model-checking-sandbox.owl.main" target="11" />
+      <module name="model-checking-sandbox.owl.test" target="11" />
+      <module name="model-checking-sandbox.test" target="12" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

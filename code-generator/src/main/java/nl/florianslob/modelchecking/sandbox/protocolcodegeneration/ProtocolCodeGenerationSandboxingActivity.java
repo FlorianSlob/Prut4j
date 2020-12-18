@@ -3,7 +3,6 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration;
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
 import discourje.core.graph.Graph;
-import nl.florianslob.modelchecking.sandbox.ISandboxingActivity;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitiondatastructure.visitors.*;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.helpers.ClojureGraphToDtoHelper;
 import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.ASTEnvironment;
@@ -15,8 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActivity {
-    @Override
+public class ProtocolCodeGenerationSandboxingActivity {
+
     public void runActivity() throws Exception {
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
@@ -63,7 +62,6 @@ public class ProtocolCodeGenerationSandboxingActivity implements ISandboxingActi
             var clojureFunctionName = "go-fish";
             GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
         }
-
 
         if(genRockPaperScissorsProtocol){
             var protocolName = "RockPaperScissorsProtocol";

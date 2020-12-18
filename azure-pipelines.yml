@@ -7,6 +7,18 @@ pool:
 steps:
 - task: Gradle@2
   inputs:
+    workingDirectory: 'research-sandbox'
+    gradleWrapperFile: 'research-sandbox/gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.12'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'build'
+
+- task: Gradle@2
+  inputs:
     workingDirectory: 'code-generator'
     gradleWrapperFile: 'code-generator/gradlew'
     gradleOptions: '-Xmx3072m'
