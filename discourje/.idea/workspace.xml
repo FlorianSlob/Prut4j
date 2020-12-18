@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112945514/code-generator.owl.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112945514/model-checking-sandbox.owl.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112945514/model-checking-sandbox.owl.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112959188/code-generator.api.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112959188/model-checking-sandbox.api.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112959188/model-checking-sandbox.api.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/-2112959188/model-checking-sandbox.api.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/100706898/model-checking-sandbox.model-checking-base.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/100706898/model-checking-sandbox.model-checking-base.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/100706898/model-checking-sandbox.model-checking-base.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/1343332045/code-generator.library.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/1343332045/model-checking-sandbox.library.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/1343332045/model-checking-sandbox.library.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/1343332045/model-checking-sandbox.library.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/695984761/model-checking-sandbox.model-checking-api.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/695984761/model-checking-sandbox.model-checking-api.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/695984761/model-checking-sandbox.model-checking-api.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/code-generator.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/model-checking-sandbox.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/modules/model-checking-sandbox.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/research-sandbox.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/formula.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/owl_formula_visualization.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/program.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/protocol_definition.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/protocol_definition_GeneratedChessProtocol.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/generated_graph_svg_files/trace.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/ISandboxingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/ISandboxingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/LoggingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/LoggingHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/LoggingLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/LoggingLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/SandboxingActivityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/SandboxingActivityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/base/GraphNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/base/GraphNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/AbstractChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/AbstractChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/FosterChandySandboxActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/FosterChandySandboxActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/InPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/InPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/OutPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/OutPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/SimpleDirectChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/SimpleDirectChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/TaskMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/TaskMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/exceptions/MaxDepthReachedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/exceptions/MaxDepthReachedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/exceptions/ProtocolViolationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/exceptions/ProtocolViolationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IInPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IInPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IOutPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IOutPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/fosterchandy/interfaces/IPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/graphvisualization/GraphDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/graphvisualization/GraphDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/graphvisualization/GraphVisualizationSandboxingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/graphvisualization/GraphVisualizationSandboxingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/graphvisualization/ModelCheckingVisualizerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/graphvisualization/ModelCheckingVisualizerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/ltlautomatonfromowl/LtlAutomatonFromOwlSandboxingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/ltlautomatonfromowl/LtlAutomatonFromOwlSandboxingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/ltlverification/FindDesignatedStatesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/ltlverification/FindDesignatedStatesHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/ltlverification/LtlVerificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/ltlverification/LtlVerificationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/ltlverification/datastructure/StateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/ltlverification/datastructure/StateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/LtlFormulaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/LtlFormulaParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/ModelCheckingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/ModelCheckingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/ModelCheckingDemoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/ModelCheckingDemoData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/OnTheFlyLtlTestFormulaName.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/OnTheFlyLtlTestFormulaName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/OnTheFlyLtlTestFormulas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/OnTheFlyLtlTestFormulas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/ProgramParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/ProgramParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/AtomicProposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/AtomicProposition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/LtlFormula.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/LtlFormula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/LtlGraphNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/LtlGraphNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/ModelCheckingAlphabet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/ModelCheckingAlphabet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/NodeRelation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/NodeRelation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/StateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/StateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/TemporalOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/TemporalOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/TraceInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/TraceInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/TraceNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/modelchecking/datastructure/TraceNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/onthefly/OnTheFlyLtlSandboxActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/onthefly/OnTheFlyLtlSandboxActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerationSandboxingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerationSandboxingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/Chess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/Chess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ChessProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ChessProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ChessProtocolWithGraphVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ChessProtocolWithGraphVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ChessWithGenericParticipant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ChessWithGenericParticipant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/IProtocolWatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/IProtocolWatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/NonDeterministicLoopsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/NonDeterministicLoopsProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/NonDeterministicLoopsProtocolWithVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/NonDeterministicLoopsProtocolWithVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/PlantUmlProtocolWatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/PlantUmlProtocolWatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ProtocolImplementationsSandboxActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/ProtocolImplementationsSandboxActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/SomeNonDeterministicGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/main/java/nl/florianslob/modelchecking/sandbox/protocolimplementations/SomeNonDeterministicGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/test/java/nl/florianslob/modelchecking/sandbox/modelchecking/tests/LtlFormulaParserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/test/java/nl/florianslob/modelchecking/sandbox/modelchecking/tests/LtlFormulaParserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/test/java/nl/florianslob/modelchecking/sandbox/modelchecking/tests/OnTheFlyLtlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/src/test/java/nl/florianslob/modelchecking/sandbox/modelchecking/tests/OnTheFlyLtlTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1gfxRIkSoAxScAUTwfRubjFdlz2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager" selected="Batch.Build and Move">
+    <configuration name="BT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="discourje.examples.npb3.impl.BT" />
+      <module name="discourje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="discourje.examples.npb3.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CG" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="discourje.examples.npb3.impl.CG" />
+      <module name="discourje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="discourje.examples.npb3.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="discourje.examples.HelloWorld" />
+      <module name="discourje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="discourje.examples.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MG" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="discourje.examples.npb3.impl.MG" />
+      <module name="discourje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="discourje.examples.npb3.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="discourje.examples.npb3.impl.SP" />
+      <module name="discourje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="discourje.examples.npb3.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Build and Move" type="BatchConfigurationType" factoryName="Batch">
+      <module name="discourje" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/build_and_move.bat" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.BT" />
+      <item itemvalue="Application.CG" />
+      <item itemvalue="Application.HelloWorld" />
+      <item itemvalue="Application.MG" />
+      <item itemvalue="Application.SP" />
+      <item itemvalue="Batch.Build and Move" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HelloWorld" />
+        <item itemvalue="Application.CG" />
+        <item itemvalue="Application.SP" />
+        <item itemvalue="Application.MG" />
+        <item itemvalue="Application.BT" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="" />
+      <created>1598519438855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598519438855</updated>
+      <workItem from="1598519440071" duration="1957000" />
+      <workItem from="1598521708563" duration="285000" />
+      <workItem from="1598522049913" duration="104000" />
+      <workItem from="1598522193772" duration="1779000" />
+      <workItem from="1598687834775" duration="626000" />
+      <workItem from="1598895165736" duration="3044000" />
+      <workItem from="1598898375095" duration="17486000" />
+      <workItem from="1598947833682" duration="1440000" />
+      <workItem from="1598949681726" duration="95000" />
+      <workItem from="1598960445017" duration="2031000" />
+      <workItem from="1599670438857" duration="76000" />
+      <workItem from="1599671785805" duration="629000" />
+      <workItem from="1599900185145" duration="1361000" />
+      <workItem from="1599907156005" duration="609000" />
+      <workItem from="1600072761135" duration="1242000" />
+      <workItem from="1600118501650" duration="489000" />
+      <workItem from="1601290275441" duration="4623000" />
+      <workItem from="1601882352587" duration="229000" />
+      <workItem from="1601890586174" duration="5445000" />
+      <workItem from="1602044249411" duration="70000" />
+      <workItem from="1602044437442" duration="1272000" />
+      <workItem from="1602499150661" duration="650000" />
+      <workItem from="1603096546080" duration="3289000" />
+      <workItem from="1603214067706" duration="1161000" />
+      <workItem from="1603225570822" duration="1068000" />
+      <workItem from="1603742552435" duration="694000" />
+      <workItem from="1603830780004" duration="3926000" />
+      <workItem from="1603913820483" duration="5862000" />
+      <workItem from="1604084912047" duration="302000" />
+      <workItem from="1604086775532" duration="1219000" />
+      <workItem from="1604088139186" duration="157000" />
+      <workItem from="1604089221952" duration="1720000" />
+      <workItem from="1604137128914" duration="4525000" />
+      <workItem from="1604219331503" duration="4164000" />
+      <workItem from="1604299475142" duration="3813000" />
+      <workItem from="1604918212875" duration="36000" />
+      <workItem from="1605040082773" duration="1506000" />
+      <workItem from="1605095934297" duration="5151000" />
+      <workItem from="1605641555389" duration="2823000" />
+      <workItem from="1605736306531" duration="1054000" />
+      <workItem from="1605913235782" duration="6369000" />
+      <workItem from="1605918584063" duration="3294000" />
+      <workItem from="1606502681974" duration="1430000" />
+      <workItem from="1606504169539" duration="50000" />
+      <workItem from="1606750859220" duration="2864000" />
+      <workItem from="1606816579105" duration="1241000" />
+      <workItem from="1606939501645" duration="872000" />
+      <workItem from="1607111843754" duration="320000" />
+      <workItem from="1607112266784" duration="1964000" />
+      <workItem from="1607167711649" duration="892000" />
+      <workItem from="1607169387097" duration="617000" />
+      <workItem from="1607177806044" duration="1364000" />
+      <workItem from="1607471463038" duration="1371000" />
+      <workItem from="1607504026081" duration="1581000" />
+      <workItem from="1607512023009" duration="9738000" />
+      <workItem from="1607787008327" duration="9487000" />
+      <workItem from="1607853534542" duration="1460000" />
+      <workItem from="1607855132948" duration="3166000" />
+      <workItem from="1607943412235" duration="599000" />
+      <workItem from="1608068738491" duration="748000" />
+      <workItem from="1608233112213" duration="2842000" />
+      <workItem from="1608305145783" duration="855000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
