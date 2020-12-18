@@ -22,7 +22,35 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git" />
+    <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git">
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_3Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/IS/ISProtocol_n_1Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/IS/ISProtocol_n_3Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/MG/MGProtocol_n_1Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/MG/MGProtocol_n_3Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlAutomatonVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlAutomatonVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestMasterSendGGMessageToWorker_0_.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestMasterSendGGMessageToWorker_0_.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestNextMasterSCGMessage.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestNextMasterSCGMessage.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestWorkerOnlySendDoneWhenReceivedCGOrExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestWorkerOnlySendDoneWhenReceivedCGOrExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_1/TestWorker_0_AlwaysSendsDoneMessage.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_1/TestWorker_0_AlwaysSendsDoneMessage.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestMasterSendGGMessageToWorker_0_.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestMasterSendGGMessageToWorker_0_.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestMasterWillNotReceiveDoneUntilAWorkerSendsDone.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestMasterWillNotReceiveDoneUntilAWorkerSendsDone.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestNextMasterSCGMessage.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestNextMasterSCGMessage.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestWorkerOnlySendDoneWhenReceivedCGOrExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestWorkerOnlySendDoneWhenReceivedCGOrExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestWorkerWillNotReceiveMessageUntilMasterSends.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestWorkerWillNotReceiveMessageUntilMasterSends.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_strict_3/TestWorker_0_AlwaysSendsDoneMessage.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/CG/CGProtocol_3/TestWorker_0_AlwaysSendsDoneMessage.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_3Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3Tests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

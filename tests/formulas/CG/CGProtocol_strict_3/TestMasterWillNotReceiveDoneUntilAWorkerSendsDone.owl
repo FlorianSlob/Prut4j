@@ -1,3 +1,0 @@
-(!"master RECEIVE <DoneMessage> FROM worker_0_")
-U
-"* SEND <DoneMessage> TO master"
