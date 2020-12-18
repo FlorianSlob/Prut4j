@@ -63,7 +63,6 @@ public class ProtocolCodeGenerationSandboxingActivity {
             GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
         }
 
-
         if(genRockPaperScissorsProtocol){
             var protocolName = "RockPaperScissorsProtocol";
             var clojureFunctionName = "rock-paper-scissors";
