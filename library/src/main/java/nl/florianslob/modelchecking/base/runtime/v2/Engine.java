@@ -10,7 +10,7 @@ import java.util.*;
 public class Engine {
     
     public static void LogTest(Object logObject){
-        if(true){
+        if(false){
             System.out.println(logObject);
         }
     }

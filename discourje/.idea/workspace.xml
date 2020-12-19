@@ -5,22 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-directed-ring.dcj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/TokenDirectedRingProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologiesProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api/src/main/java/nl/florianslob/modelchecking/base/api/v2/ICloneableProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../code-generator/generated_graph_svg_files/protocol_definition_GoFishProtocol.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../code-generator/generated_graph_svg_files/protocol_definition_TicTacToeProtocol.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestBoundness1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestBoundness2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestBoundness3.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestBoundness4.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestBoundness5.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestBoundness6.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestEventualReception1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestEventualReception2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestEventualReception3.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestEventualReception4.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestEventualReception5.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestEventualReception6.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTermination1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTermination2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingCurrentActivePlayerPerspective1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingCurrentActivePlayerPerspective2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingCurrentActivePlayerPerspective3.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingNextActivePlayerPerspective1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingNextActivePlayerPerspective2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingNextActivePlayerPerspective3.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingUniqueness1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingUniqueness2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/GoFishProtocol/TestTurnTakingUniqueness3.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/GoFishProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api/src/main/java/nl/florianslob/modelchecking/base/api/v2/IEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../api/src/main/java/nl/florianslob/modelchecking/base/api/v2/IEnvironment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/go-fish.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/go-fish.dcj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlFormulaDefinitionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlFormulaDefinitionHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test2.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test2.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test3.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test3.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test4.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test4.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test5.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test5.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test6.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test6.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/RingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/RingProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/StateSpaceExplorerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/StateSpaceExplorerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/GoFishProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/GoFishProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,6 +246,7 @@
       <workItem from="1608233112213" duration="2842000" />
       <workItem from="1608305145783" duration="1450000" />
       <workItem from="1608382618994" duration="2707000" />
+      <workItem from="1608418639822" duration="631000" />
     </task>
     <servers />
   </component>

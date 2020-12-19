@@ -25,15 +25,15 @@ public class ProtocolCodeGenerator {
                 genISProtocol = false,
                 genMGProtocol = false,
                 genDemoProtocols = false,
-                genRingProtocol = true,
+                genRingProtocol = false,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
                 genMeshProtocol = false,
                 genStarProtocol = false,
-                genGoFishProtocol = false,
+                genGoFishProtocol = true,
                 genRockPaperScissorsProtocol = false,
-                genTicTacToeProtocol = false
+                genTicTacToeProtocol = true
                         ;
         boolean generateToTestBenchmarkProject = false;
         boolean generateToTestProject = false;
@@ -47,22 +47,24 @@ public class ProtocolCodeGenerator {
 
         if(genMeshProtocol){
             GenerateProtocolFromDefinition("mesh",2, filePathForDemoProtocols, "MeshProtocol", false);
+//            GenerateProtocolFromDefinition("token-directed-mesh",4, filePathForDemoProtocols, "TokenDirectedMeshProtocol", false);
         }
 
         if(genStarProtocol){
             GenerateProtocolFromDefinition("star",3, filePathForDemoProtocols, "StarProtocol", false);
+//            GenerateProtocolFromDefinition("token-directed-star",4, filePathForDemoProtocols, "TokenDirectedStarProtocol", false);
         }
 
         if(genGoFishProtocol){
-            GenerateProtocolFromDefinition("go-fish",3, filePathForDemoProtocols, "GoFishProtocol", false);
+            GenerateProtocolFromDefinition("go-fish",3, filePathForDemoProtocols, "GoFishProtocol", true);
         }
 
         if(genRockPaperScissorsProtocol){
-            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocols, "RockPaperScissorsProtocol", false);
+            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocols, "RockPaperScissorsProtocol", false); // TODO N=4
         }
 
         if(genTicTacToeProtocol){
-            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocols, "TicTacToeProtocol", false);
+            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocols, "TicTacToeProtocol", true);
         }
 
         if(genCGProtocol){

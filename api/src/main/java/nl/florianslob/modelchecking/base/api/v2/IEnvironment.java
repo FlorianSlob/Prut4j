@@ -37,4 +37,9 @@ public interface IEnvironment {
     }
 
     int getState();
+
+    default void setState(int state){
+        // Do nothing!
+    }
+
 }
