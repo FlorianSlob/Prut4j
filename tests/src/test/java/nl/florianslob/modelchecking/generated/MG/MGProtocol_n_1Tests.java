@@ -26,7 +26,7 @@ public class MGProtocol_n_1Tests {
     
     private Object[] dummies = new Object[]{RankMessage.GetTestDummyObject(), DoneMessage.GetTestDummyObject(), ExitMessage.GetTestDummyObject()};
 
-    @Test
+    //@Test
     public void TestNextMasterSISMessage_ShouldReturnFalse() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestNextMasterSISMessage.owl",
                 false ,
@@ -35,7 +35,7 @@ public class MGProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestIfMessageToWorker0FinallyDoneMessageToMaster_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl",
                 true ,
@@ -44,7 +44,7 @@ public class MGProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestMasterSendGGMessageToWorker_0__ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestMasterSendGGMessageToWorker_0_.owl",
                 true ,
@@ -53,7 +53,7 @@ public class MGProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorker_0_AlwaysSendsDoneMessage_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestWorker_0_AlwaysSendsDoneMessage.owl",
                 true ,
@@ -62,7 +62,7 @@ public class MGProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl",
                 true ,
@@ -71,7 +71,7 @@ public class MGProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorkerWillNotReceiveMessageUntilMasterSends_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper
                 .TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl",
@@ -81,7 +81,7 @@ public class MGProtocol_n_1Tests {
                         dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorkerOnlySendDoneWhenReceivedISOrExit_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/IS/ISProtocol_strict_1/TestWorkerOnlySendDoneWhenReceivedISOrExit.owl",
                 true ,
@@ -90,7 +90,7 @@ public class MGProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorkerWillNotSendDoneMessageUntilReceiveExit_ShouldBeFalse() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile(
                 "formulas/IS/ISProtocol_strict_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl",

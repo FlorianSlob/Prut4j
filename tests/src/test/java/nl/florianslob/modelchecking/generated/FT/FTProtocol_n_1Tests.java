@@ -27,7 +27,7 @@ public class FTProtocol_n_1Tests {
     
     private Object[] dummies = new Object[]{FFTMessage.GetTestDummyObject(), DoneMessage.GetTestDummyObject(), ExitMessage.GetTestDummyObject()};
 
-    @Test
+    //@Test
     public void TestNextMasterSFTMessage_ShouldReturnFalse() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestNextMasterFTTMessage.owl",
                 false ,
@@ -36,7 +36,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestIfMessageToWorker0FinallyDoneMessageToMaster_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl",
                 true ,
@@ -45,7 +45,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestMasterSendMessage_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestMasterSendMessage.owl",
                 true ,
@@ -54,7 +54,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestMasterSendMessageWillAlwaysReturnMessage_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestMasterSendMessageWillAlwaysReturnMessage.owl",
                 true ,
@@ -63,7 +63,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorker_0_AlwaysSendsDoneMessage_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestWorker_0_AlwaysSendsDoneMessage.owl",
                 true ,
@@ -72,7 +72,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl",
                 true ,
@@ -81,7 +81,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorkerWillNotReceiveMessageUntilMasterSends_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper
                 .TestFormulaFromFile("formulas/FT/FTProtocol_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl",
@@ -91,7 +91,7 @@ public class FTProtocol_n_1Tests {
                         dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorkerOnlySendDoneWhenReceivedFTOrExit_ShouldReturnTrue() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/FT/FTProtocol_1/TestWorkerOnlySendDoneWhenReceivedFTOrExit.owl",
                 true ,
@@ -100,7 +100,7 @@ public class FTProtocol_n_1Tests {
                 dummies);
     }
 
-    @Test
+    //@Test
     public void TestWorkerWillNotSendDoneMessageUntilReceiveExit_ShouldBeFalse() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile(
                 "formulas/FT/FTProtocol_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl",
