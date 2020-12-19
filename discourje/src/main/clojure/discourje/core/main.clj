@@ -98,6 +98,24 @@
   (catch Exception e (.printStackTrace e)))
 (println "Done go-fish")
 
+(defn -spec-to-lts-tic-tac-toe [^Integer n]
+  (c/let [_ (require '[discourje.core.spec :refer :all])
+          _ (require '[discourje.core.spec :as s])
+          s (slurp "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/tic-tac-toe.dcj" )
+          s (str "(do " s ")")
+          _ (eval (read-string s))
+          ast (s/session ::tic-tac-toe [])
+          lts (lts/lts ast)
+          ]
+    lts
+    ))
+
+(println "Start tic-tac-toe")
+(try
+  (-spec-to-lts-tic-tac-toe 1)
+  (catch Exception e (.printStackTrace e)))
+(println "Done tic-tac-toe")
+
 (defn -spec-to-lts-chess [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])

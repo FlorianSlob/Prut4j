@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic-tac-toe.dcj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestBoundness1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestBoundness2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestEventualReception1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestEventualReception2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestLiveness.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestTurnTaking1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/formulas/TicTacToeProtocol/TestTurnTaking2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/TicTacToeProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/TicTacToeProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/generated_graph_svg_files/protocol_definition_GeneratedChessProtocol.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_graph_svg_files/protocol_definition_GeneratedChessProtocol.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/chessWithPlayerNames.dcj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic_tac_toe.dcj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerationSandboxingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../research-sandbox/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../research-sandbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/GeneratedChessProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/GeneratedChessProtocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,6 +233,7 @@
       <workItem from="1608068738491" duration="748000" />
       <workItem from="1608233112213" duration="2842000" />
       <workItem from="1608305145783" duration="1450000" />
+      <workItem from="1608382618994" duration="1289000" />
     </task>
     <servers />
   </component>
@@ -219,5 +242,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
   </component>
 </project>

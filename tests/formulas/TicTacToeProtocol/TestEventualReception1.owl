@@ -1,0 +1,1 @@
+G("player_1_ SEND <Move> TO player_2_" => F("player_2_ RECEIVE <Move>"))

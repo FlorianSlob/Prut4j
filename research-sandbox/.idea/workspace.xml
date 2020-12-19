@@ -23,7 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git">
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/chessWithPlayerNames.dcj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic_tac_toe.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic_tac_toe.dcj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discourje/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discourje/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/src/main/clojure/discourje/core/main.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,19 +135,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="nl.florianslob.modelchecking.sandbox.Main" />
       <module name="code-generator.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -334,6 +328,7 @@
       <workItem from="1608067122122" duration="2156000" />
       <workItem from="1608232625660" duration="4176000" />
       <workItem from="1608305465382" duration="1793000" />
+      <workItem from="1608382567346" duration="567000" />
     </task>
     <task id="LOCAL-00001" summary="Rename vague name + add used libs to git">
       <created>1582834805075</created>

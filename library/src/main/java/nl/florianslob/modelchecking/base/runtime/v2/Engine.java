@@ -19,7 +19,6 @@ public class Engine {
             System.out.println(logObject);
     }
 
-    
     private final IProtocol protocolUnderVerification;
     private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
     private List<LtlState> initialStatesForNegatedFormula;

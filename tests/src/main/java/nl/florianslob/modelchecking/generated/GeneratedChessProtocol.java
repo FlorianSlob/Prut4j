@@ -153,7 +153,7 @@ public class GeneratedChessProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "white","black" };
+		return new String[] { "black","white" };
 	}
 	
 	@Override
