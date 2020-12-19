@@ -6,6 +6,26 @@
             [clojure.core :as c]
             ))
 
+
+
+(defn -spec-to-lts-token-directed-ring [^Integer n]
+  (c/let [_ (require '[discourje.core.spec :refer :all])
+          _ (require '[discourje.core.spec :as s])
+          s (slurp "C:/src/study/model-checking-sandbox/code-generator/protocol_definitions/network_topologies/token-directed-ring.dcj" )
+          s (str "(do " s ")")
+          _ (eval (read-string s))
+          ast (s/session ::token-directed-ring [n 0])
+          lts (lts/lts ast)
+          ]
+    lts
+    ))
+
+(println "Start token-directed-ring")
+(try
+  (-spec-to-lts-token-directed-ring 1)
+  (catch Exception e (.printStackTrace e)))
+(println "Done token-directed-ring")
+
 (defn -spec-to-lts-ring [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
                      _ (require '[discourje.core.spec :as s])

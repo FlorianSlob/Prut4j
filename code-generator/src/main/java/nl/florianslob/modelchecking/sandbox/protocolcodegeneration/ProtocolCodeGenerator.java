@@ -24,8 +24,8 @@ public class ProtocolCodeGenerator {
                 genFTProtocol = false,
                 genISProtocol = false,
                 genMGProtocol = false,
-                genDemoProtocols = true,
-                genRingProtocol = false,
+                genDemoProtocols = false,
+                genRingProtocol = true,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
@@ -33,7 +33,7 @@ public class ProtocolCodeGenerator {
                 genStarProtocol = false,
                 genGoFishProtocol = false,
                 genRockPaperScissorsProtocol = false,
-                genTicTacToeProtocol = true
+                genTicTacToeProtocol = false
                         ;
         boolean generateToTestBenchmarkProject = false;
         boolean generateToTestProject = false;
@@ -41,39 +41,28 @@ public class ProtocolCodeGenerator {
         var filePathForDemoProtocols = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
 
         if(genRingProtocol){
-            var protocolName = "RingProtocol";
-            var clojureFunctionName = "ring";
-            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+            GenerateProtocolFromDefinition("ring",3, filePathForDemoProtocols, "RingProtocol", false);
+            GenerateProtocolFromDefinition("token-directed-ring",4, filePathForDemoProtocols, "TokenDirectedRingProtocol", false);
         }
 
         if(genMeshProtocol){
-            var protocolName = "MeshProtocol";
-            var clojureFunctionName = "mesh";
-            GenerateProtocolFromDefinition(clojureFunctionName,2, filePathForDemoProtocols, protocolName, false);
+            GenerateProtocolFromDefinition("mesh",2, filePathForDemoProtocols, "MeshProtocol", false);
         }
 
         if(genStarProtocol){
-            var protocolName = "StarProtocol";
-            var clojureFunctionName = "star";
-            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+            GenerateProtocolFromDefinition("star",3, filePathForDemoProtocols, "StarProtocol", false);
         }
 
         if(genGoFishProtocol){
-            var protocolName = "GoFishProtocol";
-            var clojureFunctionName = "go-fish";
-            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+            GenerateProtocolFromDefinition("go-fish",3, filePathForDemoProtocols, "GoFishProtocol", false);
         }
 
         if(genRockPaperScissorsProtocol){
-            var protocolName = "RockPaperScissorsProtocol";
-            var clojureFunctionName = "rock-paper-scissors";
-            GenerateProtocolFromDefinition(clojureFunctionName,3, filePathForDemoProtocols, protocolName, false);
+            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocols, "RockPaperScissorsProtocol", false);
         }
 
         if(genTicTacToeProtocol){
-            var protocolName = "TicTacToeProtocol";
-            var clojureFunctionName = "tic-tac-toe";
-            GenerateProtocolFromDefinition(clojureFunctionName,-1, filePathForDemoProtocols, protocolName, false);
+            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocols, "TicTacToeProtocol", false);
         }
 
         if(genCGProtocol){
@@ -81,7 +70,7 @@ public class ProtocolCodeGenerator {
 
             if(generateToTestBenchmarkProject) {
                 for (int i = 1; i <= 24; i++) {
-                    var protocolName = "CGProtocol_strict_n_" + i;
+                    var protocolName = "CGProtocol_n_" + i;
                     var filePath = "../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                     GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }
@@ -89,7 +78,7 @@ public class ProtocolCodeGenerator {
 
             if(generateToTestProject){
                 for(int i = 1; i <= 4; i++){
-                    var protocolName = "CGProtocol_strict_n_"+i;
+                    var protocolName = "CGProtocol_n_"+i;
                     var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/";
                     GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false);
                 }

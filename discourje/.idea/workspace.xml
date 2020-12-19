@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test2.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test3.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test4.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test5.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test6.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-directed-ring.dcj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/TokenDirectedRingProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologiesProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlFormulaDefinitionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlFormulaDefinitionHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test2.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test2.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test3.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test3.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test4.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test4.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test5.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test5.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test6.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test6.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/RingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/RingProtocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +226,7 @@
       <workItem from="1608068738491" duration="748000" />
       <workItem from="1608233112213" duration="2842000" />
       <workItem from="1608305145783" duration="1450000" />
-      <workItem from="1608382618994" duration="1289000" />
+      <workItem from="1608382618994" duration="2707000" />
     </task>
     <servers />
   </component>
