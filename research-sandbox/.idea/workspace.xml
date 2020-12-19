@@ -23,25 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git">
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestMasterSendMessage.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestMasterSendMessageWillAlwaysReturnMessage.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestMasterWillNotReceiveDoneUntilWorker_0_SendsDone.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestNextMasterFTTMessage.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestWorkerOnlySendDoneWhenReceivedCGOrExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestWorkerWillNotReceiveMessageUntilMasterSends.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_1/TestWorker_0_AlwaysSendsDoneMessage.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestIfMessageToWorker0FinallyDoneMessageToMaster.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestMasterSendGGMessageToWorker_0_.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestMasterWillNotReceiveDoneUntilAWorkerSendsDone.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestNextMasterSCGMessage.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestWorkerOnlySendDoneWhenReceivedCGOrExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestWorkerWillNotReceiveMessageUntilMasterSends.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestWorkerWillNotSendDoneMessageUntilReceiveExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/FT/FTProtocol_3/TestWorker_0_AlwaysSendsDoneMessage.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/FT/FTProtocol_n_1Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -19,7 +19,7 @@ public class FTProtocol_n_1Tests {
         {
             put("FFTSetVariablesMessage", "discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage");
             put("EvolveMessage", "discourje.examples.npb3.impl.FTThreads.EvolveMessage");
-            put("FFTMessage", "discourje.examples.npb3.impl.FTThreads.FFTMessage");
+            put("FFTMessage", "discourje.examples.npb3.impl.FTThreads.FFTMessage"); 
             put("DoneMessage", "discourje.examples.npb3.impl.DoneMessage");
             put("ExitMessage", "discourje.examples.npb3.impl.ExitMessage");
         }
