@@ -30,7 +30,7 @@ public class TokenFullMeshProtocolTests {
     @Test
     public void Test1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/NetworkTopologies/Test1.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);
@@ -39,7 +39,7 @@ public class TokenFullMeshProtocolTests {
     @Test
     public void Test2() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/NetworkTopologies/Test2.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);
@@ -48,7 +48,7 @@ public class TokenFullMeshProtocolTests {
     @Test
     public void Test3() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/NetworkTopologies/Test3.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);
@@ -57,7 +57,7 @@ public class TokenFullMeshProtocolTests {
     @Test
     public void Test4() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/NetworkTopologies/Test4.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);
@@ -75,7 +75,7 @@ public class TokenFullMeshProtocolTests {
     @Test
     public void Test6() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/NetworkTopologies/Test6.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);

@@ -29,11 +29,11 @@ public class ProtocolCodeGenerator {
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
-                genMeshProtocol = true,
+                genMeshProtocol = false,
                 genStarProtocol = false,
                 genBinaryTreeProtocol = false,
                 genGoFishProtocol = false,
-                genRockPaperScissorsProtocol = false,
+                genRockPaperScissorsProtocol = true,
                 genTicTacToeProtocol = false
                         ;
         boolean generateToTestBenchmarkProject = false;
@@ -68,7 +68,8 @@ public class ProtocolCodeGenerator {
         }
 
         if(genRockPaperScissorsProtocol){
-            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocolsGames, "RockPaperScissorsProtocol", false,true); // TODO N=4
+            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocolsGames, "RockPaperScissorsOptimizedProtocol", false,true);
+            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocolsGames, "RockPaperScissorsProtocol", false,false);
         }
 
         if(genTicTacToeProtocol){

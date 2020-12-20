@@ -13,11 +13,12 @@ import org.junit.Test;
 import java.util.HashMap;
 
 public class RockPaperScissorsProtocolTests {
-    public RockPaperScissorsProtocolTests(){
-        Engine.IsProtocolOptimized = true;
-        Engine.IsLoggingEnabled = false;
 
+    public RockPaperScissorsProtocolTests(){
+        Engine.IsProtocolOptimized = false;
+        Engine.IsLoggingEnabled = false;
     }
+
     private IProtocol GetProtocol(){
         return new RockPaperScissorsProtocol();
     }
@@ -217,7 +218,7 @@ public class RockPaperScissorsProtocolTests {
     @Test
     public void TestSendBeforeReceive2() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/RockPaperScissors/TestSendBeforeReceive2.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);
@@ -226,7 +227,7 @@ public class RockPaperScissorsProtocolTests {
     @Test
     public void TestSendBeforeReceive3() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/RockPaperScissors/TestSendBeforeReceive3.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);

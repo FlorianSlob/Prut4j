@@ -29,7 +29,7 @@ public class TokenStarProtocolTests {
     @Test
     public void Test1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/NetworkTopologies/Test1.owl",
-                true,
+                false,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
                 dummies);

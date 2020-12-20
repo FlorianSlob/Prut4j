@@ -128,7 +128,7 @@ public class StateSpaceExploringThread {
                         try {
                             //// Action block
                             if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
-                                self.environment.send(actionToBeExecuted.dummy);
+                                self.environment.send(actionToBeExecuted.dummy, actionToBeExecuted.receiver);
                                 atomicReferenceValue.set(Optional.of(self.protocol));
                                 latch.countDown();
                                 return;
@@ -147,12 +147,12 @@ public class StateSpaceExploringThread {
                             return;
                             //// End action block
                         } catch (InterruptedException e) { // <<-- This means no possible action!
-                            System.out.println("job was interrupted");
+                            Engine.LogTest("job was interrupted");
                             atomicReferenceValue.set(Optional.empty());
                             latch.countDown();
                             return;
                         } catch (Exception e2) {
-                            System.out.println("caught other exception: " + e2.getCause());
+                            Engine.LogTest("caught other exception: " + e2.getCause());
                             e2.printStackTrace();
                             atomicReferenceValue.set(Optional.empty());
                             latch.countDown();

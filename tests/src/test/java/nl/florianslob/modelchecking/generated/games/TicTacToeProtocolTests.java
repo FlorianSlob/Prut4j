@@ -4,7 +4,6 @@ import Helpers.ProtocolTestingHelper;
 import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
-import nl.florianslob.modelchecking.generated.games.TicTacToeOptimizedProtocol;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -12,11 +11,11 @@ import java.util.HashMap;
 public class TicTacToeProtocolTests {
 
     public TicTacToeProtocolTests(){
-        Engine.IsProtocolOptimized = true;
+        Engine.IsProtocolOptimized = false;
     }
 
     private IProtocol GetProtocol(){
-        return new TicTacToeOptimizedProtocol();
+        return new TicTacToeProtocol();
     }
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){
