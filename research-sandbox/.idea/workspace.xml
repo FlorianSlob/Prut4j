@@ -23,14 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git">
-      <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/chessWithPlayerNames.dcj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic_tac_toe.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic_tac_toe.dcj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../discourje/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../discourje/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/src/main/clojure/discourje/core/main.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,6 +327,7 @@
       <workItem from="1608232625660" duration="4176000" />
       <workItem from="1608305465382" duration="1793000" />
       <workItem from="1608382567346" duration="567000" />
+      <workItem from="1608491284147" duration="594000" />
     </task>
     <task id="LOCAL-00001" summary="Rename vague name + add used libs to git">
       <created>1582834805075</created>

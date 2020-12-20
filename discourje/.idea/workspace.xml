@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestMax1Request1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestMax1Request1.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/FTProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/FTProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../research-sandbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,7 +233,7 @@
       <workItem from="1608233112213" duration="2842000" />
       <workItem from="1608305145783" duration="1450000" />
       <workItem from="1608382618994" duration="2707000" />
-      <workItem from="1608418639822" duration="10611000" />
+      <workItem from="1608418639822" duration="11206000" />
     </task>
     <servers />
   </component>
