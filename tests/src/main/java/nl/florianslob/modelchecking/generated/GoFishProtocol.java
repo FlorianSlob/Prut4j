@@ -19,7 +19,7 @@ public class GoFishProtocol implements IProtocol, ICloneableProtocol {
 	public  BlockingQueue<ProtocolMessage> player_1_Queue = new LinkedBlockingQueue<>();
 	public  BlockingQueue<ProtocolMessage> player_2_Queue = new LinkedBlockingQueue<>();
 	public  IEnvironment dealerEnvironment = new IEnvironment() {
-		public int state = 0;
+		public volatile int state = 0;
 		
 		public int getState(){
 			return state;
@@ -304,7 +304,7 @@ public class GoFishProtocol implements IProtocol, ICloneableProtocol {
 		}
 	};
 	public  IEnvironment player_0_Environment = new IEnvironment() {
-		public int state = 3;
+		public volatile int state = 3;
 		
 		public int getState(){
 			return state;
@@ -619,7 +619,7 @@ public class GoFishProtocol implements IProtocol, ICloneableProtocol {
 		}
 	};
 	public  IEnvironment player_1_Environment = new IEnvironment() {
-		public int state = 11;
+		public volatile int state = 11;
 		
 		public int getState(){
 			return state;
@@ -934,7 +934,7 @@ public class GoFishProtocol implements IProtocol, ICloneableProtocol {
 		}
 	};
 	public  IEnvironment player_2_Environment = new IEnvironment() {
-		public int state = 16;
+		public volatile int state = 16;
 		
 		public int getState(){
 			return state;

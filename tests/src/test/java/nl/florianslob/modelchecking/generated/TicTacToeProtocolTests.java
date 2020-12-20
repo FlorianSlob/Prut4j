@@ -3,14 +3,19 @@ package nl.florianslob.modelchecking.generated;
 import Helpers.ProtocolTestingHelper;
 import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import org.junit.Test;
 
 import java.util.HashMap;
 
 public class TicTacToeProtocolTests {
 
+    public TicTacToeProtocolTests(){
+        Engine.IsProtocolOptimized = true;
+    }
+
     private IProtocol GetProtocol(){
-        return new TicTacToeProtocol();
+        return new TicTacToeOptimizedProtocol();
     }
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){

@@ -1,1 +1,1 @@
-G("player_2_ SEND <Move> TO *" => X(!"player_2_ SEND <Move> TO *" U "player_2_ RECEIVE <Move>"))
+G("player_2_ SEND <Move> TO *" -> X(!"player_2_ SEND <Move> TO *" U "player_2_ RECEIVE <Move>"))

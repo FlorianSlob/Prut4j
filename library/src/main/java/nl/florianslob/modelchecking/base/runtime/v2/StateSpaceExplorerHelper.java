@@ -30,21 +30,7 @@ public class StateSpaceExplorerHelper {
     public static IProtocol deepClone(IProtocol protocol) {
 //        // Clone the IProtocol with the third party library
 //        // https://github.com/kostaskougios/cloning
-//        Cloner cloner = new Cloner();
-//
-//        cloner.setDumpCloned(new IDumpCloned() {
-//            @Override
-//            public void startCloning(Class<?> clz) {
-//                System.out.println("CloningNewObject");
-//            }
-//
-//            @Override
-//            public void cloning(Field field, Class<?> clz) {
-//                System.out.println("Cloning Field "+field.getName());
-//            }
-//        });
-        // This is not safe!
-        IProtocol thisIsAClonedProtocol = ((ICloneableProtocol)protocol).CloneThisProtocol();
-        return thisIsAClonedProtocol;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(protocol);
     }
 }

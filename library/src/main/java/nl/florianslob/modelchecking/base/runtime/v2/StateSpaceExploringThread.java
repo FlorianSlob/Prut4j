@@ -7,6 +7,7 @@ import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionE
 
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class StateSpaceExploringThread {
     private String threadName;
@@ -31,32 +32,93 @@ public class StateSpaceExploringThread {
      */
     public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) {
 
-        final CountDownLatch latch = new CountDownLatch(1);
-        final Optional[] value = {Optional.empty()};
+            if (Engine.IsProtocolOptimized) {
+            final CountDownLatch latch = new CountDownLatch(1);
+//        final Optional[] value = {Optional.empty()};
+            AtomicReference<Optional> atomicReferenceValue =
+                    new AtomicReference<>(Optional.empty());
 
-        if (actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND) {
+            if (actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND) {
 
-            try {
-                this.environment.send(actionToBeExecuted.dummy, actionToBeExecuted.receiver);
-                return Optional.of(this.protocol);
-            } catch (NotAllowedTransitionException notAllowedTransitionException) {
-                Engine.LogTest("Transition is not allowed.");
-                return Optional.empty();
-            } catch (Exception e2) {
-                Engine.LogTest("caught other exception: " + e2.getCause());
-                return Optional.empty();
+                try {
+                    this.environment.send(actionToBeExecuted.dummy, actionToBeExecuted.receiver);
+                    return Optional.of(this.protocol);
+                } catch (NotAllowedTransitionException notAllowedTransitionException) {
+                    Engine.LogTest("Transition is not allowed.");
+                    return Optional.empty();
+                } catch (Exception e2) {
+                    Engine.LogTest("caught other exception: " + e2.getCause());
+                    return Optional.empty();
+                }
             }
-        }
 
-        // Check for an interupt when trying to receive a value.
-        // Thread will hang on .take() otherwise.
-        if (actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE) {
+            // Check for an interupt when trying to receive a value.
+            // Thread will hang on .take() otherwise.
+            if (actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE) {
+                var baseThread =
+                        new Thread(() -> {
+                            synchronized (this.environment) {
+                                Thread thread = Thread.currentThread();
+                                new Thread(() -> {
+                                    synchronized (this.environment) {
+                                        thread.interrupt();
+                                    }
+                                }).start();
+                            }
+                            var self = this;
+
+                            try {
+                                //// Action block
+                                var result = self.environment.receive();
+                                if (result.getClass() == actionToBeExecuted.messageClass) {
+                                    atomicReferenceValue.set(Optional.of(self.protocol));
+                                    latch.countDown();
+                                    return;
+                                }
+
+                                atomicReferenceValue.set(Optional.empty());
+                                latch.countDown();
+                                return;
+                                //// End action block
+                            } catch (InterruptedException e) { // <<-- This means no possible action!
+                                Engine.LogTest("job was interrupted");
+                                atomicReferenceValue.set(Optional.empty());
+                                latch.countDown();
+                                return;
+                            } catch (NotAllowedTransitionException notAllowedTransitionException) {
+                                Engine.LogTest("Transition is not allowed.");
+                                atomicReferenceValue.set(Optional.empty());
+                                latch.countDown();
+                                return;
+                            } catch (Exception e2) {
+                                Engine.LogTest("caught other exception: " + e2.getCause());
+                                atomicReferenceValue.set(Optional.empty());
+                                latch.countDown();
+                                return;
+                            }
+                        });
+
+                baseThread.start();
+                try {
+                    latch.await(); // Wait for countDown() in the thread.
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return atomicReferenceValue.get();
+            }
+            return Optional.empty();
+        }else{
+            final CountDownLatch latch = new CountDownLatch(1);
+                AtomicReference<Optional> atomicReferenceValue =
+                        new AtomicReference<>(Optional.empty());
+
             var baseThread =
                     new Thread(() -> {
-                        synchronized (this.environment) {
+
+                        synchronized (this.protocol){
                             Thread thread = Thread.currentThread();
                             new Thread(() -> {
-                                synchronized (this.environment) {
+                                synchronized (this.protocol) {
                                     thread.interrupt();
                                 }
                             }).start();
@@ -65,30 +127,34 @@ public class StateSpaceExploringThread {
 
                         try {
                             //// Action block
-                            var result = self.environment.receive();
-                            if (result.getClass() == actionToBeExecuted.messageClass) {
-                                value[0] = Optional.of(self.protocol);
+                            if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.SEND){
+                                self.environment.send(actionToBeExecuted.dummy);
+                                atomicReferenceValue.set(Optional.of(self.protocol));
                                 latch.countDown();
                                 return;
                             }
 
-                            value[0] = Optional.empty();
+                            if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
+                                var result = self.environment.receive();
+                                if(result.getClass() == actionToBeExecuted.messageClass){
+                                    atomicReferenceValue.set(Optional.of(self.protocol));
+                                    latch.countDown();
+                                    return;
+                                }
+                            }
+                            atomicReferenceValue.set(Optional.empty());
                             latch.countDown();
                             return;
                             //// End action block
                         } catch (InterruptedException e) { // <<-- This means no possible action!
-                            Engine.LogTest("job was interrupted");
-                            value[0] = Optional.empty();
-                            latch.countDown();
-                            return;
-                        } catch (NotAllowedTransitionException notAllowedTransitionException) {
-                            Engine.LogTest("Transition is not allowed.");
-                            value[0] = Optional.empty();
+                            System.out.println("job was interrupted");
+                            atomicReferenceValue.set(Optional.empty());
                             latch.countDown();
                             return;
                         } catch (Exception e2) {
-                            Engine.LogTest("caught other exception: " + e2.getCause());
-                            value[0] = Optional.empty();
+                            System.out.println("caught other exception: " + e2.getCause());
+                            e2.printStackTrace();
+                            atomicReferenceValue.set(Optional.empty());
                             latch.countDown();
                             return;
                         }
@@ -100,8 +166,7 @@ public class StateSpaceExploringThread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return value[0];
+            return atomicReferenceValue.get();
         }
-        return Optional.empty();
     }
 }

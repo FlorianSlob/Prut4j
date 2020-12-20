@@ -4,12 +4,17 @@ import Helpers.ProtocolTestingHelper;
 import discourje.examples.chess.Move;
 import discourje.examples.gofish.*;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import org.junit.Test;
 
 import java.util.HashMap;
 
 public class GoFishProtocolTests {
+    public GoFishProtocolTests(){
+        Engine.IsProtocolOptimized = true;
+        Engine.IsLoggingEnabled = false;
 
+    }
     private IProtocol GetProtocol(){
         return new GoFishProtocol();
     }
@@ -110,14 +115,11 @@ public class GoFishProtocolTests {
 
     @Test
     public void TestEventualReception2() throws Exception {
-        for(int i = 0; i < 20; i++){
-            ProtocolTestingHelper.TestFormulaFromFile("formulas/GoFishProtocol/TestEventualReception2.owl",
-                    true,
-                    GetProtocol(),
-                    ShortTypeNameToFullClassNameMap,
-                    dummies);
-            System.out.println("Oef, 1 done! Iteration: " + i);
-        }
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/GoFishProtocol/TestEventualReception2.owl",
+                true,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
     }
 
     @Test

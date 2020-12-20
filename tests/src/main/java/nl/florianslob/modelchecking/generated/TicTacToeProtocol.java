@@ -14,192 +14,180 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TicTacToeProtocol implements IProtocol {
-	private final BlockingQueue<ProtocolMessage> player_1_Queue = new LinkedBlockingQueue<>();
-	private final BlockingQueue<ProtocolMessage> player_2_Queue = new LinkedBlockingQueue<>();
-	private final IEnvironment player_1_Environment = new IEnvironment() {
-		private int state = 0;
-		
-		public int getState(){
-			return state;
-		}
-		
-		public void setState(int newState){
-			state = newState;
-		}
-		
-		@Override
-		public String getName(){
-			return "player_1_";
-		}
-		
-		public <Any, AnyInput> Optional<Any> exchange_0_3(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			switch (state){
-				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
-						if (receiver == null) {
-							receiver = "player_2_";
-						}
-						if (receiver.equals("player_2_")) {
-							setState(1);
-							player_2_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-						setState(2);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)player_1_Queue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 1:
-					if(!box.isPresent() && !isCloseAction){
-						setState(2);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)player_1_Queue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 2:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
-						if (receiver == null) {
-							receiver = "player_2_";
-						}
-						if (receiver.equals("player_2_")) {
-							setState(1);
-							player_2_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-			}
-			return null;
-		}
-		
-		@Override
-		public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			if (state >=0 && state <= 3){
-				Optional result = exchange_0_3(box, receiver, isCloseAction);
-				if(result != null)
-				  return (Optional<Any>) result;
-			}
-			 throw new NotAllowedTransitionException();
-			
-		}
-	};
-	private final IEnvironment player_2_Environment = new IEnvironment() {
-		private int state = 0;
-		
-		public int getState(){
-			return state;
-		}
-		
-		public void setState(int newState){
-			state = newState;
-		}
-		
-		@Override
-		public String getName(){
-			return "player_2_";
-		}
-		
-		public <Any, AnyInput> Optional<Any> exchange_0_3(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			switch (state){
-				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
-						if (receiver == null) {
-							receiver = "player_1_";
-						}
-						if (receiver.equals("player_1_")) {
-							setState(1);
-							player_1_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-						setState(2);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)player_2_Queue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 1:
-					if(!box.isPresent() && !isCloseAction){
-						setState(2);
-						// Disabling unchecked inspection: We did check the class in the if statement above
-						//noinspection unchecked
-						return Optional.of((Any)player_2_Queue.take().Message);
-					}
-					throw new NotAllowedTransitionException();
-				case 2:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
-						if (receiver == null) {
-							receiver = "player_1_";
-						}
-						if (receiver.equals("player_1_")) {
-							setState(1);
-							player_1_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-					}
-					throw new NotAllowedTransitionException();
-			}
-			return null;
-		}
-		
-		@Override
-		public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
-			if (state >=0 && state <= 3){
-				Optional result = exchange_0_3(box, receiver, isCloseAction);
-				if(result != null)
-				  return (Optional<Any>) result;
-			}
-			 throw new NotAllowedTransitionException();
-			
-		}
-	};
+	private volatile int state = 0;
+	private final Object monitor = this;
 	
+	private final BlockingQueue<Object> queueFromplayer_2_Toplayer_1_ = new LinkedBlockingQueue<>(); 
+	private final BlockingQueue<Object> queueFromplayer_1_Toplayer_2_ = new LinkedBlockingQueue<>(); 
 	
 	@Override
 	public IEnvironment getEnvironment(String environmentName) throws Exception{
 		switch (environmentName){
-			case "player_1_": return player_1_Environment;
-			case "player_2_": return player_2_Environment;
+			case "player_1_": return new IEnvironment() {
+				
+				public void setState(int newState){
+					state = newState;
+				}
+				
+				public int getState(){
+					return 0;
+				}
+				
+				@Override
+				public String getName(){
+					return environmentName;
+				}
+				
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+					switch (state){
+						case 1 :
+						case 3 :
+							monitor.wait();
+							break;
+						case 0:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
+								if (receiver == null) {
+									receiver = "player_2_";
+								}
+								if (receiver.equals("player_2_")) {
+									monitor.notifyAll();
+									setState(1);
+									queueFromplayer_1_Toplayer_2_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							monitor.wait();
+							break;
+						case 2:
+							if (!box.isPresent() && !queueFromplayer_2_Toplayer_1_.isEmpty()) {
+								monitor.notifyAll();
+								setState(4);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of((Any)queueFromplayer_2_Toplayer_1_.take());
+							}
+							monitor.wait();
+							break;
+						case 4:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
+								if (receiver == null) {
+									receiver = "player_2_";
+								}
+								if (receiver.equals("player_2_")) {
+									monitor.notifyAll();
+									setState(1);
+									queueFromplayer_1_Toplayer_2_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							monitor.wait();
+							break;
+					}
+					return null;
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+					synchronized (monitor){
+						while (true){
+							if (state >=0 && state <= 5){
+								Optional result = exchange_0_5(box, receiver, isCloseAction);
+								if(result != null)
+								  return (Optional<Any>) result;
+							}
+						}
+					}
+					
+				}
+			};
+			case "player_2_": return new IEnvironment() {
+				
+				public void setState(int newState){
+					state = newState;
+				}
+				
+				public int getState(){
+					return 0;
+				}
+				
+				@Override
+				public String getName(){
+					return environmentName;
+				}
+				
+				public <Any, AnyInput> Optional<Any> exchange_0_5(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+					switch (state){
+						case 2 :
+						case 4 :
+							monitor.wait();
+							break;
+						case 0:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
+								if (receiver == null) {
+									receiver = "player_1_";
+								}
+								if (receiver.equals("player_1_")) {
+									monitor.notifyAll();
+									setState(2);
+									queueFromplayer_2_Toplayer_1_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							monitor.wait();
+							break;
+						case 1:
+							if (!box.isPresent() && !queueFromplayer_1_Toplayer_2_.isEmpty()) {
+								monitor.notifyAll();
+								setState(3);
+								// Disabling unchecked inspection: We did check the class in the if statement above
+								//noinspection unchecked
+								return Optional.of((Any)queueFromplayer_1_Toplayer_2_.take());
+							}
+							monitor.wait();
+							break;
+						case 3:
+							if (box.isPresent() && box.get().getClass() == discourje.examples.chess.Move.class ) {
+								if (receiver == null) {
+									receiver = "player_1_";
+								}
+								if (receiver.equals("player_1_")) {
+									monitor.notifyAll();
+									setState(2);
+									queueFromplayer_2_Toplayer_1_.put(box.get());
+									return Optional.empty();
+								}
+							}
+							monitor.wait();
+							break;
+					}
+					return null;
+				}
+				
+				@Override
+				public <Any, AnyInput> Optional<Any> exchange(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+					synchronized (monitor){
+						while (true){
+							if (state >=0 && state <= 5){
+								Optional result = exchange_0_5(box, receiver, isCloseAction);
+								if(result != null)
+								  return (Optional<Any>) result;
+							}
+						}
+					}
+					
+				}
+			};
 			default: throw new Exception("Unknown environment");
 		}
 	}
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_2_","player_1_" };
+		return new String[] { "player_1_","player_2_" };
 	}
 	
 	@Override
 	public String getState(){
-		return "/" + player_1_Environment.getState() + "/" + player_2_Environment.getState() + "/";
-	}
-	
-	@Override
-	public <Any> void send(String threadName, Any m, String receiver) throws Exception{
-		getEnvironment(threadName).send(m,receiver);
-	}
-	
-	@Override
-	public <Any> void send(String threadName, Any m) throws Exception{
-		getEnvironment(threadName).send(m);
-	}
-	
-	@Override
-	public <Any> Any receive(String threadName) throws Exception{
-		return getEnvironment(threadName).receive();
-	}
-	
-	@Override
-	public void close(String threadName) throws Exception{
-		getEnvironment(threadName).close();
+		return ""+this.state;
 	}
 }

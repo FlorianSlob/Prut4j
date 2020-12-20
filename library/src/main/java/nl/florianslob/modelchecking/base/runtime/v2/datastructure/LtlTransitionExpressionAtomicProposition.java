@@ -18,4 +18,29 @@ public class LtlTransitionExpressionAtomicProposition {
     public LtlTransitionExpressionAtomicProposition() {
         // keep empty constructor, we also want to mutate objects after creation.
     }
+
+    @Override
+    public String toString(){
+        return  "Direction: "+Direction +" Type:"+MessageType+" Participant:"+Participant+" Receiver:"+Receiver;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() == LtlTransitionExpressionAtomicProposition.class) {
+            var castedObj = (LtlTransitionExpressionAtomicProposition) obj;
+            if (castedObj.Direction == this.Direction
+                &&
+                    // TODO Static helper for null sensitive comparison
+                    ((castedObj.MessageType == null && this.MessageType == null) || (!(castedObj.MessageType == null || this.MessageType == null) && castedObj.MessageType.equals(this.MessageType)))
+                &&
+                    ((castedObj.Participant == null && this.Participant == null) || (!(castedObj.Participant == null || this.Participant == null) && castedObj.Participant.equals(this.Participant)))
+                &&
+                    ((castedObj.Receiver == null && this.Receiver == null) || (!(castedObj.Receiver == null || this.Receiver == null) && castedObj.Receiver.equals(this.Receiver)))
+            ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

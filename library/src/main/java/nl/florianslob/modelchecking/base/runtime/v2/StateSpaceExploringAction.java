@@ -64,6 +64,6 @@ public class StateSpaceExploringAction {
 
     @Override
     public String toString() {
-        return "(Participant: "+this.participant+", Action: "+this.direction+", Receiver: "+this.receiver+")";
+        return "(Participant: "+this.participant+", Action: "+this.direction+", Receiver: "+this.messageClass+", Receiver: "+this.receiver+")";
     }
 }
