@@ -107,7 +107,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test // Disabled, long running test
+    //  @Test // Disabled, long running test
     public void TestMax1Request1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestMax1Request1.owl",
                 true ,
