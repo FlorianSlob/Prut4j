@@ -1,2 +1,2 @@
-F(G(!"player_2_ SEND * TO *" && !"player_2_ RECEIVE *") ||
-    G(F("player_2_ SEND * TO *" || "player_2_ RECEIVE * TO *")))
+F(G(!"player_2_ SEND * TO *" && !"player_2_ RECV *") ||
+    G(F("player_2_ SEND * TO *" || "player_2_ RECV * TO *")))

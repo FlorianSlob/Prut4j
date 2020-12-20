@@ -14,7 +14,7 @@ public class GenericParticipantAction {
     }
 
     private GenericParticipantAction() {
-        this.type = GenericParticipantActionType.RECEIVE;
+        this.type = GenericParticipantActionType.RECV;
     }
 
     private GenericParticipantAction(ProtocolMessage message) {

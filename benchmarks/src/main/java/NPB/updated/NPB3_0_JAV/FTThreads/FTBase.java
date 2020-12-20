@@ -37,7 +37,7 @@
 */
 package NPB.updated.NPB3_0_JAV.FTThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 public class FTBase extends Thread {
 
@@ -125,7 +125,7 @@ public class FTBase extends Thread {
     protected FFTThread doFFT[];
     protected EvolveThread doEvolve[];
 
-    public void setupThreads(FT ft, IProtocol protocol) {
+    public void setupThreads(FT ft, Pr protocol) {
         master = ft;
         if (num_threads > nz) num_threads = nz;
         if (num_threads > nx) num_threads = nx;

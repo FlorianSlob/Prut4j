@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class CGProtocol_n_13 implements IProtocol {
+public class CGProtocol_n_13 implements Pr {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_10_Queue = new LinkedBlockingQueue<>();
@@ -1968,7 +1968,7 @@ public class CGProtocol_n_13 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_7_","worker_0_","worker_5_","worker_11_","worker_12_","master","worker_9_","worker_3_","worker_2_","worker_1_","worker_4_","worker_6_","worker_8_","worker_10_" };
+		return new String[] { "worker_5_","worker_1_","worker_10_","worker_9_","worker_0_","worker_8_","master","worker_7_","worker_4_","worker_2_","worker_12_","worker_3_","worker_6_","worker_11_" };
 	}
 	
 	@Override
@@ -1987,7 +1987,7 @@ public class CGProtocol_n_13 implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

@@ -42,7 +42,7 @@
 */
 package NPB.updated.NPB3_0_JAV.MGThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 public class MGBase extends Thread{
   public static final String BMName="MG";
@@ -216,7 +216,7 @@ public class MGBase extends Thread{
   public Resid resid[];
   public Thread master;
 
-  public void setupThreads(MG mg, IProtocol protocol) {
+  public void setupThreads(MG mg, Pr protocol) {
     interp = new Interp[num_threads];
     psinv = new Psinv[num_threads];
     rprj = new Rprj[num_threads];

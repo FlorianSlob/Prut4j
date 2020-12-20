@@ -1,1 +1,1 @@
-G("black SEND <Move> TO white" -> X("white RECEIVE <Move> TO black"))
+G("black SEND <Move> TO white" -> X("white RECV <Move> TO black"))

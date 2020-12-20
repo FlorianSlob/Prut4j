@@ -1,3 +1,3 @@
-G("worker_1_ RECEIVE <Boolean>" =>
+G("worker_1_ RECV <Boolean>" =>
    X("worker_1_ SEND <Boolean> TO worker_0_" ||
      "worker_1_ SEND <Boolean> TO worker_2_"))

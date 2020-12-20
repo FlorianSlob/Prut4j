@@ -3,7 +3,7 @@
  * !!! Any Changes made to this code could be overridden. !!!
  * !!! If you want to change the protocol, change its definition and regenerate this code. !!!
  **/
-package nl.florianslob.modelchecking.generated.games;
+package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
 import nl.florianslob.modelchecking.base.api.v2.*;
@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class TicTacToeProtocol implements IProtocol {
+public class TicTacToeProtocol implements Pr {
 	private volatile int state = 0;
 	private final Object monitor = this;
 	
@@ -183,7 +183,7 @@ public class TicTacToeProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_1_","player_2_" };
+		return new String[] { "player_2_","player_1_" };
 	}
 	
 	@Override

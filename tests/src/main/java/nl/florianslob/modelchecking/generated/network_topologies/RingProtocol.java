@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class RingProtocol implements IProtocol {
+public class RingProtocol implements Pr {
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_1_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_2_Queue = new LinkedBlockingQueue<>();
@@ -39,13 +39,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
@@ -53,13 +48,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -82,24 +82,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -122,14 +122,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -183,22 +183,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
+						if (receiver.equals("worker_2_")) {
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -207,13 +202,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -230,7 +230,7 @@ public class RingProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 9) {
-							setState(21);
+							setState(20);
 							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -265,15 +265,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -305,22 +305,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
+						if (receiver.equals("worker_2_")) {
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -329,13 +324,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -359,7 +359,7 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 17) {
-							setState(20);
+							setState(21);
 							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -427,17 +427,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
 						}
-						if (receiver.equals("worker_2_")) {
+						if (receiver.equals("worker_1_")) {
 							setState(20);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
+						if (receiver.equals("worker_2_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
+							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -450,14 +450,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
+						if (receiver.equals("worker_1_")) {
 							setState(20);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
+						if (receiver.equals("worker_2_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
+							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -470,14 +470,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -500,14 +500,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -520,14 +520,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(22);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -540,14 +540,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -608,17 +608,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
@@ -671,14 +671,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -701,14 +701,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -721,14 +721,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(22);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -741,14 +741,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -802,8 +802,13 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(13);
@@ -811,28 +816,23 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -845,29 +845,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -876,13 +871,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -905,24 +905,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -945,23 +945,23 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
+							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
 							return Optional.empty();
 						}
@@ -969,14 +969,14 @@ public class RingProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 9) {
-							setState(21);
+							setState(20);
 							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 10) {
-							setState(7);
+							setState(8);
 							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -1046,15 +1046,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -1099,19 +1099,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
+						if (receiver.equals("worker_2_")) {
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1120,13 +1115,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -1149,24 +1149,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1189,234 +1189,9 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(7);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = worker_0_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 10) {
-							setState(7);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 14) {
-							setState(11);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 24) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 27) {
-							setState(25);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 29) {
-							setState(25);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 37) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 37) {
-							setState(27);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 38) {
-							setState(0);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 40) {
-							setState(25);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 41) {
-							setState(25);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 42) {
-							setState(0);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-					}
-					throw new NotAllowedTransitionException();
-				case 8:
-					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
-						if (receiver == null) {
-							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
-							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),10));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(15);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(7);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(26);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),29));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(26);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(4);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -1425,17 +1200,12 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
+							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
 							return Optional.empty();
 						}
@@ -1450,7 +1220,7 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 18) {
-							setState(8);
+							setState(7);
 							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -1542,92 +1312,12 @@ public class RingProtocol implements IProtocol {
 						}
 					}
 					throw new NotAllowedTransitionException();
-				case 9:
+				case 8:
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
 							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(4);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = worker_0_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 37) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 37) {
-							setState(27);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-					}
-					throw new NotAllowedTransitionException();
-				case 10:
-					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
-						if (receiver == null) {
-							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
-							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(13);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(20);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(1);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(12);
@@ -1640,23 +1330,13 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(8);
+							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(20);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1689,24 +1369,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1729,6 +1409,326 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(8);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
+							return Optional.empty();
+						}
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_0_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 10) {
+							setState(8);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 14) {
+							setState(11);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 24) {
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 27) {
+							setState(25);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 29) {
+							setState(25);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 31) {
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 37) {
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 37) {
+							setState(27);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 38) {
+							setState(0);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 39) {
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 39) {
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 40) {
+							setState(25);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 41) {
+							setState(25);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 42) {
+							setState(0);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 9:
+					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(2);
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(4);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
+							return Optional.empty();
+						}
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_0_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 37) {
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 37) {
+							setState(27);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 39) {
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 39) {
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 10:
+					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(2);
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(13);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(20);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(1);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(15);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),10));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(8);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(20);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(26);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),29));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(26);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(4);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
@@ -1739,24 +1739,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 					}
@@ -1837,19 +1837,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
+						if (receiver.equals("worker_2_")) {
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1858,13 +1853,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -1887,24 +1887,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -1927,23 +1927,23 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
+							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
 							return Optional.empty();
 						}
@@ -2018,14 +2018,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2038,21 +2038,21 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_0_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 10) {
-							setState(7);
+							setState(8);
 							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -2108,15 +2108,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -2127,8 +2127,13 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(6);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(13);
@@ -2136,28 +2141,23 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(6);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2170,29 +2170,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -2201,13 +2196,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2230,24 +2230,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -2270,23 +2270,23 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
+							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
 							return Optional.empty();
 						}
@@ -2308,14 +2308,14 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 17) {
-							setState(20);
+							setState(21);
 							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 18) {
-							setState(8);
+							setState(7);
 							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -2411,13 +2411,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),10));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(15);
@@ -2425,13 +2420,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),10));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(8);
+							setState(7);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(8);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -2444,14 +2444,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2474,14 +2474,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -2494,14 +2494,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(22);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2514,24 +2514,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(8);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(7);
+							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),52));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(7);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),50));
 							return Optional.empty();
 						}
 					}
@@ -2605,14 +2605,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2625,14 +2625,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
@@ -2646,7 +2646,7 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 18) {
-							setState(8);
+							setState(7);
 							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -2714,17 +2714,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2737,14 +2737,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
@@ -2784,13 +2784,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
@@ -2798,13 +2793,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -2905,14 +2905,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
@@ -2952,13 +2952,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
@@ -2966,13 +2961,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -2995,24 +2995,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3035,14 +3035,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -3142,18 +3142,13 @@ public class RingProtocol implements IProtocol {
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -3162,18 +3157,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3182,13 +3177,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -3211,24 +3211,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3251,14 +3251,244 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
 						if (receiver.equals("worker_1_")) {
 							setState(25);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
+					}
+					if(!box.isPresent() && !isCloseAction){
+						ProtocolMessage objectToGet = worker_0_Queue.take();
+						if (objectToGet.OriginalTargetStateId == 9) {
+							setState(20);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 13) {
+							setState(24);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 24) {
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 27) {
+							setState(25);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 29) {
+							setState(25);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 31) {
+							setState(0);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 37) {
+							setState(16);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 37) {
+							setState(27);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 38) {
+							setState(0);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 39) {
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 39) {
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 40) {
+							setState(25);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 41) {
+							setState(25);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+						if (objectToGet.OriginalTargetStateId == 42) {
+							setState(0);
+							//queueFromworker_1_Toworker_0_);
+							// Disabling unchecked inspection: We did check the class in the if statement above
+							//noinspection unchecked
+							return Optional.of((Any)objectToGet.Message);
+						}
+					}
+					throw new NotAllowedTransitionException();
+				case 21:
+					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
+						if (receiver == null) {
+							int rnd = new Random().nextInt(2);
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(20);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(1);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(20);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(26);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),29));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(26);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(4);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(19);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
+							return Optional.empty();
+						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -3272,7 +3502,7 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 17) {
-							setState(20);
+							setState(21);
 							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
@@ -3364,247 +3594,12 @@ public class RingProtocol implements IProtocol {
 						}
 					}
 					throw new NotAllowedTransitionException();
-				case 21:
-					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
-						if (receiver == null) {
-							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
-							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(20);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(1);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),9));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(20);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(26);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),29));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(26);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),34));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(4);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),44));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(19);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
-							return Optional.empty();
-						}
-					}
-					if(!box.isPresent() && !isCloseAction){
-						ProtocolMessage objectToGet = worker_0_Queue.take();
-						if (objectToGet.OriginalTargetStateId == 9) {
-							setState(21);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 13) {
-							setState(24);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 24) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 27) {
-							setState(25);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 29) {
-							setState(25);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 31) {
-							setState(0);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 37) {
-							setState(16);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 37) {
-							setState(27);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 38) {
-							setState(0);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 40) {
-							setState(25);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 41) {
-							setState(25);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-						if (objectToGet.OriginalTargetStateId == 42) {
-							setState(0);
-							//queueFromworker_1_Toworker_0_);
-							// Disabling unchecked inspection: We did check the class in the if statement above
-							//noinspection unchecked
-							return Optional.of((Any)objectToGet.Message);
-						}
-					}
-					throw new NotAllowedTransitionException();
 				case 22:
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
@@ -3612,13 +3607,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3656,15 +3656,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -3696,17 +3696,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3719,14 +3719,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(17);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(22);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(17);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),43));
 							return Optional.empty();
 						}
 					}
@@ -3770,18 +3770,13 @@ public class RingProtocol implements IProtocol {
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),8));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(2);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -3790,18 +3785,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(20);
+							setState(2);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),17));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(21);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),20));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
+							setState(20);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),26));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3810,13 +3805,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -3839,24 +3839,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -3879,14 +3879,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -3947,13 +3947,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
@@ -3961,13 +3956,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -3990,24 +3990,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4030,14 +4030,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),46));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(25);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(19);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(25);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -4093,15 +4093,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -4133,17 +4133,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -4156,14 +4156,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
@@ -4231,13 +4231,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
@@ -4245,13 +4240,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(22);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(17);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(22);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4301,17 +4301,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(28);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(26);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(28);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -4324,14 +4324,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(9);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_2_")) {
 							setState(4);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(9);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 					}
@@ -4380,15 +4380,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(28);
-							//queueFromworker_1_Toworker_0_);
+							setState(22);
+							//queueFromworker_2_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 39) {
-							setState(22);
-							//queueFromworker_2_Toworker_0_);
+							setState(28);
+							//queueFromworker_1_Toworker_0_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -4432,17 +4432,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4475,14 +4475,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4515,24 +4515,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4545,14 +4545,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4565,14 +4565,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -4585,14 +4585,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -4716,22 +4716,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(0);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(23);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(2);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),9));
+						if (receiver.equals("worker_2_")) {
+							setState(0);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4740,13 +4735,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
+							setState(2);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),9));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4759,14 +4759,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(13);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(4);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),59));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(13);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -4779,19 +4779,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),12));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -4800,8 +4795,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -4810,8 +4805,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -4819,9 +4814,9 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(6);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4829,9 +4824,9 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+						if (receiver.equals("worker_0_")) {
+							setState(6);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -4840,13 +4835,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -4869,14 +4869,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -4904,15 +4904,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(7);
-							//queueFromworker_2_Toworker_1_);
+							setState(19);
+							//queueFromworker_0_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(19);
-							//queueFromworker_0_Toworker_1_);
+							setState(7);
+							//queueFromworker_2_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -4967,24 +4967,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -5079,14 +5079,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5119,24 +5119,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5149,14 +5149,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -5210,17 +5210,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5233,14 +5233,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -5332,17 +5332,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 					}
@@ -5395,14 +5395,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5435,24 +5435,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5465,14 +5465,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -5568,13 +5568,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
@@ -5582,13 +5577,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5612,15 +5612,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(7);
-							//queueFromworker_2_Toworker_1_);
+							setState(19);
+							//queueFromworker_0_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(19);
-							//queueFromworker_0_Toworker_1_);
+							setState(7);
+							//queueFromworker_2_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -5638,17 +5638,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5681,14 +5681,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5721,24 +5721,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5751,14 +5751,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -5832,24 +5832,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -5917,17 +5917,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -5940,14 +5940,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 					}
@@ -6015,17 +6015,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6058,14 +6058,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6098,24 +6098,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6128,14 +6128,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -6258,14 +6258,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6298,24 +6298,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6328,14 +6328,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -6431,17 +6431,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6454,14 +6454,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -6553,17 +6553,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6576,14 +6576,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 					}
@@ -6636,24 +6636,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -6721,17 +6721,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6764,14 +6764,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6804,24 +6804,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -6834,14 +6834,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -6964,24 +6964,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -7021,17 +7021,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7044,14 +7044,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 					}
@@ -7119,13 +7119,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
@@ -7133,8 +7128,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7144,7 +7139,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7152,19 +7147,24 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_1_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(7);
-							//queueFromworker_2_Toworker_1_);
+							setState(19);
+							//queueFromworker_0_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(19);
-							//queueFromworker_0_Toworker_1_);
+							setState(7);
+							//queueFromworker_2_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -7202,14 +7202,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7242,24 +7242,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7272,24 +7272,24 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7302,14 +7302,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -7419,13 +7419,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
@@ -7433,8 +7428,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7443,8 +7438,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7453,8 +7448,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7462,9 +7457,9 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(6);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7472,9 +7467,9 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+						if (receiver.equals("worker_0_")) {
+							setState(6);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7483,13 +7478,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7523,15 +7523,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(7);
-							//queueFromworker_2_Toworker_1_);
+							setState(19);
+							//queueFromworker_0_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(19);
-							//queueFromworker_0_Toworker_1_);
+							setState(7);
+							//queueFromworker_2_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -7586,24 +7586,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 					}
@@ -7685,17 +7685,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7728,14 +7728,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7768,24 +7768,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7798,14 +7798,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -7818,14 +7818,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -7838,14 +7838,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -7982,14 +7982,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8022,24 +8022,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8052,24 +8052,24 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8082,14 +8082,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -8150,13 +8150,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(2);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),9));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(22);
@@ -8164,13 +8159,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(11);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
+							setState(2);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),9));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(16);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(11);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),17));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8183,19 +8183,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),12));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),39));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8204,8 +8199,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8214,8 +8209,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8223,9 +8218,9 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(6);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8233,9 +8228,9 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+						if (receiver.equals("worker_0_")) {
+							setState(6);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8244,13 +8239,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8291,15 +8291,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(7);
-							//queueFromworker_2_Toworker_1_);
+							setState(19);
+							//queueFromworker_0_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(19);
-							//queueFromworker_0_Toworker_1_);
+							setState(7);
+							//queueFromworker_2_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -8344,19 +8344,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(13);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(4);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
+							setState(13);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8365,8 +8360,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8375,8 +8370,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8385,8 +8380,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8394,9 +8389,9 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(6);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+						if (receiver.equals("worker_2_")) {
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8404,9 +8399,9 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
+						if (receiver.equals("worker_0_")) {
+							setState(6);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8415,13 +8410,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8444,14 +8444,14 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -8472,15 +8472,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(7);
-							//queueFromworker_2_Toworker_1_);
+							setState(19);
+							//queueFromworker_0_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 11) {
-							setState(19);
-							//queueFromworker_0_Toworker_1_);
+							setState(7);
+							//queueFromworker_2_Toworker_1_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -8512,17 +8512,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 					}
@@ -8575,14 +8575,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),27));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(27);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),40));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(27);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8615,24 +8615,24 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(18);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(10);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(12);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
+							setState(18);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(6);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),43));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(12);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),49));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -8645,24 +8645,24 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),42));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(9);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(15);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),41));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
+							setState(9);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),47));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -8675,14 +8675,14 @@ public class RingProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_2_")) {
-							setState(28);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(20);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),60));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(28);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),62));
 							return Optional.empty();
 						}
 					}
@@ -8892,15 +8892,15 @@ public class RingProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -8925,17 +8925,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -8995,13 +8995,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -9010,7 +9005,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9019,13 +9014,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -9038,11 +9038,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -9050,12 +9045,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9088,24 +9088,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(11);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(3);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -9258,14 +9258,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 					}
@@ -9360,14 +9360,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(7);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(12);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(7);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9390,19 +9390,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(15);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(17);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
+							setState(15);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -9411,8 +9406,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -9420,9 +9415,9 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9432,12 +9427,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9495,15 +9495,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(26);
-							//queueFromworker_1_Toworker_2_);
+							setState(20);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(20);
-							//queueFromworker_0_Toworker_2_);
+							setState(26);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -9528,13 +9528,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -9543,7 +9538,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9552,13 +9547,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -9571,11 +9571,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -9583,12 +9578,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9631,24 +9631,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(7);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),56));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
+						if (receiver.equals("worker_1_")) {
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 					}
@@ -9709,13 +9709,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -9724,7 +9719,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9733,13 +9728,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -9752,11 +9752,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -9764,12 +9759,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -9812,24 +9812,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(7);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),56));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
+						if (receiver.equals("worker_1_")) {
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 					}
@@ -9972,29 +9972,29 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -10084,19 +10084,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(15);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(17);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
+							setState(15);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10105,8 +10100,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10114,9 +10109,9 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10126,12 +10121,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10172,15 +10172,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(26);
-							//queueFromworker_1_Toworker_2_);
+							setState(20);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(20);
-							//queueFromworker_0_Toworker_2_);
+							setState(26);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -10275,13 +10275,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -10290,7 +10285,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10299,13 +10294,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10318,11 +10318,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -10330,12 +10325,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10368,24 +10368,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(11);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(3);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10409,15 +10409,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -10505,13 +10505,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -10520,7 +10515,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10529,13 +10524,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10548,11 +10548,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -10560,12 +10555,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10608,19 +10608,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(7);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),56));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
+						if (receiver.equals("worker_1_")) {
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10628,19 +10623,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -10735,13 +10735,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -10750,7 +10745,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10759,13 +10754,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10778,11 +10778,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -10790,12 +10785,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10879,22 +10879,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(27);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),5));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(28);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),6));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(11);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
+						if (receiver.equals("worker_0_")) {
+							setState(27);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10903,13 +10898,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
+							setState(11);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10922,14 +10922,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(7);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(12);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(7);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),58));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -10962,19 +10962,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(15);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(17);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
+							setState(15);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10983,8 +10978,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -10992,9 +10987,9 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11004,12 +10999,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11074,15 +11074,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(26);
-							//queueFromworker_1_Toworker_2_);
+							setState(20);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(20);
-							//queueFromworker_0_Toworker_2_);
+							setState(26);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -11205,13 +11205,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(11);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(3);
@@ -11219,13 +11214,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
+							setState(11);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11258,19 +11258,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(15);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(17);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
+							setState(15);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -11279,8 +11274,8 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),37));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -11288,9 +11283,9 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11300,12 +11295,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11353,15 +11353,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(26);
-							//queueFromworker_1_Toworker_2_);
+							setState(20);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(20);
-							//queueFromworker_0_Toworker_2_);
+							setState(26);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -11423,15 +11423,15 @@ public class RingProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -11484,13 +11484,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -11499,7 +11494,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11508,13 +11503,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -11527,11 +11527,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -11539,12 +11534,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -11670,17 +11670,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -11781,24 +11781,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),28));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(15);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(17);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),25));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
+							setState(15);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),24));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 					}
@@ -11819,15 +11819,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(26);
-							//queueFromworker_1_Toworker_2_);
+							setState(20);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(20);
-							//queueFromworker_0_Toworker_2_);
+							setState(26);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -11838,17 +11838,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -11875,15 +11875,15 @@ public class RingProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -11936,17 +11936,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -11969,14 +11969,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 					}
@@ -12058,13 +12058,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -12073,7 +12068,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12082,13 +12077,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12101,11 +12101,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -12113,12 +12108,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12155,15 +12155,15 @@ public class RingProtocol implements IProtocol {
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -12244,17 +12244,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12277,14 +12277,14 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 					}
@@ -12298,15 +12298,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -12366,13 +12366,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -12381,7 +12376,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12390,13 +12385,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12409,11 +12409,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -12421,12 +12416,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12459,24 +12459,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(11);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(3);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12547,22 +12547,17 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),21));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12572,7 +12567,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12580,19 +12575,24 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),34));
+							return Optional.empty();
+						}
 					}
 					if(!box.isPresent() && !isCloseAction){
 						ProtocolMessage objectToGet = worker_2_Queue.take();
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(26);
-							//queueFromworker_1_Toworker_2_);
+							setState(20);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 16) {
-							setState(20);
-							//queueFromworker_0_Toworker_2_);
+							setState(26);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -12617,13 +12617,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -12632,7 +12627,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12641,13 +12636,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12660,11 +12660,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -12672,12 +12667,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12710,24 +12710,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(11);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(3);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12750,24 +12750,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(7);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),56));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
+						if (receiver.equals("worker_1_")) {
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12901,13 +12901,8 @@ public class RingProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
@@ -12916,7 +12911,7 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
+							worker_1_Queue.put(new ProtocolMessage(box.get(),40));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12925,13 +12920,18 @@ public class RingProtocol implements IProtocol {
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
-							setState(21);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
+							setState(23);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),38));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(19);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),35));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(21);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),36));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -12944,11 +12944,6 @@ public class RingProtocol implements IProtocol {
 							worker_0_Queue.put(new ProtocolMessage(box.get(),33));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),32));
@@ -12956,12 +12951,17 @@ public class RingProtocol implements IProtocol {
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(18);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
+							worker_0_Queue.put(new ProtocolMessage(box.get(),31));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(23);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),30));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(18);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),29));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -12994,24 +12994,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),22));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(24);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(22);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),18));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(3);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
+						if (receiver.equals("worker_1_")) {
+							setState(24);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(11);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(3);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),14));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
@@ -13034,24 +13034,24 @@ public class RingProtocol implements IProtocol {
 							worker_1_Queue.put(new ProtocolMessage(box.get(),59));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(12);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_0_")) {
 							setState(7);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),56));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
+						if (receiver.equals("worker_1_")) {
+							setState(12);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),57));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(8);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),55));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),54));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
@@ -13075,15 +13075,15 @@ public class RingProtocol implements IProtocol {
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(17);
-							//queueFromworker_0_Toworker_2_);
+							setState(21);
+							//queueFromworker_1_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
 						}
 						if (objectToGet.OriginalTargetStateId == 22) {
-							setState(21);
-							//queueFromworker_1_Toworker_2_);
+							setState(17);
+							//queueFromworker_0_Toworker_2_);
 							// Disabling unchecked inspection: We did check the class in the if statement above
 							//noinspection unchecked
 							return Optional.of((Any)objectToGet.Message);
@@ -13210,7 +13210,7 @@ public class RingProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_1_","worker_2_" };
+		return new String[] { "worker_1_","worker_2_","worker_0_" };
 	}
 	
 	@Override
@@ -13229,7 +13229,7 @@ public class RingProtocol implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

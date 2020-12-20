@@ -7,7 +7,7 @@ import discourje.examples.npb3.impl.MGThreads.InterpMessage;
 import discourje.examples.npb3.impl.MGThreads.PsinvMessage;
 import discourje.examples.npb3.impl.MGThreads.ResidMessage;
 import discourje.examples.npb3.impl.MGThreads.RprjMessage;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_2;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class MGProtocolTests {
         Engine.IsLoggingEnabled = false;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new MGProtocol_n_2();
     }
 

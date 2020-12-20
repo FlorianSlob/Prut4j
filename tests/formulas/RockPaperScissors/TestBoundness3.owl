@@ -1,1 +1,1 @@
-G("player_1_ SEND * TO player_0_" => X(!"player_1_ SEND * TO player_0_" U "* RECEIVE *"))
+G("player_1_ SEND * TO player_0_" => X(!"player_1_ SEND * TO player_0_" U "* RECV *"))

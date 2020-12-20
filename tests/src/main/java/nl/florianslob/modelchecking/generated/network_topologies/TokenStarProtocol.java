@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class TokenStarProtocol implements IProtocol {
+public class TokenStarProtocol implements Pr {
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_1_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_2_Queue = new LinkedBlockingQueue<>();
@@ -40,8 +40,13 @@ public class TokenStarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_","worker_3_" };
+							String[] receiverOptionsArray = new String[]{ "worker_3_","worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(4);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
@@ -51,11 +56,6 @@ public class TokenStarProtocol implements IProtocol {
 						if (receiver.equals("worker_2_")) {
 							setState(3);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_3_")) {
-							setState(4);
-							worker_3_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -74,13 +74,8 @@ public class TokenStarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_","worker_3_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_3_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(3);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
@@ -90,6 +85,11 @@ public class TokenStarProtocol implements IProtocol {
 						if (receiver.equals("worker_3_")) {
 							setState(4);
 							worker_3_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -307,7 +307,7 @@ public class TokenStarProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_0_","worker_1_","worker_3_" };
+		return new String[] { "worker_0_","worker_1_","worker_3_","worker_2_" };
 	}
 	
 	@Override
@@ -326,7 +326,7 @@ public class TokenStarProtocol implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

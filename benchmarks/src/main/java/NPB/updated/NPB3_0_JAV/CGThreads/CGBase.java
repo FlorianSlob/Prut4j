@@ -42,7 +42,7 @@
 */
 package NPB.updated.NPB3_0_JAV.CGThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 public class CGBase extends Thread{
     public static final String BMName="CG";
@@ -135,7 +135,7 @@ public class CGBase extends Thread{
         x = new double[na+3];
         z = new double[na+3];
     }
-    public void setupThreads(CG cg, IProtocol protocol){
+    public void setupThreads(CG cg, Pr protocol){
         worker = new CGWorker[num_threads];
         master = cg;
 

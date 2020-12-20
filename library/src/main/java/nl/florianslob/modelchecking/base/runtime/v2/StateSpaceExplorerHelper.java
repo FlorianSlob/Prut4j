@@ -1,16 +1,13 @@
 package nl.florianslob.modelchecking.base.runtime.v2;
 
 import com.rits.cloning.Cloner;
-import com.rits.cloning.IDumpCloned;
-import nl.florianslob.modelchecking.base.api.v2.ICloneableProtocol;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 public class StateSpaceExplorerHelper {
 
-    public static List<StateSpaceExploringAction> getExploringActions(IProtocol protocol, Object[] dummies) {
+    public static List<StateSpaceExploringAction> getExploringActions(Pr protocol, Object[] dummies) {
         var exploringActions = new ArrayList<StateSpaceExploringAction>();
         for (var threadName : protocol.threadNames()) {
             // Add all receive and send actions for every dummy
@@ -27,7 +24,7 @@ public class StateSpaceExplorerHelper {
         return exploringActions;
     }
 
-    public static IProtocol deepClone(IProtocol protocol) {
+    public static Pr deepClone(Pr protocol) {
 //        // Clone the IProtocol with the third party library
 //        // https://github.com/kostaskougios/cloning
         Cloner cloner = new Cloner();

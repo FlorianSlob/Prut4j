@@ -13,7 +13,7 @@ public class GenericParticipantAction {
     }
 
     private GenericParticipantAction() {
-        this.direction = LtlTransitionExpressionAtomicPropositionDirection.RECEIVE;
+        this.direction = LtlTransitionExpressionAtomicPropositionDirection.RECV;
     }
 
     private GenericParticipantAction(Object message) {

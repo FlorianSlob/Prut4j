@@ -1,7 +1,7 @@
 package nl.florianslob.modelchecking.generated.games;
 
 import discourje.examples.chess.Move;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import Helpers.ProtocolTestingHelper;
 import nl.florianslob.modelchecking.generated.ChessProtocol;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class ChessProtocolTests {
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new ChessProtocol();
     }
 

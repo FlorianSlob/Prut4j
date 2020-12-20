@@ -60,7 +60,7 @@ public class GenericParticipant {
             }
         }
 
-        if(this.currentExecutingAction.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
+        if(this.currentExecutingAction.direction == LtlTransitionExpressionAtomicPropositionDirection.RECV){
             System.out.println("Receiving message in "+environment.getName());
             Object protocolMessage = environment.receive();
             Set<GenericParticipantAction> actionSet = AfterReceiveActionsPerMessageClass.get(protocolMessage.getClass());

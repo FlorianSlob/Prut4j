@@ -1,1 +1,1 @@
-!"interp_0_ SEND * TO master" W "interp_0_ RECEIVE *"
+!"interp_0_ SEND * TO master" W "interp_0_ RECV *"

@@ -48,7 +48,7 @@ import discourje.examples.npb3.impl.BMInOut.BMResults;
 import discourje.examples.npb3.impl.ISThreads.RankMessage;
 import discourje.examples.npb3.impl.Timer;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 public class IS extends ISBase {
 
@@ -59,7 +59,7 @@ public class IS extends ISBase {
     Random rng;
     protected static final double amult = 1220703125.0;
 
-    public IS(char clss, int np, boolean ser, IProtocol protocol){
+    public IS(char clss, int np, boolean ser, Pr protocol){
         super(clss,np,ser, protocol);
         serial=ser;
         rng=new Random();

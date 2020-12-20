@@ -4,7 +4,7 @@ import Helpers.ProtocolTestingHelper;
 import discourje.examples.npb3.impl.CGThreads.CGMessage;
 import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.CGProtocol_n_2;
@@ -18,7 +18,7 @@ public class CGProtocolTests {
         Engine.IsLoggingEnabled = false;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new CGProtocol_n_2();
     }
 

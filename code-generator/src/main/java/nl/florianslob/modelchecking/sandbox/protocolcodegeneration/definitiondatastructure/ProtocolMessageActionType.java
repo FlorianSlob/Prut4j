@@ -2,7 +2,7 @@ package nl.florianslob.modelchecking.sandbox.protocolcodegeneration.definitionda
 
 public enum ProtocolMessageActionType {
     SEND,
-    RECEIVE,
+    RECV,
     CLOSE, // TODO What to do with this state?
     SYNC /// Will be send to target & receive from target
 }

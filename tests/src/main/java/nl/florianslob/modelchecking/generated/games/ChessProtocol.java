@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ChessProtocol implements IProtocol {
+public class ChessProtocol implements Pr {
 	private final BlockingQueue<ProtocolMessage> blackQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> whiteQueue = new LinkedBlockingQueue<>();
 	private final IEnvironment blackEnvironment = new IEnvironment() {
@@ -153,7 +153,7 @@ public class ChessProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "black","white" };
+		return new String[] { "white","black" };
 	}
 	
 	@Override
@@ -172,7 +172,7 @@ public class ChessProtocol implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

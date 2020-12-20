@@ -4,7 +4,7 @@ import Helpers.ProtocolTestingHelper;
 import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
 import discourje.examples.npb3.impl.ISThreads.RankMessage;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_2;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class ISProtocolTests {
         Engine.IsLoggingEnabled = false;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new ISProtocol_n_2();
     }
 

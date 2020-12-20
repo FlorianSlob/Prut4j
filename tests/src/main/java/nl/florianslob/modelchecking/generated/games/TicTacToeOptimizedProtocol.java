@@ -3,7 +3,7 @@
  * !!! Any Changes made to this code could be overridden. !!!
  * !!! If you want to change the protocol, change its definition and regenerate this code. !!!
  **/
-package nl.florianslob.modelchecking.generated.games;
+package nl.florianslob.modelchecking.generated;
 
 // Import types from the API
 import nl.florianslob.modelchecking.base.api.v2.*;
@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class TicTacToeOptimizedProtocol implements IProtocol {
+public class TicTacToeOptimizedProtocol implements Pr {
 	private final BlockingQueue<ProtocolMessage> player_1_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> player_2_Queue = new LinkedBlockingQueue<>();
 	private final IEnvironment player_1_Environment = new IEnvironment() {
@@ -194,7 +194,7 @@ public class TicTacToeOptimizedProtocol implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

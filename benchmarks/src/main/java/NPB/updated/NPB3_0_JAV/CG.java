@@ -48,7 +48,7 @@ import NPB.updated.NPB3_0_JAV.CGThreads.*;
 import discourje.examples.npb3.impl.BMInOut.BMResults;
 import discourje.examples.npb3.impl.CGThreads.CGMessage;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 import java.io.*;
 import java.text.*;
@@ -97,7 +97,7 @@ public class CG extends CGBase {
 	}
 
 	public void runBenchMark() throws Exception {
-		IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads);
+		Pr protocol = ProtocolHelper.GetProtocolImplementation(NpbType.CG, num_threads);
 
 		try {
 			masterEnvironment = protocol.getEnvironment("master");

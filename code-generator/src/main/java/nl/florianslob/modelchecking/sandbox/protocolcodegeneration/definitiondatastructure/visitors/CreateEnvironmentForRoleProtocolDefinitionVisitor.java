@@ -121,7 +121,7 @@ public class CreateEnvironmentForRoleProtocolDefinitionVisitor implements IProto
                 );
             }
 
-            if (transaction.action == ProtocolMessageActionType.RECEIVE) {
+            if (transaction.action == ProtocolMessageActionType.RECV) {
                 ASTCommunicationChannel allASTCommunicationChannel = getCommunicationChannelSyntaxTreeItem(transaction.fromRole, transaction.toRole);
                 // add receive action of type
                 var actionToAdd =new ASTReceiveAction(this.receiveActionWriter, allASTCommunicationChannel, protocolStateNode.stateId, transaction.targetState.stateId, transaction.messageContentType);

@@ -1,7 +1,7 @@
 package nl.florianslob.modelchecking.generated.NetworkTopologies;
 
 import Helpers.ProtocolTestingHelper;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.TokenDirectedRingProtocol;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class TokenDirectedRingProtocolTests {
         Engine.IsProtocolOptimized = true;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new TokenDirectedRingProtocol();
     }
 

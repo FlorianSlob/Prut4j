@@ -52,7 +52,7 @@ import discourje.examples.npb3.impl.FTThreads.EvolveMessage;
 import discourje.examples.npb3.impl.FTThreads.FFTMessage;
 import discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 import java.text.*;
 import java.io.*;
@@ -62,7 +62,7 @@ public class FT extends FTBase {
     public discourje.examples.npb3.impl.BMInOut.BMResults results;
     public boolean serial=true;
     boolean done=false;
-    private IProtocol protocol;
+    private Pr protocol;
     private IEnvironment environment;
 
     public FT(char clss, int np , boolean ser){

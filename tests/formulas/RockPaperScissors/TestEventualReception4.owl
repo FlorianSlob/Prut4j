@@ -1,1 +1,1 @@
-G("player_1_ SEND * TO player_2_" => X(F("player_2_ RECEIVE *")))
+G("player_1_ SEND * TO player_2_" => X(F("player_2_ RECV *")))

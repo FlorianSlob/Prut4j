@@ -1,6 +1,6 @@
 package NPB.updated.NPB3_0_JAV;
 
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_1;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_10;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_11;
@@ -100,7 +100,7 @@ import nl.florianslob.modelchecking.generated.CGProtocol_n_24;
 
 
 public class ProtocolHelper {
-    public static IProtocol GetProtocolImplementation(NpbType npbType, int numberOfThreads){
+    public static Pr GetProtocolImplementation(NpbType npbType, int numberOfThreads){
         switch (npbType){
             case CG:
                     switch (numberOfThreads) {

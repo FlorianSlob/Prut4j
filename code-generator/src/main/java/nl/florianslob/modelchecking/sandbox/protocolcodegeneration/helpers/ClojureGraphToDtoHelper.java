@@ -79,7 +79,7 @@ public class ClojureGraphToDtoHelper {
                 type = edge.label.name.substring(edge.label.name.indexOf("(") + 1, edge.label.name.indexOf(","));
                 break;
             case ":receive":
-                action = ProtocolMessageActionType.RECEIVE;
+                action = ProtocolMessageActionType.RECV;
                 type = "";
                 break;
             case ":close":

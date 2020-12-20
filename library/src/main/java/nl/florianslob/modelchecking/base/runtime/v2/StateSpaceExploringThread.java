@@ -1,7 +1,7 @@
 package nl.florianslob.modelchecking.base.runtime.v2;
 
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.api.v2.NotAllowedTransitionException;
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransitionExpressionAtomicPropositionDirection;
 
@@ -11,14 +11,14 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class StateSpaceExploringThread {
     private String threadName;
-    private IProtocol protocol;
+    private Pr protocol;
     private IEnvironment environment;
 
     public StateSpaceExploringThread(String participantName){
         this.threadName = participantName;
     }
 
-    public void SetProtocolClone(IProtocol protocolClone) throws Exception {
+    public void SetProtocolClone(Pr protocolClone) throws Exception {
         // Pass new environment to thread.
         this.protocol = protocolClone;
         this.environment = this.protocol.getEnvironment(this.threadName);
@@ -30,7 +30,7 @@ public class StateSpaceExploringThread {
      *
      * This method tries a transition, if it is interupted it has encountered a wait operation.
      */
-    public Optional<IProtocol> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) {
+    public Optional<Pr> ExecuteAction(StateSpaceExploringAction actionToBeExecuted) {
 
             if (Engine.IsProtocolOptimized) {
             final CountDownLatch latch = new CountDownLatch(1);
@@ -54,7 +54,7 @@ public class StateSpaceExploringThread {
 
             // Check for an interupt when trying to receive a value.
             // Thread will hang on .take() otherwise.
-            if (actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE) {
+            if (actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECV) {
                 var baseThread =
                         new Thread(() -> {
                             synchronized (this.environment) {
@@ -134,7 +134,7 @@ public class StateSpaceExploringThread {
                                 return;
                             }
 
-                            if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECEIVE){
+                            if(actionToBeExecuted.direction == LtlTransitionExpressionAtomicPropositionDirection.RECV){
                                 var result = self.environment.receive();
                                 if(result.getClass() == actionToBeExecuted.messageClass){
                                     atomicReferenceValue.set(Optional.of(self.protocol));
