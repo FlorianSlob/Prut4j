@@ -230,9 +230,8 @@ public class ProtocolCodeGenerator {
 
         // Call Clojure function
         IFn require = Clojure.var("clojure.core","require");
-        require.invoke(Clojure.read("clojure.core"));
-
         require.invoke(Clojure.read("discourje.core.main"));
+        require.invoke(Clojure.read("clojure.core"));
 
         IFn toGraphFunction  = Clojure.var("discourje.core.main", "-spec-to-lts-"+clojureFunctionName);
 

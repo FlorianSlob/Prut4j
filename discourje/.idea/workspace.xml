@@ -5,44 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestDropOut1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestDropOut2.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestDropOut3.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestSameItem1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestSameItem3.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestSendBeforeReceive1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestSendBeforeReceive2.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestSendBeforeReceive3.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_18.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_18.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_19.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_19.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_20.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_20.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_21.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_22.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_22.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_23.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_23.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-2d-mesh.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-2d-mesh.dcj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/StateSpaceExploringAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/StateSpaceExploringAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/StateSpaceExploringActionsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/StateSpaceExploringActionsHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/TriedTransitionTuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/TriedTransitionTuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/datastructure/LtlTransitionExpressionAtomicProposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/datastructure/LtlTransitionExpressionAtomicProposition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlAutomatonVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/ltlautomaton/LtlAutomatonVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/test/java/nl/florianslob/modelchecking/base/runtime/OwlHelperTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/test/java/nl/florianslob/modelchecking/base/runtime/OwlHelperTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/NetworkTopologies/Test1.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingCurrentActivePlayer1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestSameItem2.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingCurrentActivePlayer2.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingCurrentActivePlayer3.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingNextActivePlayer1.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingNextActivePlayer2.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingNextActivePlayer3.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingUniqueness1.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingUniqueness2.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/RockPaperScissors/TestTurnTakingUniqueness3.owl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenFullMeshProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenFullMeshProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenUndirectedRingProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenUndirectedRingProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/games/RockPaperScissorsProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/games/RockPaperScissorsProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenTwoDMeshProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenTwoDMeshProtocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +234,7 @@
       <workItem from="1608233112213" duration="2842000" />
       <workItem from="1608305145783" duration="1450000" />
       <workItem from="1608382618994" duration="2707000" />
-      <workItem from="1608418639822" duration="7888000" />
+      <workItem from="1608418639822" duration="9284000" />
     </task>
     <servers />
   </component>

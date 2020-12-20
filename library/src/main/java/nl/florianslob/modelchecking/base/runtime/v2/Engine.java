@@ -208,7 +208,7 @@ public class Engine {
                                 Engine.LogTest("It is the state we are checking! ");
                                 Engine.LogTest(messageForDebugging);
 
-                                triedTransitionsStack.push(newTriedTransitionTuple);
+//                                triedTransitionsStack.push(newTriedTransitionTuple);
                                 var isAccepting  = isAccepting(triedTransitionsStack);
                                 if(isAccepting) {
                                     Engine.LogResult("It is the state we are checking! And it was part of an accepting cycle ");
@@ -230,6 +230,7 @@ public class Engine {
                         } else {
 
                             locallyTriedTransitions.add(newTriedTransitionTuple);
+//                            triedTransitionsStack.push(newTriedTransitionTuple);
 
 //                            if (transition.AcceptanceSet0 || transition.AcceptanceSet1) {
 //                                // TODO do we need to check the first transition(before starting the recursive behavior)?
@@ -247,7 +248,7 @@ public class Engine {
                             if (recursiveResult) {
                                 return true;
                             }else{
-                                locallyTriedTransitions.remove(newTriedTransitionTuple);
+//                                locallyTriedTransitions.remove(newTriedTransitionTuple);
                                 triedTransitionsStack.pop();
                             }
                         }
@@ -337,7 +338,7 @@ public class Engine {
             if(!recursiveResult){
                 triedTransitionsStack.pop();
             } else{
-                locallyTriedTransitions.remove(markedTransitionTuple);
+//                locallyTriedTransitions.remove(markedTransitionTuple);
             }
             return recursiveResult;
         } else {
