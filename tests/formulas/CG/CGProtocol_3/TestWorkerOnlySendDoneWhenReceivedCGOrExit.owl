@@ -1,5 +1,0 @@
-( ! "worker_0_ SEND <DoneMessage> TO master")
-U
-( "worker_0_ RECEIVE <CGMessage>"
-|
-"worker_0_ RECEIVE <ExitMessage>" )

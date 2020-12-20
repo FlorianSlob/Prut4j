@@ -892,6 +892,16 @@ public class MGProtocol_n_9 implements IProtocol {
 					wait();
 					break;
 				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+						if (receiver == null) {
+							receiver = "rprj_0_";
+						}
+						if (receiver.equals("rprj_0_")) {
+							setState(33);
+							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
 							receiver = "interp_0_";
@@ -902,23 +912,13 @@ public class MGProtocol_n_9 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "resid_0_";
+							receiver = "interp_0_";
 						}
-						if (receiver.equals("resid_0_")) {
-							setState(68);
-							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-						if (receiver == null) {
-							receiver = "rprj_0_";
-						}
-						if (receiver.equals("rprj_0_")) {
-							setState(33);
-							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
+						if (receiver.equals("interp_0_")) {
+							setState(41);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 					}
@@ -932,13 +932,13 @@ public class MGProtocol_n_9 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.ResidMessage.class ) {
 						if (receiver == null) {
-							receiver = "interp_0_";
+							receiver = "resid_0_";
 						}
-						if (receiver.equals("interp_0_")) {
-							setState(41);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+						if (receiver.equals("resid_0_")) {
+							setState(68);
+							resid_0_Queue.put(new ProtocolMessage(box.get(),4));
 							return Optional.empty();
 						}
 					}
@@ -1366,13 +1366,13 @@ public class MGProtocol_n_9 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
 						if (receiver == null) {
-							receiver = "interp_0_";
+							receiver = "psinv_0_";
 						}
-						if (receiver.equals("interp_0_")) {
-							setState(41);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+						if (receiver.equals("psinv_0_")) {
+							setState(1);
+							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -1396,13 +1396,13 @@ public class MGProtocol_n_9 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
-							receiver = "psinv_0_";
+							receiver = "interp_0_";
 						}
-						if (receiver.equals("psinv_0_")) {
-							setState(1);
-							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+						if (receiver.equals("interp_0_")) {
+							setState(41);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 					}
@@ -5321,7 +5321,7 @@ public class MGProtocol_n_9 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "interp_6_","rprj_3_","interp_5_","psinv_1_","rprj_8_","psinv_3_","psinv_2_","master","rprj_6_","psinv_7_","interp_4_","psinv_0_","resid_7_","interp_8_","resid_1_","resid_4_","resid_5_","rprj_1_","resid_3_","rprj_4_","resid_6_","rprj_5_","interp_2_","resid_8_","psinv_4_","interp_0_","psinv_6_","rprj_2_","rprj_0_","resid_2_","interp_1_","rprj_7_","psinv_5_","resid_0_","interp_3_","interp_7_","psinv_8_" };
+		return new String[] { "psinv_0_","psinv_6_","resid_0_","master","psinv_1_","interp_7_","rprj_0_","resid_2_","interp_2_","rprj_8_","resid_8_","resid_5_","psinv_8_","resid_6_","psinv_3_","interp_5_","resid_3_","interp_0_","rprj_3_","rprj_6_","rprj_4_","interp_1_","psinv_2_","interp_6_","resid_1_","rprj_1_","psinv_4_","psinv_5_","interp_8_","interp_4_","resid_4_","rprj_5_","rprj_7_","interp_3_","rprj_2_","psinv_7_","resid_7_" };
 	}
 	
 	@Override

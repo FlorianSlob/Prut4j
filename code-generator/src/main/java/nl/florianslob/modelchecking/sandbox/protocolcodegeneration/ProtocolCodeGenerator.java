@@ -20,10 +20,10 @@ public class ProtocolCodeGenerator {
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
         boolean
-                genCGProtocol = false,
-                genFTProtocol = false,
-                genISProtocol = false,
-                genMGProtocol = false,
+                genCGProtocol = true,
+                genFTProtocol = true,
+                genISProtocol = true,
+                genMGProtocol = true,
                 genDemoProtocols = false,
                 genRingProtocol = false,
                 // genMeshProtocol will generate a very large file with large methods.
@@ -36,7 +36,7 @@ public class ProtocolCodeGenerator {
                 genRockPaperScissorsProtocol = true,
                 genTicTacToeProtocol = false
                         ;
-        boolean generateToTestBenchmarkProject = false;
+        boolean generateToTestBenchmarkProject = true;
         boolean generateToTestProject = true;
 
         var filePathForDemoProtocolsGames = "../tests/src/main/java/nl/florianslob/modelchecking/generated/games/";
@@ -89,11 +89,9 @@ public class ProtocolCodeGenerator {
             }
 
             if(generateToTestProject){
-                for(int i = 1; i <= 4; i++){
-                    var protocolName = "CGProtocol_n_"+i;
-                    var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/";
-                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false,true);
-                }
+                var protocolName = "CGProtocol_n_2";
+                var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/npb/";
+                GenerateProtocolFromDefinition(clojureFunctionName, 2, filePath, protocolName, false,true);
             }
         }
 
@@ -109,11 +107,9 @@ public class ProtocolCodeGenerator {
                 }
             }
             if (generateToTestProject) {
-                for (int i = 1; i <= 4; i++) {
-                    var protocolName = "FTProtocol_n_" + i;
-                    var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/FT/";
-                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false,true);
-                }
+                var protocolName = "FTProtocol_n_2";
+                var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/npb/";
+                GenerateProtocolFromDefinition(clojureFunctionName, 2, filePath, protocolName, false,true);
             }
         }
 
@@ -129,11 +125,9 @@ public class ProtocolCodeGenerator {
                 }
             }
             if (generateToTestProject) {
-                for(int i = 1; i <= 4; i++){
-                    var protocolName = "ISProtocol_n_"+i;
-                    var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/IS/";
-                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false, true);
-                }
+                var protocolName = "ISProtocol_n_2";
+                var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/npb/";
+                GenerateProtocolFromDefinition(clojureFunctionName, 2, filePath, protocolName, false, true);
             }
         }
 
@@ -149,11 +143,9 @@ public class ProtocolCodeGenerator {
             }
 
             if (generateToTestProject) {
-                for(int i = 1; i <= 4; i++){
-                    var protocolName = "MGProtocol_n_"+i;
-                    var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/MG/";
-                    GenerateProtocolFromDefinition(clojureFunctionName, i, filePath, protocolName, false, true);
-                }
+                    var protocolName = "MGProtocol_n_2";
+                    var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/npb/";
+                    GenerateProtocolFromDefinition(clojureFunctionName, 2, filePath, protocolName, false, true);
             }
         }
 

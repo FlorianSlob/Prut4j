@@ -70,16 +70,6 @@ public class CGProtocol_n_1 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 3:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(4);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -87,6 +77,16 @@ public class CGProtocol_n_1 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(2);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(4);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}

@@ -1,3 +1,0 @@
-( ! "worker_0_ RECEIVE <CGMessage>")
-U
-"master SEND <CGMessage> TO worker_0_"

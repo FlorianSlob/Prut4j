@@ -1,0 +1,1 @@
+G("master SEND <ExitMessage> TO *" => G(!"master SEND <RankMessage> TO *"))

@@ -3128,7 +3128,7 @@ public class ISProtocol_n_21 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","worker_6_","worker_15_","worker_7_","worker_9_","worker_16_","worker_3_","worker_4_","worker_11_","worker_14_","worker_17_","worker_19_","worker_1_","worker_20_","worker_5_","worker_2_","worker_10_","worker_18_","worker_12_","worker_8_","worker_13_","master" };
+		return new String[] { "worker_6_","worker_3_","worker_4_","master","worker_20_","worker_8_","worker_16_","worker_17_","worker_14_","worker_11_","worker_19_","worker_2_","worker_5_","worker_13_","worker_12_","worker_18_","worker_10_","worker_15_","worker_0_","worker_7_","worker_9_","worker_1_" };
 	}
 	
 	@Override

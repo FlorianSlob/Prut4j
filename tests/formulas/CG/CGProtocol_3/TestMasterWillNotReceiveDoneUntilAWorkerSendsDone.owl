@@ -1,3 +1,0 @@
-(!"master RECEIVE <DoneMessage>")
-U
-"* SEND <DoneMessage> TO master"
