@@ -42,10 +42,10 @@
 */
 package NPB.updated.NPB3_0_JAV.ISThreads;
 import NPB.updated.NPB3_0_JAV.*;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 public class ISBase extends Thread{
-  public final IProtocol protocol;
+  public final Pr protocol;
   public static final String BMName="IS";
   public char CLASS = 'S';
   public static final int  MAX_ITERATIONS=10,TEST_ARRAY_SIZE=5;
@@ -86,11 +86,11 @@ public class ISBase extends Thread{
   public static int passed_verification;
   public int master_hist[], key_array[], partial_verify_vals[];
 
-  public ISBase( IProtocol protocol){
+  public ISBase( Pr protocol){
     this.protocol = protocol;
   }
 
-  public ISBase(char clss, int np, boolean serial, IProtocol protocol){
+  public ISBase(char clss, int np, boolean serial, Pr protocol){
     CLASS=clss;
     num_threads=np;
     this.protocol = protocol;

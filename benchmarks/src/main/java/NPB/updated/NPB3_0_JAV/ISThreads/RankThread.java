@@ -47,7 +47,7 @@ import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
 import discourje.examples.npb3.impl.ISThreads.RankMessage;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 public class RankThread extends ISBase {
     private final IEnvironment environment;
@@ -60,7 +60,7 @@ public class RankThread extends ISBase {
     public static int iteration=0;
     public int state;
 
-    public RankThread(IS is, int Id, int s1, int e1, int s2, int e2, IEnvironment environment, IProtocol protocol) {
+    public RankThread(IS is, int Id, int s1, int e1, int s2, int e2, IEnvironment environment, Pr protocol) {
         super(protocol);
         Init(is);
         master=is;

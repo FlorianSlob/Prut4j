@@ -1,1 +1,1 @@
-G("player_0_ SEND <Go> TO *" => X(!"* RECEIVE <Turn>" U "player_0_ RECEIVE <Turn>"))
+G("player_0_ SEND <Go> TO *" => X(!"* RECV <Turn>" U "player_0_ RECV <Turn>"))

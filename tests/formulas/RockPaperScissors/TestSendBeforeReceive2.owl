@@ -1,2 +1,2 @@
-(!"player_1_ RECEIVE *" U "player_0_ SEND * TO player_0_") &&
-  (!"player_1_ RECEIVE *" U "player_0_ SEND * TO player_2_")
+(!"player_1_ RECV *" U "player_0_ SEND * TO player_0_") &&
+  (!"player_1_ RECV *" U "player_0_ SEND * TO player_2_")

@@ -60,7 +60,7 @@ public class GenericParticipant {
             }
         }
 
-        if(this.currentExecutingAction.type == GenericParticipantActionType.RECEIVE){
+        if(this.currentExecutingAction.type == GenericParticipantActionType.RECV){
             System.out.println("Receiving message in "+environment.getName());
             ProtocolMessage protocolMessage = (ProtocolMessage) environment.receive();
             Set<GenericParticipantAction> actionSet = AfterReceiveActionsPerMessageClass.get(protocolMessage.message.getClass());

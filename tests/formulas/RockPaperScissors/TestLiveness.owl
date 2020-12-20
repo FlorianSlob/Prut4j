@@ -1,1 +1,1 @@
-G(F("* SEND * TO *" || "* RECEIVE *"))
+G(F("* SEND * TO *" || "* RECV *"))

@@ -54,7 +54,7 @@ import discourje.examples.npb3.impl.MGThreads.PsinvMessage;
 import discourje.examples.npb3.impl.MGThreads.ResidMessage;
 import discourje.examples.npb3.impl.MGThreads.RprjMessage;
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 
 import java.io.*;
 import java.text.*;
@@ -110,7 +110,7 @@ public class MG extends MGBase {
 
     public void runBenchMark() throws Exception {
 
-        IProtocol protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads);
+        Pr protocol = ProtocolHelper.GetProtocolImplementation(NpbType.MG, num_threads);
         discourje.examples.npb3.impl.BMInOut.BMArgs.Banner(BMName, CLASS, serial, num_threads);
 
         int niter = getInputPars();

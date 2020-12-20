@@ -1,6 +1,6 @@
-(G("worker_1_ RECEIVE <Boolean>" =>
+(G("worker_1_ RECV <Boolean>" =>
   X("worker_1_ SEND <Boolean> TO worker_0_" ||
     "worker_1_ SEND <Boolean> TO worker_3_"))) &&
-(G("worker_2_ RECEIVE <Boolean>" =>
+(G("worker_2_ RECV <Boolean>" =>
   X("worker_2_ SEND <Boolean> TO worker_0_" ||
     "worker_2_ SEND <Boolean> TO worker_3_")))

@@ -2,9 +2,9 @@ package nl.florianslob.modelchecking.generated.games;
 
 import Helpers.ProtocolTestingHelper;
 import discourje.examples.chess.Move;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
-import nl.florianslob.modelchecking.generated.games.TicTacToeOptimizedProtocol;
+import nl.florianslob.modelchecking.generated.TicTacToeOptimizedProtocol;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public class TicTacToeOptimizedProtocolTests {
         Engine.IsProtocolOptimized = true;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new TicTacToeOptimizedProtocol();
     }
 

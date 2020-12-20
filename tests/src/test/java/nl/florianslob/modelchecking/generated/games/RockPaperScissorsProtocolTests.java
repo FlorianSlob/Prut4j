@@ -1,14 +1,12 @@
 package nl.florianslob.modelchecking.generated.games;
 
 import Helpers.ProtocolTestingHelper;
-import discourje.examples.gofish.*;
 import discourje.examples.rockpaperscissors.Paper;
 import discourje.examples.rockpaperscissors.Rock;
 import discourje.examples.rockpaperscissors.Scissors;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.RockPaperScissorsProtocol;
-import org.junit.Test;
 
 import java.util.HashMap;
 
@@ -19,7 +17,7 @@ public class RockPaperScissorsProtocolTests {
         Engine.IsLoggingEnabled = false;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new RockPaperScissorsProtocol();
     }
 

@@ -2,18 +2,18 @@ package nl.florianslob.modelchecking.base.api.v2;
 
 import java.util.Optional;
 
-public interface IProtocol {
+public interface Pr {
     IEnvironment getEnvironment(String threadName) throws Exception;
 
-    default <Any, AnyInput> Optional<Any> exchange(String threadName, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
+    default <Any, AnyInput> Optional<Any> exch(String threadName, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
         return getEnvironment(threadName).exchange(box,receiver, isCloseAction);
     }
 
-    default <Any, AnyInput> Optional<Any> exchange(String threadName, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box) throws Exception{
+    default <Any, AnyInput> Optional<Any> exch(String threadName, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box) throws Exception{
         return getEnvironment(threadName).exchange(box,null, false);
     }
 
-    default <Any, AnyInput> Optional<Any> exchange(String threadName, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver) throws Exception{
+    default <Any, AnyInput> Optional<Any> exch(String threadName, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<AnyInput> box, String receiver) throws Exception{
         return getEnvironment(threadName).exchange(box,receiver, false);
     }
 
@@ -25,7 +25,7 @@ public interface IProtocol {
         getEnvironment(threadName).send(m);
     }
 
-    default  <Any> Any receive(String threadName) throws Exception{
+    default  <Any> Any recv(String threadName) throws Exception{
         return getEnvironment(threadName).receive();
     }
 

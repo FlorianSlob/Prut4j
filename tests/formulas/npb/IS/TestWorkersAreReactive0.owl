@@ -1,1 +1,1 @@
-!"worker_0_ SEND * TO master" U "worker_0_ RECEIVE *"
+!"worker_0_ SEND * TO master" U "worker_0_ RECV *"

@@ -41,7 +41,7 @@ public class OwlHelperTests {
     @Test
     public void TestLtlParsingForSimpleReceiveOperation(){
         //Arrange
-        String ltlFormulaString = "\"w RECEIVE dto.Move TO b\"";
+        String ltlFormulaString = "\"w RECV dto.Move TO b\"";
 
         //Act
         var ltlFormulaStartingNodes = OwlHelper.GetInitialLtlStatesForFormula(ltlFormulaString, true);
@@ -57,7 +57,7 @@ public class OwlHelperTests {
         assertEquals(LtlTransitionExpressionOperator.NOT, firstTransaction.Expression.Operator);
         var leftHandExpression = firstTransaction.Expression.Left;
         assertEquals(LtlTransitionExpressionOperator.ATOM, leftHandExpression.Operator);
-        assertEquals(LtlTransitionExpressionAtomicPropositionDirection.RECEIVE, leftHandExpression.AtomicProposition.Direction);
+        assertEquals(LtlTransitionExpressionAtomicPropositionDirection.RECV, leftHandExpression.AtomicProposition.Direction);
         assertEquals("w", leftHandExpression.AtomicProposition.getParticipant());
         assertEquals(null, leftHandExpression.AtomicProposition.Receiver);
         assertEquals("dto.Move", leftHandExpression.AtomicProposition.MessageType);

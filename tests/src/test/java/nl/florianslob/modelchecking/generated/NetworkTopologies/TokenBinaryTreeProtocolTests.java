@@ -1,10 +1,9 @@
 package nl.florianslob.modelchecking.generated.NetworkTopologies;
 
 import Helpers.ProtocolTestingHelper;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.TokenBinaryTreeProtocol;
-import nl.florianslob.modelchecking.generated.TokenStarProtocol;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,7 +14,7 @@ public class TokenBinaryTreeProtocolTests {
         Engine.IsProtocolOptimized = true;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new TokenBinaryTreeProtocol();
     }
 

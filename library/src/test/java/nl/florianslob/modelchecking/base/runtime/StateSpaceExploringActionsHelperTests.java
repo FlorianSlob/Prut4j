@@ -35,7 +35,7 @@ public class StateSpaceExploringActionsHelperTests {
         // create a receive action for 'w'
         transition.Expression.AtomicProposition
                 = new LtlTransitionExpressionAtomicProposition
-                        (LtlTransitionExpressionAtomicPropositionDirection.RECEIVE, "java.lang.String", "w", null);
+                        (LtlTransitionExpressionAtomicPropositionDirection.RECV, "java.lang.String", "w", null);
 
         var result = StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,exploringActions);
         // Should have one result
@@ -43,7 +43,7 @@ public class StateSpaceExploringActionsHelperTests {
                 1,
                 result.size());
         // with correct direction, messageType and participant
-        assertEquals(LtlTransitionExpressionAtomicPropositionDirection.RECEIVE,result.get(0).direction);
+        assertEquals(LtlTransitionExpressionAtomicPropositionDirection.RECV,result.get(0).direction);
         assertEquals("w",result.get(0).participant);
         assertEquals("java.lang.String",result.get(0).messageClass.getTypeName());
     }

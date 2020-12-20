@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class MeshProtocol implements IProtocol {
+public class MeshProtocol implements Pr {
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_1_Queue = new LinkedBlockingQueue<>();
 	private final IEnvironment worker_0_Environment = new IEnvironment() {
@@ -446,7 +446,7 @@ public class MeshProtocol implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

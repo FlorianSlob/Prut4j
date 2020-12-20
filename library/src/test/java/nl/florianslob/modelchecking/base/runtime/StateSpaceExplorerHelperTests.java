@@ -1,7 +1,7 @@
 package nl.florianslob.modelchecking.base.runtime;
 
 import nl.florianslob.modelchecking.base.api.v2.IEnvironment;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExplorerHelper;
 import nl.florianslob.modelchecking.base.runtime.v2.StateSpaceExploringActionsHelper;
 import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.OwlHelper;
@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 
 public class StateSpaceExplorerHelperTests {
 
-    private IProtocol GetSimpleTestProtocol(){
-        return new IProtocol() {
+    private Pr GetSimpleTestProtocol(){
+        return new Pr() {
             @Override
             public IEnvironment getEnvironment(String threadName) throws Exception {
                 return null;
@@ -28,7 +28,7 @@ public class StateSpaceExplorerHelperTests {
             }
 
             @Override
-            public <Any> Any receive(String threadName) throws Exception {
+            public <Any> Any recv(String threadName) throws Exception {
                 return null;
             }
 
@@ -52,7 +52,7 @@ public class StateSpaceExplorerHelperTests {
     @Test
     public void TestDetermineExploringActions(){
         // ARRANGE
-        IProtocol protocol = GetSimpleTestProtocol();
+        Pr protocol = GetSimpleTestProtocol();
 
         // ACT
         var exploringActions = StateSpaceExplorerHelper.getExploringActions(protocol,  new Object[]{"TestObject"});
@@ -64,8 +64,8 @@ public class StateSpaceExplorerHelperTests {
     @Test
     public void TestDetermineExploringActionsFromRealProtocolAndFormula(){
         // ARRANGE
-        IProtocol protocol = GetSimpleTestProtocol();
-        String ltlFormulaString = "\"w RECEIVE java.lang.String TO b\"";
+        Pr protocol = GetSimpleTestProtocol();
+        String ltlFormulaString = "\"w RECV java.lang.String TO b\"";
 
 
         var ltlFormulaStartingNodes = OwlHelper.GetInitialLtlStatesForFormula(ltlFormulaString, true);

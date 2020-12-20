@@ -1,1 +1,1 @@
-G("master SEND * TO interp_0_" => X(!"master SEND * TO interp_0_" U "* RECEIVE *"))
+G("master SEND * TO interp_0_" => X(!"master SEND * TO interp_0_" U "* RECV *"))

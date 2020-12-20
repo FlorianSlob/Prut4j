@@ -1,6 +1,6 @@
 package Helpers;
 
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.LtlFormulaDefinitionHelper;
 
@@ -15,7 +15,7 @@ public class ProtocolTestingHelper {
             System.out.println("Testing the protocol for: "+formulaString);
     }
 
-    public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult, IProtocol protocol, HashMap<String,String> shortTypeNameToFullClassNameMap, Object[] dummies) throws Exception {
+    public static void TestFormulaFromFile(String absolutePathToFormulaFile, boolean expectedResult, Pr protocol, HashMap<String,String> shortTypeNameToFullClassNameMap, Object[] dummies) throws Exception {
         // Arrange
         var formulaString = LtlFormulaDefinitionHelper.GetFormulaStringFromFile(absolutePathToFormulaFile, shortTypeNameToFullClassNameMap);
 
@@ -28,7 +28,7 @@ public class ProtocolTestingHelper {
         assertTrue(expectedResult == result);
     }
 
-    private static Engine GetModelCheckerForChessProtocol(IProtocol protocol){
+    private static Engine GetModelCheckerForChessProtocol(Pr protocol){
         return new Engine(protocol);
     }
 }

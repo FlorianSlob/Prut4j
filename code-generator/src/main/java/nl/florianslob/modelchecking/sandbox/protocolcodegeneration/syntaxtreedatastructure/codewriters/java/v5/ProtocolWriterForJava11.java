@@ -49,7 +49,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
 
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount);
 
-        StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"public class "+SyntaxTreeItem.protocolName+" implements IProtocol ", tabCount,
+        StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"public class "+SyntaxTreeItem.protocolName+" implements Pr ", tabCount,
             (tabCountLvl0) -> {
 //                StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final Object monitor = this;");
                 // Order all Environments by name, this is not necessary, but makes the generated code more readable and consistent.
@@ -116,7 +116,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
                             StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "getEnvironment(threadName).send(m);");
                         });
 
-                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any> Any receive(String threadName) throws Exception", tabCountLvl0,
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public <Any> Any recv(String threadName) throws Exception", tabCountLvl0,
                         (tabCountLvl1) -> {
                             StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return getEnvironment(threadName).receive();");
                         });

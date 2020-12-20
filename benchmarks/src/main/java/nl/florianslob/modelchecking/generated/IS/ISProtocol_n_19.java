@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ISProtocol_n_19 implements IProtocol {
+public class ISProtocol_n_19 implements Pr {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_10_Queue = new LinkedBlockingQueue<>();
@@ -2838,7 +2838,7 @@ public class ISProtocol_n_19 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_8_","worker_0_","worker_11_","master","worker_6_","worker_13_","worker_14_","worker_7_","worker_17_","worker_5_","worker_9_","worker_1_","worker_15_","worker_4_","worker_16_","worker_3_","worker_10_","worker_12_","worker_18_","worker_2_" };
+		return new String[] { "worker_16_","worker_9_","worker_14_","worker_6_","worker_4_","worker_12_","worker_3_","worker_0_","worker_10_","worker_17_","worker_7_","worker_11_","worker_15_","worker_1_","worker_13_","worker_18_","worker_2_","worker_8_","worker_5_","master" };
 	}
 	
 	@Override
@@ -2857,7 +2857,7 @@ public class ISProtocol_n_19 implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

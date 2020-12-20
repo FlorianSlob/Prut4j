@@ -29,7 +29,7 @@ public class StateSpaceExploringAction {
     public static StateSpaceExploringAction CreateReceiveStateSpaceExploringAction(String participant, Class<?> messageClass){
         return new StateSpaceExploringAction(
                 participant,
-                LtlTransitionExpressionAtomicPropositionDirection.RECEIVE,
+                LtlTransitionExpressionAtomicPropositionDirection.RECV,
                 null,
                 messageClass,
                 participant);

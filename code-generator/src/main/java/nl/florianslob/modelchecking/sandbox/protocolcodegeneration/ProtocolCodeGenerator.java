@@ -24,17 +24,17 @@ public class ProtocolCodeGenerator {
                 genFTProtocol = true,
                 genISProtocol = true,
                 genMGProtocol = true,
-                genDemoProtocols = false,
-                genRingProtocol = false,
+                genDemoProtocols = true,
+                genRingProtocol = true,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
-                genMeshProtocol = false,
-                genStarProtocol = false,
-                genBinaryTreeProtocol = false,
-                genGoFishProtocol = false,
+                genMeshProtocol = true,
+                genStarProtocol = true,
+                genBinaryTreeProtocol = true,
+                genGoFishProtocol = true,
                 genRockPaperScissorsProtocol = true,
-                genTicTacToeProtocol = false
+                genTicTacToeProtocol = true
                         ;
         boolean generateToTestBenchmarkProject = true;
         boolean generateToTestProject = true;

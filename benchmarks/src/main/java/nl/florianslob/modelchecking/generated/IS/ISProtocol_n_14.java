@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ISProtocol_n_14 implements IProtocol {
+public class ISProtocol_n_14 implements Pr {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_10_Queue = new LinkedBlockingQueue<>();
@@ -51,16 +51,6 @@ public class ISProtocol_n_14 implements IProtocol {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(30);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -68,6 +58,16 @@ public class ISProtocol_n_14 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(2);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(30);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -2113,7 +2113,7 @@ public class ISProtocol_n_14 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_4_","worker_2_","worker_9_","worker_11_","master","worker_3_","worker_8_","worker_13_","worker_10_","worker_1_","worker_7_","worker_12_","worker_5_","worker_0_","worker_6_" };
+		return new String[] { "worker_4_","worker_8_","worker_7_","worker_12_","worker_9_","worker_6_","worker_1_","worker_3_","worker_0_","worker_11_","worker_10_","worker_5_","worker_13_","master","worker_2_" };
 	}
 	
 	@Override
@@ -2132,7 +2132,7 @@ public class ISProtocol_n_14 implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

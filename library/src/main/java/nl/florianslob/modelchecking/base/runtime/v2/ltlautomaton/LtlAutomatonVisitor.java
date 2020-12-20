@@ -122,8 +122,8 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
             if(expressionSplitted.length >1) {
                 // TODO make a nicer parser for this?
                 // Move to separate method.
-                if (expressionSplitted[1].equalsIgnoreCase("RECEIVE")) {
-                    atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.RECEIVE;
+                if (expressionSplitted[1].equalsIgnoreCase("RECV")) {
+                    atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.RECV;
                 } else if (expressionSplitted[1].equalsIgnoreCase("SEND")) {
                     atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.SEND;
                     // Take the part after keyword TO and trim the rest

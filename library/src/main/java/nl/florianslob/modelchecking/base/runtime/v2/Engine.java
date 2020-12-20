@@ -1,8 +1,9 @@
 package nl.florianslob.modelchecking.base.runtime.v2;
 
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlState;
 import nl.florianslob.modelchecking.base.runtime.v2.datastructure.LtlTransition;
+import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.LtlFormulaDefinitionHelper;
 import nl.florianslob.modelchecking.base.runtime.v2.ltlautomaton.OwlHelper;
 
 import java.util.*;
@@ -10,6 +11,18 @@ import java.util.*;
 public class Engine {
     public static boolean IsProtocolOptimized = true;
     public static boolean IsLoggingEnabled = false;
+
+    public static boolean exec(String owlFilename, Pr protocolUnderVerification, Object[] dummies ) {
+        HashMap<String,String> shortTypeNameToFullClassNameMap = new HashMap<>();
+        return exec(owlFilename,protocolUnderVerification,dummies, shortTypeNameToFullClassNameMap);
+    }
+
+    public static boolean exec(String owlFilename, Pr protocolUnderVerification, Object[] dummies , HashMap<String,String> shortTypeNameToFullClassNameMap ){
+        var engineObject = new Engine(protocolUnderVerification);
+        var formulaString = LtlFormulaDefinitionHelper.GetFormulaStringFromFile(owlFilename, shortTypeNameToFullClassNameMap);
+
+        return engineObject.exec(formulaString,dummies);
+    }
 
     public static void LogTest(Object logObject){
         if(IsLoggingEnabled){
@@ -21,14 +34,16 @@ public class Engine {
             System.out.println(logObject);
     }
 
-    private final IProtocol protocolUnderVerification;
+    private final Pr protocolUnderVerification;
     private List<StateSpaceExploringAction> exploringActions = new ArrayList<>();
     private List<LtlState> initialStatesForNegatedFormula;
     private Object[] dummies;
 
-    public Engine(IProtocol protocolUnderVerification) {
+    public Engine(Pr protocolUnderVerification) {
         this.protocolUnderVerification = protocolUnderVerification;
     }
+
+
 
     public boolean exec(String ltlFormulaString, Object[] dummies) {
         this.dummies = dummies;
@@ -86,7 +101,7 @@ public class Engine {
         return false;
     }
 
-    private boolean travelStateSpaceGuided(IProtocol startingProtocolCopy, LtlState currentLtlState, Stack<TriedTransitionTuple> triedTransitionsStack) throws Exception {
+    private boolean travelStateSpaceGuided(Pr startingProtocolCopy, LtlState currentLtlState, Stack<TriedTransitionTuple> triedTransitionsStack) throws Exception {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
             for (var exploringAction : StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions)) {
@@ -105,7 +120,7 @@ public class Engine {
                     participatingThread.SetProtocolClone(StateSpaceExplorerHelper.deepClone(startingProtocolCopy));
 
                     // try to execute the action
-                    Optional<IProtocol> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
+                    Optional<Pr> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
 
                     // if there is a result, we just took a transition in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
@@ -156,7 +171,7 @@ public class Engine {
         return false; // Returning false, we took all possible transitions and did not find any accepting cycles.
     }
 
-    private boolean travelStateSpaceGuidedForSecondCycle(IProtocol startingProtocolCopy,
+    private boolean travelStateSpaceGuidedForSecondCycle(Pr startingProtocolCopy,
                                                          LtlState currentLtlState,
                                                          Set<TriedTransitionTuple> locallyTriedTransitions,
                                                          TriedTransitionTuple markedTransitionTuple,
@@ -187,7 +202,7 @@ public class Engine {
                     participatingThread.SetProtocolClone(StateSpaceExplorerHelper.deepClone(startingProtocolCopy));
 
                     // try to execute the action
-                    Optional<IProtocol> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
+                    Optional<Pr> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
 
                     // if there is a result, we just took a transition in the protocol automaton
                     if (optionalResultProtocol.isPresent()) {
@@ -266,7 +281,7 @@ public class Engine {
     public boolean doCycleDetectionPhaseTwo(LtlState currentLtlState,
                                             LtlTransition transition,
                                             StateSpaceExploringAction exploringAction,
-                                            IProtocol startingProtocolCopy,
+                                            Pr startingProtocolCopy,
                                             Stack<TriedTransitionTuple> triedTransitionsStack
                                             ) throws Exception {
         Engine.LogTest("Found potential cycle");
@@ -294,7 +309,7 @@ public class Engine {
         participatingThread.SetProtocolClone(StateSpaceExplorerHelper.deepClone(startingProtocolCopy));
 
         // try to execute the action
-        Optional<IProtocol> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
+        Optional<Pr> optionalResultProtocol = participatingThread.ExecuteAction(exploringAction);
 
         // if there is a result, we just took a transition in the protocol automaton
         if (optionalResultProtocol.isPresent()) {

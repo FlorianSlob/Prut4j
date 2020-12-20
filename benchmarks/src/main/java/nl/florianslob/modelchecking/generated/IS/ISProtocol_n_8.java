@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ISProtocol_n_8 implements IProtocol {
+public class ISProtocol_n_8 implements Pr {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_1_Queue = new LinkedBlockingQueue<>();
@@ -1243,7 +1243,7 @@ public class ISProtocol_n_8 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_6_","worker_1_","worker_4_","worker_7_","worker_3_","worker_5_","worker_0_","master" };
+		return new String[] { "worker_6_","worker_7_","worker_0_","worker_2_","worker_1_","master","worker_3_","worker_4_","worker_5_" };
 	}
 	
 	@Override
@@ -1262,7 +1262,7 @@ public class ISProtocol_n_8 implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

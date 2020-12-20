@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class CGProtocol_n_20 implements IProtocol {
+public class CGProtocol_n_20 implements Pr {
 	private final BlockingQueue<ProtocolMessage> masterQueue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_0_Queue = new LinkedBlockingQueue<>();
 	private final BlockingQueue<ProtocolMessage> worker_10_Queue = new LinkedBlockingQueue<>();
@@ -507,16 +507,6 @@ public class CGProtocol_n_20 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 41:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(2);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -524,6 +514,16 @@ public class CGProtocol_n_20 implements IProtocol {
 						if (receiver.equals("worker_0_")) {
 							setState(42);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(2);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -2983,7 +2983,7 @@ public class CGProtocol_n_20 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_12_","worker_0_","worker_9_","worker_3_","worker_16_","worker_14_","worker_5_","worker_11_","worker_17_","worker_8_","worker_15_","worker_10_","worker_13_","worker_19_","worker_4_","worker_6_","master","worker_2_","worker_7_","worker_1_","worker_18_" };
+		return new String[] { "worker_9_","worker_8_","worker_3_","worker_16_","worker_13_","worker_15_","worker_14_","worker_7_","worker_11_","worker_0_","worker_10_","worker_19_","worker_6_","worker_17_","worker_5_","worker_12_","worker_4_","worker_1_","worker_18_","worker_2_","master" };
 	}
 	
 	@Override
@@ -3002,7 +3002,7 @@ public class CGProtocol_n_20 implements IProtocol {
 	}
 	
 	@Override
-	public <Any> Any receive(String threadName) throws Exception{
+	public <Any> Any recv(String threadName) throws Exception{
 		return getEnvironment(threadName).receive();
 	}
 	

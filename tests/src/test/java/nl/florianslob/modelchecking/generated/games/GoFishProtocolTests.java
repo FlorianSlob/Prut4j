@@ -2,10 +2,9 @@ package nl.florianslob.modelchecking.generated.games;
 
 import Helpers.ProtocolTestingHelper;
 import discourje.examples.gofish.*;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
-import nl.florianslob.modelchecking.generated.games.GoFishProtocol;
-import org.junit.Test;
+import nl.florianslob.modelchecking.generated.GoFishProtocol;
 
 import java.util.HashMap;
 
@@ -15,7 +14,7 @@ public class GoFishProtocolTests {
         Engine.IsLoggingEnabled = false;
 
     }
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new GoFishProtocol();
     }
 

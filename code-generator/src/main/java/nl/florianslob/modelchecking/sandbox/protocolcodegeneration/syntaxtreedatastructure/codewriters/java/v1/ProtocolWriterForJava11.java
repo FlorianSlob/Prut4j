@@ -39,7 +39,7 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
         StringBuilderSyntaxHelper.addLine(builder, tabCount,"import java.util.concurrent.LinkedBlockingQueue;");
         StringBuilderSyntaxHelper.addEmptyLine(builder, tabCount);
 
-        StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"public class "+SyntaxTreeItem.protocolName+" implements IProtocol ", tabCount,
+        StringBuilderSyntaxHelperForJava11.addScopedBlock(builder,"public class "+SyntaxTreeItem.protocolName+" implements Pr ", tabCount,
             (tabCountLvl0) -> {
                 StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0,"private volatile int state = 0;");
                 StringBuilderSyntaxHelper.addLine(builder, tabCountLvl0, "private final Object monitor = this;");

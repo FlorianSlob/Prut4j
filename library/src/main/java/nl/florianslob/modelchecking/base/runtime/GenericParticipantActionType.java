@@ -2,6 +2,6 @@ package nl.florianslob.modelchecking.base.runtime;
 
 public enum GenericParticipantActionType {
     SEND,
-    RECEIVE,
+    RECV,
     // TODO Add long wait as action??
 }

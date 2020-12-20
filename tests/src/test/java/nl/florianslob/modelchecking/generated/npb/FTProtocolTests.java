@@ -6,7 +6,7 @@ import discourje.examples.npb3.impl.ExitMessage;
 import discourje.examples.npb3.impl.FTThreads.EvolveMessage;
 import discourje.examples.npb3.impl.FTThreads.FFTMessage;
 import discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage;
-import nl.florianslob.modelchecking.base.api.v2.IProtocol;
+import nl.florianslob.modelchecking.base.api.v2.Pr;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
 import nl.florianslob.modelchecking.generated.FTProtocol_n_2;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class FTProtocolTests {
         Engine.IsLoggingEnabled = false;
     }
 
-    private IProtocol GetProtocol(){
+    private Pr GetProtocol(){
         return new FTProtocol_n_2();
     }
 

@@ -1,2 +1,2 @@
-G(("player_0_ SEND <Ask> TO *" && (!"player_0_ RECEIVE *" U "player_0_ RECEIVE <Go>")) =>
+G(("player_0_ SEND <Ask> TO *" && (!"player_0_ RECV *" U "player_0_ RECV <Go>")) =>
    X(!"player_0 SEND <Ask> TO *" U "player_0_ SEND <Turn> TO *"))

@@ -1,1 +1,1 @@
-!"evolve_1_ SEND * TO master" W "evolve_1_ RECEIVE *"
+!"evolve_1_ SEND * TO master" W "evolve_1_ RECV *"
