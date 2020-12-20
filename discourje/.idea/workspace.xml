@@ -8,9 +8,6 @@
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../research-sandbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../research-sandbox/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
