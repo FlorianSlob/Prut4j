@@ -41,7 +41,7 @@ public class FTProtocolTests {
             ExitMessage.GetTestDummyObject()
     };
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestBoundness0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestBoundness0.owl",
                 true ,
@@ -50,7 +50,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestBoundness1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestBoundness1.owl",
                 true ,
@@ -59,7 +59,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestEventualReception0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestEventualReception0.owl",
                 true ,
@@ -68,7 +68,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestEventualReception1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestEventualReception1.owl",
                 true ,
@@ -77,7 +77,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestRequestResponse0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestRequestResponse0.owl",
                 true ,
@@ -86,7 +86,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestRequestResponse1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestRequestResponse1.owl",
                 true ,
@@ -95,7 +95,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestMax1Request0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestMax1Request0.owl",
                 true ,
@@ -104,7 +104,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestMax1Request1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestMax1Request1.owl",
                 true ,
@@ -113,7 +113,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestWorkersAreReactive0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestWorkersAreReactive0.owl",
                 true ,
@@ -122,7 +122,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestWorkersAreReactive1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestWorkersAreReactive1.owl",
                 true ,
@@ -131,7 +131,7 @@ public class FTProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestExitMeansExit() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/FT/TestExitMeansExit.owl",
                 true ,

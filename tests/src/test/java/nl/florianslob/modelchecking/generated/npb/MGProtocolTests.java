@@ -44,7 +44,7 @@ public class MGProtocolTests {
             ExitMessage.GetTestDummyObject()
     };
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestBoundness0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestBoundness0.owl",
                 true ,
@@ -53,7 +53,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestBoundness1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestBoundness1.owl",
                 true ,
@@ -62,7 +62,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestEventualReception0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestEventualReception0.owl",
                 true ,
@@ -71,7 +71,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestEventualReception1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestEventualReception1.owl",
                 true ,
@@ -80,7 +80,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestRequestResponse0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestRequestResponse0.owl",
                 true ,
@@ -89,7 +89,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestRequestResponse1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestRequestResponse1.owl",
                 true ,
@@ -98,7 +98,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestMax1Request0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestMax1Request0.owl",
                 true ,
@@ -107,7 +107,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestMax1Request1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestMax1Request1.owl",
                 true ,
@@ -116,7 +116,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-//    @Test
+    // @Test // Disabled, long running test
     public void TestWorkersAreReactive0() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestWorkersAreReactive0.owl",
                 true ,
@@ -125,7 +125,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-//    @Test
+    // @Test // Disabled, long running test
     public void TestWorkersAreReactive1() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestWorkersAreReactive1.owl",
                 true ,
@@ -134,7 +134,7 @@ public class MGProtocolTests {
                 dummies);
     }
 
-    @Test
+    // @Test // Disabled, long running test
     public void TestExitMeansExit() throws Exception {
         ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestExitMeansExit.owl",
                 true ,

@@ -5,57 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestBoundness0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestEventualReception0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestEventualReception1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestExitMeansExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestMax1Request1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestRequestResponse0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestRequestResponse1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestWorkersAreReactive0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestWorkersAreReactive1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestBoundness0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestBoundness1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestEventualReception0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestEventualReception1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestExitMeansExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestMax1Request0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestRequestResponse1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestWorkersAreReactive0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestWorkersAreReactive1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestBoundness0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestBoundness1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestEventualReception0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestEventualReception1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestExitMeansExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestMax1Request0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestMax1Request1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestRequestResponse0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestRequestResponse1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestWorkersAreReactive0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/IS/TestWorkersAreReactive1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestBoundness0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestBoundness1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestEventualReception0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestEventualReception1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestExitMeansExit.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestMax1Request0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestMax1Request1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestRequestResponse0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestRequestResponse1.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestWorkersAreReactive0.owl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestWorkersAreReactive1.owl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/TriedTransitionTuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/TriedTransitionTuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/TestAlwaysResponse0.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestRequestResponse0.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/TestAlwaysResponse1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestMax1Request0.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/TestMasterDoesNotSendTwice0.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/CG/TestBoundness1.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/TestMasterDoesNotSendTwice1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/FT/TestMax1Request1.owl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/TestWorkerNotSendBeforeReceive0.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/TestWorkerNotSendBeforeReceive1.owl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/CGProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/CGProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestMax1Request1.owl" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/formulas/npb/MG/TestMax1Request1.owl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/FTProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/FTProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/ISProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/ISProtocolTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/npb/MGProtocolTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
