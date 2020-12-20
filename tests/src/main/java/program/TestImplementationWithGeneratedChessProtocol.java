@@ -5,7 +5,7 @@ import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipant;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
-import nl.florianslob.modelchecking.generated.games.ChessProtocol;
+import nl.florianslob.modelchecking.generated.ChessProtocol;
 
 public class TestImplementationWithGeneratedChessProtocol {
     public static void Run() {

@@ -33,7 +33,7 @@ public class ProtocolCodeGenerator {
                 genStarProtocol = true,
                 genBinaryTreeProtocol = true,
                 genGoFishProtocol = false,
-                genRockPaperScissorsProtocol = false,
+                genRockPaperScissorsProtocol = true,
                 genTicTacToeProtocol = false
                         ;
         boolean generateToTestBenchmarkProject = true;

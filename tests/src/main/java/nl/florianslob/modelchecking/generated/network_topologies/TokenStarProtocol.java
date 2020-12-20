@@ -40,8 +40,13 @@ public class TokenStarProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_3_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_","worker_3_" };
 							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(1);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
 							setState(3);
@@ -51,11 +56,6 @@ public class TokenStarProtocol implements IProtocol {
 						if (receiver.equals("worker_3_")) {
 							setState(4);
 							worker_3_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(1);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -307,7 +307,7 @@ public class TokenStarProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_1_","worker_3_","worker_0_" };
+		return new String[] { "worker_2_","worker_0_","worker_1_","worker_3_" };
 	}
 	
 	@Override

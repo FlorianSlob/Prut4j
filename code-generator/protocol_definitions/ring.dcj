@@ -1,6 +1,0 @@
-(s/defrole ::worker)
-
-(s/defsession ::ring [k]
-  (s/par-every [i (range k)]
-    (s/* (s/alt (s/-->> Boolean (::worker i) (::worker (mod (inc i) k)))
-                (s/-->> Boolean (::worker i) (::worker (mod (dec i) k)))))))

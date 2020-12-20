@@ -40,17 +40,17 @@ public class TokenBinaryTreeProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(3);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -69,17 +69,17 @@ public class TokenBinaryTreeProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(3);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_1_")) {
 							setState(1);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(3);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -139,17 +139,17 @@ public class TokenBinaryTreeProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "worker_3_","worker_0_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_3_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_3_")) {
-							setState(2);
-							worker_3_Queue.put(new ProtocolMessage(box.get(),5));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(0);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(2);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),5));
 							return Optional.empty();
 						}
 					}
@@ -304,7 +304,7 @@ public class TokenBinaryTreeProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_1_","worker_0_","worker_3_" };
+		return new String[] { "worker_1_","worker_2_","worker_0_","worker_3_" };
 	}
 	
 	@Override

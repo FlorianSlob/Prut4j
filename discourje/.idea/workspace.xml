@@ -5,70 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fc3fb-503f-4753-91a4-2a8aa1ad1ddd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-2d-mesh.dcj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-binary-tree.dcj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-full-mesh.dcj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-star.dcj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/token-undirected-ring.dcj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenBinaryTreeProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenFullMeshProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenStarProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenTwoDMeshProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenUndirectedRingProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenUndirectedRingProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmark-jar-files/model-checking-benchmarks-v0.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmark-jar-files/model-checking-benchmarks-v0.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/NPB/updated/NPB3_0_JAV/ProtocolHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/NPB/updated/NPB3_0_JAV/ProtocolHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_10.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_11.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_11.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_12.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_12.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_13.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_13.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_14.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_14.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_15.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_15.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_16.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_16.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_17.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_17.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_18.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_18.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_19.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_19.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_20.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_20.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_21.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_22.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_22.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_23.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_23.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_24.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_24.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_8.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_8.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_9.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api/src/main/java/discourje/examples/rockpaperscissors/Paper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api/src/main/java/discourje/examples/rockpaperscissors/Rock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api/src/main/java/discourje/examples/rockpaperscissors/Scissors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/games/rock-paper-scissors.dcj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/discourje/examples/rockpaperscissors/Paper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/discourje/examples/rockpaperscissors/Rock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/discourje/examples/rockpaperscissors/Scissors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_10.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_10.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_11.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_11.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_12.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_12.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_13.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_13.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_14.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_14.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_15.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_15.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_16.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_16.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_17.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_17.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_18.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_18.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_19.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_19.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_20.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_20.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_21.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_22.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_22.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_23.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_23.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_24.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_24.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_8.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_9.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_9.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_dsl_parser/florian.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code-generator/generated_graph_svg_files/protocol_definition_GeneratedChessProtocol.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/generated_graph_svg_files/protocol_definition_ChessProtocol.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/chess.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/games/chess.dcj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/go-fish.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/games/go-fish.dcj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/mesh.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/mesh.dcj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/ring.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/ring.dcj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/rock-paper-scissors.dcj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/star.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/network_topologies/star.dcj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-generator/protocol_definitions/tic-tac-toe.dcj" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/protocol_definitions/games/tic-tac-toe.dcj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../code-generator/src/main/java/nl/florianslob/modelchecking/sandbox/protocolcodegeneration/ProtocolCodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/clojure/discourje/core/main.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/helpers/GraphVisualizationHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/helpers/GraphVisualizationHelpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library/src/main/java/nl/florianslob/modelchecking/base/runtime/v2/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_strict_n_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../benchmarks/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/GeneratedChessProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/ChessProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/GoFishProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/GoFishProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/MeshProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/MeshProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/RingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/RingProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/RockPaperScissorsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/RockPaperScissorsProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/StarProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/StarProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/TicTacToeOptimizedProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/TicTacToeOptimizedProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/TicTacToeProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/TicTacToeProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/TokenDirectedRingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenDirectedRingProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/ChessProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/ChessProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/RockPaperScissorsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/games/RockPaperScissorsProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/MeshProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/MeshProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/RingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/RingProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/StarProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/StarProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenBinaryTreeProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenBinaryTreeProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenDirectedRingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenDirectedRingProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenFullMeshProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenFullMeshProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenStarProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenStarProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenUndirectedRingProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/TokenUndirectedRingProtocol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tests/src/main/java/program/TestImplementationWithGeneratedChessProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/main/java/program/TestImplementationWithGeneratedChessProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_1Tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/CG/CGProtocol_n_3Tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/ChessProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/ChessProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/GoFishProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/GoFishProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologiesProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenDirectedRingProtocolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/TicTacToeProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/TicTacToeProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/ChessProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/games/ChessProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/GoFishProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/games/GoFishProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenDirectedRingProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenDirectedRingProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenUndirectedRingProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/NetworkTopologies/TokenUndirectedRingProtocolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/TicTacToeProtocolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/src/test/java/nl/florianslob/modelchecking/generated/games/TicTacToeProtocolTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,12 +101,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/discourje/examples/rockpaperscissors" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\src\study\model-checking-sandbox\discourje\src\main\java\discourje\examples\rockpaperscissors" />
+    </key>
   </component>
   <component name="RunManager" selected="Batch.Build and Move">
     <configuration name="BT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -173,6 +175,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,7 +288,7 @@
       <workItem from="1608233112213" duration="2842000" />
       <workItem from="1608305145783" duration="1450000" />
       <workItem from="1608382618994" duration="2707000" />
-      <workItem from="1608418639822" duration="5695000" />
+      <workItem from="1608418639822" duration="6720000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,7 @@
+(s/defsession ::tic-tac-toe []
+  (s/alt (::tic-tac-toe-turn 1 2)
+         (::tic-tac-toe-turn 2 1)))
+
+(s/defsession ::tic-tac-toe-turn [i j]
+  (s/cat (s/-->> discourje.examples.chess.Move (::player i) (::player j)))
+         (::tic-tac-toe-turn j i))

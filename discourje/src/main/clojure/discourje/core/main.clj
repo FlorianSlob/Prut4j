@@ -126,7 +126,7 @@
 (defn -spec-to-lts-ring [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
                      _ (require '[discourje.core.spec :as s])
-                     s (slurp "../code-generator/protocol_definitions/ring.dcj" )
+                     s (slurp "../code-generator/protocol_definitions/network_topologies/ring.dcj" )
                      s (str "(do " s ")")
                      _ (eval (read-string s))
                      ast (s/session ::ring [n])
@@ -144,7 +144,7 @@
 (defn -spec-to-lts-mesh [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/mesh.dcj" )
+          s (slurp "../code-generator/protocol_definitions/network_topologies/mesh.dcj" )
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::mesh [n])
@@ -159,11 +159,10 @@
   (catch Exception e (.printStackTrace e)))
 (println "Done mesh")
 
-
 (defn -spec-to-lts-star [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/star.dcj" )
+          s (slurp "../code-generator/protocol_definitions/network_topologies/star.dcj" )
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::star [n])
@@ -181,7 +180,7 @@
 (defn -spec-to-lts-rock-paper-scissors [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/rock-paper-scissors.dcj" )
+          s (slurp "../code-generator/protocol_definitions/games/rock-paper-scissors.dcj" )
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::rock-paper-scissors [n])
@@ -200,7 +199,7 @@
 (defn -spec-to-lts-go-fish [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/go-fish.dcj" )
+          s (slurp "../code-generator/protocol_definitions/games/go-fish.dcj" )
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::go-fish [n])
@@ -218,7 +217,7 @@
 (defn -spec-to-lts-tic-tac-toe [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/tic-tac-toe.dcj" )
+          s (slurp "../code-generator/protocol_definitions/games/tic-tac-toe.dcj" )
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::tic-tac-toe [])
@@ -236,7 +235,7 @@
 (defn -spec-to-lts-chess [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/chess.dcj" )
+          s (slurp "../code-generator/protocol_definitions/games/chess.dcj" )
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::chess [])

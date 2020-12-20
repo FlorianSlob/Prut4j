@@ -1,0 +1,10 @@
+(s/defrole ::white)
+(s/defrole ::black)
+
+(s/defsession ::chess []
+    (loop :chess-loop [x 2]
+       (-->> discourje.examples.chess.Move ::white ::black)
+       (-->> discourje.examples.chess.Move ::black ::white)
+       (? (s/recur :chess-loop))
+       )
+)
