@@ -1,0 +1,2 @@
+G("master SEND <CGMessage> TO worker_0_"
+-> F("worker_0_ SEND <DoneMessage> TO master"))

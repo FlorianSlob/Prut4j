@@ -1,0 +1,13 @@
+(s/defrole ::player)
+
+(s/defsession ::rock-paper-scissors [k]
+  (::rock-paper-scissors-round (set (range k)) s/empty-set))
+
+(s/defsession ::rock-paper-scissors-round [ids co-ids]
+  (s/if (> (s/count ids) 1)
+    (s/cat (s/cat-every [i ids
+                         j (s/disj ids i)]
+             (s/-->> String (::player i) (::player j)))
+           (s/alt-every [winner-ids (s/power-set ids)]
+             (s/let [loser-ids (s/difference ids winner-ids)]
+                    (::rock-paper-scissors-round winner-ids (s/union co-ids loser-ids)))))))

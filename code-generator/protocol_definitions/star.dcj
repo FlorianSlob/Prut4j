@@ -1,0 +1,7 @@
+(s/defrole ::worker)
+
+(s/defsession ::star [k]
+  (s/par (s/* (s/alt-every [i (range 1 k)]
+                (s/-->> Boolean (::worker 0) (::worker i))))
+         (s/par-every [i (range 1 k)]
+           (s/* (s/-->> Boolean (::worker i) (::worker 0))))))

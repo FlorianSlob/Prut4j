@@ -1,0 +1,1 @@
+ F("black SEND <Move> TO white" => X(!"black SEND <Move> TO white" U "black RECEIVE <Move> FROM white"))

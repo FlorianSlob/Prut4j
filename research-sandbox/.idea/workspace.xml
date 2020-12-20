@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="research-sandbox" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="research-sandbox" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="research-sandbox" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="ProjectId" id="1WirIS22ixMbXMIaAtrrUwRfuaE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="nl.florianslob.modelchecking.sandbox.protocolcodegeneration" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\src\study\model-checking-sandbox\api\src\main\java\discourje\examples\gofish" />
+      <recent name="C:\src\study\model-checking-sandbox\code-generator\protocol_definitions" />
+      <recent name="C:\src\study\model-checking-sandbox\code-generator\src\main\java\nl\florianslob\modelchecking\sandbox\protocolcodegeneration\syntaxtreedatastructure\codewriters\java\v5" />
+      <recent name="C:\src\study\model-checking-sandbox\api\src\main\java\nl\florianslob\modelchecking\base\api\v3" />
+      <recent name="C:\src\study\model-checking-sandbox\model-checking-sandbox\src\main\java\nl\florianslob\modelchecking\sandbox\protocolcodegeneration\syntaxtreedatastructure\codewriters\java\v4" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\src\study\model-checking-sandbox\model-checking-sandbox\protocol_definitions\npb\ft" />
+      <recent name="C:\src\study\model-checking-sandbox\model-checking-sandbox\protocol_definitions\npb\mg\liberal" />
+      <recent name="C:\src\study\model-checking-sandbox\model-checking-sandbox\protocol_definitions\npb\mg\strict" />
+      <recent name="C:\src\study\model-checking-sandbox\model-checking-sandbox\protocol_definitions\npb\is\liberal" />
+      <recent name="C:\src\study\model-checking-sandbox\model-checking-sandbox\protocol_definitions\npb\ft\liberal" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1" />
+      <recent name="nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure" />
+      <recent name="nl.florianslob.model.checking.sandbox.modelchecking" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.[build]">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="nl.florianslob.modelchecking.sandbox.Main" />
+      <module name="code-generator.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnTheFlyLtlTest.TestFailingTestAzureDevOps" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;nl.florianslob.modelchecking.sandbox.modelchecking.tests.OnTheFlyLtlTest.TestFailingTestAzureDevOps&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'model-checking-sandbox'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests *" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="[build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="LtlFormulaParserTests.TestParseFormula2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="model-checking-sandbox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.florianslob.model.checking.sandbox.modelchecking.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.florianslob.model.checking.sandbox.modelchecking.tests" />
+      <option name="MAIN_CLASS_NAME" value="nl.florianslob.model.checking.sandbox.modelchecking.tests.LtlFormulaParserTests" />
+      <option name="METHOD_NAME" value="TestParseFormula2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.OnTheFlyLtlTest.TestFailingTestAzureDevOps" />
+      <item itemvalue="Gradle.Tests in 'model-checking-sandbox'" />
+      <item itemvalue="Gradle.[build]" />
+      <item itemvalue="JUnit.LtlFormulaParserTests.TestParseFormula2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.[build]" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.LtlFormulaParserTests.TestParseFormula2" />
+        <item itemvalue="Gradle.Tests in 'model-checking-sandbox'" />
+        <item itemvalue="Gradle.OnTheFlyLtlTest.TestFailingTestAzureDevOps" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="" />
+      <created>1579643175504</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579643175504</updated>
+      <workItem from="1593900028925" duration="346000" />
+      <workItem from="1593900492734" duration="379000" />
+      <workItem from="1593900895874" duration="259000" />
+      <workItem from="1593901236107" duration="489000" />
+      <workItem from="1593933286730" duration="3895000" />
+      <workItem from="1593983906473" duration="1664000" />
+      <workItem from="1594230305843" duration="598000" />
+      <workItem from="1594839250245" duration="74000" />
+      <workItem from="1594839432041" duration="627000" />
+      <workItem from="1595056240919" duration="2714000" />
+      <workItem from="1595147203318" duration="2435000" />
+      <workItem from="1597999199109" duration="803000" />
+      <workItem from="1598436959479" duration="220000" />
+      <workItem from="1598504909190" duration="1540000" />
+      <workItem from="1598521708486" duration="52000" />
+      <workItem from="1598899079669" duration="3950000" />
+      <workItem from="1598905136228" duration="1560000" />
+      <workItem from="1598906720973" duration="160000" />
+      <workItem from="1598906892255" duration="317000" />
+      <workItem from="1598907217306" duration="7751000" />
+      <workItem from="1598947714139" duration="1572000" />
+      <workItem from="1598949418051" duration="90000" />
+      <workItem from="1598949657959" duration="208000" />
+      <workItem from="1598960165696" duration="3119000" />
+      <workItem from="1599671828272" duration="2000000" />
+      <workItem from="1599900216124" duration="7405000" />
+      <workItem from="1600072772740" duration="1282000" />
+      <workItem from="1600118519447" duration="478000" />
+      <workItem from="1600506551095" duration="629000" />
+      <workItem from="1600509210084" duration="191000" />
+      <workItem from="1601105176846" duration="227000" />
+      <workItem from="1601116706638" duration="813000" />
+      <workItem from="1601280902286" duration="1962000" />
+      <workItem from="1601289689762" duration="8289000" />
+      <workItem from="1601882351187" duration="14679000" />
+      <workItem from="1602499215464" duration="595000" />
+      <workItem from="1603095322659" duration="3567000" />
+      <workItem from="1603209845968" duration="6453000" />
+      <workItem from="1603225682484" duration="2512000" />
+      <workItem from="1603742634624" duration="629000" />
+      <workItem from="1603830895058" duration="3625000" />
+      <workItem from="1603913839254" duration="7980000" />
+      <workItem from="1604084928919" duration="3024000" />
+      <workItem from="1604088138844" duration="156000" />
+      <workItem from="1604089117445" duration="2610000" />
+      <workItem from="1604137210505" duration="8264000" />
+      <workItem from="1604219344095" duration="5657000" />
+      <workItem from="1604227503836" duration="598000" />
+      <workItem from="1604297924602" duration="888000" />
+      <workItem from="1604299466167" duration="5305000" />
+      <workItem from="1604918248386" duration="1401000" />
+      <workItem from="1605039540339" duration="2153000" />
+      <workItem from="1605098627985" duration="3461000" />
+      <workItem from="1605912978773" duration="7916000" />
+      <workItem from="1605921845233" duration="41000" />
+      <workItem from="1605918469692" duration="3441000" />
+      <workItem from="1606162530304" duration="1963000" />
+      <workItem from="1606499507583" duration="1161000" />
+      <workItem from="1606502539819" duration="646000" />
+      <workItem from="1606516285229" duration="2962000" />
+      <workItem from="1606548483807" duration="8462000" />
+      <workItem from="1606723310098" duration="33161000" />
+      <workItem from="1606816564734" duration="1206000" />
+      <workItem from="1606820824614" duration="3000" />
+      <workItem from="1606844040612" duration="6790000" />
+      <workItem from="1606938240179" duration="3181000" />
+      <workItem from="1607112492311" duration="4410000" />
+      <workItem from="1607167820705" duration="1480000" />
+      <workItem from="1607169420129" duration="851000" />
+      <workItem from="1607170360459" duration="6435000" />
+      <workItem from="1607183138019" duration="1909000" />
+      <workItem from="1607463996487" duration="2796000" />
+      <workItem from="1607502344150" duration="2280000" />
+      <workItem from="1607512036508" duration="10490000" />
+      <workItem from="1607787035230" duration="11138000" />
+      <workItem from="1607853715771" duration="1273000" />
+      <workItem from="1607855143018" duration="4358000" />
+      <workItem from="1607943229128" duration="2430000" />
+      <workItem from="1608067044081" duration="53000" />
+      <workItem from="1608067122122" duration="2156000" />
+      <workItem from="1608232625660" duration="4176000" />
+      <workItem from="1608305465382" duration="1793000" />
+    </task>
+    <task id="LOCAL-00001" summary="Rename vague name + add used libs to git">
+      <created>1582834805075</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582834805075</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Rename vague name + add used libs to git" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename vague name + add used libs to git" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/generated_dsl_parser/florian.jar!/discourje/core/spec.class</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/code_generator$Main.ic" NAME="Main Coverage Results" MODIFIED="1607179300515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.florianslob.modelchecking.sandbox.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/model_checking_sandbox$Main.ic" NAME="Main Coverage Results" MODIFIED="1601294254653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.florianslob.model.checking.sandbox.*</FILTER>
+    </SUITE>
+  </component>
+</project>
