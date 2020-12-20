@@ -1,6 +1,0 @@
-(s/defrole ::worker)
-
-(s/defsession ::mesh [k]
-  (s/par-every [i (range k)
-                j (remove #{i} (range k))]
-    (s/* (s/-->> Boolean (::worker i) (::worker j)))))
