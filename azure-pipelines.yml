@@ -28,18 +28,6 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
-  
-- task: Gradle@2
-  inputs:
-    workingDirectory: 'tests'
-    gradleWrapperFile: 'tests/gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.12'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
 
 - task: Gradle@2
   inputs:

@@ -23,7 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cd0013-ddc1-4b07-b874-b73a81a26b45" name="Default Changelist" comment="Rename vague name + add used libs to git">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discourje/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -126,10 +125,21 @@
       <recent name="nl.florianslob.model.checking.sandbox.modelchecking" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.[build]">
+  <component name="RunManager" selected="Gradle.Tests in 'model-checking-sandbox'">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="nl.florianslob.modelchecking.sandbox.Main" />
       <module name="code-generator.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -222,10 +232,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'model-checking-sandbox'" />
         <item itemvalue="Gradle.[build]" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.LtlFormulaParserTests.TestParseFormula2" />
-        <item itemvalue="Gradle.Tests in 'model-checking-sandbox'" />
         <item itemvalue="Gradle.OnTheFlyLtlTest.TestFailingTestAzureDevOps" />
       </list>
     </recent_temporary>
@@ -324,7 +334,7 @@
       <workItem from="1608232625660" duration="4176000" />
       <workItem from="1608305465382" duration="1793000" />
       <workItem from="1608382567346" duration="567000" />
-      <workItem from="1608491284147" duration="594000" />
+      <workItem from="1608491284147" duration="1056000" />
     </task>
     <task id="LOCAL-00001" summary="Rename vague name + add used libs to git">
       <created>1582834805075</created>
