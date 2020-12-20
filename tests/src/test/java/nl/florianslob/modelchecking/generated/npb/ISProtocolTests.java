@@ -1,13 +1,11 @@
 package nl.florianslob.modelchecking.generated.npb;
 
 import Helpers.ProtocolTestingHelper;
-import discourje.examples.npb3.impl.CGThreads.CGMessage;
 import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
 import discourje.examples.npb3.impl.ISThreads.RankMessage;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
-import nl.florianslob.modelchecking.generated.CGProtocol_n_2;
 import nl.florianslob.modelchecking.generated.ISProtocol_n_2;
 import org.junit.Test;
 
@@ -34,8 +32,8 @@ public class ISProtocolTests {
     private Object[] dummies = new Object[]{RankMessage.GetTestDummyObject(), DoneMessage.GetTestDummyObject(), ExitMessage.GetTestDummyObject()};
 
     @Test
-    public void TestAlwaysResponse0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestAlwaysResponse0.owl",
+    public void TestBoundness0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestBoundness0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -43,8 +41,8 @@ public class ISProtocolTests {
     }
 
     @Test
-    public void TestAlwaysResponse1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestAlwaysResponse1.owl",
+    public void TestBoundness1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestBoundness1.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -52,8 +50,8 @@ public class ISProtocolTests {
     }
 
     @Test
-    public void TestMasterDoesNotSendTwice0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestMasterDoesNotSendTwice0.owl",
+    public void TestEventualReception0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestEventualReception0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -61,8 +59,8 @@ public class ISProtocolTests {
     }
 
     @Test
-    public void TestMasterDoesNotSendTwice1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestMasterDoesNotSendTwice1.owl",
+    public void TestEventualReception1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestEventualReception1.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -70,8 +68,8 @@ public class ISProtocolTests {
     }
 
     @Test
-    public void TestWorkerNotSendBeforeReceive0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestWorkerNotSendBeforeReceive0.owl",
+    public void TestRequestResponse0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestRequestResponse0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -79,8 +77,53 @@ public class ISProtocolTests {
     }
 
     @Test
-    public void TestWorkerNotSendBeforeReceive1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestWorkerNotSendBeforeReceive1.owl",
+    public void TestRequestResponse1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestRequestResponse1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMax1Request0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestMax1Request0.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMax1Request1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestMax1Request1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestWorkersAreReactive0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestWorkersAreReactive0.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestWorkersAreReactive1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestWorkersAreReactive1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestExitMeansExit() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/IS/TestExitMeansExit.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,

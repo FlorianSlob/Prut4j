@@ -1,0 +1,1 @@
+G("master SEND * TO worker_1_" => X(F("worker_1_ RECEIVE *")))

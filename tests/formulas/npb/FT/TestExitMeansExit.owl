@@ -1,0 +1,1 @@
+F("master SEND <ExitMessage> TO *" => G(!"master SEND <EvolveMessage> TO *" && !"master SEND <FFTMessage> TO *" && !"master SEND <FFTSetVariablesMessage> TO *"))

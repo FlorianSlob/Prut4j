@@ -1,0 +1,1 @@
+F("master SEND <ExitMessage> TO *" => G(!"master SEND <InterpMessage> TO *" && !"master SEND <PsinvMessage> TO *" && !"master SEND <RprjMessage> TO *" && !"master SEND <ResidMessage> TO *"))

@@ -1,19 +1,14 @@
 package nl.florianslob.modelchecking.generated.npb;
 
 import Helpers.ProtocolTestingHelper;
-import discourje.examples.npb3.impl.CGThreads.CGMessage;
 import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
-import discourje.examples.npb3.impl.FTThreads.EvolveMessage;
-import discourje.examples.npb3.impl.FTThreads.FFTMessage;
-import discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage;
 import discourje.examples.npb3.impl.MGThreads.InterpMessage;
 import discourje.examples.npb3.impl.MGThreads.PsinvMessage;
 import discourje.examples.npb3.impl.MGThreads.ResidMessage;
 import discourje.examples.npb3.impl.MGThreads.RprjMessage;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
-import nl.florianslob.modelchecking.generated.CGProtocol_n_2;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_2;
 import org.junit.Test;
 
@@ -50,8 +45,8 @@ public class MGProtocolTests {
     };
 
     @Test
-    public void TestAlwaysResponse0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestAlwaysResponse0.owl",
+    public void TestBoundness0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestBoundness0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -59,8 +54,8 @@ public class MGProtocolTests {
     }
 
     @Test
-    public void TestAlwaysResponse1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestAlwaysResponse1.owl",
+    public void TestBoundness1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestBoundness1.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -68,8 +63,8 @@ public class MGProtocolTests {
     }
 
     @Test
-    public void TestMasterDoesNotSendTwice0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestMasterDoesNotSendTwice0.owl",
+    public void TestEventualReception0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestEventualReception0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -77,8 +72,8 @@ public class MGProtocolTests {
     }
 
     @Test
-    public void TestMasterDoesNotSendTwice1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestMasterDoesNotSendTwice1.owl",
+    public void TestEventualReception1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestEventualReception1.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -86,8 +81,8 @@ public class MGProtocolTests {
     }
 
     @Test
-    public void TestWorkerNotSendBeforeReceive0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestWorkerNotSendBeforeReceive0.owl",
+    public void TestRequestResponse0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestRequestResponse0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -95,8 +90,53 @@ public class MGProtocolTests {
     }
 
     @Test
-    public void TestWorkerNotSendBeforeReceive1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestWorkerNotSendBeforeReceive1.owl",
+    public void TestRequestResponse1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestRequestResponse1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMax1Request0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestMax1Request0.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMax1Request1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestMax1Request1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+//    @Test
+    public void TestWorkersAreReactive0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestWorkersAreReactive0.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+//    @Test
+    public void TestWorkersAreReactive1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestWorkersAreReactive1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestExitMeansExit() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/MG/TestExitMeansExit.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,

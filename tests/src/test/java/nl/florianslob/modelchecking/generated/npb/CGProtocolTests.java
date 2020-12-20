@@ -37,8 +37,8 @@ public class CGProtocolTests {
     };
 
     @Test
-    public void TestAlwaysResponse0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestAlwaysResponse0.owl",
+    public void TestBoundness0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestBoundness0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -46,8 +46,8 @@ public class CGProtocolTests {
     }
 
     @Test
-    public void TestAlwaysResponse1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestAlwaysResponse1.owl",
+    public void TestBoundness1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestBoundness1.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -55,8 +55,8 @@ public class CGProtocolTests {
     }
 
     @Test
-    public void TestMasterDoesNotSendTwice0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestMasterDoesNotSendTwice0.owl",
+    public void TestEventualReception0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestEventualReception0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -64,8 +64,8 @@ public class CGProtocolTests {
     }
 
     @Test
-    public void TestMasterDoesNotSendTwice1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestMasterDoesNotSendTwice1.owl",
+    public void TestEventualReception1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestEventualReception1.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -73,8 +73,8 @@ public class CGProtocolTests {
     }
 
     @Test
-    public void TestWorkerNotSendBeforeReceive0() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestWorkerNotSendBeforeReceive0.owl",
+    public void TestRequestResponse0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestRequestResponse0.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,
@@ -82,8 +82,53 @@ public class CGProtocolTests {
     }
 
     @Test
-    public void TestWorkerNotSendBeforeReceive1() throws Exception {
-        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/TestWorkerNotSendBeforeReceive1.owl",
+    public void TestRequestResponse1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestRequestResponse1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMax1Request0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestMax1Request0.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestMax1Request1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestMax1Request1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestWorkersAreReactive0() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestWorkersAreReactive0.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestWorkersAreReactive1() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestWorkersAreReactive1.owl",
+                true ,
+                GetProtocol(),
+                ShortTypeNameToFullClassNameMap,
+                dummies);
+    }
+
+    @Test
+    public void TestExitMeansExit() throws Exception {
+        ProtocolTestingHelper.TestFormulaFromFile("formulas/npb/CG/TestExitMeansExit.owl",
                 true ,
                 GetProtocol(),
                 ShortTypeNameToFullClassNameMap,

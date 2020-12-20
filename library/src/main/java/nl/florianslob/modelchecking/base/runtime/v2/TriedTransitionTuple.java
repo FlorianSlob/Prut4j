@@ -36,6 +36,6 @@ public class TriedTransitionTuple {
 
     @Override
     public String toString() {
-        return " ( State: "+this.stateId +" Exploring action: "+ exploringAction.toString()+")";
+        return " ( State: "+this.stateId +" Exploring action: "+ exploringAction.toString()+" LTL transition "+ltlTransition.toString()+")";
     }
 }
