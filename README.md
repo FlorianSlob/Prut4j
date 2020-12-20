@@ -1,7 +1,5 @@
 # model-checking-sandbox
 
-[![Build Status](https://dev.azure.com/florianslob/SoftwareEngeneeringGraduation/_apis/build/status/FlorianSlob.model-checking-sandbox?branchName=master)](https://dev.azure.com/florianslob/SoftwareEngeneeringGraduation/_build/latest?definitionId=1&branchName=master)
-
 Prut4j Tool
 
 Projects:
