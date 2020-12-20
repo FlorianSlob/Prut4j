@@ -373,7 +373,7 @@ public class ISProtocol_n_2 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "master","worker_0_","worker_1_" };
+		return new String[] { "worker_0_","worker_1_","master" };
 	}
 	
 	@Override

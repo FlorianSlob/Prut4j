@@ -4624,16 +4624,6 @@ public class FTProtocol_n_24 implements IProtocol {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(4);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTSetVariablesMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
@@ -4641,6 +4631,16 @@ public class FTProtocol_n_24 implements IProtocol {
 						if (receiver.equals("fft_0_")) {
 							setState(247);
 							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(4);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -5270,26 +5270,6 @@ public class FTProtocol_n_24 implements IProtocol {
 					}
 					throw new NotAllowedTransitionException();
 				case 56:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(4);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
-						if (receiver == null) {
-							receiver = "fft_0_";
-						}
-						if (receiver.equals("fft_0_")) {
-							setState(200);
-							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
 						if (receiver == null) {
 							receiver = "evolve_0_";
@@ -5307,6 +5287,26 @@ public class FTProtocol_n_24 implements IProtocol {
 						if (receiver.equals("fft_0_")) {
 							setState(247);
 							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
+						if (receiver == null) {
+							receiver = "fft_0_";
+						}
+						if (receiver.equals("fft_0_")) {
+							setState(200);
+							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(4);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -7563,7 +7563,7 @@ public class FTProtocol_n_24 implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "fft_1_","fft_8_","evolve_13_","evolve_20_","evolve_19_","evolve_22_","master","fft_11_","evolve_18_","fft_21_","fft_16_","evolve_0_","evolve_5_","evolve_17_","fft_13_","evolve_8_","fft_2_","fft_14_","evolve_10_","evolve_16_","evolve_9_","evolve_7_","evolve_23_","fft_9_","fft_4_","fft_7_","evolve_6_","evolve_11_","fft_6_","evolve_12_","evolve_15_","fft_22_","fft_17_","fft_23_","evolve_14_","fft_5_","evolve_2_","evolve_4_","fft_18_","fft_0_","fft_10_","fft_20_","evolve_3_","evolve_21_","evolve_1_","fft_15_","fft_19_","fft_12_","fft_3_" };
+		return new String[] { "evolve_10_","fft_9_","fft_5_","evolve_14_","evolve_7_","fft_4_","evolve_21_","fft_19_","evolve_16_","fft_18_","fft_10_","fft_12_","fft_6_","evolve_18_","fft_1_","evolve_3_","fft_13_","evolve_12_","fft_20_","fft_8_","fft_17_","evolve_4_","fft_15_","evolve_23_","fft_0_","fft_7_","fft_16_","fft_11_","evolve_8_","evolve_11_","evolve_2_","fft_14_","evolve_15_","evolve_20_","fft_22_","master","evolve_1_","evolve_6_","evolve_19_","fft_21_","evolve_9_","fft_3_","evolve_5_","evolve_17_","fft_23_","fft_2_","evolve_0_","evolve_22_","evolve_13_" };
 	}
 	
 	@Override
