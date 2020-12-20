@@ -20,52 +20,60 @@ public class ProtocolCodeGenerator {
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
         boolean
-                genCGProtocol = false,
+                genCGProtocol = true,
                 genFTProtocol = false,
                 genISProtocol = false,
                 genMGProtocol = false,
-                genDemoProtocols = false,
-                genRingProtocol = false,
+                genDemoProtocols = true,
+                genRingProtocol = true,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
-                genMeshProtocol = false,
-                genStarProtocol = false,
+                genMeshProtocol = true,
+                genStarProtocol = true,
+                genBinaryTreeProtocol = true,
                 genGoFishProtocol = false,
                 genRockPaperScissorsProtocol = false,
-                genTicTacToeProtocol = true
+                genTicTacToeProtocol = false
                         ;
-        boolean generateToTestBenchmarkProject = false;
-        boolean generateToTestProject = false;
+        boolean generateToTestBenchmarkProject = true;
+        boolean generateToTestProject = true;
 
-        var filePathForDemoProtocols = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
+        var filePathForDemoProtocolsGames = "../tests/src/main/java/nl/florianslob/modelchecking/generated/games/";
+        var filePathForDemoProtocolsNetworkTopologies = "../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/";
 
         if(genRingProtocol){
-            GenerateProtocolFromDefinition("ring",3, filePathForDemoProtocols, "RingProtocol", false, true);
-            GenerateProtocolFromDefinition("token-directed-ring",4, filePathForDemoProtocols, "TokenDirectedRingProtocol", false,true);
+            GenerateProtocolFromDefinition("ring",3, filePathForDemoProtocolsNetworkTopologies , "RingProtocol", false, true);
+            GenerateProtocolFromDefinition("token-directed-ring",4, filePathForDemoProtocolsNetworkTopologies , "TokenDirectedRingProtocol", false,true);
+            GenerateProtocolFromDefinition("token-undirected-ring",4, filePathForDemoProtocolsNetworkTopologies , "TokenUndirectedRingProtocol", false,true);
         }
 
         if(genMeshProtocol){
-            GenerateProtocolFromDefinition("mesh",2, filePathForDemoProtocols, "MeshProtocol", false,true);
-//            GenerateProtocolFromDefinition("token-directed-mesh",4, filePathForDemoProtocols, "TokenDirectedMeshProtocol", false);
+            GenerateProtocolFromDefinition("mesh",2, filePathForDemoProtocolsNetworkTopologies , "MeshProtocol", false,true);
+            GenerateProtocolFromDefinition("token-full-mesh",4, filePathForDemoProtocolsNetworkTopologies , "TokenFullMeshProtocol", false,true);
+            GenerateProtocolFromDefinition("token-2d-mesh",4, filePathForDemoProtocolsNetworkTopologies , "TokenTwoDMeshProtocol", false,true);
         }
 
         if(genStarProtocol){
-            GenerateProtocolFromDefinition("star",3, filePathForDemoProtocols, "StarProtocol", false, true);
-//            GenerateProtocolFromDefinition("token-directed-star",4, filePathForDemoProtocols, "TokenDirectedStarProtocol", false);
+            GenerateProtocolFromDefinition("star",3, filePathForDemoProtocolsNetworkTopologies , "StarProtocol", false, true);
+            GenerateProtocolFromDefinition("token-star",4, filePathForDemoProtocolsNetworkTopologies , "TokenStarProtocol", false, true);
+        }
+
+        if(genBinaryTreeProtocol){
+            GenerateProtocolFromDefinition("token-binary-tree",4, filePathForDemoProtocolsNetworkTopologies , "TokenBinaryTreeProtocol", false, true);
         }
 
         if(genGoFishProtocol){
-            GenerateProtocolFromDefinition("go-fish",3, filePathForDemoProtocols, "GoFishProtocol", true, true);
+            GenerateProtocolFromDefinition("go-fish",3, filePathForDemoProtocolsGames, "GoFishProtocol", true, true);
         }
 
         if(genRockPaperScissorsProtocol){
-            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocols, "RockPaperScissorsProtocol", false,true); // TODO N=4
+            GenerateProtocolFromDefinition("rock-paper-scissors",3, filePathForDemoProtocolsGames, "RockPaperScissorsProtocol", false,true); // TODO N=4
         }
 
         if(genTicTacToeProtocol){
-            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocols, "TicTacToeProtocol", true, false);
-            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocols, "TicTacToeOptimizedProtocol", true, true);
+            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocolsGames, "TicTacToeProtocol", true, false);
+            GenerateProtocolFromDefinition("tic-tac-toe",-1, filePathForDemoProtocolsGames, "TicTacToeOptimizedProtocol", true, true);
         }
 
         if(genCGProtocol){
@@ -149,10 +157,9 @@ public class ProtocolCodeGenerator {
         }
 
         if(genDemoProtocols){
-            var protocolName = "GeneratedChessProtocol";
+            var protocolName = "ChessProtocol";
             var clojureFunctionName = "chess";
-            var filePath = "../tests/src/main/java/nl/florianslob/modelchecking/generated/";
-            GenerateProtocolFromDefinition(clojureFunctionName, 0, filePath, protocolName, true, true);
+            GenerateProtocolFromDefinition(clojureFunctionName, 0, filePathForDemoProtocolsGames, protocolName, true, true);
         }
     }
 

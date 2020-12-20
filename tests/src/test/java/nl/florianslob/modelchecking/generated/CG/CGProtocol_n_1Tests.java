@@ -6,14 +6,14 @@ import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_1;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_1;
 import org.junit.Test;
 
 import java.util.HashMap;
 
 public class CGProtocol_n_1Tests {
     private IProtocol GetProtocol(){
-        return new CGProtocol_strict_n_1();
+        return new CGProtocol_n_1();
     }
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){

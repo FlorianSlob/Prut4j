@@ -1,0 +1,11 @@
+(s/defrole ::worker)
+(s/defsession ::token [i j]
+  (s/-->> Boolean (::worker i) (::worker j)))
+
+(s/defsession ::token-binary-tree [k i]
+  (s/let [j1 (try (dec (Long/parseLong (.replaceFirst (Long/toBinaryString (inc i)) ".$" "") 2))
+                  (catch Exception e -1))
+          j2 (dec (Long/parseLong (str (Long/toBinaryString (inc i)) "0") 2))
+          j3 (dec (Long/parseLong (str (Long/toBinaryString (inc i)) "1") 2))]
+    (s/alt-every [j (filter #{j1 j2 j3} (range k))]
+      (s/cat (::token i j) (::token-binary-tree k j)))))

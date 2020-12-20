@@ -1,10 +1,10 @@
 package nl.florianslob.modelchecking.generated;
 
 import Helpers.ProtocolTestingHelper;
-import discourje.examples.chess.Move;
 import discourje.examples.gofish.*;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.Engine;
+import nl.florianslob.modelchecking.generated.games.GoFishProtocol;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -5,14 +5,14 @@ import discourje.examples.npb3.impl.CGThreads.CGMessage;
 import discourje.examples.npb3.impl.DoneMessage;
 import discourje.examples.npb3.impl.ExitMessage;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_3;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_3;
 import org.junit.Test;
 
 import java.util.HashMap;
 
 public class CGProtocol_n_3Tests {
     private IProtocol GetProtocol(){
-        return new CGProtocol_strict_n_3();
+        return new CGProtocol_n_3();
     }
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){

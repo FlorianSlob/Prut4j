@@ -3,6 +3,7 @@ package nl.florianslob.modelchecking.generated;
 import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import Helpers.ProtocolTestingHelper;
+import nl.florianslob.modelchecking.generated.games.ChessProtocol;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 public class ChessProtocolTests {
 
     private IProtocol GetProtocol(){
-        return new GeneratedChessProtocol();
+        return new ChessProtocol();
     }
 
     private HashMap<String, String> ShortTypeNameToFullClassNameMap = new HashMap<>(){

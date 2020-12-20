@@ -13,7 +13,7 @@ public class GraphVisualizationHelpers {
 
     public static void saveSvgStringToFile(String fileContent, String fileName) throws Exception {
         SourceStringReader reader = new SourceStringReader(fileContent);
-        final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles + "/" + fileName);
+        final OutputStream svgFileOutputStream = new FileOutputStream(rootFolderForSvgFiles + "/" + fileName.replace("/","_"));
         DiagramDescription result = reader.outputImage(svgFileOutputStream, new FileFormatOption(FileFormat.SVG));
         svgFileOutputStream.close();
         System.out.println("Svg file generated:");

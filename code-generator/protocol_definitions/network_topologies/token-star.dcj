@@ -1,0 +1,10 @@
+(s/defrole ::worker)
+(s/defsession ::token [i j]
+  (s/-->> Boolean (::worker i) (::worker j)))
+
+(s/defsession ::token-star [k i]
+  (s/if (= i 0)
+    (s/alt-every [j (range 1 k)]
+      (s/cat (::token i j) (::token-star k j)))
+    (s/let [j 0]
+      (s/cat (::token i j) (::token-star k j)))))

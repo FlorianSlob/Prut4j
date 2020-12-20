@@ -164,9 +164,6 @@ public class Engine {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
             var possibleExploringActions =  StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions);
-            if(possibleExploringActions.stream().count() == 0){
-                return false;
-            }
             for (var exploringAction :  possibleExploringActions) {
                 // We have selected an action to explore (a possible transition on the protocol automaton)
                 // If no cycle is detected, we will try this action.

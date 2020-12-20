@@ -1,0 +1,7 @@
+(s/defrole ::worker)
+(s/defsession ::token [i j]
+  (s/-->> Boolean (::worker i) (::worker j)))
+
+(s/defsession ::token-full-mesh [k i]
+  (s/alt-every [j (remove #{i} (range k))]
+    (s/cat (::token i j) (::token-full-mesh k j))))
