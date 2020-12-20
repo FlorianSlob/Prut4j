@@ -78,15 +78,9 @@ public class ProtocolWriterForJava11 implements ISyntaxWriter<ASTProtocol> {
                     }
                 );
 
-                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public Object[] dummies()", tabCountLvl0,
+                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public String getState()", tabCountLvl0,
                     (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return new Object[]{\"TestStringDummy\"};"); // TODO Make this more dynamic (Default for all types used in the protocol)
-                    }
-                );
-
-                StringBuilderSyntaxHelperForJava11.addMethodOverride(builder,"public int getState()", tabCountLvl0,
-                    (tabCountLvl1) -> {
-                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return this.state;");
+                        StringBuilderSyntaxHelper.addLine(builder, tabCountLvl1, "return \"\"+this.state;");
                     }
                 );
             }

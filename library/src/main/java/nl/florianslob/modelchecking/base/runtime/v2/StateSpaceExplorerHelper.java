@@ -1,8 +1,11 @@
 package nl.florianslob.modelchecking.base.runtime.v2;
 
 import com.rits.cloning.Cloner;
+import com.rits.cloning.IDumpCloned;
+import nl.florianslob.modelchecking.base.api.v2.ICloneableProtocol;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class StateSpaceExplorerHelper {
@@ -25,8 +28,8 @@ public class StateSpaceExplorerHelper {
     }
 
     public static IProtocol deepClone(IProtocol protocol) {
-        // Clone the IProtocol with the third party library
-        // https://github.com/kostaskougios/cloning
+//        // Clone the IProtocol with the third party library
+//        // https://github.com/kostaskougios/cloning
         Cloner cloner = new Cloner();
         return cloner.deepClone(protocol);
     }

@@ -48,11 +48,11 @@ public class StateSpaceExploringActionsHelper {
                     )
                     &&
                     (
-                            expression.AtomicProposition.Participant == null
+                            expression.AtomicProposition.getParticipant() == null
                             ||
-                            expression.AtomicProposition.Participant.equalsIgnoreCase(WILDCARD) // Should be true for every sender
+                            expression.AtomicProposition.getParticipant().equalsIgnoreCase(WILDCARD) // Should be true for every sender
                             ||
-                            expression.AtomicProposition.Participant.equalsIgnoreCase(exploringAction.participant)
+                            expression.AtomicProposition.getParticipant().equalsIgnoreCase(exploringAction.participant)
                     )
                     &&
                     (

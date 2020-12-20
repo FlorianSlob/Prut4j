@@ -1,0 +1,7 @@
+(s/defrole ::worker)
+(s/defsession ::token [i j]
+  (s/-->> Boolean (::worker i) (::worker j)))
+
+(s/defsession ::token-directed-ring [k i]
+  (s/let [j (mod (inc i) k)]
+    (s/cat (::token i j) (::token-directed-ring k j))))

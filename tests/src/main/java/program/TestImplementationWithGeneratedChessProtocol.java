@@ -5,12 +5,12 @@ import discourje.examples.chess.Move;
 import nl.florianslob.modelchecking.base.api.v2.IProtocol;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipant;
 import nl.florianslob.modelchecking.base.runtime.v2.GenericParticipantAction;
-import nl.florianslob.modelchecking.generated.GeneratedChessProtocol;
+import nl.florianslob.modelchecking.generated.ChessProtocol;
 
 public class TestImplementationWithGeneratedChessProtocol {
     public static void Run() {
 
-        IProtocol protocol = new GeneratedChessProtocol();
+        IProtocol protocol = new ChessProtocol();
 
         GenericParticipant playerWhite = getGenericParticipantPlayerWhite();
         GenericParticipant playerBlack = getGenericParticipantPlayerBlack();

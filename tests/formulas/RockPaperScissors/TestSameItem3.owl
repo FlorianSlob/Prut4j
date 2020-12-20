@@ -1,0 +1,6 @@
+((!"player_2_ SEND * TO player_0_" U "player_2_ SEND <Rock> TO player_0_") &&
+   (!"player_2_ SEND * TO player_1_" U "player_2_ SEND <Rock> TO player_1_")) ||
+  ((!"player_2_ SEND * TO player_0_" U "player_2_ SEND <Paper> TO player_0_") &&
+   (!"player_2_ SEND * TO player_1_" U "player_2_ SEND <Paper> TO player_1_")) ||
+  ((!"player_2_ SEND * TO player_0_" U "player_2_ SEND <Scissors> TO player_0_") &&
+   (!"player_2_ SEND * TO player_1_" U "player_2_ SEND <Scissors> TO player_1_"))

@@ -73,30 +73,30 @@ import nl.florianslob.modelchecking.generated.MGProtocol_n_6;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_7;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_8;
 import nl.florianslob.modelchecking.generated.MGProtocol_n_9;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_1;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_2;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_3;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_4;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_5;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_6;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_7;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_8;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_9;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_10;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_11;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_12;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_13;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_14;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_15;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_16;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_17;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_18;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_19;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_20;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_21;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_22;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_23;
-import nl.florianslob.modelchecking.generated.CGProtocol_strict_n_24;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_1;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_2;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_3;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_4;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_5;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_6;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_7;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_8;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_9;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_10;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_11;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_12;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_13;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_14;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_15;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_16;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_17;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_18;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_19;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_20;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_21;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_22;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_23;
+import nl.florianslob.modelchecking.generated.CGProtocol_n_24;
 
 
 public class ProtocolHelper {
@@ -105,53 +105,53 @@ public class ProtocolHelper {
             case CG:
                     switch (numberOfThreads) {
                         case 1:
-                            return new CGProtocol_strict_n_1();
+                            return new CGProtocol_n_1();
                         case 2:
-                            return new CGProtocol_strict_n_2();
+                            return new CGProtocol_n_2();
                         case 3:
-                            return new CGProtocol_strict_n_3();
+                            return new CGProtocol_n_3();
                         case 4:
-                            return new CGProtocol_strict_n_4();
+                            return new CGProtocol_n_4();
                         case 5:
-                            return new CGProtocol_strict_n_5();
+                            return new CGProtocol_n_5();
                         case 6:
-                            return new CGProtocol_strict_n_6();
+                            return new CGProtocol_n_6();
                         case 7:
-                            return new CGProtocol_strict_n_7();
+                            return new CGProtocol_n_7();
                         case 8:
-                            return new CGProtocol_strict_n_8();
+                            return new CGProtocol_n_8();
                         case 9:
-                            return new CGProtocol_strict_n_9();
+                            return new CGProtocol_n_9();
                         case 10:
-                            return new CGProtocol_strict_n_10();
+                            return new CGProtocol_n_10();
                         case 11:
-                            return new CGProtocol_strict_n_11();
+                            return new CGProtocol_n_11();
                         case 12:
-                            return new CGProtocol_strict_n_12();
+                            return new CGProtocol_n_12();
                         case 13:
-                            return new CGProtocol_strict_n_13();
+                            return new CGProtocol_n_13();
                         case 14:
-                            return new CGProtocol_strict_n_14();
+                            return new CGProtocol_n_14();
                         case 15:
-                            return new CGProtocol_strict_n_15();
+                            return new CGProtocol_n_15();
                         case 16:
-                            return new CGProtocol_strict_n_16();
+                            return new CGProtocol_n_16();
                         case 17:
-                            return new CGProtocol_strict_n_17();
+                            return new CGProtocol_n_17();
                         case 18:
-                            return new CGProtocol_strict_n_18();
+                            return new CGProtocol_n_18();
                         case 19:
-                            return new CGProtocol_strict_n_19();
+                            return new CGProtocol_n_19();
                         case 20:
-                            return new CGProtocol_strict_n_20();
+                            return new CGProtocol_n_20();
                         case 21:
-                            return new CGProtocol_strict_n_21();
+                            return new CGProtocol_n_21();
                         case 22:
-                            return new CGProtocol_strict_n_22();
+                            return new CGProtocol_n_22();
                         case 23:
-                            return new CGProtocol_strict_n_23();
+                            return new CGProtocol_n_23();
                         case 24:
-                            return new CGProtocol_strict_n_24();
+                            return new CGProtocol_n_24();
                         default:
                             throw new UnsupportedOperationException("This N is not supported");
                     }

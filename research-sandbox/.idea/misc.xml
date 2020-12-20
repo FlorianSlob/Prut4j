@@ -3,9 +3,10 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/../api" />
+    <file type="web" url="file://$PROJECT_DIR$/../library" />
     <file type="web" url="file://$PROJECT_DIR$/../model-checking-base" />
-    <file type="web" url="file://$PROJECT_DIR$" />
     <file type="web" url="file://$PROJECT_DIR$/../owl" />
+    <file type="web" url="file://$PROJECT_DIR$" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />

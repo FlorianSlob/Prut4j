@@ -1,0 +1,24 @@
+(s/defrole ::worker)
+(s/defsession ::token [i j]
+  (s/-->> Boolean (::worker i) (::worker j)))
+
+(defn add [x y]
+  (if (= y 0)
+    x
+    (inc (add x (dec y)))))
+
+(defn mult [x y]
+  (if (= y 0)
+    0
+    (add x (mult x (dec y)))))
+
+(s/defsession ::token-2d-mesh [k i]
+  (s/let [len (long (Math/ceil (Math/sqrt k)))
+          row (long (/ i len))
+          col (mod i len)
+          j1 (if (> row 0) (add (mult (dec row) len) col) -1)
+          j2 (if (< row (dec len)) (add (mult (inc row) len) col) -1)
+          j3 (if (> col 0) (add (mult row len) (dec col)) -1)
+          j4 (if (< col (dec len)) (add (mult row len) (inc col)) -1)]
+    (s/alt-every [j (filter #{j1 j2 j3 j4} (range k))]
+      (s/cat (::token i j) (::token-2d-mesh k j)))))

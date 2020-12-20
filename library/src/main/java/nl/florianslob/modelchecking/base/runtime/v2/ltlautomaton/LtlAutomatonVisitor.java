@@ -66,7 +66,7 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
             if (valuationSet.isEmpty()) {
                 return;
             } else {
-                newTransition.Expression = getExpressionRecursively( valuationSet.toExpression());
+                newTransition.Expression = getExpressionRecursively(valuationSet.toExpression());
             }
 
             BitSet acceptanceSets = edge.acceptanceSets();
@@ -107,15 +107,19 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
             // No, remove logic below and separate parsing logic.
             // TODO extract parsing logic.
             for (int i = 0; i< alphabet.size(); i++) {
-                expressionString  = expressionString.replace(""+i, ""+alphabet.get(i)+"");
+                expressionString  = expressionString.replace(""+i, "~"+i+"~");
+            }
+
+            for (int i = 0; i< alphabet.size(); i++) {
+                expressionString  = expressionString.replace("~"+i+"~", ""+alphabet.get(i)+"");
             }
 
             var atomicProposition = new LtlTransitionExpressionAtomicProposition();
 
             var expressionSplitted = expressionString.split(" "); // TODO Should we allow multiple spaces?
-            atomicProposition.Participant = expressionSplitted[0]; // The first thing you find is the participant
+            atomicProposition.setParticipant(expressionSplitted[0]); // The first thing you find is the participant
 
-            if(expressionSplitted.length >2) {
+            if(expressionSplitted.length >1) {
                 // TODO make a nicer parser for this?
                 // Move to separate method.
                 if (expressionSplitted[1].equalsIgnoreCase("RECEIVE")) {
@@ -123,10 +127,19 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
                 } else if (expressionSplitted[1].equalsIgnoreCase("SEND")) {
                     atomicProposition.Direction = LtlTransitionExpressionAtomicPropositionDirection.SEND;
                     // Take the part after keyword TO and trim the rest
-                    atomicProposition.Receiver = expressionSplitted[4];
+                    if(expressionSplitted.length >= 4){
+                        atomicProposition.Receiver = expressionSplitted[4];
+                    }else{
+                        atomicProposition.Receiver = "*";
+                    }
                 }
-                atomicProposition.MessageType = expressionSplitted[2];
 
+                if(expressionSplitted.length >= 3){
+                    atomicProposition.MessageType = expressionSplitted[2];
+                }else{
+                    atomicProposition.MessageType = "*";
+                }
+//
             }else{
                 // TODO Throw exception??
             }

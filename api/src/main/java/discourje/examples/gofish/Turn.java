@@ -1,4 +1,4 @@
 package discourje.examples.gofish;
 
-public class Turn {
+public class Turn{
 }

@@ -7,19 +7,30 @@ import nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedat
 public class SyntaxWriterProvider {
 
 
-    public SyntaxWriterProvider(String targetLanguage) throws UnsupportedOperationException {
+    public SyntaxWriterProvider(String targetLanguage, boolean useLocalTypes) throws UnsupportedOperationException {
         // TODO Replace with some for of Dependency Injection
         // Autofac alternative for Java = ???
 
         if(targetLanguage.equals("Java11")){
-            ProtocolWriter = new ProtocolWriterForJava11();
-            ChannelWriter = new ChannelWriterForJava11();
-            EnvironmentWriter = new EnvironmentWriterForJava11();
-            CaseStatementWriter = new CaseStatementWriterForJava11();
-            WaitActionWriter = new WaitActionWriterForJava11();
-            SendActionWriter = new SendActionWriterForJava11();
-            CloseActionWriter = new CloseActionWriterForJava11();
-            ReceiveActionWriter = new ReceiveActionWriterForJava11();
+            if(useLocalTypes) {
+                ProtocolWriter = new ProtocolWriterForJava11();
+                ChannelWriter = new ChannelWriterForJava11();
+                EnvironmentWriter = new EnvironmentWriterForJava11();
+                CaseStatementWriter = new CaseStatementWriterForJava11();
+                WaitActionWriter = new WaitActionWriterForJava11();
+                SendActionWriter = new SendActionWriterForJava11();
+                CloseActionWriter = new CloseActionWriterForJava11();
+                ReceiveActionWriter = new ReceiveActionWriterForJava11();
+            }else{
+                ProtocolWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.ProtocolWriterForJava11();
+                ChannelWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.ChannelWriterForJava11();
+                EnvironmentWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.EnvironmentWriterForJava11();
+                CaseStatementWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.CaseStatementWriterForJava11();
+                WaitActionWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.WaitActionWriterForJava11();
+                SendActionWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.SendActionWriterForJava11();
+                CloseActionWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.CloseActionWriterForJava11();
+                ReceiveActionWriter = new nl.florianslob.modelchecking.sandbox.protocolcodegeneration.syntaxtreedatastructure.codewriters.java.v1.ReceiveActionWriterForJava11();
+            }
             // init fields
         }
         else if (targetLanguage.equals("PseudoCode")){
