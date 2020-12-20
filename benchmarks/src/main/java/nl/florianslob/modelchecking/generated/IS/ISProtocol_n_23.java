@@ -3418,7 +3418,7 @@ public class ISProtocol_n_23 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_12_","worker_3_","worker_17_","worker_5_","worker_0_","worker_15_","worker_1_","worker_10_","worker_6_","worker_19_","worker_14_","worker_21_","worker_2_","worker_8_","worker_22_","worker_9_","worker_16_","worker_7_","master","worker_11_","worker_4_","worker_20_","worker_18_","worker_13_" };
+		return new String[] { "worker_0_","worker_17_","worker_12_","worker_7_","worker_2_","worker_21_","worker_19_","worker_5_","master","worker_6_","worker_11_","worker_20_","worker_3_","worker_22_","worker_13_","worker_10_","worker_4_","worker_16_","worker_15_","worker_9_","worker_14_","worker_8_","worker_18_","worker_1_" };
 	}
 	
 	@Override

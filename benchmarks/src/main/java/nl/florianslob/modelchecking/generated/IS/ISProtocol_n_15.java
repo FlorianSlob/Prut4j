@@ -52,16 +52,6 @@ public class ISProtocol_n_15 implements Pr {
 					wait();
 					break;
 				case 0:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(39);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ISThreads.RankMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -69,6 +59,16 @@ public class ISProtocol_n_15 implements Pr {
 						if (receiver.equals("worker_0_")) {
 							setState(5);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(39);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -2258,7 +2258,7 @@ public class ISProtocol_n_15 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_0_","master","worker_6_","worker_1_","worker_7_","worker_2_","worker_9_","worker_12_","worker_5_","worker_10_","worker_13_","worker_14_","worker_11_","worker_8_","worker_3_","worker_4_" };
+		return new String[] { "worker_2_","worker_4_","worker_8_","worker_12_","worker_14_","worker_5_","worker_10_","worker_3_","worker_7_","worker_1_","worker_0_","worker_9_","worker_6_","worker_13_","worker_11_","master" };
 	}
 	
 	@Override

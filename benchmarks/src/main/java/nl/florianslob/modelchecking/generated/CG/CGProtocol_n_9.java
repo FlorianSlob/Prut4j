@@ -1388,7 +1388,7 @@ public class CGProtocol_n_9 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_4_","worker_5_","worker_1_","worker_8_","worker_6_","worker_7_","worker_3_","worker_2_","master","worker_0_" };
+		return new String[] { "worker_3_","worker_5_","worker_6_","worker_8_","worker_4_","worker_0_","worker_2_","worker_1_","worker_7_","master" };
 	}
 	
 	@Override

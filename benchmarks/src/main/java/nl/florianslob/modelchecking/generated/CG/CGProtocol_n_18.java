@@ -2693,7 +2693,7 @@ public class CGProtocol_n_18 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_6_","worker_10_","worker_3_","worker_12_","worker_7_","worker_17_","master","worker_4_","worker_13_","worker_14_","worker_15_","worker_11_","worker_1_","worker_8_","worker_16_","worker_9_","worker_5_","worker_0_","worker_2_" };
+		return new String[] { "worker_11_","worker_5_","worker_15_","master","worker_0_","worker_13_","worker_12_","worker_4_","worker_2_","worker_1_","worker_7_","worker_14_","worker_17_","worker_16_","worker_6_","worker_3_","worker_8_","worker_10_","worker_9_" };
 	}
 	
 	@Override

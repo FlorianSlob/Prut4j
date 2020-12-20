@@ -228,7 +228,7 @@ public class ISProtocol_n_1 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "master","worker_0_" };
+		return new String[] { "worker_0_","master" };
 	}
 	
 	@Override

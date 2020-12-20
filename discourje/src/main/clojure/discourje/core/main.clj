@@ -121,59 +121,6 @@
   (catch Exception e (.printStackTrace e)))
 (println "Done token-2d-mesh")
 
-(defn -spec-to-lts-ring [^Integer n]
-  (c/let [_ (require '[discourje.core.spec :refer :all])
-                     _ (require '[discourje.core.spec :as s])
-                     s (slurp "../code-generator/protocol_definitions/network_topologies/ring.dcj" )
-                     s (str "(do " s ")")
-                     _ (eval (read-string s))
-                     ast (s/session ::ring [n])
-                     lts (lts/lts ast)
-                     ]
-    lts
-))
-
-(println "Start ring")
-(try
-  (-spec-to-lts-ring 1)
-  (catch Exception e (.printStackTrace e)))
-(println "Done ring")
-
-(defn -spec-to-lts-mesh [^Integer n]
-  (c/let [_ (require '[discourje.core.spec :refer :all])
-          _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/network_topologies/mesh.dcj" )
-          s (str "(do " s ")")
-          _ (eval (read-string s))
-          ast (s/session ::mesh [n])
-          lts (lts/lts ast)
-          ]
-    lts
-    ))
-
-(println "Start mesh")
-(try
-  (-spec-to-lts-mesh 1)
-  (catch Exception e (.printStackTrace e)))
-(println "Done mesh")
-
-(defn -spec-to-lts-star [^Integer n]
-  (c/let [_ (require '[discourje.core.spec :refer :all])
-          _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/network_topologies/star.dcj" )
-          s (str "(do " s ")")
-          _ (eval (read-string s))
-          ast (s/session ::star [n])
-          lts (lts/lts ast)
-          ]
-    lts
-    ))
-
-(println "Start star")
-(try
-  (-spec-to-lts-star 1)
-  (catch Exception e (.printStackTrace e)))
-(println "Done star")
 
 (defn -spec-to-lts-rock-paper-scissors [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
@@ -251,7 +198,7 @@
 (defn -spec-to-lts-cg [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/npb/cg/strict/cg.dcj")
+          s (slurp "../code-generator/protocol_definitions/npb/cg.dcj")
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::cg [n])
@@ -270,7 +217,7 @@
 (defn -spec-to-lts-is [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/npb/is/strict/is.dcj")
+          s (slurp "../code-generator/protocol_definitions/npb/is.dcj")
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::is [n])
@@ -288,7 +235,7 @@
 (defn -spec-to-lts-ft [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/npb/ft/strict/ft.dcj")
+          s (slurp "../code-generator/protocol_definitions/npb/ft.dcj")
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::ft [n])
@@ -306,7 +253,7 @@
 (defn -spec-to-lts-mg [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])
           _ (require '[discourje.core.spec :as s])
-          s (slurp "../code-generator/protocol_definitions/npb/mg/strict/mg.dcj")
+          s (slurp "../code-generator/protocol_definitions/npb/mg.dcj")
           s (str "(do " s ")")
           _ (eval (read-string s))
           ast (s/session ::mg [n])

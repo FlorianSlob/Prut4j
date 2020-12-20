@@ -1749,6 +1749,26 @@ public class FTProtocol_n_9 implements Pr {
 					wait();
 					break;
 				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(2);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(20);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
@@ -1766,26 +1786,6 @@ public class FTProtocol_n_9 implements Pr {
 						if (receiver.equals("fft_0_")) {
 							setState(90);
 							fft_0_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(20);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),4));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(2);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -1977,16 +1977,6 @@ public class FTProtocol_n_9 implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 19:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
-						if (receiver == null) {
-							receiver = "evolve_0_";
-						}
-						if (receiver.equals("evolve_0_")) {
-							setState(2);
-							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.FFTMessage.class ) {
 						if (receiver == null) {
 							receiver = "fft_0_";
@@ -1994,6 +1984,16 @@ public class FTProtocol_n_9 implements Pr {
 						if (receiver.equals("fft_0_")) {
 							setState(73);
 							fft_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.FTThreads.EvolveMessage.class ) {
+						if (receiver == null) {
+							receiver = "evolve_0_";
+						}
+						if (receiver.equals("evolve_0_")) {
+							setState(2);
+							evolve_0_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -2887,7 +2887,7 @@ public class FTProtocol_n_9 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "fft_5_","fft_2_","fft_0_","evolve_5_","evolve_8_","evolve_0_","fft_7_","fft_8_","master","fft_4_","evolve_6_","fft_3_","evolve_7_","evolve_4_","fft_6_","evolve_3_","fft_1_","evolve_2_","evolve_1_" };
+		return new String[] { "evolve_0_","fft_6_","evolve_8_","fft_7_","fft_4_","evolve_6_","evolve_1_","fft_3_","evolve_4_","fft_1_","evolve_7_","evolve_3_","evolve_5_","fft_5_","master","fft_8_","fft_2_","fft_0_","evolve_2_" };
 	}
 	
 	@Override

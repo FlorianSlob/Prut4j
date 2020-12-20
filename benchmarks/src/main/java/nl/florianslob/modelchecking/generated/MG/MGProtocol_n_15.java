@@ -1472,26 +1472,6 @@ public class MGProtocol_n_15 implements Pr {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "interp_0_";
-						}
-						if (receiver.equals("interp_0_")) {
-							setState(65);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
-						if (receiver == null) {
-							receiver = "rprj_0_";
-						}
-						if (receiver.equals("rprj_0_")) {
-							setState(283);
-							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
 							receiver = "interp_0_";
@@ -1509,6 +1489,26 @@ public class MGProtocol_n_15 implements Pr {
 						if (receiver.equals("psinv_0_")) {
 							setState(254);
 							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(65);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
+						if (receiver == null) {
+							receiver = "rprj_0_";
+						}
+						if (receiver.equals("rprj_0_")) {
+							setState(283);
+							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -2172,6 +2172,16 @@ public class MGProtocol_n_15 implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 63:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "interp_0_";
+						}
+						if (receiver.equals("interp_0_")) {
+							setState(65);
+							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.InterpMessage.class ) {
 						if (receiver == null) {
 							receiver = "interp_0_";
@@ -2192,26 +2202,6 @@ public class MGProtocol_n_15 implements Pr {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
-						if (receiver == null) {
-							receiver = "psinv_0_";
-						}
-						if (receiver.equals("psinv_0_")) {
-							setState(254);
-							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "interp_0_";
-						}
-						if (receiver.equals("interp_0_")) {
-							setState(65);
-							interp_0_Queue.put(new ProtocolMessage(box.get(),5));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.RprjMessage.class ) {
 						if (receiver == null) {
 							receiver = "rprj_0_";
@@ -2219,6 +2209,16 @@ public class MGProtocol_n_15 implements Pr {
 						if (receiver.equals("rprj_0_")) {
 							setState(283);
 							rprj_0_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.MGThreads.PsinvMessage.class ) {
+						if (receiver == null) {
+							receiver = "psinv_0_";
+						}
+						if (receiver.equals("psinv_0_")) {
+							setState(254);
+							psinv_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -8812,7 +8812,7 @@ public class MGProtocol_n_15 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "interp_9_","interp_6_","psinv_13_","rprj_13_","rprj_14_","resid_2_","resid_9_","resid_13_","psinv_5_","rprj_5_","psinv_3_","rprj_11_","interp_2_","rprj_8_","psinv_8_","resid_3_","resid_0_","rprj_1_","interp_3_","rprj_9_","interp_11_","psinv_14_","interp_12_","rprj_4_","resid_8_","interp_14_","resid_14_","psinv_0_","resid_10_","rprj_10_","interp_4_","rprj_7_","resid_1_","psinv_4_","psinv_7_","resid_7_","resid_12_","interp_10_","psinv_6_","psinv_9_","master","interp_7_","interp_5_","resid_4_","psinv_2_","rprj_3_","psinv_1_","rprj_2_","psinv_10_","psinv_11_","psinv_12_","rprj_6_","interp_0_","interp_8_","rprj_12_","resid_11_","rprj_0_","resid_6_","interp_13_","interp_1_","resid_5_" };
+		return new String[] { "interp_2_","interp_13_","rprj_13_","rprj_4_","interp_3_","psinv_14_","psinv_7_","resid_0_","interp_11_","resid_12_","interp_4_","rprj_11_","resid_6_","master","psinv_11_","psinv_4_","interp_0_","resid_4_","rprj_0_","resid_7_","psinv_8_","resid_1_","interp_12_","resid_3_","psinv_6_","psinv_9_","rprj_12_","psinv_12_","rprj_2_","resid_5_","resid_8_","psinv_5_","interp_10_","resid_11_","psinv_2_","interp_7_","interp_1_","psinv_1_","resid_9_","interp_9_","interp_14_","rprj_6_","resid_13_","rprj_3_","rprj_5_","interp_5_","psinv_13_","resid_10_","psinv_10_","interp_8_","interp_6_","psinv_3_","resid_14_","rprj_9_","rprj_14_","resid_2_","rprj_7_","psinv_0_","rprj_1_","rprj_10_","rprj_8_" };
 	}
 	
 	@Override

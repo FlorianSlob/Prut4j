@@ -768,16 +768,6 @@ public class CGProtocol_n_19 implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 70:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
-						if (receiver == null) {
-							receiver = "worker_0_";
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(71);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.CGThreads.CGMessage.class ) {
 						if (receiver == null) {
 							receiver = "worker_0_";
@@ -785,6 +775,16 @@ public class CGProtocol_n_19 implements Pr {
 						if (receiver.equals("worker_0_")) {
 							setState(3);
 							worker_0_Queue.put(new ProtocolMessage(box.get(),1));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.npb3.impl.ExitMessage.class ) {
+						if (receiver == null) {
+							receiver = "worker_0_";
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(71);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
 					}
@@ -2838,7 +2838,7 @@ public class CGProtocol_n_19 implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_6_","worker_12_","worker_4_","worker_11_","worker_2_","worker_3_","worker_1_","worker_0_","worker_18_","worker_16_","worker_15_","worker_9_","worker_17_","worker_7_","worker_14_","master","worker_10_","worker_5_","worker_8_","worker_13_" };
+		return new String[] { "worker_7_","master","worker_17_","worker_1_","worker_9_","worker_10_","worker_8_","worker_4_","worker_6_","worker_18_","worker_11_","worker_14_","worker_0_","worker_12_","worker_3_","worker_15_","worker_2_","worker_16_","worker_13_","worker_5_" };
 	}
 	
 	@Override

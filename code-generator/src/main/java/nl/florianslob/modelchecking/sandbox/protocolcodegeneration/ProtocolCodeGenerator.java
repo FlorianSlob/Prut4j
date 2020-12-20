@@ -43,19 +43,16 @@ public class ProtocolCodeGenerator {
         var filePathForDemoProtocolsNetworkTopologies = "../tests/src/main/java/nl/florianslob/modelchecking/generated/network_topologies/";
 
         if(genRingProtocol){
-            GenerateProtocolFromDefinition("ring",3, filePathForDemoProtocolsNetworkTopologies , "RingProtocol", false, true);
             GenerateProtocolFromDefinition("token-directed-ring",4, filePathForDemoProtocolsNetworkTopologies , "TokenDirectedRingProtocol", false,true);
             GenerateProtocolFromDefinition("token-undirected-ring",4, filePathForDemoProtocolsNetworkTopologies , "TokenUndirectedRingProtocol", false,true);
         }
 
         if(genMeshProtocol){
-            GenerateProtocolFromDefinition("mesh",2, filePathForDemoProtocolsNetworkTopologies , "MeshProtocol", false,true);
             GenerateProtocolFromDefinition("token-full-mesh",4, filePathForDemoProtocolsNetworkTopologies , "TokenFullMeshProtocol", false,true);
             GenerateProtocolFromDefinition("token-2d-mesh",4, filePathForDemoProtocolsNetworkTopologies , "TokenTwoDMeshProtocol", false,true);
         }
 
         if(genStarProtocol){
-            GenerateProtocolFromDefinition("star",3, filePathForDemoProtocolsNetworkTopologies , "StarProtocol", false, true);
             GenerateProtocolFromDefinition("token-star",4, filePathForDemoProtocolsNetworkTopologies , "TokenStarProtocol", false, true);
         }
 

@@ -175,7 +175,7 @@ public class TicTacToeOptimizedProtocol implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_2_","player_1_" };
+		return new String[] { "player_1_","player_2_" };
 	}
 	
 	@Override

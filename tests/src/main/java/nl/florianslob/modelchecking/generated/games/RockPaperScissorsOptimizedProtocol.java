@@ -46,16 +46,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
-						if (receiver == null) {
-							receiver = "player_1_";
-						}
-						if (receiver.equals("player_1_")) {
-							setState(2);
-							player_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
@@ -63,6 +53,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						if (receiver.equals("player_1_")) {
 							setState(6);
 							player_1_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
+						if (receiver == null) {
+							receiver = "player_1_";
+						}
+						if (receiver.equals("player_1_")) {
+							setState(2);
+							player_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -70,11 +70,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 1:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
-							String[] receiverOptionsArray = new String[]{ "player_2_","player_1_" };
+							String[] receiverOptionsArray = new String[]{ "player_1_","player_2_" };
 							receiver = receiverOptionsArray[rnd];
+						}
+						if (receiver.equals("player_1_")) {
+							setState(7);
+							player_1_Queue.put(new ProtocolMessage(box.get(),2));
+							return Optional.empty();
 						}
 						if (receiver.equals("player_2_")) {
 							setState(9);
@@ -86,13 +91,8 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 							player_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
-						if (receiver.equals("player_1_")) {
-							setState(6);
-							player_1_Queue.put(new ProtocolMessage(box.get(),3));
-							return Optional.empty();
-						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(2);
 							String[] receiverOptionsArray = new String[]{ "player_1_","player_2_" };
@@ -109,8 +109,8 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 							return Optional.empty();
 						}
 						if (receiver.equals("player_1_")) {
-							setState(7);
-							player_1_Queue.put(new ProtocolMessage(box.get(),2));
+							setState(6);
+							player_1_Queue.put(new ProtocolMessage(box.get(),3));
 							return Optional.empty();
 						}
 					}
@@ -121,13 +121,13 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("player_1_")) {
-							setState(3);
-							player_1_Queue.put(new ProtocolMessage(box.get(),19));
+							setState(2);
+							player_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 						if (receiver.equals("player_1_")) {
-							setState(2);
-							player_1_Queue.put(new ProtocolMessage(box.get(),1));
+							setState(3);
+							player_1_Queue.put(new ProtocolMessage(box.get(),19));
 							return Optional.empty();
 						}
 						if (receiver.equals("player_2_")) {
@@ -188,16 +188,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 5:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
-						if (receiver == null) {
-							receiver = "player_1_";
-						}
-						if (receiver.equals("player_1_")) {
-							setState(3);
-							player_1_Queue.put(new ProtocolMessage(box.get(),19));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
@@ -209,6 +199,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						}
 					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
+						if (receiver == null) {
+							receiver = "player_1_";
+						}
+						if (receiver.equals("player_1_")) {
+							setState(3);
+							player_1_Queue.put(new ProtocolMessage(box.get(),19));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
 						}
@@ -284,6 +284,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 10:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
+						if (receiver == null) {
+							receiver = "player_2_";
+						}
+						if (receiver.equals("player_2_")) {
+							setState(9);
+							player_2_Queue.put(new ProtocolMessage(box.get(),20));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
@@ -295,16 +305,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						}
 					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
-						if (receiver == null) {
-							receiver = "player_2_";
-						}
-						if (receiver.equals("player_2_")) {
-							setState(9);
-							player_2_Queue.put(new ProtocolMessage(box.get(),20));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
 						}
@@ -351,6 +351,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 		public <Any, AnyInput> Optional<Any> exchange_0_11(Optional<AnyInput> box, String receiver, boolean isCloseAction) throws Exception{
 			switch (state){
 				case 0:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
+						if (receiver == null) {
+							receiver = "player_2_";
+						}
+						if (receiver.equals("player_2_")) {
+							setState(10);
+							player_2_Queue.put(new ProtocolMessage(box.get(),21));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
@@ -362,16 +372,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						}
 					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
-						if (receiver == null) {
-							receiver = "player_2_";
-						}
-						if (receiver.equals("player_2_")) {
-							setState(10);
-							player_2_Queue.put(new ProtocolMessage(box.get(),21));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
 						if (receiver == null) {
 							receiver = "player_2_";
 						}
@@ -455,16 +455,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 6:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
-						if (receiver == null) {
-							receiver = "player_0_";
-						}
-						if (receiver.equals("player_0_")) {
-							setState(8);
-							player_0_Queue.put(new ProtocolMessage(box.get(),7));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
@@ -482,6 +472,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						if (receiver.equals("player_0_")) {
 							setState(4);
 							player_0_Queue.put(new ProtocolMessage(box.get(),9));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
+						if (receiver == null) {
+							receiver = "player_0_";
+						}
+						if (receiver.equals("player_0_")) {
+							setState(8);
+							player_0_Queue.put(new ProtocolMessage(box.get(),7));
 							return Optional.empty();
 						}
 					}
@@ -715,7 +715,7 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 7:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
 						}
@@ -725,7 +725,7 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 							return Optional.empty();
 						}
 					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
 						}
@@ -749,16 +749,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 8:
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
-						if (receiver == null) {
-							receiver = "player_0_";
-						}
-						if (receiver.equals("player_0_")) {
-							setState(0);
-							player_0_Queue.put(new ProtocolMessage(box.get(),13));
-							return Optional.empty();
-						}
-					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
 						if (receiver == null) {
 							receiver = "player_0_";
@@ -776,6 +766,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						if (receiver.equals("player_0_")) {
 							setState(2);
 							player_0_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+					}
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
+						if (receiver == null) {
+							receiver = "player_0_";
+						}
+						if (receiver.equals("player_0_")) {
+							setState(0);
+							player_0_Queue.put(new ProtocolMessage(box.get(),13));
 							return Optional.empty();
 						}
 					}
@@ -809,6 +809,16 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 					}
 					throw new NotAllowedTransitionException();
 				case 10:
+					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
+						if (receiver == null) {
+							receiver = "player_1_";
+						}
+						if (receiver.equals("player_1_")) {
+							setState(5);
+							player_1_Queue.put(new ProtocolMessage(box.get(),31));
+							return Optional.empty();
+						}
+					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Scissors.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
@@ -820,16 +830,6 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 						}
 					}
 					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Paper.class ) {
-						if (receiver == null) {
-							receiver = "player_1_";
-						}
-						if (receiver.equals("player_1_")) {
-							setState(5);
-							player_1_Queue.put(new ProtocolMessage(box.get(),31));
-							return Optional.empty();
-						}
-					}
-					if (box.isPresent() && box.get().getClass() == discourje.examples.rockpaperscissors.Rock.class ) {
 						if (receiver == null) {
 							receiver = "player_1_";
 						}
@@ -871,7 +871,7 @@ public class RockPaperScissorsOptimizedProtocol implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "player_0_","player_1_","player_2_" };
+		return new String[] { "player_0_","player_2_","player_1_" };
 	}
 	
 	@Override

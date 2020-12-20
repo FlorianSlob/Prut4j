@@ -267,7 +267,7 @@ public class TokenDirectedRingProtocol implements Pr {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_1_","worker_0_","worker_3_","worker_2_" };
+		return new String[] { "worker_1_","worker_3_","worker_2_","worker_0_" };
 	}
 	
 	@Override
