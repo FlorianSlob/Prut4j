@@ -25,7 +25,7 @@ public class OwlHelperTests {
         assertTrue(firstTransaction.AcceptanceSet0);
         assertEquals(LtlTransitionExpressionOperator.ATOM, firstTransaction.Expression.Operator);
         assertEquals(LtlTransitionExpressionAtomicPropositionDirection.SEND, firstTransaction.Expression.AtomicProposition.Direction);
-        assertEquals("w", firstTransaction.Expression.AtomicProposition.Participant);
+        assertEquals("w", firstTransaction.Expression.AtomicProposition.getParticipant());
         assertEquals("b", firstTransaction.Expression.AtomicProposition.Receiver);
         assertEquals("dto.Move", firstTransaction.Expression.AtomicProposition.MessageType);
 
@@ -33,7 +33,7 @@ public class OwlHelperTests {
         assertTrue(nextTransaction.AcceptanceSet0);
         assertEquals(LtlTransitionExpressionOperator.ATOM, nextTransaction.Expression.Operator);
         assertEquals(LtlTransitionExpressionAtomicPropositionDirection.SEND, nextTransaction.Expression.AtomicProposition.Direction);
-        assertEquals("w", nextTransaction.Expression.AtomicProposition.Participant);
+        assertEquals("w", nextTransaction.Expression.AtomicProposition.getParticipant());
         assertEquals("b", nextTransaction.Expression.AtomicProposition.Receiver);
         assertEquals("dto.Move", nextTransaction.Expression.AtomicProposition.MessageType);
     }
@@ -58,7 +58,7 @@ public class OwlHelperTests {
         var leftHandExpression = firstTransaction.Expression.Left;
         assertEquals(LtlTransitionExpressionOperator.ATOM, leftHandExpression.Operator);
         assertEquals(LtlTransitionExpressionAtomicPropositionDirection.RECEIVE, leftHandExpression.AtomicProposition.Direction);
-        assertEquals("w", leftHandExpression.AtomicProposition.Participant);
+        assertEquals("w", leftHandExpression.AtomicProposition.getParticipant());
         assertEquals(null, leftHandExpression.AtomicProposition.Receiver);
         assertEquals("dto.Move", leftHandExpression.AtomicProposition.MessageType);
 

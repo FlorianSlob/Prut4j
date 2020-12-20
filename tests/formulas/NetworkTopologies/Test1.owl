@@ -1,2 +1,1 @@
-G("worker_1_ RECEIVE <Boolean>" =>
-   X("worker_1_ SEND <Boolean> TO worker_2_"))
+G("worker_1_ RECEIVE <Boolean>" => X("worker_1_ SEND <Boolean> TO worker_2_"))

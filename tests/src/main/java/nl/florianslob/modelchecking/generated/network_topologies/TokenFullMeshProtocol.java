@@ -40,17 +40,17 @@ public class TokenFullMeshProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_1_","worker_3_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_3_","worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_1_")) {
-							setState(2);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_3_")) {
 							setState(2);
 							worker_3_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(2);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 						if (receiver.equals("worker_2_")) {
@@ -66,7 +66,7 @@ public class TokenFullMeshProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_1_","worker_3_" };
+							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_3_","worker_1_" };
 							receiver = receiverOptionsArray[rnd];
 						}
 						if (receiver.equals("worker_2_")) {
@@ -74,14 +74,14 @@ public class TokenFullMeshProtocol implements IProtocol {
 							worker_2_Queue.put(new ProtocolMessage(box.get(),2));
 							return Optional.empty();
 						}
-						if (receiver.equals("worker_1_")) {
-							setState(2);
-							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
-							return Optional.empty();
-						}
 						if (receiver.equals("worker_3_")) {
 							setState(2);
 							worker_3_Queue.put(new ProtocolMessage(box.get(),3));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_1_")) {
+							setState(2);
+							worker_1_Queue.put(new ProtocolMessage(box.get(),1));
 							return Optional.empty();
 						}
 					}
@@ -151,13 +151,8 @@ public class TokenFullMeshProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_3_","worker_0_","worker_2_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_2_","worker_3_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_3_")) {
-							setState(1);
-							worker_3_Queue.put(new ProtocolMessage(box.get(),7));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(1);
@@ -167,6 +162,11 @@ public class TokenFullMeshProtocol implements IProtocol {
 						if (receiver.equals("worker_2_")) {
 							setState(1);
 							worker_2_Queue.put(new ProtocolMessage(box.get(),6));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_3_")) {
+							setState(1);
+							worker_3_Queue.put(new ProtocolMessage(box.get(),7));
 							return Optional.empty();
 						}
 					}
@@ -262,13 +262,8 @@ public class TokenFullMeshProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_3_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_3_","worker_1_","worker_0_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_0_")) {
-							setState(0);
-							worker_0_Queue.put(new ProtocolMessage(box.get(),10));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_3_")) {
 							setState(0);
@@ -278,6 +273,11 @@ public class TokenFullMeshProtocol implements IProtocol {
 						if (receiver.equals("worker_1_")) {
 							setState(0);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),11));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_0_")) {
+							setState(0);
+							worker_0_Queue.put(new ProtocolMessage(box.get(),10));
 							return Optional.empty();
 						}
 					}
@@ -347,13 +347,8 @@ public class TokenFullMeshProtocol implements IProtocol {
 					if (box.isPresent() && box.get().getClass() == Boolean.class ) {
 						if (receiver == null) {
 							int rnd = new Random().nextInt(3);
-							String[] receiverOptionsArray = new String[]{ "worker_2_","worker_0_","worker_1_" };
+							String[] receiverOptionsArray = new String[]{ "worker_0_","worker_1_","worker_2_" };
 							receiver = receiverOptionsArray[rnd];
-						}
-						if (receiver.equals("worker_2_")) {
-							setState(0);
-							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
-							return Optional.empty();
 						}
 						if (receiver.equals("worker_0_")) {
 							setState(0);
@@ -363,6 +358,11 @@ public class TokenFullMeshProtocol implements IProtocol {
 						if (receiver.equals("worker_1_")) {
 							setState(0);
 							worker_1_Queue.put(new ProtocolMessage(box.get(),15));
+							return Optional.empty();
+						}
+						if (receiver.equals("worker_2_")) {
+							setState(0);
+							worker_2_Queue.put(new ProtocolMessage(box.get(),16));
 							return Optional.empty();
 						}
 					}
@@ -399,7 +399,7 @@ public class TokenFullMeshProtocol implements IProtocol {
 	
 	@Override
 	public String[] threadNames(){
-		return new String[] { "worker_2_","worker_0_","worker_1_","worker_3_" };
+		return new String[] { "worker_0_","worker_2_","worker_3_","worker_1_" };
 	}
 	
 	@Override

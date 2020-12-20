@@ -6,9 +6,9 @@
   (s/let [len (long (Math/ceil (Math/sqrt k)))
           row (long (/ i len))
           col (mod i len)
-          j1 (if (> row 0) (+ (* (dec row) len) col) -1)
-          j2 (if (< row (dec len)) (+ (* (inc row) len) col) -1)
-          j3 (if (> col 0) (+ (* row len) (dec col)) -1)
-          j4 (if (< col (dec len)) (+ (* row len) (inc col)) -1)]
+          j1 (if (> row 0) (clojure.core/+ (clojure.core/* (dec row) len) col) -1)
+          j2 (if (< row (dec len)) (clojure.core/+ (clojure.core/* (inc row) len) col) -1)
+          j3 (if (> col 0) (clojure.core/+ (clojure.core/* row len) (dec col)) -1)
+          j4 (if (< col (dec len)) (clojure.core/+ (clojure.core/* row len) (inc col)) -1)]
     (s/alt-every [j (filter #{j1 j2 j3 j4} (range k))]
       (s/cat (::token i j) (::token-2d-mesh k j)))))

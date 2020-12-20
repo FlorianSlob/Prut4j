@@ -7,7 +7,7 @@ public class TriedTransitionTuple {
     private final String stateId;
     private final StateSpaceExploringAction exploringAction;
     private final String threadName;
-    private final LtlTransition ltlTransition;
+    public final LtlTransition ltlTransition;
 
     public TriedTransitionTuple(String stateId, StateSpaceExploringAction exploringAction, String threadName, LtlTransition ltlTransition) {
         this.stateId = stateId;

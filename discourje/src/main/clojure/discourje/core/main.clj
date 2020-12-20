@@ -121,7 +121,24 @@
   (catch Exception e (.printStackTrace e)))
 (println "Done token-2d-mesh")
 
+(defn -spec-to-lts-token-2d-mesh-print [^Integer n]
+  (c/let [_ (require '[discourje.core.spec :refer :all])
+          _ (require '[discourje.core.spec :as s])
+          _ (require '[clojure.core :as c])
+          s (slurp "../code-generator/protocol_definitions/network_topologies/token-2d-mesh.dcj" )
+          s (str "(do " s ")")
+          _ (eval (read-string s))
+          ast (s/session ::token-2d-mesh [4 0])
+          lts (lts/lts ast)
+          ]
+    (println lts)
+    ))
 
+(println "Start token-2d-mesh-print")
+(try
+  (-spec-to-lts-token-2d-mesh-print 4)
+  (catch Exception e (.printStackTrace e)))
+(println "Done token-2d-mesh-print")
 
 (defn -spec-to-lts-ring [^Integer n]
   (c/let [_ (require '[discourje.core.spec :refer :all])

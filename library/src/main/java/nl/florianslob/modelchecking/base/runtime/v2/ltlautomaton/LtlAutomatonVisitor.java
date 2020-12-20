@@ -107,13 +107,17 @@ public class LtlAutomatonVisitor<S> implements Automaton.EdgeVisitor<S>, Automat
             // No, remove logic below and separate parsing logic.
             // TODO extract parsing logic.
             for (int i = 0; i< alphabet.size(); i++) {
-                expressionString  = expressionString.replace(""+i, ""+alphabet.get(i)+"");
+                expressionString  = expressionString.replace(""+i, "~"+i+"~");
+            }
+
+            for (int i = 0; i< alphabet.size(); i++) {
+                expressionString  = expressionString.replace("~"+i+"~", ""+alphabet.get(i)+"");
             }
 
             var atomicProposition = new LtlTransitionExpressionAtomicProposition();
 
             var expressionSplitted = expressionString.split(" "); // TODO Should we allow multiple spaces?
-            atomicProposition.Participant = expressionSplitted[0]; // The first thing you find is the participant
+            atomicProposition.setParticipant(expressionSplitted[0]); // The first thing you find is the participant
 
             if(expressionSplitted.length >1) {
                 // TODO make a nicer parser for this?

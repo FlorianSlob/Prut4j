@@ -39,7 +39,7 @@ public class Engine {
     }
 
     private boolean CheckForAcceptingCycles(Object[] dummies) {
-        Stack<String> modelCheckingResult = new Stack<>();
+        Stack<TriedTransitionTuple> triedTransitionsStack = new Stack<>();
 
         Engine.LogTest("Participants: ");
         for (var threadName : protocolUnderVerification.threadNames()) {
@@ -57,9 +57,9 @@ public class Engine {
         }
 
         try {
-            var result = executeModelCheckingAlgorithm(modelCheckingResult);
+            var result = executeModelCheckingAlgorithm(triedTransitionsStack);
             if(result){
-                for (var trace : modelCheckingResult) {
+                for (var trace : triedTransitionsStack) {
                  System.out.println(trace);
                 }
             }
@@ -73,10 +73,10 @@ public class Engine {
         }
     }
 
-    private boolean executeModelCheckingAlgorithm(Stack<String> modelCheckingResult) throws Exception {
+    private boolean executeModelCheckingAlgorithm(Stack<TriedTransitionTuple> triedTransitionsStack) throws Exception {
         for (var ltlStateNode : this.initialStatesForNegatedFormula) {
             var result =
-                    travelStateSpaceGuided(this.protocolUnderVerification, ltlStateNode, modelCheckingResult);
+                    travelStateSpaceGuided(this.protocolUnderVerification, ltlStateNode, triedTransitionsStack);
             if (result) {
                 Engine.LogResult("Found an accepting Cycle");
                 return true;
@@ -86,7 +86,7 @@ public class Engine {
         return false;
     }
 
-    private boolean travelStateSpaceGuided(IProtocol startingProtocolCopy, LtlState currentLtlState, Stack<String> modelCheckingResult) throws Exception {
+    private boolean travelStateSpaceGuided(IProtocol startingProtocolCopy, LtlState currentLtlState, Stack<TriedTransitionTuple> triedTransitionsStack) throws Exception {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
             for (var exploringAction : StateSpaceExploringActionsHelper.GetPossibleExploringActions(transition,this.exploringActions)) {
@@ -114,11 +114,11 @@ public class Engine {
                             Engine.LogTest("Starting inner cycle");
 
 //                            var protocolStateAfterTransition = optionalResultProtocol.get();
-//                            modelCheckingResult.push(
+//                            triedTransitionsStack.push(
 //                                    "A: Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState() + " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
 
                             // We detected a transition that has been taken before.
-                            var resultFromCycle2 = doCycleDetectionPhaseTwo(currentLtlState, transition, exploringAction, startingProtocolCopy, modelCheckingResult);
+                            var resultFromCycle2 = doCycleDetectionPhaseTwo(currentLtlState, transition, exploringAction, startingProtocolCopy, triedTransitionsStack);
                             // Case where we did detect a cycle:
                             // ?
                             // Store protocol clone, transition to be taken, action to be done, ltl state?
@@ -126,7 +126,7 @@ public class Engine {
                             if (resultFromCycle2) {
                                 return true; // Only return true if a cycle is found, continue otherwise.
                             }else{
-//                                modelCheckingResult.pop();
+//                                triedTransitionsStack.pop();
                             }
                         } else {
 
@@ -135,17 +135,18 @@ public class Engine {
 
                             var protocolStateAfterTransition = optionalResultProtocol.get();
                             Engine.LogTest("B: Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
-                            modelCheckingResult.push("B: Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState() + " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
+//                            triedTransitionsStack.push("B: Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState() + " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
 
+                            triedTransitionsStack.push(newTriedTransitionTuple);
                             // Acc set 0 = finite...
                             // Acc set 1 = infinite .... --> Need cycle
                             // Call recursively to travel the whole protocol
-                            var recursiveResult = travelStateSpaceGuided(protocolStateAfterTransition, transition.ltlTargetState, modelCheckingResult);
+                            var recursiveResult = travelStateSpaceGuided(protocolStateAfterTransition, transition.ltlTargetState, triedTransitionsStack);
                             if (recursiveResult) {
                                 return true;
                             }else{
 //                                allTriedTransitions.remove(newTriedTransitionTuple);
-                                modelCheckingResult.pop();
+                                triedTransitionsStack.pop();
                             }
 
                         }
@@ -159,7 +160,8 @@ public class Engine {
                                                          LtlState currentLtlState,
                                                          Set<TriedTransitionTuple> locallyTriedTransitions,
                                                          TriedTransitionTuple markedTransitionTuple,
-                                                         boolean isAcceptingCycle, Stack<String> modelCheckingResult)
+//                                                         boolean isAcceptingCycle,
+                                                         Stack<TriedTransitionTuple> triedTransitionsStack)
             throws Exception {
         // Try all outgoing transitions for the current ltl state
         for (var transition : currentLtlState.OutgoingTransitions) {
@@ -191,8 +193,8 @@ public class Engine {
                     if (optionalResultProtocol.isPresent()) {
                         var protocolStateAfterTransition = optionalResultProtocol.get();
                         Engine.LogTest("Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState());
-                        modelCheckingResult.push("C: Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState() + " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
-
+//                        triedTransitionsStack.push("C: Took transition from state " + startingProtocolCopy.getState() + " to " + protocolStateAfterTransition.getState() + " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
+                        triedTransitionsStack.push(newTriedTransitionTuple);
                         if (detectCycle(newTriedTransitionTuple, locallyTriedTransitions)) {
                             Engine.LogTest("Detected Cycle in state, We are already in inner cycle!" + startingProtocolCopy.getState());
 
@@ -206,45 +208,47 @@ public class Engine {
                                 Engine.LogTest("It is the state we are checking! ");
                                 Engine.LogTest(messageForDebugging);
 
-                                if((transition.AcceptanceSet0 || transition.AcceptanceSet1) && isAcceptingCycle) {
+                                triedTransitionsStack.push(newTriedTransitionTuple);
+                                var isAccepting  = isAccepting(triedTransitionsStack);
+                                if(isAccepting) {
                                     Engine.LogResult("It is the state we are checking! And it was part of an accepting cycle ");
                                     Engine.LogResult(messageForDebugging);
-                                    modelCheckingResult.push(messageForDebugging);
+
                                     return true;
                                 }
                                 else{
-                                    modelCheckingResult.pop();
+                                    triedTransitionsStack.pop();
                                     return false;
                                 }
 //                                return isAcceptingCycle;
                             } else {
                                 Engine.LogTest("It is not the state we were checking for, we are ignoring this cycle!" );
                                 Engine.LogTest(messageForDebugging);
-                                modelCheckingResult.pop();
+                                triedTransitionsStack.pop();
 
                             }
                         } else {
 
                             locallyTriedTransitions.add(newTriedTransitionTuple);
 
-                            if (transition.AcceptanceSet0 || transition.AcceptanceSet1) {
-                                // TODO do we need to check the first transition(before starting the recursive behavior)?
-                                Engine.LogTest("Transition we took was part of an accepting cycle.");
-                                isAcceptingCycle = true; // Mark the cycle we are checking as accepting.
-                            }
+//                            if (transition.AcceptanceSet0 || transition.AcceptanceSet1) {
+//                                // TODO do we need to check the first transition(before starting the recursive behavior)?
+//                                Engine.LogTest("Transition we took was part of an accepting cycle.");
+//                                isAcceptingCycle = true; // Mark the cycle we are checking as accepting.
+//                            }
                             // Call recursively to travel the whole protocol
                             var recursiveResult = travelStateSpaceGuidedForSecondCycle(
                                     protocolStateAfterTransition,
                                     transition.ltlTargetState,
                                     locallyTriedTransitions,
                                     markedTransitionTuple,
-                                    isAcceptingCycle,
-                                    modelCheckingResult);
+//                                    isAcceptingCycle,
+                                    triedTransitionsStack);
                             if (recursiveResult) {
                                 return true;
                             }else{
-//                                locallyTriedTransitions.remove(newTriedTransitionTuple);
-                                modelCheckingResult.pop();
+                                locallyTriedTransitions.remove(newTriedTransitionTuple);
+                                triedTransitionsStack.pop();
                             }
                         }
                     }
@@ -254,11 +258,16 @@ public class Engine {
         return false; // Returning false, we took all possible transitions and did not find any accepting cycles.
     }
 
+    private boolean isAccepting(Stack<TriedTransitionTuple> triedTransitionsStack) {
+        return triedTransitionsStack.stream().anyMatch(item -> { return item.ltlTransition.AcceptanceSet0 || item.ltlTransition.AcceptanceSet1;});
+    }
 
     public boolean doCycleDetectionPhaseTwo(LtlState currentLtlState,
                                             LtlTransition transition,
                                             StateSpaceExploringAction exploringAction,
-                                            IProtocol startingProtocolCopy, Stack<String> modelCheckingResult) throws Exception {
+                                            IProtocol startingProtocolCopy,
+                                            Stack<TriedTransitionTuple> triedTransitionsStack
+                                            ) throws Exception {
         Engine.LogTest("Found potential cycle");
         Engine.LogTest("Starting inner cycle");
 
@@ -294,11 +303,11 @@ public class Engine {
                     + " to "
                     + protocolStateAfterTransition.getState());
 
-            modelCheckingResult.push("D: Took transition from state "
-                    + startingProtocolCopy.getState()
-                    + " to "
-                    + protocolStateAfterTransition.getState()+ " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
-
+//            triedTransitionsStack.push("D: Took transition from state "
+//                    + startingProtocolCopy.getState()
+//                    + " to "
+//                    + protocolStateAfterTransition.getState()+ " Exploring Action: "+exploringAction.toString() + " LTL: "+ transition.toString());
+//            triedTransitionsStack.push()
             // Add transition to tried transition, so when taken again a cycle will be detected.
             var markedTransitionTuple =
                     new TriedTransitionTuple(
@@ -306,12 +315,14 @@ public class Engine {
                             , exploringAction
                             , exploringAction.participant
                             , transition);
+
+            triedTransitionsStack.push(markedTransitionTuple); // Not 100% sure here!
             locallyTriedTransitions.add(markedTransitionTuple);
 
-            var firstAcceptingValue = false;
-            if(transition.AcceptanceSet0 || transition.AcceptanceSet1){
-                firstAcceptingValue = true;
-            }
+
+//            if(transition.AcceptanceSet0 || transition.AcceptanceSet1){
+//                firstAcceptingValue = true;
+//            }
 
             // Call recursively to travel the whole protocol
             var recursiveResult = travelStateSpaceGuidedForSecondCycle(
@@ -319,12 +330,12 @@ public class Engine {
                     transition.ltlTargetState,
                     locallyTriedTransitions,
                     markedTransitionTuple,
-                    firstAcceptingValue, // start with value from current transition
-                    modelCheckingResult
+//                    firstAcceptingValue, // start with value from current transition
+                    triedTransitionsStack
             );
 
             if(!recursiveResult){
-                modelCheckingResult.pop();
+                triedTransitionsStack.pop();
             } else{
                 locallyTriedTransitions.remove(markedTransitionTuple);
             }

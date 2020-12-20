@@ -12,6 +12,7 @@ public class TokenUndirectedRingProtocolTests {
 
     public TokenUndirectedRingProtocolTests(){
         Engine.IsProtocolOptimized = true;
+        Engine.IsLoggingEnabled = false;
     }
 
     private IProtocol GetProtocol(){

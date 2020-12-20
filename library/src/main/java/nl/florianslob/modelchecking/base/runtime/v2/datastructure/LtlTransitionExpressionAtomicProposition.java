@@ -4,8 +4,15 @@ public class LtlTransitionExpressionAtomicProposition {
     public LtlTransitionExpressionAtomicPropositionDirection Direction;
     public String MessageType;
     public String Receiver;
-    public String Participant;
+    private String Participant;
 
+    public void setParticipant(String participant){
+        this.Participant = participant;
+    }
+
+    public String getParticipant(){
+        return this.Participant;
+    }
 
     public LtlTransitionExpressionAtomicProposition
             (LtlTransitionExpressionAtomicPropositionDirection direction, String messageType,String participant, String receiver) {

@@ -20,23 +20,23 @@ public class ProtocolCodeGenerator {
         // Toggle what protocols need to be generated
         // Needs to be generated first in Florian.jar!
         boolean
-                genCGProtocol = true,
+                genCGProtocol = false,
                 genFTProtocol = false,
                 genISProtocol = false,
                 genMGProtocol = false,
-                genDemoProtocols = true,
-                genRingProtocol = true,
+                genDemoProtocols = false,
+                genRingProtocol = false,
                 // genMeshProtocol will generate a very large file with large methods.
                 // If we need to test this,
                 // reduce block size to 10 in EnvironmentWriterForJava11.java (v5 namespace)
                 genMeshProtocol = true,
-                genStarProtocol = true,
-                genBinaryTreeProtocol = true,
+                genStarProtocol = false,
+                genBinaryTreeProtocol = false,
                 genGoFishProtocol = false,
-                genRockPaperScissorsProtocol = true,
+                genRockPaperScissorsProtocol = false,
                 genTicTacToeProtocol = false
                         ;
-        boolean generateToTestBenchmarkProject = true;
+        boolean generateToTestBenchmarkProject = false;
         boolean generateToTestProject = true;
 
         var filePathForDemoProtocolsGames = "../tests/src/main/java/nl/florianslob/modelchecking/generated/games/";
